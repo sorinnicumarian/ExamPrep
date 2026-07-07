@@ -287,8 +287,8 @@
       "relational",
       "architectures"
     ],
-    "prompt": "**Exercise 1.1 (1.5 PT).** A media production company needs a data storage solution to track its production process: shows (TV programs, series, movies, each with a category, title, description, production year, reviews, shooting locations) and people on its payroll (personal data, bio, and detailed activity history — shows worked on, role, paychecks, work period). Shows and people can win awards (type, date). Shows record expenses (equipment, services, rentals — date, type, invoice, amount, providing company) and detailed production events (writing, casting, shooting, contract steps — tens per day). Shows have a script (the complete writing: what happens, who says/does what). The company also has staff workers not associated with any show.\n\nDescribe the conceptual model of the data using an Entity-Relationship model. Focus on the conceptualisation of the problem and avoid redundancy where possible, and mark the read direction of every relationship with an arrow tip.",
-    "solution": "Transcription of the official hand-drawn ER diagram (entity boxes / diamonds as given; some labels are hard to read on the scanned original and are reproduced best-effort):\n\n**Entities**\n- `PERSON` (id_number, name, surname, birth_date) — a generalization (ISA) root.\n- `STAFF` — ISA-child of `PERSON`: staff workers **not** tied to any show (no extra attributes beyond `PERSON`).\n- `SHOWS_PERSON` — ISA-child of `PERSON`: people who work on shows; extra attributes `bio`, `otherCompanyActivityHistory` (their activity history with *other* companies, kept as an attribute rather than a separate entity to avoid redundancy since it is not queried structurally).\n- `SHOW` (id, title, description, production_year, category).\n- `AWARD` (id, type, date) — shared by both `SHOW` and `SHOWS_PERSON`.\n- `LOCATION` (name, address, latitude, longitude).\n- `REVIEW` (id, rating, description).\n- `EXPENSE` (id, date, type, amount, invoice, company_name).\n- `SCRIPT` (id, scriptText).\n- `EVENT` (id, date, type).\n\n**Relationships**\n- `ISA`: `PERSON` → `{STAFF, SHOWS_PERSON}` (generalization hierarchy, drawn with the arrow pointing from the sub-types up to `PERSON`).\n- `WORKS` (`SHOWS_PERSON` (0:N) — `SHOW` (0:N)): attributes `role`, `paycheck`, `startDate`, `endDate` — this is the many-to-many link that records who worked on which show, with what role, pay and covered period.\n- `WIN` (`SHOWS_PERSON` (0:N) — `AWARD` (1:1)) and `WIN` (`SHOW` (0:N) — `AWARD` (1:1)): each award instance belongs to exactly one winner (person or show), while a person/show can win many awards — modelled as two separate relationships from the shared `AWARD` entity since an award is either for a person or a show.\n- `HAS` (`SHOW` (0:N) — `LOCATION` (1:N)): the shooting locations of a show.\n- `RECEIVES` (`SHOW` (1:1) — `REVIEW` (0:N)): a show receives many reviews, each review belongs to one show.\n- `HAS` (`SHOW` (1:1) — `EXPENSE` (0:N)): a show has many recorded expenses.\n- `HAS` (`SHOW` (1:1) — `SCRIPT` (1:1)): each show has exactly one script.\n- `IS_PART_OF` (`SCRIPT` (1:1) — `SHOWS_PERSON` (0:N)), with attributes `whatSays` / `whatDoes`: the script's per-person breakdown of what each show-person says/does, avoiding duplicating the whole script text per person.\n- `IS_MADE_OF` (`SHOW` (1:1) — `EVENT` (1:N)): the (potentially tens-per-day) production events belonging to a show.\n\nArrow tips point from the \"many\" reading side toward the entity being referenced (e.g. `WORKS` reads \"a show-person *works in* a show\"), so that the diagram is unambiguous about which side is being described by each relationship name.",
+    "prompt": "**Exercise 1.1 (1.5 PT).** A media production company needs a data storage solution to track its production process: shows (TV programs, series, movies, each with a category, title, description, production year, reviews, shooting locations) and people on its payroll (personal data, bio, and detailed activity history \u2014 shows worked on, role, paychecks, work period). Shows and people can win awards (type, date). Shows record expenses (equipment, services, rentals \u2014 date, type, invoice, amount, providing company) and detailed production events (writing, casting, shooting, contract steps \u2014 tens per day). Shows have a script (the complete writing: what happens, who says/does what). The company also has staff workers not associated with any show.\n\nDescribe the conceptual model of the data using an Entity-Relationship model. Focus on the conceptualisation of the problem and avoid redundancy where possible, and mark the read direction of every relationship with an arrow tip.",
+    "solution": "Transcription of the official hand-drawn ER diagram (entity boxes / diamonds as given; some labels are hard to read on the scanned original and are reproduced best-effort):\n\n**Entities**\n- `PERSON` (id_number, name, surname, birth_date) \u2014 a generalization (ISA) root.\n- `STAFF` \u2014 ISA-child of `PERSON`: staff workers **not** tied to any show (no extra attributes beyond `PERSON`).\n- `SHOWS_PERSON` \u2014 ISA-child of `PERSON`: people who work on shows; extra attributes `bio`, `otherCompanyActivityHistory` (their activity history with *other* companies, kept as an attribute rather than a separate entity to avoid redundancy since it is not queried structurally).\n- `SHOW` (id, title, description, production_year, category).\n- `AWARD` (id, type, date) \u2014 shared by both `SHOW` and `SHOWS_PERSON`.\n- `LOCATION` (name, address, latitude, longitude).\n- `REVIEW` (id, rating, description).\n- `EXPENSE` (id, date, type, amount, invoice, company_name).\n- `SCRIPT` (id, scriptText).\n- `EVENT` (id, date, type).\n\n**Relationships**\n- `ISA`: `PERSON` \u2192 `{STAFF, SHOWS_PERSON}` (generalization hierarchy, drawn with the arrow pointing from the sub-types up to `PERSON`).\n- `WORKS` (`SHOWS_PERSON` (0:N) \u2014 `SHOW` (0:N)): attributes `role`, `paycheck`, `startDate`, `endDate` \u2014 this is the many-to-many link that records who worked on which show, with what role, pay and covered period.\n- `WIN` (`SHOWS_PERSON` (0:N) \u2014 `AWARD` (1:1)) and `WIN` (`SHOW` (0:N) \u2014 `AWARD` (1:1)): each award instance belongs to exactly one winner (person or show), while a person/show can win many awards \u2014 modelled as two separate relationships from the shared `AWARD` entity since an award is either for a person or a show.\n- `HAS` (`SHOW` (0:N) \u2014 `LOCATION` (1:N)): the shooting locations of a show.\n- `RECEIVES` (`SHOW` (1:1) \u2014 `REVIEW` (0:N)): a show receives many reviews, each review belongs to one show.\n- `HAS` (`SHOW` (1:1) \u2014 `EXPENSE` (0:N)): a show has many recorded expenses.\n- `HAS` (`SHOW` (1:1) \u2014 `SCRIPT` (1:1)): each show has exactly one script.\n- `IS_PART_OF` (`SCRIPT` (1:1) \u2014 `SHOWS_PERSON` (0:N)), with attributes `whatSays` / `whatDoes`: the script's per-person breakdown of what each show-person says/does, avoiding duplicating the whole script text per person.\n- `IS_MADE_OF` (`SHOW` (1:1) \u2014 `EVENT` (1:N)): the (potentially tens-per-day) production events belonging to a show.\n\nArrow tips point from the \"many\" reading side toward the entity being referenced (e.g. `WORKS` reads \"a show-person *works in* a show\"), so that the diagram is unambiguous about which side is being described by each relationship name.",
     "solutionSource": "exam"
   },
   {
@@ -298,13 +298,14 @@
     "academicYear": "AA2122",
     "exerciseNo": 3,
     "marks": 0.5,
-    "type": "theory-essay",
+    "type": "applied-modeling",
     "topics": [
       "architectures",
-      "nosql-intro"
+      "nosql-intro",
+      "relational"
     ],
     "prompt": "**Exercise 1.2 (0.5 PT).** Highlight which parts of the model from 1.1 you would implement in different database solutions (relational or non-relational, specifying the type). Briefly motivate the choices.",
-    "solution": "| DB | Main elements | Motivation |\n|---|---|---|\n| **Graph** | Show, People, Awards, Location, Interactions | Useful to research the relationships between the different parts of the schema (e.g. who worked with whom, on which shows, winning which awards) — graph traversals are natural here. |\n| **Documental (MongoDB)** | Show Staff Members, Show, Award, Activity | Useful to store all the elements together in a flexible, nested structure (a show document embedding its reviews/expenses/awards) without a rigid predefined schema. |\n| **Elasticsearch** | Script, People (bios), Histories | Provides full-text search and text-analysis functionality over unstructured/long text fields such as the script or a person's biography/activity history. |\n\nThe remaining, highly structured, transactional data (e.g. payroll/contract records, invoicing) would fit a **relational** database, which was not explicitly required by the official table but is consistent with polyglot persistence: pick the model that best fits each part's data properties and access patterns.",
+    "solution": "| DB | Main elements | Motivation |\n|---|---|---|\n| **Graph** | Show, People, Awards, Location, Interactions | Useful to research the relationships between the different parts of the schema (e.g. who worked with whom, on which shows, winning which awards) \u2014 graph traversals are natural here. |\n| **Documental (MongoDB)** | Show Staff Members, Show, Award, Activity | Useful to store all the elements together in a flexible, nested structure (a show document embedding its reviews/expenses/awards) without a rigid predefined schema. |\n| **Elasticsearch** | Script, People (bios), Histories | Provides full-text search and text-analysis functionality over unstructured/long text fields such as the script or a person's biography/activity history. |\n\nThe remaining, highly structured, transactional data (e.g. payroll/contract records, invoicing) would fit a **relational** database, which was not explicitly required by the official table but is consistent with polyglot persistence: pick the model that best fits each part's data properties and access patterns.",
     "solutionSource": "exam"
   },
   {
@@ -344,12 +345,12 @@
     "academicYear": "AA2122",
     "exerciseNo": 6,
     "marks": 1,
-    "type": "theory-essay",
+    "type": "applied-modeling",
     "topics": [
       "neo4j"
     ],
     "prompt": "**Exercise 2.1 (1 PT).** Suppose you store in a Neo4j graph database the lists of people, shows, and their connections (coherent with your ER diagram). Write a Cypher query that finds the pairs of actors who acted (together) in the same show and have the same age.",
-    "solution": "```cypher\nMATCH (a:ShowsPerson)-[r:WORKS_IN]->(s:Show)<-[t:WORKS_IN]-(b:ShowsPerson)\nWHERE a.age = b.age\n  AND r.role = \"actor\" AND t.role = \"actor\"\n  AND a.id <> b.id\nRETURN a, b\n```\n\nMatch two `ShowsPerson` nodes connected through a common `Show` via two `WORKS_IN` relationships, both with `role = \"actor\"`, filter on equal `age` and distinct identity to avoid pairing a person with themself (and to avoid self-pairs, though note this still returns each unordered pair twice — `a.id < b.id` would dedupe it).",
+    "solution": "```cypher\nMATCH (a:ShowsPerson)-[r:WORKS_IN]->(s:Show)<-[t:WORKS_IN]-(b:ShowsPerson)\nWHERE a.age = b.age\n  AND r.role = \"actor\" AND t.role = \"actor\"\n  AND a.id <> b.id\nRETURN a, b\n```\n\nMatch two `ShowsPerson` nodes connected through a common `Show` via two `WORKS_IN` relationships, both with `role = \"actor\"`, filter on equal `age` and distinct identity to avoid pairing a person with themself (and to avoid self-pairs, though note this still returns each unordered pair twice \u2014 `a.id < b.id` would dedupe it).",
     "solutionSource": "exam"
   },
   {
@@ -359,7 +360,7 @@
     "academicYear": "AA2122",
     "exerciseNo": 7,
     "marks": 1.5,
-    "type": "theory-essay",
+    "type": "applied-modeling",
     "topics": [
       "neo4j"
     ],
@@ -374,12 +375,12 @@
     "academicYear": "AA2122",
     "exerciseNo": 8,
     "marks": 1.5,
-    "type": "theory-essay",
+    "type": "applied-modeling",
     "topics": [
       "neo4j"
     ],
     "prompt": "**Exercise 2.3 (1.5 PT).** Write a Cypher query that finds the people who received an award and acted in a show that received at least 2 awards in 2021 and in which at most one shooting-production event is included.",
-    "solution": "```cypher\nMATCH (p:ShowsPerson)-[:WINS]->(:Award),\n      (p)-[:WORKS_IN {role: \"actor\"}]->(s:Show)-[:WINS]->(awd:Award {year: \"2021\"}),\n      (s)-[:IS_MADE_OF]->(e:Event {type: \"shooting production\"})\nWITH p, count(DISTINCT awd) AS awd_count, count(DISTINCT e) AS shooting_count\nWHERE awd_count >= 2 AND shooting_count <= 1\nRETURN DISTINCT p\n```\n\nThis fixes small typos present in the official transcript (a stray `award_count` variable that was never bound — corrected to the `awd_count` actually computed in `WITH`; `count(awd)`/`count(e)` changed to `count(DISTINCT ...)` since the pattern can otherwise multiply-count when a show has several qualifying paths; \"at least 2\" / \"at most 1\" translated to `>= 2` / `<= 1` instead of the exam's stricter `> 1` / `< 2`, which are numerically equivalent for integers but clearer). Logic: `p` must have won some award (`WINS`), have acted (`WORKS_IN {role:\"actor\"}`) in a show `s`, that show must have at least 2 awards dated 2021, and at most 1 `shooting production` event.",
+    "solution": "```cypher\nMATCH (p:ShowsPerson)-[:WINS]->(:Award),\n      (p)-[:WORKS_IN {role: \"actor\"}]->(s:Show)-[:WINS]->(awd:Award {year: \"2021\"}),\n      (s)-[:IS_MADE_OF]->(e:Event {type: \"shooting production\"})\nWITH p, count(DISTINCT awd) AS awd_count, count(DISTINCT e) AS shooting_count\nWHERE awd_count >= 2 AND shooting_count <= 1\nRETURN DISTINCT p\n```\n\nThis fixes small typos present in the official transcript (a stray `award_count` variable that was never bound \u2014 corrected to the `awd_count` actually computed in `WITH`; `count(awd)`/`count(e)` changed to `count(DISTINCT ...)` since the pattern can otherwise multiply-count when a show has several qualifying paths; \"at least 2\" / \"at most 1\" translated to `>= 2` / `<= 1` instead of the exam's stricter `> 1` / `< 2`, which are numerically equivalent for integers but clearer). Logic: `p` must have won some award (`WINS`), have acted (`WORKS_IN {role:\"actor\"}`) in a show `s`, that show must have at least 2 awards dated 2021, and at most 1 `shooting production` event.",
     "solutionSource": "exam"
   },
   {
@@ -389,12 +390,12 @@
     "academicYear": "AA2122",
     "exerciseNo": 9,
     "marks": 1.5,
-    "type": "theory-essay",
+    "type": "applied-modeling",
     "topics": [
       "mongodb"
     ],
     "prompt": "**Exercise 3.1 (1.5 PT).** Suppose you store in MongoDB the lists of shows, awards, locations and reviews (coherent with your ER diagram). Write a query to collect 5 shows produced in 2021 in which at least one of the expenses is of type \"services\".",
-    "solution": "```javascript\ndb.shows.find({\n  \"$and\": [\n    { \"production_year\": 2021 },\n    { \"expenses.type\": \"services\" }\n  ]\n}).limit(5)\n```\n\n`expenses.type: \"services\"` matches any show whose embedded `expenses` array contains at least one element with `type = \"services\"` (MongoDB implicitly matches array-of-subdocument fields this way). `.limit(5)` caps the result at 5 documents. The `$and` is actually redundant here since MongoDB implicitly ANDs top-level fields — `db.shows.find({production_year: 2021, \"expenses.type\": \"services\"}).limit(5)` is equivalent and simpler — but the explicit `$and` form from the exam is also correct.",
+    "solution": "```javascript\ndb.shows.find({\n  \"$and\": [\n    { \"production_year\": 2021 },\n    { \"expenses.type\": \"services\" }\n  ]\n}).limit(5)\n```\n\n`expenses.type: \"services\"` matches any show whose embedded `expenses` array contains at least one element with `type = \"services\"` (MongoDB implicitly matches array-of-subdocument fields this way). `.limit(5)` caps the result at 5 documents. The `$and` is actually redundant here since MongoDB implicitly ANDs top-level fields \u2014 `db.shows.find({production_year: 2021, \"expenses.type\": \"services\"}).limit(5)` is equivalent and simpler \u2014 but the explicit `$and` form from the exam is also correct.",
     "solutionSource": "exam"
   },
   {
@@ -404,7 +405,7 @@
     "academicYear": "AA2122",
     "exerciseNo": 10,
     "marks": 1.5,
-    "type": "theory-essay",
+    "type": "applied-modeling",
     "topics": [
       "mongodb"
     ],
@@ -419,12 +420,12 @@
     "academicYear": "AA2122",
     "exerciseNo": 11,
     "marks": 0.5,
-    "type": "theory-essay",
+    "type": "applied-modeling",
     "topics": [
       "elasticsearch"
     ],
     "prompt": "**Exercise 4.1 (0.5 PT).** Suppose you store an Elasticsearch index of the reviews, including an attribute for the show's title (a sort of \"external key\", coherent with your ER diagram). Provide the complete mapping of the `reviews` index (field names, field types, mapping structure).",
-    "solution": "```json\nPUT reviews\n{\n  \"mappings\": {\n    \"properties\": {\n      \"description\": { \"type\": \"text\" },\n      \"rating\": { \"type\": \"float\" },\n      \"title\": { \"type\": \"keyword\" },\n      \"date\": { \"type\": \"date\" }\n    }\n  }\n}\n```\n\n`description` is `text` so it is analyzed/tokenized for full-text search (needed for 4.3). `rating` is numeric (`float`, since ratings such as 4.5 appear elsewhere in the exam) to support range queries (needed for 4.2). `title` — the \"external key\" pointing back to the show — is `keyword` (not analyzed) since it is used for exact-match aggregation/terms bucketing, not free-text search.",
+    "solution": "```json\nPUT reviews\n{\n  \"mappings\": {\n    \"properties\": {\n      \"description\": { \"type\": \"text\" },\n      \"rating\": { \"type\": \"float\" },\n      \"title\": { \"type\": \"keyword\" },\n      \"date\": { \"type\": \"date\" }\n    }\n  }\n}\n```\n\n`description` is `text` so it is analyzed/tokenized for full-text search (needed for 4.3). `rating` is numeric (`float`, since ratings such as 4.5 appear elsewhere in the exam) to support range queries (needed for 4.2). `title` \u2014 the \"external key\" pointing back to the show \u2014 is `keyword` (not analyzed) since it is used for exact-match aggregation/terms bucketing, not free-text search.",
     "solutionSource": "exam"
   },
   {
@@ -434,7 +435,7 @@
     "academicYear": "AA2122",
     "exerciseNo": 12,
     "marks": 1,
-    "type": "theory-essay",
+    "type": "applied-modeling",
     "topics": [
       "elasticsearch"
     ],
@@ -449,7 +450,7 @@
     "academicYear": "AA2122",
     "exerciseNo": 13,
     "marks": 1.5,
-    "type": "theory-essay",
+    "type": "applied-modeling",
     "topics": [
       "elasticsearch"
     ],
@@ -468,8 +469,8 @@
     "topics": [
       "columnar"
     ],
-    "prompt": "**Exercise 5 (3 PT).** A colleague gives you the following Cassandra script meant to set up a `staff_management_system` keyspace and a `staff_members` table, insert a test row, bulk-load more rows from a file, and run two test queries. Find every mistake and provide the fix. There may be zero, one, or multiple errors per step, and errors can be of different kinds. *(Grading note from the exam: no penalty for wrongly flagged \"errors\" — only credit for genuinely spotting and fixing the real ones.)*\n\n```sql\n-- Step 1\nCREATE KEYSPACE \"staff_management_system\" WITH replication =\n  {'class': 'SimpleStrategy', 'replication_factor': 15};\n\n-- Step 2\nUSE staff_management_system;\n\n-- Step 3\nCREATE TABLE staff_members (\n  name string,\n  surname string,\n  personal_id string,\n  age varint,\n  PRIMARY KEY (personal_id)\n);\n\n-- Step 4\nINSERT INTO staff_members (name, personal_id, surname, age) VALUES\n  (\"Francesco\", FRNRSS95E12F675T, \"Rossi\", 19);\n\n-- Step 5\nUPLOAD \"D:/Program Files/Cassandra/Data/staff_members.txt\";\n\n-- Step 6\nSELECT name, surname\nFROM staff_management_system\nWHERE personal_id = \"FRNTCC95E12F675T\";\n\n-- Step 7\nSELECT COUNT(*)\nFROM staff_management_system\nWHERE name = \"Francesco\";\n```",
-    "solution": "**Step 1 — `CREATE KEYSPACE`:** No error (quoting the keyspace name with double quotes is accepted in CQL). *(A genuinely debatable point some graders also flagged: `replication_factor: 15` is unrealistically high, but that is a modeling choice, not a syntax/semantic error.)*\n\n**Step 2 — `USE`:** No error.\n\n**Step 3 — `CREATE TABLE`:** **Error** — `string` is not a valid Cassandra CQL type.\n**Fix:** use `text` (or `varchar`):\n```sql\nCREATE TABLE staff_members (\n  name text,\n  surname text,\n  personal_id text,\n  age varint,\n  PRIMARY KEY (personal_id)\n);\n```\n\n**Step 4 — `INSERT`:** **Error** — `personal_id`'s value `FRNRSS95E12F675T` is not quoted, but the column is of type `text`, causing a type mismatch.\n**Fix:** quote it as a string literal:\n```sql\nINSERT INTO staff_members (name, personal_id, surname, age) VALUES\n  ('Francesco', 'FRNRSS95E12F675T', 'Rossi', 19);\n```\n\n**Step 5 — `UPLOAD`:** **Error** — `UPLOAD` is not a `cqlsh` command.\n**Fix:** use `SOURCE` to execute a file of CQL statements (or `COPY ... FROM` for CSV bulk-loading):\n```sql\nSOURCE 'D:/Program Files/Cassandra/Data/staff_members.txt';\n```\n\n**Step 6 — `SELECT ... FROM staff_management_system`:** **Error** — the query targets the keyspace name (`staff_management_system`) as if it were a table; it must query the table `staff_members` (within the current keyspace).\n**Fix:**\n```sql\nSELECT name, surname\nFROM staff_members\nWHERE personal_id = 'FRNTCC95E12F675T';\n```\n\n**Step 7 — `SELECT COUNT(*) ... WHERE name = ...`:** Two issues: (a) same table/keyspace confusion as step 6, and (b) filtering by `name`, which is neither the partition key nor a clustering column nor indexed, is not allowed by default in Cassandra.\n**Fix:** query the correct table and either create a secondary index on `name`, add `name` as a clustering column in the table design, or (least recommended, since it scans the whole table) add `ALLOW FILTERING`:\n```sql\nCREATE INDEX ON staff_members (name);\n\nSELECT COUNT(*)\nFROM staff_members\nWHERE name = 'Francesco';\n```",
+    "prompt": "**Exercise 5 (3 PT).** A colleague gives you the following Cassandra script meant to set up a `staff_management_system` keyspace and a `staff_members` table, insert a test row, bulk-load more rows from a file, and run two test queries. Find every mistake and provide the fix. There may be zero, one, or multiple errors per step, and errors can be of different kinds. *(Grading note from the exam: no penalty for wrongly flagged \"errors\" \u2014 only credit for genuinely spotting and fixing the real ones.)*\n\n```sql\n-- Step 1\nCREATE KEYSPACE \"staff_management_system\" WITH replication =\n  {'class': 'SimpleStrategy', 'replication_factor': 15};\n\n-- Step 2\nUSE staff_management_system;\n\n-- Step 3\nCREATE TABLE staff_members (\n  name string,\n  surname string,\n  personal_id string,\n  age varint,\n  PRIMARY KEY (personal_id)\n);\n\n-- Step 4\nINSERT INTO staff_members (name, personal_id, surname, age) VALUES\n  (\"Francesco\", FRNRSS95E12F675T, \"Rossi\", 19);\n\n-- Step 5\nUPLOAD \"D:/Program Files/Cassandra/Data/staff_members.txt\";\n\n-- Step 6\nSELECT name, surname\nFROM staff_management_system\nWHERE personal_id = \"FRNTCC95E12F675T\";\n\n-- Step 7\nSELECT COUNT(*)\nFROM staff_management_system\nWHERE name = \"Francesco\";\n```",
+    "solution": "**Step 1 \u2014 `CREATE KEYSPACE`:** No error (quoting the keyspace name with double quotes is accepted in CQL). *(A genuinely debatable point some graders also flagged: `replication_factor: 15` is unrealistically high, but that is a modeling choice, not a syntax/semantic error.)*\n\n**Step 2 \u2014 `USE`:** No error.\n\n**Step 3 \u2014 `CREATE TABLE`:** **Error** \u2014 `string` is not a valid Cassandra CQL type.\n**Fix:** use `text` (or `varchar`):\n```sql\nCREATE TABLE staff_members (\n  name text,\n  surname text,\n  personal_id text,\n  age varint,\n  PRIMARY KEY (personal_id)\n);\n```\n\n**Step 4 \u2014 `INSERT`:** **Error** \u2014 `personal_id`'s value `FRNRSS95E12F675T` is not quoted, but the column is of type `text`, causing a type mismatch.\n**Fix:** quote it as a string literal:\n```sql\nINSERT INTO staff_members (name, personal_id, surname, age) VALUES\n  ('Francesco', 'FRNRSS95E12F675T', 'Rossi', 19);\n```\n\n**Step 5 \u2014 `UPLOAD`:** **Error** \u2014 `UPLOAD` is not a `cqlsh` command.\n**Fix:** use `SOURCE` to execute a file of CQL statements (or `COPY ... FROM` for CSV bulk-loading):\n```sql\nSOURCE 'D:/Program Files/Cassandra/Data/staff_members.txt';\n```\n\n**Step 6 \u2014 `SELECT ... FROM staff_management_system`:** **Error** \u2014 the query targets the keyspace name (`staff_management_system`) as if it were a table; it must query the table `staff_members` (within the current keyspace).\n**Fix:**\n```sql\nSELECT name, surname\nFROM staff_members\nWHERE personal_id = 'FRNTCC95E12F675T';\n```\n\n**Step 7 \u2014 `SELECT COUNT(*) ... WHERE name = ...`:** Two issues: (a) same table/keyspace confusion as step 6, and (b) filtering by `name`, which is neither the partition key nor a clustering column nor indexed, is not allowed by default in Cassandra.\n**Fix:** query the correct table and either create a secondary index on `name`, add `name` as a clustering column in the table design, or (least recommended, since it scans the whole table) add `ALLOW FILTERING`:\n```sql\nCREATE INDEX ON staff_members (name);\n\nSELECT COUNT(*)\nFROM staff_members\nWHERE name = 'Francesco';\n```",
     "solutionSource": "exam"
   }
 ]
