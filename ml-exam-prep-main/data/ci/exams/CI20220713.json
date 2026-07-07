@@ -1,0 +1,308 @@
+[
+  {
+    "id": "CI20220713-e1",
+    "examId": "CI20220713",
+    "date": "2022-07-13",
+    "academicYear": "AA2122",
+    "exerciseNo": 1,
+    "marks": 2,
+    "type": "multiple-choice",
+    "topics": ["dc-intro"],
+    "part": "first",
+    "prompt": "Which sentence about **Tier Level 4** of a datacenter is **not** correct?",
+    "choices": [
+      { "label": "A", "text": "All cooling equipment is independently dual-powered" },
+      { "label": "B", "text": "Single non-redundant distribution path serving the IT equipment" },
+      { "label": "C", "text": "Meets or exceeds all Tier 3 requirements" },
+      { "label": "D", "text": "Fault-tolerant site infrastructure with availability of 99.995%" }
+    ],
+    "correctChoice": "B",
+    "solution": "Tier 4 is the highest datacenter classification: **fault tolerant**, fully redundant (2N+1), with multiple independent and physically isolated distribution paths and dual-powered cooling, reaching an availability of ~99.995% (about 26 min downtime/year), and it meets or exceeds all lower-tier requirements. A **single non-redundant distribution path** (option B) describes **Tier 1** (basic capacity), not Tier 4, so B is the statement that is **not** correct. The other three statements (A, C, D) are all true of Tier 4.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20220713-e2",
+    "examId": "CI20220713",
+    "date": "2022-07-13",
+    "academicYear": "AA2122",
+    "exerciseNo": 2,
+    "marks": 2,
+    "type": "multiple-choice",
+    "topics": ["dc-intro"],
+    "part": "first",
+    "prompt": "In the context of data centers, **scalability** is the ability for the infrastructure ______ without cost, efficiency, and reliability being compromised. Select the correct item to be included in the previous sentence.",
+    "choices": [
+      { "label": "A", "text": "to be enlarged or to handle an increment of the input requests" },
+      { "label": "B", "text": "to run in a larger building" },
+      { "label": "C", "text": "none of the others" },
+      { "label": "D", "text": "to improve the cooling strategy" }
+    ],
+    "correctChoice": "A",
+    "solution": "Scalability is the capability of a system/infrastructure to **grow (be enlarged) and to handle an increasing amount of input requests/work** while keeping cost, efficiency and reliability under control. Running in a larger building (B) or improving cooling (D) are unrelated physical/operational aspects, so the correct completion is A.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20220713-e3",
+    "examId": "CI20220713",
+    "date": "2022-07-13",
+    "academicYear": "AA2122",
+    "exerciseNo": 3,
+    "marks": 2,
+    "type": "multiple-choice",
+    "topics": ["dependability"],
+    "part": "first",
+    "prompt": "Which is the most appropriate definition for \"**fault**\"?",
+    "choices": [
+      { "label": "A", "text": "Any library inconsistency in the Operating System" },
+      { "label": "B", "text": "Any defect in the silicon caused by dust particles during manufacturing" },
+      { "label": "C", "text": "Any inappropriate usage of the system" },
+      { "label": "D", "text": "Any event interfering with the nominal behavior of the system" }
+    ],
+    "correctChoice": "D",
+    "solution": "In the dependability chain **fault → error → failure**, a *fault* is the cause: any defect/anomalous condition or event that can perturb the system from its nominal behaviour. Options A and B are far too narrow (one specific kind of fault each), and C describes a misuse, not a fault. The broad, course-level definition is **any event interfering with the nominal behavior of the system** (D).",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20220713-e4",
+    "examId": "CI20220713",
+    "date": "2022-07-13",
+    "academicYear": "AA2122",
+    "exerciseNo": 4,
+    "marks": 2,
+    "type": "multiple-choice",
+    "topics": ["networking"],
+    "part": "second",
+    "prompt": "One of these levels is **NOT** part of a typical three-layers network architecture of a data-center?",
+    "choices": [
+      { "label": "A", "text": "Access" },
+      { "label": "B", "text": "Aggregation" },
+      { "label": "C", "text": "Core" },
+      { "label": "D", "text": "Cloud" }
+    ],
+    "correctChoice": "D",
+    "solution": "The classic three-tier datacenter network architecture is built from the **Access** layer (top-of-rack / edge switches connecting servers), the **Aggregation (Distribution)** layer, and the **Core** layer (high-speed backbone). **Cloud** is not a layer of this physical network topology, so D is the one that does not belong.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20220713-e5",
+    "examId": "CI20220713",
+    "date": "2022-07-13",
+    "academicYear": "AA2122",
+    "exerciseNo": 5,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["dependability"],
+    "part": "first",
+    "prompt": "All faults occurring in a system cause a failure of the system.",
+    "subStatements": [
+      {
+        "id": "CI20220713-e5-s1",
+        "statement": "All faults occurring in a system cause a failure of the system.",
+        "answer": false,
+        "motivation": "False. In the fault → error → failure chain, a fault only *potentially* leads to a failure. A fault may stay dormant (never activated), or it may be masked/tolerated by redundancy and fault-tolerance mechanisms so it never propagates to an error or to a service failure. Hence not every fault causes a failure."
+      }
+    ],
+    "solution": "See per-statement motivations.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20220713-e6",
+    "examId": "CI20220713",
+    "date": "2022-07-13",
+    "academicYear": "AA2122",
+    "exerciseNo": 6,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["storage-systems"],
+    "part": "second",
+    "prompt": "In datacenter storage context, DAS means Distributed Application Storage.",
+    "subStatements": [
+      {
+        "id": "CI20220713-e6-s1",
+        "statement": "In datacenter storage context, DAS means Distributed Application Storage.",
+        "answer": false,
+        "motivation": "False. DAS stands for **Direct Attached Storage** — storage directly attached to a single server (via SAS/SATA/SCSI) with no network in between — as opposed to NAS (Network Attached Storage) and SAN (Storage Area Network). It is not 'Distributed Application Storage'."
+      }
+    ],
+    "solution": "See per-statement motivations.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20220713-e7",
+    "examId": "CI20220713",
+    "date": "2022-07-13",
+    "academicYear": "AA2122",
+    "exerciseNo": 7,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["servers"],
+    "part": "first",
+    "prompt": "In the context of rack servers, 1U is 44.45 cm.",
+    "subStatements": [
+      {
+        "id": "CI20220713-e7-s1",
+        "statement": "In the context of rack servers, 1U is 44.45 cm.",
+        "answer": false,
+        "motivation": "False. One rack unit (1U) is defined as **1.75 inches = 4.445 cm**, not 44.45 cm. The value 44.45 cm corresponds to 10U (and is off by a factor of ten from the correct 4.445 cm)."
+      }
+    ],
+    "solution": "See per-statement motivations.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20220713-e8",
+    "examId": "CI20220713",
+    "date": "2022-07-13",
+    "academicYear": "AA2122",
+    "exerciseNo": 8,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["dependability"],
+    "part": "first",
+    "prompt": "In a reliability block diagram, adding components in series decreases the system reliability with respect to the reliability of the single component.",
+    "subStatements": [
+      {
+        "id": "CI20220713-e8-s1",
+        "statement": "In a reliability block diagram, adding components in series decreases the system reliability with respect to the reliability of the single component.",
+        "answer": true,
+        "motivation": "True. For a series RBD the system works only if **all** components work, so $R_{sys}=\\prod_i R_i$. Since each $R_i\\in[0,1]$, the product is $\\le$ any individual $R_i$; adding more series components multiplies by a factor $\\le 1$, so overall reliability decreases relative to a single component."
+      }
+    ],
+    "solution": "See per-statement motivations.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20220713-e9",
+    "examId": "CI20220713",
+    "date": "2022-07-13",
+    "academicYear": "AA2122",
+    "exerciseNo": 9,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["dc-intro"],
+    "part": "first",
+    "prompt": "Warehouse-scale computers run a large number of very small applications.",
+    "subStatements": [
+      {
+        "id": "CI20220713-e9-s1",
+        "statement": "Warehouse-scale computers run a large number of very small applications.",
+        "answer": false,
+        "motivation": "False. Warehouse-Scale Computers (WSCs) are designed to run a **small number of very large applications** (e.g. web search, mail, maps) whose workload is spread across tens of thousands of machines that act as a single computer — the opposite of many tiny independent applications."
+      }
+    ],
+    "solution": "See per-statement motivations.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20220713-e10",
+    "examId": "CI20220713",
+    "date": "2022-07-13",
+    "academicYear": "AA2122",
+    "exerciseNo": 10,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["dependability"],
+    "part": "first",
+    "prompt": "The analysis of the failure behavior of a two-component system reveals that the system is down only when **both** its components are down. The two components A and B have the following characteristics: $MTTF_A = 200\\,\\text{days}$, $MTTR_A = 4\\,\\text{days}$, $MTTF_B = 120\\,\\text{days}$, $MTTR_B = 2\\,\\text{days}$. What is the **reliability** of the system at $t = 50$ days?",
+    "solution": "The system is down only when **both** components are down, so from a reliability standpoint A and B are in **parallel** (the system works if at least one component works). Reliability does **not** depend on MTTR (repair); the MTTR values are distractors.\n\n**Per-component reliability (exponential model, $\\lambda = 1/MTTF$):**\n$$R_A(t) = e^{-t/MTTF_A} = e^{-50/200} = e^{-0.25} = 0.778801$$\n$$R_B(t) = e^{-t/MTTF_B} = e^{-50/120} = e^{-0.416667} = 0.659240$$\n\n**Parallel combination:**\n$$R_{sys}(t) = 1 - \\big(1-R_A\\big)\\big(1-R_B\\big)$$\n$$R_{sys}(50) = 1 - (1-0.778801)(1-0.659240) = 1 - (0.221199)(0.340760)$$\n$$= 1 - 0.075372 = 0.924628$$\n\n**FINAL RESULT:** $R_{sys}(50\\,\\text{days}) \\approx 0.9246 = \\mathbf{92.46\\%}$",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20220713-e11",
+    "examId": "CI20220713",
+    "date": "2022-07-13",
+    "academicYear": "AA2122",
+    "exerciseNo": 11,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["dependability"],
+    "part": "first",
+    "prompt": "You are in charge of designing a computer system to control the power grid for the NorthWest region of Italy. A period with the system unavailable creates serious problems (lights off, loss of productivity, possible civil disorder). You set the goal of a system with an **availability greater than 99.9999%**. You must use building-block units with $MTTF = 1000$ hours and $MTTR = 12$ min. How many **parallel** instances must you arrange to meet the goal? Use at least 9 decimal digits for all intermediate calculations.",
+    "solution": "**Single-unit availability** ($MTTR = 12\\,\\text{min} = 0.2\\,\\text{h}$):\n$$A = \\frac{MTTF}{MTTF + MTTR} = \\frac{1000}{1000.2} = 0.999800040$$\n\n**Single-unit unavailability:**\n$$U = 1 - A = 0.000199960$$\n\n**Parallel of $n$ identical units** is unavailable only if all $n$ are down:\n$$U_{sys}(n) = U^{\\,n}, \\qquad A_{sys}(n) = 1 - U^{\\,n}$$\n\nGoal: $A_{sys} > 0.999999 \\;\\Rightarrow\\; U^{\\,n} < 10^{-6}$.\n\n- $n = 1$: $U^1 = 1.99960\\times10^{-4}$ → $A = 0.999800040$ ❌\n- $n = 2$: $U^2 = (0.000199960)^2 = 3.99840\\times10^{-8}$ → $A = 0.999999960$ ✓ (> 99.9999%)\n\n**FINAL RESULT:** $n = \\mathbf{2}$ parallel instances.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20220713-e12",
+    "examId": "CI20220713",
+    "date": "2022-07-13",
+    "academicYear": "AA2122",
+    "exerciseNo": 12,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["storage-devices"],
+    "part": "first",
+    "prompt": "Consider an HDD with a data transfer rate of 10 MB/s, a rotation speed of 7500 RPM, a mean seek time of 6 ms, and a negligible controller overhead. What is the minimum **locality** required to achieve a mean I/O service time of 2.20 ms to transfer a sector of 4 KB?",
+    "solution": "**I/O service time model (with locality $L$):**\n$$T_{I/O} = (1-L)\\,(T_{seek} + T_{rot}) + T_{transfer} + T_{overhead}$$\nwhere locality $L\\in[0,1]$ reduces the mechanical positioning time (seek + rotational latency); $T_{overhead}=0$ (negligible).\n\n**Rotational latency** (half a revolution at 7500 RPM):\n$$T_{rot} = \\frac{1}{2}\\cdot\\frac{60}{7500}\\,\\text{s} = \\frac{1}{2}\\cdot 8\\,\\text{ms} = 4\\,\\text{ms}$$\n\n**Transfer time** of one 4 KB sector at 10 MB/s:\n$$T_{transfer} = \\frac{4\\,\\text{KB}}{10\\,\\text{MB/s}} = \\frac{4\\times10^{3}}{10\\times10^{6}}\\,\\text{s} = 0.4\\,\\text{ms}$$\n\n**Solve for $L$** with $T_{seek}=6$ ms:\n$$2.20 = (1-L)\\,(6 + 4) + 0.4$$\n$$2.20 - 0.4 = (1-L)\\cdot 10 \\;\\Rightarrow\\; 1.8 = 10\\,(1-L)$$\n$$1-L = 0.18 \\;\\Rightarrow\\; L = 0.82$$\n\n**FINAL RESULT:** minimum locality $L = \\mathbf{0.82 = 82.00\\%}$.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20220713-e13",
+    "examId": "CI20220713",
+    "date": "2022-07-13",
+    "academicYear": "AA2122",
+    "exerciseNo": 13,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["raid"],
+    "part": "second",
+    "prompt": "A RAID 5 system uses four 2 TB disks to store data and the required parity bits. Each disk has a Sequential Access Speed (throughput) of 50 MB/s and a Random Access Speed (throughput) of 5 MB/s. What is the expected throughput of the RAID 5 considering a **random write** pattern?",
+    "solution": "RAID 5 suffers the well-known **small (random) write penalty**: to update a block, the controller must perform a **read-modify-write** that involves 4 disk operations — read the old data block, read the old parity, then write the new data block and write the new parity.\n\nFor a **random** write pattern the limiting factor is the **random access speed of the disks**, not the sequential one. Each random write must read+write the targeted data disk and the parity disk; these dependent random operations cap the sustained throughput at the random throughput of a single disk:\n$$X_{random\\;write} = \\text{Random Access Speed of one disk} = 5\\,\\text{MB/s}$$\n\nThe extra parity read/write and the data read/write are serialized on a per-update basis, so the array does not deliver more useful random-write bandwidth than one disk's random speed.\n\n**FINAL RESULT:** expected RAID 5 random-write throughput $= \\mathbf{5\\,\\text{MB/s}}$.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20220713-e14",
+    "examId": "CI20220713",
+    "date": "2022-07-13",
+    "academicYear": "AA2122",
+    "exerciseNo": 14,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["raid"],
+    "part": "second",
+    "prompt": "Consider a RAID 0+1 setup with 8 disks, each with an $MTTF = 750$ days and an $MTTR = 12$ days. Consider a single-mirror case for the RAID 1 part. What is the **MTTF** of the storage infrastructure?",
+    "solution": "**RAID 0+1** = a mirror (RAID 1) of two striped sets (RAID 0). With $n$ total disks (two halves of $n/2$ each), the array survives as long as not both mirrored halves have lost a disk. Using the standard course formula for RAID 0+1 MTTF:\n$$MTTF_{RAID\\,0+1} = \\frac{MTTF^2 \\cdot 2}{n^2 \\cdot MTTR}$$\n\n**Substitute** $MTTF = 750$ days, $MTTR = 12$ days, $n = 8$:\n$$MTTF_{RAID\\,0+1} = \\frac{750^2 \\cdot 2}{8^2 \\cdot 12} = \\frac{562500 \\cdot 2}{64 \\cdot 12} = \\frac{1\\,125\\,000}{768}$$\n$$= 1464.84\\,\\text{days}$$\n\n**FINAL RESULT:** $MTTF \\approx \\mathbf{1465\\,\\text{days}}$.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20220713-e15",
+    "examId": "CI20220713",
+    "date": "2022-07-13",
+    "academicYear": "AA2122",
+    "exerciseNo": 15,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["performance"],
+    "part": "second",
+    "prompt": "Your system initially includes one CPU and one disk and serves 20 users with a 20 s think time. The CPU demand is $D_{CPU} = 100\\,\\text{ms}$ and the disk demand is $D_{DISK} = 300\\,\\text{ms}$. How many **disks** do you need to install so that the **response-time lower bound** is lower than 500 ms? (Assume you can evenly split the disk demand among all the disks used.)",
+    "solution": "**Response-time lower bound (asymptotic bounds).** The smallest possible response time of a closed system is its total **service demand** $D$ (achieved at low load):\n$$R \\ge D = \\sum_k D_k$$\n\nIf the disk demand is split evenly across $k$ disks, each disk station has demand $D_{DISK}/k$, but the **total** disk work is unchanged, so the sum of demands stays:\n$$D = D_{CPU} + k\\cdot\\frac{D_{DISK}}{k} = D_{CPU} + D_{DISK} = 100 + 300 = 400\\,\\text{ms}$$\n\nThe response-time lower bound is therefore $R_{min} = D = 400\\,\\text{ms}$ **regardless** of how many disks are used (splitting only lowers the per-station demand / raises the saturation point, it does not change the total demand). Since\n$$400\\,\\text{ms} < 500\\,\\text{ms},$$\nthe requirement is already satisfied with the original single disk; no additional disks are needed.\n\n**FINAL RESULT:** $\\mathbf{1\\ disk}$ (the existing one) is sufficient.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20220713-e16",
+    "examId": "CI20220713",
+    "date": "2022-07-13",
+    "academicYear": "AA2122",
+    "exerciseNo": 16,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["performance"],
+    "part": "second",
+    "prompt": "Consider the same system and situation as in the previous question. Knowing that the system throughput is $X = 0.8\\,\\text{req/s}$, what is the system response time $R_{Sys}$?",
+    "solution": "**Interactive Response Time Law** for a closed system with $N$ users and think time $Z$:\n$$N = X\\,(R_{Sys} + Z) \\;\\Rightarrow\\; R_{Sys} = \\frac{N}{X} - Z$$\n\n**Substitute** $N = 20$ users, $X = 0.8\\,\\text{req/s}$, $Z = 20\\,\\text{s}$:\n$$R_{Sys} = \\frac{20}{0.8} - 20 = 25 - 20 = 5\\,\\text{s}$$\n\n**FINAL RESULT:** $R_{Sys} = \\mathbf{5\\,\\text{s}}$.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20220713-e17",
+    "examId": "CI20220713",
+    "date": "2022-07-13",
+    "academicYear": "AA2122",
+    "exerciseNo": 17,
+    "marks": 5,
+    "type": "theory-essay",
+    "topics": ["cloud"],
+    "part": "second",
+    "prompt": "Classify the various types of clouds, while providing a short description of them.",
+    "solution": "Clouds are classified along **two orthogonal dimensions**: the *deployment model* (who owns/uses the infrastructure) and the *service model* (what layer of the stack is offered).\n\n**1. Deployment models**\n- **Public cloud** — infrastructure owned and operated by a third-party provider (e.g. AWS, Azure, GCP) and shared among many tenants over the Internet (multi-tenant). Pay-per-use, high elasticity, no capital expenditure; less control and possible data-governance concerns.\n- **Private cloud** — cloud infrastructure dedicated to a single organization, hosted on-premises or by a third party. Greater control, security and compliance, but higher cost and the organization bears capacity planning.\n- **Community cloud** — shared by several organizations with common concerns (e.g. same regulatory or mission requirements); costs and governance are shared among the community.\n- **Hybrid cloud** — a combination of two or more of the above (typically private + public), bound together to allow data/application portability; enables *cloud bursting* (overflow peak load from private to public) while keeping sensitive workloads private.\n\n**2. Service models (the cloud 'stack')**\n- **IaaS (Infrastructure as a Service)** — provides virtualized fundamental resources: compute (VMs), storage, network. The user manages OS, runtime and applications; the provider manages the physical hardware and virtualization (e.g. AWS EC2).\n- **PaaS (Platform as a Service)** — provides a managed application platform (runtime, middleware, databases, OS). The user only deploys and manages their application/code; the provider manages everything below (e.g. Google App Engine, Azure App Service).\n- **SaaS (Software as a Service)** — provides a complete, ready-to-use application delivered over the network; the user only configures and uses it, while the provider manages the entire stack (e.g. Gmail, Office 365, Salesforce).\n\nGoing IaaS → PaaS → SaaS, the **management responsibility shifts from the user to the provider** and the level of abstraction increases. (More specialized models also exist, e.g. *FaaS / serverless* and *ML-as-a-Service*, where increasingly fine-grained capabilities are billed on a pure usage basis.)",
+    "solutionSource": "authored"
+  }
+]

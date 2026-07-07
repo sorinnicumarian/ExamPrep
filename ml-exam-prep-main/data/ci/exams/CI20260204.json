@@ -1,0 +1,334 @@
+[
+  {
+    "id": "CI20260204-e1",
+    "examId": "CI20260204",
+    "date": "2026-02-04",
+    "academicYear": "AA2526",
+    "exerciseNo": 1,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["raid"],
+    "part": "second",
+    "prompt": "RAID 10 provides better random write performance than RAID 6.",
+    "subStatements": [
+      {
+        "id": "CI20260204-e1-s1",
+        "statement": "RAID 10 provides better random write performance than RAID 6.",
+        "answer": true,
+        "motivation": "RAID 10 (a stripe of mirrors) only has to write each block to its mirror copy: a small random write costs 2 physical writes and computes no parity. RAID 6 keeps two independent parity blocks (P and Q), so every small random write triggers the read-modify-write of the data plus both parities, i.e. up to 6 physical I/Os per logical write. Because parity recomputation dominates, RAID 6 has much worse small/random write performance than the mirroring-based RAID 10."
+      }
+    ],
+    "solution": "TRUE. RAID 10 only mirrors (2 writes, no parity), whereas RAID 6 must update two parity blocks per write (read-modify-write penalty), so RAID 10 is faster for random writes.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20260204-e2",
+    "examId": "CI20260204",
+    "date": "2026-02-04",
+    "academicYear": "AA2526",
+    "exerciseNo": 2,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["dc-intro"],
+    "part": "first",
+    "prompt": "Edge computing always requires central data centers to process data.",
+    "subStatements": [
+      {
+        "id": "CI20260204-e2-s1",
+        "statement": "Edge computing always requires central data centers to process data.",
+        "answer": false,
+        "motivation": "The whole point of edge computing is to push processing and storage close to where data is generated, so that latency-sensitive computation can be done locally on edge/fog nodes without a round trip to a distant central data center. The edge may cooperate with the cloud, but it does not *always* require it; many edge workloads are handled entirely at the edge. The word 'always' makes the statement false."
+      }
+    ],
+    "solution": "FALSE. Edge nodes can process data locally to cut latency and bandwidth; a central data center is not always needed. 'Always' is what makes the statement wrong.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20260204-e3",
+    "examId": "CI20260204",
+    "date": "2026-02-04",
+    "academicYear": "AA2526",
+    "exerciseNo": 3,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["storage-devices"],
+    "part": "first",
+    "prompt": "Fragmentation is not a concern on HDDs since all data blocks are guaranteed to be sequential.",
+    "subStatements": [
+      {
+        "id": "CI20260204-e3-s1",
+        "statement": "Fragmentation is not a concern on HDDs since all data blocks are guaranteed to be sequential.",
+        "answer": false,
+        "motivation": "On an HDD the I/O service time is dominated by seek time and rotational latency, which are paid every time the head must move to a non-contiguous block. As files are created/deleted, their blocks become scattered (fragmented) across cylinders, so reading a file forces extra seeks and rotations and degrades performance. Blocks are not guaranteed to be contiguous, so fragmentation is precisely a concern on HDDs (this is why defragmentation exists). The statement is false."
+      }
+    ],
+    "solution": "FALSE. HDD access time is dominated by seeks/rotation; fragmented (non-contiguous) blocks add seeks and slow access. Blocks are not guaranteed sequential, so fragmentation does matter on HDDs.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20260204-e4",
+    "examId": "CI20260204",
+    "date": "2026-02-04",
+    "academicYear": "AA2526",
+    "exerciseNo": 4,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["storage-systems"],
+    "part": "second",
+    "prompt": "Hot/cold aisle containment reduces the efficiency of the cooling method for datacenters.",
+    "subStatements": [
+      {
+        "id": "CI20260204-e4-s1",
+        "statement": "Hot/cold aisle containment reduces the efficiency of the cooling method for datacenters.",
+        "answer": false,
+        "motivation": "Hot-aisle/cold-aisle containment arranges racks so that cold supply air and hot exhaust air are physically separated, preventing the hot exhaust from mixing with and re-warming the cold supply. This keeps the inlet air colder, lets the chillers/CRAC units run at higher set-points and improves cooling efficiency (lower PUE). It *increases*, not reduces, cooling efficiency, so the statement is false."
+      }
+    ],
+    "solution": "FALSE. Separating hot and cold aisles prevents air mixing, keeps inlet temperatures low and improves cooling efficiency (better PUE). It increases efficiency, so the claim is wrong.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20260204-e5",
+    "examId": "CI20260204",
+    "date": "2026-02-04",
+    "academicYear": "AA2526",
+    "exerciseNo": 5,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["virtualization"],
+    "part": "second",
+    "prompt": "Monolithic hypervisors are more lightweight than microkernel-based hypervisors.",
+    "subStatements": [
+      {
+        "id": "CI20260204-e5-s1",
+        "statement": "Monolithic hypervisors are more lightweight than microkernel-based hypervisors.",
+        "answer": false,
+        "motivation": "A monolithic hypervisor includes the device drivers and most management functionality inside the hypervisor itself, so it is larger and has a bigger trusted/attack surface. A microkernel-based hypervisor keeps the hypervisor minimal and pushes drivers and services into a separate (privileged) management VM, making the hypervisor itself smaller and more lightweight. So microkernel-based hypervisors are the lightweight ones; the statement reverses this and is false."
+      }
+    ],
+    "solution": "FALSE. Monolithic hypervisors embed drivers/services and are heavier; microkernel-based hypervisors keep a minimal core and delegate drivers to a separate VM, so they are the lightweight ones.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20260204-e6",
+    "examId": "CI20260204",
+    "date": "2026-02-04",
+    "academicYear": "AA2526",
+    "exerciseNo": 6,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["networking"],
+    "part": "second",
+    "prompt": "3-tier datacenter networks consist of three distinct layers named core, aggregation, and access.",
+    "subStatements": [
+      {
+        "id": "CI20260204-e6-s1",
+        "statement": "3-tier datacenter networks consist of three distinct layers named core, aggregation, and access.",
+        "answer": true,
+        "motivation": "The classical 3-tier datacenter network topology is organized exactly into the core layer (high-speed backbone/routing to the outside), the aggregation/distribution layer (interconnects access switches, hosts L2/L3 boundaries and services), and the access (edge/ToR) layer that connects the servers. The naming and the three-layer structure match the statement."
+      }
+    ],
+    "solution": "TRUE. The standard 3-tier topology has core, aggregation (distribution), and access (edge/ToR) layers.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20260204-e7",
+    "examId": "CI20260204",
+    "date": "2026-02-04",
+    "academicYear": "AA2526",
+    "exerciseNo": 7,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["storage-systems"],
+    "part": "second",
+    "prompt": "Open loop (free) cooling refers to the use of cold outside air to either help produce chilled water or directly cool servers.",
+    "subStatements": [
+      {
+        "id": "CI20260204-e7-s1",
+        "statement": "Open loop (free) cooling refers to the use of cold outside air to either help produce chilled water or directly cool servers.",
+        "answer": true,
+        "motivation": "Free (open-loop) cooling exploits favourable outside conditions instead of running the chillers continuously: cold outside air (or water) is used either as an economizer to help chill the water loop (water-side/air-side economization) or, with air-side free cooling, the cold outdoor air is filtered and pushed directly through the data hall to cool the servers. This lowers energy use and PUE, matching the statement."
+      }
+    ],
+    "solution": "TRUE. Free/open-loop cooling uses favourable outside air (or water) either as an economizer for the chilled-water loop or to cool servers directly, reducing chiller energy use.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20260204-e8",
+    "examId": "CI20260204",
+    "date": "2026-02-04",
+    "academicYear": "AA2526",
+    "exerciseNo": 8,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["storage-systems"],
+    "part": "second",
+    "prompt": "The power consumption of an average datacenter is in the order of a few KiloWatts.",
+    "subStatements": [
+      {
+        "id": "CI20260204-e8-s1",
+        "statement": "The power consumption of an average datacenter is in the order of a few KiloWatts.",
+        "answer": false,
+        "motivation": "A few kilowatts is the order of magnitude of a *single rack* (or a handful of servers), not of a whole data center. A typical data center draws power in the order of hundreds of kilowatts up to many megawatts (large warehouse-scale facilities reach tens of MW). The stated 'few KiloWatts' is off by several orders of magnitude, so the statement is false."
+      }
+    ],
+    "solution": "FALSE. A few kW is roughly one rack; a data center consumes on the order of hundreds of kW to several MW. The magnitude is wrong.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20260204-e9",
+    "examId": "CI20260204",
+    "date": "2026-02-04",
+    "academicYear": "AA2526",
+    "exerciseNo": 9,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["virtualization"],
+    "part": "second",
+    "prompt": "Virtualization can improve disaster recovery by enabling quick and easy backup and restoration of virtual machines.",
+    "subStatements": [
+      {
+        "id": "CI20260204-e9-s1",
+        "statement": "Virtualization can improve disaster recovery by enabling quick and easy backup and restoration of virtual machines.",
+        "answer": true,
+        "motivation": "Virtualization encapsulates an entire machine (OS, applications, state) into VM image/snapshot files that are hardware-independent. These snapshots can be backed up, replicated to another site and restarted on different physical hardware quickly, which is exactly what makes disaster recovery faster and simpler than reinstalling physical servers. Live migration and snapshotting reinforce this benefit. The statement is true."
+      }
+    ],
+    "solution": "TRUE. VMs are encapsulated, hardware-independent images that can be snapshotted, replicated and restarted elsewhere, making backup/restore and disaster recovery fast and easy.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20260204-e10",
+    "examId": "CI20260204",
+    "date": "2026-02-04",
+    "academicYear": "AA2526",
+    "exerciseNo": 10,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["servers"],
+    "part": "first",
+    "prompt": "Neural network training benefits significantly from accelerators that can handle large-scale matrix operations.",
+    "subStatements": [
+      {
+        "id": "CI20260204-e10-s1",
+        "statement": "Neural network training benefits significantly from accelerators that can handle large-scale matrix operations.",
+        "answer": true,
+        "motivation": "Neural-network training is dominated by dense linear algebra (matrix multiplications and convolutions). Hardware accelerators such as GPUs and TPUs provide thousands of parallel arithmetic units and dedicated matrix/tensor engines, delivering far higher throughput on these operations than general-purpose CPUs. This is why training is run on such accelerators, so the statement is true."
+      }
+    ],
+    "solution": "TRUE. Training is dominated by matrix/tensor math; GPUs/TPUs accelerate exactly these massively parallel matrix operations, greatly speeding up training.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20260204-e11",
+    "examId": "CI20260204",
+    "date": "2026-02-04",
+    "academicYear": "AA2526",
+    "exerciseNo": 11,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["storage-devices"],
+    "part": "first",
+    "prompt": "Consider an HDD with a data transfer time of $0.4\\,\\text{ms}$ for a $4\\,\\text{KB}$ sector, a rotation speed of $12000\\,\\text{RPM}$, a mean seek time of $6\\,\\text{ms}$, and a negligible overhead of the controller. What minimum locality is required to achieve a mean I/O service time of $30\\,\\text{ms}$ to transfer a $100\\,\\text{KB}$ file?",
+    "solution": "**Given:** $T_{transfer}=0.4\\,\\text{ms}$ per $4\\,\\text{KB}$ block, $12000\\,\\text{RPM}$, $T_{seek}=6\\,\\text{ms}$, controller overhead $\\approx 0$, $T_{io}=30\\,\\text{ms}$, file $=100\\,\\text{KB}$.\n\n**Rotational latency** (half a revolution):\n$$T_{rot}=\\frac{1}{2}\\cdot\\frac{60}{12000}\\,\\text{s}=\\frac{1}{2}\\cdot 5\\,\\text{ms}=2.5\\,\\text{ms}$$\n\n**Number of blocks:**\n$$n=\\frac{100\\,\\text{KB}}{4\\,\\text{KB}}=25$$\n\n**I/O time model** (locality $L$ = fraction of blocks reached without an extra seek+rotation; a fraction $(1-L)$ pays $T_{seek}+T_{rot}$):\n$$T_{io}=n\\,T_{transfer}+n\\,(1-L)\\,(T_{seek}+T_{rot})$$\n\nData transfer term: $25\\cdot 0.4=10\\,\\text{ms}$. Remaining budget: $30-10=20\\,\\text{ms}$.\n$$20 = 25\\,(1-L)\\,(6+2.5)=25\\,(1-L)\\cdot 8.5=212.5\\,(1-L)$$\n$$(1-L)=\\frac{20}{212.5}=0.09412 \\;\\Rightarrow\\; L=0.90588$$\n\n**FINAL RESULT:** minimum locality $L \\approx 90.59\\%$.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20260204-e12",
+    "examId": "CI20260204",
+    "date": "2026-02-04",
+    "academicYear": "AA2526",
+    "exerciseNo": 12,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["dependability"],
+    "part": "first",
+    "prompt": "A critical component used to implement an IT service is characterized by an $MTTF=640$ hours and an $MTTR=8$ hours. The availability of the service directly depends on the availability of this component. The service can be implemented using two alternative configurations: **Configuration A (single)** — the service depends on a single component; **Configuration B (active redundancy)** — the service uses two identical components and is available if at least one of the two is operational. Given that service unavailability costs EUR800 per hour, estimate the expected annual cost savings (over a period of 365 days) in terms of downtime obtained by adopting Configuration B instead of Configuration A.",
+    "solution": "**Steady-state availability of one component:**\n$$A=\\frac{MTTF}{MTTF+MTTR}=\\frac{640}{640+8}=\\frac{640}{648}=0.987654$$\nso the unavailability is $U=1-A=\\dfrac{8}{648}=0.0123457$.\n\n**Configuration A (single component):**\n$$U_A=U=0.0123457$$\n\n**Configuration B (1-out-of-2, parallel):** the service is down only if **both** components are down:\n$$U_B=U^2=(0.0123457)^2=1.5242\\times10^{-4}$$\n\n**Annual downtime** ($1\\,\\text{year}=365\\cdot24=8760\\,\\text{h}$):\n$$D_A=U_A\\cdot 8760=0.0123457\\cdot 8760\\approx 108.15\\,\\text{h}$$\n$$D_B=U_B\\cdot 8760=1.5242\\times10^{-4}\\cdot 8760\\approx 1.335\\,\\text{h}$$\n\n**Downtime reduction:** $\\Delta D=108.15-1.335\\approx 106.81\\,\\text{h}$.\n\n**Annual cost savings:**\n$$\\Delta C=\\Delta D\\cdot 800\\,\\text{EUR/h}\\approx 106.81\\cdot 800\\approx 85{,}450\\,\\text{EUR}$$\n\n**FINAL RESULT:** $\\Delta C \\approx 85.45\\ \\text{kEuro per year}$.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20260204-e13",
+    "examId": "CI20260204",
+    "date": "2026-02-04",
+    "academicYear": "AA2526",
+    "exerciseNo": 13,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["raid"],
+    "part": "second",
+    "prompt": "We have to design a RAID storage architecture composed of an array of $10$ disks (RAID 0+1, i.e. a mirror of stripes, single-mirror case for the RAID 1 part). Knowing that each disk has an $MTTF$ equal to $600$ days and that we would like to have an $MTTF$ for the storage infrastructure ($MTTF_{RAID0+1}$) higher than $12$ years, what is the maximum $MTTR$ that we have to consider to satisfy the requirement? Consider all the disks with the same characteristics.",
+    "solution": "**RAID 0+1 MTTF formula** (single mirror, $n$ total disks), as derived in the RAID exercises:\n$$MTTF_{0+1}=\\frac{2\\cdot MTTF^2}{n^2\\cdot MTTR}$$\n(the failure rate of the array is $\\lambda_{0+1}=\\dfrac{n}{MTTF}\\cdot\\dfrac{n/2}{MTTF}\\cdot MTTR$, whose inverse gives the expression above).\n\n**Data:** $MTTF=600\\,\\text{days}$, $n=10$, target $MTTF_{0+1}>12\\,\\text{years}=12\\cdot 365=4380\\,\\text{days}$.\n\nImpose the requirement and solve for $MTTR$:\n$$4380 \\le \\frac{2\\cdot 600^2}{10^2\\cdot MTTR}=\\frac{2\\cdot 360000}{100\\cdot MTTR}=\\frac{7200}{MTTR}$$\n$$MTTR \\le \\frac{7200}{4380}=1.6438\\,\\text{days}$$\n\n**FINAL RESULT:** $MTTR_{max}\\approx 1.644\\ \\text{days}\\;(\\approx 39.45\\ \\text{hours})$.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20260204-e14",
+    "examId": "CI20260204",
+    "date": "2026-02-04",
+    "academicYear": "AA2526",
+    "exerciseNo": 14,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["performance"],
+    "part": "second",
+    "prompt": "A batch processing system consists of two components: a Processing Node (PN) and a Storage Node (SN). The system can be modeled as an open system. During a monitoring campaign lasting 3 hours, the following observations were collected: the average observed system throughput was $3$ jobs per minute; the Processing Node showed an average utilization of $70\\%$; the Storage Node showed an average utilization of $40\\%$; each job performs $5$ accesses to the Processing Node and $1$ access to the Storage Node. Compute the average service time per visit $S_{PN}$ and $S_{SN}$.",
+    "solution": "**Operational law (Utilization law):** $U_k = X\\cdot V_k\\cdot S_k$, so $S_k=\\dfrac{U_k}{X\\cdot V_k}$.\n\n**Data:** system throughput $X=3\\ \\text{jobs/min}$, $U_{PN}=0.70$, $U_{SN}=0.40$, visits $V_{PN}=5$, $V_{SN}=1$.\n\n**Processing Node:**\n$$S_{PN}=\\frac{U_{PN}}{X\\cdot V_{PN}}=\\frac{0.70}{3\\cdot 5}=\\frac{0.70}{15}=0.04667\\ \\text{min}\\approx 2.8\\ \\text{s}$$\n\n**Storage Node:**\n$$S_{SN}=\\frac{U_{SN}}{X\\cdot V_{SN}}=\\frac{0.40}{3\\cdot 1}=0.1333\\ \\text{min}\\approx 8\\ \\text{s}$$\n\n**FINAL RESULT:** $S_{PN}\\approx 0.0467\\ \\text{min}\\,(2.8\\ \\text{s})$, $S_{SN}\\approx 0.133\\ \\text{min}\\,(8\\ \\text{s})$.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20260204-e15",
+    "examId": "CI20260204",
+    "date": "2026-02-04",
+    "academicYear": "AA2526",
+    "exerciseNo": 15,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["performance"],
+    "part": "second",
+    "prompt": "For the batch (open) system of the previous exercise, determine the maximum throughput and the minimum response time the system can achieve.",
+    "solution": "**Service demands** $D_k=V_k\\cdot S_k$:\n$$D_{PN}=V_{PN}\\cdot S_{PN}=5\\cdot 0.04667=0.2333\\ \\text{min}\\quad(=14\\ \\text{s})$$\n$$D_{SN}=V_{SN}\\cdot S_{SN}=1\\cdot 0.1333=0.1333\\ \\text{min}\\quad(=8\\ \\text{s})$$\n\nso $D_{max}=D_{PN}=0.2333\\ \\text{min}$ (the PN is the bottleneck) and $D=\\sum_k D_k=0.2333+0.1333=0.3667\\ \\text{min}$.\n\n**Open-model asymptotic bounds:**\n- Maximum throughput (saturation, $\\lambda_{sat}=1/D_{max}$):\n$$X_{max}=\\frac{1}{D_{max}}=\\frac{1}{0.2333\\ \\text{min}}\\approx 4.285\\ \\text{jobs/min}$$\n- Minimum response time (no queueing, $R\\ge D$):\n$$R_{min}=D=0.3667\\ \\text{min}\\approx 22\\ \\text{s}$$\n\n**FINAL RESULT:** $X_{max}\\approx 4.285\\ \\text{jobs/min}$, $R_{min}\\approx 0.367\\ \\text{min}\\,(\\approx 22\\ \\text{s})$.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20260204-e16",
+    "examId": "CI20260204",
+    "date": "2026-02-04",
+    "academicYear": "AA2526",
+    "exerciseNo": 16,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["performance"],
+    "part": "second",
+    "prompt": "You are asked to compare two alternative configurations for an application cluster that can be modeled using a closed queuing model. On average there are $N=12$ users in the system, with a mean think time of $Z=15$ s. Two configurations are considered: **Configuration A** — 8 CPU-based servers, each with a service demand $D_{CPU}=1$ s; **Configuration B** — 2 GPU-based servers, each four times faster than a single server in Configuration A, with a service demand $D_{GPU}=0.25$ s. For both configurations, compute the value of $N^*$ that identifies the transition point between the light-load and heavy-load regimes for the upper bound on throughput (the knee of the bounds).",
+    "solution": "**Knee of the closed-model asymptotic bounds:**\n$$N^*=\\frac{D+Z}{D_{max}}$$\nwhere $D=\\sum_k D_k$ is the total service demand (summed over all servers visited) and $D_{max}$ is the per-server bottleneck demand.\n\n**Configuration A** — 8 servers, each $D_{CPU}=1$ s:\n$$D=8\\cdot 1=8\\ \\text{s},\\qquad D_{max}=1\\ \\text{s}$$\n$$N^*_A=\\frac{D+Z}{D_{max}}=\\frac{8+15}{1}=23$$\n\n**Configuration B** — 2 servers, each $D_{GPU}=0.25$ s:\n$$D=2\\cdot 0.25=0.5\\ \\text{s},\\qquad D_{max}=0.25\\ \\text{s}$$\n$$N^*_B=\\frac{D+Z}{D_{max}}=\\frac{0.5+15}{0.25}=62$$\n\n**FINAL RESULT:** $N^*_A=23$ and $N^*_B=62$. (Since the actual population is $N=12<N^*$ in both cases, both configurations operate in the light-load regime.)",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20260204-e17",
+    "examId": "CI20260204",
+    "date": "2026-02-04",
+    "academicYear": "AA2526",
+    "exerciseNo": 17,
+    "marks": 5,
+    "type": "theory-essay",
+    "topics": ["storage-devices"],
+    "part": "first",
+    "prompt": "Are SSDs faster and more reliable than HDDs? Please provide a technical answer detailing the strong and weak points.",
+    "solution": "**Short answer:** SSDs are dramatically *faster* (especially for random access), but they are not unconditionally *more reliable*; reliability depends on the workload and on the technology, so the answer is nuanced.\n\n**Performance — SSDs win.**\n- HDDs are electro-mechanical: every access pays a *seek time* (moving the head to the right cylinder) and a *rotational latency* (waiting for the sector to pass under the head), so random I/O is slow and access time is dominated by these mechanical delays. Sequential transfer is reasonable but random IOPS are low (hundreds).\n- SSDs are pure semiconductor (NAND flash), with no moving parts: access latency is in the tens of microseconds and there is essentially no penalty for random access, giving very high IOPS (tens to hundreds of thousands) and high bandwidth. So for both latency and throughput, particularly random workloads, SSDs are much faster.\n\n**Reliability — it depends.**\n- *In favour of SSDs:* no moving mechanical parts means no head crashes and better resistance to shock/vibration; HDDs wear mechanically (bearings, motor, head) over time.\n- *Against SSDs:* flash cells have a **limited number of program/erase (write) cycles**; each cell wears out after a bounded number of writes. This endurance limit is managed by the controller via **wear leveling** (spreading writes evenly), over-provisioning and ECC, but heavy write workloads can still wear an SSD out. Both HDDs and SSDs can also suffer silent sector corruption.\n- Consequence: for read-mostly or shock-prone environments SSDs tend to be more reliable, whereas for very write-intensive long-lived workloads an SSD's endurance limit must be designed for.\n\n**Other trade-offs.** SSDs cost more per GB and historically offer lower maximum capacity per device, while HDDs give the lowest cost per GB and the largest capacities. This is why data centers use **hybrid/tiered storage**: SSDs (or flash caches) for hot, latency-sensitive data and HDDs for bulk/cold capacity.\n\n**Conclusion.** SSDs are clearly faster than HDDs. They are mechanically more robust, but their finite write endurance means they are not universally 'more reliable'; the right choice balances performance, cost per GB, capacity and the write intensity of the workload.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20260204-e18",
+    "examId": "CI20260204",
+    "date": "2026-02-04",
+    "academicYear": "AA2526",
+    "exerciseNo": 18,
+    "marks": 5,
+    "type": "theory-essay",
+    "topics": ["cloud"],
+    "part": "second",
+    "prompt": "Describe the concepts of under- and over-provisioning and how they can be mitigated by Cloud Computing.",
+    "solution": "**The problem.** When capacity is provisioned statically (a fixed amount of servers/resources), the fixed capacity rarely matches the time-varying demand of a real workload. Two opposite failure modes arise:\n\n- **Over-provisioning:** the provisioned capacity is *larger* than the actual demand for much of the time. The system can serve all requests, but the spare resources sit idle. This wastes money (CapEx for hardware plus OpEx for power/cooling/space) — the area between the (high) capacity line and the (lower) demand curve represents resources paid for but not used.\n- **Under-provisioning:** the provisioned capacity is *smaller* than peak demand. During load spikes the system saturates: requests are queued, response time grows, and some users are rejected/lost. The area where demand exceeds capacity represents lost requests/revenue and SLA violations — and, worse, lost users may not come back, so the real cost can exceed the immediate shortfall.\n\nBecause demand is variable and hard to predict (daily/seasonal cycles, flash crowds), a single fixed capacity is almost always wrong: too high wastes resources, too low loses requests.\n\n**How Cloud Computing mitigates it.** Cloud provides resources on demand with a **pay-as-you-go** model and the key property of **elasticity**: the amount of allocated resources can be increased or decreased at runtime (auto-scaling) to track the actual load.\n- During peaks, more instances are launched (scale-out) so capacity follows demand and under-provisioning/lost requests are avoided.\n- During troughs, instances are released so you stop paying for idle capacity, avoiding over-provisioning waste.\n- The provider's huge shared resource pool and **statistical multiplexing** of many tenants make it possible to absorb individual spikes, and the illusion of *infinite* on-demand capacity removes the need to size for the worst case in advance.\n\n**Result.** Instead of paying for a fixed peak capacity (over-provisioning) or risking saturation (under-provisioning), the customer pays approximately for what is actually used, while still meeting demand. The trade-offs are scaling latency/granularity (it takes time and a minimum billing unit to add/remove capacity) and dependence on good auto-scaling policies and demand prediction.",
+    "solutionSource": "authored"
+  }
+]

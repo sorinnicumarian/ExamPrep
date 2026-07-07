@@ -1,0 +1,308 @@
+[
+  {
+    "id": "CI20220615-e1",
+    "examId": "CI20220615",
+    "date": "2022-06-15",
+    "academicYear": "AA2122",
+    "exerciseNo": 1,
+    "marks": 2,
+    "type": "multiple-choice",
+    "topics": ["networking"],
+    "part": "second",
+    "prompt": "Which is the main characteristic of the **D-Cell topology** for data center network architectures?",
+    "choices": [
+      { "label": "A", "text": "The network is organized in a distributed way" },
+      { "label": "B", "text": "The network comprises edge, aggregation and core layers" },
+      { "label": "C", "text": "the network is organized in a recursive way" },
+      { "label": "D", "text": "the network is organized in a hierarchical way" }
+    ],
+    "correctChoice": "C",
+    "solution": "**DCell** is a *server-centric, recursively defined* datacenter network topology: a higher-level $DCell_k$ is built by interconnecting many $DCell_{k-1}$ cells, so the structure is **recursive**. This is the defining property that distinguishes it from the classic hierarchical/three-tier (edge–aggregation–core, option B/D) architecture. Option A (\"distributed way\") is too vague. The recursive construction is what gives DCell its high scalability and rich connectivity, so the correct answer is **C**.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20220615-e2",
+    "examId": "CI20220615",
+    "date": "2022-06-15",
+    "academicYear": "AA2122",
+    "exerciseNo": 2,
+    "marks": 2,
+    "type": "multiple-choice",
+    "topics": ["networking"],
+    "part": "second",
+    "prompt": "Which of the following is **not** a feature of a **fat tree** topology in a data center network architecture?",
+    "choices": [
+      { "label": "A", "text": "It has multiple connections to the core" },
+      { "label": "B", "text": "None of the others" },
+      { "label": "C", "text": "It has a recursive organization" },
+      { "label": "D", "text": "It has a three-tier model" }
+    ],
+    "correctChoice": "C",
+    "solution": "A **fat-tree** is a multi-rooted, *hierarchical* topology organised in the classic **three tiers** (edge → aggregation → core, option D) with **multiple equal-cost paths up to the core** (option A) to provide full bisection bandwidth. What it is **not** is *recursively organised* — recursion is the hallmark of server-centric topologies such as DCell/BCube, not of the fat-tree. Therefore the feature that does **not** belong to a fat tree is **C** (recursive organization).",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20220615-e3",
+    "examId": "CI20220615",
+    "date": "2022-06-15",
+    "academicYear": "AA2122",
+    "exerciseNo": 3,
+    "marks": 2,
+    "type": "multiple-choice",
+    "topics": ["virtualization"],
+    "part": "second",
+    "prompt": "What is **Hardware-level virtualization**?",
+    "choices": [
+      { "label": "A", "text": "The virtualization layer is placed between the operating system and the applications" },
+      { "label": "B", "text": "The virtualization layer is above the applications" },
+      { "label": "C", "text": "The virtualization layer is placed between the hardware and the operating system" },
+      { "label": "D", "text": "The virtualization layer is placed below the hardware" }
+    ],
+    "correctChoice": "C",
+    "solution": "In **hardware-level (system) virtualization** the *hypervisor / Virtual Machine Monitor* sits directly **between the physical hardware and the guest operating system(s)**, exposing virtual hardware to each VM. A layer between OS and applications (A) describes process/application-level or OS-level virtualization (e.g. JVM, containers); a layer above the applications (B) or below the hardware (D) is nonsensical. Hence the correct definition is **C**.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20220615-e4",
+    "examId": "CI20220615",
+    "date": "2022-06-15",
+    "academicYear": "AA2122",
+    "exerciseNo": 4,
+    "marks": 2,
+    "type": "multiple-choice",
+    "topics": ["dc-intro"],
+    "part": "first",
+    "prompt": "Which aspect is a **drawback** of the data center computing platform?",
+    "choices": [
+      { "label": "A", "text": "Power consumption" },
+      { "label": "B", "text": "Device independence" },
+      { "label": "C", "text": "Universal access" },
+      { "label": "D", "text": "Unlimited storage capacity" }
+    ],
+    "correctChoice": "A",
+    "solution": "Device independence (B), universal access (C) and effectively very large/elastic storage (D) are **benefits** of the datacenter/cloud computing model. The major **drawback** is the enormous **power consumption** (and the associated cooling and energy-cost/PUE concerns) of warehouse-scale facilities, which is a central challenge in datacenter design. The correct answer is **A**.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20220615-e5",
+    "examId": "CI20220615",
+    "date": "2022-06-15",
+    "academicYear": "AA2122",
+    "exerciseNo": 5,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["servers"],
+    "part": "first",
+    "prompt": "Racks shelves are used to store servers and other IT equipments.",
+    "subStatements": [
+      {
+        "id": "CI20220615-e5-s1",
+        "statement": "Racks shelves are used to store servers and other IT equipments.",
+        "answer": true,
+        "motivation": "True. A **rack** is the standardized 19-inch enclosure whose shelves/slots (measured in rack units, 1U = 4.445 cm) host servers, storage, switches and other IT equipment in a datacenter. Mounting equipment on rack shelves is exactly their purpose. (On the answer sheet the correct box was **A = True**.)"
+      }
+    ],
+    "solution": "See per-statement motivations.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20220615-e6",
+    "examId": "CI20220615",
+    "date": "2022-06-15",
+    "academicYear": "AA2122",
+    "exerciseNo": 6,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["virtualization"],
+    "part": "second",
+    "prompt": "Paravirtualization is a particular type of kernel-level Virtualization that does not relie on a host OS.",
+    "subStatements": [
+      {
+        "id": "CI20220615-e6-s1",
+        "statement": "Paravirtualization is a particular type of kernel-level Virtualization that does not relie on a host OS.",
+        "answer": false,
+        "motivation": "False. **Paravirtualization** is a *hardware-level* virtualization technique in which the guest OS is **modified** to issue *hypercalls* to a hypervisor, instead of trapping privileged instructions, to improve performance. It is not \"kernel-level virtualization\" (that term refers to OS-level/container virtualization), and the statement's characterization is wrong. (On the answer sheet the correct box was **A = False**.)"
+      }
+    ],
+    "solution": "See per-statement motivations.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20220615-e7",
+    "examId": "CI20220615",
+    "date": "2022-06-15",
+    "academicYear": "AA2122",
+    "exerciseNo": 7,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["dc-intro"],
+    "part": "first",
+    "prompt": "In warehouse-scale computers the software running on these systems executes on clusters of hundreds to thousands of individual servers.",
+    "subStatements": [
+      {
+        "id": "CI20220615-e7-s1",
+        "statement": "In warehouse-scale computers the software running on these systems executes on clusters of hundreds to thousands of individual servers.",
+        "answer": true,
+        "motivation": "True. A **Warehouse-Scale Computer (WSC)** is treated as a single, massive computer whose large applications (web search, mail, maps, …) run across **clusters of thousands of servers** working in concert. Spreading the workload over hundreds-to-thousands of machines is precisely the defining characteristic of a WSC. (On the answer sheet the correct box was **B = True**.)"
+      }
+    ],
+    "solution": "See per-statement motivations.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20220615-e8",
+    "examId": "CI20220615",
+    "date": "2022-06-15",
+    "academicYear": "AA2122",
+    "exerciseNo": 8,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["servers"],
+    "part": "first",
+    "prompt": "In a data center for AI, servers includes both general purpose CPUs and accelerators (such as GPUs, TPUs and FPGAs).",
+    "subStatements": [
+      {
+        "id": "CI20220615-e8-s1",
+        "statement": "In a data center for AI, servers includes both general purpose CPUs and accelerators (such as GPUs, TPUs and FPGAs).",
+        "answer": true,
+        "motivation": "True. AI/ML datacenters use **heterogeneous** servers that pair general-purpose **CPUs** (for orchestration, data movement, control) with hardware **accelerators** — **GPUs, TPUs and FPGAs** — that perform the massively parallel matrix/tensor computations of training and inference. This CPU + accelerator combination is exactly how AI servers are built. (On the answer sheet the correct box was **B = True**.)"
+      }
+    ],
+    "solution": "See per-statement motivations.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20220615-e9",
+    "examId": "CI20220615",
+    "date": "2022-06-15",
+    "academicYear": "AA2122",
+    "exerciseNo": 9,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["servers"],
+    "part": "first",
+    "prompt": "NVlink is a low-bandwidth connection among Graphical Processing Units.",
+    "subStatements": [
+      {
+        "id": "CI20220615-e9-s1",
+        "statement": "NVlink is a low-bandwidth connection among Graphical Processing Units.",
+        "answer": false,
+        "motivation": "False. **NVLink** is NVIDIA's **high-bandwidth**, low-latency interconnect for directly linking GPUs (and GPUs to CPUs), delivering far more bandwidth than PCIe to enable fast GPU-to-GPU memory sharing in multi-GPU servers. Calling it \"low-bandwidth\" is incorrect. (On the answer sheet the correct box was **A = False**.)"
+      }
+    ],
+    "solution": "See per-statement motivations.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20220615-e10",
+    "examId": "CI20220615",
+    "date": "2022-06-15",
+    "academicYear": "AA2122",
+    "exerciseNo": 10,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["dependability"],
+    "part": "first",
+    "prompt": "Consider a server composed of **2 CPUs** and a variable number of GPUs. The $MTTF_{CPU} = 350\\,\\text{days}$ and $MTTF_{GPU} = 250\\,\\text{days}$. Given that the server to work requires that **at least 1 CPU and 1 GPU** are properly working, what is the **minimum number of GPUs** needed to achieve a reliability value at $t = 80\\,\\text{days}$ greater than $0.85$? Use at least 4 decimal digits for all intermediate calculations.",
+    "solution": "\"At least 1 CPU **and** at least 1 GPU working\" means the **CPU block** (2 CPUs in **parallel**) is in **series** with the **GPU block** ($n$ GPUs in **parallel**). Use the exponential model $R(t)=e^{-t/MTTF}$.\n\n**Per-component reliabilities at $t=80$:**\n$$R_{CPU}=e^{-80/350}=e^{-0.2286}=0.7957,\\qquad R_{GPU}=e^{-80/250}=e^{-0.3200}=0.7261$$\n\n**CPU block (parallel of 2):**\n$$R_{CPUblock}=1-(1-0.7957)^2=1-0.0417=0.9582$$\n\n**GPU block (parallel of $n$):** $R_{GPUblock}(n)=1-(1-0.7261)^n$.\n\n**System:** $R_{sys}(n)=R_{CPUblock}\\cdot R_{GPUblock}(n)$. Require $R_{sys}>0.85$:\n\n| $n$ | $R_{GPUblock}$ | $R_{sys}$ | $>0.85$? |\n|---|---|---|---|\n| 1 | $0.7261$ | $0.6958$ | no |\n| 2 | $1-(0.2739)^2=0.9250$ | $0.9582\\times0.9250=0.8864$ | **yes** |\n\n**FINAL RESULT:** minimum number of GPUs $=\\mathbf{2\\ GPUs}$ (giving $R_{sys}\\approx0.8864>0.85$).",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20220615-e11",
+    "examId": "CI20220615",
+    "date": "2022-06-15",
+    "academicYear": "AA2122",
+    "exerciseNo": 11,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["dependability"],
+    "part": "first",
+    "prompt": "A temperature monitoring system within each rack of a Data Center is composed of **two redundant sensors**, a **microcontroller** board, and a **network device**. All components are repairable. Each component has an $MTTR$ of 3 days, the MTTF of the sensors is $MTTF_{sen}=29\\,\\text{days}$ and the MTTF of the other two components is $MTTF_{micro}=MTTF_{network}=19\\,\\text{days}$. What is the **system availability**? Use at least 4 decimal digits for all intermediate calculations.",
+    "solution": "**Component availabilities** $A=\\dfrac{MTTF}{MTTF+MTTR}$ (all $MTTR=3$):\n$$A_{sen}=\\frac{29}{29+3}=0.9063,\\qquad A_{micro}=A_{net}=\\frac{19}{19+3}=0.8636$$\n\n**Structure:** the two sensors are **redundant (parallel)** — the sensing function works if at least one sensor works — and this sensor block is in **series** with the microcontroller and the network device (all three functional blocks must work).\n\n**Sensor block (parallel of 2):**\n$$A_{senblock}=1-(1-0.9063)^2=1-(0.0937)^2=1-0.0088=0.9912$$\n\n**System (series of the three blocks):**\n$$A_{sys}=A_{senblock}\\cdot A_{micro}\\cdot A_{net}=0.9912\\times0.8636\\times0.8636=0.7393$$\n\n**FINAL RESULT:** $A_{sys}\\approx\\mathbf{0.7393\\ (73.93\\%)}$.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20220615-e12",
+    "examId": "CI20220615",
+    "date": "2022-06-15",
+    "academicYear": "AA2122",
+    "exerciseNo": 12,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["storage-devices"],
+    "part": "first",
+    "prompt": "Consider an HDD with **4 KB** block size, **6 ms** average seek time, **0.5 ms** transfer time of 1 block, and a negligible controller overhead. Knowing that the average transfer time for a file of **320 KB** is **568 ms**, and the average **locality is 40%**, what is the **rotation speed** of the disk?",
+    "solution": "The file has $\\dfrac{320\\,\\text{KB}}{4\\,\\text{KB}}=80$ blocks. Per block, the service time is the (locality-reduced) mechanical positioning time plus the block transfer:\n$$T_{block}=(1-L)\\,(T_{seek}+T_{rot})+T_{transfer}$$\nso for the whole file\n$$T_{file}=N_{blocks}\\cdot\\big[(1-L)(T_{seek}+T_{rot})+T_{transfer}\\big].$$\n\n**Solve for the rotational latency $T_{rot}$** with $T_{file}=568$ ms, $N_{blocks}=80$, $L=0.40$, $T_{seek}=6$ ms, $T_{transfer}=0.5$ ms:\n$$\\frac{568}{80}=7.1=(0.6)(6+T_{rot})+0.5$$\n$$7.1-0.5=6.6=0.6\\,(6+T_{rot})\\;\\Rightarrow\\;6+T_{rot}=11\\;\\Rightarrow\\;T_{rot}=5\\,\\text{ms}$$\n\n$T_{rot}$ is the **average rotational latency = half a revolution**, so a full revolution is $2\\times5=10$ ms:\n$$\\text{RPM}=\\frac{60\\,\\text{s}}{0.010\\,\\text{s}}=6000\\,\\text{RPM}$$\n\n**FINAL RESULT:** rotation speed $=\\mathbf{6000\\ RPM}$.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20220615-e13",
+    "examId": "CI20220615",
+    "date": "2022-06-15",
+    "academicYear": "AA2122",
+    "exerciseNo": 13,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["raid"],
+    "part": "second",
+    "prompt": "Consider a **RAID 6** configuration with 10 disks. How many **I/O operations** are requested to update one block of a data disk (considering the sum over the entire set of disks)?",
+    "solution": "**RAID 6** keeps **two** independent parity blocks (P and Q) for every stripe. To update a single data block with the *read-modify-write* method, the controller must:\n\n- **Read** the old data block — 1 read\n- **Read** the old P parity — 1 read\n- **Read** the old Q parity — 1 read\n- **Write** the new data block — 1 write\n- **Write** the new P parity — 1 write\n- **Write** the new Q parity — 1 write\n\nThat is **3 reads + 3 writes = 6 I/O operations** in total. The result is independent of the number of disks (10 here), because only the targeted data disk and the two parity disks are touched.\n\n**FINAL RESULT:** $\\mathbf{6\\ I/O\\ operations}$.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20220615-e14",
+    "examId": "CI20220615",
+    "date": "2022-06-15",
+    "academicYear": "AA2122",
+    "exerciseNo": 14,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["raid"],
+    "part": "second",
+    "prompt": "Consider the following **RAID 0+1** setup with **6 disks**, each with an $MTTF=600\\,\\text{days}$ and an $MTTR=5\\,\\text{days}$. Consider a **single mirror** case for the RAID 1 part. What is the **MTTF** of the storage infrastructure?",
+    "solution": "**RAID 0+1** = a **mirror (RAID 1)** of two **striped (RAID 0)** groups. With 6 disks and a single mirror, each RAID 0 group has $6/2=3$ disks.\n\n**Step 1 — MTTF of one RAID 0 group** (3 disks in series, the stripe fails if any disk fails):\n$$MTTF_{RAID0}=\\frac{MTTF_{disk}}{n}=\\frac{600}{3}=200\\,\\text{days}$$\n\n**Step 2 — mirror the two groups (RAID 1 of 2 elements):** using the standard course formula for a 2-way mirror with repair,\n$$MTTF_{RAID1}=\\frac{MTTF_{group}^2}{2\\cdot MTTR}$$\n(the per-group repair time equals the disk $MTTR=5$ days). Hence\n$$MTTF_{0+1}=\\frac{200^2}{2\\cdot 5}=\\frac{40000}{10}=4000\\,\\text{days}$$\n\n**FINAL RESULT:** $MTTF\\approx\\mathbf{4000\\ days}\\ (\\approx 10.96\\ \\text{years})$.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20220615-e15",
+    "examId": "CI20220615",
+    "date": "2022-06-15",
+    "academicYear": "AA2122",
+    "exerciseNo": 15,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["performance"],
+    "part": "second",
+    "prompt": "A system is composed of different servers. We can fully observe only one of them, i.e. **S1**. It is characterized by a utilization $U_{S1}=0.6$, an average service time $S_{S1}=100\\,\\text{ms}$, and a visit count $V_{S1}=0.5$. What is the **throughput of the server S1** ($X_{S1}$)?",
+    "solution": "By the **Utilization Law**, the utilization of a station equals its throughput times its service time:\n$$U_{S1}=X_{S1}\\cdot S_{S1}\\;\\Rightarrow\\;X_{S1}=\\frac{U_{S1}}{S_{S1}}$$\n\n**Substitute** $U_{S1}=0.6$ and $S_{S1}=100\\,\\text{ms}=0.1\\,\\text{s}$:\n$$X_{S1}=\\frac{0.6}{0.1\\,\\text{s}}=6\\,\\text{job/s}$$\n\n(The visit count $V_{S1}=0.5$ is not needed here; it relates $X_{S1}$ to the system throughput and is used in the next question.)\n\n**FINAL RESULT:** $X_{S1}=\\mathbf{6\\ job/s}$.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20220615-e16",
+    "examId": "CI20220615",
+    "date": "2022-06-15",
+    "academicYear": "AA2122",
+    "exerciseNo": 16,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["performance"],
+    "part": "second",
+    "prompt": "Consider the same system and situation as in the previous question. Knowing that the average system response time ($R_{Sys}$) is equal to **5 s**, what is the average **number of jobs within the entire system** ($N_{Sys}$)?",
+    "solution": "**Step 1 — system throughput** from the **Forced Flow Law** $X_{S1}=V_{S1}\\cdot X_{Sys}$:\n$$X_{Sys}=\\frac{X_{S1}}{V_{S1}}=\\frac{6}{0.5}=12\\,\\text{job/s}$$\n\n**Step 2 — number of jobs** by **Little's Law** applied to the whole system:\n$$N_{Sys}=X_{Sys}\\cdot R_{Sys}=12\\,\\text{job/s}\\times 5\\,\\text{s}=60\\,\\text{jobs}$$\n\n**FINAL RESULT:** $N_{Sys}=\\mathbf{60\\ jobs}$.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20220615-e17",
+    "examId": "CI20220615",
+    "date": "2022-06-15",
+    "academicYear": "AA2122",
+    "exerciseNo": 17,
+    "marks": 5,
+    "type": "theory-essay",
+    "topics": ["storage-devices"],
+    "part": "first",
+    "prompt": "Why are **HDDs** still widely used in Data Centers even if **SSDs** provide better performance?",
+    "solution": "Although SSDs clearly win on **performance** (much higher IOPS, far lower latency because they have no mechanical seek/rotational delay, and lower power per I/O), **HDDs remain widely deployed in datacenters** for several complementary reasons:\n\n- **Cost per GB.** HDDs are still several times cheaper per stored gigabyte than SSDs. For the huge capacities of warehouse-scale storage, capacity-oriented cost dominates, making HDDs the economical choice for the bulk of data.\n- **Capacity.** Single HDDs offer very large capacities at attractive prices, ideal for storing massive cold/warm datasets, backups and archives.\n- **Workload fit (locality / access pattern).** A large fraction of datacenter data is **cold or sequentially accessed** (logs, backups, media, archival, big-data scans). For sequential/streaming throughput HDDs perform well, and their performance weakness (random access) does not hurt these workloads.\n- **Endurance / wear.** SSDs have a **limited number of program/erase cycles** (write endurance) and need wear-leveling and garbage collection; HDDs do not wear out from writes in the same way, which suits write-heavy or long-retention data.\n- **Tiered storage.** Datacenters use **storage tiering**: fast SSDs (or NVMe) for hot data and caches, cheap high-capacity HDDs for the cold/capacity tier. This hybrid approach gives the best cost/performance trade-off, so HDDs keep a permanent role.\n- **Total cost of ownership at scale.** Because storage cost scales with petabytes/exabytes, the lower $/GB of HDDs translates into very large CAPEX/OPEX savings that outweigh raw performance for capacity tiers.\n\n**In short:** SSDs are used where **speed/latency** matters (hot data, caches, databases), while HDDs persist for **cheap, large-capacity, sequential/cold storage**. The combination — driven mainly by **cost-per-GB and capacity** — is why HDDs are still ubiquitous in datacenters.",
+    "solutionSource": "authored"
+  }
+]

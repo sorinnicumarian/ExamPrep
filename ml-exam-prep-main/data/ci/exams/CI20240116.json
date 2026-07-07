@@ -1,0 +1,334 @@
+[
+  {
+    "id": "CI20240116-e1",
+    "examId": "CI20240116",
+    "date": "2024-01-16",
+    "academicYear": "AA2324",
+    "exerciseNo": 1,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["servers"],
+    "part": "first",
+    "prompt": "GPUs (Graphics Processing Units) are primarily used in datacenters for accelerating graphical applications and gaming.",
+    "subStatements": [
+      {
+        "id": "CI20240116-e1-s1",
+        "statement": "GPUs (Graphics Processing Units) are primarily used in datacenters for accelerating graphical applications and gaming.",
+        "answer": false,
+        "motivation": "Although GPUs originated for graphics, the Server / hardware-accelerators material explains that in **data centers** their dominant use is **general-purpose massively-parallel computation (GPGPU)**: deep-learning training/inference, HPC and scientific computing, where their thousands of cores accelerate dense matrix/tensor math. Gaming/graphics is not the primary data-center workload. The statement is False."
+      }
+    ],
+    "solution": "See per-statement motivation. In data centers GPUs are used mainly for GPGPU/AI/HPC compute, not for graphics/gaming — the statement is **False**.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20240116-e2",
+    "examId": "CI20240116",
+    "date": "2024-01-16",
+    "academicYear": "AA2324",
+    "exerciseNo": 2,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["storage-systems"],
+    "part": "second",
+    "prompt": "SANs typically use Fibre Channel or iSCSI to connect servers to storage devices.",
+    "subStatements": [
+      {
+        "id": "CI20240116-e2-s1",
+        "statement": "SANs typically use Fibre Channel or iSCSI to connect servers to storage devices.",
+        "answer": true,
+        "motivation": "From the Storage Systems lecture, a **SAN (Storage Area Network)** provides **block-level** access over a dedicated high-speed network, and the standard transports are exactly **Fibre Channel (FC)** and **iSCSI** (SCSI commands over TCP/IP). So the statement is True."
+      }
+    ],
+    "solution": "See per-statement motivation. SANs deliver block storage over Fibre Channel or iSCSI — the statement is **True**.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20240116-e3",
+    "examId": "CI20240116",
+    "date": "2024-01-16",
+    "academicYear": "AA2324",
+    "exerciseNo": 3,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["servers"],
+    "part": "first",
+    "prompt": "GPUs are generally less expensive to deploy and maintain compared to CPUs in datacenter environments.",
+    "subStatements": [
+      {
+        "id": "CI20240116-e3-s1",
+        "statement": "GPUs are generally less expensive to deploy and maintain compared to CPUs in datacenter environments.",
+        "answer": false,
+        "motivation": "Data-center GPUs are high-end accelerators with large HBM memory, very high TDP and a high purchase price; they also require more power and cooling and specialized software stacks, raising both capital and operating costs. They are **more**, not less, expensive than general-purpose CPUs. The statement is False."
+      }
+    ],
+    "solution": "See per-statement motivation. Data-center GPUs cost more (price, power, cooling) than CPUs — the statement is **False**.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20240116-e4",
+    "examId": "CI20240116",
+    "date": "2024-01-16",
+    "academicYear": "AA2324",
+    "exerciseNo": 4,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["storage-systems"],
+    "part": "second",
+    "prompt": "Liquid immersion cooling can damage servers if not done properly.",
+    "subStatements": [
+      {
+        "id": "CI20240116-e4-s1",
+        "statement": "Liquid immersion cooling can damage servers if not done properly.",
+        "answer": true,
+        "motivation": "Immersion cooling submerges the hardware in a dielectric fluid. As the Building Infrastructures material notes, it must be engineered carefully: using a non-dielectric or contaminated fluid, incompatible materials/components, or improper handling can short-circuit or otherwise damage the servers. So done improperly it can indeed cause damage — the statement is True."
+      }
+    ],
+    "solution": "See per-statement motivation. Immersion cooling requires a proper dielectric fluid and handling; done badly it can damage hardware — the statement is **True**.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20240116-e5",
+    "examId": "CI20240116",
+    "date": "2024-01-16",
+    "academicYear": "AA2324",
+    "exerciseNo": 5,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["servers"],
+    "part": "first",
+    "prompt": "TPUs are widely available and can be easily procured for use in most datacenter environments.",
+    "subStatements": [
+      {
+        "id": "CI20240116-e5-s1",
+        "statement": "TPUs are widely available and can be easily procured for use in most datacenter environments.",
+        "answer": false,
+        "motivation": "TPUs (Tensor Processing Units) are Google's **proprietary** domain-specific accelerators. They are not sold as commodity hardware on the open market; they are accessed mainly through Google Cloud. They are therefore **not** widely available or easily procured for arbitrary data centers. The statement is False."
+      }
+    ],
+    "solution": "See per-statement motivation. TPUs are Google-proprietary and accessed via Google Cloud, not freely procurable for most data centers — the statement is **False**.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20240116-e6",
+    "examId": "CI20240116",
+    "date": "2024-01-16",
+    "academicYear": "AA2324",
+    "exerciseNo": 6,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["dc-intro"],
+    "part": "first",
+    "prompt": "Datacenter tiers are a standardized classification system used to categorize the reliability and availability of a data center.",
+    "subStatements": [
+      {
+        "id": "CI20240116-e6-s1",
+        "statement": "Datacenter tiers are a standardized classification system used to categorize the reliability and availability of a data center.",
+        "answer": true,
+        "motivation": "The Building Infrastructures lecture states that 'data-center availability is defined by four different tier levels', each with its own requirements (redundancy of power/cooling paths, expected uptime). The Tier I–IV classification (Uptime Institute) is exactly a standardized scheme for rating a data center's reliability/availability. The statement is True."
+      }
+    ],
+    "solution": "See per-statement motivation. The four-tier classification standardizes data-center availability/reliability — the statement is **True**.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20240116-e7",
+    "examId": "CI20240116",
+    "date": "2024-01-16",
+    "academicYear": "AA2324",
+    "exerciseNo": 7,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["virtualization"],
+    "part": "second",
+    "prompt": "Hypervisors are only used in cloud computing environments.",
+    "subStatements": [
+      {
+        "id": "CI20240116-e7-s1",
+        "statement": "Hypervisors are only used in cloud computing environments.",
+        "answer": false,
+        "motivation": "The Virtualization lecture defines a hypervisor (VMM) as the layer that runs and isolates virtual machines on physical hardware, used for server consolidation, isolation, testing and high availability. Hypervisors are used in **on-premises enterprise data centers, private virtualization, desktops and embedded systems**, not only in public cloud. Restricting them to cloud is false."
+      }
+    ],
+    "solution": "See per-statement motivation. Hypervisors are general virtualization technology used well beyond the cloud (on-prem, enterprise, desktop) — the statement is **False**.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20240116-e8",
+    "examId": "CI20240116",
+    "date": "2024-01-16",
+    "academicYear": "AA2324",
+    "exerciseNo": 8,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["cloud"],
+    "part": "second",
+    "prompt": "Cloud architectures rely on service-level agreements (SLAs) to ensure uptime and availability.",
+    "subStatements": [
+      {
+        "id": "CI20240116-e8-s1",
+        "statement": "Cloud architectures rely on service-level agreements (SLAs) to ensure uptime and availability.",
+        "answer": true,
+        "motivation": "The Cloud lecture describes the provider–customer relationship as governed by **SLAs** that contractually specify the guaranteed service level (e.g. availability/uptime percentages) and the penalties if they are not met. SLAs are the standard mechanism by which cloud uptime/availability commitments are defined and enforced. The statement is True."
+      }
+    ],
+    "solution": "See per-statement motivation. Cloud services define and guarantee uptime/availability through SLAs — the statement is **True**.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20240116-e9",
+    "examId": "CI20240116",
+    "date": "2024-01-16",
+    "academicYear": "AA2324",
+    "exerciseNo": 9,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["raid"],
+    "part": "second",
+    "prompt": "RAID 0 provides basic data redundancy and fault tolerance.",
+    "subStatements": [
+      {
+        "id": "CI20240116-e9-s1",
+        "statement": "RAID 0 provides basic data redundancy and fault tolerance.",
+        "answer": false,
+        "motivation": "From the RAID lecture, **RAID 0** is pure **striping with no redundancy** (no mirror, no parity). It improves performance and capacity but stores no redundant information, so the failure of **any single disk loses data**. It provides **no** fault tolerance. The statement is False."
+      }
+    ],
+    "solution": "See per-statement motivation. RAID 0 is striping only — no redundancy, no fault tolerance — the statement is **False**.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20240116-e10",
+    "examId": "CI20240116",
+    "date": "2024-01-16",
+    "academicYear": "AA2324",
+    "exerciseNo": 10,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["storage-systems"],
+    "part": "second",
+    "prompt": "Open loop (free) cooling refers to the use of cold outside air to either help produce chilled water or directly cool servers.",
+    "subStatements": [
+      {
+        "id": "CI20240116-e10-s1",
+        "statement": "Open loop (free) cooling refers to the use of cold outside air to either help produce chilled water or directly cool servers.",
+        "answer": true,
+        "motivation": "This is the verbatim definition from the Building Infrastructures lecture: 'Free cooling, i.e., open-loop, refers to the use of cold outside air to either help the production of chilled water or directly cool servers.' It involves very low energy cost compared with chillers. The statement is True."
+      }
+    ],
+    "solution": "See per-statement motivation. Open-loop (free) cooling = using cold outside air to make chilled water or cool servers directly — the statement is **True** (matches the lecture definition).",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20240116-e11",
+    "examId": "CI20240116",
+    "date": "2024-01-16",
+    "academicYear": "AA2324",
+    "exerciseNo": 11,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["dependability"],
+    "part": "first",
+    "prompt": "A computer system has 2 critical components $C_1$ and $C_2$ (both must work) with the same cost. After 1 year their reliabilities are $R_{C1}=0.8$, $R_{C2}=0.92$.\n\n**a)** Compute the system availability $A_{SYS}$ if the MTTR of both components is **1 day** (use 4 decimal digits).\n\n**b)** With a budget to add **two** components, is it better to (A) replace $C_1$ with **three** components in parallel, or (B) replace $C_1$ and $C_2$ each with a **simple parallel** system (one extra each)?",
+    "solution": "**Part a) — availability.**\n\nFirst recover each MTTF from the exponential reliability $R(t)=e^{-t/MTTF}$ at $t=365$ days:\n$$MTTF_{C1}=\\frac{-365}{\\ln 0.8}=1635.72\\ \\text{days},\\qquad MTTF_{C2}=\\frac{-365}{\\ln 0.92}=4377.46\\ \\text{days}$$\n\nSteady-state availability $A=\\dfrac{MTTF}{MTTF+MTTR}$ with $MTTR=1$ day:\n$$A_{C1}=\\frac{1635.72}{1636.72}=0.9994,\\qquad A_{C2}=\\frac{4377.46}{4378.46}=0.9998$$\n\nThe two are in **series** (both required):\n$$A_{SYS}=A_{C1}\\cdot A_{C2}=0.9994\\times 0.9998\\approx \\boxed{0.9992}$$\n\n**Part b) — where to invest the two extra components.**\n\nCompare the availability of the weak component's block (using $A_{C1}=0.9994$, $A_{C2}=0.9998$):\n- **Option A** — $C_1$ becomes 3-in-parallel, $C_2$ unchanged:\n$$A_A=\\bigl[1-(1-A_{C1})^3\\bigr]\\cdot A_{C2}\\approx (1-0.0006^3)\\times 0.9998\\approx 0.99980$$\n- **Option B** — $C_1$ and $C_2$ each doubled (1-of-2 parallel each):\n$$A_B=\\bigl[1-(1-A_{C1})^2\\bigr]\\cdot\\bigl[1-(1-A_{C2})^2\\bigr]\\approx (1-0.0006^2)(1-0.0002^2)\\approx 0.99999996$$\n\n$A_B > A_A$, so it is better to **add one redundant copy to each of $C_1$ and $C_2$ (Option B)**. Intuition: a series system's unavailability is the sum of the components' unavailabilities, so the best use of redundancy is to protect **every** series element rather than over-protecting one — Option B drives **both** failure terms to second order, whereas Option A leaves $C_2$'s first-order unavailability untouched.\n\n$$\\boxed{\\text{a) }A_{SYS}\\approx 0.9992;\\quad \\text{b) Option B}}$$",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20240116-e12",
+    "examId": "CI20240116",
+    "date": "2024-01-16",
+    "academicYear": "AA2324",
+    "exerciseNo": 12,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["storage-devices"],
+    "part": "first",
+    "prompt": "Disk request queue (cylinders): **27, 8, 42, 73, 11**. The head starts at cylinder **24** and is moving from inside (lower cylinder number) toward outside (higher cylinder number). Using **C-SCAN (Circular SCAN)**, give the order in which the requests are served (first to last), referring to each request by its cylinder number.",
+    "solution": "**Method (C-SCAN).** C-SCAN moves in one direction serving every request it passes until it reaches the **end of the disk**; it then **jumps back to the opposite end** (servicing nothing on the return) and continues in the **same** direction.\n\nStart at **24**, direction = **toward the outside** (increasing cylinder).\n\n1. Going up, serve the requests above 24 in increasing order: $27 \\to 42 \\to 73$.\n2. Reach the outer edge, **jump** to the innermost cylinder (0).\n3. Continue upward, serving the remaining low requests in increasing order: $8 \\to 11$.\n\n**Served order (first → last):**\n$$27,\\; 42,\\; 73,\\; 8,\\; 11$$",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20240116-e13",
+    "examId": "CI20240116",
+    "date": "2024-01-16",
+    "academicYear": "AA2324",
+    "exerciseNo": 13,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["storage-devices"],
+    "part": "first",
+    "prompt": "Consider an HDD with a data transfer time of **0.4 ms for a 2 KB sector**, a rotation speed of **12000 RPM**, a mean seek time of **6 ms**, and negligible controller overhead. What **minimum data locality** is required to achieve a mean I/O service time of **8 ms** to transfer a **10 KB file**?",
+    "solution": "**Method.** A 10 KB file = $10/2 = 5$ blocks (2 KB sectors). With data locality $DL$, the seek + rotational latency are paid only on the fraction $(1-DL)$ of the (per-block) accesses, while every block is still transferred:\n$$T_{I/O}=(1-DL)\\cdot n\\,(T_{seek}+T_{rot})+n\\cdot T_{transfer},\\qquad n=5.$$\n\n**Rotational latency** = half a revolution at 12000 RPM:\n$$T_{rot}=\\frac{1}{2}\\cdot\\frac{60}{12000}\\,\\text{s}=2.5\\ \\text{ms}$$\n\n**Transfer (all 5 blocks):** $n\\cdot T_{transfer}=5\\times 0.4=2\\ \\text{ms}$.\n\nImpose $T_{I/O}=8$ ms and solve for $DL$:\n$$8=(1-DL)\\cdot 5\\,(6+2.5)+2$$\n$$6=(1-DL)\\cdot 42.5\\;\\Rightarrow\\;1-DL=\\frac{6}{42.5}=0.1412$$\n$$\\boxed{DL\\approx 0.8588\\ (\\approx 85.88\\%)}$$\n\nSo at least ~85.88% locality is needed to hit an 8 ms mean service time.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20240116-e14",
+    "examId": "CI20240116",
+    "date": "2024-01-16",
+    "academicYear": "AA2324",
+    "exerciseNo": 14,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["performance"],
+    "part": "second",
+    "prompt": "A computer-graphics firm's storage is a distributed file system. $N=8$ employees access it via a **front-end server (FS)** that writes to two storage nodes $S_1, S_2$. Over a **2-hour** monitoring window:\n- system completions $C=5400$, system response time $R=4$ s\n- front-end busy time $B_{FS}=22.5$ min\n- $U_{S1}=13.5\\%$, $S_{S1}=15$ ms, $S_{S2}=5$ ms\n- storage-layer (the two nodes only) visits $V_{SL}=32$, population $N_{SL}=4$\n\nCompute **(i)** the think time $Z$ during the measurement and **(ii)** the average response time of the storage layer $R_{SL}$.",
+    "solution": "**Method.** System throughput $X=C/T$; interactive response-time law $N=X\\,(R+Z)$; Little's law at the storage layer $N_{SL}=X_{SL}\\,R_{SL}$ with $X_{SL}=X\\,V_{SL}$.\n\n$T=2\\ \\text{h}=7200\\ \\text{s}$.\n\n**System throughput:**\n$$X=\\frac{C}{T}=\\frac{5400}{7200}=0.75\\ \\text{job/s}$$\n\n**(i) Think time** (interactive law, $N=8$, $R=4$ s):\n$$Z=\\frac{N}{X}-R=\\frac{8}{0.75}-4=10.6\\overline{6}-4=\\boxed{6.66\\ \\text{s}}$$\n\n**(ii) Storage-layer response time.** Throughput at the storage layer (forced-flow law):\n$$X_{SL}=X\\cdot V_{SL}=0.75\\times 32=24\\ \\text{job/s}$$\nLittle's law on the layer ($N_{SL}=4$):\n$$R_{SL}=\\frac{N_{SL}}{X_{SL}}=\\frac{4}{24}=\\boxed{0.166\\ \\text{s}\\ (\\approx 166\\ \\text{ms})}$$",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20240116-e15",
+    "examId": "CI20240116",
+    "date": "2024-01-16",
+    "academicYear": "AA2324",
+    "exerciseNo": 15,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["performance"],
+    "part": "second",
+    "prompt": "For the system of Question 14, compute the **service demands** of all servers: $D_{FS}$, $D_{S1}$, $D_{S2}$. (Recall $C=5400$, $T=7200$ s, $X=0.75$ job/s, $B_{FS}=22.5$ min, $U_{S1}=13.5\\%$, $S_{S1}=15$ ms, $S_{S2}=5$ ms, $V_{SL}=32$.)",
+    "solution": "**Method.** Service demand $D_k=\\dfrac{B_k}{C}=\\dfrac{U_k}{X}=V_k\\,S_k$.\n\n**Front-end server** (from its busy time):\n$$D_{FS}=\\frac{B_{FS}}{C}=\\frac{22.5\\times 60\\ \\text{s}}{5400}=\\frac{1350}{5400}=\\boxed{0.25\\ \\text{s}}$$\n\n**Storage node $S_1$** (from utilization):\n$$D_{S1}=\\frac{U_{S1}}{X}=\\frac{0.135}{0.75}=\\boxed{0.18\\ \\text{s}}$$\n\n**Storage node $S_2$.** From $D_{S1}=V_{S1}\\,S_{S1}$ we get $V_{S1}=0.18/0.015=12$ visits. Since $V_{SL}=V_{S1}+V_{S2}=32$, $V_{S2}=20$ visits, hence\n$$D_{S2}=V_{S2}\\,S_{S2}=20\\times 0.005=\\boxed{0.10\\ \\text{s}}$$\n\nSo $D_{FS}=0.25$ s, $D_{S1}=0.18$ s, $D_{S2}=0.10$ s.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20240116-e16",
+    "examId": "CI20240116",
+    "date": "2024-01-16",
+    "academicYear": "AA2324",
+    "exerciseNo": 16,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["performance"],
+    "part": "second",
+    "prompt": "For the system of Questions 14 and 15, determine the **bottleneck** (name the server) and the **maximum possible throughput**.",
+    "solution": "**Method.** The bottleneck is the server with the largest service demand $D_{max}$. The maximum reachable throughput for a closed interactive system is the asymptotic bound\n$$X_{MAX}=\\min\\!\\left(\\frac{1}{D_{max}},\\ \\frac{N}{D+Z}\\right),\\qquad D=\\sum_k D_k.$$\n\n**Demands** (from Q15): $D_{FS}=0.25$ s, $D_{S1}=0.18$ s, $D_{S2}=0.10$ s.\n\n**Bottleneck:** the largest demand is $D_{FS}=0.25$ s, so the **front-end server (FS)** is the bottleneck.\n\n**Bounds** with $N=8$, $Z=6.66\\overline{6}$ s, $D=0.25+0.18+0.10=0.53$ s:\n$$\\frac{1}{D_{max}}=\\frac{1}{0.25}=4\\ \\text{job/s}$$\n$$\\frac{N}{D+Z}=\\frac{8}{0.53+6.6667}=\\frac{8}{7.1967}\\approx 1.11\\ \\text{job/s}$$\n\n$$X_{MAX}=\\min(4,\\ 1.11)\\approx \\boxed{1.11\\ \\text{req/s}\\ \\ (\\text{bottleneck: FS})}$$\n\nAt the current load the population $N=8$ with the large think time keeps throughput on the $N/(D+Z)$ branch ($\\approx 1.11$ req/s); the device-saturation limit of the FS bottleneck would be 4 req/s.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20240116-e17",
+    "examId": "CI20240116",
+    "date": "2024-01-16",
+    "academicYear": "AA2324",
+    "exerciseNo": 17,
+    "marks": 5,
+    "type": "theory-essay",
+    "topics": ["storage-systems", "dc-intro"],
+    "part": "second",
+    "prompt": "What is the **Power Usage Effectiveness (PUE)** metric in the context of data centers? Provide the definition, and describe the meaning of different values and their impact.",
+    "solution": "**Definition.** As given in the Building Infrastructures lecture, **Power Usage Effectiveness (PUE)** is the ratio of the **total energy used by the data-center facility** to the **energy delivered to the IT computing equipment**:\n$$PUE=\\frac{\\text{Total Facility Power}}{\\text{IT Equipment Power}}.$$\n- **Total facility power** = the IT systems (servers, storage, network) **plus** all the supporting infrastructure (cooling, UPS, switchgear, generators, lighting, fans, …).\n- **IT equipment power** = the power actually delivered to the computing hardware.\n\n**Meaning of the values.**\n- PUE is always $\\geq 1$. The ideal value is **PUE = 1.0**, meaning *all* the energy goes to IT equipment and nothing is spent on overhead — physically unreachable.\n- A **high PUE** (e.g. 2.0) means that for every watt delivered to the servers another watt is consumed by cooling and other overhead, i.e. **50% of the energy is overhead** — an inefficient facility.\n- A **low PUE** (close to 1, e.g. 1.1–1.2 in modern hyperscale data centers) means overhead is small and most energy reaches the IT load — an efficient facility.\n- The **inverse** of PUE is the **Data Center infrastructure Efficiency (DCiE)** = IT power / total power, expressed as a percentage.\n\n**Impact.** PUE is the key efficiency KPI for a data center. Because cooling is usually the dominant overhead, lowering PUE is achieved through better cooling (free/open-loop cooling, hot/cold-aisle containment, liquid cooling), efficient power distribution (fewer conversion losses, efficient UPS) and high server utilization. A lower PUE directly reduces **energy cost** and **carbon footprint** for the same amount of useful computation, which is why efficient operators (e.g. Google) report PUE values close to 1.1.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20240116-e18",
+    "examId": "CI20240116",
+    "date": "2024-01-16",
+    "academicYear": "AA2324",
+    "exerciseNo": 18,
+    "marks": 5,
+    "type": "theory-essay",
+    "topics": ["xaas", "cloud"],
+    "part": "second",
+    "prompt": "Which are the main differences between **IaaS** and **PaaS** solutions?",
+    "solution": "Both are cloud **service models** from the Cloud Computing lecture; they differ in **how much of the stack the provider manages** versus the customer, and therefore in the level of abstraction and control.\n\n**IaaS — Infrastructure as a Service.**\n- The provider offers **virtualized infrastructure resources**: compute (VMs), storage and networking.\n- The customer manages everything **above** the virtual hardware: the **operating system, middleware, runtimes and applications**, plus patching, scaling configuration and deployment.\n- It gives the **most control and flexibility** (you choose the OS, install any software) but also the **most management responsibility**.\n- Typical examples: virtual machines / block storage / virtual networks (e.g. AWS EC2, GCP Compute Engine).\n\n**PaaS — Platform as a Service.**\n- The provider offers a **ready-to-use application platform**: the OS, runtime, middleware, databases and the execution environment are all **managed by the provider**.\n- The customer only deploys and manages their **application code and data**; they do **not** manage the underlying servers, OS or runtime, and scaling/load-balancing/patching of the platform are handled by the provider.\n- It gives **less control** over the underlying stack but **much faster development/deployment** and lower operational burden.\n- Typical examples: managed app/runtime platforms (e.g. Google App Engine, Azure App Service, Heroku).\n\n**Main differences (summary).**\n| Aspect | IaaS | PaaS |\n|---|---|---|\n| Abstraction level | Virtual hardware (VMs, storage, network) | Application platform / runtime |\n| Customer manages | OS, middleware, runtime, app | App and data only |\n| Provider manages | Virtualized hardware | Up to and including OS/runtime/middleware |\n| Control vs. ease | More control, more management | Less control, faster to build |\n| Best for | Custom environments, full-stack control, migrating existing systems | Developers who want to focus only on application code |\n\nIn the typical hierarchy **IaaS → PaaS → SaaS**, moving from IaaS to PaaS shifts more of the management responsibility from the customer to the provider, trading flexibility for convenience.",
+    "solutionSource": "authored"
+  }
+]

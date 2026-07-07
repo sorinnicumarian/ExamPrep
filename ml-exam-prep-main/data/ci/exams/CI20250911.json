@@ -1,0 +1,334 @@
+[
+  {
+    "id": "CI20250911-e1",
+    "examId": "CI20250911",
+    "date": "2025-09-11",
+    "academicYear": "AA2425",
+    "exerciseNo": 1,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["raid"],
+    "part": "second",
+    "prompt": "RAID 6 uses two parity stripes to provide redundancy.",
+    "subStatements": [
+      {
+        "id": "CI20250911-e1-s1",
+        "statement": "RAID 6 uses two parity stripes to provide redundancy.",
+        "answer": true,
+        "motivation": "From the RAID lecture, **RAID 6** extends RAID 5 with **two independent parity blocks** (e.g. P and Q) distributed across the disks. This double (dual) parity lets the array tolerate the simultaneous failure of **two** disks. So RAID 6 indeed uses two parity stripes - the statement is true."
+      }
+    ],
+    "solution": "See per-statement motivation. RAID 6 = striping with dual distributed parity, tolerating two disk failures - the statement is **True**.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250911-e2",
+    "examId": "CI20250911",
+    "date": "2025-09-11",
+    "academicYear": "AA2425",
+    "exerciseNo": 2,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["storage-systems"],
+    "part": "second",
+    "prompt": "Open loop (free) cooling systems are less suitable for large-scale high-density datacenters where heat dissipation is a significant challenge.",
+    "subStatements": [
+      {
+        "id": "CI20250911-e2-s1",
+        "statement": "Open loop (free) cooling systems are less suitable for large-scale high-density datacenters where heat dissipation is a significant challenge.",
+        "answer": true,
+        "motivation": "The Building Infrastructures lecture notes that open-loop / free (fresh-air) cooling 'can be very efficient but does not work in all climates' - its cooling capacity depends on favourable (cool, dry) outdoor air and it cannot guarantee the large, controlled heat removal needed at very high power densities. For large-scale, high-density datacenters where heat dissipation is critical, it is therefore less suitable on its own (mechanical/liquid cooling is needed). The statement is true."
+      }
+    ],
+    "solution": "See per-statement motivation. Free/open-loop cooling depends on favourable climate and cannot reliably handle very high heat densities, so it is less suitable there - the statement is **True**.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250911-e3",
+    "examId": "CI20250911",
+    "date": "2025-09-11",
+    "academicYear": "AA2425",
+    "exerciseNo": 3,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["virtualization"],
+    "part": "second",
+    "prompt": "Paravirtualization requires modifications to the guest operating system to run on the virtual machine.",
+    "subStatements": [
+      {
+        "id": "CI20250911-e3-s1",
+        "statement": "Paravirtualization requires modifications to the guest operating system to run on the virtual machine.",
+        "answer": true,
+        "motivation": "From the Virtualization lecture, **para-virtualization** replaces sensitive/privileged instructions with explicit **hypercalls**, so the **guest OS must be modified** to be aware of the hypervisor and cooperate with it (e.g. Xen). This avoids the overhead of trapping/emulating, but it requires changing the guest kernel - exactly what the statement says. It is true (in contrast to full virtualization, which runs an unmodified guest)."
+      }
+    ],
+    "solution": "See per-statement motivation. Para-virtualization needs a modified, hypervisor-aware guest OS (hypercalls) - the statement is **True**.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250911-e4",
+    "examId": "CI20250911",
+    "date": "2025-09-11",
+    "academicYear": "AA2425",
+    "exerciseNo": 4,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["networking"],
+    "part": "second",
+    "prompt": "TOR switches are also used for connecting servers within a rack to the datacenter network.",
+    "subStatements": [
+      {
+        "id": "CI20250911-e4-s1",
+        "statement": "TOR switches are also used for connecting servers within a rack to the datacenter network.",
+        "answer": true,
+        "motivation": "The Datacenter Networking lecture defines the **Top-of-Rack (ToR)** switch as the access-layer / leaf switch that sits in each rack and aggregates the servers of that rack, connecting them upward to the rest of the datacenter network (aggregation/spine). So ToR switches do connect the servers within a rack to the DC network - the statement is true."
+      }
+    ],
+    "solution": "See per-statement motivation. The ToR (access/leaf) switch connects a rack's servers up into the datacenter fabric - the statement is **True**.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250911-e5",
+    "examId": "CI20250911",
+    "date": "2025-09-11",
+    "academicYear": "AA2425",
+    "exerciseNo": 5,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["dc-intro"],
+    "part": "first",
+    "prompt": "Latency considerations have no relation on the global distribution of data centers.",
+    "subStatements": [
+      {
+        "id": "CI20250911-e5-s1",
+        "statement": "Latency considerations have no relation on the global distribution of data centers.",
+        "answer": false,
+        "motivation": "Latency is bounded by physical distance (speed of light) and number of network hops, so the geographic placement of datacenters directly determines the latency seen by users. This is a primary reason for distributing datacenters across **regions** close to users and for using edge locations/CDNs. Latency is therefore strongly related to global datacenter distribution; the statement is false."
+      }
+    ],
+    "solution": "See per-statement motivation. Proximity (and thus latency) is a key driver of where datacenters are placed - the statement is **False**.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250911-e6",
+    "examId": "CI20250911",
+    "date": "2025-09-11",
+    "academicYear": "AA2425",
+    "exerciseNo": 6,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["xaas", "cloud"],
+    "part": "second",
+    "prompt": "Software-as-a-Service (SaaS) cloud architectures provide users with solutions to develop and deploy their own applications.",
+    "subStatements": [
+      {
+        "id": "CI20250911-e6-s1",
+        "statement": "Software-as-a-Service (SaaS) cloud architectures provide users with solutions to develop and deploy their own applications.",
+        "answer": false,
+        "motivation": "From the Cloud / XaaS service models, **SaaS** delivers ready-to-use **applications** to end users over the Internet (e.g. webmail, CRM); the user only consumes the software and does not build applications. The model that gives users a platform/runtime to **develop and deploy their own applications** is **PaaS** (Platform-as-a-Service). So attributing application development/deployment to SaaS is false."
+      }
+    ],
+    "solution": "See per-statement motivation. Developing/deploying your own applications is the role of **PaaS**, not SaaS (which delivers finished applications) - the statement is **False**.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250911-e7",
+    "examId": "CI20250911",
+    "date": "2025-09-11",
+    "academicYear": "AA2425",
+    "exerciseNo": 7,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["networking"],
+    "part": "second",
+    "prompt": "A two-tier leaf-spine topology without oversubscription (Clos topology) adopting routers with 6 ports can connect up to 18 servers.",
+    "subStatements": [
+      {
+        "id": "CI20250911-e7-s1",
+        "statement": "A two-tier leaf-spine topology without oversubscription (Clos topology) adopting routers with 6 ports can connect up to 18 servers.",
+        "answer": true,
+        "motivation": "In the homogeneous leaf-spine design from the Networking lecture, switches with $2k$ ports give a maximum of $2k^2$ servers (each leaf uses $k$ ports for servers and $k$ uplinks, with $k$ spines and $2k$ leaves). With 6-port switches, $2k=6 \\Rightarrow k=3$, so $2k^2 = 2\\times 9 = 18$ servers. The statement matches this result - it is true."
+      }
+    ],
+    "solution": "See per-statement motivation. Homogeneous leaf-spine with $2k=6$ ports gives $2k^2 = 18$ servers - the statement is **True**.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250911-e8",
+    "examId": "CI20250911",
+    "date": "2025-09-11",
+    "academicYear": "AA2425",
+    "exerciseNo": 8,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["storage-devices"],
+    "part": "first",
+    "prompt": "HDD capacity is typically subdivided into tracks and sectors, with files mapped to logical blocks.",
+    "subStatements": [
+      {
+        "id": "CI20250911-e8-s1",
+        "statement": "HDD capacity is typically subdivided into tracks and sectors, with files mapped to logical blocks.",
+        "answer": true,
+        "motivation": "From the HDD lecture, a disk surface is organised into concentric **tracks**, each divided into **sectors** (the smallest physically addressable unit). Modern drives expose this geometry through **Logical Block Addressing (LBA)**, so the file system maps files onto logical blocks that correspond to sectors. This matches the statement - it is true."
+      }
+    ],
+    "solution": "See per-statement motivation. HDDs are organised into tracks and sectors and addressed as logical blocks (LBA) onto which files are mapped - the statement is **True**.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250911-e9",
+    "examId": "CI20250911",
+    "date": "2025-09-11",
+    "academicYear": "AA2425",
+    "exerciseNo": 9,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["storage-systems"],
+    "part": "second",
+    "prompt": "Cooling towers are a mandatory component in water-based cooling systems for datacenters.",
+    "subStatements": [
+      {
+        "id": "CI20250911-e9-s1",
+        "statement": "Cooling towers are a mandatory component in water-based cooling systems for datacenters.",
+        "answer": false,
+        "motivation": "The Building Infrastructures lecture presents several cooling topologies. Cooling towers (which reject heat by evaporating water) are only one option for a water/closed-loop system; alternatives such as dry coolers, water-side economizers, direct free/fresh-air cooling or chillers can be used instead, depending on climate and design. A cooling tower is therefore not *mandatory* for every water-based system - the statement is false."
+      }
+    ],
+    "solution": "See per-statement motivation. Cooling towers are one option, not a mandatory part of every water-based cooling design - the statement is **False**.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250911-e10",
+    "examId": "CI20250911",
+    "date": "2025-09-11",
+    "academicYear": "AA2425",
+    "exerciseNo": 10,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["dc-intro", "cloud"],
+    "part": "first",
+    "prompt": "Edge computing always requires central data centers to process data.",
+    "subStatements": [
+      {
+        "id": "CI20250911-e10-s1",
+        "statement": "Edge computing always requires central data centers to process data.",
+        "answer": false,
+        "motivation": "The edge / cloud-continuum material defines edge computing precisely as processing data **close to where it is generated**, on edge nodes, to cut latency and the volume of data sent to the cloud. Much processing happens locally at the edge without a round trip to a central datacenter (only some workloads are offloaded centrally). So edge computing does *not* always require central datacenters - the statement is false."
+      }
+    ],
+    "solution": "See per-statement motivation. Edge computing processes data locally at the edge, not always at a central datacenter - the statement is **False**.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250911-e11",
+    "examId": "CI20250911",
+    "date": "2025-09-11",
+    "academicYear": "AA2425",
+    "exerciseNo": 11,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["storage-devices"],
+    "part": "first",
+    "prompt": "Consider an HDD with: block size **2 KB**, mean seek time **3 ms**, transfer time per block **0.6 ms**, rotational speed **12000 RPM**, negligible controller overhead. Knowing that the **access locality is 84%**, what is the average I/O time to read an entire file of **40 MB**?",
+    "solution": "**Method.** With data locality $DL$, only a fraction $(1-DL)$ of block accesses pay the seek + rotational latency (the rest are contiguous). Per block:\n$$T_{block}=(1-DL)\\,(T_{seek}+T_{rot}) + T_{transfer} + T_{ctrl}$$\nThe whole file time is $N_{blocks}\\times T_{block}$.\n\n**1) Number of blocks** ($1\\,\\text{MB}=1024\\,\\text{KB}$):\n$$N_{blocks}=\\frac{40\\,\\text{MB}}{2\\,\\text{KB}}=\\frac{40\\times1024\\,\\text{KB}}{2\\,\\text{KB}}=20480\\ \\text{blocks}$$\n\n**2) Rotational latency** (half a revolution at 12000 RPM):\n$$T_{rot}=\\frac{1}{2}\\cdot\\frac{60\\,\\text{s}}{12000}\\,=\\,\\frac{60000\\,\\text{ms}}{2\\times12000}=2.5\\ \\text{ms}$$\n\n**3) Per-block time** ($DL=0.84\\Rightarrow 1-DL=0.16$, $T_{ctrl}=0$):\n$$T_{block}=0.16\\,(3+2.5)+0.6 = 0.16\\times5.5 + 0.6 = 0.88+0.6 = 1.48\\ \\text{ms}$$\n\n**4) Total I/O time:**\n$$T=20480\\times1.48\\ \\text{ms}=30310.4\\ \\text{ms}$$\n$$\\boxed{T \\approx 30310\\ \\text{ms} \\approx 30.31\\ \\text{s}}$$",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250911-e12",
+    "examId": "CI20250911",
+    "date": "2025-09-11",
+    "academicYear": "AA2425",
+    "exerciseNo": 12,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["dependability"],
+    "part": "first",
+    "prompt": "A multi-tier web application has two components, both needed to process a request. **Component A** (front-end) is the load balancer **A1** and the front-end server **A2**, both required for all traffic (if A fails, no request is processed). **Component B** (application layer) has three identical, independent compute nodes **B1, B2, B3**, and works as long as at least one node is available. Availabilities: $Av_{A1}=Av_{A2}=0.94$, $Av_{B1}=Av_{B2}=Av_{B3}=0.7$. Compute the overall system availability.",
+    "solution": "**Method (RBD).** Inside A, A1 and A2 are in **series** (both required). Inside B, B1, B2, B3 are in **parallel** (1-of-3). A and B are then in **series** (both needed). Series multiply; parallel combine as $1-\\prod(1-A_i)$.\n\n**Front-end block A** (series):\n$$Av_A=Av_{A1}\\cdot Av_{A2}=0.94\\times0.94=0.8836$$\n\n**Application block B** (1-of-3 parallel):\n$$Av_B=1-(1-0.7)^3=1-(0.3)^3=1-0.027=0.973$$\n\n**Overall system** (A in series with B):\n$$Av_{sys}=Av_A\\cdot Av_B=0.8836\\times0.973$$\n$$\\boxed{Av_{sys}\\approx 0.8597\\ (\\approx 85.97\\%)}$$",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250911-e13",
+    "examId": "CI20250911",
+    "date": "2025-09-11",
+    "academicYear": "AA2425",
+    "exerciseNo": 13,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["raid"],
+    "part": "second",
+    "prompt": "Design a **RAID 1+0** storage architecture of an array of **8 disks**. Each disk has $MTTF=450$ days. We want the storage $MTTF_{RAID1+0}$ higher than **8 years**. What is the **maximum MTTR** allowed to satisfy the requirement? Consider all disks identical and a single mirror case for the RAID 1 part.",
+    "solution": "**Method.** For RAID 1+0 with a single mirror replica, the exercise sessions use\n$$MTTF_{RAID1+0}=\\frac{MTTF^2}{N\\cdot MTTR}$$\nwith $N$ the total number of disks. Impose $MTTF_{RAID1+0}\\ge 8$ years and solve for $MTTR$.\n\nConvert the target: $8\\ \\text{y}=8\\times365=2920\\ \\text{days}$, with $N=8$ and $MTTF=450$ days.\n\n$$\\frac{MTTF^2}{N\\cdot MTTR}\\ge 2920 \\;\\Rightarrow\\; MTTR\\le \\frac{MTTF^2}{N\\cdot 2920}=\\frac{450^2}{8\\times2920}=\\frac{202500}{23360}$$\n$$MTTR\\le 8.67\\ \\text{days}$$\n\n$$\\boxed{MTTR_{max}\\approx 8.67\\ \\text{days}}$$\n\n(Check: with $MTTR=8.67$, $MTTF_{RAID1+0}=450^2/(8\\times8.67)\\approx2920$ days $=8$ y.)",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250911-e14",
+    "examId": "CI20250911",
+    "date": "2025-09-11",
+    "academicYear": "AA2425",
+    "exerciseNo": 14,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["performance"],
+    "part": "second",
+    "prompt": "An enterprise application is deployed on a Web server, an Application server and a Database server. The system is used by $N=30$ users with think time $Z=20$ s. During a monitoring interval $T=1200$ s you collect: completions $C=800$, $U_{Web}=50\\%$, $U_{App}=40\\%$, $U_{DBMS}=60\\%$. Compute the measured system throughput and the service demands for all servers ($D_{Web}$, $D_{App}$, $D_{DBMS}$).",
+    "solution": "**Method (operational laws).** System throughput $X=C/T$; service demand from the utilization law $U_k=X\\,D_k \\Rightarrow D_k=U_k/X$.\n\n**System throughput:**\n$$X=\\frac{C}{T}=\\frac{800}{1200}=0.6667\\ \\text{req/s}$$\n\n**Service demands** $D_k=U_k/X$:\n$$D_{Web}=\\frac{0.50}{0.6667}=0.75\\ \\text{s}$$\n$$D_{App}=\\frac{0.40}{0.6667}=0.60\\ \\text{s}$$\n$$D_{DBMS}=\\frac{0.60}{0.6667}=0.90\\ \\text{s}$$\n\n$$\\boxed{X=0.667\\ \\text{req/s},\\quad D_{Web}=0.75\\ \\text{s},\\ D_{App}=0.60\\ \\text{s},\\ D_{DBMS}=0.90\\ \\text{s}}$$\n\n(The $N=30$, $Z=20$ s data are used in later parts; throughput and demands depend only on $C$, $T$ and the utilizations.)",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250911-e15",
+    "examId": "CI20250911",
+    "date": "2025-09-11",
+    "academicYear": "AA2425",
+    "exerciseNo": 15,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["performance"],
+    "part": "second",
+    "prompt": "For the system of Question 14 ($D_{Web}=0.75$ s, $D_{App}=0.60$ s, $D_{DBMS}=0.90$ s, $N=30$, $Z=20$ s), determine the **maximum throughput** and the **minimum response time** the system can achieve.",
+    "solution": "**Method (asymptotic bounds).** With total demand $D=\\sum_k D_k$ and bottleneck demand $D_{max}=\\max_k D_k$:\n- $X_{max}=\\dfrac{1}{D_{max}}$ (saturation / throughput bound),\n- $R_{min}=D$ (the no-queueing lower bound on response time).\n\n$D_{max}=\\max\\{0.75,0.60,0.90\\}=0.90$ s (DBMS is the bottleneck).\n\n**Maximum throughput:**\n$$X_{max}=\\frac{1}{D_{max}}=\\frac{1}{0.90}=1.111\\ \\text{req/s}$$\n\n**Minimum response time:**\n$$R_{min}=D=0.75+0.60+0.90=2.25\\ \\text{s}$$\n\n$$\\boxed{X_{max}\\approx 1.111\\ \\text{req/s},\\qquad R_{min}=2.25\\ \\text{s}}$$\n\n(For reference, the load that saturates the system is $N^{*}=\\dfrac{D+Z}{D_{max}}=\\dfrac{2.25+20}{0.90}\\approx 24.7$, so with $N=30$ users the system operates beyond the saturation knee and throughput is bounded by $X_{max}$.)",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250911-e16",
+    "examId": "CI20250911",
+    "date": "2025-09-11",
+    "academicYear": "AA2425",
+    "exerciseNo": 16,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["performance"],
+    "part": "second",
+    "prompt": "For the system of Question 14 you may upgrade (replace with a faster one) only **a single server**. a) At which layer (Web, App or DBMS) should the upgrade be applied to obtain the greatest gain in maximum achievable system throughput? b) If the chosen server is upgraded so that its speed **doubles**, what is the new maximum achievable system throughput?",
+    "solution": "**Method.** $X_{max}=1/D_{max}$ is limited by the **bottleneck** (largest demand). The only way to raise $X_{max}$ is to speed up the bottleneck station; doubling its speed halves its demand.\n\nDemands: $D_{Web}=0.75$, $D_{App}=0.60$, $D_{DBMS}=0.90$ s. The bottleneck is **DBMS** ($D_{max}=0.90$ s).\n\n**a)** Upgrade the **DBMS** server (the bottleneck).\n\n**b)** Doubling DBMS speed halves its demand:\n$$D_{DBMS}'=\\frac{0.90}{2}=0.45\\ \\text{s}$$\nNew demands: $0.75$ (Web), $0.60$ (App), $0.45$ (DBMS). New bottleneck is **Web** with $D_{max}'=0.75$ s:\n$$X_{max}'=\\frac{1}{D_{max}'}=\\frac{1}{0.75}=1.333\\ \\text{req/s}$$\n\n$$\\boxed{\\text{Upgrade DBMS; new } X_{max}'\\approx 1.333\\ \\text{req/s (up from }1.111)}$$",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250911-e17",
+    "examId": "CI20250911",
+    "date": "2025-09-11",
+    "academicYear": "AA2425",
+    "exerciseNo": 17,
+    "marks": 5,
+    "type": "theory-essay",
+    "topics": ["virtualization"],
+    "part": "second",
+    "prompt": "Why is virtualization so important in modern data centers?",
+    "solution": "Virtualization - abstracting physical hardware (CPU, memory, storage, network) into one or more **virtual machines** managed by a **hypervisor** - is a foundational technology of modern data centers and cloud computing for several reasons:\n\n**1. Server consolidation & efficiency.** Physical servers are often underutilized. Virtualization lets many VMs share one physical host, raising utilization, reducing the number of machines, and cutting capital cost, power, cooling and space. This directly improves the economics and energy efficiency of the datacenter.\n\n**2. Isolation & multi-tenancy.** Each VM is isolated (separate OS, fault and security boundary), so independent tenants/workloads can safely coexist on the same hardware. This isolation is the basis of the public-cloud multi-tenant model.\n\n**3. Flexibility & rapid provisioning.** VMs are software: they can be created, cloned, resized and destroyed in minutes from images/templates, decoupling workloads from specific hardware. This enables **elasticity** and on-demand self-service, the essence of cloud IaaS.\n\n**4. Live migration, high availability & maintenance.** A running VM can be **live-migrated** to another host, allowing load balancing, hardware maintenance with no downtime, and failover/HA. Snapshots enable backup, rollback and disaster recovery.\n\n**5. Hardware independence & portability.** Because the VM sees virtual hardware, workloads become portable across heterogeneous physical machines, easing migration and avoiding hardware lock-in.\n\n**6. Foundation for the cloud and automation.** Virtualization underpins IaaS and, together with orchestration, enables automated, programmable, software-defined data centers (and is complemented by lighter OS-level virtualization - containers - for finer-grained packaging).\n\n**In summary**, virtualization is important because it turns rigid physical infrastructure into a flexible, efficient, isolated and automatable resource pool - delivering consolidation/cost savings, strong isolation for multi-tenancy, elastic on-demand provisioning, and high availability through migration - which is exactly what modern data centers and clouds require.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250911-e18",
+    "examId": "CI20250911",
+    "date": "2025-09-11",
+    "academicYear": "AA2425",
+    "exerciseNo": 18,
+    "marks": 5,
+    "type": "theory-essay",
+    "topics": ["dc-intro", "cloud"],
+    "part": "first",
+    "prompt": "Explain how edge computing technologies integrate with traditional data centers. What are the advantages and disadvantages of this hybrid architecture?",
+    "solution": "**The cloud-edge continuum.** Edge computing places compute and storage **close to where data is generated** (IoT devices, gateways, micro/edge datacenters, base stations), while traditional centralized **cloud datacenters** retain massive, elastic compute and storage. They integrate into a tiered, hybrid architecture: devices/edge nodes handle local, latency-sensitive and high-volume processing first, and forward aggregated/filtered data, heavy batch jobs, long-term storage, model training and global coordination to the central datacenter. Often an intermediate **fog** layer sits between edge and cloud. Orchestration and connectivity (and increasingly 5G) tie the tiers together so each workload runs where it best fits.\n\n**Advantages of the hybrid (edge + central DC) architecture:**\n- **Low latency / real-time response:** processing near the source avoids the round trip to a distant datacenter - crucial for autonomous systems, AR/VR, industrial control.\n- **Reduced bandwidth and network congestion:** filtering/aggregating data at the edge sends far less traffic upstream, lowering WAN cost and load on the core network.\n- **Scalability & offloading:** routine local work is handled at the edge, leaving the central DC for heavy, elastic, large-scale tasks (training, analytics, archival).\n- **Resilience / availability:** edge nodes can keep operating locally during connectivity loss to the cloud.\n- **Privacy / data locality:** sensitive data can be processed/kept locally, helping meet data-residency and privacy requirements.\n\n**Disadvantages / challenges:**\n- **Management complexity:** orchestrating, deploying, updating and monitoring many distributed, heterogeneous edge sites is much harder than a few centralized datacenters.\n- **Limited edge resources:** edge nodes have constrained compute, storage, power and cooling, so they cannot run large workloads.\n- **Security / attack surface:** many physically exposed, distributed nodes are harder to secure and patch than a controlled datacenter.\n- **Consistency & data integration:** keeping data and state consistent across edge and cloud (synchronization, eventual consistency) is complex.\n- **Cost & maintenance:** physically distributed hardware is costlier to deploy and service per unit than consolidated, highly-efficient central facilities (which also benefit from better PUE).\n\n**Summary.** The hybrid model combines the **low latency, bandwidth savings and locality** of the edge with the **scale, elasticity and efficiency** of central datacenters, splitting workloads across the continuum - at the price of greater operational complexity, resource limits at the edge, and harder security and consistency management.",
+    "solutionSource": "authored"
+  }
+]

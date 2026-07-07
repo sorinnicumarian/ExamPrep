@@ -1,0 +1,334 @@
+[
+  {
+    "id": "CI20230906-e1",
+    "examId": "CI20230906",
+    "date": "2023-09-06",
+    "academicYear": "AA2324",
+    "exerciseNo": 1,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["dc-intro"],
+    "part": "first",
+    "prompt": "The computing continuum refers to the idea that computing devices exist on a spectrum, from small, low-power devices to large, high-performance machines.",
+    "subStatements": [
+      {
+        "id": "CI20230906-e1-s1",
+        "statement": "The computing continuum refers to the idea that computing devices exist on a spectrum, from small, low-power devices to large, high-performance machines.",
+        "answer": true,
+        "motivation": "The introductory lecture presents the **cloud–edge computing continuum**: a spectrum of resources ranging from tiny low-power IoT/edge sensors, through fog/edge nodes, up to large cloud data centers and warehouse-scale computers. Workloads are placed along this continuum according to latency, bandwidth and compute needs. The statement correctly describes this idea."
+      }
+    ],
+    "solution": "See per-statement motivation. The computing continuum is exactly the spectrum from small low-power edge devices to large high-performance machines — **True**.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230906-e2",
+    "examId": "CI20230906",
+    "date": "2023-09-06",
+    "academicYear": "AA2324",
+    "exerciseNo": 2,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["virtualization"],
+    "part": "second",
+    "prompt": "Virtualization can improve disaster recovery by enabling quick and easy backup and restoration of virtual machines.",
+    "subStatements": [
+      {
+        "id": "CI20230906-e2-s1",
+        "statement": "Virtualization can improve disaster recovery by enabling quick and easy backup and restoration of virtual machines.",
+        "answer": true,
+        "motivation": "The Virtualization lecture lists encapsulation, snapshots and live migration among the key benefits. Because a VM is just a set of files (its virtual disk + configuration), it can be **snapshotted, cloned, backed up and restored** on any compatible host, and migrated to another site. This makes disaster recovery far quicker and simpler than reinstalling physical machines. The statement is True."
+      }
+    ],
+    "solution": "See per-statement motivation. VM encapsulation/snapshots/migration make backup and restore for disaster recovery fast and easy — **True**.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230906-e3",
+    "examId": "CI20230906",
+    "date": "2023-09-06",
+    "academicYear": "AA2324",
+    "exerciseNo": 3,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["storage-systems"],
+    "part": "second",
+    "prompt": "In-row cooling systems are less efficient at removing heat compared to traditional perimeter cooling systems.",
+    "subStatements": [
+      {
+        "id": "CI20230906-e3-s1",
+        "statement": "In-row cooling systems are less efficient at removing heat compared to traditional perimeter cooling systems.",
+        "answer": false,
+        "motivation": "The Building Infrastructures lecture explains that **in-row cooling** units sit between the racks, right next to the heat source, shortening the air path and capturing hot exhaust before it mixes with the room air. This makes them **more** efficient and better suited to high-density racks than traditional perimeter (room/CRAC) cooling, not less. The statement is False."
+      }
+    ],
+    "solution": "See per-statement motivation. In-row cooling is placed close to the load and is generally **more** efficient than perimeter cooling — the statement is **False**.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230906-e4",
+    "examId": "CI20230906",
+    "date": "2023-09-06",
+    "academicYear": "AA2324",
+    "exerciseNo": 4,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["networking"],
+    "part": "second",
+    "prompt": "Oversubscription is not used in TOR (Top-of-Rack) switches.",
+    "subStatements": [
+      {
+        "id": "CI20230906-e4-s1",
+        "statement": "Oversubscription is not used in TOR (Top-of-Rack) switches.",
+        "answer": false,
+        "motivation": "The Networking lecture defines **oversubscription** as the ratio between the aggregate downlink (server-facing) bandwidth and the uplink bandwidth of a switch. Top-of-Rack switches are precisely where oversubscription is commonly applied: the many server ports facing the rack provide more bandwidth than the few uplinks to the aggregation layer, to save on cost. So oversubscription **is** used in TOR switches; the statement is False."
+      }
+    ],
+    "solution": "See per-statement motivation. TOR switches typically run oversubscribed (more downlink than uplink bandwidth) — the statement is **False**.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230906-e5",
+    "examId": "CI20230906",
+    "date": "2023-09-06",
+    "academicYear": "AA2324",
+    "exerciseNo": 5,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["storage-systems"],
+    "part": "second",
+    "prompt": "Liquid cooling is a new technology that is not yet suitable for use in production datacenters.",
+    "subStatements": [
+      {
+        "id": "CI20230906-e5-s1",
+        "statement": "Liquid cooling is a new technology that is not yet suitable for use in production datacenters.",
+        "answer": false,
+        "motivation": "The Building Infrastructures lecture presents liquid cooling (cold plates / direct-to-chip and immersion) as a mature, deployed solution for high-density and high-TDP hardware (e.g. GPUs/TPUs). It is already used in production data centers and HPC systems because air cooling cannot remove heat efficiently at those densities. Claiming it is 'not yet suitable for production' is false."
+      }
+    ],
+    "solution": "See per-statement motivation. Liquid cooling is an established technology used in production high-density data centers — the statement is **False**.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230906-e6",
+    "examId": "CI20230906",
+    "date": "2023-09-06",
+    "academicYear": "AA2324",
+    "exerciseNo": 6,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["storage-systems"],
+    "part": "second",
+    "prompt": "NAS devices can be used to share files across multiple clients, providing a centralized storage location for an organization.",
+    "subStatements": [
+      {
+        "id": "CI20230906-e6-s1",
+        "statement": "NAS devices can be used to share files across multiple clients, providing a centralized storage location for an organization.",
+        "answer": true,
+        "motivation": "From the Storage Systems lecture, **NAS (Network-Attached Storage)** exposes a **file-level** interface (NFS/SMB) over the LAN, so multiple clients can mount and share the same files concurrently. It provides exactly a centralized, shared file store for an organization. The statement is True."
+      }
+    ],
+    "solution": "See per-statement motivation. NAS provides centralized file-level sharing across many clients over the network — the statement is **True**.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230906-e7",
+    "examId": "CI20230906",
+    "date": "2023-09-06",
+    "academicYear": "AA2324",
+    "exerciseNo": 7,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["raid"],
+    "part": "second",
+    "prompt": "RAID 10 can achieve better sequential read performance than RAID 0.",
+    "subStatements": [
+      {
+        "id": "CI20230906-e7-s1",
+        "statement": "RAID 10 can achieve better sequential read performance than RAID 0.",
+        "answer": false,
+        "motivation": "From the RAID lecture, **RAID 0** stripes data across *all* N disks with no redundancy, giving the maximum read bandwidth (≈ N× a single disk). **RAID 10** uses half its disks for mirrors, so only N/2 stripes contribute to a sequential transfer; its peak sequential read bandwidth is at best that of RAID 0 with half the disks. Mirroring helps random/parallel reads and resilience, but it cannot exceed RAID 0's striping bandwidth for sequential reads. The statement is False."
+      }
+    ],
+    "solution": "See per-statement motivation. RAID 0 stripes across all disks for maximum sequential bandwidth; RAID 10 spends half its disks on mirrors and cannot beat it on sequential reads — the statement is **False**.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230906-e8",
+    "examId": "CI20230906",
+    "date": "2023-09-06",
+    "academicYear": "AA2324",
+    "exerciseNo": 8,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["cloud"],
+    "part": "second",
+    "prompt": "Multiple Compute Regions permit not only disaster recovery but also a very efficient application-level synchronous replication.",
+    "subStatements": [
+      {
+        "id": "CI20230906-e8-s1",
+        "statement": "Multiple Compute Regions permit not only disaster recovery but also a very efficient application-level synchronous replication.",
+        "answer": false,
+        "motivation": "The Cloud lecture describes geographic **Regions** as far apart for fault isolation, with **Availability Zones** inside a region for low-latency redundancy. Regions are separated by long distances, so the inter-region network latency is high; **synchronous** replication across regions would force every write to wait for the remote acknowledgement, which is slow and inefficient. Cross-region replication is therefore done **asynchronously**; synchronous replication is reserved for within a region / across AZs. So the claim of 'very efficient synchronous replication' across regions is False."
+      }
+    ],
+    "solution": "See per-statement motivation. Regions are geographically distant (high latency), so cross-region replication is asynchronous, not efficiently synchronous — the statement is **False**.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230906-e9",
+    "examId": "CI20230906",
+    "date": "2023-09-06",
+    "academicYear": "AA2324",
+    "exerciseNo": 9,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["cloud"],
+    "part": "second",
+    "prompt": "Cloud architectures can help organizations to reduce their carbon footprint by enabling resource sharing and consolidation.",
+    "subStatements": [
+      {
+        "id": "CI20230906-e9-s1",
+        "statement": "Cloud architectures can help organizations to reduce their carbon footprint by enabling resource sharing and consolidation.",
+        "answer": true,
+        "motivation": "The Cloud lecture highlights multi-tenancy and consolidation: many tenants share large, highly-utilized data centers instead of each running small under-utilized on-premises servers. Hyperscale facilities achieve much better energy efficiency (low PUE), higher utilization through virtualization/elasticity, and increasingly use renewable energy. This consolidation reduces overall energy use and carbon footprint, so the statement is True."
+      }
+    ],
+    "solution": "See per-statement motivation. Resource sharing/consolidation in efficient (low-PUE) cloud data centers reduces energy use and carbon footprint — the statement is **True**.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230906-e10",
+    "examId": "CI20230906",
+    "date": "2023-09-06",
+    "academicYear": "AA2324",
+    "exerciseNo": 10,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["servers"],
+    "part": "first",
+    "prompt": "FPGAs are more power-efficient and offer higher performance compared to CPUs for certain types of workloads.",
+    "subStatements": [
+      {
+        "id": "CI20230906-e10-s1",
+        "statement": "FPGAs are more power-efficient and offer higher performance compared to CPUs for certain types of workloads.",
+        "answer": true,
+        "motivation": "From the Server / hardware-accelerators material, **FPGAs** are reconfigurable devices that implement a custom hardware datapath for a specific task. For suitable workloads (streaming, fixed-function signal/packet processing, certain inference) this custom dataflow gives higher throughput and far better performance-per-watt than running the same task on a general-purpose CPU. The qualifier 'for certain types of workloads' makes the statement True."
+      }
+    ],
+    "solution": "See per-statement motivation. For suitable (custom-dataflow) workloads FPGAs beat CPUs on both performance and energy efficiency — the statement is **True**.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230906-e11",
+    "examId": "CI20230906",
+    "date": "2023-09-06",
+    "academicYear": "AA2324",
+    "exerciseNo": 11,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["dependability"],
+    "part": "first",
+    "prompt": "A scientific computation uses a server composed of **2 CPUs and 4 GPUs**, with $MTTF_{CPU}=450$ days and $MTTF_{GPU}=310$ days. The computation requires **both CPUs** and **one (any) of the 4 GPUs** to be working. All other components are ideal. Compute the reliability after 2 years, $R(2\\text{y})$ (use at least 4 decimal digits in intermediate steps).",
+    "solution": "**Method.** Exponential reliability $R(t)=e^{-t/MTTF}$. The two CPUs are in **series** (both required); the four GPUs form a **parallel / 1-of-4** block (any one suffices). The two blocks are then in series.\n\n$t = 2\\ \\text{y} = 730\\ \\text{days}$.\n\n**Single-component reliabilities:**\n$$R_{CPU}=e^{-730/450}=e^{-1.6222}=0.1975$$\n$$R_{GPU}=e^{-730/310}=e^{-2.3548}=0.0949$$\n\n**Two CPUs in series (both required):**\n$$R_{2CPU}=R_{CPU}^2=0.1975^2=0.0390$$\n\n**Four GPUs, 1-of-4 (parallel):**\n$$R_{GPU\\,block}=1-(1-R_{GPU})^4=1-(0.9051)^4=1-0.6711=0.3289$$\n\n**System (series of the two blocks):**\n$$R(2\\text{y})=R_{2CPU}\\cdot R_{GPU\\,block}=0.0390 \\times 0.3289$$\n$$\\boxed{R(2\\text{y}) \\approx 0.01282\\ (\\approx 1.28\\%)}$$",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230906-e12",
+    "examId": "CI20230906",
+    "date": "2023-09-06",
+    "academicYear": "AA2324",
+    "exerciseNo": 12,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["raid"],
+    "part": "second",
+    "prompt": "Design a **RAID 0+1** storage architecture composed of an array of **8 disks**. Each disk has $MTTF=400$ days, and we want the storage infrastructure to have $MTTF_{RAID01} > 12$ years. What is the **maximum MTTR** we can tolerate to satisfy the requirement? All disks are identical.",
+    "solution": "**Method.** RAID 0+1 = a **mirror of two striped sets**. With 8 disks we have two stripe-sets of 4 disks each, mirrored.\n\n**Stripe-set (4 disks in series — all needed for that stripe):**\n$$MTTF_{stripe}=\\frac{MTTF_{disk}}{4}=\\frac{400}{4}=100\\ \\text{days}$$\n\n**Mirror of the two stripe-sets (parallel with repair).** For two identical parallel units with repair, the standard RAID approximation is\n$$MTTF_{RAID01}=\\frac{MTTF_{stripe}^{2}}{2\\cdot MTTR}.$$\n\nImpose the requirement $MTTF_{RAID01} > 12\\ \\text{y} = 12\\times 365 = 4380\\ \\text{days}$ and solve for the **maximum** MTTR:\n$$MTTR_{max}=\\frac{MTTF_{stripe}^{2}}{2\\cdot 4380}=\\frac{100^{2}}{8760}=\\frac{10000}{8760}$$\n$$\\boxed{MTTR_{max}\\approx 1.14\\ \\text{days}\\ (\\approx 0.0031\\ \\text{y})}$$\n\nAny MTTR below ~1.14 days keeps the array MTTF above 12 years.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230906-e13",
+    "examId": "CI20230906",
+    "date": "2023-09-06",
+    "academicYear": "AA2324",
+    "exerciseNo": 13,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["storage-devices"],
+    "part": "first",
+    "prompt": "Consider a HDD with a data transfer rate of **10 MB/s**, a rotation speed of **6000 RPM**, a mean seek time of **2 ms**, and negligible controller overhead. What is the time needed to transfer a **4 KB block**?",
+    "solution": "**Method.** Single-block I/O service time (pessimistic, locality not applicable to one block):\n$$T_{I/O}=T_{seek}+T_{rotation}+T_{transfer}+T_{controller}.$$\n\n**Rotational latency** = half a revolution at 6000 RPM:\n$$T_{rot}=\\frac{1}{2}\\cdot\\frac{60}{6000}\\,\\text{s}=5\\ \\text{ms}$$\n\n**Transfer time** for one 4 KB block at 10 MB/s:\n$$T_{transfer}=\\frac{4\\ \\text{KB}}{10\\ \\text{MB/s}}\\approx 0.4\\ \\text{ms}$$\n\n**Seek** $=2$ ms, **controller** $\\approx 0$.\n\n$$T_{I/O}=2+5+0.4+0\\approx \\boxed{7.4\\ \\text{ms}}$$\n\n(The official key reports $\\approx 7.39$ ms — the small difference is only the KB/MB rounding of the transfer term.)",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230906-e14",
+    "examId": "CI20230906",
+    "date": "2023-09-06",
+    "academicYear": "AA2324",
+    "exerciseNo": 14,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["performance"],
+    "part": "second",
+    "prompt": "An Internet-based application has two **heterogeneous, load-balanced** web servers (WS1, WS2), an application server (AS) and a DBMS. Over a **30-minute** monitoring window the following were measured:\n- system arrivals = completions $A=C=1800$\n- DBMS visits $V_{DBMS}=10$, $S_{DBMS}=20$ ms\n- AS utilization $U_{AS}=60\\%$, AS completions $C_{AS}=3600$\n- fraction of pages on WS1 $F_{WS1}=V_{WS1}/V_{WS}=80\\%$ (with $V_{WS}=V_{WS1}+V_{WS2}$)\n- web-server-layer population $N_{WS}=8$, residence time $R_{WS}=400$ ms, $S_{WS2}=100$ ms\n\nCompute the throughput of the three layers: $X_{WS}=X_{WS1}+X_{WS2}$, $X_{AS}$ and $X_{DBMS}$.",
+    "solution": "**Method.** System throughput $X=C/T$; per-resource throughput via the forced-flow law $X_k=X\\cdot V_k$ (equivalently $X_k=C_k/T$).\n\n$T=30\\ \\text{min}=1800\\ \\text{s}$.\n\n**System throughput:**\n$$X=\\frac{C}{T}=\\frac{1800}{1800}=1\\ \\text{job/s}$$\n\n**DBMS layer** (forced-flow law, $V_{DBMS}=10$):\n$$X_{DBMS}=X\\cdot V_{DBMS}=1\\times 10=\\boxed{10\\ \\text{job/s}}$$\n\n**Application server** (use its own completions, $C_{AS}=3600$):\n$$X_{AS}=\\frac{C_{AS}}{T}=\\frac{3600}{1800}=\\boxed{2\\ \\text{job/s}}$$\n\n**Web-server layer** via Little's law at the WS layer ($N_{WS}=8$, $R_{WS}=0.4$ s):\n$$X_{WS}=\\frac{N_{WS}}{R_{WS}}=\\frac{8}{0.4}=\\boxed{20\\ \\text{job/s}}$$\n\nSo $X_{WS}=20$, $X_{AS}=2$, $X_{DBMS}=10$ jobs/s.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230906-e15",
+    "examId": "CI20230906",
+    "date": "2023-09-06",
+    "academicYear": "AA2324",
+    "exerciseNo": 15,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["performance"],
+    "part": "second",
+    "prompt": "For the system of Question 14, compute the average utilization of the two web servers, $U_{WS1}$ and $U_{WS2}$. (Recall $X_{WS}=20$ job/s, $F_{WS1}=0.8$, $S_{WS2}=100$ ms, and the two heterogeneous servers are load-balanced to the **same utilization**.)",
+    "solution": "**Method.** Split the web-layer throughput by the page fraction, then apply the utilization law $U_k=X_k\\cdot S_k$.\n\n**Per-server throughput:**\n$$X_{WS1}=F_{WS1}\\cdot X_{WS}=0.8\\times 20=16\\ \\text{job/s}$$\n$$X_{WS2}=(1-F_{WS1})\\cdot X_{WS}=0.2\\times 20=4\\ \\text{job/s}$$\n\n**Utilization of WS2** ($S_{WS2}=0.1$ s):\n$$U_{WS2}=X_{WS2}\\cdot S_{WS2}=4\\times 0.1=0.4=40\\%$$\n\nThe two servers are explicitly **load-balanced to the same utilization**, so\n$$\\boxed{U_{WS1}=U_{WS2}=0.4\\ (40\\%)}$$\n\n(Consistency check: this implies $S_{WS1}=U_{WS1}/X_{WS1}=0.4/16=25$ ms.)",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230906-e16",
+    "examId": "CI20230906",
+    "date": "2023-09-06",
+    "academicYear": "AA2324",
+    "exerciseNo": 16,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["performance"],
+    "part": "second",
+    "prompt": "For the system of Questions 14 and 15, using asymptotic bound analysis, what is the **maximum reachable system throughput** $X_{MAX}$?",
+    "solution": "**Method.** $X_{MAX}=\\dfrac{1}{D_{max}}$, where $D_{max}$ is the largest per-resource **service demand** $D_k=U_k/X$ (utilization relative to the system throughput $X=1$ job/s).\n\n**Service demands** (per system job, since $X=1$ job/s):\n$$D_{DBMS}=X_{DBMS}\\cdot S_{DBMS}=10\\times 0.02=0.20\\ \\text{s}$$\n$$D_{AS}=U_{AS}=0.60\\ \\text{s}$$\n$$D_{WS1}=U_{WS1}=0.40\\ \\text{s},\\qquad D_{WS2}=U_{WS2}=0.40\\ \\text{s}$$\n\nThe **bottleneck** is the application server (highest demand / utilization):\n$$D_{max}=D_{AS}=0.60\\ \\text{s}$$\n\n$$X_{MAX}=\\frac{1}{D_{max}}=\\frac{1}{0.60}\\approx \\boxed{1.66\\ \\text{job/s}}$$",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230906-e17",
+    "examId": "CI20230906",
+    "date": "2023-09-06",
+    "academicYear": "AA2324",
+    "exerciseNo": 17,
+    "marks": 5,
+    "type": "theory-essay",
+    "topics": ["storage-devices"],
+    "part": "first",
+    "prompt": "Explain the concept of **Wear Leveling** in the context of SSDs.",
+    "solution": "**Why it is needed.** In an SSD the storage medium is **NAND flash**, organized in **pages** (the unit of read/write) grouped into **blocks** (the unit of erase). Flash cannot be overwritten in place: a page must be **erased** (block-wise) before it can be rewritten, and **each block tolerates only a limited number of program/erase (P/E) cycles** before it wears out and becomes unreliable. Cells therefore have a finite endurance.\n\n**The problem.** If writes always hit the same logical locations, the underlying physical blocks holding 'hot' data would be erased far more often than blocks holding 'cold' data. Those few blocks would reach their P/E limit and fail prematurely while most of the device is still healthy, drastically shortening SSD lifetime.\n\n**Wear leveling.** Wear leveling is the **FTL (Flash Translation Layer)** policy that spreads program/erase cycles **as evenly as possible across all physical blocks**, so that no block wears out much faster than the others. The FTL keeps a **logical-to-physical mapping**: a logical write is redirected to a fresh/erased physical page (out-of-place update), the old page is marked invalid, and the mapping is updated. By continually relocating data:\n- **Dynamic wear leveling** balances the erases among the blocks currently being rewritten (the actively written data).\n- **Static wear leveling** additionally moves **rarely-changing (cold) data** off low-wear blocks so those blocks can also take their share of erases.\n\n**Related mechanisms.** Wear leveling works together with **over-provisioning** (spare blocks) and **garbage collection** (reclaiming blocks full of invalid pages by compacting the still-valid pages and erasing the block).\n\n**Result.** By evening out the erase count over the whole device, wear leveling maximizes the SSD's overall **endurance and lifetime**, at the cost of extra internal data movement (write amplification) and the need for the FTL mapping.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20230906-e18",
+    "examId": "CI20230906",
+    "date": "2023-09-06",
+    "academicYear": "AA2324",
+    "exerciseNo": 18,
+    "marks": 5,
+    "type": "theory-essay",
+    "topics": ["storage-systems"],
+    "part": "second",
+    "prompt": "Explain clearly why many data centers have a **raised floor** within the server rooms.",
+    "solution": "A **raised (access) floor** is a structural floor built on adjustable pedestals, leaving a **plenum** (empty space) of typically tens of centimetres between the structural slab and the panels on which the racks stand. Data centers use it for several reasons covered in the Building Infrastructures lecture:\n\n**1. Cooling air distribution.** The most important reason. The under-floor plenum is used as a **pressurized cold-air duct**: CRAC/CRAH units push chilled air into the plenum, and **perforated floor tiles** placed in the cold aisles let the cold air rise directly in front of the server intakes. This implements the **hot-aisle / cold-aisle** containment scheme and delivers cold air efficiently exactly where it is needed.\n\n**2. Cable management.** Power cables, network cabling and sometimes cooling pipes can be routed **under the floor**, keeping them organized, protected and out of the airflow above, and making it easy to add/reroute connections without disrupting the racks.\n\n**3. Flexibility / reconfiguration.** Floor tiles can be lifted and moved, so the layout (which tiles are perforated, where cooling and cabling go) can be reconfigured as the rack layout and heat-density map change.\n\n**4. Other utilities and safety.** The plenum can host chilled-water piping, leak-detection sensors and grounding, and the raised structure helps keep equipment above any minor floor water/leaks.\n\n**In short:** the raised floor primarily turns the under-floor space into an efficient **cold-air distribution plenum** for the cooling system, while also providing tidy, flexible routing for cabling and other utilities — which is why it is a common design choice in server rooms.",
+    "solutionSource": "authored"
+  }
+]

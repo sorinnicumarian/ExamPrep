@@ -1,0 +1,13 @@
+[
+  { "key": "dc-intro",        "name": "Data Centers & WSC",                 "short": "DC/WSC",      "color": "#2563eb" },
+  { "key": "servers",         "name": "Servers & Hardware",                 "short": "Servers",     "color": "#0891b2" },
+  { "key": "storage-devices", "name": "Storage Devices (HDD/SSD)",          "short": "HDD/SSD",     "color": "#0d9488" },
+  { "key": "dependability",   "name": "Dependability (Reliability/Avail.)", "short": "Depend.",     "color": "#dc2626" },
+  { "key": "raid",            "name": "RAID",                               "short": "RAID",        "color": "#db2777" },
+  { "key": "storage-systems", "name": "DAS/NAS/SAN & Building",             "short": "NAS/SAN",     "color": "#9333ea" },
+  { "key": "performance",     "name": "Performance & Queuing Networks",     "short": "Perf/QN",     "color": "#ca8a04" },
+  { "key": "networking",      "name": "Datacenter Networking",              "short": "Network",     "color": "#65a30d" },
+  { "key": "cloud",           "name": "Cloud Computing",                    "short": "Cloud",       "color": "#0ea5e9" },
+  { "key": "virtualization",  "name": "Virtualization & Containers",        "short": "Virt.",       "color": "#7c3aed" },
+  { "key": "xaas",            "name": "X / ML-as-a-Service",                "short": "XaaS",        "color": "#f59e0b" }
+]

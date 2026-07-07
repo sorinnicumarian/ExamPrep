@@ -1,0 +1,228 @@
+[
+  {
+    "id": "AMI20260109-e1",
+    "examId": "AMI20260109",
+    "date": "2026-01-09",
+    "academicYear": "AA2526",
+    "exerciseNo": 1,
+    "type": "multiple-choice",
+    "topics": ["har-smarthome"],
+    "prompt": "In smart-home HAR, why are the environmental sensors most commonly used (e.g. on doors, drawers, the fridge, chairs) called *binary* sensors?",
+    "choices": [
+      {"label": "A", "text": "Because each one reports the resident's interaction as a two-bit code transmitted to the gateway"},
+      {"label": "B", "text": "Because each event is windowed into exactly two segments before classification"},
+      {"label": "C", "text": "Because they can generate only two states, ON and OFF, reflecting interaction with the home"},
+      {"label": "D", "text": "Because two such sensors must be co-located to confirm a single resident interaction"}
+    ],
+    "correctChoice": "C",
+    "solution": "**Concept.** Smart-home HAR relies on cheap *binary* environmental sensors that report exactly two states, ON and OFF. They implement *dense sensing*: each one watches a specific interaction with the home — a magnetic sensor on a fridge door, a pressure mat on a chair, a PIR for room presence. The label comes from the two physical states, not from any data format.\n\n**Why C is correct.** C states the defining property directly: a binary sensor can generate only ON/OFF, reflecting whether the resident is interacting with that component (door open/closed, sitting/not).\n\n**Why the others are wrong.** A confuses the *physical* two-state nature with a transmission-encoding detail the deck never mentions. B borrows the windowing/segmentation vocabulary, which is a downstream pre-processing step, not why the sensor is \"binary\". D invents a two-sensor co-location rule; each sensor reports its own interaction independently.\n\n**Takeaway.** \"Binary\" means two physical states (ON/OFF), not two bits, two windows, or two sensors.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260109-e2",
+    "examId": "AMI20260109",
+    "date": "2026-01-09",
+    "academicYear": "AA2526",
+    "exerciseNo": 2,
+    "type": "multiple-choice",
+    "topics": ["har-smarthome"],
+    "prompt": "A resident is sitting motionless on the sofa reading. Which limitation of a Passive InfraRed (PIR) sensor is most relevant in this scenario?",
+    "choices": [
+      {"label": "A", "text": "PIR senses only motion, so a still subject in a room is not revealed"},
+      {"label": "B", "text": "PIR fires only on door/drawer openings, so the sofa area is uncovered"},
+      {"label": "C", "text": "PIR reports presence but cannot tell which resident is on the sofa"},
+      {"label": "D", "text": "PIR needs a wearable on the subject before it can register presence"}
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** A Passive InfraRed (PIR) sensor detects changes in infrared radiation caused by a *moving* warm body, so it senses motion/proximity in a region. Its blind spot is a stationary person: with no movement there is no IR change, so the sensor stays silent even though someone is there.\n\n**Why A is correct.** A resident sitting motionless reading produces no motion, so the PIR cannot reveal their presence — exactly the limitation that bites in this scenario.\n\n**Why the others are wrong.** B describes magnetic door/drawer sensors, not PIR's motion sensing. C names a real binary-sensor limitation (no resident identity), but that is not what fails here — the issue is that the sensor never fires at all. D invents a wearable dependency; PIR is a passive ambient sensor needing nothing on the subject.\n\n**Takeaway.** PIR sees movement, not presence — a still subject is invisible to it.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260109-e3",
+    "examId": "AMI20260109",
+    "date": "2026-01-09",
+    "academicYear": "AA2526",
+    "exerciseNo": 3,
+    "type": "multiple-choice",
+    "topics": ["har-smarthome"],
+    "prompt": "Why are classic fixed-time sliding windows often a poor choice for segmenting binary environmental sensor streams?",
+    "choices": [
+      {"label": "A", "text": "Because their steady high sampling rate packs too many events into each fixed window"},
+      {"label": "B", "text": "Because with no fixed sampling rate, events fall unevenly and many windows are empty"},
+      {"label": "C", "text": "Because fixed-time windows are too long to capture short door-opening events accurately"},
+      {"label": "D", "text": "Because each fixed window tends to span a transition between two distinct activities"}
+    ],
+    "correctChoice": "B",
+    "solution": "**Concept.** Fixed-time windows (cut every T seconds) suit sensors with a steady sampling rate, like an accelerometer streaming continuous values. Binary environmental sensors instead fire only when the resident touches something, so they have *no fixed sampling rate*. Events bunch up during activity and vanish during idle periods.\n\n**Why B is correct.** With no fixed rate, events are spread unevenly across equal-length windows; during silent periods many windows hold no events at all, producing unrepresentative samples that waste model capacity.\n\n**Why the others are wrong.** A asserts a steady high rate — the opposite of reality, since binary sensors have no fixed rate at all. C blames window *length* for missing brief events, but the deck's objection is uneven/empty filling, not duration tuning. D names the activity-transition problem, which is a feature-weighting issue (MI matrix), not why fixed-time segmentation fails.\n\n**Takeaway.** No fixed sampling rate means fixed-time windows are unevenly filled — prefer event-based windowing.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260109-e4",
+    "examId": "AMI20260109",
+    "date": "2026-01-09",
+    "academicYear": "AA2526",
+    "exerciseNo": 4,
+    "type": "multiple-choice",
+    "topics": ["har-smarthome"],
+    "prompt": "In *event-based* windowing of binary sensor streams, what is held fixed and what becomes variable?",
+    "choices": [
+      {"label": "A", "text": "The covered time interval is held fixed, while the number of events per window varies"},
+      {"label": "B", "text": "The decay rate fixes how far back events count; both interval and count vary"},
+      {"label": "C", "text": "The event count and the time interval are both fixed once `k` is tuned"},
+      {"label": "D", "text": "The number of events per window is fixed; the covered time interval varies"}
+    ],
+    "correctChoice": "D",
+    "solution": "**Concept.** Event-based windowing turns the trade-off around: instead of fixing duration, it fixes the *number of events* per window (e.g. the latest `k`). Because events arrive irregularly, the time span each window covers then stretches and shrinks — short when activity is dense, long during sparse periods.\n\n**Why D is correct.** Fixing the event count guarantees every window carries the same amount of information and avoids the empty windows that plague fixed-time segmentation; the covered time interval is what varies.\n\n**Why the others are wrong.** A describes time-based windowing (fixed interval, variable event count) — the opposite. B drags in the temporal decay rate `chi`, which weights events *within* a window but does not define what is held fixed during segmentation. C wrongly claims both are fixed: tuning `k` fixes only the event count, never the time span.\n\n**Takeaway.** Event-based windowing fixes the event count and lets the time span vary.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260109-e5",
+    "examId": "AMI20260109",
+    "date": "2026-01-09",
+    "academicYear": "AA2526",
+    "exerciseNo": 5,
+    "type": "multiple-choice",
+    "topics": ["har-smarthome"],
+    "prompt": "When classifying the activity of the *latest* sensor event in an event-based window, the plain activation count is replaced by a *discounted count*. What is the purpose of the temporal decay rate $\\chi$ applied to each past activation?",
+    "choices": [
+      {"label": "A", "text": "To weight each past activation by its time distance to the latest event, so distant ones count less"},
+      {"label": "B", "text": "To weight each activation by its semantic affinity to the latest event in the window"},
+      {"label": "C", "text": "To rescale the activation counts into $[0,1]$ before they enter the feature vector"},
+      {"label": "D", "text": "To set the fixed number of events `k` that each event-based window must contain"}
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** When you classify the activity of the *latest* event using the past `k-1` events as context, not all past events deserve equal weight — events long ago probably belong to a different activity. The *discounted count* fixes this: each past activation of sensor `j` is multiplied by a factor that shrinks with its time distance to the latest event `i`, governed by a temporal decay rate `chi`.\n\n**Why A is correct.** That decay weights each activation by its temporal distance, so temporally distant events contribute less to the feature vector.\n\n**Why the others are wrong.** B describes the *sensor-dependency* (Mutual Information) weighting by semantic affinity, a different strategy from time discounting. C is generic $[0,1]$ normalisation, not time-aware. D confuses the decay rate with `k`, the window-size parameter set during segmentation.\n\n**Takeaway.** `chi` time-discounts past activations; tune it — too low keeps distant noise, too high erases close context.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260109-e6",
+    "examId": "AMI20260109",
+    "date": "2026-01-09",
+    "academicYear": "AA2526",
+    "exerciseNo": 6,
+    "type": "multiple-choice",
+    "topics": ["har-smarthome"],
+    "prompt": "What problem is the *Mutual Information matrix* (sensor-dependency features) designed to mitigate in event-based recognition?",
+    "choices": [
+      {"label": "A", "text": "That distant past events in a window are weighted as heavily as recent ones"},
+      {"label": "B", "text": "That binary sensors fire at no fixed rate, so windows fill unevenly with events"},
+      {"label": "C", "text": "That at a transition a window holds temporally close but unrelated events"},
+      {"label": "D", "text": "That a window cannot say which of several residents triggered each event"}
+    ],
+    "correctChoice": "C",
+    "solution": "**Concept.** Time-discounting still treats two temporally close events as related — but at a *transition* between activities a window can hold close-in-time events that have nothing to do with each other (e.g. last fridge event of cooking, first TV event of relaxing). The Mutual Information matrix captures *semantic* relatedness: from training data it measures how often each pair of sensor-event types fires consecutively, then weights the activation count by that affinity to the latest event.\n\n**Why C is correct.** It directly targets transitions, where a window mixes temporally close but poorly related events.\n\n**Why the others are wrong.** A is the problem the *time-dependency* decay `chi` solves, not the MI matrix. B (no fixed rate) is solved by event-based windowing itself. D is multi-inhabitant data association, out of scope here.\n\n**Takeaway.** The MI matrix down-weights co-occurring-but-unrelated events at transitions — but can overfit the training set.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260109-e7",
+    "examId": "AMI20260109",
+    "date": "2026-01-09",
+    "academicYear": "AA2526",
+    "exerciseNo": 7,
+    "type": "multiple-choice",
+    "topics": ["har-smarthome"],
+    "prompt": "Consider the *last-fired* encoding of binary sensor events into a time series for a deep model. How is each time instant encoded?",
+    "choices": [
+      {"label": "A", "text": "At each instant a sensor is currently active it is marked 1, all others 0"},
+      {"label": "B", "text": "At each instant only the most recently fired sensor is marked 1, rest 0"},
+      {"label": "C", "text": "At each instant a sensor whose status just changed is marked 1, all others 0"},
+      {"label": "D", "text": "At each instant the sensor with the longest active span is marked 1, others 0"}
+    ],
+    "correctChoice": "B",
+    "solution": "**Concept.** To feed binary events to a deep model you build a 0/1 time series per sensor. The deck lists three encodings. *Raw*: mark 1 at every instant a sensor is active. *Change-point*: mark 1 only at instants where a sensor's status flips (ON to OFF). *Last-fired*: at each instant, only the single most recently triggered sensor carries a 1 (everything else 0), so the series always points at the latest interaction.\n\n**Why B is correct.** It is the verbatim definition of last-fired: only the most recently fired event is encoded with 1 at each instant.\n\n**Why the others are wrong.** A is the *raw* encoding (every currently-active sensor gets a 1). C is the *change-point* encoding (1 only when a status flips). D invents a longest-active-span rule that appears in none of the three deck encodings.\n\n**Takeaway.** Last-fired keeps a 1 only on the latest-triggered sensor at each time step.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260109-e8",
+    "examId": "AMI20260109",
+    "date": "2026-01-09",
+    "academicYear": "AA2526",
+    "exerciseNo": 8,
+    "type": "multiple-choice",
+    "topics": ["har-smarthome"],
+    "prompt": "The deck notes that, with small smart-home datasets, GRUs are sometimes preferred over LSTMs. Which statement best matches the reasons given?",
+    "choices": [
+      {"label": "A", "text": "A lighter unit (two gates, one memory), faster and less prone to overfitting"},
+      {"label": "B", "text": "More gates than an LSTM, which lets a GRU model very long sequences more reliably"},
+      {"label": "C", "text": "A unit that learns directly from the activity-image, removing the need for an LSTM"},
+      {"label": "D", "text": "A unit that absorbs the segmentation step, so the raw event stream needs no windowing"}
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** A GRU is a streamlined LSTM: it keeps just two gates — *reset* (how much past memory to forget) and *update* (how to blend input with memory) — and a single memory that doubles as the output. Fewer parameters mean faster training and less overfitting, which matters because smart-home datasets are small. The price is weaker handling of very long sequences.\n\n**Why A is correct.** It captures exactly this profile: lighter unit (two gates, one memory), faster, more robust on small data, but not ideal for long sequences.\n\n**Why the others are wrong.** B reverses reality — GRUs have *fewer* gates and are explicitly *not adequate* for long sequences. C confuses GRUs with the CNN image-representation route. D is false: a fixed-size (time-based) segmentation is still required to feed any recurrent model.\n\n**Takeaway.** Prefer GRU over LSTM on small datasets; it trades long-sequence power for speed and less overfitting.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260109-e9",
+    "examId": "AMI20260109",
+    "date": "2026-01-09",
+    "academicYear": "AA2526",
+    "exerciseNo": 9,
+    "type": "multiple-choice",
+    "topics": ["har-smarthome"],
+    "prompt": "In the *image representation* of binary sensor data for a CNN, how are the two axes and the pixels of the activity image defined?",
+    "choices": [
+      {"label": "A", "text": "The x axis encodes sensors, each row encodes time, and pixel intensity encodes power"},
+      {"label": "B", "text": "The x axis encodes time, each row encodes a resident, and a white pixel marks motion"},
+      {"label": "C", "text": "Both axes encode time, and each pixel directly stores the recognised activity label"},
+      {"label": "D", "text": "The x axis encodes time, each row encodes a sensor, and a white pixel marks active instants"}
+    ],
+    "correctChoice": "D",
+    "solution": "**Concept.** To reuse image CNNs, binary sensor data is rendered as an *activity image*: a black/white matrix. The x axis is time, spanning the window at a chosen granularity (e.g. one cell per second); each row is a specific sensor event; a white pixel marks every instant that sensor was active. The CNN then learns spatial patterns over this synthetic picture.\n\n**Why D is correct.** It names the three construction rules exactly: time on x, one sensor per row, white pixels for active instants.\n\n**Why the others are wrong.** A swaps the axes and smuggles in a power value, but the matrix is binary (black/white), not power-scaled. B keeps time on x but puts residents on the rows; rows are sensors, and binary sensors cannot identify residents anyway. C puts time on both axes with labels as pixels, which is not how the matrix is built.\n\n**Takeaway.** The activity image = time on x, one sensor per row, white pixel when active.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260109-e10",
+    "examId": "AMI20260109",
+    "date": "2026-01-09",
+    "academicYear": "AA2526",
+    "exerciseNo": 10,
+    "type": "multiple-choice",
+    "topics": ["har-smarthome"],
+    "prompt": "Recognising ADLs over the long term in a smart home is motivated in the deck mainly because it enables which healthcare-oriented goal?",
+    "choices": [
+      {"label": "A", "text": "Reconstructing the resident's exact indoor trajectory from fixed binary sensor positions"},
+      {"label": "B", "text": "Detecting significant long-term changes in activity execution, an early sign of cognitive decline"},
+      {"label": "C", "text": "Maximising recognition accuracy on each individual short activity window in real time"},
+      {"label": "D", "text": "Replacing handcrafted feature extraction with an end-to-end deep model on raw events"}
+    ],
+    "correctChoice": "B",
+    "solution": "**Concept.** The healthcare motivation for ADL recognition is *ambient assisted living*: continuously monitoring how an elderly resident performs everyday activities. Watching trends over weeks and months lets the system spot drift — slower, skipped, or disordered routines — that a single snapshot would miss.\n\n**Why B is correct.** The deck frames long-term recognition as detecting significant changes in activity execution, which can be early indicators of problems such as cognitive decline.\n\n**Why the others are wrong.** A is the *wandering / indoor-localization* goal, a different healthcare use that needs trajectories, not long-term activity change. C is a per-window accuracy concern, not the *long-term* motivation in question. D is an architecture choice (automatic feature extraction), not a healthcare goal.\n\n**Takeaway.** Long-term ADL monitoring flags behavioural change early — a key ambient-assisted-living goal.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260109-e11",
+    "examId": "AMI20260109",
+    "date": "2026-01-09",
+    "academicYear": "AA2526",
+    "exerciseNo": 11,
+    "type": "theory-essay",
+    "topics": ["har-smarthome"],
+    "prompt": "Smart-home HAR pipelines must segment a stream of binary environmental sensor events before classification.\n\n**(a)** Explain why fixed-time sliding windows are often unsuitable for binary environmental sensors, and describe how *event-based windowing* works and why it addresses those issues.\n\n**(b)** Event-based windowing introduces its own problems. Describe the *time-dependency* and *sensor-dependency* feature strategies used to mitigate them, including the role of the temporal decay rate $\\chi$ and of the Mutual Information matrix.",
+    "solution": "**(a)** Fixed-time sliding windows work well for sensors with a continuous, fixed sampling rate (e.g. accelerometers), but binary environmental sensors have *no fixed sampling rate*: events fire only when the resident interacts with the home. As a result, the distribution of events across equal-length time windows is inconsistent, and during silent periods many windows contain no events at all, producing unrepresentative samples. Event-based windowing instead segments the stream into windows containing a *fixed number* of sensor events; the time interval covered then varies (short when activity is dense, long during sparse periods). The number of events per window is a parameter to tune. Because windows are built around actual events, empty/unrepresentative windows are avoided. A common variant slides by a single event: each new event forms a window with the previous `k-1` events as context, and the window's ground-truth label is the activity of the latest event, which also helps real-time recognition.\n\n**(b)** Event-based windows have two issues: (i) consecutive events may be far apart in time, so treating them as equally important is wrong; (ii) at a transition between activities a window may mix events from two activities. The *time-dependency* strategy replaces the plain activation count with a *discounted count*: each activation of a sensor `j` is weighted by its temporal distance to the latest event `i` in the window, using a temporal decay rate $\\chi$. Distant events thus contribute less. If $\\chi$ is too low, temporally distant events still affect recognition; if too high, even close events are dismissed — so $\\chi$ is tuned empirically. The *sensor-dependency* strategy builds a Mutual Information matrix encoding how often each pair of sensor-event types occurs *consecutively* in the training stream; this weight (relative to the last event) down-weights events that are temporally close but semantically unrelated, helping at activity transitions. Its drawback is possible overfitting to the specific training set. The two strategies can be combined.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260109-e12",
+    "examId": "AMI20260109",
+    "date": "2026-01-09",
+    "academicYear": "AA2526",
+    "exerciseNo": 12,
+    "type": "theory-essay",
+    "topics": ["har-smarthome"],
+    "prompt": "Smart-home HAR can rely on *handcrafted* feature extraction or on *automatic* feature extraction with deep models.\n\n**(a)** Describe the basic handcrafted feature vector extracted from a window of the latest $k$ sensor events, and explain how *past activities* can be incorporated as additional features and why this must be done carefully.\n\n**(b)** For automatic feature extraction, explain why time-based segmentation becomes appropriate again, describe the three binary encodings used to turn sensor events into time series (raw, change-point, last-fired), and name the families of deep models applied.",
+    "solution": "**(a)** The basic handcrafted approach turns a window of the latest `k` sensor events into a fixed-dimensional vector capturing information such as: the timestamp of the first event, the timestamp of the last event, the temporal span of the window, and an *activation count* — for each sensor-event type, how many times it fired in the window. Beyond the current window, the activities recognised in *previous* windows can hint at the current one (e.g. washing dishes typically follows eating), so the classifier's previous outputs are added as extra features about past activities. This must be done carefully because past classifications may be incorrect; therefore the *confidence* of those previous predictions should be used rather than treating them as ground truth.\n\n**(b)** In automatic feature extraction the goal is for the deep model to learn embeddings from the raw (pre-processed) time series. These models require *fixed-size* inputs, so time-based segmentation becomes appropriate again. To feed binary sensor events as a time series, three encodings are used: *raw* — at each instant (e.g. each second) encode 1 if the sensor event is active, 0 otherwise; *change-point* — encode 1 only at instants where the sensor's status changes (e.g. ON to OFF); *last-fired* — at each instant only the most recently fired sensor is marked with 1. Multiple encodings can be combined, yielding several series per sensor. The deep model families applied include recurrent models (LSTM, and GRU which is lighter and better for small datasets), LSTM-CNN hybrids, and CNNs operating on an image representation of the sensor data (a binary matrix with time on the x axis and one row per sensor).",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260109-e13",
+    "examId": "AMI20260109",
+    "date": "2026-01-09",
+    "academicYear": "AA2526",
+    "exerciseNo": 13,
+    "type": "theory-essay",
+    "topics": ["har-smarthome"],
+    "prompt": "Smart homes use several types of ambient sensing, and the choice of modality has consequences for both capability and acceptance.\n\n**(a)** Describe at least four types of binary/ambient sensors used for smart-home HAR (magnetic, PIR, pressure mat, smart plug, sleep mat) and what each captures, and state two intrinsic limitations shared by binary sensors regarding localisation and resident identity.\n\n**(b)** Explain why audio and video sensing are deliberately set aside in this course, and how mobile/wearable devices and indoor localization can complement (but not replace) ambient sensors for recognising high-level ADLs.",
+    "solution": "**(a)** Magnetic sensors detect opening/closing of doors and drawers via a magnet (OFF when the magnet is close/closed, ON when open) — used on kitchen and medicine drawers, fridge, closets, etc. PIR sensors detect human motion/proximity to monitor presence and movement in rooms, but only sense *motion*, so a still subject is not revealed. Pressure mat sensors detect when someone sits on a chair or stands up. Smart plugs detect appliance usage; though they can report detailed power, they can be treated as binary via thresholds (ON/OFF). Smart/sleep mat sensors unobtrusively monitor sleep quality (phases such as light/REM, snoring, heart rate). Two intrinsic limitations of binary sensors: (i) they are in fixed positions and not present everywhere in the home, so they give only coarse localisation; (ii) they cannot identify *which* resident triggered them.\n\n**(b)** Audio and video could add rich context, but cameras and microphones are often perceived as too privacy-intrusive, especially by elderly subjects, so the course deliberately excludes them. Mobile/wearable devices alone cannot determine complex high-level ADLs, but combined with environmental sensors they add useful information — e.g. smartwatch gestures, or posture to tell sitting from standing — and play a major role in specific tasks like fall detection. Indoor localization provides richer context about residents' positions and trajectories (which fixed binary sensors give only partially, and without identity), but its drawback is that the resident must wear a mobile/wearable device. Thus these technologies *complement* ambient sensors rather than replacing them for ADL recognition.",
+    "solutionSource": "authored"
+  }
+]

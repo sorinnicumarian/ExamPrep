@@ -1,0 +1,228 @@
+[
+  {
+    "id": "AMI20260108-e1",
+    "examId": "AMI20260108",
+    "date": "2026-01-08",
+    "academicYear": "AA2526",
+    "exerciseNo": 1,
+    "type": "multiple-choice",
+    "topics": ["har-mobile"],
+    "prompt": "On mobile/wearable devices, **inertial sensors** are the most adopted for HAR. Which set correctly pairs each inertial sensor with what it measures?",
+    "choices": [
+      {"label": "A", "text": "Accelerometer measures the magnetic field on three axes; gyroscope measures acceleration; magnetometer measures angular speed and direction changes."},
+      {"label": "B", "text": "Accelerometer measures angular speed and direction changes; gyroscope measures the magnetic field on three axes; magnetometer measures acceleration on three axes."},
+      {"label": "C", "text": "Accelerometer measures acceleration; gyroscope measures angular speed and direction changes; magnetometer measures the magnetic field on three axes."},
+      {"label": "D", "text": "Accelerometer measures acceleration on three axes; gyroscope measures the magnetic field; magnetometer measures angular speed and direction changes."}
+    ],
+    "correctChoice": "C",
+    "solution": "**Concept.** Mobile/wearable HAR relies mostly on *inertial sensors* because they directly reveal physical body movement. Each measures a different physical quantity on three axes: the **accelerometer** measures acceleration, the **gyroscope** measures angular speed (revealing direction changes), and the **magnetometer** measures the magnetic field (changes can hint at the activity).\n\n**Why C is correct.** It pairs each inertial sensor with the right three-axis quantity exactly as defined.\n\n**Why the others are wrong.** A rotates all three pairings by one position; B keeps the accelerometer wrong (angular speed belongs to the gyroscope) and shuffles the rest; D pairs the accelerometer correctly but swaps the gyroscope and magnetometer roles. Each leaves at least one sensor mislabeled.\n\n**Takeaway.** Accelerometer = acceleration, gyroscope = angular speed, magnetometer = magnetic field, each on three axes.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260108-e2",
+    "examId": "AMI20260108",
+    "date": "2026-01-08",
+    "academicYear": "AA2526",
+    "exerciseNo": 2,
+    "type": "multiple-choice",
+    "topics": ["har-mobile"],
+    "prompt": "What is **linear acceleration**, and why is it useful in HAR pre-processing?",
+    "choices": [
+      {"label": "A", "text": "The acceleration left after removing the gravity component (using gyroscope orientation), better discriminating the subject's actual movements."},
+      {"label": "B", "text": "The acceleration left after removing the device's motion component, keeping only the constant gravity vector to estimate orientation."},
+      {"label": "C", "text": "The accelerometer signal smoothed with a low-pass filter, which deliberately keeps the gravity component intact for stability."},
+      {"label": "D", "text": "The accelerometer signal projected onto a single dominant axis, which reduces the data size before segmentation begins."}
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** A raw accelerometer always reads gravity (about 9.8 m/s² downward) on top of the user's actual motion. That constant gravity component drowns out the subtle accelerations of real gestures. **Linear acceleration** is what's left after subtracting gravity from each axis, so it isolates the subject's true movement. To subtract gravity correctly you need the device's orientation, derived from the gyroscope.\n\n**Why A is correct.** It defines linear acceleration as the gravity-removed signal (using gyroscope orientation) that better discriminates real movements.\n\n**Why the others are wrong.** B inverts which component is removed — it keeps gravity and drops the motion, which is the opposite goal; C describes low-pass smoothing that deliberately *keeps* gravity rather than removing it; D describes single-axis projection for data reduction, not gravity removal.\n\n**Takeaway.** Linear acceleration = accelerometer signal minus gravity, giving a cleaner view of actual motion.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260108-e3",
+    "examId": "AMI20260108",
+    "date": "2026-01-08",
+    "academicYear": "AA2526",
+    "exerciseNo": 3,
+    "type": "multiple-choice",
+    "topics": ["har-mobile"],
+    "prompt": "In **sliding-window segmentation**, which two parameters must be tuned, and what role does overlap play?",
+    "choices": [
+      {"label": "A", "text": "Sampling rate and window overlap; overlap controls how much signal resolution each window retains."},
+      {"label": "B", "text": "Segment length and sampling rate; overlap mainly reduces the battery drain of repeated computation."},
+      {"label": "C", "text": "Segment length and window overlap; a longer segment length is what captures the transitions between activities."},
+      {"label": "D", "text": "Segment length and window overlap; overlap is crucial to capture the transitions between activities."}
+    ],
+    "correctChoice": "D",
+    "solution": "**Concept.** Sliding-window segmentation chops a continuous sensor stream into fixed chunks to classify. It has exactly two tunable parameters: **segment (window) length** and **overlap** (how much consecutive windows share). Overlap matters because activities change gradually; overlapping windows ensure a boundary moment appears in some window, helping capture transitions. A typical setting for simple activities is 3 s windows with 50% overlap.\n\n**Why D is correct.** It names the two real parameters — length and overlap — and the role of overlap in capturing transitions.\n\n**Why the others are wrong.** A swaps in sampling rate (an acquisition setting, not a window parameter) and misattributes overlap to resolution; B pairs length with sampling rate and credits overlap with saving battery, when overlap actually adds computation; C names both correct parameters but attributes transition-capturing to segment length, when it is overlap that does this.\n\n**Takeaway.** Tune window length and overlap; overlap exists to capture activity transitions.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260108-e4",
+    "examId": "AMI20260108",
+    "date": "2026-01-08",
+    "academicYear": "AA2526",
+    "exerciseNo": 4,
+    "type": "multiple-choice",
+    "topics": ["har-mobile"],
+    "prompt": "When choosing the **window size** for HAR, what trade-off does the course emphasize?",
+    "choices": [
+      {"label": "A", "text": "Response delay vs accuracy: simple physical activities suit shorter windows, while complex activities need longer ones."},
+      {"label": "B", "text": "Response delay vs accuracy: complex activities suit shorter windows, while simple physical activities need longer ones."},
+      {"label": "C", "text": "Handcrafted vs automatic features: shorter windows favor handcrafted statistics, longer windows favor deep models."},
+      {"label": "D", "text": "Accelerometer vs gyroscope rate: shorter windows favor the gyroscope, longer windows favor the accelerometer."}
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** Window size sets how much signal the model sees before deciding. A longer window captures more context (better for complex activities and accuracy) but the system must wait for it to fill before responding, adding delay. A shorter window responds fast but may miss the pattern. So the core trade-off is **responsiveness (delay) vs accuracy** — the slides label these `Wmin_size` (prioritize speed) and `Wmax_perf` (prioritize accuracy). Simple activities like running/walking suit short windows (~3 s, 50% overlap); complex ones need longer.\n\n**Why A is correct.** It states exactly this delay-vs-accuracy trade-off and the simple-short / complex-long rule.\n\n**Why the others are wrong.** B names the right trade-off but reverses the rule — simple activities take the short windows, not the long ones; C reframes it as a feature-extraction choice, which is a different topic; D invents a per-sensor sampling-rate trade-off that the window-size discussion never makes.\n\n**Takeaway.** Bigger windows boost accuracy but slow response — pick size by activity complexity and real-time needs.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260108-e5",
+    "examId": "AMI20260108",
+    "date": "2026-01-08",
+    "academicYear": "AA2526",
+    "exerciseNo": 5,
+    "type": "multiple-choice",
+    "topics": ["har-mobile"],
+    "prompt": "How does **dynamic segmentation** differ from fixed sliding windows, and what is its main drawback?",
+    "choices": [
+      {"label": "A", "text": "It fits the window length per activity using the ground-truth labels, but the supervision it needs makes it impractical at test time on a fresh stream."},
+      {"label": "B", "text": "It uses unsupervised methods to detect change points (transitions), but it is costly and inadequate under real-time requirements."},
+      {"label": "C", "text": "It minimizes a cost function with no penalty term, but dropping that penalty tends to detect far too few change points to be useful in practice."},
+      {"label": "D", "text": "It detects change points from the magnetometer channel only, but relying on that single channel makes it inaccurate for most physical activities."}
+    ],
+    "correctChoice": "B",
+    "solution": "**Concept.** Fixed sliding windows have two weaknesses: a chunk may not fully represent an activity, and choosing the size is non-trivial. **Dynamic segmentation** avoids fixing a size: it uses *unsupervised* methods to detect **change points** in the stream — moments where signal statistics shift, signaling a transition between activities. It is often framed as minimizing a cost function with a penalty per change point. The downside is heavy computation, so it is inadequate under real-time requirements.\n\n**Why B is correct.** It captures both halves: unsupervised change-point detection for transitions, and high computational cost limiting real-time use.\n\n**Why the others are wrong.** A calls the method supervised and label-driven, but dynamic segmentation is explicitly unsupervised; C describes the cost function but drops the penalty term and inverts its effect (a *high* penalty, not a missing one, yields too few change points); D restricts detection to the magnetometer, whereas change points are found across the multivariate stream.\n\n**Takeaway.** Dynamic segmentation finds transitions via unsupervised change-point detection but is too costly for real time.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260108-e6",
+    "examId": "AMI20260108",
+    "date": "2026-01-08",
+    "academicYear": "AA2526",
+    "exerciseNo": 6,
+    "type": "multiple-choice",
+    "topics": ["har-mobile"],
+    "prompt": "During training, sliding-window intervals and ground-truth annotations rarely line up exactly. What is the **most common approach** to label a window?",
+    "choices": [
+      {"label": "A", "text": "Assign the label of the activity present in the first sample of the window."},
+      {"label": "B", "text": "Assign the label of the activity that is rarest within the window, to counter class imbalance."},
+      {"label": "C", "text": "Assign the label of the prevalent (most represented) activity within the window."},
+      {"label": "D", "text": "Assign no label and discard any window that spans more than one annotation."}
+    ],
+    "correctChoice": "C",
+    "solution": "**Concept.** Ground-truth annotations and sliding-window boundaries rarely align, so a single window often contains samples from more than one labeled activity. To assign one label per window, the course's convention is **majority vote**: label the window with the *prevalent* (most represented) activity inside it. For example, a window that is mostly walking with a few standing samples is labeled walking.\n\n**Why C is correct.** It states the prevalent-activity rule, the most common labeling approach for misaligned windows.\n\n**Why the others are wrong.** A uses only the first sample's label, which mislabels boundary windows; B deliberately picks the rarest activity, which would systematically corrupt labels rather than fix imbalance; D throws away every multi-label window, wasting most of the boundary data.\n\n**Takeaway.** Label each window by its prevalent (majority) activity.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260108-e7",
+    "examId": "AMI20260108",
+    "date": "2026-01-08",
+    "academicYear": "AA2526",
+    "exerciseNo": 7,
+    "type": "multiple-choice",
+    "topics": ["har-mobile"],
+    "prompt": "Why are **CNNs** attractive for HAR on inertial time series, and what is their stated drawback?",
+    "choices": [
+      {"label": "A", "text": "They exploit local dependency (nearby samples correlate) and scale-invariance, but they require handcrafted frequency features rather than raw segments as input."},
+      {"label": "B", "text": "They exploit local dependency and scale-invariance, and being purely convolutional they also fully capture long-range temporal relationships across the window."},
+      {"label": "C", "text": "They exploit scale-invariance and global temporal modeling across the window, but their main drawback is sensitivity to changes in signal frequency."},
+      {"label": "D", "text": "They exploit local dependency and scale-invariance (robustness to frequency changes), but they do not fully capture temporal relationships."}
+    ],
+    "correctChoice": "D",
+    "solution": "**Concept.** CNNs were built for images, but two of their properties transfer well to inertial time series. **Local dependency**: convolution filters look at nearby samples, which are likely correlated in a signal. **Scale-invariance**: pooling makes them robust to frequency/scale changes in the pattern. Their limitation is that convolutions have a local receptive field, so they **do not fully capture long-range temporal relationships** — which is why CNNs are often paired with recurrent layers.\n\n**Why D is correct.** It names both strengths (local dependency, scale-invariance) and the stated weakness (incomplete temporal modeling).\n\n**Why the others are wrong.** A keeps the right strengths but claims CNNs need handcrafted frequency features, when in the deep pipeline they take raw segments; B states the strengths but then claims CNNs fully capture long-range temporal relationships, contradicting their actual weakness; C credits CNNs with global temporal modeling and then mislabels scale-invariance as a weakness, when scale-invariance is in fact a strength.\n\n**Takeaway.** CNNs exploit local correlation and scale-invariance but miss long-range temporal structure.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260108-e8",
+    "examId": "AMI20260108",
+    "date": "2026-01-08",
+    "academicYear": "AA2526",
+    "exerciseNo": 8,
+    "type": "multiple-choice",
+    "topics": ["har-mobile"],
+    "prompt": "What is the rationale of a **hybrid CNN-LSTM** architecture for supervised HAR?",
+    "choices": [
+      {"label": "A", "text": "Recurrent layers first extract local features from the raw sensor data, then convolutional layers model the temporal relationships between them."},
+      {"label": "B", "text": "Convolutional and recurrent layers are trained as two fully separate networks whose predictions are simply averaged together at the end."},
+      {"label": "C", "text": "Convolutional layers first extract features from raw sensor data, then recurrent layers capture the temporal relationships."},
+      {"label": "D", "text": "Convolutional layers replace the segmentation step, so the recurrent layers can then run without any windowing upstream."}
+    ],
+    "correctChoice": "C",
+    "solution": "**Concept.** The hybrid CNN-LSTM stacks two complementary stages in one network. **Convolutional layers come first** to extract meaningful local features from raw sensor data (the CNN's strength). **Recurrent LSTM layers come next** to model how those features evolve over time (the CNN's weakness). The order matters: CNN compresses each region into features, then the LSTM reads that feature sequence to capture temporal relationships, making it one of the most effective supervised HAR solutions.\n\n**Why C is correct.** It states the right order and roles: CNN extracts features, LSTM captures temporal structure.\n\n**Why the others are wrong.** A reverses the order, putting recurrent feature extraction before convolutional temporal modeling; B describes a separately-trained ensemble rather than one hybrid network; D claims the CNN removes windowing, but segmentation is still performed upstream.\n\n**Takeaway.** CNN extracts features first, then LSTM models their temporal evolution.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260108-e9",
+    "examId": "AMI20260108",
+    "date": "2026-01-08",
+    "academicYear": "AA2526",
+    "exerciseNo": 9,
+    "type": "multiple-choice",
+    "topics": ["har-mobile"],
+    "prompt": "What advantage does a **BiLSTM** offer over a standard LSTM for HAR?",
+    "choices": [
+      {"label": "A", "text": "It adds a second LSTM that reads the series backward and aggregates both passes, capturing forward and backward dependencies."},
+      {"label": "B", "text": "It trains a pool of LSTMs on random data subsets and aggregates them, increasing robustness to noise and to unbalanced data."},
+      {"label": "C", "text": "It runs two LSTMs forward in parallel at different sampling rates and aggregates them, capturing both fast and slow dynamics together."},
+      {"label": "D", "text": "It adds a convolutional front-end before the LSTM and aggregates both, capturing local features and reducing the overfitting risk."}
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** A standard LSTM reads a sequence in one direction, so each step only knows the past. A **BiLSTM** adds a second LSTM unit that reads the series *backward*, then aggregates the forward and backward outputs. Now each time step has context from both before and after it — useful because an activity's meaning often depends on what follows as well as what precedes. This captures forward and backward dependencies and tends to reduce overfitting.\n\n**Why A is correct.** It describes exactly the bidirectional pass plus aggregation, capturing both dependency directions — the mechanism that also reduces overfitting.\n\n**Why the others are wrong.** B describes an LSTM *ensemble* (a pool trained on random subsets), a different technique from a single bidirectional layer; C invents two same-direction LSTMs at different sampling rates, but a BiLSTM's second pass goes *backward*, not at another rate; D describes the hybrid CNN-LSTM (a convolutional front-end), not the bidirectional mechanism.\n\n**Takeaway.** BiLSTM reads the sequence both ways, giving each step past and future context.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260108-e10",
+    "examId": "AMI20260108",
+    "date": "2026-01-08",
+    "academicYear": "AA2526",
+    "exerciseNo": 10,
+    "type": "multiple-choice",
+    "topics": ["har-mobile"],
+    "prompt": "Regarding existing **commercial / OS-level Activity Recognition APIs** (e.g., on Android and iOS), which statement reflects their limits as discussed in the course?",
+    "choices": [
+      {"label": "A", "text": "They cover only a limited set of activities, but they compensate by personalizing the recognition model to each end user during everyday use."},
+      {"label": "B", "text": "They offer a limited set of activities, recognition is often not accurate, and the model is not personalized to the end user."},
+      {"label": "C", "text": "They recognize a broad set of activities accurately, so the main remaining research challenge is now on-device energy efficiency."},
+      {"label": "D", "text": "They run only offline and store the data for later processing, since on-device real-time recognition is not yet supported at all."}
+    ],
+    "correctChoice": "B",
+    "solution": "**Concept.** Android and iOS have shipped Activity Recognition APIs for years, recognizing a few categories (walking, running, in-vehicle, still, etc.) for context-aware apps. The course stresses their limits: a **limited set of activities**, a recognition rate **often not accurate**, and a generic model **not personalized** to the end user. These gaps are precisely why HAR remains an active research topic.\n\n**Why B is correct.** It lists exactly the three stated limits — limited activities, often-inaccurate recognition, and no per-user personalization — which is why HAR is still a hot research area.\n\n**Why the others are wrong.** A gets the limited-activity part right but falsely claims the APIs personalize per user, when the course's point is that they do not; C overstates them as broad and accurate and reduces the open problem to efficiency alone; D claims they run only offline, but these on-device APIs power real-time context apps (offline-vs-online is a separate deployment choice).\n\n**Takeaway.** Commercial HAR APIs are limited, often inaccurate, and not personalized — leaving HAR an open research problem.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260108-e11",
+    "examId": "AMI20260108",
+    "date": "2026-01-08",
+    "academicYear": "AA2526",
+    "exerciseNo": 11,
+    "type": "theory-essay",
+    "topics": ["har-mobile"],
+    "prompt": "HAR on mobile/wearable devices relies on a pre-processing pipeline applied to noisy inertial signals before any classification.\n\n**(a)** Describe the mobile HAR pre-processing pipeline stage by stage (data cleaning, segmentation, feature extraction), explaining what each stage does and why inertial data needs it.\n\n**(b)** Explain the challenges of segmenting **multivariate** sensor time series, including why temporal alignment and clock synchronization matter.",
+    "solution": "**(a)** The mobile HAR pre-processing pipeline takes inertial data from mobile/wearable devices and runs three stages. **Data cleaning**: inertial signals are noisy, so filters are applied for smoothing (e.g., median, low-pass, or Gaussian filters) to keep only the informative part of the signal; optionally the gravitational component is removed to obtain linear acceleration, which better represents actual movements (this needs orientation from the gyroscope). **Segmentation**: the continuous stream is split into windows (typically via sliding windows with a chosen length and overlap) so each segment can be classified. **Feature extraction**: each segment is turned into a feature vector — either handcrafted (time-based and frequency-based statistics, computed per axis of each sensor) or learned automatically by a deep network. Cleaning and segmentation are required regardless of whether features are handcrafted or learned.\n\n**(b)** Segmentation operates on a **multivariate time series**: each device may produce data from multiple sensors (e.g., accelerometer and gyroscope), each sensor provides multi-channel data (e.g., the three accelerometer axes), and a user may wear several devices at once. A key difficulty is that each sensor may have its **own sampling rate**, so the streams must be **temporally aligned** and the **clocks of different devices synchronized**; otherwise the channels within a window would not correspond to the same instants, corrupting features and classification. A further challenge is that a fixed window may not fully capture an activity pattern and choosing the window size is non-trivial, motivating overlap (to capture transitions) and, in some cases, dynamic segmentation.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260108-e12",
+    "examId": "AMI20260108",
+    "date": "2026-01-08",
+    "academicYear": "AA2526",
+    "exerciseNo": 12,
+    "type": "theory-essay",
+    "topics": ["har-mobile"],
+    "prompt": "Deep learning has largely replaced handcrafted features for HAR on inertial signals, but different architectures bring different strengths.\n\n**(a)** Contrast **handcrafted feature extraction** with **automatic (deep) feature extraction** for HAR, explaining the types of handcrafted features and what changes in the pipeline when going deep.\n\n**(b)** Compare **CNN**, **LSTM/BiLSTM**, and **hybrid CNN-LSTM** approaches for HAR, giving the main strength and weakness of each.",
+    "solution": "**(a)** With **handcrafted feature extraction**, an engineer computes statistics from each segment: **time-based features** (statistics computed directly on sensor data, capturing temporal information) and **frequency-based features** (statistics capturing properties of the signal's frequency content). Importantly, these features must be computed on each axis of each sensor. With **automatic (deep) feature extraction**, the pre-processing step (cleaning and segmentation) is still needed, but instead of computing features by hand, the pre-processed raw segments are fed directly to a deep neural network that learns meaningful features during training and then extracts them automatically from unlabeled segments at classification time. The trade-off shifts from manual feature engineering to letting the network discover features, at the cost of needing more data and computation.\n\n**(b)** **CNN**: strength — exploits local dependency (nearby signals correlate) and scale-invariance (robustness to frequency changes); weakness — does not fully capture temporal relationships. **LSTM** (and **BiLSTM**): strength — recurrent networks automatically extract strong temporal features from time series; BiLSTM additionally processes the series forward and backward and aggregates both, better capturing temporal properties and reducing overfitting; weakness — plain LSTMs may overfit on small datasets. **Hybrid CNN-LSTM**: strength — convolutional layers first extract meaningful features from raw data and recurrent layers then capture temporal relationships, making it one of the most effective supervised solutions because it covers the CNN's temporal weakness; weakness — greater model complexity. (The course also notes encoder-only Transformers as an option for classification.)",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260108-e13",
+    "examId": "AMI20260108",
+    "date": "2026-01-08",
+    "academicYear": "AA2526",
+    "exerciseNo": 13,
+    "type": "theory-essay",
+    "topics": ["har-mobile"],
+    "prompt": "Deploying HAR on mobile/wearable devices involves choices about sensors, device placement, and where computation happens.\n\n**(a)** Describe the inertial and other sensors available on mobile/wearable devices and the most common device placements considered in HAR, explaining why inertial sensors dominate.\n\n**(b)** Explain the distinction between **offline** and **online** recognition for mobile HAR, including when each is appropriate.",
+    "solution": "**(a)** Mobile/wearable devices carry **inertial sensors** — the accelerometer (acceleration on three axes), the gyroscope (angular speed on three axes, revealing direction changes), and the magnetometer (magnetic field on three axes, whose changes can hint at the activity). Inertial sensors dominate HAR on these devices because they directly reveal physical body movements. Devices also expose **other contextual sensors** that can help recognition, such as localization (e.g., GPS), light, microphone, proximity, and physiological sensors (e.g., heart rate). The most common placements considered in HAR are a **smartphone in the pocket** and a **smartwatch on the wrist**, though many positions are possible depending on the technology, and placement strongly affects the captured signal (a source of sensing heterogeneity).\n\n**(b)** In **offline recognition**, devices only collect and store the data, which is processed later in a separate phase; this is appropriate when real-time response is not required and accuracy can be prioritized (more compute available off-device). In **online recognition**, data is processed as it arrives so activities are recognized in (near) real time, which is appropriate for context-aware applications that must react promptly — at the cost of on-device constraints and a trade-off between responsiveness and accuracy (also reflected in choosing shorter windows for lower delay).",
+    "solutionSource": "authored"
+  }
+]

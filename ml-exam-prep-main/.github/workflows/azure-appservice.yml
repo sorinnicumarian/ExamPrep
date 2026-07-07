@@ -1,0 +1,44 @@
+name: Deploy to Azure App Service
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - name: Build data for all courses
+        run: pnpm build:data
+      - name: Build app (served at root)
+        run: BASE_PATH=/ pnpm build
+      - name: Assemble deploy package
+        run: |
+          rm -rf deploy && mkdir -p deploy/dist
+          cp -r dist/. deploy/dist/
+          cp server.js deploy/
+          cat > deploy/package.json <<'EOF'
+          {
+            "name": "exam-prep-server",
+            "version": "1.0.0",
+            "private": true,
+            "type": "module",
+            "scripts": { "start": "node server.js" },
+            "dependencies": { "express": "^5.2.1" }
+          }
+          EOF
+      - uses: azure/webapps-deploy@v3
+        with:
+          app-name: ml-exam-prep-jw
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: deploy

@@ -1,0 +1,49 @@
+@import 'katex/dist/katex.min.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  @apply bg-slate-50 text-slate-900 antialiased;
+  /* never let stray wide content cause a full-page horizontal scroll on phones */
+  overflow-x: hidden;
+}
+
+/* KaTeX sizing inside flowing text */
+.katex {
+  font-size: 1.02em;
+}
+
+/* Display equations can be wide; let them scroll inside their own box instead of the page */
+.katex-display {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 2px;
+}
+
+/* horizontal scroll row without a visible scrollbar (e.g. the top nav on phones) */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.prose-solution {
+  @apply leading-relaxed;
+}
+.prose-solution p {
+  @apply mb-3;
+}

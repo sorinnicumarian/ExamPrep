@@ -1,0 +1,737 @@
+[
+  {
+    "id": "AMI20260601-e1",
+    "examId": "AMI20260601",
+    "date": "2026-06-01",
+    "academicYear": "AA2526",
+    "exerciseNo": 1,
+    "type": "multiple-choice",
+    "topics": [
+      "ami-intro"
+    ],
+    "prompt": "In the course, pervasive systems (on which AmI is built) are described as 'volatile'. Which of the following best characterizes this volatility?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Sensor readings are noisy and must be smoothed before any actuation decision is taken on them"
+      },
+      {
+        "label": "B",
+        "text": "The system mixes phones, sensors, and appliances from many different vendors, each with its own capabilities"
+      },
+      {
+        "label": "C",
+        "text": "Devices and links may fail, bandwidth changes, and software-component bindings form and break dynamically"
+      },
+      {
+        "label": "D",
+        "text": "Devices are mobile, so their physical position relative to the user keeps shifting over time"
+      }
+    ],
+    "correctChoice": "C",
+    "solution": "**Concept.** Pervasive systems are made of many heterogeneous nodes (phones, sensors, appliances) that come and go. Calling them 'volatile' captures that the system's structure is never fixed: a node can drop off, a link can degrade, and the software bindings between components are formed and torn down on the fly.\n\n**Why C is correct.** It lists exactly these traits: device/link failures, changing link characteristics like bandwidth, and dynamic creation/destruction of software-component associations.\n\n**Why the others are wrong.** A describes noisy data (a sensing/preprocessing issue), not the changing structure. B names heterogeneity, a real property of pervasive systems but a different one from volatility. D names mobility; physical movement is real, but volatility is about the appearing/disappearing of devices, links, and bindings, not just location.\n\n**Takeaway.** Volatility = the running set of devices, links, and bindings is always changing, not the noise, the vendor mix, or mere movement.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260601-e2",
+    "examId": "AMI20260601",
+    "date": "2026-06-01",
+    "academicYear": "AA2526",
+    "exerciseNo": 2,
+    "type": "multiple-choice",
+    "topics": [
+      "iot-data"
+    ],
+    "prompt": "In a four-stage IoT architecture, what is the main role of the Edge layer compared to the gateway layer?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "It is the transducer that turns the analog voltage coming directly off a sensor into a clean digital signal"
+      },
+      {
+        "label": "B",
+        "text": "It replaces the cloud completely, so that the processed data never has to leave the building"
+      },
+      {
+        "label": "C",
+        "text": "It is the physical device that senses the phenomenon and then reports it straight up to the gateway above it"
+      },
+      {
+        "label": "D",
+        "text": "It has more compute than gateways and covers a wider area, pre-processing data to cut latency before the cloud"
+      }
+    ],
+    "correctChoice": "D",
+    "solution": "**Concept.** A four-stage IoT pipeline goes device to gateway to edge to cloud, with computing power and coverage growing at each step. The edge sits between the small local gateway and the distant cloud: it is more powerful than a gateway and covers a wider area, so it can pre-process and filter data close to the source.\n\n**Why D is correct.** It states the edge has more compute than gateways, covers a larger area (e.g., a whole building vs a room), and reduces latency by pre-processing before the cloud.\n\n**Why the others are wrong.** A describes an ADC (a transducer at the device level). B overstates the edge: it pre-processes but the cloud is still used. C describes the sensor/device stage, the bottom of the pipeline, not the edge.\n\n**Takeaway.** Edge = a stronger, building-scale stage that trims latency and data before the cloud.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260601-e3",
+    "examId": "AMI20260601",
+    "date": "2026-06-01",
+    "academicYear": "AA2526",
+    "exerciseNo": 3,
+    "type": "multiple-choice",
+    "topics": [
+      "timeseries"
+    ],
+    "prompt": "The course distinguishes a 'point outlier' from a 'subsequence outlier' in time series. Which statement is correct?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "A point outlier is a single sample behaving unusually, while a subsequence outlier is consecutive samples jointly unusual"
+      },
+      {
+        "label": "B",
+        "text": "A subsequence outlier is a single unusual sample, while a point outlier is a run of consecutive samples jointly unusual"
+      },
+      {
+        "label": "C",
+        "text": "A point outlier is always global to the whole of the series, while a subsequence outlier is always local to its own neighborhood"
+      },
+      {
+        "label": "D",
+        "text": "A point outlier marks one missing value, while a subsequence outlier marks a stretch of missing values to impute"
+      }
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** Time-series outliers come in two granularities. A point outlier is one timestamp that stands out, either globally (extreme for the whole series) or locally (odd versus its neighbors). A subsequence outlier is a stretch of consecutive points whose joint shape is abnormal even though each individual value looks fine, e.g., a flat line where you expect a daily cycle.\n\n**Why A is correct.** It correctly maps 'single unusual sample' to point and 'unusual run of samples' to subsequence.\n\n**Why the others are wrong.** B swaps the two definitions. C wrongly restricts each to global-only or local-only; both kinds can be global or local. D confuses outliers with missing values, which are a separate preprocessing problem.\n\n**Takeaway.** Point = one bad sample; subsequence = a bad pattern over several samples.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260601-e4",
+    "examId": "AMI20260601",
+    "date": "2026-06-01",
+    "academicYear": "AA2526",
+    "exerciseNo": 4,
+    "type": "multiple-choice",
+    "topics": [
+      "localization"
+    ],
+    "prompt": "Why is GPS unsuitable for indoor localization according to the course?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "GPS reports only coarse room-level zones, so it cannot be framed as a regression over continuous coordinates"
+      },
+      {
+        "label": "B",
+        "text": "Roofs, walls, and objects attenuate and scatter the already weak satellite signal, giving errors of about 5 to 10 meters"
+      },
+      {
+        "label": "C",
+        "text": "GPS depends on WiFi access points, which are deployed too sparsely inside most buildings to give a fix"
+      },
+      {
+        "label": "D",
+        "text": "GPS needs RSSI fingerprints to be collected in advance, and indoor layouts change far too often to keep them current"
+      }
+    ],
+    "correctChoice": "B",
+    "solution": "**Concept.** GPS positions you from faint satellite signals that need a fairly clear sky view. Indoors, the roof, walls, and furniture absorb and scatter that already weak signal, so the fix becomes coarse and unreliable; the course quotes average errors of about 5 to 10 meters, which is useless for room-level indoor tasks.\n\n**Why B is correct.** It names exactly this cause (attenuation and scattering of a weak signal) and the resulting 5-10 m error.\n\n**Why the others are wrong.** A misstates the failure: GPS does estimate continuous coordinates, the problem is signal loss, not the output type. C confuses GPS with WiFi-based positioning; GPS uses satellites, not access points. D attributes the fingerprinting workflow (an RSSI-based indoor method) to GPS, which does not use fingerprints.\n\n**Takeaway.** GPS fails indoors because walls kill its weak signal, leaving 5-10 m errors.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260601-e5",
+    "examId": "AMI20260601",
+    "date": "2026-06-01",
+    "academicYear": "AA2526",
+    "exerciseNo": 5,
+    "type": "multiple-choice",
+    "topics": [
+      "energy"
+    ],
+    "prompt": "In smart-grid stability assessment, which type of assessment focuses on whether components remain synchronised after a huge perturbation such as a lightning strike?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Voltage stability assessment, which checks the grid against voltage collapse after a sudden load change"
+      },
+      {
+        "label": "B",
+        "text": "Small-signal stability assessment, which checks synchronism under small disturbances and long-term operation"
+      },
+      {
+        "label": "C",
+        "text": "Frequency stability assessment, which checks that the grid frequency stays within its nominal band"
+      },
+      {
+        "label": "D",
+        "text": "Transient stability assessment, which checks that components stay synchronised right after a large shock"
+      }
+    ],
+    "correctChoice": "D",
+    "solution": "**Concept.** Grid stability assessment asks whether generators stay 'in step' after a disturbance. The size of the disturbance picks the analysis: tiny disturbances use small-signal analysis, while large shocks (a lightning strike, a line tripping) use transient stability analysis, which checks whether components stay synchronised right after the event.\n\n**Why D is correct.** A lightning strike is a huge perturbation, so transient stability assessment is the tool that judges post-shock synchronism.\n\n**Why the others are wrong.** A (voltage stability) is about preventing voltage collapse, not synchronism after a shock. B (small-signal) handles small disturbances and long-term concerns, not huge perturbations. C (frequency stability) watches the frequency band, a related but distinct assessment from post-shock synchronism.\n\n**Takeaway.** Big shock to synchronism = transient stability assessment.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260601-e6",
+    "examId": "AMI20260601",
+    "date": "2026-06-01",
+    "academicYear": "AA2526",
+    "exerciseNo": 6,
+    "type": "multiple-choice",
+    "topics": [
+      "har-intro"
+    ],
+    "prompt": "The course distinguishes inter-variability from intra-variability in human activity execution. Which is an example of intra-variability?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "A young subject and an elderly subject walk with clearly different gait patterns"
+      },
+      {
+        "label": "B",
+        "text": "Two wearable devices sample the very same motion at different frequencies"
+      },
+      {
+        "label": "C",
+        "text": "The same subject walks differently indoors than outdoors on different days"
+      },
+      {
+        "label": "D",
+        "text": "Two households deploy different sets of binary sensors for one activity"
+      }
+    ],
+    "correctChoice": "C",
+    "solution": "**Concept.** Activities are never executed identically. Inter-variability is the spread across different people (your walk vs mine). Intra-variability is the spread within one person across times or conditions (you walk differently when tired, indoors, or in a hurry). Both make HAR hard, but they describe different sources of variation.\n\n**Why C is correct.** 'The same subject walks differently indoors than outdoors' is one person varying their own execution, the definition of intra-variability.\n\n**Why the others are wrong.** A (young vs elderly) compares different subjects, so it is inter-variability. B is a sensor sampling-rate difference, a device issue, not execution. D is a sensing-deployment difference across homes, not how a person executes the activity.\n\n**Takeaway.** Intra = within one person; inter = across people.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260601-e7",
+    "examId": "AMI20260601",
+    "date": "2026-06-01",
+    "academicYear": "AA2526",
+    "exerciseNo": 7,
+    "type": "multiple-choice",
+    "topics": [
+      "har-mobile"
+    ],
+    "prompt": "Which set of sensors is described as the most considered for HAR on mobile/wearable devices, and why?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Inertial sensors (accelerometer, gyroscope, magnetometer), because they directly reveal physical body movements"
+      },
+      {
+        "label": "B",
+        "text": "Binary magnetic sensors, because they record the opening and closing of the drawers and the doors the user touches"
+      },
+      {
+        "label": "C",
+        "text": "Pressure mat sensors, because they detect the moments when the user sits down on them or stands back up"
+      },
+      {
+        "label": "D",
+        "text": "Phasor Measurement Units, because they measure the phase angle of the body's voltage while it is moving"
+      }
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** Mobile/wearable HAR recognizes physical activities (walking, running, sitting) from how the body moves. The natural sensors are the inertial measurement unit: accelerometer (linear acceleration), gyroscope (angular speed), and magnetometer (magnetic field/heading). They are cheap, already in phones and watches, and directly capture motion.\n\n**Why A is correct.** It names exactly the inertial trio and the right reason: they reveal physical body movements.\n\n**Why the others are wrong.** B (magnetic sensors) and C (pressure mats) are environmental smart-home sensors fixed in the home, not worn on the body. D (Phasor Measurement Units) belongs to smart-grid stability assessment and has nothing to do with body motion.\n\n**Takeaway.** Wearable HAR runs on inertial sensors: accelerometer, gyroscope, magnetometer.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260601-e8",
+    "examId": "AMI20260601",
+    "date": "2026-06-01",
+    "academicYear": "AA2526",
+    "exerciseNo": 8,
+    "type": "multiple-choice",
+    "topics": [
+      "har-smarthome"
+    ],
+    "prompt": "A Passive InfraRed (PIR) sensor is used in smart-home HAR. What is one important limitation highlighted in the course?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "It can tell apart which specific resident triggered the event in a shared multi-inhabitant home"
+      },
+      {
+        "label": "B",
+        "text": "It senses only motion, so a user who stays still in the room is not detected at all"
+      },
+      {
+        "label": "C",
+        "text": "It reports a continuous infrared intensity value rather than a clean binary ON/OFF state"
+      },
+      {
+        "label": "D",
+        "text": "It has to be re-calibrated against the ambient temperature before each activity session"
+      }
+    ],
+    "correctChoice": "B",
+    "solution": "**Concept.** A Passive InfraRed sensor fires when it sees a change in infrared radiation, i.e., a warm body moving across its field of view. It senses motion, not presence: a person who sits perfectly still emits a steady IR pattern, so the PIR sees no change and reports nothing. This is a classic false-negative for occupancy.\n\n**Why B is correct.** It states the key limitation: PIR detects only motion, so a still user goes unnoticed.\n\n**Why the others are wrong.** A is the opposite of the truth: environmental sensors cannot identify who triggered them (the data-association problem). C is wrong: PIR is a binary motion sensor, not a continuous-intensity one (that would be more like a smart plug's power reading). D invents a per-session temperature recalibration step never required by the course.\n\n**Takeaway.** PIR sees movement, not stillness, so a motionless person is invisible to it.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260601-e9",
+    "examId": "AMI20260601",
+    "date": "2026-06-01",
+    "academicYear": "AA2526",
+    "exerciseNo": 9,
+    "type": "multiple-choice",
+    "topics": [
+      "multi-har"
+    ],
+    "prompt": "What is the 'data association' problem in multi-inhabitant HAR?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Aligning several sensor time series sampled at different rates onto one single shared common time base"
+      },
+      {
+        "label": "B",
+        "text": "Merging two sensor databases collected on different days into one labeled dataset"
+      },
+      {
+        "label": "C",
+        "text": "Pairing each resident's smartphone with the right smartwatch over a Bluetooth link"
+      },
+      {
+        "label": "D",
+        "text": "Attributing each anonymous environmental sensor event to the specific inhabitant who triggered it"
+      }
+    ],
+    "correctChoice": "D",
+    "solution": "**Concept.** Environmental sensors report that something happened (fridge opened, motion in kitchen) but never who did it. With one resident this is fine, but with several people the same event stream mixes everyone. Data association is the task of attributing each anonymous sensor event to the specific inhabitant who caused it, a prerequisite for per-person activity recognition.\n\n**Why D is correct.** It defines data association precisely: linking each event to its triggering inhabitant because the sensors cannot identify the person.\n\n**Why the others are wrong.** A is temporal alignment of differently-sampled series, a preprocessing step. B is a generic database join across days. C is Bluetooth device pairing, an unrelated networking task.\n\n**Takeaway.** Data association = figuring out who triggered each anonymous sensor event.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260601-e10",
+    "examId": "AMI20260601",
+    "date": "2026-06-01",
+    "academicYear": "AA2526",
+    "exerciseNo": 10,
+    "type": "multiple-choice",
+    "topics": [
+      "incremental"
+    ],
+    "prompt": "Neural networks updated incrementally on new data suffer from a well-known problem. Which one, and what does it mean?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Vanishing gradients: the gradients shrink toward zero and stop updating the earliest layers of the net"
+      },
+      {
+        "label": "B",
+        "text": "Mode collapse: the model ends up producing only a narrow variety of outputs over and over again"
+      },
+      {
+        "label": "C",
+        "text": "Catastrophic forgetting: training on new data overwrites the weights that encoded old concepts"
+      },
+      {
+        "label": "D",
+        "text": "Stability-plasticity collapse: the model turns so rigid that it can no longer learn any new data"
+      }
+    ],
+    "correctChoice": "C",
+    "solution": "**Concept.** A neural network stores all its knowledge in one shared set of weights. When you keep training it only on new data, gradient descent happily rewrites those weights to fit the new task, and the old task's information gets overwritten. The network 'forgets' what it knew before, even though nothing was wrong with it.\n\n**Why C is correct.** Catastrophic forgetting is exactly this: learning new data overrides weights encoding old concepts, the central problem in incremental/continual learning.\n\n**Why the others are wrong.** A (vanishing gradients) is a depth/optimization issue, unrelated to incremental updates. B (mode collapse) is a GAN failure, not an incremental-learning one. D misuses real course vocabulary: the stability-plasticity dilemma is the trade-off behind forgetting, but it is a balance to manage, not a 'collapse' into rigidity.\n\n**Takeaway.** Train only on new data and the network overwrites the old: catastrophic forgetting.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260601-e11",
+    "examId": "AMI20260601",
+    "date": "2026-06-01",
+    "academicYear": "AA2526",
+    "exerciseNo": 11,
+    "type": "multiple-choice",
+    "topics": [
+      "transfer"
+    ],
+    "prompt": "In the transfer-learning taxonomy, which describes the most common parameter-control (model-based) approach?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Reweighting source-domain instances so their distribution matches that of the target"
+      },
+      {
+        "label": "B",
+        "text": "Fine-tuning: reusing the source's learned parameters to facilitate learning on the target"
+      },
+      {
+        "label": "C",
+        "text": "Finding a common latent feature space that is shared between the source and the target domains"
+      },
+      {
+        "label": "D",
+        "text": "Adding a regularizer to the objective so the learner keeps carrying source knowledge"
+      }
+    ],
+    "correctChoice": "B",
+    "solution": "**Concept.** Transfer-learning strategies split into data-based (adjust the data) and model-based (reuse the model). Model-based has two branches: model control (add regularizers that carry source knowledge) and parameter control (reuse the source's learned weights). Parameter control's flagship method is fine-tuning: start from a network trained on the source and keep training it on the target.\n\n**Why B is correct.** Fine-tuning reuses source parameters to bootstrap target learning, the most common parameter-control approach.\n\n**Why the others are wrong.** A (reweighting source instances) is instance-based, a data-based method. C (shared latent feature space) is feature-based, also data-based. D (adding a regularizer) is model control, the sibling model-based branch, not parameter control.\n\n**Takeaway.** Parameter control = reuse the source's weights; its go-to move is fine-tuning.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260601-e12",
+    "examId": "AMI20260601",
+    "date": "2026-06-01",
+    "academicYear": "AA2526",
+    "exerciseNo": 12,
+    "type": "multiple-choice",
+    "topics": [
+      "federated"
+    ],
+    "prompt": "What is exchanged with the server in federated learning, and why is this advantageous?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Only the local model parameters, which the server aggregates into a global model while keeping data private"
+      },
+      {
+        "label": "B",
+        "text": "Each client's raw labeled data, so the server can pool it all into one large centralized training set"
+      },
+      {
+        "label": "C",
+        "text": "Each client's test accuracy, which the server uses only to rank the participating devices by quality"
+      },
+      {
+        "label": "D",
+        "text": "Nothing at all, because each device trains and runs a fully isolated model with no collaboration"
+      }
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** Federated learning lets many devices jointly train one model without pooling their data. Each client trains locally on its own private data and sends only the resulting model parameters (weights/gradients) to a server, which averages them into a global model and pushes it back. The raw, sensitive sensor data never leaves the device.\n\n**Why A is correct.** It states exactly this: only local parameters are shared, the server aggregates them into a global model, and privacy is preserved.\n\n**Why the others are wrong.** B (share raw data centrally) is the centralized approach federated learning was created to avoid. C (share only test accuracy) is not how aggregation works; a global model cannot be built from accuracies. D (nothing shared) describes distributed on-site learning, which is isolated and gets no collaborative benefit.\n\n**Takeaway.** Federated learning shares model parameters, never the data.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260601-e13",
+    "examId": "AMI20260601",
+    "date": "2026-06-01",
+    "academicYear": "AA2526",
+    "exerciseNo": 13,
+    "type": "multiple-choice",
+    "topics": [
+      "xai"
+    ],
+    "prompt": "The course contrasts global and local explainability in XAI. Which statement is correct?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Global explainability concerns why the model produced one specific prediction for a single input instance"
+      },
+      {
+        "label": "B",
+        "text": "Local explainability concerns how the whole trained model makes its predictions across all of its inputs"
+      },
+      {
+        "label": "C",
+        "text": "Local explainability concerns single instances and is inherently less accurate than the global model view"
+      },
+      {
+        "label": "D",
+        "text": "Global explainability concerns how the model predicts in general; local concerns one instance, and is most adopted"
+      }
+    ],
+    "correctChoice": "D",
+    "solution": "**Concept.** Explainability has two scopes. Global explainability describes how the model behaves in general, which features matter overall across all inputs. Local explainability zooms in on one prediction, explaining why this particular instance got this output, often hinging on just a few features. Local is the most widely adopted because explaining a single decision is more tractable and accurate than summarizing the whole model.\n\n**Why D is correct.** It pairs global with general behavior and local with single-instance reasoning, and correctly notes local is the most adopted.\n\n**Why the others are wrong.** A describes local explainability but labels it global. B describes global explainability but labels it local. C reverses the accuracy claim: local is in fact more tractable/accurate per decision, not inherently less accurate.\n\n**Takeaway.** Global = the whole model; local = one prediction, and local dominates in practice.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260601-e14",
+    "examId": "AMI20260601",
+    "date": "2026-06-01",
+    "academicYear": "AA2526",
+    "exerciseNo": 14,
+    "type": "multiple-choice",
+    "topics": [
+      "genai"
+    ],
+    "prompt": "Why does the course say a classic AutoEncoder is generally a poor generative model, motivating the Variational AutoEncoder?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "It is an adversarial model whose generator suffers from mode collapse over the course of training"
+      },
+      {
+        "label": "B",
+        "text": "Its latent space is irregular: trained only to encode/decode, it overfits so random latent samples fail"
+      },
+      {
+        "label": "C",
+        "text": "It encodes each input to a distribution rather than to a single point, so its generated samples come out blurry"
+      },
+      {
+        "label": "D",
+        "text": "It lacks any decoder, so there is no mechanism to reconstruct a sample back from a latent code"
+      }
+    ],
+    "correctChoice": "B",
+    "solution": "**Concept.** A classic AutoEncoder is trained only to reconstruct its input: encode to a latent code, decode back. Nothing forces the latent space to be organized, so it ends up irregular and overfit. The model maps training points to scattered codes with empty gaps between them, so if you pick a random latent point and decode it, you usually get garbage, which makes it a poor generator. The VAE fixes this by adding a KL term that pulls the latent distribution toward `N(0, I)`, keeping it continuous and sampleable.\n\n**Why B is correct.** It names the irregular, overfit latent space and the failure of sampling random latent points.\n\n**Why the others are wrong.** A confuses the AE with a GAN; mode collapse is a GAN issue, not an AE one. C describes the VAE's encoder (it outputs a distribution), which is the fix, not the AE's flaw. D is false: AutoEncoders do have a decoder.\n\n**Takeaway.** A plain AE's latent space is irregular, so random samples decode poorly; the VAE's KL loss regularizes it.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260601-e15",
+    "examId": "AMI20260601",
+    "date": "2026-06-01",
+    "academicYear": "AA2526",
+    "exerciseNo": 15,
+    "type": "multiple-choice",
+    "topics": [
+      "gnn"
+    ],
+    "prompt": "For a graph `G = (V, E)`, when is the adjacency matrix `A` guaranteed to be symmetric?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "When the graph is undirected, since each edge `(u,v)` implies `(v,u)`, making `A` equal its transpose"
+      },
+      {
+        "label": "B",
+        "text": "When the graph is directed, since each edge `(u,v)` then forces a matching reverse edge `(v,u)` to exist"
+      },
+      {
+        "label": "C",
+        "text": "When the graph is weighted, since the edge weights then fill in both `A[u,v]` and `A[v,u]` together"
+      },
+      {
+        "label": "D",
+        "text": "When the graph adds a self-loop to each node, since the diagonal of `A` then becomes all ones"
+      }
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** The adjacency matrix `A` records edges: `A[u,v] = 1` when there is an edge from `u` to `v`. In an undirected graph an edge has no direction, so `(u,v)` in `E` forces `(v,u)` in `E` too. That mirror property means `A[u,v] = A[v,u]` everywhere, i.e., `A` equals its transpose, so `A` is symmetric.\n\n**Why A is correct.** Undirected edges are bidirectional by definition, guaranteeing a symmetric `A`.\n\n**Why the others are wrong.** B reverses the rule: directed graphs allow `(u,v)` without `(v,u)`, so `A` may be non-symmetric. C (weighted) sets edge values but not direction; both directed and undirected graphs can be weighted, so weighting does not control symmetry. D (self-loops) only fills the diagonal; it says nothing about the off-diagonal mirror, so it does not guarantee symmetry.\n\n**Takeaway.** Undirected graph implies a symmetric adjacency matrix.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260601-e16",
+    "examId": "AMI20260601",
+    "date": "2026-06-01",
+    "academicYear": "AA2526",
+    "exerciseNo": 16,
+    "type": "multiple-choice",
+    "topics": [
+      "ami-intro"
+    ],
+    "prompt": "In the smart-home automation example from the course (motion + low luminance turns on the light), what is the 'automation'?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The luminance value reported by the light sensor that feeds into the rule's condition"
+      },
+      {
+        "label": "B",
+        "text": "The physical light bulb changing its own state from off to on, which is the end result of the example"
+      },
+      {
+        "label": "C",
+        "text": "The rule that changes a device's state from events (when motion is detected and luminance is low, turn on the light)"
+      },
+      {
+        "label": "D",
+        "text": "The motion event detected by the sensor, which is the input that sets the whole automation process going"
+      }
+    ],
+    "correctChoice": "C",
+    "solution": "**Concept.** In a smart home, sensors produce events, actuators have states, and an automation is the rule connecting them: when some condition over events/context holds, change a device's state. In the example, 'if motion is detected AND luminance is low, turn on the light' is the rule itself, separate from the sensor reading that triggers it and the bulb that obeys it.\n\n**Why C is correct.** It identifies the automation as the event-driven rule that changes device states.\n\n**Why the others are wrong.** A (luminance value) is sensed context feeding the rule's condition, not the rule. B (bulb switching on) is the effect of the rule, not the rule itself. D (motion event) is the trigger, an input to the rule.\n\n**Takeaway.** An automation is the if-event-then-change-state rule, not the trigger or the outcome.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260601-e17",
+    "examId": "AMI20260601",
+    "date": "2026-06-01",
+    "academicYear": "AA2526",
+    "exerciseNo": 17,
+    "type": "multiple-choice",
+    "topics": [
+      "iot-data"
+    ],
+    "prompt": "What is the function of an ADC in an IoT sensing chain?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "It converts a digital control signal back into a voltage so that a connected actuator can then physically move"
+      },
+      {
+        "label": "B",
+        "text": "It converts an analog sensor signal (e.g., a voltage) into a digital representation the device can process"
+      },
+      {
+        "label": "C",
+        "text": "It amplifies the weak radio signal before the device transmits its data onward to the cloud"
+      },
+      {
+        "label": "D",
+        "text": "It buffers the incoming samples as a time series inside a small embedded local database"
+      }
+    ],
+    "correctChoice": "B",
+    "solution": "**Concept.** Many sensors are analog: they output a continuous voltage proportional to what they measure (e.g., temperature to volts). A digital processor only understands discrete 0s and 1s, so something must translate the continuous voltage into numbers. That is the Analog-to-Digital Converter (ADC): it samples and quantizes the analog signal into a digital value.\n\n**Why B is correct.** It describes exactly this: converting an analog sensor voltage into a digital representation the device can process.\n\n**Why the others are wrong.** A describes a DAC (digital-to-analog), the reverse direction used to drive actuators. C is signal amplification (an amplifier/radio function), not conversion. D is data storage/buffering, a different stage of the chain.\n\n**Takeaway.** ADC turns a sensor's analog voltage into digital numbers the device can read.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260601-e18",
+    "examId": "AMI20260601",
+    "date": "2026-06-01",
+    "academicYear": "AA2526",
+    "exerciseNo": 18,
+    "type": "multiple-choice",
+    "topics": [
+      "localization"
+    ],
+    "prompt": "The course frames the core indoor-positioning problem (estimating coordinates `(x, y)` on a map) most naturally as which type of machine-learning problem?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "A clustering problem, grouping the signal readings into unlabeled location groups"
+      },
+      {
+        "label": "B",
+        "text": "A binary classification problem, deciding between two candidate location labels"
+      },
+      {
+        "label": "C",
+        "text": "An anomaly-detection problem, flagging readings that fall outside the mapped area"
+      },
+      {
+        "label": "D",
+        "text": "A regression problem, mapping signal features to continuous numeric coordinates"
+      }
+    ],
+    "correctChoice": "D",
+    "solution": "**Concept.** The output you want determines the ML problem type. Indoor positioning asks for continuous coordinates `(x, y)` on a map, i.e., real-valued numbers. Predicting continuous numeric outputs from inputs (like signal strengths) is the definition of regression.\n\n**Why D is correct.** Estimating continuous `(x, y)` is a regression task, mapping sensor features to numeric coordinates.\n\n**Why the others are wrong.** A (clustering) groups unlabeled data without predicting an actual position. B (binary classification) outputs one of two labels, not continuous coordinates. C (anomaly detection) flags abnormal samples, a different task altogether.\n\n**Takeaway.** Predicting continuous coordinates means regression.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260601-e19",
+    "examId": "AMI20260601",
+    "date": "2026-06-01",
+    "academicYear": "AA2526",
+    "exerciseNo": 19,
+    "type": "multiple-choice",
+    "topics": [
+      "har-smarthome"
+    ],
+    "prompt": "How do binary environmental sensors (e.g., magnetic door sensors) reveal activities of daily living in a smart home?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "By capturing interaction with the home infrastructure through ON/OFF states (dense sensing), e.g., opening a drawer"
+      },
+      {
+        "label": "B",
+        "text": "By measuring both the magnitude and the phase angle of the alternating voltage that is carried on the home's power line"
+      },
+      {
+        "label": "C",
+        "text": "By recording the continuous 3-axis acceleration of the resident as they move around the home"
+      },
+      {
+        "label": "D",
+        "text": "By recording video of the resident in each room and detecting the activities visually from it"
+      }
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** Binary environmental sensors emit just two states, ON/OFF, when a resident interacts with the home: a magnetic sensor flips when a door or drawer opens, a smart plug toggles when an appliance runs. Instrumenting the home densely with such sensors (called dense sensing) lets you infer Activities of Daily Living like cooking or eating from the pattern of object interactions, without cameras or wearables.\n\n**Why A is correct.** It captures interaction with the home infrastructure via ON/OFF states (opening the fridge or a drawer), which is dense sensing.\n\n**Why the others are wrong.** B (voltage magnitude/phase) describes a smart-grid PMU, not a home sensor. C (3-axis acceleration) is wearable inertial sensing, worn on the body. D (video) is camera-based, privacy-intrusive and avoided in this setting.\n\n**Takeaway.** Binary sensors reveal ADLs through ON/OFF interactions with home objects (dense sensing).",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260601-e20",
+    "examId": "AMI20260601",
+    "date": "2026-06-01",
+    "academicYear": "AA2526",
+    "exerciseNo": 20,
+    "type": "multiple-choice",
+    "topics": [
+      "timeseries"
+    ],
+    "prompt": "Which preprocessing step addresses missing values in time series, and why are conventional imputation methods not directly applicable?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Segmentation into windows, because gap-filling only works once every window is the same length"
+      },
+      {
+        "label": "B",
+        "text": "Outlier detection applied first, because each missing value behaves just like an outlier that must then be removed"
+      },
+      {
+        "label": "C",
+        "text": "Imputation via interpolation, because the order of values matters so the temporal sequence must be respected"
+      },
+      {
+        "label": "D",
+        "text": "A Fourier transform, because converting to the frequency domain makes the missing samples disappear"
+      }
+    ],
+    "correctChoice": "C",
+    "solution": "**Concept.** Sensor streams have gaps (dropouts, transmission loss). Imputation fills them, but time series are ordered: a value depends on what came just before and after. Generic imputation (plug in the global mean, or fill rows independently) ignores this order. Time-aware methods like interpolation use the surrounding samples in sequence, respecting the temporal structure.\n\n**Why C is correct.** It names imputation via interpolation and the right reason: order matters, so the temporal sequence must be respected.\n\n**Why the others are wrong.** A (segmentation) is windowing, not gap-filling. B conflates missing values with outliers, which are different problems with different fixes. D is false: a Fourier transform changes the domain but does not remove missing values.\n\n**Takeaway.** Impute time series with order-aware interpolation, not order-blind defaults.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260601-e21",
+    "examId": "AMI20260601",
+    "date": "2026-06-01",
+    "academicYear": "AA2526",
+    "exerciseNo": 21,
+    "type": "multiple-choice",
+    "topics": [
+      "energy"
+    ],
+    "prompt": "Load forecasting in smart grids is performed at different time granularities. Which pairing is correct?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Long-term (minutes to hours) for real-time operational control; short-term (years) for capacity expansion and planning"
+      },
+      {
+        "label": "B",
+        "text": "Mid-term (years) for transient-stability response; short-term (weeks) for routine grid maintenance scheduling work"
+      },
+      {
+        "label": "C",
+        "text": "Short-term (minutes to hours) for real-time control and demand response; long-term (years) for planning and expansion"
+      },
+      {
+        "label": "D",
+        "text": "Short-term (years) for system expansion planning; long-term (minutes to hours) for demand response"
+      }
+    ],
+    "correctChoice": "C",
+    "solution": "**Concept.** Load forecasting predicts future electricity demand, and the horizon must match the decision. Short-term (minutes to hours) drives real-time operation and demand response. Mid-term (hours to weeks) supports dispatch and maintenance scheduling. Long-term (years) informs building new capacity and expanding the grid. The rule: nearer horizon = operational control, farther horizon = planning.\n\n**Why C is correct.** It pairs short-term with real-time control/demand response and long-term with planning/expansion, the correct mapping.\n\n**Why the others are wrong.** A swaps the scales, labeling minutes-hours as 'long-term' and years as 'short-term'. B misassigns granularities (years is not mid-term) and drags in transient stability, which is a stability assessment, not forecasting. D again swaps short-term and long-term against their proper uses.\n\n**Takeaway.** Short horizon = real-time control; long horizon = capacity planning.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260601-e22",
+    "examId": "AMI20260601",
+    "date": "2026-06-01",
+    "academicYear": "AA2526",
+    "exerciseNo": 22,
+    "type": "theory-essay",
+    "topics": [
+      "har-smarthome"
+    ],
+    "prompt": "Smart-home Human Activity Recognition typically relies on environmental sensors to detect high-level Activities of Daily Living (ADLs) for ambient assisted living.\n\n**(a)** Describe at least three types of environmental sensors used in smart-home HAR and what each captures, and explain what is meant by 'dense sensing'.\n\n**(b)** Discuss the main limitations of relying only on environmental binary sensors, and explain how mobile/wearable devices and indoor localization can be combined with them to obtain richer context.",
+    "solution": "**(a)** Common environmental sensors include: (1) Magnetic sensors that detect opening/closing of doors, drawers, fridge, closets via a magnet (ON when the magnet is away/open, OFF when closed); (2) Passive InfraRed (PIR) sensors that detect human motion/presence in specific areas or rooms; (3) Pressure mat sensors that detect when someone sits on a chair or stands up (smart mats can also monitor sleep phases, snoring, heart rate); and (4) Smart plugs that detect appliance usage and can be thresholded into binary ON/OFF states. Most are binary sensors with only ON and OFF states. 'Dense sensing' refers to instrumenting the home so these sensors capture the resident's interactions with the home infrastructure (touching objects, opening things, moving between locations), from which ADLs such as cooking, eating, or taking medicines can be inferred.\n\n**(b)** Limitations: binary sensors cannot identify which resident triggered an event (the data-association problem in multi-inhabitant homes), they are placed only in fixed positions so they do not cover the whole home, PIR cannot detect a still user, and on their own they cannot capture fine-grained body movements. Combining them with mobile/wearable devices adds inertial information (e.g., smartwatch gestures, posture) that helps disambiguate and refine activities; indoor localization provides continuous position and trajectory information that fixed binary sensors cannot, giving richer context. The trade-off is that wearables require the resident to actually wear a device, a usability/compliance burden, especially for elderly subjects.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260601-e23",
+    "examId": "AMI20260601",
+    "date": "2026-06-01",
+    "academicYear": "AA2526",
+    "exerciseNo": 23,
+    "type": "theory-essay",
+    "topics": [
+      "federated"
+    ],
+    "prompt": "Collaborative learning aims to build accurate models from data distributed across many users, but the way data and models are handled has strong privacy and scalability implications.\n\n**(a)** Compare the centralized, distributed on-site, and federated learning approaches in terms of what is shared, where training happens, and their main drawbacks.\n\n**(b)** Explain why federated learning is particularly attractive for Ambient Intelligence applications such as Human Activity Recognition or pervasive healthcare, and give one concrete example application discussed in the course.",
+    "solution": "**(a)** Centralized: each client sends its raw labeled data to a central server, which pools all data and trains a single model. Drawbacks: serious privacy risk (sensor data can reveal personal habits/health), plus scalability issues from high communication latency and the computational cost of training on huge datasets. Distributed on-site learning: the server distributes a pre-trained model and each device trains/infers only on its locally collected data, personalizing the model. This mitigates privacy, but nodes may have few labeled samples, get no benefit from peers' data, and local models do not generalize. Federated learning: each client trains a local model on its own data and shares only the model parameters (never the raw data) with the server, which aggregates them in a privacy-preserving way to form a global model. It combines the privacy of on-site learning with the collaborative benefit of centralized learning.\n\n**(b)** It is attractive for AmI because sensor data (activities, location, physiological signals) is highly sensitive, labeled data is scarce and expensive to acquire, and keeping data on-device addresses privacy while still letting many users collaboratively improve a shared model. A concrete example from the course is Google's GBoard next-word prediction, where users implicitly label by accepting/ignoring suggestions, personal models train locally, and a server merges them into a stronger model; the course also cites federated HAR and federated learning for pervasive healthcare and smart energy.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260601-e24",
+    "examId": "AMI20260601",
+    "date": "2026-06-01",
+    "academicYear": "AA2526",
+    "exerciseNo": 24,
+    "type": "theory-essay",
+    "topics": [
+      "genai"
+    ],
+    "prompt": "Generative AI is applied in Ambient Intelligence mainly for data augmentation of scarce sensor data.\n\n**(a)** Explain how a Generative Adversarial Network (GAN) is trained, describing the roles of the generator and discriminator and the problem of mode collapse.\n\n**(b)** Explain why a Variational AutoEncoder (VAE) is a better generative model than a plain AutoEncoder, describing how its encoder represents the latent space and the role of the Kullback-Leibler loss.",
+    "solution": "**(a)** A GAN is trained adversarially with two networks. The discriminator learns to distinguish real inputs from synthetic ones (high loss when it misclassifies a real instance as fake or a generated instance as real). The generator learns to produce samples that fool the discriminator (high loss when the discriminator confidently labels generated samples as fake). The two are trained in competition so the generator progressively produces more realistic data, which is useful for data augmentation of scarce sensor datasets (e.g., ActivityGAN for sensor-based HAR). A known failure is mode collapse, where the generator produces only a limited variety of samples instead of covering the full data distribution. Conditional GANs (CGANs) extend this to condition generation on a class label, so one model can generate samples for multiple classes.\n\n**(b)** A plain AutoEncoder is trained only to encode and decode, so its latent space lacks regularity and tends to overfit the training data; drawing random points from that latent space and decoding them generally produces poor samples. A VAE regularizes training so the latent space has good generative properties: the encoder maps each input to a probability distribution (it outputs a mean and standard deviation) rather than a single point, and a sample is drawn from that distribution and passed to the decoder. In addition to the reconstruction loss, the VAE adds a Kullback-Leibler (KL) loss that pushes the estimated latent distribution toward a standard Gaussian N(0, I). This keeps the latent space continuous and well-structured, so sampling and decoding yields meaningful new data.",
+    "solutionSource": "authored"
+  }
+]

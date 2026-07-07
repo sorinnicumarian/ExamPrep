@@ -1,0 +1,228 @@
+[
+  {
+    "id": "AMI20260115-e1",
+    "examId": "AMI20260115",
+    "date": "2026-01-15",
+    "academicYear": "AA2526",
+    "exerciseNo": 1,
+    "type": "multiple-choice",
+    "topics": ["genai"],
+    "prompt": "In the GAN framework presented in the course, what is the respective objective of the generator and the discriminator during adversarial training?",
+    "choices": [
+      {"label": "A", "text": "Both networks map the input to a latent distribution, and a Kullback-Leibler term keeps their encodings aligned"},
+      {"label": "B", "text": "Both networks classify inputs as real or fake, and the one with the lower loss is kept as the generator"},
+      {"label": "C", "text": "The discriminator learns to separate real samples from synthetic ones, while the generator learns to fool it"},
+      {"label": "D", "text": "The generator adds noise to real data step by step while the discriminator learns to remove that noise"}
+    ],
+    "correctChoice": "C",
+    "solution": "**Concept.** A GAN trains two networks in a minimax game. The `generator` turns random noise into synthetic samples; the `discriminator` is a classifier that estimates whether an input is real (from data) or fake (from the generator). They are trained against each other: the discriminator is rewarded for catching fakes, the generator for producing fakes the discriminator accepts. Think of a forger versus an art expert, each improving by competing.\n\n**Why C is correct.** It states exactly this division of labor: discriminator learns real-vs-synthetic, generator learns to fool it.\n\n**Why the others are wrong.** A describes a VAE's probabilistic encoder plus KL term, not a GAN. B makes the two networks symmetric classifiers, but only the discriminator classifies while the generator synthesizes. D swaps in diffusion's add-noise / denoise roles, which a GAN does not use.\n\n**Takeaway.** GAN = generator fooling a real/fake discriminator via adversarial training.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260115-e2",
+    "examId": "AMI20260115",
+    "date": "2026-01-15",
+    "academicYear": "AA2526",
+    "exerciseNo": 2,
+    "type": "multiple-choice",
+    "topics": ["genai"],
+    "prompt": "The course lists a well-known failure mode of GANs in which the generator produces only a limited variety of samples. What is it called?",
+    "choices": [
+      {"label": "A", "text": "Posterior collapse"},
+      {"label": "B", "text": "Mode collapse"},
+      {"label": "C", "text": "Latent overfitting"},
+      {"label": "D", "text": "Exposure bias"}
+    ],
+    "correctChoice": "B",
+    "solution": "**Concept.** Because a GAN's generator only needs to fool the discriminator, it can shortcut: instead of covering the full data distribution, it locks onto a few outputs that reliably pass as real and produces only those. This loss of variety is `mode collapse` (a 'mode' is a region/class of the data distribution). It is one reason GANs are praised for fidelity but criticized for low diversity.\n\n**Why B is correct.** Mode collapse is precisely the named failure where the generator emits only a limited variety of samples.\n\n**Why the others are wrong.** A (posterior collapse) is a VAE issue, not the deck's GAN term. C (latent overfitting) is the plain-autoencoder generation problem, where the latent space overfits the training data. D (exposure bias) concerns autoregressive sequence training, not GAN diversity.\n\n**Takeaway.** Limited-variety GAN output = mode collapse.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260115-e3",
+    "examId": "AMI20260115",
+    "date": "2026-01-15",
+    "academicYear": "AA2526",
+    "exerciseNo": 3,
+    "type": "multiple-choice",
+    "topics": ["genai"],
+    "prompt": "Why does the course argue that a standard (plain) AutoEncoder is usually a poor generative model, even though one could in principle sample the latent space and decode?",
+    "choices": [
+      {"label": "A", "text": "The latent space lacks regularity and overfits the data, so random latent samples decode to garbage"},
+      {"label": "B", "text": "The encoder discards the class labels, so generating samples for a chosen target class is impossible"},
+      {"label": "C", "text": "The decoder has too little capacity to reconstruct realistic samples from a sampled latent code"},
+      {"label": "D", "text": "A Kullback-Leibler term pulls the latent toward $N(0,I)$ and erases the encoded training data"}
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** A plain autoencoder is trained only to copy inputs through a bottleneck: encode to a latent code, decode back. Nothing forces the latent space to be organized, so training points get scattered into isolated pockets with large empty gaps between them. To generate, you would sample a random latent point and decode it, but a random point likely lands in a gap the decoder never learned, so it decodes to garbage. The latent space effectively overfits the training set.\n\n**Why A is correct.** It names exactly this: no latent regularity, overfit organization, so random draws decode to meaningless outputs.\n\n**Why the others are wrong.** B blames conditioning/labels, which are unrelated to why sampling fails. C blames decoder capacity, but capacity is not the issue. D names the VAE's KL term toward $N(0,I)$, which a plain AE does not even have, and that term regularizes the latent rather than erasing data.\n\n**Takeaway.** Plain AE latent space is irregular, so sampling it for generation fails.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260115-e4",
+    "examId": "AMI20260115",
+    "date": "2026-01-15",
+    "academicYear": "AA2526",
+    "exerciseNo": 4,
+    "type": "multiple-choice",
+    "topics": ["genai"],
+    "prompt": "A Variational AutoEncoder differs from a plain AutoEncoder mainly because:",
+    "choices": [
+      {"label": "A", "text": "Its encoder outputs a single fixed latent vector and its decoder is trained adversarially against a discriminator"},
+      {"label": "B", "text": "It keeps a pure reconstruction loss with no probabilistic component, exactly like the plain AutoEncoder does"},
+      {"label": "C", "text": "It replaces the decoder with a U-Net whose skip connections push each latent code toward $N(0,I)$"},
+      {"label": "D", "text": "Its encoder maps the input to a distribution (mean and standard deviation), and a KL term pushes the latent toward $N(0,I)$"}
+    ],
+    "correctChoice": "D",
+    "solution": "**Concept.** A VAE fixes the plain AE's irregular latent space by making encoding probabilistic. The encoder outputs a mean and a standard deviation, defining a Gaussian over the latent space; a point is sampled from it and decoded. Training adds a Kullback-Leibler term to the reconstruction loss that pulls each encoded distribution toward $N(0,I)$. This packs the encodings into a smooth, overlapping region, so sampling near the origin and decoding yields valid new samples.\n\n**Why D is correct.** It captures both halves: encoder outputs mean and standard deviation, and the KL term regularizes the latent toward $N(0,I)$.\n\n**Why the others are wrong.** A mixes a fixed latent vector with an adversarial decoder, which is a GAN-flavored model, not a VAE. B describes the plain AE the VAE is built to improve on, since it keeps no probabilistic regularization. C borrows the diffusion U-Net and its skip connections, which have nothing to do with the VAE's KL regularization.\n\n**Takeaway.** VAE = encode to a distribution + KL toward $N(0,I)$ for a sampleable latent space.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260115-e5",
+    "examId": "AMI20260115",
+    "date": "2026-01-15",
+    "academicYear": "AA2526",
+    "exerciseNo": 5,
+    "type": "multiple-choice",
+    "topics": ["genai"],
+    "prompt": "How does a diffusion model generate a new sample, according to the course?",
+    "choices": [
+      {"label": "A", "text": "It draws a single latent code from $N(0,I)$ and the decoder reconstructs the whole sample in one shot"},
+      {"label": "B", "text": "A generator and a discriminator compete step by step until the two networks reach an equilibrium"},
+      {"label": "C", "text": "It starts from pure noise and iteratively denoises, removing noise step by step until a clean sample emerges"},
+      {"label": "D", "text": "It autoregressively predicts one symbol at a time, conditioning each new step on all of the symbols emitted so far"}
+    ],
+    "correctChoice": "C",
+    "solution": "**Concept.** A diffusion model is trained on the reverse of a noising process. Forward diffusion gradually corrupts a real sample over many steps until it is pure noise; the model learns backward diffusion, predicting how to remove a little noise at step `t` to recover step `t-1`. To generate, you start from a fresh sheet of pure noise and apply the learned denoiser repeatedly, each step revealing a bit more structure until a clean sample emerges.\n\n**Why C is correct.** It describes exactly this: begin at pure noise, iteratively denoise step by step.\n\n**Why the others are wrong.** A is one-shot VAE decoding from a latent code, not iterative denoising. B is the GAN adversarial game between generator and discriminator. D is autoregressive (symbol-by-symbol) generation as in T2M-GPT. Because diffusion is iterative, it is noted as slow at sampling.\n\n**Takeaway.** Diffusion generates by denoising pure noise step by step.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260115-e6",
+    "examId": "AMI20260115",
+    "date": "2026-01-15",
+    "academicYear": "AA2526",
+    "exerciseNo": 6,
+    "type": "multiple-choice",
+    "topics": ["genai"],
+    "prompt": "Diffusion models in the course typically use a U-Net for denoising. What property of the U-Net is highlighted as important for generating high-quality data?",
+    "choices": [
+      {"label": "A", "text": "It drops the decoder path entirely and denoises the image using only its downsampling encoder"},
+      {"label": "B", "text": "Its skip connections let the decoder reuse encoder information, which also makes the halves inseparable"},
+      {"label": "C", "text": "It is identical to a plain AutoEncoder, relying only on the compressed bottleneck with no extra wiring of any kind"},
+      {"label": "D", "text": "It swaps all convolutions for attention so the encoder and decoder can be trained as independent halves"}
+    ],
+    "correctChoice": "B",
+    "solution": "**Concept.** A U-Net has an encoder that downsamples and a decoder that upsamples, like an autoencoder, but it adds `skip connections` that wire each encoder layer directly to the matching decoder layer. So when the decoder rebuilds the image it reuses fine-grained detail from the input rather than relying only on the compressed bottleneck. This preserves high-frequency structure, which is why diffusion uses it for high-quality denoising. A side effect: because the decoder is fed by encoder layers, the two halves cannot be split apart.\n\n**Why B is correct.** It names the skip connections, their benefit (decoder reuses encoder info), and the inseparability consequence.\n\n**Why the others are wrong.** A removes the decoder path, but a U-Net keeps both an encoder and a decoder. C calls it a plain AE, yet the skip connections are precisely what set it apart. D claims attention replaces convolutions to make the halves separable, the opposite of the inseparability the deck highlights.\n\n**Takeaway.** U-Net skip connections feed encoder detail to the decoder, enabling high-quality (inseparable) generation.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260115-e7",
+    "examId": "AMI20260115",
+    "date": "2026-01-15",
+    "academicYear": "AA2526",
+    "exerciseNo": 7,
+    "type": "multiple-choice",
+    "topics": ["genai"],
+    "prompt": "The course compares GAN, VAE and Diffusion models. Which characterization matches the slides?",
+    "choices": [
+      {"label": "A", "text": "GAN: high-quality, low-diversity (mode collapse), hard to train; VAE: lower-fidelity, high-diversity, easy to train; Diffusion: high-fidelity, high-diversity, easy to train but slow to sample"},
+      {"label": "B", "text": "GAN: high-fidelity, high-diversity, easy to train; VAE: low-fidelity, low-diversity, hard to train; Diffusion: high-fidelity, low-diversity, easy to train and fast to sample"},
+      {"label": "C", "text": "GAN: low-fidelity, high-diversity, easy to train; VAE: high-fidelity, low-diversity, slow to sample; Diffusion: low-fidelity, low-diversity, hard to train and slow to sample"},
+      {"label": "D", "text": "GAN: high-diversity, low-fidelity, slow to sample; VAE: low-diversity, high-fidelity, hard to train; Diffusion: low-fidelity, high-diversity, easy to train and fast to sample"}
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** The three families trade off three axes: sample fidelity (quality), diversity (coverage of the data), and cost (training and sampling). GANs win on fidelity but collapse on diversity and are hard to train. VAEs train easily and are diverse but produce blurrier, lower-fidelity samples. Diffusion gets the best of both, high fidelity and high diversity with easy training, but pays for it with slow iterative sampling.\n\n**Why A is correct.** It states exactly this: GAN high-quality/low-diversity/hard-to-train; VAE lower-fidelity/high-diversity/easy; diffusion high-fidelity/high-diversity/easy but slow.\n\n**Why the others are wrong.** B wrongly calls GANs high-diversity and easy to train, and labels diffusion low-diversity and fast. C inverts GAN and VAE fidelity and calls diffusion hard to train. D claims GANs are high-diversity/low-fidelity and diffusion fast to sample, scrambling every axis.\n\n**Takeaway.** GAN = sharp but narrow; VAE = diverse but soft; diffusion = best quality+diversity but slow to sample.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260115-e8",
+    "examId": "AMI20260115",
+    "date": "2026-01-15",
+    "academicYear": "AA2526",
+    "exerciseNo": 8,
+    "type": "multiple-choice",
+    "topics": ["genai"],
+    "prompt": "Approaches such as ADL-LLM and the unsupervised-HAR method in the course let an LLM recognize activities from smart-home sensors by:",
+    "choices": [
+      {"label": "A", "text": "Feeding the raw accelerometer voltage stream straight into the LLM's embedding layer, with no textual conversion at all"},
+      {"label": "B", "text": "Fine-tuning a diffusion model to denoise the raw sensor stream and reading the recognized activity off the clean signal"},
+      {"label": "C", "text": "Training a conditional GAN on labeled activities and then reusing its trained discriminator as the activity classifier"},
+      {"label": "D", "text": "Translating sensor-event windows into human-readable sentences (temporal, room-layout, activation context) and prompting the LLM"}
+    ],
+    "correctChoice": "D",
+    "solution": "**Concept.** LLMs reason over text, not raw signals, so to use their pretrained knowledge for Human Activity Recognition you bring the sensor data into language. A window of smart-home events is translated into human-readable sentences (e.g., 'the fridge has been opened'), and the prompt is enriched with context: temporal information (morning/afternoon/evening), room-layout descriptions, and the sensor activations. The LLM then infers which activity the description corresponds to, even zero-shot.\n\n**Why D is correct.** It describes exactly this translate-to-text-then-prompt pipeline with the listed context.\n\n**Why the others are wrong.** A contradicts the deck, which warns LLMs are not trained to understand raw continuous sensor values. B uses diffusion denoising, an unrelated generative pipeline, not text prompting. C reuses a conditional-GAN discriminator as a classifier, which is not how these LLM methods work.\n\n**Takeaway.** ADL-LLM = turn sensor windows into context-rich sentences, then prompt the LLM for the activity.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260115-e9",
+    "examId": "AMI20260115",
+    "date": "2026-01-15",
+    "academicYear": "AA2526",
+    "exerciseNo": 9,
+    "type": "multiple-choice",
+    "topics": ["genai"],
+    "prompt": "In the TDOST approach (Textual Descriptions Of Sensor Triggers), why does turning sensor windows into sentences help cross-home transfer learning?",
+    "choices": [
+      {"label": "A", "text": "Because the sentences encode semantics rather than home-specific sensor-id patterns, so source-home weights transfer better"},
+      {"label": "B", "text": "Because the target home is turned into one fully labeled dataset, so the domain shift between homes is removed entirely"},
+      {"label": "C", "text": "Because the sentences are shorter than the raw sensor windows, so the encoder converges faster on each separate home"},
+      {"label": "D", "text": "Because the textual form lets the model skip the pre-trained language encoder and learn its embeddings from scratch per home"}
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** Cross-home transfer fails when a model learns home-specific patterns, since sensor IDs, counts, and layouts differ between houses. TDOST sidesteps this by transforming each sensor window into a sentence describing the triggers and embedding it with a pre-trained language encoder. The embedding captures the meaning of what happened (e.g., 'the stove was turned on') rather than which raw sensor fired, so a classifier trained on a labeled source home keeps working when its weights are transferred to a different target home.\n\n**Why A is correct.** It pinpoints the mechanism: sentences encode semantics, not home-specific sensor-id patterns, enabling weight transfer.\n\n**Why the others are wrong.** B overstates it, since transfer improves but the domain shift is not eliminated. C credits shorter/faster sentences, which is not the cited reason. D claims the encoder is dropped, but TDOST relies on pre-trained language encoders rather than learning from scratch.\n\n**Takeaway.** Sentences carry layout-agnostic semantics, so TDOST weights transfer across homes.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260115-e10",
+    "examId": "AMI20260115",
+    "date": "2026-01-15",
+    "academicYear": "AA2526",
+    "exerciseNo": 10,
+    "type": "multiple-choice",
+    "topics": ["genai"],
+    "prompt": "In the IMUGPT / T2M-GPT pipeline for generating labeled inertial datasets, why does the course turn to the 3D human-motion domain instead of training a generative model directly on IMU data?",
+    "choices": [
+      {"label": "A", "text": "Because IMU signals can never be simulated from body motion, so the 3D-motion domain is the only remaining available source of inertial data"},
+      {"label": "B", "text": "Because diffusion models are simply unable to generate any time series, so a 3D-motion model has to stand in for them"},
+      {"label": "C", "text": "Because generators still need a lot of data and large labeled text-to-3D-motion datasets exist, and motion maps to inertial signals"},
+      {"label": "D", "text": "Because an LLM can output the raw IMU readings directly, which makes the intermediate 3D-motion stage entirely unnecessary"}
+    ],
+    "correctChoice": "C",
+    "solution": "**Concept.** Labeled inertial (IMU) data is scarce, and generative models need lots of data to train, so training a generator directly on IMU is a chicken-and-egg problem. The trick is to borrow a neighboring domain that does have large labeled datasets: text-to-3D-human-motion. T2M-GPT generates 3D motion from a text description; because you can simulate body-worn sensors from that motion, the synthetic motion is mapped to synthetic IMU signals (IMUGPT), yielding labeled inertial data cheaply.\n\n**Why C is correct.** It gives this rationale: generators need much data, abundant labeled text-to-motion data exists, and motion converts to inertial signals.\n\n**Why the others are wrong.** A is backwards, since motion is used precisely because IMU signals can be simulated from it. B is false, because the deck covers diffusion for time series. D contradicts the staged text-to-motion-to-IMU pipeline, in which the motion stage is essential.\n\n**Takeaway.** Generate from data-rich 3D motion, then map motion to synthetic IMU to beat label scarcity.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260115-e11",
+    "examId": "AMI20260115",
+    "date": "2026-01-15",
+    "academicYear": "AA2526",
+    "exerciseNo": 11,
+    "type": "theory-essay",
+    "topics": ["genai"],
+    "prompt": "The course compares three generative model families: GANs, Variational AutoEncoders, and Diffusion models.\n\n**(a)** For each of the three families, describe its core generative mechanism and the main trade-off (in terms of sample fidelity, diversity, and training/sampling cost) emphasized in the course.\n\n**(b)** A research group wants to augment a small sensor-based Human Activity Recognition dataset with synthetic samples. Discuss which family you would consider and why, referring to mode collapse, latent-space regularity, and sampling cost.",
+    "solution": "**(a)** GANs use adversarial training: a generator synthesizes samples and a discriminator learns to separate real from synthetic, the generator learning to fool it. They give high-quality (high-fidelity) samples but suffer from low diversity due to mode collapse (only a limited variety of samples), and they are hard to train. VAEs are AutoEncoders whose encoder maps the input to a distribution (mean and standard deviation) over a latent space regularized by a KL term toward $N(0,I)$; a latent sample is decoded. They are easy to train and give high diversity, but lower-fidelity samples. Diffusion models learn to denoise: forward diffusion progressively adds noise, backward diffusion learns to remove it step by step, and generation starts from pure noise and denoises iteratively (often with a U-Net). They give high-fidelity and high-diversity samples and are easy to train, but are slow at sampling because generation is iterative.\n\n**(b)** For data augmentation of a small HAR dataset, the central concerns are diversity and stability. GANs were historically the go-to for augmentation (e.g., ActivityGAN, CGAN for per-class conditioning), but mode collapse limits the variety of synthetic activity samples and they are hard to train on small data. A VAE offers high diversity, a regularized latent space that supports sampling, and easy training, at the cost of lower fidelity, which may be acceptable for augmentation. Diffusion models would give the best fidelity and diversity and train easily, but their slow iterative sampling raises the cost of generating large augmented sets; conditional variants can target specific activity classes. A reasonable answer picks VAE or conditional diffusion for diversity and stability, while noting that GAN fidelity is attractive when mode collapse can be controlled (e.g., conditioning per class).",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260115-e12",
+    "examId": "AMI20260115",
+    "date": "2026-01-15",
+    "academicYear": "AA2526",
+    "exerciseNo": 12,
+    "type": "theory-essay",
+    "topics": ["genai"],
+    "prompt": "The course presents several ways of bringing Large Language Models into Ambient Intelligence, including prompting sensor data as text and reprogramming LLMs for time series.\n\n**(a)** Explain how a smart-home activity-recognition method (e.g., ADL-LLM) turns sensor data into something an LLM can reason about, and what contextual information the prompt may include.\n\n**(b)** The course warns about scalability/limitations of prompting raw sensor data and proposes alternatives (few-shot, fine-tuning, reprogramming such as Time-LLM, foundation models). Discuss the limitation and at least two proposed remedies.",
+    "solution": "**(a)** Methods like ADL-LLM and the unsupervised-HAR approach translate windows of smart-home sensor events into human-readable sentences, e.g., 'the fridge has been opened.' A window of sensor data is mapped into a textual description and the LLM is prompted to determine the activity. The prompt can be enriched with temporal information (morning, afternoon, evening), room-layout descriptions (which rooms exist, their spatial arrangement, and which sensors are in each room), and the sensor activations themselves. Because the data is mapped into text, pre-trained LLM knowledge can be leveraged, and approaches like NLS even learn a shared sensor-text latent space enabling zero-shot classification via cosine similarity to activity labels.\n\n**(b)** The limitation: scalability is questionable, especially for continuous sensor data such as accelerometers, because LLMs are typically not trained to understand raw sensor data, so directly prompting raw signals as text may not be optimal. Remedies discussed: (1) few-shot prompting or, better, fine-tuning the LLM on the specific task (e.g., fine-tuning for health applications or for forecasting as in PromptCast); (2) LLM reprogramming (Time-LLM), which keeps the backbone intact, converts the input time series into text-prototype token representations, and fine-tunes only the head with few-shot training; (3) moving toward foundation models for time series as a more promising long-term direction. Any two of these, correctly motivated by the raw-sensor-understanding limitation, are acceptable.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260115-e13",
+    "examId": "AMI20260115",
+    "date": "2026-01-15",
+    "academicYear": "AA2526",
+    "exerciseNo": 13,
+    "type": "theory-essay",
+    "topics": ["genai"],
+    "prompt": "Conditioning is a recurring theme across the generative families in the course (Conditional GAN, Conditional VAE, conditioned latent diffusion).\n\n**(a)** Explain what 'conditioning' means in generative modeling and give two concrete examples from the course of how it is realized in different families.\n\n**(b)** Describe how latent diffusion models can be conditioned on another modality (e.g., text for image generation), referencing the two combined mechanisms mentioned in the slides.",
+    "solution": "**(a)** Conditioning means steering the generation process with additional input so the model produces samples consistent with a chosen attribute or modality, instead of unconditional samples. With classic GANs one might otherwise need a separate model per class; a Conditional GAN (CGAN) conditions generation on specific classes, training a single model. A Conditional VAE conditions generation on extra input modalities (e.g., generating images from a text prompt): the encoder maps the input to a latent representation that also takes the conditioning information into account, and the decoder reconstructs using that additional information. (Other valid examples: text-conditioned diffusion; T2M-GPT conditioned on CLIP text embeddings.)\n\n**(b)** Latent diffusion operates in a compressed latent space rather than pixel space, making generation efficient. To condition it on another modality such as text, the course describes combining two mechanisms: (1) enhancing the U-Net with encoder-decoder attention (cross-attention) so denoising can attend to multiple types of input, e.g., the text prompt; and (2) using a conditional variational AutoEncoder after denoising. Together these let the model generate, for example, an image that matches a text prompt while keeping the efficiency of operating in latent space.",
+    "solutionSource": "authored"
+  }
+]

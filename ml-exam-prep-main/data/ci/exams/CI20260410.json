@@ -1,0 +1,278 @@
+[
+  {
+    "id": "CI20260410-e1",
+    "examId": "CI20260410",
+    "date": "2026-04-10",
+    "academicYear": "AA2526",
+    "exerciseNo": 1,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["dc-intro"],
+    "part": "first",
+    "prompt": "One advantage of building an in-house data center is that it grants an organization full autonomy over hardware choices and security policies.",
+    "subStatements": [
+      {
+        "id": "CI20260410-e1-s1",
+        "statement": "One advantage of building an in-house data center is that it grants an organization full autonomy over hardware choices and security policies.",
+        "answer": true,
+        "motivation": "Owning and operating an in-house (private) data center gives the organization full control over the physical and logical stack: it can pick its own server/storage/network hardware, lay out the facility as it likes, and define its own security, compliance and access policies rather than accepting the standardized choices of a third-party/colocation or cloud provider. This control (and the associated isolation/compliance benefits) is precisely the trade-off given against the higher capital cost and operational burden of self-hosting."
+      }
+    ],
+    "solution": "TRUE. Building/owning the data center yourself means you control hardware selection and security/compliance policies, which is one of the classic advantages of an in-house facility (at the cost of higher CapEx/OpEx).",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20260410-e2",
+    "examId": "CI20260410",
+    "date": "2026-04-10",
+    "academicYear": "AA2526",
+    "exerciseNo": 2,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["servers"],
+    "part": "first",
+    "prompt": "NVLink enables high-speed, direct communication among multiple GPUs, reducing reliance on CPU-based data transfer.",
+    "subStatements": [
+      {
+        "id": "CI20260410-e2-s1",
+        "statement": "NVLink enables high-speed, direct communication among multiple GPUs, reducing reliance on CPU-based data transfer.",
+        "answer": true,
+        "motivation": "NVLink is NVIDIA's high-bandwidth interconnect that links GPUs directly (GPU-to-GPU, and GPU-to-CPU on supported platforms), providing far higher bandwidth than PCIe and allowing GPUs to exchange data and share memory without routing every transfer through the CPU and main memory. This direct peer-to-peer path is exactly its purpose in multi-GPU servers used for ML/HPC workloads."
+      }
+    ],
+    "solution": "TRUE. NVLink is a high-speed GPU interconnect that allows GPUs to communicate directly with each other (and with the CPU) at much higher bandwidth than PCIe, reducing the need to funnel data through the CPU.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20260410-e3",
+    "examId": "CI20260410",
+    "date": "2026-04-10",
+    "academicYear": "AA2526",
+    "exerciseNo": 3,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["storage-devices"],
+    "part": "first",
+    "prompt": "Modern data centers often combine HDDs with SSDs to balance cost and performance.",
+    "subStatements": [
+      {
+        "id": "CI20260410-e3-s1",
+        "statement": "Modern data centers often combine HDDs with SSDs to balance cost and performance.",
+        "answer": true,
+        "motivation": "HDDs offer a low cost per GB and high capacity but slow random access, while SSDs offer very low latency and high IOPS at a higher cost per GB. Data centers therefore use tiered/hybrid storage: SSDs (or flash caches) for hot, latency-sensitive data and HDDs for bulk/cold capacity, balancing cost against performance."
+      }
+    ],
+    "solution": "TRUE. Tiered storage that mixes cheap, high-capacity HDDs with fast, low-latency SSDs is the standard way data centers trade off cost per GB against performance.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20260410-e4",
+    "examId": "CI20260410",
+    "date": "2026-04-10",
+    "academicYear": "AA2526",
+    "exerciseNo": 4,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["dc-intro"],
+    "part": "first",
+    "prompt": "Warehouse-scale computers are typically composed of a large set of homogeneous servers.",
+    "subStatements": [
+      {
+        "id": "CI20260410-e4-s1",
+        "statement": "Warehouse-scale computers are typically composed of a large set of homogeneous servers.",
+        "answer": true,
+        "motivation": "A warehouse-scale computer (WSC) is designed as a single massive machine built from a very large number of low-cost, largely homogeneous (commodity) servers and identical building blocks. Homogeneity simplifies management, provisioning, software deployment and repair at scale, which is a defining characteristic of WSCs."
+      }
+    ],
+    "solution": "TRUE. WSCs are built from large numbers of homogeneous commodity servers/building blocks; this uniformity is intentional and simplifies operation at scale.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20260410-e5",
+    "examId": "CI20260410",
+    "date": "2026-04-10",
+    "academicYear": "AA2526",
+    "exerciseNo": 5,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["dc-intro"],
+    "part": "first",
+    "prompt": "Edge computing nodes often cache and compute on locally produced data to reduce latency and congestion.",
+    "subStatements": [
+      {
+        "id": "CI20260410-e5-s1",
+        "statement": "Edge computing nodes often cache and compute on locally produced data to reduce latency and congestion.",
+        "answer": true,
+        "motivation": "Edge computing pushes processing and caching close to where data is generated (sensors, devices) instead of sending everything to a distant data center. Doing computation and caching locally cuts round-trip latency and reduces the volume of traffic sent over the network to the core/cloud, easing congestion. This is the core motivation of the edge in the computing continuum."
+      }
+    ],
+    "solution": "TRUE. Processing and caching data near its source is the defining benefit of edge computing: lower latency and less data sent upstream, reducing network congestion.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20260410-e6",
+    "examId": "CI20260410",
+    "date": "2026-04-10",
+    "academicYear": "AA2526",
+    "exerciseNo": 6,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["dc-intro"],
+    "part": "first",
+    "prompt": "Warehouse-scale computers are suitable only for limited workloads and cannot support large-scale services.",
+    "subStatements": [
+      {
+        "id": "CI20260410-e6-s1",
+        "statement": "Warehouse-scale computers are suitable only for limited workloads and cannot support large-scale services.",
+        "answer": false,
+        "motivation": "This is the opposite of their purpose. WSCs exist precisely to run massive, internet-scale services (search, mail, social networks, cloud platforms) that serve enormous numbers of users. They are built to support large-scale, highly parallel workloads, not limited ones."
+      }
+    ],
+    "solution": "FALSE. WSCs are purpose-built to host very large-scale internet services; claiming they support only limited workloads contradicts their definition.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20260410-e7",
+    "examId": "CI20260410",
+    "date": "2026-04-10",
+    "academicYear": "AA2526",
+    "exerciseNo": 7,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["storage-devices"],
+    "part": "first",
+    "prompt": "SSDs have a limited number of read cycles, which can cause them to wear out over time.",
+    "subStatements": [
+      {
+        "id": "CI20260410-e7-s1",
+        "statement": "SSDs have a limited number of read cycles, which can cause them to wear out over time.",
+        "answer": false,
+        "motivation": "SSD wear is caused by a limited number of program/erase (write) cycles per flash cell, not by reads. Reads do not consume the cell's endurance budget (aside from rare second-order effects like read disturb, which is managed by the controller). The statement is false because it attributes wear-out to read cycles instead of write/erase cycles."
+      }
+    ],
+    "solution": "FALSE. Flash endurance is limited by program/erase (write) cycles, not read cycles; SSDs wear out from writes, not reads.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20260410-e8",
+    "examId": "CI20260410",
+    "date": "2026-04-10",
+    "academicYear": "AA2526",
+    "exerciseNo": 8,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["servers"],
+    "part": "first",
+    "prompt": "Tower servers are the dominant form factor for large data centers.",
+    "subStatements": [
+      {
+        "id": "CI20260410-e8-s1",
+        "statement": "Tower servers are the dominant form factor for large data centers.",
+        "answer": false,
+        "motivation": "Large data centers use rack-mounted and blade servers, which offer high density, standardized 19-inch rack mounting, and efficient cooling/cabling. Tower servers are bulky, low-density, free-standing units typical of small offices, not the dominant form factor in large data centers."
+      }
+    ],
+    "solution": "FALSE. Rack and blade servers dominate large data centers because of their density and rack-standard form; tower servers are for small/office deployments.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20260410-e9",
+    "examId": "CI20260410",
+    "date": "2026-04-10",
+    "academicYear": "AA2526",
+    "exerciseNo": 9,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["dc-intro"],
+    "part": "first",
+    "prompt": "The computing continuum spans from tiny IoT sensors all the way to large-scale data centers, enabling various levels of processing and storage.",
+    "subStatements": [
+      {
+        "id": "CI20260410-e9-s1",
+        "statement": "The computing continuum spans from tiny IoT sensors all the way to large-scale data centers, enabling various levels of processing and storage.",
+        "answer": true,
+        "motivation": "The computing continuum (device/edge/fog/cloud) describes the hierarchy from tiny IoT/end devices, through edge and fog nodes, up to large-scale data centers and cloud. Each tier provides different amounts of processing and storage, and workloads are placed across the continuum according to latency, bandwidth and capacity needs. The statement matches this definition."
+      }
+    ],
+    "solution": "TRUE. The computing continuum is exactly the device-to-cloud hierarchy (IoT/edge/fog/cloud) providing graded levels of processing and storage.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20260410-e10",
+    "examId": "CI20260410",
+    "date": "2026-04-10",
+    "academicYear": "AA2526",
+    "exerciseNo": 10,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["dc-intro"],
+    "part": "first",
+    "prompt": "Building an in-house data center has no ongoing operational or maintenance costs once the facility is constructed.",
+    "subStatements": [
+      {
+        "id": "CI20260410-e10-s1",
+        "statement": "Building an in-house data center has no ongoing operational or maintenance costs once the facility is constructed.",
+        "answer": false,
+        "motivation": "Beyond the initial capital expenditure (CapEx), an in-house data center incurs substantial ongoing operational expenditure (OpEx): electricity for IT and cooling, cooling/HVAC maintenance, hardware refresh and repair, networking, physical security, and staffing. The claim that there are no ongoing costs after construction is false."
+      }
+    ],
+    "solution": "FALSE. After construction, an in-house DC still carries large recurring OpEx: power, cooling, maintenance, hardware refresh, security and staff.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20260410-e11",
+    "examId": "CI20260410",
+    "date": "2026-04-10",
+    "academicYear": "AA2526",
+    "exerciseNo": 11,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["storage-devices"],
+    "part": "first",
+    "prompt": "Consider an HDD with a data transfer time of $0.4\\,\\text{ms}$ for a $4\\,\\text{KB}$ sector, a rotation speed of $12000\\,\\text{RPM}$, a mean seek time of $6\\,\\text{ms}$, and a negligible overhead of the controller. What is the average locality of the blocks if we observe an I/O service time of $40\\,\\text{ms}$ to transfer a $120\\,\\text{KB}$ file?",
+    "solution": "**Given:** $T_{transfer}=0.4\\,\\text{ms}$ per $4\\,\\text{KB}$ block, $12000\\,\\text{RPM}$, $T_{seek}=6\\,\\text{ms}$, controller overhead negligible, $T_{io}=40\\,\\text{ms}$, file $=120\\,\\text{KB}$.\n\n**Rotational latency** (half a revolution):\n$$T_{rot}=\\frac{1}{2}\\cdot\\frac{60}{12000}\\,\\text{s}=\\frac{1}{2}\\cdot 5\\,\\text{ms}=2.5\\,\\text{ms}$$\n\n**Number of blocks:**\n$$n=\\frac{120\\,\\text{KB}}{4\\,\\text{KB}}=30$$\n\n**I/O time model** (locality $L$ = fraction of blocks that are contiguous, so only a fraction $(1-L)$ pays a seek + rotation):\n$$T_{io}=n\\,(1-L)\\,(T_{seek}+T_{rot})+n\\,T_{transfer}$$\n\nWait — the printed draft uses $n=25$ for the seek/rotation term in its template line, but the correct count for this file is $n=30$. Plugging $n=30$:\n$$40 = 30\\,(1-L)\\,(6+2.5)+30\\cdot 0.4$$\n$$40 = 255\\,(1-L)+12 \\;\\Rightarrow\\; (1-L)=\\frac{28}{255}=0.1098$$\n$$L = 0.8902 = 89.02\\%$$\n\n**FINAL RESULT:** $L \\approx 89.02\\%$",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20260410-e12",
+    "examId": "CI20260410",
+    "date": "2026-04-10",
+    "academicYear": "AA2526",
+    "exerciseNo": 12,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["storage-devices"],
+    "part": "first",
+    "prompt": "Let us consider a set of requests in the disk queue referring to the following cylinders of the disk: $79, 14, 122, 65, 183, 37, 98$. Consider the initial position of the disk head at cylinder $102$, and it is moving from outside (higher cylinder number) to inside (lower cylinder number). If no further requests arrive, write the order of the served requests (from the first to the last) if the disk head scheduling algorithm adopted is SCAN. Use the cylinder number to refer to the request.",
+    "solution": "**SCAN (elevator)**: the head keeps moving in its current direction, servicing every request it passes, until it reaches the end of the disk, then reverses.\n\nStart at cylinder $102$ moving toward **lower** cylinders (outside→inside). Requests below $102$, in descending order: $98, 79, 65, 37, 14$. The head reaches the inner end, then reverses and services the remaining requests above $102$ in ascending order: $122, 183$.\n\n**FINAL RESULT (service order):** $98 \\to 79 \\to 65 \\to 37 \\to 14 \\to 122 \\to 183$",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20260410-e13",
+    "examId": "CI20260410",
+    "date": "2026-04-10",
+    "academicYear": "AA2526",
+    "exerciseNo": 13,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["dependability"],
+    "part": "first",
+    "prompt": "Consider a system composed of three components: A, B, and C. The system fails whenever component A fails; otherwise, it remains operational as long as at least one of components B or C is functioning. The reliability of the system after five years is $R_{sys}(5y)=0.68$, while the reliabilities of B and C after five years are $R_B(5y)=0.6$ and $R_C(5y)=0.5$, respectively. Failures are independent, and all components have exponentially distributed lifetimes. Compute the MTTF of component A.",
+    "solution": "**Structure:** A is in series with the parallel block (B \\| C). The system works iff A works AND (B or C works):\n$$R_{sys}=R_A\\cdot R_{BC}, \\qquad R_{BC}=1-(1-R_B)(1-R_C)$$\n\n**Parallel block (B\\|C) at 5y:**\n$$R_{BC}=1-(1-0.6)(1-0.5)=1-0.4\\cdot 0.5=1-0.2=0.8$$\n\n**Reliability of A at 5y:**\n$$R_A(5y)=\\frac{R_{sys}}{R_{BC}}=\\frac{0.68}{0.8}=0.85$$\n\n**Exponential lifetime** $R_A(t)=e^{-t/MTTF_A}$, so:\n$$MTTF_A=\\frac{-t}{\\ln R_A(t)}=\\frac{-5}{\\ln 0.85}=\\frac{-5}{-0.16252}\\approx 30.8\\,\\text{y}$$\n\n**FINAL RESULT:** $MTTF_A \\approx 30.8\\ \\text{years}$",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20260410-e14",
+    "examId": "CI20260410",
+    "date": "2026-04-10",
+    "academicYear": "AA2526",
+    "exerciseNo": 14,
+    "marks": 5,
+    "type": "theory-essay",
+    "topics": ["dc-intro"],
+    "part": "first",
+    "prompt": "Briefly describe the following infrastructure components used to organize multiple data centers located far apart, and explain the main differences among them: Geographic Areas, Computing Regions, and Availability Zones.",
+    "solution": "A single user request is fully processed within one data center, but providers distribute many data centers geographically to serve users worldwide, reduce latency, increase throughput and improve availability. **Geographic Areas, Computing Regions, and Availability Zones form a hierarchy** used to organize these distributed infrastructures.\n\n- **Geographic Area (GA)** — the *largest* level, defined by geopolitical boundaries (e.g. country borders). It is driven mainly by data-residency requirements and legal/compliance constraints on where data may be stored and processed. Each geographic area contains at least two computing regions.\n- **Computing Region (CR)** — a smaller unit inside a geographic area; it is the infrastructure granularity typically exposed to customers. A region may contain multiple data centers (not individually exposed). Regions are separated by hundreds of miles and placed in different risk areas (e.g. different flood zones), so a single large-scale disaster is unlikely to hit several at once. Because of this distance, synchronous replication across regions is generally impractical, while inter-region replication suits disaster recovery.\n- **Availability Zone (AZ)** — the *finest-grain* location, existing inside a single computing region. AZs are fault-isolated locations with independent power, cooling and networking, used to support mission-critical applications with high availability and tolerance to data-center failures. Unlike regions, AZs are close enough to allow application-level synchronous replication; typically at least three AZs are desirable to achieve quorum.\n\n**Main difference:** Geographic Areas address geopolitical/data-residency boundaries; Computing Regions provide geographic separation for disaster recovery; Availability Zones provide local fault isolation and high availability *within* a region.",
+    "solutionSource": "exam"
+  }
+]

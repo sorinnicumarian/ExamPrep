@@ -1,0 +1,334 @@
+[
+  {
+    "id": "CI20240207-e1",
+    "examId": "CI20240207",
+    "date": "2024-02-07",
+    "academicYear": "AA2324",
+    "exerciseNo": 1,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["raid"],
+    "part": "second",
+    "prompt": "True/False: RAID 5 can handle sequential reads and writes better than RAID 10 with the same amount of disks.",
+    "subStatements": [
+      {
+        "id": "CI20240207-e1-s1",
+        "statement": "RAID 5 can handle sequential reads and writes better than RAID 10 with the same amount of disks.",
+        "answer": true,
+        "motivation": "**True (the official key marks this True).** With the same number of disks $N$, RAID 5 stores data on effectively $N-1$ disks (one disk worth of capacity is used for distributed parity), while RAID 10 mirrors everything and so uses only $N/2$ disks for data (RAID lecture). Because **large/sequential** transfers are striped across more data disks in RAID 5, its aggregate sequential read and write bandwidth (and usable capacity) is higher than RAID 10 with the same disk count. (For small *random* writes the read-modify-write parity overhead would instead favour RAID 10 — but the statement is about sequential I/O.)"
+      }
+    ],
+    "solution": "See per-statement motivation.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20240207-e2",
+    "examId": "CI20240207",
+    "date": "2024-02-07",
+    "academicYear": "AA2324",
+    "exerciseNo": 2,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["virtualization"],
+    "part": "second",
+    "prompt": "True/False: Monolithic hypervisors are better suited for high-performance computing than microkernel hypervisors.",
+    "subStatements": [
+      {
+        "id": "CI20240207-e2-s1",
+        "statement": "Monolithic hypervisors are better suited for high-performance computing than microkernel hypervisors.",
+        "answer": true,
+        "motivation": "**True.** A **monolithic** hypervisor includes the device drivers inside the hypervisor itself, so guest I/O is handled directly by the hypervisor without delegating to a separate service/driver domain (Virtualization lecture). This shorter path gives **better I/O and overall performance**, which is what HPC workloads need. A **microkernel** hypervisor keeps the hypervisor minimal and pushes drivers into a separate (parent) partition, improving security/footprint but adding indirection and overhead. Hence monolithic is the better fit for high performance."
+      }
+    ],
+    "solution": "See per-statement motivation.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20240207-e3",
+    "examId": "CI20240207",
+    "date": "2024-02-07",
+    "academicYear": "AA2324",
+    "exerciseNo": 3,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["virtualization"],
+    "part": "second",
+    "prompt": "True/False: Virtualization can help reduce the need for physical space and infrastructure by consolidating multiple servers onto a single physical machine.",
+    "subStatements": [
+      {
+        "id": "CI20240207-e3-s1",
+        "statement": "Virtualization can help reduce the need for physical space and infrastructure by consolidating multiple servers onto a single physical machine.",
+        "answer": true,
+        "motivation": "**True.** Through **partitioning**, virtualization lets many VMs (each with its own OS) share one physical machine, increasing hardware utilization (Virtualization lecture). **Server consolidation** therefore replaces many under-used physical servers with fewer hosts, directly reducing the required physical space, power, cooling and supporting infrastructure — one of the main economic drivers of virtualization and of cloud computing."
+      }
+    ],
+    "solution": "See per-statement motivation.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20240207-e4",
+    "examId": "CI20240207",
+    "date": "2024-02-07",
+    "academicYear": "AA2324",
+    "exerciseNo": 4,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["dc-intro"],
+    "part": "second",
+    "prompt": "True/False: A PUE of 1.0 means that all of the power consumed by a data center is being used by the IT equipment.",
+    "subStatements": [
+      {
+        "id": "CI20240207-e4-s1",
+        "statement": "A PUE of 1.0 means that all of the power consumed by a data center is being used by the IT equipment.",
+        "answer": true,
+        "motivation": "**True.** $PUE = \\dfrac{\\text{Total facility power}}{\\text{IT equipment power}}$ (Building Infrastructures lecture). $PUE = 1.0$ requires the numerator to equal the denominator, i.e. **zero** non-IT overhead (no cooling, power-distribution or lighting losses), so 100% of the consumed power goes to the IT equipment. It is the ideal, unreachable lower bound; real facilities have $PUE > 1$."
+      }
+    ],
+    "solution": "See per-statement motivation.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20240207-e5",
+    "examId": "CI20240207",
+    "date": "2024-02-07",
+    "academicYear": "AA2324",
+    "exerciseNo": 5,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["servers"],
+    "part": "second",
+    "prompt": "True/False: GPUs require specialized software and programming frameworks to fully leverage their parallel processing capabilities.",
+    "subStatements": [
+      {
+        "id": "CI20240207-e5-s1",
+        "statement": "GPUs require specialized software and programming frameworks to fully leverage their parallel processing capabilities.",
+        "answer": true,
+        "motivation": "**True.** A GPU is a massively parallel (SIMD/SIMT) accelerator with thousands of simple cores; ordinary sequential CPU code cannot exploit it (Server lecture). To use the parallel hardware, programmers must use **specialized frameworks and APIs** such as CUDA, OpenCL or higher-level libraries (cuDNN, TensorFlow/PyTorch backends) that express data parallelism and manage host-device memory. Without such software the GPU's parallelism stays idle."
+      }
+    ],
+    "solution": "See per-statement motivation.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20240207-e6",
+    "examId": "CI20240207",
+    "date": "2024-02-07",
+    "academicYear": "AA2324",
+    "exerciseNo": 6,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["dc-intro"],
+    "part": "second",
+    "prompt": "True/False: Warehouse-scale computers require specialized cooling and power management systems.",
+    "subStatements": [
+      {
+        "id": "CI20240207-e6-s1",
+        "statement": "Warehouse-scale computers require specialized cooling and power management systems.",
+        "answer": true,
+        "motivation": "**True.** A warehouse-scale computer (WSC) packs thousands of servers dissipating megawatts of heat, so it cannot rely on ordinary room cooling: it needs dedicated cooling (CRAC/CRAH, chillers, hot/cold-aisle containment, free or liquid cooling) and a dedicated power chain (utility feed, transformers, UPS, generators, PDUs) (Data Centers / Building Infrastructures lectures). These specialized facility systems are exactly what distinguishes a WSC from a small server room."
+      }
+    ],
+    "solution": "See per-statement motivation.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20240207-e7",
+    "examId": "CI20240207",
+    "date": "2024-02-07",
+    "academicYear": "AA2324",
+    "exerciseNo": 7,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["dc-intro"],
+    "part": "second",
+    "prompt": "True/False: Hot/cold aisle containment reduces the efficiency of the cooling method for datacenters.",
+    "subStatements": [
+      {
+        "id": "CI20240207-e7-s1",
+        "statement": "Hot/cold aisle containment reduces the efficiency of the cooling method for datacenters.",
+        "answer": false,
+        "motivation": "**False.** Hot/cold-aisle containment physically separates the cold supply air from the hot server exhaust, **preventing the two air streams from mixing** (Building Infrastructures lecture). This raises the return-air temperature to the cooling units and avoids wasting cold air, which **increases** cooling efficiency (lower PUE), not reduces it. The statement claims the opposite, so it is False."
+      }
+    ],
+    "solution": "See per-statement motivation.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20240207-e8",
+    "examId": "CI20240207",
+    "date": "2024-02-07",
+    "academicYear": "AA2324",
+    "exerciseNo": 8,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["storage-devices"],
+    "part": "second",
+    "prompt": "True/False: SSDs use spinning disks to store data.",
+    "subStatements": [
+      {
+        "id": "CI20240207-e8-s1",
+        "statement": "SSDs use spinning disks to store data.",
+        "answer": false,
+        "motivation": "**False.** A Solid State Drive stores data in **non-volatile NAND flash** memory cells and has **no moving parts** — no spinning platters and no read/write heads (SSD lecture). Spinning magnetic platters are the defining feature of HDDs. The absence of mechanical motion is precisely why SSDs have no seek/rotational latency and much higher IOPS. The statement is therefore False."
+      }
+    ],
+    "solution": "See per-statement motivation.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20240207-e9",
+    "examId": "CI20240207",
+    "date": "2024-02-07",
+    "academicYear": "AA2324",
+    "exerciseNo": 9,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["networking"],
+    "part": "second",
+    "prompt": "True/False: In a leaf-spine topology, adding or removing a leaf switch does not impact the connectivity of other switches in the network.",
+    "subStatements": [
+      {
+        "id": "CI20240207-e9-s1",
+        "statement": "In a leaf-spine topology, adding or removing a leaf switch does not impact the connectivity of other switches in the network.",
+        "answer": true,
+        "motivation": "**True.** In a leaf-spine (two-tier Clos) fabric every leaf connects to **every** spine, and leaves do not connect to other leaves (Networking lecture). A leaf only carries the servers attached to it, so adding or removing a leaf changes only that leaf's own server connectivity and leaves the spine-to-other-leaf paths intact — the rest of the switches keep full connectivity. This modularity/scalability is a key advantage of leaf-spine."
+      }
+    ],
+    "solution": "See per-statement motivation.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20240207-e10",
+    "examId": "CI20240207",
+    "date": "2024-02-07",
+    "academicYear": "AA2324",
+    "exerciseNo": 10,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["networking"],
+    "part": "second",
+    "prompt": "True/False: POD, Virtual-Chassis, DCell and BCube models are all evolutions of the leaf-spine network architectures.",
+    "subStatements": [
+      {
+        "id": "CI20240207-e10-s1",
+        "statement": "POD, Virtual-Chassis, DCell and BCube models are all evolutions of the leaf-spine network architectures.",
+        "answer": false,
+        "motivation": "**False.** These are not all leaf-spine derivatives. **DCell** and **BCube** are **server-centric** recursive topologies in which the *servers themselves* participate in forwarding/routing — a fundamentally different design philosophy from switch-centric leaf-spine (Clos) fabrics (Networking lecture). They are not evolutions of leaf-spine, so the all-encompassing claim is False."
+      }
+    ],
+    "solution": "See per-statement motivation.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20240207-e11",
+    "examId": "CI20240207",
+    "date": "2024-02-07",
+    "academicYear": "AA2324",
+    "exerciseNo": 11,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["dependability"],
+    "part": "first",
+    "prompt": "A system of 6 components has the RBD: **A in series** with a parallel block of two paths. **Top path:** component **B** in series with **two C's in parallel**. **Bottom path:** component **B** in series with component **D**. The two paths are in parallel. After 2 years $R_B(2y)=0.8$, $R_C(2y)=0.75$, $R_D(2y)=0.9$. What must be the **MTTF of component A** so that the whole-system reliability after 2 years is $R_{sys}(2y)=0.85$? (Assume exponential reliability for A.)",
+    "solution": "**Method (RBD reduction).** Combine series and parallel blocks, then invert the exponential reliability for A.\n\n**Top path** — $B$ in series with $(C \\parallel C)$:\n$$R_{top} = R_B\\,\\big(1-(1-R_C)^2\\big) = 0.8\\,(1-0.25^2) = 0.8\\times 0.9375 = 0.75$$\n\n**Bottom path** — $B$ in series with $D$:\n$$R_{bot} = R_B\\,R_D = 0.8\\times 0.9 = 0.72$$\n\n**Parallel of the two paths:**\n$$R_{par} = 1-(1-R_{top})(1-R_{bot}) = 1-(0.25)(0.28) = 1-0.07 = 0.93$$\n\n**Series with A** must equal the target $R_{sys}=0.85$:\n$$R_A\\cdot R_{par} = 0.85 \\;\\Rightarrow\\; R_A = \\frac{0.85}{0.93} = 0.9140$$\n\n**Invert exponential** $R_A(t)=e^{-t/MTTF_A}$ at $t=2$ y:\n$$MTTF_A = \\frac{t}{-\\ln R_A} = \\frac{2}{-\\ln(0.9140)} = \\frac{2}{0.08996}$$\n$$\\boxed{MTTF_A \\approx 22.24\\ \\text{years}}$$",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20240207-e12",
+    "examId": "CI20240207",
+    "date": "2024-02-07",
+    "academicYear": "AA2324",
+    "exerciseNo": 12,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["raid"],
+    "part": "second",
+    "prompt": "Design a **RAID 5** array of **7 disks**. Each disk has $MTTF = 415$ days and we want the array $MTTF_{RAID5}$ to be **higher than 15 years**. What is the **maximum MTTR** allowed to satisfy this requirement? All disks are identical.",
+    "solution": "**Method (RAID 5 reliability).** RAID 5 tolerates one disk failure; it fails if a second disk dies during the repair (MTTR) of the first. With $N$ disks the standard formula is\n$$MTTF_{RAID5} = \\frac{MTTF_{disk}^2}{N\\,(N-1)\\,MTTR}.$$\n\n**Data:** $N=7$, $MTTF_{disk}=415$ days, target $MTTF_{RAID5}\\ge 15\\text{ y}=15\\times 365 = 5475$ days.\n\n**Solve for MTTR** (larger MTTR lowers the array MTTF, so the requirement gives an upper bound):\n$$MTTR \\le \\frac{MTTF_{disk}^2}{N(N-1)\\,MTTF_{RAID5}} = \\frac{415^2}{7\\cdot 6\\cdot 5475} = \\frac{172225}{229950}$$\n$$\\boxed{MTTR \\le 0.749\\ \\text{days} \\approx 18\\ \\text{hours}}$$",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20240207-e13",
+    "examId": "CI20240207",
+    "date": "2024-02-07",
+    "academicYear": "AA2324",
+    "exerciseNo": 13,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["storage-devices"],
+    "part": "first",
+    "prompt": "Consider an HDD with a **data transfer rate of 10 MB/s**, a **rotation speed of 12000 RPM**, a **mean seek time of 4 ms**, and a **negligible controller overhead**. What is the **minimum locality** required to achieve a **mean I/O service time of 1.25 ms** to transfer a sector of **4 KB**?",
+    "solution": "**Method (HDD data-locality model).** The mean service time per access is\n$$T_{I/O} = (1-DL)\\,(T_{seek}+T_{rot}) + T_{controller} + T_{transfer},$$\nwhere data locality $DL$ is the fraction of accesses that avoid seek + rotation.\n\n**Component values:**\n- Average rotational latency = half a rotation: $T_{rot} = \\tfrac12\\cdot\\dfrac{60\\,000}{12\\,000} = 2.5\\,\\text{ms}$.\n- Transfer of 4 KB at 10 MB/s: $T_{transfer} = \\dfrac{4\\,\\text{KB}}{10\\,\\text{MB/s}} = \\dfrac{4/1024\\,\\text{MB}}{10\\,\\text{MB/s}} = 3.90625\\times10^{-4}\\,\\text{s} = 0.3906\\,\\text{ms}$.\n- $T_{seek}=4\\,\\text{ms}$, $T_{controller}=0$.\n\n**Impose $T_{I/O}=1.25$ ms and solve for $DL$:**\n$$1.25 = (1-DL)(4 + 2.5) + 0.3906$$\n$$(1-DL)\\cdot 6.5 = 0.8594 \\;\\Rightarrow\\; 1-DL = 0.13221$$\n$$DL = 0.86779$$\n$$\\boxed{DL \\approx 86.78\\%}$$",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20240207-e14",
+    "examId": "CI20240207",
+    "date": "2024-02-07",
+    "academicYear": "AA2324",
+    "exerciseNo": 14,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["performance"],
+    "part": "second",
+    "prompt": "A computer system with two servers $S_1$ and $S_2$ is modeled as an **open** queueing network. During **20-minute** monitoring: requests served at system level $C=300$; served by $S_1$ $C_{S1}=600$; served by $S_2$ $C_{S2}=100$; busy time $B_{S1}=350\\,\\text{s}$; busy time $B_{S2}=200\\,\\text{s}$. Compute the **service demands** $D_{S1}, D_{S2}$ and the **utilizations** $U_{S1}, U_{S2}$.",
+    "solution": "**Method (operational laws).** Observation interval $T = 20\\,\\text{min} = 1200\\,\\text{s}$.\n- **Utilization Law:** $U_k = \\dfrac{B_k}{T}$.\n- **Service demand:** $D_k = \\dfrac{B_k}{C}$ (busy time per *system* completion $C$).\n\n**Utilizations:**\n$$U_{S1} = \\frac{B_{S1}}{T} = \\frac{350}{1200} = 0.2917 \\approx \\boxed{29.17\\%}$$\n$$U_{S2} = \\frac{B_{S2}}{T} = \\frac{200}{1200} = 0.1667 \\approx \\boxed{16.67\\%}$$\n\n**Service demands** (per system request, $C=300$):\n$$D_{S1} = \\frac{B_{S1}}{C} = \\frac{350}{300} = \\boxed{1.1\\overline{6}\\ \\text{s} \\approx 1.17\\ \\text{s}}$$\n$$D_{S2} = \\frac{B_{S2}}{C} = \\frac{200}{300} = \\boxed{0.6\\overline{6}\\ \\text{s} \\approx 0.67\\ \\text{s}}$$",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20240207-e15",
+    "examId": "CI20240207",
+    "date": "2024-02-07",
+    "academicYear": "AA2324",
+    "exerciseNo": 15,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["performance"],
+    "part": "second",
+    "prompt": "Consider the same system as in Question 14 but as a **closed** model with think time $Z=18\\,\\text{s}$ and the same demands $D_{S1}=1.1\\overline{6}\\,\\text{s}$, $D_{S2}=0.6\\overline{6}\\,\\text{s}$. In the context of the **asymptotic bounds**, what is the system **throughput upper bound** for $N=30$ users?",
+    "solution": "**Method (asymptotic bounds for a closed model).** The throughput is bounded by\n$$X(N) \\le \\min\\!\\Big(\\frac{1}{D_{max}},\\ \\frac{N}{D + Z}\\Big),$$\nwhere $D_{max}=\\max_k D_k$ is the bottleneck demand and $D=\\sum_k D_k$.\n\n**Quantities:**\n$$D_{max} = \\max(1.1\\overline{6},\\,0.6\\overline{6}) = 1.1\\overline{6}\\,\\text{s}\\ (S_1\\ \\text{is the bottleneck})$$\n$$D = 1.1\\overline{6}+0.6\\overline{6} = 1.8\\overline{3}\\,\\text{s}$$\n\n**Two bounds at $N=30$, $Z=18$:**\n$$\\frac{1}{D_{max}} = \\frac{1}{1.1\\overline{6}} = \\frac{6}{7} = 0.857\\ \\text{req/s}$$\n$$\\frac{N}{D+Z} = \\frac{30}{1.8\\overline{3}+18} = \\frac{30}{19.833} = 1.513\\ \\text{req/s}$$\n\n**Upper bound = the smaller one:**\n$$X(30) \\le \\min(0.857,\\,1.513) = \\boxed{0.857\\ \\text{req/s}}$$\nAt $N=30$ the system is in the **saturated** region, so the bottleneck bound $1/D_{max}$ dominates.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20240207-e16",
+    "examId": "CI20240207",
+    "date": "2024-02-07",
+    "academicYear": "AA2324",
+    "exerciseNo": 16,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["performance"],
+    "part": "second",
+    "prompt": "Considering the same system as in Questions 14 and 15 ($Z=18\\,\\text{s}$, $N=30$), if you **add another instance of $S_1$** that **equally splits the visits** with the other $S_1$ instance, how do the **asymptotic bounds** change?",
+    "solution": "**Method.** Adding a second $S_1$ that splits its visits evenly halves the demand placed on each $S_1$ instance, while the *total* service demand summed over the system is unchanged. Recompute $D_{max}$ and re-apply the bounds.\n\n**New per-server demands:**\n$$D_{S1,a}=D_{S1,b}=\\frac{1.1\\overline{6}}{2}=0.58\\overline{3}\\,\\text{s},\\qquad D_{S2}=0.6\\overline{6}\\,\\text{s}$$\n\n**New bottleneck** is now $S_2$:\n$$D_{max} = \\max(0.58\\overline{3},\\,0.6\\overline{6}) = 0.6\\overline{6}\\,\\text{s}$$\n\n**Total demand (sum over all three servers) is unchanged:**\n$$D = 0.58\\overline{3}+0.58\\overline{3}+0.6\\overline{6} = 1.8\\overline{3}\\,\\text{s}$$\n\n**Bounds at $N=30$, $Z=18$:**\n$$\\frac{1}{D_{max}} = \\frac{1}{0.6\\overline{6}} = 1.5\\ \\text{req/s}, \\qquad \\frac{N}{D+Z} = \\frac{30}{19.833} = 1.513\\ \\text{req/s}$$\n$$X(30) \\le \\min(1.5,\\,1.513) = \\boxed{1.5\\ \\text{req/s}}$$\n\n**Effect:** removing the $S_1$ bottleneck nearly **doubles** the throughput upper bound (from $0.857$ to $1.5$ req/s); the bottleneck has shifted to $S_2$, and the system is now essentially at the crossover between the bottleneck bound and the $N/(D+Z)$ bound.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20240207-e17",
+    "examId": "CI20240207",
+    "date": "2024-02-07",
+    "academicYear": "AA2324",
+    "exerciseNo": 17,
+    "marks": 5,
+    "type": "theory-essay",
+    "topics": ["virtualization"],
+    "part": "second",
+    "prompt": "In the context of Virtualization, describe a **Type 2 hypervisor**, providing also its advantages and drawbacks.",
+    "solution": "**Definition.** A **Type 2 (hosted) hypervisor** runs as an ordinary application **on top of a host operating system**, rather than directly on the bare hardware. The stack is: hardware → host OS → hypervisor (application) → guest VMs. The hypervisor relies on the host OS for device drivers, scheduling and memory management, and presents virtual hardware to each guest. Typical examples: VMware Workstation/Player, Oracle VirtualBox, QEMU (hosted mode), Parallels Desktop. (Contrast with a **Type 1 / bare-metal** hypervisor such as Xen, ESXi or Hyper-V, which runs directly on the hardware.)\n\n**Advantages:**\n- **Easy to install and use** — it is just an application on an existing OS (Windows/Linux/macOS); no dedicated machine or special setup required.\n- **Reuses host drivers**: it inherits the broad hardware/peripheral support of the host OS, so it works on commodity laptops/desktops.\n- **Coexists with normal applications**: you can run VMs alongside the user's everyday programs — ideal for development, testing, running a different OS, sandboxing and training.\n- **Portable and flexible**, low barrier to entry.\n\n**Drawbacks:**\n- **Lower performance / higher overhead**: guest requests must traverse the **extra layer of the host OS** before reaching the hardware, adding latency (especially for I/O) compared with a Type 1 hypervisor.\n- **Larger attack surface and lower reliability**: the security and stability of all VMs depend on the host OS — if the host OS is compromised or crashes, every guest is affected.\n- **Resource contention**: the host OS and its other applications compete with the VMs for CPU, memory and I/O.\n- **Not suited for production data centers / HPC**: because of the overhead it is mainly a desktop/development tool, whereas servers use Type 1 hypervisors.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20240207-e18",
+    "examId": "CI20240207",
+    "date": "2024-02-07",
+    "academicYear": "AA2324",
+    "exerciseNo": 18,
+    "marks": 5,
+    "type": "theory-essay",
+    "topics": ["cloud", "dc-intro"],
+    "part": "second",
+    "prompt": "Provide the definition of **Geographic Areas**, **Compute Regions**, and **Availability Zones** in the context of data centers. What are the advantages and drawbacks of placing all compute instances for my service **within a single availability zone**?",
+    "solution": "**Definitions (cloud infrastructure hierarchy, Cloud Computing lecture).**\n- **Geographic Area:** the broadest level — a large part of the world (e.g. *Europe*, *North America*, *Asia-Pacific*) within which a provider groups its regions. It matters mainly for **data residency, sovereignty and compliance** (where data is legally allowed to live) and for serving users on a continent.\n- **Compute Region:** a specific **geographic location** (e.g. *EU-West / Ireland*, *US-East / Virginia*) containing one or more data centers. A region is the level at which you usually **choose where to deploy** a service, trading off latency to your users, price and local regulations. Regions are far apart and largely independent.\n- **Availability Zone (AZ):** one or more **physically isolated data centers within a single region**, each with independent power, cooling and networking, interconnected to other AZs in the same region by **low-latency, high-bandwidth** links. AZs are designed so that a failure in one zone (power outage, fire, flood) does **not** propagate to the others.\n\n**Placing all compute instances in a single AZ — advantages:**\n- **Lowest inter-instance latency** and high intra-zone bandwidth (everything is in the same data center / campus).\n- **Simpler architecture and lower cost**: no cross-zone data-transfer charges, no need for replication/synchronization logic, easier management.\n- Good enough for **dev/test** or non-critical workloads.\n\n**Drawbacks:**\n- **Single point of failure / no fault tolerance:** if that one AZ goes down (power, network, disaster), the **entire service becomes unavailable** — there is no redundancy.\n- **Low availability / poor disaster recovery:** you cannot meet high-availability SLAs; an AZ-level outage means full downtime and possible data loss.\n- **No load distribution** across zones and limited ability to scale beyond that zone's capacity.\n\n**Best practice:** for production/high-availability services, **spread instances across multiple AZs** (and possibly multiple regions) so the service survives a zone failure, accepting slightly higher latency, complexity and cost as the trade-off.",
+    "solutionSource": "authored"
+  }
+]

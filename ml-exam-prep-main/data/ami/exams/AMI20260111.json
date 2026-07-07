@@ -1,0 +1,228 @@
+[
+  {
+    "id": "AMI20260111-e1",
+    "examId": "AMI20260111",
+    "date": "2026-01-11",
+    "academicYear": "AA2526",
+    "exerciseNo": 1,
+    "type": "multiple-choice",
+    "topics": ["incremental"],
+    "prompt": "In the course, why is periodically *re-training the model from scratch* considered unsuitable for real-world Ambient Intelligence deployments as new labeled data arrives from the stream?",
+    "choices": [
+      {"label": "A", "text": "It does not scale: it must store all labeled data (original + new) and re-run a costly full training"},
+      {"label": "B", "text": "It cannot add brand-new activity classes, so a full retrain only ever refines the predetermined set of labels"},
+      {"label": "C", "text": "It overfits the most recent mini-batches, gradually erasing the recognition rate on the older activities"},
+      {"label": "D", "text": "It needs the user to confirm each freshly arrived label before the next training cycle can begin"}
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** A *static* model is trained once on a fixed dataset and never evolves, but sensor streams in Ambient Intelligence keep changing (new users, new activities). The naive fix is to periodically retrain from scratch on the original set plus all new data. The course rejects this because it does not scale in real deployments.\n\n**Why A is correct.** Retraining from scratch forces you to permanently store every labeled sample (original + new) and to re-run a full, computationally costly training cycle each time, which still cannot adapt quickly to a continuously evolving stream. That is precisely the scalability argument.\n\n**Why the others are wrong.** B: a full retrain on original + new data *can* include new classes, so the cited limitation is false. C: catastrophic forgetting / overfitting recent batches is the failure mode of *incremental* updates, not of a from-scratch retrain that sees all data at once. D: human confirmation of labels is active learning, not why batch re-training is rejected.\n\n**Takeaway.** Full retraining is rejected for cost and scalability, not accuracy.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260111-e2",
+    "examId": "AMI20260111",
+    "date": "2026-01-11",
+    "academicYear": "AA2526",
+    "exerciseNo": 2,
+    "type": "multiple-choice",
+    "topics": ["incremental"],
+    "prompt": "A smart-home HAR classifier is incrementally updated on new activity classes. After several updates its recognition rate on previously learned activities drops sharply. This phenomenon is called:",
+    "choices": [
+      {"label": "A", "text": "Concept drift, since the distribution of the older activities has shifted while their labels stay the same"},
+      {"label": "B", "text": "Negative transfer, since knowledge learned for the new classes interferes with the original ones"},
+      {"label": "C", "text": "Catastrophic forgetting, since updates on new classes override the weights encoding the old"},
+      {"label": "D", "text": "Overfitting the replay buffer, since rehearsed samples crowd out the older activities"}
+    ],
+    "correctChoice": "C",
+    "solution": "**Concept.** Neural networks suffer *catastrophic forgetting*: when trained on new tasks, gradient updates freely overwrite the shared weights that encoded earlier knowledge, so accuracy on old classes collapses. This is the core motivation for continual learning and the stability-plasticity dilemma, e.g., learning new kitchen activities erases a once-good recognition of walking.\n\n**Why C is correct.** The scenario, a sharp drop on previously learned activities after updates on new ones, is the textbook definition of catastrophic forgetting.\n\n**Why the others are wrong.** A (concept drift) is a change in *how* a known activity is performed over time, not loss of old-class accuracy caused by new-class updates. B (negative transfer) is a transfer-learning failure between dissimilar source/target, not a single incrementally-updated model. D names a narrower replay-buffer side-effect; the scenario does not even mention a buffer.\n\n**Takeaway.** Old-class accuracy collapsing after learning new classes = catastrophic forgetting.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260111-e3",
+    "examId": "AMI20260111",
+    "date": "2026-01-11",
+    "academicYear": "AA2526",
+    "exerciseNo": 3,
+    "type": "multiple-choice",
+    "topics": ["incremental"],
+    "prompt": "The stability-plasticity dilemma in continual learning refers to the trade-off between:",
+    "choices": [
+      {"label": "A", "text": "The memory footprint of the replay buffer and the inference latency of the deployed model"},
+      {"label": "B", "text": "The supervised accuracy reached and the number of labeled samples the stream can supply"},
+      {"label": "C", "text": "The size of the network and the size of the training set used at each update"},
+      {"label": "D", "text": "Retaining previously acquired knowledge (stability) and learning/adapting to new knowledge (plasticity)"}
+    ],
+    "correctChoice": "D",
+    "solution": "**Concept.** Continual learning must balance two opposing pressures. *Stability* is the model's ability to retain old knowledge; *plasticity* is its ability to learn and adapt to new knowledge. Too much stability gives rigidity (can't learn the new); too much plasticity gives chaos (forgets the old). The art is a good trade-off, not maximizing either extreme.\n\n**Why D is correct.** It names exactly these two capabilities, stability (retention) versus plasticity (adaptation), which is the course definition of the dilemma.\n\n**Why the others are wrong.** A (buffer memory vs latency), B (accuracy vs label count), and C (network size vs training-set size) are all real engineering trade-offs in incremental systems, but none is about retaining old knowledge versus learning new knowledge.\n\n**Takeaway.** Stability-plasticity = keeping old knowledge vs absorbing new knowledge.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260111-e4",
+    "examId": "AMI20260111",
+    "date": "2026-01-11",
+    "academicYear": "AA2526",
+    "exerciseNo": 4,
+    "type": "multiple-choice",
+    "topics": ["incremental"],
+    "prompt": "In the course's terminology of changes in data streams, an *elderly* user starting to perform a previously-known activity (e.g., walking) more slowly and with a different sensor signature is an example of:",
+    "choices": [
+      {"label": "A", "text": "Concept evolution, since a previously unseen pattern is emerging in the stream"},
+      {"label": "B", "text": "Concept drift, since the same known activity is now performed with some differences over time"},
+      {"label": "C", "text": "Concept forgetting, since the old way of walking is no longer representative and is dropped"},
+      {"label": "D", "text": "An outlier/anomaly, since the new walking samples sit far from the learned patterns"}
+    ],
+    "correctChoice": "B",
+    "solution": "**Concept.** The course distinguishes four stream changes. *Concept drift* means the same, known class is performed with some differences over time, so its data distribution shifts while the label stays the same, the slides' young-vs-elderly walking example. This contrasts with brand-new classes appearing or with deliberate forgetting.\n\n**Why B is correct.** A known activity (walking) performed more slowly with a different signature is the class persisting but its distribution shifting: textbook concept drift.\n\n**Why the others are wrong.** A (concept evolution) is when genuinely *new* patterns/classes emerge, not a changed version of an existing one. C (concept forgetting) is the deliberate removal of non-representative patterns, not the description of an observed change. D (outlier/anomaly) is a sporadic distant sample, not a systematic, persistent distribution shift.\n\n**Takeaway.** Same class, shifted distribution over time = concept drift.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260111-e5",
+    "examId": "AMI20260111",
+    "date": "2026-01-11",
+    "academicYear": "AA2526",
+    "exerciseNo": 5,
+    "type": "multiple-choice",
+    "topics": ["incremental"],
+    "prompt": "Which statement best characterizes *replay (rehearsal) methods* for mitigating catastrophic forgetting?",
+    "choices": [
+      {"label": "A", "text": "They add a loss term penalizing changes to important weights, so no raw old samples need to be stored"},
+      {"label": "B", "text": "They dedicate and freeze a separate sub-network for each task so old tasks are never overwritten"},
+      {"label": "C", "text": "They distill the previous model's pseudo-labels into the new one to preserve old-task outputs"},
+      {"label": "D", "text": "They keep a limited buffer of old labeled samples and feed it together with new data at each update"}
+    ],
+    "correctChoice": "D",
+    "solution": "**Concept.** *Replay (rehearsal)* methods fight forgetting by keeping a small *replay memory*, a limited buffer of old labeled samples (chosen randomly, as exemplars near each class mean, etc.). At every incremental update this buffer is mixed in with the new data so the network keeps rehearsing the past. Pros: low cost, easy to implement. Cons: extra storage and overfitting on a possibly unrepresentative buffer.\n\n**Why D is correct.** It states exactly this: a limited buffer of old labeled samples fed together with new data at each update.\n\n**Why the others are wrong.** A describes prior-focused regularization (e.g., EWC) that stores no raw data. B describes architectural methods (frozen per-task sub-networks). C describes data-focused regularization via distillation (LwF). None keeps a buffer of real old samples.\n\n**Takeaway.** Replay = rehearse a small stored buffer of old data alongside new data.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260111-e6",
+    "examId": "AMI20260111",
+    "date": "2026-01-11",
+    "academicYear": "AA2526",
+    "exerciseNo": 6,
+    "type": "multiple-choice",
+    "topics": ["incremental"],
+    "prompt": "*Generative replay* (pseudo-rehearsal, e.g., HAR-GAN) differs from standard replay mainly because:",
+    "choices": [
+      {"label": "A", "text": "Instead of storing real old samples, it synthesizes data approximating old knowledge, at much higher complexity"},
+      {"label": "B", "text": "Instead of using a fixed buffer, it keeps the full history of raw samples so that forgetting cannot occur at all"},
+      {"label": "C", "text": "Instead of the classifier, it deploys the GAN itself as the recognizer and drops the original network"},
+      {"label": "D", "text": "Instead of supporting new classes, it only ever refines the activities already present at training time"}
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** Standard replay stores *real* old samples, but long-term storage is often unfeasible (memory, privacy). *Generative replay* (pseudo-rehearsal, e.g., HAR-GAN) instead trains a generative model that synthesizes data approximating old knowledge, and feeds those synthetic samples to the classifier alongside new data. The price is significantly increased complexity.\n\n**Why A is correct.** It captures the key difference: synthesize old-knowledge data with a generator instead of storing real samples, at the cost of extra complexity.\n\n**Why the others are wrong.** B is the opposite: generative replay exists precisely to avoid storing all raw samples. C is wrong: the classifier stays; the GAN only supplies pseudo-samples. D is unfounded: generative replay specifically targets evolving/new-class settings.\n\n**Takeaway.** Generative replay rehearses *synthesized* old data, trading storage for complexity.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260111-e7",
+    "examId": "AMI20260111",
+    "date": "2026-01-11",
+    "academicYear": "AA2526",
+    "exerciseNo": 7,
+    "type": "multiple-choice",
+    "topics": ["incremental"],
+    "prompt": "Elastic Weight Consolidation (EWC) belongs to which family of continual-learning methods, and what is its core mechanism?",
+    "choices": [
+      {"label": "A", "text": "Replay methods; it keeps a buffer of exemplars chosen close to each class's feature mean and replays them later"},
+      {"label": "B", "text": "Data-focused regularization (distillation); a teacher model generates pseudo-labels for the old tasks"},
+      {"label": "C", "text": "Prior-focused regularization; it scores per-weight importance and penalizes changes to important weights"},
+      {"label": "D", "text": "Architectural methods; it grows and then freezes a dedicated sub-network for each new task that arrives"}
+    ],
+    "correctChoice": "C",
+    "solution": "**Concept.** Regularization-based methods avoid storing raw inputs and instead add a loss term to consolidate old knowledge. *Prior-focused* variants estimate an importance value for each weight, then penalize large changes to the important ones during new training, so weights that mattered for old tasks stay roughly fixed and knowledge is preserved. EWC and VCL are the flagship examples.\n\n**Why C is correct.** EWC is exactly a prior-focused regularization method that scores per-weight importance and penalizes big changes to important weights.\n\n**Why the others are wrong.** A is replay/exemplars, a different family that stores data. B describes Learning without Forgetting (LwF), the *data-focused* distillation approach. D describes architectural (network-growing) methods, not EWC.\n\n**Takeaway.** EWC = prior-focused regularization: protect important weights via a penalty.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260111-e8",
+    "examId": "AMI20260111",
+    "date": "2026-01-11",
+    "academicYear": "AA2526",
+    "exerciseNo": 8,
+    "type": "multiple-choice",
+    "topics": ["incremental"],
+    "prompt": "Learning without Forgetting (LwF) retains old knowledge by:",
+    "choices": [
+      {"label": "A", "text": "Using the previous model as a teacher whose distilled pseudo-labels keep the student's old-task outputs alike"},
+      {"label": "B", "text": "Estimating an importance value per weight and penalizing changes to the weights most relevant to old tasks"},
+      {"label": "C", "text": "Keeping a limited buffer of randomly sampled old labeled data and replaying it alongside the new data each update"},
+      {"label": "D", "text": "Triggering a query to the user whenever its prediction on a previously learned old task is uncertain"}
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** *Learning without Forgetting (LwF)* is a data-focused regularization method built on knowledge distillation. The old model is frozen as a *teacher*: on incoming data it produces soft pseudo-labels for the old tasks. A distillation loss forces the new *student* to reproduce that probability distribution on old knowledge while a normal loss teaches the new tasks. Crucially, no raw old inputs are stored.\n\n**Why A is correct.** It describes exactly the teacher-student distillation: pseudo-labels from the previous model keep the student's old-task output distribution similar while it learns new tasks.\n\n**Why the others are wrong.** B is prior-focused regularization (EWC-style weight importance). C is replay (a stored buffer of real samples). D is active learning (user queries). Only LwF uses distillation of the old model.\n\n**Takeaway.** LwF distills the old model into the new one via pseudo-labels, no stored data.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260111-e9",
+    "examId": "AMI20260111",
+    "date": "2026-01-11",
+    "academicYear": "AA2526",
+    "exerciseNo": 9,
+    "type": "multiple-choice",
+    "topics": ["incremental"],
+    "prompt": "In the semi-supervised *self-training* approach for HAR, which design choice is essential for it to work well?",
+    "choices": [
+      {"label": "A", "text": "Adding every prediction the model makes as a pseudo-label so the update set stays as large as possible"},
+      {"label": "B", "text": "Retaining only high-confidence (reliable) predictions as pseudo-labels to update the model"},
+      {"label": "C", "text": "Training one classifier per disjoint feature view and letting each label data for the others"},
+      {"label": "D", "text": "Triggering a query to the user before any pseudo-label is added to the training set"}
+    ],
+    "correctChoice": "B",
+    "solution": "**Concept.** *Self-training* tackles label scarcity: a model initialized on a small labeled set predicts labels, with confidence scores, on unlabeled stream data. These predictions become *pseudo-labels* used to update the model. Because the model also learns from its own mistakes, the safeguard is to keep only confident predictions, e.g., accept a pseudo-label only when confidence exceeds a threshold.\n\n**Why B is correct.** Retaining only high-confidence (reliable) pseudo-labels is the essential design choice that stops error reinforcement.\n\n**Why the others are wrong.** A keeps every prediction regardless of confidence, which propagates the model's own errors. C (one classifier per disjoint feature view labeling for the others) describes co-training, not self-training. D (querying the user) describes active learning, which uses human labels rather than self-generated ones.\n\n**Takeaway.** Self-training works only if you keep solely the high-confidence pseudo-labels.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260111-e10",
+    "examId": "AMI20260111",
+    "date": "2026-01-11",
+    "academicYear": "AA2526",
+    "exerciseNo": 10,
+    "type": "multiple-choice",
+    "topics": ["incremental"],
+    "prompt": "Label propagation (used in self-training) and its main limitation in an incremental setting can be summarized as:",
+    "choices": [
+      {"label": "A", "text": "It trains a generator to synthesize old-class samples and then spreads their labels; but the generator is hard to keep stable in a stream"},
+      {"label": "B", "text": "It reweights labeled source-domain samples toward the target distribution; but it still needs target-domain labels to do so reliably"},
+      {"label": "C", "text": "It penalizes changes to the weights important for old labels to preserve them; but it then cannot accommodate genuinely new classes"},
+      {"label": "D", "text": "It builds a similarity graph over labeled and unlabeled points and spreads labels to nearby nodes; but it must store many unlabeled points"}
+    ],
+    "correctChoice": "D",
+    "solution": "**Concept.** *Label propagation* implements self-training on a graph `G=(V,E)`: nodes `V` are labeled and unlabeled points, edges are weighted by similarity, and labels spread from labeled to nearby unlabeled nodes (under a similarity threshold) until convergence, on the assumption that close points share a class. Its cost is needing many stored unlabeled points.\n\n**Why D is correct.** It states both halves accurately: a similarity graph spreading labels to neighbors, plus the storage limitation, in a stream you cannot keep all points, so the algorithm runs periodically over a limited historical buffer.\n\n**Why the others are wrong.** A (a generator synthesizing old samples) is generative replay. B (reweighting source samples) is instance-based transfer learning. C (penalizing changes to important weights) is prior-focused regularization. None of these is label propagation.\n\n**Takeaway.** Label propagation = spread labels over a similarity graph, but it must store unlabeled points.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260111-e11",
+    "examId": "AMI20260111",
+    "date": "2026-01-11",
+    "academicYear": "AA2526",
+    "exerciseNo": 11,
+    "type": "theory-essay",
+    "topics": ["incremental"],
+    "prompt": "Continual (lifelong) learning aims to learn from an infinite stream of sensor data while mitigating catastrophic forgetting.\n\n**(a)** Define *catastrophic forgetting* and the *stability-plasticity dilemma*, explaining why naive incremental updates of a neural network cause forgetting.\n\n**(b)** Compare the three main families of methods to counter forgetting - **replay/rehearsal**, **regularization-based**, and **architectural** - giving for each its core idea and at least one pro and one con. Mention a concrete example method for the replay and regularization families.",
+    "solution": "**(a)** Catastrophic forgetting is the sharp degradation of a neural network's performance on previously learned concepts when it is trained on new ones: learning on new data tends to override the weights that encoded past knowledge, so recognition of old classes/patterns drops. The root cause is that gradient updates on the new task move shared weights freely, with nothing protecting the configuration that solved old tasks. The stability-plasticity dilemma frames the needed trade-off: *stability* is the ability to retain old knowledge, *plasticity* is the ability to learn and adapt to new knowledge; one wants stability without rigidity and plasticity without chaos. Continual learning seeks a good balance between the two rather than maximizing either.\n\n**(b)** **Replay/rehearsal**: keep a limited buffer of old labeled samples (or generate them) and mix them with new data at each update. Pro: low cost, easy to implement, directly counteracts forgetting. Con: extra storage, risk of overfitting the buffer, buffer may not be representative. Example: random/exemplar replay, or generative replay such as HAR-GAN (pseudo-rehearsal with a GAN, avoiding raw storage but adding complexity). **Regularization-based**: avoid storing raw inputs (better privacy, less memory) and add a loss term that consolidates past knowledge. Prior-focused variants (e.g., EWC, VCL) estimate per-weight importance and penalize changes to important weights; data-focused variants (e.g., LwF) use knowledge distillation so the old model (teacher) supplies pseudo-labels keeping the new model's output distribution close on old tasks. Pro: no raw-data storage. Con: importance/distillation is approximate, so protection is imperfect and tuning the regularization strength is hard. **Architectural**: change the network structure to accommodate new tasks (e.g., dedicate/grow sub-networks, freeze old parts). Pro: old parameters can be protected explicitly, strongly limiting interference. Con: model size/complexity grows with the number of tasks and the mechanism for routing/expansion adds overhead.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260111-e12",
+    "examId": "AMI20260111",
+    "date": "2026-01-11",
+    "academicYear": "AA2526",
+    "exerciseNo": 12,
+    "type": "theory-essay",
+    "topics": ["incremental"],
+    "prompt": "In Ambient Intelligence, obtaining fresh labels from a sensor stream is hard (label scarcity), so semi-supervised learning is combined with incremental updates.\n\n**(a)** Describe **self-training** and **co-training**, highlighting how each obtains pseudo-labels and at least one weakness of each.\n\n**(b)** Describe **active learning**: how it decides when to involve the user, why it is well-suited to AmI, and the objective it tries to minimize. Then briefly explain how semi-supervised incremental learning enables **personalization** of a shared HAR model.",
+    "solution": "**(a)** **Self-training** initializes a model on a small labeled set, then uses it to predict labels (with confidence) on unlabeled stream data; only high-confidence predictions are kept as pseudo-labels and used to update the model. Weakness: if the model is wrong yet confident, errors are reinforced; also label propagation, often used inside it, needs to store many unlabeled points, which is infeasible to keep entirely in a stream. **Co-training** uses an ensemble of classifiers each trained on a different *view* of the data (e.g., different feature subsets or data portions); for each unlabeled point, every model takes the most confident predictions of the *other* models as additional pseudo-labeled samples for its own view. Weakness: it is less effective when the views are not genuinely complementary (designing good views is non-trivial), and like self-training, an error in one model can propagate to the others and degrade performance.\n\n**(b)** **Active learning** monitors the model's uncertainty (e.g., the probability distribution at classification time); when the model is uncertain about a sample it triggers a query asking the user to provide the ground-truth label, which is then used to update the model. It is well-suited to AmI because the user is present in the environment and can be asked for occasional feedback, turning sparse human interaction into valuable labels; its objective is to *minimize the number of triggered queries* while still improving the model, so it asks only for the most informative labels. For **personalization**, a model is first trained collaboratively by a set of volunteers and downloaded by the target user; semi-supervised incremental learning then adapts it locally to that user's own data (drift, habits, sensing setup) without needing a large new labeled dataset, so the shared model becomes tailored to the individual.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260111-e13",
+    "examId": "AMI20260111",
+    "date": "2026-01-11",
+    "academicYear": "AA2526",
+    "exerciseNo": 13,
+    "type": "theory-essay",
+    "topics": ["incremental"],
+    "prompt": "Sensor data streams in Ambient Intelligence are non-stationary, and a deployed model must cope with several kinds of change.\n\n**(a)** Define the four types of change in data streams discussed in the course - **concept drift**, **concept evolution**, **concept forgetting**, and **outliers/anomalies** - giving a HAR example for each and noting why distinguishing outliers from anomalies matters.\n\n**(b)** List and justify the *desirable ingredients* the course identifies for a continuous-learning system, and explain why continual learning is specifically important in Ambient Intelligence settings.",
+    "solution": "**(a)** **Concept drift**: the same activity is performed with some differences over time (e.g., a young vs. an elderly user walking, or a user's gait changing after an injury) - the class persists but its data distribution shifts. **Concept evolution**: genuinely new patterns emerge, i.e., new activities or new ways of performing an activity that the model has never seen (e.g., the user adopts a new exercise routine). **Concept forgetting**: deliberately discarding patterns that are no longer representative of the target user, to improve both accuracy and efficiency (e.g., dropping a habit the user abandoned). **Outliers/anomalies**: sporadic samples far from learned patterns; it matters to tell a harmless outlier (a one-off odd reading) from a true anomaly (e.g., a fall) because the system's response differs - one should be ignored, the other may require an alert.\n\n**(b)** The course lists as desirable ingredients: **constant memory** (so resource use does not grow unbounded with the stream); an **undefined/open set of classes** (new activities can appear at any time); **incremental learning** (update on mini-batches without full re-training); **few-shot learning** (prior knowledge should let the model learn new concepts from few examples quickly); **retaining and improving** acquired knowledge (balance stability and plasticity); **learning also from unlabeled data** (because labels are scarce in real deployments); and **selective/graceful forgetting** (purposely forgetting non-representative patterns rather than catastrophically losing useful ones). Continual learning matters in AmI because environments and users are non-stationary: models must adapt to user-specific drift (health, routines, habits), to feature evolution (changes in living environment or sensing setup), and must cope with the scarcity of labeled data, since one cannot foresee or annotate all possible human activities in advance (activity discovery).",
+    "solutionSource": "authored"
+  }
+]

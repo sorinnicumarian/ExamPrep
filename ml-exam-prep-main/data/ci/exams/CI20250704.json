@@ -1,0 +1,334 @@
+[
+  {
+    "id": "CI20250704-e1",
+    "examId": "CI20250704",
+    "date": "2025-07-04",
+    "academicYear": "AA2425",
+    "exerciseNo": 1,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["servers"],
+    "part": "first",
+    "prompt": "All hardware accelerators used in the datacenter context use seamless programming interfaces and software frameworks, and can be easily interchanged.",
+    "subStatements": [
+      {
+        "id": "CI20250704-e1-s1",
+        "statement": "All hardware accelerators used in the datacenter context use seamless programming interfaces and software frameworks, and can be easily interchanged.",
+        "answer": false,
+        "motivation": "From the Server / hardware-accelerators material, GPUs, TPUs and FPGAs are heterogeneous, domain-specific devices, each with its own programming model and software stack (e.g. CUDA for NVIDIA GPUs, XLA/TensorFlow for TPUs, HDL/HLS toolchains for FPGAs). They are NOT interchangeable and there is no single seamless interface common to all of them. The universal claim is false."
+      }
+    ],
+    "solution": "See per-statement motivation. Accelerators are heterogeneous with vendor/device-specific stacks and are not freely interchangeable - the statement is **False**.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250704-e2",
+    "examId": "CI20250704",
+    "date": "2025-07-04",
+    "academicYear": "AA2425",
+    "exerciseNo": 2,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["dc-intro"],
+    "part": "first",
+    "prompt": "Warehouse-scale computers are single servers that are designed to be used in large-scale data centers.",
+    "subStatements": [
+      {
+        "id": "CI20250704-e2-s1",
+        "statement": "Warehouse-scale computers are single servers that are designed to be used in large-scale data centers.",
+        "answer": false,
+        "motivation": "The Data Center / WSC lecture defines a Warehouse-Scale Computer as a whole data center treated as a *single, massive computer*: thousands of commodity servers, storage and networking running a common, homogeneous workload at warehouse scale. It is the opposite of 'a single server'. The statement is false."
+      }
+    ],
+    "solution": "See per-statement motivation. A WSC is an entire datacenter acting as one computer, not a single server - the statement is **False**.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250704-e3",
+    "examId": "CI20250704",
+    "date": "2025-07-04",
+    "academicYear": "AA2425",
+    "exerciseNo": 3,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["virtualization"],
+    "part": "second",
+    "prompt": "Docker and Kubernetes are two technology examples supporting para-virtualization.",
+    "subStatements": [
+      {
+        "id": "CI20250704-e3-s1",
+        "statement": "Docker and Kubernetes are two technology examples supporting para-virtualization.",
+        "answer": false,
+        "motivation": "From the Virtualization lecture, para-virtualization is a hypervisor-level technique where a modified guest OS cooperates with the hypervisor (e.g. Xen). Docker and Kubernetes are **container** technologies: Docker provides OS-level virtualization (containers share the host kernel) and Kubernetes is a container orchestrator. They are not examples of para-virtualization. The statement is false."
+      }
+    ],
+    "solution": "See per-statement motivation. Docker/Kubernetes are container (OS-level virtualization / orchestration) technologies, not para-virtualization - the statement is **False**.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250704-e4",
+    "examId": "CI20250704",
+    "date": "2025-07-04",
+    "academicYear": "AA2425",
+    "exerciseNo": 4,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["networking"],
+    "part": "second",
+    "prompt": "East-west traffic refers to network traffic that travels between servers within the same datacenter.",
+    "subStatements": [
+      {
+        "id": "CI20250704-e4-s1",
+        "statement": "East-west traffic refers to network traffic that travels between servers within the same datacenter.",
+        "answer": true,
+        "motivation": "The Datacenter Networking lecture distinguishes **north-south** traffic (between the datacenter and the outside world / Internet) from **east-west** traffic (server-to-server communication inside the datacenter). Modern distributed and AI workloads make east-west traffic dominant. So the statement is true."
+      }
+    ],
+    "solution": "See per-statement motivation. East-west = intra-datacenter server-to-server traffic - the statement is **True**.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250704-e5",
+    "examId": "CI20250704",
+    "date": "2025-07-04",
+    "academicYear": "AA2425",
+    "exerciseNo": 5,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["storage-devices"],
+    "part": "first",
+    "prompt": "The average seek time of an HDD can be estimated as one-third of the time it takes the actuator arm to move from the innermost to the outermost track.",
+    "subStatements": [
+      {
+        "id": "CI20250704-e5-s1",
+        "statement": "The average seek time of an HDD can be estimated as one-third of the time it takes the actuator arm to move from the innermost to the outermost track.",
+        "answer": true,
+        "motivation": "From the HDD lecture, the seek time depends on the distance the head travels. Averaging over all possible start/end track pairs uniformly distributed over the full stroke, the expected seek distance is about one third of the full-stroke distance, so the **average seek time is estimated as ~1/3 of the full-stroke (innermost-to-outermost) seek time**. The statement is true."
+      }
+    ],
+    "solution": "See per-statement motivation. The average seek is approximately 1/3 of the full-stroke seek time - the statement is **True**.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250704-e6",
+    "examId": "CI20250704",
+    "date": "2025-07-04",
+    "academicYear": "AA2425",
+    "exerciseNo": 6,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["dependability", "cloud"],
+    "part": "first",
+    "prompt": "Replicating data across availability zones helps ensure data durability in case of local failures.",
+    "subStatements": [
+      {
+        "id": "CI20250704-e6-s1",
+        "statement": "Replicating data across availability zones helps ensure data durability in case of local failures.",
+        "answer": true,
+        "motivation": "Availability Zones are isolated failure domains (separate power, cooling, networking) within a region. By replicating data across multiple AZs, a local failure (power/hardware/fire in one zone) does not destroy the only copy, so the data survives and remains durable. This is exactly the rationale for cross-AZ replication. The statement is true."
+      }
+    ],
+    "solution": "See per-statement motivation. Cross-AZ replication protects data against single-location failures, improving durability - the statement is **True**.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250704-e7",
+    "examId": "CI20250704",
+    "date": "2025-07-04",
+    "academicYear": "AA2425",
+    "exerciseNo": 7,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["networking"],
+    "part": "second",
+    "prompt": "3-tier datacenter networks consist of three distinct layers named core, aggregation, and access.",
+    "subStatements": [
+      {
+        "id": "CI20250704-e7-s1",
+        "statement": "3-tier datacenter networks consist of three distinct layers named core, aggregation, and access.",
+        "answer": true,
+        "motivation": "The Datacenter Networking lecture describes the classical three-tier (three-layer) switch-centric architecture as exactly three layers: **Core**, **Aggregation** (distribution), and **Access** (edge/ToR). So the naming in the statement matches the course material - it is true."
+      }
+    ],
+    "solution": "See per-statement motivation. The classical 3-tier DC network is Core / Aggregation / Access - the statement is **True**.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250704-e8",
+    "examId": "CI20250704",
+    "date": "2025-07-04",
+    "academicYear": "AA2425",
+    "exerciseNo": 8,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["storage-devices", "raid"],
+    "part": "first",
+    "prompt": "Data centers using HDDs typically ignore redundancy features, assuming disk failures are very rare.",
+    "subStatements": [
+      {
+        "id": "CI20250704-e8-s1",
+        "statement": "Data centers using HDDs typically ignore redundancy features, assuming disk failures are very rare.",
+        "answer": false,
+        "motivation": "Disk failures are NOT rare at datacenter scale: with thousands of HDDs, drive failures are a routine, expected event. This is precisely why data centers rely heavily on **redundancy** - RAID, replication and erasure coding - to tolerate disk failures without data loss. Ignoring redundancy would guarantee data loss. The statement is false."
+      }
+    ],
+    "solution": "See per-statement motivation. At scale HDD failures are common, so datacenters use RAID/replication redundancy - the statement is **False**.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250704-e9",
+    "examId": "CI20250704",
+    "date": "2025-07-04",
+    "academicYear": "AA2425",
+    "exerciseNo": 9,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["cloud"],
+    "part": "second",
+    "prompt": "Cloud-native applications are designed to run in the cloud and often use microservices and containers.",
+    "subStatements": [
+      {
+        "id": "CI20250704-e9-s1",
+        "statement": "Cloud-native applications are designed to run in the cloud and often use microservices and containers.",
+        "answer": true,
+        "motivation": "The Cloud Computing lecture characterises cloud-native applications as built specifically for cloud platforms, decomposed into loosely-coupled **microservices**, packaged in **containers** and orchestrated (e.g. Kubernetes) for elasticity and scalability. This matches the statement exactly - it is true."
+      }
+    ],
+    "solution": "See per-statement motivation. Cloud-native = built for the cloud using microservices and containers - the statement is **True**.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250704-e10",
+    "examId": "CI20250704",
+    "date": "2025-07-04",
+    "academicYear": "AA2425",
+    "exerciseNo": 10,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["storage-systems"],
+    "part": "second",
+    "prompt": "Open-loop cooling exploits favourable outdoor conditions to reduce mechanical cooling load.",
+    "subStatements": [
+      {
+        "id": "CI20250704-e10-s1",
+        "statement": "Open-loop cooling exploits favourable outdoor conditions to reduce mechanical cooling load.",
+        "answer": true,
+        "motivation": "In the Building Infrastructures lecture, open-loop cooling is **fresh-air / free cooling**: it draws in cool outside air to remove heat directly, instead of running power-hungry mechanical chillers/compressors. When the outdoor air is cool and dry it substantially reduces (or removes) the mechanical cooling load and improves PUE. So the statement is true."
+      }
+    ],
+    "solution": "See per-statement motivation. Open-loop (free/fresh-air) cooling uses favourable outdoor air to cut mechanical cooling load - the statement is **True**.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250704-e11",
+    "examId": "CI20250704",
+    "date": "2025-07-04",
+    "academicYear": "AA2425",
+    "exerciseNo": 11,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["networking"],
+    "part": "second",
+    "prompt": "Using a two-tier leaf-spine topology without oversubscription and adopting only switches with **8 ports** (all switches have the same number of ports), what is the maximum number of servers that can be connected?",
+    "solution": "**Method (homogeneous leaf-spine / Clos design).** With all switches having the same number of ports $2k$, the lecture's homogeneous leaf-spine result is:\n- each **leaf** switch uses $k$ ports downward (to servers) and $k$ ports upward (to spines),\n- there are $k$ spine switches and $t = 2k$ leaf switches,\n- maximum number of servers $= 2k^2$.\n\nHere each switch has $2k = 8$ ports $\\Rightarrow k = 4$.\n\n$$N_{servers} = 2k^2 = 2 \\times 4^2 = 2 \\times 16 = 32$$\n\n(Check: $k=4$ ports per leaf go to servers, $k=4$ up to the $k=4$ spines, $t=2k=8$ leaf switches $\\Rightarrow 8 \\times 4 = 32$ servers, non-blocking.)\n\n$$\\boxed{N_{servers} = 32\\ \\text{servers}}$$",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250704-e12",
+    "examId": "CI20250704",
+    "date": "2025-07-04",
+    "academicYear": "AA2425",
+    "exerciseNo": 12,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["dependability"],
+    "part": "first",
+    "prompt": "A critical service relies on three components. **A** is a central control unit, mandatory for operation (if A fails the service is unavailable). **B1** and **B2** are redundant processing units, only one of which needs to work. The reliability of A after 2 years is $R_A(2\\,\\text{y})=0.8$ and its $MTTR=14$ days. The availabilities of B1 and B2 are $Av_{B1}=0.75$ and $Av_{B2}=0.85$. Compute the availability of component A and the overall system availability.",
+    "solution": "**Method.** A is in **series** with the parallel block B1||B2 (1-of-2). For A, recover its $MTTF$ from the exponential reliability $R(t)=e^{-t/MTTF}$, then use $Av = \\dfrac{MTTF}{MTTF+MTTR}$.\n\n**1) MTTF of A** (with $t=2$ years):\n$$R_A(2)=e^{-2/MTTF_A}=0.8 \\;\\Rightarrow\\; MTTF_A=\\frac{-2}{\\ln 0.8}=\\frac{2}{0.22314}=8.963\\ \\text{years}$$\n\n**2) Availability of A** (convert $MTTR=14$ days $=14/365=0.03836$ y):\n$$Av_A=\\frac{MTTF_A}{MTTF_A+MTTR}=\\frac{8.963}{8.963+0.03836}=\\frac{8.963}{9.0017}=0.99574$$\n\n**3) Parallel block B1||B2** (works if at least one works):\n$$Av_B = 1-(1-Av_{B1})(1-Av_{B2}) = 1-(0.25)(0.15)=1-0.0375=0.9625$$\n\n**4) Overall system** (A in series with B):\n$$Av_{sys}=Av_A \\cdot Av_B = 0.99574 \\times 0.9625$$\n$$\\boxed{Av_A \\approx 0.9957,\\qquad Av_{sys} \\approx 0.9584\\ (\\approx 95.84\\%)}$$",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250704-e13",
+    "examId": "CI20250704",
+    "date": "2025-07-04",
+    "academicYear": "AA2425",
+    "exerciseNo": 13,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["raid"],
+    "part": "second",
+    "prompt": "Design a storage system using a **RAID 1+0** configuration of HDDs with capacity 24 GB each. Each disk has $MTTF=420$ days and $MTTR=4$ days. What is the **maximum number of disks** that can be included while ensuring the overall storage $MTTF_{RAID1+0}$ is at least **8 years**?",
+    "solution": "**Method.** For RAID 1+0 with a single mirror replica, the exercise sessions use\n$$MTTF_{RAID1+0}=\\frac{MTTF^2}{N\\cdot MTTR}$$\nwhere $N$ is the total number of disks. Impose $MTTF_{RAID1+0}\\ge 8$ years.\n\nConvert the target: $8\\ \\text{y}=8\\times 365 = 2920\\ \\text{days}$.\n\n$$\\frac{MTTF^2}{N\\cdot MTTR}\\ge 2920 \\;\\Rightarrow\\; N\\le \\frac{MTTF^2}{MTTR\\cdot 2920}=\\frac{420^2}{4\\times 2920}=\\frac{176400}{11680}=15.10$$\n\nSo $N\\le 15.10$. Because RAID 1+0 mirrors disks in pairs, $N$ must be **even**, so the largest admissible value is:\n$$\\boxed{N_{max}=14\\ \\text{disks}}$$\n\n(With $N=14$: $MTTF_{RAID1+0}=420^2/(14\\times4)=176400/56=3150$ days $\\approx 8.6$ y $\\ge 8$ y. With $N=16$ it would drop to $\\approx 7.5$ y, below the requirement.)",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250704-e14",
+    "examId": "CI20250704",
+    "date": "2025-07-04",
+    "academicYear": "AA2425",
+    "exerciseNo": 14,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["performance"],
+    "part": "second",
+    "prompt": "An Internet-based system has a Web server, an application server and a DBMS. Monitoring for $T=1800$ s gives: completions $C=600$, $U_{Web}=75\\%$, $U_{App}=50\\%$, $U_{DBMS}=60\\%$. What are the service demands of the three servers ($D_{Web}$, $D_{App}$, $D_{DBMS}$)?",
+    "solution": "**Method (operational laws).** System throughput $X=C/T$; service demand from the utilization law $U_k=X\\,D_k \\Rightarrow D_k=U_k/X$.\n\n**System throughput:**\n$$X=\\frac{C}{T}=\\frac{600}{1800}=0.3333\\ \\text{req/s}$$\n\n**Service demands** $D_k=U_k/X$:\n$$D_{Web}=\\frac{0.75}{0.3333}=2.25\\ \\text{s}$$\n$$D_{App}=\\frac{0.50}{0.3333}=1.50\\ \\text{s}$$\n$$D_{DBMS}=\\frac{0.60}{0.3333}=1.80\\ \\text{s}$$\n\n$$\\boxed{D_{Web}=2.25\\ \\text{s},\\quad D_{App}=1.50\\ \\text{s},\\quad D_{DBMS}=1.80\\ \\text{s}}$$",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250704-e15",
+    "examId": "CI20250704",
+    "date": "2025-07-04",
+    "academicYear": "AA2425",
+    "exerciseNo": 15,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["performance"],
+    "part": "second",
+    "prompt": "For the system of Question 14 ($D_{Web}=2.25$ s, $D_{App}=1.50$ s, $D_{DBMS}=1.80$ s), the incoming load is expected to grow to $\\lambda=5\\ \\text{req/s}$. Determine the **minimum number of servers at each physical layer** so that the utilization of each server is at most **55%** (servers of the same type evenly distribute their load).",
+    "solution": "**Method.** With $n_k$ identical servers at layer $k$ sharing the load evenly, the per-server utilization at arrival rate $\\lambda$ (in equilibrium $X=\\lambda$) is $U_{server}=\\dfrac{\\lambda\\,D_k}{n_k}$. Impose $U_{server}\\le 0.55$:\n$$n_k \\ge \\frac{\\lambda\\,D_k}{0.55}$$\n\n**Web** ($D=2.25$): $\\dfrac{5\\times 2.25}{0.55}=\\dfrac{11.25}{0.55}=20.45 \\Rightarrow n_{Web}=21$\n\n**App** ($D=1.50$): $\\dfrac{5\\times 1.50}{0.55}=\\dfrac{7.5}{0.55}=13.64 \\Rightarrow n_{App}=14$\n\n**DBMS** ($D=1.80$): $\\dfrac{5\\times 1.80}{0.55}=\\dfrac{9.0}{0.55}=16.36 \\Rightarrow n_{DBMS}=17$\n\n$$\\boxed{n_{Web}=21,\\quad n_{App}=14,\\quad n_{DBMS}=17}$$",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250704-e16",
+    "examId": "CI20250704",
+    "date": "2025-07-04",
+    "academicYear": "AA2425",
+    "exerciseNo": 16,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["performance"],
+    "part": "second",
+    "prompt": "Assume you upgraded the system according to your answer to Question 15 ($n_{Web}=21$, $n_{App}=14$, $n_{DBMS}=17$ with $D_{Web}=2.25$ s, $D_{App}=1.50$ s, $D_{DBMS}=1.80$ s). What is the **maximum throughput** the new system can achieve?",
+    "solution": "**Method.** Replicating a layer $n_k$ times divides its per-server demand to $D_k/n_k$. The bottleneck is the layer with the largest effective per-server demand, and $X_{max}=1/D_{max}^{eff}$ with $D_{max}^{eff}=\\max_k (D_k/n_k)$.\n\n**Effective per-server demands:**\n$$\\frac{D_{Web}}{n_{Web}}=\\frac{2.25}{21}=0.10714\\ \\text{s}$$\n$$\\frac{D_{App}}{n_{App}}=\\frac{1.50}{14}=0.10714\\ \\text{s}$$\n$$\\frac{D_{DBMS}}{n_{DBMS}}=\\frac{1.80}{17}=0.10588\\ \\text{s}$$\n\n$D_{max}^{eff}=0.10714$ s (Web and App tie as bottleneck).\n\n$$X_{max}=\\frac{1}{D_{max}^{eff}}=\\frac{1}{0.10714}$$\n$$\\boxed{X_{max}\\approx 9.33\\ \\text{req/s}}$$\n\nThe upgraded system comfortably sustains the target $\\lambda=5$ req/s.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250704-e17",
+    "examId": "CI20250704",
+    "date": "2025-07-04",
+    "academicYear": "AA2425",
+    "exerciseNo": 17,
+    "marks": 5,
+    "type": "theory-essay",
+    "topics": ["dc-intro", "dependability"],
+    "part": "first",
+    "prompt": "How does the **geographical distribution** of datacenters affect aspects such as **latency, reliability, and environmental sustainability**?",
+    "solution": "Geographically distributing datacenters across **regions** (each containing isolated **availability zones**) trades off three key concerns:\n\n**1. Latency.** Network latency is bounded by physical distance (speed of light) plus the number of hops. Placing datacenters **close to end users** (and using edge locations / CDNs) reduces round-trip time, improving interactive and real-time application performance. A single central datacenter would serve far-away users with high, uneven latency; a geographically spread footprint lets each user be served from a nearby region.\n\n**2. Reliability / availability.** Spreading capacity across multiple **regions** and **availability zones** creates independent failure domains. A localized disaster (power outage, fire, flood, earthquake, network cut) takes down only one site, while replicated services and data in other regions keep running - this is the basis of disaster recovery and geo-redundancy. More geographic diversity therefore increases overall reliability, durability (cross-region replication) and the ability to meet high-availability SLAs. The cost is the complexity of keeping replicas consistent and the extra WAN latency for synchronous replication.\n\n**3. Environmental sustainability.** Location strongly affects the energy/carbon profile. Building datacenters where the **climate is cool** enables free/fresh-air or water-side economizer cooling, lowering the mechanical cooling load and improving **PUE**. Siting near **renewable or low-carbon energy** (hydro, wind, solar, geothermal) and near abundant water/grid capacity reduces carbon footprint and operating cost. Distributing load also lets operators follow cheap/clean energy and reduce strain on any single grid.\n\n**Summary / trade-off.** Geographic distribution improves user-perceived latency and system reliability and enables greener siting (cool climates, renewable energy), but it raises cost and consistency/coordination complexity (WAN latency, data-replication overhead, regulatory/data-residency constraints). Good design picks regions to balance proximity to users, independence of failure domains, and access to cheap, low-carbon energy and efficient cooling.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250704-e18",
+    "examId": "CI20250704",
+    "date": "2025-07-04",
+    "academicYear": "AA2425",
+    "exerciseNo": 18,
+    "marks": 5,
+    "type": "theory-essay",
+    "topics": ["storage-devices", "storage-systems"],
+    "part": "first",
+    "prompt": "Compare the main storage technologies used in datacenters - **HDDs, SSDs, and tapes**. In which scenarios is each one preferable? Discuss advantages, disadvantages, and selection criteria in terms of performance, cost, capacity, and reliability.",
+    "solution": "The three technologies sit at different points of the **performance / cost / capacity** trade-off, forming a storage hierarchy.\n\n**HDD (Hard Disk Drive) - magnetic, mechanical.**\n- *Advantages:* low cost per GB, high capacity, mature and reliable for bulk storage; good sequential throughput.\n- *Disadvantages:* mechanical seek + rotational latency make **random access slow** (ms-scale); moving parts wear out and consume power; limited IOPS.\n- *Best for:* large-capacity, cost-sensitive, mostly-sequential or warm data - bulk storage, backups, nearline data, large datasets where capacity-per-dollar matters more than latency.\n\n**SSD (Solid-State Drive) - flash, no moving parts.**\n- *Advantages:* very high **IOPS** and very low latency (microseconds), high throughput, low power, shock-resistant; excellent for random access.\n- *Disadvantages:* higher cost per GB than HDD; finite **write endurance / wear** (limited program-erase cycles, need wear-leveling); historically lower capacity per device.\n- *Best for:* hot data, latency-sensitive and random-I/O workloads - databases, OLTP, caching tiers, VM images, metadata, boot/scratch volumes.\n\n**Tape - magnetic sequential media.**\n- *Advantages:* the **lowest cost per GB**, enormous capacity, very long shelf life, offline (air-gapped) so resilient to ransomware/online failures, low idle energy.\n- *Disadvantages:* purely **sequential access** with very high access latency (mount + seek to position); not suitable for any interactive/random access.\n- *Best for:* cold/archival data, long-term backup and compliance retention - 'write once, rarely read' data.\n\n**Selection criteria.**\n- *Performance (latency/IOPS):* SSD > HDD > Tape.\n- *Cost per GB:* Tape < HDD < SSD.\n- *Capacity/density:* Tape and HDD are highest for bulk; SSDs are catching up but cost more.\n- *Reliability/durability:* all need redundancy (RAID/replication/erasure coding); tape's offline nature gives strong protection for archives, SSDs avoid mechanical failures but have wear limits, HDDs have mechanical failure modes.\n\n**Conclusion (tiering).** A datacenter combines all three: **SSD** for the hot, latency-critical tier; **HDD** for the warm, capacity-oriented tier; **tape** for the cold archival tier - placing each dataset on the medium whose cost/performance matches its access pattern.",
+    "solutionSource": "authored"
+  }
+]

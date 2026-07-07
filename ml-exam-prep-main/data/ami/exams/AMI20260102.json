@@ -1,0 +1,228 @@
+[
+  {
+    "id": "AMI20260102-e1",
+    "examId": "AMI20260102",
+    "date": "2026-01-02",
+    "academicYear": "AA2526",
+    "exerciseNo": 1,
+    "type": "multiple-choice",
+    "topics": ["iot-data"],
+    "prompt": "A transducer is defined in the course as a device that transforms one form of energy into another. Which statement correctly maps transducers to sensors and actuators?",
+    "choices": [
+      {"label": "A", "text": "Sensors are input transducers (phenomenon to signal), actuators are output transducers (command to action)"},
+      {"label": "B", "text": "Sensors are output transducers (signal to action), actuators are input transducers (phenomenon to signal)"},
+      {"label": "C", "text": "Both are input transducers, since both convert a physical phenomenon into an electronic signal"},
+      {"label": "D", "text": "Sensors are transducers but actuators are control systems that issue commands, not transducers"}
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** A *transducer* converts one form of energy into another. The course splits them by direction: *input transducers* take a physical phenomenon and turn it into an electronic signal — these are *sensors* (e.g., a microphone turning a sound wave into a signal). *Output transducers* take energy/a command and turn it into a physical action — these are *actuators* (e.g., a motor, LED or speaker).\n\n**Why A is correct.** Sensors are input transducers (world → signal) and actuators are output transducers (signal → action), matching the slide's mapping.\n\n**Why the others are wrong.** B swaps the two roles. C calls both input transducers, ignoring that actuators produce output (action), not a signal. D denies actuators are transducers, but the slide explicitly states actuators are a particular type of transducer (they receive a command from a control system but are still the transducer).\n\n**Takeaway.** Sensor = input transducer (sense in); actuator = output transducer (act out).",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260102-e2",
+    "examId": "AMI20260102",
+    "date": "2026-01-02",
+    "academicYear": "AA2526",
+    "exerciseNo": 2,
+    "type": "multiple-choice",
+    "topics": ["iot-data"],
+    "prompt": "An analog sensor returns a voltage proportional to the sensed phenomenon. What component is required so that an IoT device (which only understands 0s and 1s) can use this reading?",
+    "choices": [
+      {"label": "A", "text": "A DAC, which converts the device's digital values into the voltage the sensor expects"},
+      {"label": "B", "text": "A built-in DAC, the same component a digital sensor uses to output its two ON/OFF states"},
+      {"label": "C", "text": "A gateway, which collects the analog readings and forwards the digitized values to the cloud"},
+      {"label": "D", "text": "An ADC, which samples the continuous voltage and turns it into a digital number"}
+    ],
+    "correctChoice": "D",
+    "solution": "**Concept.** Analog sensors output a continuous voltage that is the analog representation of the measured phenomenon. But IoT devices are digital — they only understand 0s and 1s — so the analog signal must be *digitalized*. The component that samples a continuous voltage and turns it into a digital number is an *ADC (analog-to-digital converter)*. Its mirror image, a *DAC (digital-to-analog converter)*, turns digital values back into a voltage to drive analog actuators.\n\n**Why D is correct.** Reading an analog sensor on a digital device requires an ADC to convert voltage → bits.\n\n**Why the others are wrong.** A (DAC) does the reverse conversion (bits → voltage), used for analog actuators, not sensors. B is a DAC again and misattributes it — a digital sensor's ON/OFF output needs no DAC; a DAC is the actuator-side converter. C (gateway) is a networking element that collects and forwards data but performs no analog-to-digital conversion itself.\n\n**Takeaway.** Analog in, digital device → use an ADC (DAC is for the opposite direction, driving actuators).",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260102-e3",
+    "examId": "AMI20260102",
+    "date": "2026-01-02",
+    "academicYear": "AA2526",
+    "exerciseNo": 3,
+    "type": "multiple-choice",
+    "topics": ["iot-data"],
+    "prompt": "In the four-stage IoT architecture, what distinguishes an EDGE node from a gateway?",
+    "choices": [
+      {"label": "A", "text": "Edge nodes cover a single room while gateways span a whole building, the inverse of their usual coverage"},
+      {"label": "B", "text": "Edge nodes run the heavy AI analysis in the cloud, while gateways only collect data near the devices"},
+      {"label": "C", "text": "Edge nodes have more compute than gateways and pre-process data near the network to cut latency"},
+      {"label": "D", "text": "Edge nodes raise less data to the cloud than gateways because they forward every raw reading unprocessed"}
+    ],
+    "correctChoice": "C",
+    "solution": "**Concept.** The *four-stage* IoT architecture inserts *edge nodes* between gateways and the cloud. A *gateway* collects data from physically close devices (say, the devices in one room). An *edge node* sits a level up — close to the IoT network but covering more (e.g., one edge device for a whole building) — and has *more computational power than the gateway*. It is used to reduce latency and pre-process a smaller, distilled set of data before sending it to the cloud.\n\n**Why C is correct.** It captures both points: edge nodes are more capable than gateways and pre-process data locally to cut latency and traffic.\n\n**Why the others are wrong.** A inverts the coverage — the gateway covers the room and the edge device the whole building, not the reverse. B places edge nodes in the cloud, but they sit near the IoT network (heavy cloud analysis is a separate stage). D contradicts itself: edge nodes reduce uploaded data precisely *because* they pre-process, not by forwarding every raw reading.\n\n**Takeaway.** Edge node = more powerful than the gateway, pre-processing near the data to cut latency.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260102-e4",
+    "examId": "AMI20260102",
+    "date": "2026-01-02",
+    "academicYear": "AA2526",
+    "exerciseNo": 4,
+    "type": "multiple-choice",
+    "topics": ["iot-data"],
+    "prompt": "The slides give examples of the four types of IoT (Consumer, Commercial, Industrial, Infrastructure). 'Devices to control machinery on a large scale and for predictive maintenance (e.g., temperature, vibration, rotation speed)' corresponds to:",
+    "choices": [
+      {"label": "A", "text": "Commercial IoT — devices monitoring the workplace, such as occupancy sensors and cold-storage temperature"},
+      {"label": "B", "text": "Infrastructure IoT — monitoring smart cities and grids via pollution, traffic and energy-consumption sensors"},
+      {"label": "C", "text": "Consumer IoT — personal/home devices like smart speakers, heating systems and robotic vacuum cleaners"},
+      {"label": "D", "text": "Industrial IoT — controlling machinery at large scale and enabling predictive maintenance"}
+    ],
+    "correctChoice": "D",
+    "solution": "**Concept.** The course names four IoT types by their deployment setting. *Consumer IoT* is personal/home use (smart speakers, vacuum cleaners). *Commercial IoT* is for workplaces (occupancy/motion sensors, cold-storage temperature). *Industrial IoT* controls machinery at large scale and supports *predictive maintenance*, using sensors like temperature, vibration and rotation speed to catch failures early. *Infrastructure IoT* monitors smart cities/grids (pollution, traffic, energy).\n\n**Why D is correct.** 'Machinery control at large scale and predictive maintenance (temperature, vibration, rotation speed)' is the exact description of Industrial IoT.\n\n**Why the others are wrong.** A (Commercial) is workplace monitoring, not large-scale machinery. B (Infrastructure) targets city/grid-level systems, not individual machines. C (Consumer) is home/personal use, not factory machinery.\n\n**Takeaway.** Machinery at scale + predictive maintenance (vibration/rotation) = Industrial IoT.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260102-e5",
+    "examId": "AMI20260102",
+    "date": "2026-01-02",
+    "academicYear": "AA2526",
+    "exerciseNo": 5,
+    "type": "multiple-choice",
+    "topics": ["iot-data"],
+    "prompt": "A 'virtual sensor', as defined in the course, is:",
+    "choices": [
+      {"label": "A", "text": "A service/app that derives high-level context from low-level context, e.g. weather or place from GPS coordinates"},
+      {"label": "B", "text": "A software model that predicts a sensor's next reading so its antenna can stay asleep and save energy"},
+      {"label": "C", "text": "A built-in mobile sensor like the barometer or light sensor, reported by the OS without extra hardware"},
+      {"label": "D", "text": "An aggregate computed in-network from several physical sensors, such as their running average"}
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** A *virtual sensor* is not hardware at all — it is a *service or app* that produces *high-level context* from *low-level context*. The course's example: feed in GPS coordinates (low-level) and a web service returns weather (OpenWeather), semantic location (Google Places) or nearby public transport (Transitland) — all higher-level, meaningful information derived from the raw reading.\n\n**Why A is correct.** It states exactly this: a service/app deriving high-level context from low-level context, with the GPS-to-weather/place example.\n\n**Why the others are wrong.** B describes a push-based prediction model used for energy-saving acquisition, not a virtual sensor. C names a real physical (environmental) sensor — built-in but still hardware, not a context-deriving service. D describes in-network aggregation, a query-processing technique, not the virtual-sensor concept.\n\n**Takeaway.** Virtual sensor = software service turning low-level data into high-level context.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260102-e6",
+    "examId": "AMI20260102",
+    "date": "2026-01-02",
+    "academicYear": "AA2526",
+    "exerciseNo": 6,
+    "type": "multiple-choice",
+    "topics": ["iot-data"],
+    "prompt": "Regarding energy consumption in sensor networks, the slides state that the most energy-intensive task is communication, quantified by the fact that:",
+    "choices": [
+      {"label": "A", "text": "Generating a sensor value costs the same power as transmitting 1000 bits to the gateway"},
+      {"label": "B", "text": "Transmitting 1 bit costs roughly the same power as performing 1000 CPU operations"},
+      {"label": "C", "text": "Transmitting 1000 bits costs roughly the same power as performing one CPU operation"},
+      {"label": "D", "text": "Keeping the antenna in sleep mode costs more power than transmitting the same data awake"}
+    ],
+    "correctChoice": "B",
+    "solution": "**Concept.** In battery-powered sensor networks, energy is the scarce resource, and the course's key fact is that *communication* — transmitting data to the gateway — is the *most energy-intensive task*, far more than computing or sensing. The memorable figure: *transmitting 1 bit costs roughly the same power as 1000 CPU operations*. This is why so much of sensor data management aims to send less data (compression, in-network aggregation, push-based acquisition).\n\n**Why B is correct.** It states the slide's exact ratio: 1 transmitted bit ≈ the cost of 1000 CPU operations.\n\n**Why the others are wrong.** A compares the wrong pair — data-generation cost is phenomenon-dependent, and the slide's ratio is bit-vs-CPU-op, not generation-vs-1000-bits. C inverts the ratio (it would make communication cheap, but the radio dominates consumption). D reverses the point of duty cycling: sleeping the antenna *saves* energy, transmitting awake is the costly state.\n\n**Takeaway.** Sending 1 bit ≈ 1000 CPU ops, so minimizing transmission saves the most energy.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260102-e7",
+    "examId": "AMI20260102",
+    "date": "2026-01-02",
+    "academicYear": "AA2526",
+    "exerciseNo": 7,
+    "type": "multiple-choice",
+    "topics": ["iot-data"],
+    "prompt": "Which of the following is one of the four Sensor Data Management tasks identified in the course?",
+    "choices": [
+      {"label": "A", "text": "Data cleaning — removing erroneous values caused by failures, dirt or lost communication"},
+      {"label": "B", "text": "Duty cycling — coordinating sleep/wakeup so the antenna stays off most of the time"},
+      {"label": "C", "text": "Sliding-window feature extraction — computing max/min/avg over consecutive readings"},
+      {"label": "D", "text": "Sensor calibration — adjusting raw readings against a known reference value"}
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** The course defines four *Sensor Data Management* tasks: *Data Acquisition* (getting readings off sensors energy-efficiently), *Data Cleaning* (removing erroneous values from failures, dirt, lost communication, etc.), *Query Processing* (answering queries, ideally in-network), and *Data Compression* (approximating streams to send less). Together they manage the lifecycle of noisy, costly sensor data.\n\n**Why A is correct.** Data cleaning — removing erroneous sensor values — is one of the four named tasks.\n\n**Why the others are wrong.** B (duty cycling) is a technique used *within* data acquisition, not one of the four top-level tasks. C (sliding-window feature extraction) is a compression/acquisition technique, again not one of the four named tasks. D (sensor calibration) is a real-sounding maintenance step the deck never lists among the four tasks.\n\n**Takeaway.** The four tasks are Acquisition, Cleaning, Query Processing, Compression — cleaning is the data-error remover.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260102-e8",
+    "examId": "AMI20260102",
+    "date": "2026-01-02",
+    "academicYear": "AA2526",
+    "exerciseNo": 8,
+    "type": "multiple-choice",
+    "topics": ["iot-data"],
+    "prompt": "Compared to push-based data acquisition, the PUSH approach (model-based) works by:",
+    "choices": [
+      {"label": "A", "text": "The user fixing the interval and frequency at which the sensors are sampled"},
+      {"label": "B", "text": "The gateway and sensors sharing a model of expected values, with sensors sending only the deviations"},
+      {"label": "C", "text": "The sensors building a model on-device and sending it to the gateway only when readings stay on-trend"},
+      {"label": "D", "text": "Intermediate nodes aggregating values (e.g. averages) so only summaries reach the base station"}
+    ],
+    "correctChoice": "B",
+    "solution": "**Concept.** Because transmission is the dominant energy cost, the course contrasts ways to acquire data. *Pull-based* lets the user fix the interval/frequency and reads on that schedule. *Push-based (model-based)* is smarter: the gateway and sensors first *agree on a model* of expected values (e.g., the usual daily temperature curve), and the sensor then transmits *only values that deviate* from the model. Predictable readings cost nothing to send; only surprises are sent, saving energy.\n\n**Why B is correct.** It states exactly this: a shared model of expected values, with the sensor sending only deviations.\n\n**Why the others are wrong.** A (user fixes interval/frequency) is pull-based, not push. C inverts the trigger — push transmits when readings *deviate* from the model, not when they stay on-trend, and the model is agreed jointly rather than shipped on every match. D describes in-network query processing (aggregation at intermediate nodes), a different task.\n\n**Takeaway.** Push = agree on a model, transmit only the deviations.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260102-e9",
+    "examId": "AMI20260102",
+    "date": "2026-01-02",
+    "academicYear": "AA2526",
+    "exerciseNo": 9,
+    "type": "multiple-choice",
+    "topics": ["iot-data"],
+    "prompt": "In Poor Man's Compression Mid-Range (PMC-MR), a set of samples belongs to the same segment (approximated by a single constant) if and only if:",
+    "choices": [
+      {"label": "A", "text": "Each consecutive pair satisfies `|v1 - v2| < ε`, the segmentation rule of Piecewise Constant Approximation"},
+      {"label": "B", "text": "The segment's mid-range value `(max - min)/2` is itself smaller than the bounded error `ε`"},
+      {"label": "C", "text": "Every sample lies within `ε` of the segment's first value, used as a cache filter for the run"},
+      {"label": "D", "text": "The segment's spread satisfies `max(s) - min(s) <= 2`*`ε`, i.e. within twice the bounded error"}
+    ],
+    "correctChoice": "D",
+    "solution": "**Concept.** *PMC-MR (Poor Man's Compression, Mid-Range)* is a piecewise-constant compression method: it replaces a run of samples with a single constant (such as (Max-Min)/2, the mid-range, or the mean). To guarantee a *bounded error* `ε`, every value must stay within `ε` of that constant. Since the constant sits in the middle of the range, the whole segment is valid only while its spread is at most twice `ε` — i.e., `max(s) - min(s) <= 2ε`. A larger `ε` allows longer segments and more compression at the cost of accuracy.\n\n**Why D is correct.** It is precisely the PMC-MR grouping condition: spread within twice the bounded error, `max(s) - min(s) <= 2ε`.\n\n**Why the others are wrong.** A is the *consecutive-pair* rule of plain Piecewise Constant Approximation (`|v1 - v2| < ε`), a sibling method, not PMC-MR's spread condition. B compares the mid-range constant itself to `ε`, which is not a grouping criterion at all. C is the cache-filter / first-value variant of PCA, not the mid-range condition that uses `2ε` against the spread.\n\n**Takeaway.** PMC-MR keeps samples together while `max - min <= 2ε`.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260102-e10",
+    "examId": "AMI20260102",
+    "date": "2026-01-02",
+    "academicYear": "AA2526",
+    "exerciseNo": 10,
+    "type": "multiple-choice",
+    "topics": ["iot-data"],
+    "prompt": "In-network query processing reduces transmitted data primarily by:",
+    "choices": [
+      {"label": "A", "text": "Routing every raw reading to the central base station, which computes the query result there"},
+      {"label": "B", "text": "Approximating each sensor's stream with piecewise-constant segments before it is transmitted"},
+      {"label": "C", "text": "Building an overlay network and aggregating (e.g. average, min/max) at intermediate nodes"},
+      {"label": "D", "text": "Having the gateway and sensors agree on a model so only deviating readings are sent"}
+    ],
+    "correctChoice": "C",
+    "solution": "**Concept.** *In-network query processing* answers a query by computing *inside* the sensor network instead of shipping all raw data to a central base station first. The nodes form an *overlay network* (a tree/graph), and intermediate nodes perform *aggregation* — computing partial averages, min/max, sums — as data flows toward the sink. Each node passes up a small aggregate rather than every raw reading, so far fewer bits cross the network, which (per the energy facts) saves the most energy.\n\n**Why C is correct.** It describes exactly this: an overlay network with aggregation (average, min/max) at intermediate nodes, cutting transmitted data.\n\n**Why the others are wrong.** A (ship all raw data to a central station) is the centralized approach in-network processing is contrasted *against*. B (piecewise-constant approximation) is a data-compression technique, not query processing. D (model + send only deviations) is push-based acquisition, a different task that also cuts traffic but is not in-network aggregation.\n\n**Takeaway.** In-network = aggregate at intermediate nodes, send summaries not raw data.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260102-e11",
+    "examId": "AMI20260102",
+    "date": "2026-01-02",
+    "academicYear": "AA2526",
+    "exerciseNo": 11,
+    "type": "theory-essay",
+    "topics": ["iot-data"],
+    "prompt": "IoT systems can be organized into layered architectures, and sensors come in different physical types.\n\n**(a)** Describe the role of the gateway and of the edge node, and explain the difference between a three-stage and a four-stage IoT architecture.\n\n**(b)** List the main categories of physical sensors discussed in the course (with one example each) and explain the distinction between analog and digital sensors, including the converter each implies.",
+    "solution": "**(a)** A *gateway* collects data from physically close IoT devices, may connect to other networks (the Internet, other gateways), can embed a local DB and perform local data processing, and transmits data to processing units (cloud/server); IoT devices usually do not talk to the cloud directly but go through this gateway. In a *three-stage* architecture the layers are essentially devices, gateway and cloud. A *four-stage* architecture inserts *edge nodes*: machines close to the IoT network with more computational power than the gateway (e.g., one edge device per building while a gateway covers a room), used to reduce latency and pre-process a smaller set of data before sending it to the cloud.\n\n**(b)** The main physical sensor categories are: *inertial sensors* (measure acceleration and rotational forces along three axes; e.g., accelerometer, gyroscope), *environmental sensors* (ambient temperature, pressure, illumination, humidity; e.g., barometer, photometer, thermometer), and *position sensors* (physical position/orientation; e.g., magnetometer). *Analog sensors* return a continuous voltage that is the analog representation of the measurement, so an *ADC* (analog-to-digital converter) is needed to digitalize it for the IoT device. *Digital sensors* output a digital signal directly, either by measuring just two states (ON/OFF) or via a built-in ADC. Symmetrically, analog actuators need a *DAC* (digital-to-analog converter) to turn 0s and 1s back into a voltage.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260102-e12",
+    "examId": "AMI20260102",
+    "date": "2026-01-02",
+    "academicYear": "AA2526",
+    "exerciseNo": 12,
+    "type": "theory-essay",
+    "topics": ["iot-data"],
+    "prompt": "Sensor data acquisition is fundamentally different from managing traditional data, and energy is a key constraint.\n\n**(a)** Explain why sensor data acquisition is challenging (mention streaming, spatio-temporal characteristics, duty cycling and mobility) and why energy consumption must be minimized.\n\n**(b)** Compare the naive batch-processing approach with push-based and pull-based acquisition, highlighting the trade-offs of each.",
+    "solution": "**(a)** Sensor data acquisition differs from traditional data management because the system must process a *continuous stream* of data with strong *spatio-temporal* characterization, rather than a static stored dataset. *Duty cycling* is often necessary: since transmitting is costly, the device antenna should sleep most of the time, requiring coordinated sleep/wakeup scheduling. *Mobility* can be exploited when gateways or nodes are carried by people, cars or animals, to better distribute transmission costs across nodes. Energy must be minimized because sensors are frequently battery-powered or in inaccessible locations; data generation has a phenomenon-dependent cost, but communication dominates (transmitting 1 bit costs roughly as much as 1000 CPU operations), so reducing transmission is the priority.\n\n**(b)** *Batch processing* buffers data on the sensor and processes it offline on the gateway/server: it gives a precise answer with no processing on the sensor, but incurs high communication costs and delivers data only with a delay, since the gateway receives everything. *Pull-based* acquisition lets the user define the interval and frequency of acquisition, giving control but still transmitting on a fixed schedule regardless of whether values changed. *Push-based* acquisition has the gateway and sensors agree on a model of expected values (e.g., linear-prediction or Markovian models capturing temporal and even spatial dependencies); the sensor transmits only deviations from the model, drastically cutting communication and energy at the cost of relying on model accuracy and accepting approximate results when the model holds.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260102-e13",
+    "examId": "AMI20260102",
+    "date": "2026-01-02",
+    "academicYear": "AA2526",
+    "exerciseNo": 13,
+    "type": "theory-essay",
+    "topics": ["iot-data"],
+    "prompt": "Compression and cleaning are two key sensor data management tasks.\n\n**(a)** Explain the goal of sensor data compression and describe Piecewise Constant Approximation and PMC-MR, including how the bounded error `ε` controls segmentation.\n\n**(b)** Explain why sensor data cleaning is necessary, give examples of error causes, state where cleaning occurs in the pipeline, and explain why raw data should still be kept.",
+    "solution": "**(a)** The goal of compression is to approximate a sensor data stream with a compact set of functions, exploiting spatio-temporal correlations (via regression, transformation, filtering, or orthogonal transforms such as Fourier/wavelet to reduce dimensionality). *Piecewise Constant Approximation* (PCA) approximates a segment of the stream with a single constant value (e.g., the first value as a cache filter, the mean, or the median); two consecutive samples `v1` and `v2` stay in the same segment while `|v1 - v2| < ε`, so the bounded error `ε` decides where segments break. *PMC-MR* (Poor Man's Compression Mid-Range) also represents a segment by a constant (such as (Max-Min)/2 or the mean), but groups samples while `max(s) - min(s) <= 2ε`; a larger `ε` yields longer segments and more compression at the cost of accuracy.\n\n**(b)** Cleaning is necessary because sensor data are inherently uncertain and erroneous: causes include discharged batteries and network failures, low-quality sensors, freezing/heating of the casing or measurement device, accumulation of dirt, mechanical failure, or vandalism. Cleaning usually occurs *after* data acquisition, e.g., at the base station, following a typical pipeline that identifies and corrects noisy readings. Even so, it is good practice to keep the *raw, uncleaned* data, because mistakes can occur in the cleaning process or the cleaning criteria may later need to change, and the original data would otherwise be irrecoverable.",
+    "solutionSource": "authored"
+  }
+]

@@ -1,0 +1,334 @@
+[
+  {
+    "id": "CI20250203-e1",
+    "examId": "CI20250203",
+    "date": "2025-02-03",
+    "academicYear": "AA2324",
+    "exerciseNo": 1,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["storage-systems"],
+    "part": "second",
+    "prompt": "Data centers require specialized fire suppression systems.",
+    "subStatements": [
+      {
+        "id": "CI20250203-e1-s1",
+        "statement": "Data centers require specialized fire suppression systems.",
+        "answer": true,
+        "motivation": "The Building Infrastructures lecture covers facility-level safety systems. Ordinary water sprinklers would destroy the electronics, so data centers adopt specialized clean-agent / inert-gas fire-suppression systems (e.g. FM-200, Novec, Inergen) that extinguish fire without damaging IT equipment. Specialized fire-suppression is therefore required."
+      }
+    ],
+    "solution": "See per-statement motivation. Data centers use clean-agent/gas-based suppression rather than water sprinklers — the statement is **True** (answer-box B).",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250203-e2",
+    "examId": "CI20250203",
+    "date": "2025-02-03",
+    "academicYear": "AA2324",
+    "exerciseNo": 2,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["networking"],
+    "part": "second",
+    "prompt": "In current datacenters, east-west traffic is typically less bandwidth-intensive than north-south traffic.",
+    "subStatements": [
+      {
+        "id": "CI20250203-e2-s1",
+        "statement": "In current datacenters, east-west traffic is typically less bandwidth-intensive than north-south traffic.",
+        "answer": false,
+        "motivation": "From the Datacenter Networking lecture, **north-south** traffic is client-to-server traffic entering/leaving the data center, while **east-west** traffic is server-to-server traffic inside the data center. Modern workloads (distributed compute, replication, big-data shuffles, ML all-reduce, microservices) make east-west traffic dominate — it is far more bandwidth-intensive than north-south. The claim that east-west is *less* intensive is false; this is exactly why fat-tree/leaf-spine fabrics are built for high bisection bandwidth."
+      }
+    ],
+    "solution": "See per-statement motivation. East-west (server-to-server) traffic dominates modern data centers and is more bandwidth-intensive than north-south — the statement is **False** (answer-box A).",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250203-e3",
+    "examId": "CI20250203",
+    "date": "2025-02-03",
+    "academicYear": "AA2324",
+    "exerciseNo": 3,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["cloud"],
+    "part": "second",
+    "prompt": "Cloud computing does not require the user to manage the underlying hardware infrastructure, instead relying on the cloud provider to manage it.",
+    "subStatements": [
+      {
+        "id": "CI20250203-e3-s1",
+        "statement": "Cloud computing does not require the user to manage the underlying hardware infrastructure, instead relying on the cloud provider to manage it.",
+        "answer": true,
+        "motivation": "A defining characteristic of cloud computing in the Cloud Computing lecture is that the provider owns and operates the physical infrastructure (servers, storage, networking, facilities) and offers it as an on-demand service. The user consumes resources without provisioning or managing the underlying hardware — the provider is responsible for it. This is the essence of the service model (IaaS/PaaS/SaaS abstract away progressively more of the stack)."
+      }
+    ],
+    "solution": "See per-statement motivation. The provider manages the underlying hardware; the user does not — the statement is **True** (answer-box A).",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250203-e4",
+    "examId": "CI20250203",
+    "date": "2025-02-03",
+    "academicYear": "AA2324",
+    "exerciseNo": 4,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["raid"],
+    "part": "second",
+    "prompt": "RAID 6 offers better random read performance than RAID 5.",
+    "subStatements": [
+      {
+        "id": "CI20250203-e4-s1",
+        "statement": "RAID 6 offers better random read performance than RAID 5.",
+        "answer": false,
+        "motivation": "From the RAID lecture, RAID 5 stripes data with **one** distributed parity block per stripe (capacity $N-1$), while RAID 6 keeps **two** independent parity blocks per stripe (capacity $N-2$) to tolerate two disk failures. Random reads in both levels are served from the data blocks and do not read parity; with the same number of disks RAID 6 has *fewer* data disks per stripe, so it offers no better (typically equal-to-slightly-worse) random read performance than RAID 5. Its advantage is extra fault tolerance, not read speed — the statement is false."
+      }
+    ],
+    "solution": "See per-statement motivation. RAID 6's second parity buys fault tolerance, not faster random reads; it does not beat RAID 5 on random read — the statement is **False** (answer-box B).",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250203-e5",
+    "examId": "CI20250203",
+    "date": "2025-02-03",
+    "academicYear": "AA2324",
+    "exerciseNo": 5,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["cloud"],
+    "part": "second",
+    "prompt": "Cloud architectures can help reduce the cost of IT infrastructure by enabling pay-as-you-go pricing.",
+    "subStatements": [
+      {
+        "id": "CI20250203-e5-s1",
+        "statement": "Cloud architectures can help reduce the cost of IT infrastructure by enabling pay-as-you-go pricing.",
+        "answer": true,
+        "motivation": "The Cloud Computing lecture lists **pay-per-use / pay-as-you-go** as a core benefit: it turns large up-front capital expenditure (CapEx) on owned hardware into operational expenditure (OpEx), so an organization pays only for the resources it actually consumes and can scale elastically. This avoids over-provisioning and reduces IT infrastructure cost — the statement is true."
+      }
+    ],
+    "solution": "See per-statement motivation. Pay-as-you-go converts CapEx to OpEx and avoids over-provisioning, reducing IT cost — the statement is **True** (answer-box A).",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250203-e6",
+    "examId": "CI20250203",
+    "date": "2025-02-03",
+    "academicYear": "AA2324",
+    "exerciseNo": 6,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["storage-systems"],
+    "part": "second",
+    "prompt": "In-rack cooling involves placing cooling units directly in the server racks.",
+    "subStatements": [
+      {
+        "id": "CI20250203-e6-s1",
+        "statement": "In-rack cooling involves placing cooling units directly in the server racks.",
+        "answer": true,
+        "motivation": "The Building Infrastructures lecture describes **in-rack cooling** as adding an air-to-water heat exchanger directly at the back of the rack, so hot exhaust air is cooled immediately as it leaves the servers (in contrast with in-row cooling, where the coils sit adjacent to the rack rather than inside it). So the cooling unit is indeed placed in/at the server rack — the statement is true."
+      }
+    ],
+    "solution": "See per-statement motivation. In-rack cooling integrates an air-to-water heat exchanger into the rack itself — the statement is **True** (answer-box B).",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250203-e7",
+    "examId": "CI20250203",
+    "date": "2025-02-03",
+    "academicYear": "AA2324",
+    "exerciseNo": 7,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["raid"],
+    "part": "second",
+    "prompt": "RAID 5 has a higher storage overhead than RAID 4.",
+    "subStatements": [
+      {
+        "id": "CI20250203-e7-s1",
+        "statement": "RAID 5 has a higher storage overhead than RAID 4.",
+        "answer": false,
+        "motivation": "From the RAID lecture, both **RAID 4** (dedicated parity disk) and **RAID 5** (distributed/rotating parity) use exactly **one disk worth of parity**, giving the same usable capacity $N-1$ out of $N$ disks. They have *identical* storage overhead; RAID 5 only distributes that parity across all disks to remove the single-parity-disk write bottleneck. So RAID 5 does not have higher overhead than RAID 4 — the statement is false."
+      }
+    ],
+    "solution": "See per-statement motivation. RAID 4 and RAID 5 both cost one parity disk ($N-1$ capacity); same overhead — the statement is **False** (answer-box B).",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250203-e8",
+    "examId": "CI20250203",
+    "date": "2025-02-03",
+    "academicYear": "AA2324",
+    "exerciseNo": 8,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["networking"],
+    "part": "second",
+    "prompt": "Oversubscription is not used in TOR (Top-of-Rack) switches.",
+    "subStatements": [
+      {
+        "id": "CI20250203-e8-s1",
+        "statement": "Oversubscription is not used in TOR (Top-of-Rack) switches.",
+        "answer": false,
+        "motivation": "From the Datacenter Networking lecture, **oversubscription** is the ratio between the aggregate downlink (server-facing) bandwidth and the uplink bandwidth of a switch, and it is routinely applied at the access/Top-of-Rack tier to reduce cost: the TOR switch provides less uplink bandwidth toward the aggregation layer than the total bandwidth of the servers attached below it (e.g. ratios like 4:1 or higher). So oversubscription *is* used in TOR switches — the statement is false."
+      }
+    ],
+    "solution": "See per-statement motivation. TOR switches are commonly oversubscribed (downlink bandwidth > uplink bandwidth) to save cost — the statement is **False** (answer-box A).",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250203-e9",
+    "examId": "CI20250203",
+    "date": "2025-02-03",
+    "academicYear": "AA2324",
+    "exerciseNo": 9,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["networking"],
+    "part": "second",
+    "prompt": "A three-tier network architecture is never used in leaf-spine architectures.",
+    "subStatements": [
+      {
+        "id": "CI20250203-e9-s1",
+        "statement": "A three-tier network architecture is never used in leaf-spine architectures.",
+        "answer": false,
+        "motivation": "From the Datacenter Networking lecture, the classic data-center topology is **three-tier** (access / aggregation / core). **Leaf-spine** (a two-tier folded-Clos fabric of leaf and spine switches) is precisely the modern generalization of that hierarchy, and large fabrics extend leaf-spine into multiple tiers (e.g. adding a super-spine), reintroducing a three-level structure. The two are not mutually exclusive, so the absolute claim 'never' is false."
+      }
+    ],
+    "solution": "See per-statement motivation. Leaf-spine is the evolution of the multi-tier hierarchy and large fabrics use extra (3+) tiers; the absolute 'never' is wrong — the statement is **False** (answer-box A).",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250203-e10",
+    "examId": "CI20250203",
+    "date": "2025-02-03",
+    "academicYear": "AA2324",
+    "exerciseNo": 10,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["storage-systems"],
+    "part": "second",
+    "prompt": "Raised floor systems in data centers help with cable management and airflow distribution.",
+    "subStatements": [
+      {
+        "id": "CI20250203-e10-s1",
+        "statement": "Raised floor systems in data centers help with cable management and airflow distribution.",
+        "answer": true,
+        "motivation": "The Building Infrastructures lecture describes the **raised floor** as a plenum: the void underneath routes power/data cabling and, crucially, distributes cold air from the CRAC units up through perforated tiles into the cold aisles in front of the racks. So a raised floor serves both cable management and airflow/cooling distribution — the statement is true."
+      }
+    ],
+    "solution": "See per-statement motivation. The under-floor plenum carries cabling and delivers cold air to the racks — the statement is **True** (answer-box B).",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250203-e11",
+    "examId": "CI20250203",
+    "date": "2025-02-03",
+    "academicYear": "AA2324",
+    "exerciseNo": 11,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["storage-devices"],
+    "part": "first",
+    "prompt": "Disk request queue (cylinders): **65, 23, 50, 8, 39**. The head starts at cylinder **52** and is moving from the **inside** (lower cylinder number) toward the **outside** (higher cylinder number). No further requests arrive. Using the **SCAN** scheduling algorithm, give the order in which the requests are served (first to last), referring to each request by its cylinder number.",
+    "solution": "**Method (SCAN / elevator).** SCAN keeps moving in the current direction, serving every request it passes, until it reaches the edge of the disk; then it reverses and serves the remaining requests on the way back.\n\nStart at **52**, direction = **toward the outside** (increasing cylinder).\n\n1. Going up, serve the requests above 52 in increasing order. Only **65** lies above 52.\n2. Reach the outer edge and **reverse**.\n3. Now going down, serve the requests below 52 in decreasing order: $50 \\to 39 \\to 23 \\to 8$.\n\n**Served order (first → last):**\n$$65,\\; 50,\\; 39,\\; 23,\\; 8$$",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250203-e12",
+    "examId": "CI20250203",
+    "date": "2025-02-03",
+    "academicYear": "AA2324",
+    "exerciseNo": 12,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["dependability"],
+    "part": "first",
+    "prompt": "A company uses a computing system composed of three servers: one **front-end** server and two **back-end** servers. The system remains operational even if **one** of the two back-end servers fails (it needs the front-end **and at least one** back-end). In all other cases the system is offline. All servers have $MTTF = 8$ months. (i) Compute the probability that **at least one** of the three servers fails within the first **40 days**; (ii) compute the **overall reliability** of the computing system after 40 days. Use at least 4 decimals in intermediate steps.",
+    "solution": "**Method.** Exponential reliability $R(t)=e^{-t/MTTF}$. Take 8 months $=240$ days, $t=40$ days, so $t/MTTF = 40/240 = 0.16667$.\n\n**Single-server reliability:**\n$$R = e^{-40/240} = e^{-0.16667} = 0.8465$$\n\n**(i) Probability at least one of the three servers fails in 40 days.** The three servers are independent; 'none fails' has probability $R^3$:\n$$P(\\text{at least one fails}) = 1 - R^3 = 1 - 0.8465^3 = 1 - 0.6066$$\n$$\\boxed{P \\approx 0.3935}$$\n\n**(ii) System reliability.** RBD: front-end (1 server) in **series** with a **1-of-2 parallel** back-end block.\n- Back-end block (parallel, 1-of-2): $R_{BE} = 1-(1-R)^2 = 1-(0.1535)^2 = 0.9764$.\n- Front-end in series: $R_{sys}=R \\cdot R_{BE}=0.8465 \\times 0.9764$.\n$$\\boxed{R_{sys}(40\\,\\text{d}) \\approx 0.8265\\ (\\approx 82.65\\%)}$$",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250203-e13",
+    "examId": "CI20250203",
+    "date": "2025-02-03",
+    "academicYear": "AA2324",
+    "exerciseNo": 13,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["dependability", "storage-systems"],
+    "part": "first",
+    "prompt": "A distributed data-storage system has **five** storage units in a **primary** and a **secondary** group: (i) two redundant primary units $S_1, S_2$ — the primary group works if **at least one** of the two is operational; (ii) three secondary units $S_3, S_4, S_5$ — the secondary group works only if **all three** are operational; (iii) **both** groups must be operational for the system to work. Each unit has $MTTF = 8$ months and $MTTR = 5$ days. Compute the overall **availability** of the system (at least 5 decimals in intermediate steps).",
+    "solution": "**Method.** Steady-state availability of a unit: $A = \\dfrac{MTTF}{MTTF+MTTR}$. Series blocks multiply; a 1-of-2 parallel block is $1-(1-A)^2$.\n\nTake 8 months $=240$ days, $MTTR = 5$ days:\n$$A = \\frac{240}{240+5} = \\frac{240}{245} = 0.97959$$\n\n**Primary group** (1-of-2 parallel, $S_1,S_2$):\n$$A_P = 1-(1-A)^2 = 1-(0.02041)^2 = 0.99958$$\n\n**Secondary group** (all three required → series, $S_3 S_4 S_5$):\n$$A_S = A^3 = 0.97959^3 = 0.94002$$\n\n**Whole system** (both groups required → series):\n$$A_{sys} = A_P \\cdot A_S = 0.99958 \\times 0.94002$$\n$$\\boxed{A_{sys} \\approx 0.93962\\ (\\approx 93.96\\%)}$$",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250203-e14",
+    "examId": "CI20250203",
+    "date": "2025-02-03",
+    "academicYear": "AA2324",
+    "exerciseNo": 14,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["performance"],
+    "part": "second",
+    "prompt": "A web server is monitored during the peak hour ($T = 1\\,\\text{h}$) of a representative business day. Measured data: number of completed requests $C = 10000$; average system utilization $U = 0.5$. Compute the system **throughput** $X$ and the requests' **service demand** $D$.",
+    "solution": "**Method (operational laws).** Throughput $X=\\dfrac{C}{T}$ (the throughput law) and the Utilization Law gives $U = X \\cdot D \\Rightarrow D = \\dfrac{U}{X}$.\n\n**Throughput:**\n$$X = \\frac{C}{T} = \\frac{10000}{3600\\ \\text{s}} = \\boxed{2.78\\ \\text{req/s}}$$\n\n**Service demand:**\n$$D = \\frac{U}{X} = \\frac{0.5}{2.78\\ \\text{req/s}} = 0.18\\ \\text{s} = \\boxed{180\\ \\text{ms}}$$",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250203-e15",
+    "examId": "CI20250203",
+    "date": "2025-02-03",
+    "academicYear": "AA2324",
+    "exerciseNo": 15,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["performance"],
+    "part": "second",
+    "prompt": "Considering the system of Question 14 ($D = 0.18\\,\\text{s}$), what is the **maximum throughput** the system can achieve?",
+    "solution": "**Method (asymptotic bound).** For a single-resource system the maximum throughput is limited by the bottleneck demand: $X_{max} = \\dfrac{1}{D_{max}}$. Here the system has the single service demand $D = 0.18$ s.\n\n$$X_{max} = \\frac{1}{D} = \\frac{1}{0.18\\ \\text{s}}$$\n$$\\boxed{X_{max} \\approx 5.56\\ \\text{req/s}}$$\n\nIntuitively, at $X_{max}$ the resource reaches utilization $U=1$ (it is saturated), so throughput cannot grow beyond $1/D$.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250203-e16",
+    "examId": "CI20250203",
+    "date": "2025-02-03",
+    "academicYear": "AA2324",
+    "exerciseNo": 16,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["performance"],
+    "part": "second",
+    "prompt": "Given the system of Question 14, assume the peak workload grows by **4×** (four times more requests in the same interval). Determine the **minimum total number of servers** (including the original one) required so that the system utilization does **not exceed 60%**. New servers are identical to the existing one and incoming requests are split evenly across all servers.",
+    "solution": "**Method.** Utilization Law per server: with $k$ identical servers sharing the load evenly, each server sees throughput $X'/k$ and has utilization $U_{each} = \\dfrac{X'}{k}\\,D$. Require $U_{each} \\le 0.6$.\n\nNew arrival/throughput rate after 4× growth:\n$$X' = 4X = 4 \\times 2.78 = 11.11\\ \\text{req/s}$$\n\nSolve for $k$:\n$$\\frac{X' D}{k} \\le 0.6 \\;\\Rightarrow\\; k \\ge \\frac{X' D}{0.6} = \\frac{11.11 \\times 0.18}{0.6} = \\frac{2.0}{0.6} = 3.33$$\n\nSince $k$ must be an integer, $k = \\lceil 3.33 \\rceil = 4$.\n\n$$\\boxed{\\text{Total servers} = 4}$$\n\n(Check: with 4 servers each handles $11.11/4 = 2.78$ req/s, $U_{each}=2.78\\times0.18 = 0.5 \\le 0.6$. With 3 servers $U_{each}=0.667 > 0.6$, so 4 is the minimum.)",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250203-e17",
+    "examId": "CI20250203",
+    "date": "2025-02-03",
+    "academicYear": "AA2324",
+    "exerciseNo": 17,
+    "marks": 5,
+    "type": "theory-essay",
+    "topics": ["storage-devices"],
+    "part": "first",
+    "prompt": "Explain the concept of **Wear Leveling** in the context of SSDs.",
+    "solution": "**Why it is needed.** In an SSD the flash memory is organized in **blocks** made of **pages**. Pages can be read/programmed individually, but a page can only be rewritten after the **whole block is erased** (the erase unit), and each block can survive only a **limited number of program/erase (P/E) cycles** before it wears out — every erase slightly degrades the silicon. SSDs also cannot overwrite a page in place: a write to existing data goes to a fresh page and the old page is marked **dirty (invalid)**, to be reclaimed later by **garbage collection** (which erases blocks that are all dirty/empty).\n\n**The problem.** If logical addresses mapped directly to fixed physical blocks, the blocks holding frequently-updated (\"hot\") data would be erased far more often than blocks holding rarely-changed (\"cold\") data, wearing out a few blocks long before the rest and prematurely killing the device.\n\n**Wear leveling.** Wear leveling is the **Flash Translation Layer (FTL)** policy that spreads erase/write operations **evenly across all physical blocks**, so they age uniformly and the whole device's endurance is maximized. The FTL keeps a logical-to-physical mapping and erase/write counters per block, and:\n- **Dynamic wear leveling:** when new data is written, it is directed to the least-worn free/erased blocks rather than reusing the same physical block; updates are remapped to fresh pages.\n- **Static wear leveling:** it also periodically **migrates cold (rarely-updated) data** out of low-wear blocks so those blocks can be returned to the pool and used for hot data, preventing them from sitting idle while hot blocks wear out.\n\n**Effect.** By equalizing the P/E count across blocks, wear leveling avoids early failure of individual blocks, extends the SSD's overall lifetime/endurance, and works together with **over-provisioning** (spare blocks) and garbage collection. The cost is some extra writes/data movement (a contributor to **write amplification**).",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250203-e18",
+    "examId": "CI20250203",
+    "date": "2025-02-03",
+    "academicYear": "AA2324",
+    "exerciseNo": 18,
+    "marks": 5,
+    "type": "theory-essay",
+    "topics": ["storage-systems", "dependability"],
+    "part": "second",
+    "prompt": "Discuss the concept of **Datacenter Availability**, and define the differences among the **Tier Levels** established by the Uptime Institute.",
+    "solution": "**Datacenter availability.** Availability is the fraction of time the facility is operational, $A=\\dfrac{MTTF}{MTTF+MTTR}$, usually quoted as a percentage and as the corresponding **maximum annual downtime**. In a data center it depends not only on the IT equipment but on the whole **physical infrastructure** — power (utility feeds, UPS, generators), cooling, and distribution paths — and on how much of it is **redundant** and **concurrently maintainable**. To rate this, the **Uptime Institute** defines four **Tier levels**; each higher tier subsumes the requirements of the lower ones, adding redundancy and fault tolerance, which raises availability (and cost).\n\n| Tier | Topology | Redundancy | Availability | Approx. annual downtime |\n|------|----------|-----------|--------------|--------------------------|\n| **I** | Basic capacity | **N** (no redundancy); single non-redundant power & cooling path | ~**99.671%** | ~28.8 h |\n| **II** | Redundant capacity components | **N+1** redundant components, but still a **single** distribution path | ~**99.741%** | ~22 h |\n| **III** | Concurrently maintainable | **N+1** components and **multiple distribution paths** (one active); any component/path can be maintained **without shutting down** the IT load | ~**99.982%** | ~1.6 h |\n| **IV** | Fault tolerant | **2N / 2N+1** fully redundant components **and** independent active distribution paths; tolerates a single failure with **no impact** on IT, and is concurrently maintainable | ~**99.995%** | ~0.4 h (≈26 min) |\n\n**Key differences.**\n- **Tier I** is the minimum: a single path and no redundant components, so any failure or maintenance brings the site down.\n- **Tier II** adds redundant **components** (e.g. extra UPS modules, generators, pumps), tolerating a component failure, but the single distribution path still forces downtime for path maintenance.\n- **Tier III** adds **dual distribution paths** (one active, one alternate) so that any element can be taken offline for maintenance/replacement **concurrently** with operation — no planned downtime.\n- **Tier IV** is **fault tolerant**: redundancy is duplicated on **both** components and active paths (2N), so even an unplanned single failure causes no service interruption; it also remains concurrently maintainable.\n\nIn short, moving up the tiers trades higher capital/operational cost for progressively higher availability, from ~99.67% (Tier I) to ~99.995% (Tier IV), by adding component redundancy first (Tier II), then redundant maintainable paths (Tier III), and finally full 2N fault tolerance (Tier IV).",
+    "solutionSource": "authored"
+  }
+]

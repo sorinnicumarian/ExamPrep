@@ -1,0 +1,308 @@
+[
+  {
+    "id": "CI20230124-e1",
+    "examId": "CI20230124",
+    "date": "2023-01-24",
+    "academicYear": "AA2223",
+    "exerciseNo": 1,
+    "marks": 2,
+    "type": "multiple-choice",
+    "topics": ["networking"],
+    "part": "second",
+    "prompt": "In a three-layer network architecture of a data center, which is the layer that is typically associated with the TOR (Top-of-Rack) switch?",
+    "choices": [
+      { "label": "A", "text": "Access" },
+      { "label": "B", "text": "Core" },
+      { "label": "C", "text": "Aggregation" },
+      { "label": "D", "text": "None of the others" }
+    ],
+    "correctChoice": "A",
+    "solution": "In the classic three-tier datacenter network (access / aggregation / core), the **access** layer is the one directly connecting the servers. The Top-of-Rack (TOR) switch sits at the top of each rack and aggregates the server NICs of that rack, so it belongs to the **access** layer. The aggregation layer interconnects the access switches and the core layer provides the high-speed backbone toward the outside. Hence the TOR is an access-layer switch.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230124-e2",
+    "examId": "CI20230124",
+    "date": "2023-01-24",
+    "academicYear": "AA2223",
+    "exerciseNo": 2,
+    "marks": 2,
+    "type": "multiple-choice",
+    "topics": ["dc-intro"],
+    "part": "first",
+    "prompt": "Which statement about Tier Level 4 of a data center is **not** correct?",
+    "choices": [
+      { "label": "A", "text": "Fault-tolerant site infrastructure with availability of 99.995%" },
+      { "label": "B", "text": "Meets or exceeds all Tier 3 requirements" },
+      { "label": "C", "text": "Single non-redundant distribution path serving the IT equipment" },
+      { "label": "D", "text": "All cooling equipment is independently dual-powered" }
+    ],
+    "correctChoice": "C",
+    "solution": "The Uptime-Institute data-center Tier classification (covered in the Data Centers lecture) defines Tier 4 as a **fault-tolerant** site: it meets/exceeds all Tier 3 requirements (B), targets an availability of about 99.995% (A), and has all equipment (including cooling) independently dual-powered (D). A **single, non-redundant** distribution path (C) is the definition of **Tier 1**, not Tier 4 — Tier 4 has multiple active and independent distribution paths. So statement C is the incorrect one.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230124-e3",
+    "examId": "CI20230124",
+    "date": "2023-01-24",
+    "academicYear": "AA2223",
+    "exerciseNo": 3,
+    "marks": 2,
+    "type": "multiple-choice",
+    "topics": ["networking"],
+    "part": "second",
+    "prompt": "Which is the main characteristic of the DCell topology for data-center network architectures?",
+    "choices": [
+      { "label": "A", "text": "The network is organized in a recursive way" },
+      { "label": "B", "text": "The network comprises edge, aggregation and core layers" },
+      { "label": "C", "text": "The network is organized in a hierarchical way" },
+      { "label": "D", "text": "The network is organized in a distributed way" }
+    ],
+    "correctChoice": "A",
+    "solution": "DCell is a **server-centric, recursively-defined** datacenter network topology (Datacenter Networking lecture). A DCell of level $k$ is built by connecting multiple DCells of level $k-1$, so the structure is **recursive**. The edge/aggregation/core layering (B) and the hierarchical organization (C) describe the classic three-tier/fat-tree designs, not DCell. The defining property of DCell is its recursive construction.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230124-e4",
+    "examId": "CI20230124",
+    "date": "2023-01-24",
+    "academicYear": "AA2223",
+    "exerciseNo": 4,
+    "marks": 2,
+    "type": "multiple-choice",
+    "topics": ["cloud"],
+    "part": "second",
+    "prompt": "What is a hybrid cloud computing system?",
+    "choices": [
+      { "label": "A", "text": "a cloud used for a single organization" },
+      { "label": "B", "text": "a cloud whose energy is produced both by diesel and batteries" },
+      { "label": "C", "text": "a cloud shared by several organizations" },
+      { "label": "D", "text": "a cloud composed of private and public cloud systems" }
+    ],
+    "correctChoice": "D",
+    "solution": "In the Cloud Computing lecture's deployment models: a **private** cloud serves a single organization (option A), a **community** cloud is shared by several organizations with common concerns (option C), a **public** cloud is open to the general public, and a **hybrid** cloud is a composition of two or more distinct cloud infrastructures (typically **private + public**) that remain unique entities but are bound together to allow data/application portability (e.g. cloud bursting). Hence D is the definition of a hybrid cloud.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230124-e5",
+    "examId": "CI20230124",
+    "date": "2023-01-24",
+    "academicYear": "AA2223",
+    "exerciseNo": 5,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["virtualization"],
+    "part": "second",
+    "prompt": "Paravirtualization cannot be used with an unmodified OS.",
+    "subStatements": [
+      {
+        "id": "CI20230124-e5-s1",
+        "statement": "Paravirtualization cannot be used with an unmodified OS.",
+        "answer": true,
+        "motivation": "From the Virtualization lecture, **paravirtualization** presents to the guest a software interface that is similar but not identical to the underlying hardware: the guest OS must be **modified/ported** to replace non-virtualizable/privileged instructions with explicit calls (hypercalls) to the hypervisor. Therefore it cannot run an unmodified guest OS — this is precisely the trade-off versus full virtualization (which runs unmodified OSes via binary translation/hardware assist). The statement is True."
+      }
+    ],
+    "solution": "See per-statement motivation. Paravirtualization requires a modified guest OS, so it cannot be used with an unmodified OS — the statement is **True** (official answer-box A).",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230124-e6",
+    "examId": "CI20230124",
+    "date": "2023-01-24",
+    "academicYear": "AA2223",
+    "exerciseNo": 6,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["servers"],
+    "part": "first",
+    "prompt": "Servers in data centers are like regular personal computers with the same form factor.",
+    "subStatements": [
+      {
+        "id": "CI20230124-e6-s1",
+        "statement": "Servers in data centers are like regular personal computers with the same form factor.",
+        "answer": false,
+        "motivation": "From the Servers / form-factors lecture, datacenter servers do **not** share the form factor of desktop PCs. They are built to standardized rack-mountable form factors (e.g. 1U/2U rack units, blade servers in a chassis) so that many of them pack densely into 19-inch racks, with shared power/cooling and hot-swap components. A regular tower PC has a completely different physical form factor and is not designed for dense rack mounting. The statement is False."
+      }
+    ],
+    "solution": "See per-statement motivation. Datacenter servers use rack/blade form factors, unlike regular PCs — the statement is **False** (official answer-box A, where box A reads 'False').",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230124-e7",
+    "examId": "CI20230124",
+    "date": "2023-01-24",
+    "academicYear": "AA2223",
+    "exerciseNo": 7,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["dc-intro"],
+    "part": "first",
+    "prompt": "Warehouse-scale computers run a large number of very small applications.",
+    "subStatements": [
+      {
+        "id": "CI20230124-e7-s1",
+        "statement": "Warehouse-scale computers run a large number of very small applications.",
+        "answer": false,
+        "motivation": "From the Warehouse-Scale Computer (WSC) part of the Data Centers lecture, a WSC is characterized by running a **small number of very large (massive, internet-scale) applications/services** (e.g. web search, mail, maps) over thousands of machines — the whole datacenter is treated as a single computer running few huge workloads, not many tiny independent applications. The statement reverses this and is therefore False."
+      }
+    ],
+    "solution": "See per-statement motivation. WSCs run a small number of very large applications, not many tiny ones — the statement is **False** (official answer-box A, where box A reads 'False').",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230124-e8",
+    "examId": "CI20230124",
+    "date": "2023-01-24",
+    "academicYear": "AA2223",
+    "exerciseNo": 8,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["storage-systems"],
+    "part": "second",
+    "prompt": "In the datacenter storage context, DAS means Distributed Application Storage.",
+    "subStatements": [
+      {
+        "id": "CI20230124-e8-s1",
+        "statement": "In the datacenter storage context, DAS means Distributed Application Storage.",
+        "answer": false,
+        "motivation": "From the DAS/NAS/SAN lecture, **DAS stands for Direct-Attached Storage** — storage directly attached to a single server/host (e.g. internal disks or a JBOD via SAS/SATA), with no network in between. 'Distributed Application Storage' is not the meaning of the acronym, so the statement is False."
+      }
+    ],
+    "solution": "See per-statement motivation. DAS = Direct-Attached Storage, not 'Distributed Application Storage' — the statement is **False** (official answer-box A, where box A reads 'False').",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230124-e9",
+    "examId": "CI20230124",
+    "date": "2023-01-24",
+    "academicYear": "AA2223",
+    "exerciseNo": 9,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["dc-intro"],
+    "part": "first",
+    "prompt": "An Edge Computing system provides higher performance (in terms of memory and computation) than Internet-of-Things devices.",
+    "subStatements": [
+      {
+        "id": "CI20230124-e9-s1",
+        "statement": "An Edge Computing system provides higher performance (in terms of memory and computation) than Internet-of-Things devices.",
+        "answer": true,
+        "motivation": "In the edge/cloud continuum (Data Centers / edge lecture), resources are arranged hierarchically: tiny IoT/end devices (very constrained CPU and memory) at the bottom, **edge** nodes in the middle (more powerful gateways/micro-datacenters), and the cloud at the top (most powerful). Edge nodes therefore offer **higher** memory and computational capacity than the IoT devices they serve, while being closer to the data source than the cloud. The statement is True."
+      }
+    ],
+    "solution": "See per-statement motivation. Edge nodes sit above IoT devices in the continuum and have more compute/memory — the statement is **True** (official answer-box A, where box A reads 'True').",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230124-e10",
+    "examId": "CI20230124",
+    "date": "2023-01-24",
+    "academicYear": "AA2223",
+    "exerciseNo": 10,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["dependability"],
+    "part": "first",
+    "prompt": "A system is composed of two components in parallel. The reliability of a single component measured at $t=5$ days is $R(5\\,\\text{days})=0.98$. What is the maximum number of consecutive days for which the system has a probability higher than $0.85$ to work without faults?",
+    "solution": "**Single-component MTTF** (exponential model $R(t)=e^{-t/\\text{MTTF}}$):\n$$\\text{MTTF} = \\frac{-t}{\\ln R(t)} = \\frac{-5}{\\ln 0.98} = \\frac{-5}{-0.020203} \\approx 247.49\\ \\text{days}.$$\n\n**Parallel system reliability** (system fails only if both fail):\n$$R_{sys}(t) = 1-(1-R_{single}(t))^2,\\quad R_{single}(t)=e^{-t/\\text{MTTF}}.$$\n\nImpose $R_{sys}(t) > 0.85$:\n$$(1-e^{-t/\\text{MTTF}})^2 < 0.15 \\;\\Rightarrow\\; 1-e^{-t/\\text{MTTF}} < \\sqrt{0.15}=0.3873$$\n$$\\Rightarrow e^{-t/\\text{MTTF}} > 0.6127 \\;\\Rightarrow\\; t < -\\text{MTTF}\\cdot\\ln(0.6127)=247.49\\times 0.4897.$$\n\n$$\\boxed{t \\approx 121\\ \\text{days}.}$$",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230124-e11",
+    "examId": "CI20230124",
+    "date": "2023-01-24",
+    "academicYear": "AA2223",
+    "exerciseNo": 11,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["dependability"],
+    "part": "first",
+    "prompt": "The analysis of the failure behavior of a three-component system (A, B and C) reveals that the system is down when one between A and B is down **and** C is down. The three components have the following characteristics: $MTTF_A=80\\,\\text{days}$, $MTTR_A=1\\,\\text{day}$, $MTTF_B=12\\,\\text{days}$, $MTTR_B=12\\,\\text{hours}$, $MTTF_C=120\\,\\text{days}$, $MTTR_C=2.5\\,\\text{days}$. What is the average availability of the system?",
+    "solution": "The system is down only when **(A or B is down) AND C is down**, i.e. it behaves as a **parallel** composition of two branches: branch 1 = $A$ **in series with** $B$ (both needed, so it is up when $A$ and $B$ are up), branch 2 = $C$.\n\n**Per-component availability** $A_i = \\dfrac{MTTF_i}{MTTF_i+MTTR_i}$ (consistent units, $MTTR_B=12\\,\\text{h}=0.5\\,\\text{day}$):\n$$A_A=\\frac{80}{81}=0.9877,\\quad A_B=\\frac{12}{12.5}=0.9600,\\quad A_C=\\frac{120}{122.5}=0.9796.$$\n\n**Series branch (A·B):** $A_{AB}=A_A\\cdot A_B = 0.9877\\times 0.9600 = 0.9481.$\n\n**Parallel of branch (A·B) with C:**\n$$A_{sys}=1-(1-A_{AB})(1-A_C)=1-(1-0.9481)(1-0.9796)$$\n$$=1-(0.0519)(0.0204)\\approx \\boxed{0.9989}.$$\n\n(The handwritten official sheet records $\\approx 0.99894$.)",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230124-e12",
+    "examId": "CI20230124",
+    "date": "2023-01-24",
+    "academicYear": "AA2223",
+    "exerciseNo": 12,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["storage-devices"],
+    "part": "first",
+    "prompt": "Consider an HDD with $4\\,\\text{KB}$ block size, a rotation speed of $10000\\,\\text{RPM}$, $0.4\\,\\text{ms}$ as transfer time for 1 block, $6\\,\\text{ms}$ as average seek time, and a negligible controller overhead. Knowing that the average locality of the accesses is $95\\%$, what is the average I/O time to access a $480\\,\\text{KB}$ file?",
+    "solution": "**Number of blocks:** $N=\\dfrac{480\\,\\text{KB}}{4\\,\\text{KB}}=120$ blocks.\n\n**Average rotational latency** = half a revolution at $10000$ RPM:\n$$T_{rot}=\\frac{1}{2}\\cdot\\frac{60}{10000}\\,\\text{s}=3\\,\\text{ms}.$$\n\n**I/O-time model with locality** — every block pays its transfer time, but the seek + rotational latency are paid only for the fraction $(1-\\text{locality})$ of accesses that are non-sequential:\n$$T_{I/O}=N\\cdot T_{transfer}+N\\cdot(1-\\text{loc})\\cdot(T_{seek}+T_{rot}).$$\n$$T_{I/O}=120\\times 0.4 + 120\\times(1-0.95)\\times(6+3)$$\n$$=48 + 120\\times0.05\\times 9 = 48+54 = \\boxed{102\\ \\text{ms}.}$$",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230124-e13",
+    "examId": "CI20230124",
+    "date": "2023-01-24",
+    "academicYear": "AA2223",
+    "exerciseNo": 13,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["raid"],
+    "part": "second",
+    "prompt": "A RAID 5 system uses four $2\\,\\text{TB}$ disks to store data and the required parity bits. Considering that each disk has a Sequential Access Speed (Throughput) of $85\\,\\text{MB/s}$ and a Random Access Speed (Throughput) of $8.5\\,\\text{MB/s}$, what is the expected throughput of the RAID 5 considering a random read pattern?",
+    "solution": "In RAID 5 the data and the distributed parity are spread over **all $N$ disks**. For **reads**, parity is not read, so every one of the $N$ disks can serve read requests **independently and in parallel**. Therefore the random-read throughput of the array is the sum of the per-disk random throughputs:\n$$X_{read} = N \\times v_{random} = 4 \\times 8.5\\,\\text{MB/s} = \\boxed{34\\ \\text{MB/s}.}$$\n(All four disks participate in reads because in RAID 5 parity is distributed, not on a dedicated disk.)",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230124-e14",
+    "examId": "CI20230124",
+    "date": "2023-01-24",
+    "academicYear": "AA2223",
+    "exerciseNo": 14,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["raid"],
+    "part": "second",
+    "prompt": "Consider a RAID 5 setup having an $MTTF_{RAID5}$ (also called MTTDL) equal to $6.5$ years. The storage architecture is composed of 8 disks; each disk has an MTTF equal to 2 years. What is the average MTTR of each disk used within the storage architecture?",
+    "solution": "The RAID 5 mean-time-to-data-loss (from the RAID exercises) is\n$$MTTDL_{RAID5}=\\frac{MTTF_{disk}^2}{N\\,(N-1)\\,MTTR}.$$\n\nSolve for $MTTR$ with $N=8$, $MTTF_{disk}=2$ years, $MTTDL=6.5$ years:\n$$MTTR=\\frac{MTTF_{disk}^2}{N(N-1)\\,MTTDL}=\\frac{2^2}{8\\cdot 7\\cdot 6.5}=\\frac{4}{364}\\approx 0.0110\\ \\text{years}.$$\n\nConverting to days: $0.0110\\times 365 \\approx \\boxed{4\\ \\text{days}\\ (\\approx 0.011\\ \\text{years}).}$",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230124-e15",
+    "examId": "CI20230124",
+    "date": "2023-01-24",
+    "academicYear": "AA2223",
+    "exerciseNo": 15,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["performance", "xaas"],
+    "part": "second",
+    "prompt": "You have to develop a cloud-edge system for video surveillance. In the edge network you can install a cluster of RaspberryPis that perform, for privacy reasons, a local initial processing of each video frame. Given the limited computing capability of the RaspberryPis, the final processing of each frame is performed in a cloud cluster based on standard Virtual Machines. The input frame rate of the images coming from the cameras is $X=2\\,\\text{frame/s}$, the demanding time to process each frame on a RaspberryPi is $0.4\\,\\text{s}$ while the demanding time on a VM is $0.6\\,\\text{s}$. In the presence of multiple RaspberryPi nodes and/or VMs, the demand to process each frame is equally split among them. Determine the minimum number of edge nodes ($N_{RPi}$) and cloud nodes ($N_{VM}$) such that the maximum utilization on the edge is $\\le 0.3$ while in the cloud the maximum utilization is $\\le 0.5$.",
+    "solution": "Each tier is a set of $N$ parallel servers among which the per-frame demand is **equally split**, so the per-server demand is $D/N$. By the utilization law, with arrival/throughput $X=2\\,\\text{frame/s}$, the per-server utilization is $U=\\dfrac{X\\,D}{N}$.\n\n**Edge (RaspberryPi),** $D_{RPi}=0.4\\,\\text{s}$, require $U\\le 0.3$:\n$$\\frac{X\\,D_{RPi}}{N_{RPi}}\\le 0.3 \\;\\Rightarrow\\; N_{RPi}\\ge \\frac{2\\times 0.4}{0.3}=\\frac{0.8}{0.3}=2.67 \\;\\Rightarrow\\; \\boxed{N_{RPi}=3.}$$\n\n**Cloud (VM),** $D_{VM}=0.6\\,\\text{s}$, require $U\\le 0.5$:\n$$\\frac{X\\,D_{VM}}{N_{VM}}\\le 0.5 \\;\\Rightarrow\\; N_{VM}\\ge \\frac{2\\times 0.6}{0.5}=\\frac{1.2}{0.5}=2.4 \\;\\Rightarrow\\; \\boxed{N_{VM}=3.}$$",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230124-e16",
+    "examId": "CI20230124",
+    "date": "2023-01-24",
+    "academicYear": "AA2223",
+    "exerciseNo": 16,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["performance"],
+    "part": "second",
+    "prompt": "Assuming that in the system described in the previous exercise you have installed 4 RaspberryPis and 4 VMs, determine the lower bound of the system response time for frame processing, assuming you can model the system as a closed queuing network serving $N=50$ batch jobs (i.e., 50 cameras are connected overall and think time $Z=0$).",
+    "solution": "With 4 RaspberryPis and 4 VMs the per-server (per-station) service demands are obtained by splitting each tier's demand among its 4 nodes:\n$$D_{RPi,node}=\\frac{0.4}{4}=0.1\\,\\text{s},\\qquad D_{VM,node}=\\frac{0.6}{4}=0.15\\,\\text{s}.$$\nThe **bottleneck** (largest demand station) is a VM: $D_{max}=0.15\\,\\text{s}$. Total demand $D=\\sum D_k = 0.1+0.15=0.25\\,\\text{s}$.\n\n**Response-time lower bound** for a closed batch network ($Z=0$):\n$$R(N)\\ge \\max\\big(D,\\; N\\cdot D_{max}\\big)=\\max(0.25,\\; 50\\times 0.15)=\\max(0.25,\\,7.5).$$\n\n$$\\boxed{R_{min}=7.5\\ \\text{s}.}$$",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230124-e17",
+    "examId": "CI20230124",
+    "date": "2023-01-24",
+    "academicYear": "AA2223",
+    "exerciseNo": 17,
+    "marks": 5,
+    "type": "theory-essay",
+    "topics": ["servers", "dc-intro"],
+    "part": "first",
+    "prompt": "What is the role of hardware accelerators in data centers?",
+    "solution": "**Hardware accelerators** are specialized processing units added alongside general-purpose CPUs to execute specific classes of workloads far more efficiently (in performance and, crucially, in performance-per-watt) than a CPU can. Their role in modern data centers includes:\n\n- **Why they are needed.** General-purpose CPUs offer flexibility but poor efficiency for highly parallel, data-intensive kernels. As Moore's-law/Dennard-scaling gains slowed and workloads such as deep learning, analytics and media processing exploded, datacenters turned to accelerators to keep improving throughput within tight **power and cooling** budgets (a key WSC constraint).\n\n- **Main types.**\n  - **GPUs** — massively parallel SIMT processors, the workhorse for ML training/inference, scientific computing and graphics. Multi-GPU servers use high-bandwidth interconnects (e.g. **NVLink**) so GPUs exchange data far faster than over PCIe.\n  - **TPUs / NPUs / domain-specific ASICs** — custom chips (e.g. Google TPU) built around matrix/tensor operations for neural networks, giving the highest efficiency for a narrow workload.\n  - **FPGAs** — reconfigurable fabrics used for low-latency, customizable acceleration (networking, encryption, search, inference) that can be re-programmed as workloads evolve.\n\n- **What they accelerate.** Machine-learning training and inference, video/image transcoding, compression and encryption, networking/packet processing (SmartNICs), and other parallel or streaming kernels.\n\n- **Trade-offs / placement.** Accelerators improve **throughput and energy efficiency** but reduce flexibility (especially fixed-function ASICs) and add integration cost. They are offered through cloud services (e.g. ML-as-a-Service, GPU/TPU instances), letting users rent acceleration on demand. The general principle is **specialization for efficiency**: offload the heavy, repetitive parallel work from the CPU to purpose-built silicon to maximize performance per watt in the data center.",
+    "solutionSource": "authored"
+  }
+]

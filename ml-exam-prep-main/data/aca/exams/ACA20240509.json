@@ -1,0 +1,78 @@
+[
+  {
+    "id": "ACA20240509-e1",
+    "examId": "ACA20240509",
+    "date": "2024-05-09",
+    "academicYear": "AA2324",
+    "exerciseNo": 1,
+    "marks": 20,
+    "type": "applied-modeling",
+    "topics": ["scoreboard", "ilp"],
+    "prompt": "**Scoreboard.** Assume that the following code has been executed on a CPU with a **Scoreboard**. The execution table below (columns ISSUE / READ OPERAND / EXE COMPLETE / WB) is the one claimed for that run.\n\n**A.** List all the possible conflicts in the code.\n\n**B.** Is there a \"configuration\" that can respect the shown execution? How many units? Which kind? What latency?\n\n**C.** If the previous table was not correct, write the right one and specify the number, kind, and latency for each unit.",
+    "code": {
+      "language": "pseudocode",
+      "source": "I1 lw  $1, 24($fp)\nI2 lw  $2, 8($fp)\nI3 lw  $3, 4($fp)\nI4 add $2, $2, $3\nI5 add $1, $1, $2\nI6 sw  $1, 16($fp)"
+    },
+    "fillTable": {
+      "caption": "Claimed Scoreboard execution (given — analyze it)",
+      "columns": ["Instruction", "ISSUE", "READ OPERAND", "EXE COMPLETE", "WB"],
+      "rows": [
+        [{"given": "I1 lw $1, 24($fp)"}, {"given": "1"}, {"given": "2"}, {"given": "5"}, {"given": "6"}],
+        [{"given": "I2 lw $2, 8($fp)"}, {"given": "2"}, {"given": "3"}, {"given": "6"}, {"given": "7"}],
+        [{"given": "I3 lw $3, 4($fp)"}, {"given": "7"}, {"given": "8"}, {"given": "11"}, {"given": "12"}],
+        [{"given": "I4 add $2, $2, $3"}, {"given": "8"}, {"given": "13"}, {"given": "16"}, {"given": "17"}],
+        [{"given": "I5 add $1, $1, $2"}, {"given": "9"}, {"given": "18"}, {"given": "21"}, {"given": "22"}],
+        [{"given": "I6 sw $1, 16($fp)"}, {"given": "10"}, {"given": "23"}, {"given": "26"}, {"given": "27"}]
+      ]
+    },
+    "solution": "**A. Conflicts.**\n- *True (RAW):* `$3`: I3→I4; `$2`: I2→I4; `$2`: I4→I5; `$1`: I1→I5; `$1`: I5→I6.\n- *Structural:* the load/store units are shared by I1, I2, I3, I6.\n- *Output (WAW):* `$2` (I2 `lw` and I4 `add`); `$1` (I1 `lw` and I5 `add`) — handled by the scoreboard at issue.\n\n**B. Yes**, a configuration exists: **2 LDU + 2 FPU, both with 3cc latency** (EXE COMPLETE − READ OPERAND = 3, WB = EXE COMPLETE + 1). It reproduces the table exactly:\n- I1, I2 issue at 1, 2 and occupy both load units (busy cycles 1–6 and 2–7).\n- **I3 stalls at issue until cycle 7**: both LDUs are busy, the first frees only after I1's WB (6) → issue 7, RO 8, EC 11, WB 12 (structural hazard).\n- I4 `add` issues at 8; READ OPERAND waits for `$2` (I2 WB 7) and `$3` (I3 WB 12) → RO 13, EC 16, WB 17.\n- I5 `add` issues at 9 but READ OPERAND waits for `$2` (I4 WB 17) → RO 18, EC 21, WB 22 (uses the 2nd FP unit).\n- I6 `sw` issues at 10, waits for `$1` (I5 WB 22) → RO 23, EC 26, WB 27.\n\n**C.** Because the configuration in B already respects the execution, the shown table is **correct** — no correction is needed. The decisive stalls are the **structural** delay on I3 (no free load unit) and the **RAW** chain I2/I3→I4→I5→I6.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "ACA20240509-e2",
+    "examId": "ACA20240509",
+    "date": "2024-05-09",
+    "academicYear": "AA2324",
+    "exerciseNo": 2,
+    "marks": 15,
+    "type": "applied-modeling",
+    "topics": ["tomasulo", "cache"],
+    "prompt": "**Tomasulo.** Consider the program below executed on a CPU with dynamic scheduling based on **Tomasulo**. Architecture: 3 reservation stations (RS1–RS3) + **2 LDU (3cc)**, 2 reservation stations (RS4–RS5) + **2 FPU (3cc)**. Complete the Tomasulo table assuming a **cache MISS on I2 that adds 5 penalty cycles** (columns ISSUE / START EXE / WB; WB = START + latency).",
+    "code": {
+      "language": "pseudocode",
+      "source": "I1 ld   $1, 28($fp)\nI2 ld   $2, 16($fp)   ; cache MISS: +5 cycles\nI3 addd $1, $1, $2\nI4 ld   $2, 12($fp)\nI5 addd $2, $1, $2\nI6 addd $1, $1, 1\nI7 sd   $1, 0($2)"
+    },
+    "fillTable": {
+      "caption": "Tomasulo timing (I2 misses → +5 penalty)",
+      "columns": ["Instruction", "ISSUE", "START EXE", "WB"],
+      "rows": [
+        [{"given": "I1 ld $1, 28($fp)"}, {"answer": "1"}, {"answer": "2"}, {"answer": "5"}],
+        [{"given": "I2 ld $2, 16($fp)"}, {"answer": "2"}, {"answer": "3"}, {"answer": "11"}],
+        [{"given": "I3 addd $1, $1, $2"}, {"answer": "3"}, {"answer": "12"}, {"answer": "15"}],
+        [{"given": "I4 ld $2, 12($fp)"}, {"answer": "4"}, {"answer": "6"}, {"answer": "9"}],
+        [{"given": "I5 addd $2, $1, $2"}, {"answer": "5"}, {"answer": "16"}, {"answer": "19"}],
+        [{"given": "I6 addd $1, $1, 1"}, {"answer": "16"}, {"answer": "17"}, {"answer": "20"}],
+        [{"given": "I7 sd $1, 0($2)"}, {"answer": "17"}, {"answer": "21"}, {"answer": "24"}]
+      ]
+    },
+    "solution": "True dependences: `$1`: I1→I3; `$2`: I2→I3; `$1`: I3→I5; `$2`: I4→I5; `$1`: I6→I7; `$2`: I5→I7 (store address). Walk-through:\n- **I1** start 2, WB 5 (LDU 3cc).\n- **I2** start 3; with the **+5 miss penalty** WB = 3 + 3 + 5 = **11**.\n- **I3** `addd` needs `$1`(5) and `$2`(11) → start 12, WB 15.\n- **I4** `ld` gets the free load unit → start 6, WB 9.\n- **I5** `addd` needs `$1`(I3 WB 15) and `$2`(I4 WB 9) → start 16, WB 19.\n- **I6** must wait for a **free FP reservation station**: both are held by I3 (until WB 15) and I5 (until 19); the first frees after I3 → **issue 16**, start 17, WB 20.\n- **I7** `sd` needs `$1`(I6 WB 20) and `$2`(I5 WB 19) → start 21, WB 24.\n\nThe single cache miss on I2 ripples through the whole dependent chain (I3, I5, I6, I7 all slip), illustrating how a long memory latency serialises Tomasulo when results are needed downstream.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "ACA20240509-e3",
+    "examId": "ACA20240509",
+    "date": "2024-05-09",
+    "academicYear": "AA2324",
+    "exerciseNo": 3,
+    "marks": 15,
+    "type": "theory-essay",
+    "topics": ["branch"],
+    "prompt": "**Branch prediction.** Describe (the answer has to be effectively supported) a 1-bit BHT and a 2-bit BHT able to execute the following assembly code (R0 is set to 4, R1 is set to 0). Is the obtained result, in terms of mispredictions, in line with the theoretical characteristics of the two predictors? Effectively support your answer.",
+    "code": {
+      "language": "pseudocode",
+      "source": "LOOP:  LD    F1, 0(R0)\n       ADDD  F2, F1, F1\n       DIVD  F3, F2, F1\n       ADDI  R1, R1, 1000\nLOOP2: MULTD F12, F3, F2\n       SUBI  R1, R1, 1\n       BNEZ  R1, LOOP2     ; inner branch\n       SUBI  R0, R0, 4\n       BNEZ  R0, LOOP      ; outer branch"
+    },
+    "solution": "Two branches: the **inner** `BNEZ R1, LOOP2` and the **outer** `BNEZ R0, LOOP`. The outer loop runs while R0 = 4 → 0 (step 4): **1 outer iteration** then exit. Each time the inner loop is entered it counts R1 down to 0 (a long run of *taken* then one *not-taken* exit).\n\n**1-bit BHT.** Remembers only the last outcome, so a loop branch costs **2 mispredictions per episode**: the *exit* (predicts taken, is not-taken) and the *first iteration of the next entry* (predicts not-taken, is taken).\n\n**2-bit BHT.** A saturating counter stays *taken* through the body; the single not-taken exit only weakens it without flipping the prediction, so it costs **1 misprediction per episode** (the exit) and re-enters correctly.\n\n**Conclusion — in line with theory.** Because the inner loop is re-entered on every outer iteration, the 2-bit predictor saves one misprediction per inner episode versus the 1-bit predictor (1 vs 2). That is precisely the textbook advantage of 2-bit over 1-bit predictors for repeatedly-entered (nested) loops, so the observed behaviour matches the theory.",
+    "solutionSource": "authored"
+  }
+]

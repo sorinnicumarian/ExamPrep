@@ -1,0 +1,374 @@
+[
+  {
+    "id": "AMI20260110-e1",
+    "examId": "AMI20260110",
+    "date": "2026-01-10",
+    "academicYear": "AA2526",
+    "exerciseNo": 1,
+    "type": "multiple-choice",
+    "topics": [
+      "multi-har"
+    ],
+    "prompt": "What is the *data association* problem in multi-inhabitant HAR with environmental sensors?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Attributing each anonymous sensor event to the specific inhabitant who actually triggered it"
+      },
+      {
+        "label": "B",
+        "text": "Deciding which single-resident HAR classifier to run once each event has been attributed to a resident"
+      },
+      {
+        "label": "C",
+        "text": "Detecting that a window of sensor events reflects two parallel activities rather than one"
+      },
+      {
+        "label": "D",
+        "text": "Separating the event stream into groups likely from different subjects without naming any of them"
+      }
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** Environmental sensor events are *anonymous*: a fired magnetic sensor reports \"fridge opened\" but never *who* opened it. With several people home, the same event could belong to any of them. *Data association* is the task of attributing each event to the inhabitant who actually triggered it — a prerequisite for running per-resident activity recognition.\n\n**Why A is correct.** It states this attribution task exactly, the core multi-inhabitant challenge described as one of the main obstacles to real-world deployment.\n\n**Why the others are wrong.** B is a *downstream* step that happens *after* association has already attributed events. C (recognising parallel activity in a window) is part of multi-label recognition, not the attribution problem. D describes *subject separation* — a weaker goal that groups events by distinct subject but, unlike data association, never binds them to a specific identity.\n\n**Takeaway.** Data association = mapping each anonymous sensor event to the resident who caused it (identity included).",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260110-e2",
+    "examId": "AMI20260110",
+    "date": "2026-01-10",
+    "academicYear": "AA2526",
+    "exerciseNo": 2,
+    "type": "multiple-choice",
+    "topics": [
+      "multi-har"
+    ],
+    "prompt": "Why does data association *not* arise in single-resident smart homes but become critical with two or more residents?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "A single resident produces a much sparser event stream, so attribution there is just computationally cheaper"
+      },
+      {
+        "label": "B",
+        "text": "Binary ON/OFF sensors only emit identity information when exactly one resident is present in the home"
+      },
+      {
+        "label": "C",
+        "text": "Environmental sensors are deployed only in single-resident homes, so multi-resident homes lack the data to attribute"
+      },
+      {
+        "label": "D",
+        "text": "With one resident every event is necessarily theirs, but with several an event is ambiguous between candidates"
+      }
+    ],
+    "correctChoice": "D",
+    "solution": "**Concept.** Attribution becomes a problem only when there is a *choice* of who could have acted. Anonymous ON/OFF events carry no identity, so the difficulty is purely about ambiguity between candidates, not about the sensors themselves.\n\n**Why D is correct.** With one resident, every event can only be theirs, so attribution is automatic and free. Add a second person and the same anonymous event could come from either, so it must be disambiguated — that ambiguity *is* the data-association problem.\n\n**Why the others are wrong.** A misframes it as a cost/sparsity issue: even one event is unattributable when several people could have caused it — it is ambiguity, not volume. B is false: anonymous sensors never emit identity, regardless of how many residents are home. C is false: environmental sensors are deployed in multi-resident homes too — that is precisely where association is needed.\n\n**Takeaway.** One resident → attribution trivial; multiple residents → events ambiguous, association needed.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260110-e3",
+    "examId": "AMI20260110",
+    "date": "2026-01-10",
+    "academicYear": "AA2526",
+    "exerciseNo": 3,
+    "type": "multiple-choice",
+    "topics": [
+      "multi-har"
+    ],
+    "prompt": "A naive data-driven data-association method (Crandall & Cook) uses Naive Bayes with $\\text{Likelihood} = P(R_n)\\,P(E_i \\mid R_n)$. In this formulation, what does $E_i$ represent?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The raw ON/OFF state of one sensor at one instant, with no spatial or temporal context attached"
+      },
+      {
+        "label": "B",
+        "text": "The prior probability that resident `R_n` is the one who tends to trigger sensor events at all"
+      },
+      {
+        "label": "C",
+        "text": "A feature vector encoding spatial/temporal relations with past events plus time features"
+      },
+      {
+        "label": "D",
+        "text": "The activity label assigned to resident `R_n` once their events have been attributed and recognised"
+      }
+    ],
+    "correctChoice": "C",
+    "solution": "**Concept.** Crandall & Cook attack data association with Naive Bayes: pick the resident maximising $P(R_n)\\,P(E_i \\mid R_n)$, where $P(R_n)$ is a resident's prior tendency to trigger events and $P(E_i \\mid R_n)$ is how likely that resident produces event `E_i`. For the likelihood to be informative, `E_i` must be richer than a raw bit.\n\n**Why C is correct.** The deck defines `E_i` as a complex feature vector encoding spatial and temporal relationships with past events plus time features (time of day, day of week) — the context that lets the model tell residents apart.\n\n**Why the others are wrong.** A reduces it to a bare ON/OFF bit, which carries no discriminative context. B describes the *prior* `P(R_n)`, the other factor in the product, not `E_i`. D is the final HAR *output* (an activity), which comes after association, not the observed event the likelihood is conditioned on.\n\n**Takeaway.** In this model `E_i` is a rich spatio-temporal feature vector, not a single bit or the prior.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260110-e4",
+    "examId": "AMI20260110",
+    "date": "2026-01-10",
+    "academicYear": "AA2526",
+    "exerciseNo": 4,
+    "type": "multiple-choice",
+    "topics": [
+      "multi-har"
+    ],
+    "prompt": "Which two drawbacks of *data-driven* data association are emphasised in the deck?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "It discards temporal features, and a model trained in one home transfers cleanly to any other home"
+      },
+      {
+        "label": "B",
+        "text": "It needs much labelled subject-sensor data, and the trained model is tied to one environment and subject set"
+      },
+      {
+        "label": "C",
+        "text": "It relies on per-resident wearables, and its accuracy is capped by the indoor-localisation precision"
+      },
+      {
+        "label": "D",
+        "text": "It explodes to one composite label per combination of residents' activities, becoming hard to scale"
+      }
+    ],
+    "correctChoice": "B",
+    "solution": "**Concept.** Data-driven data association *learns* who triggers what from labelled examples. That power comes at a cost: someone must annotate which resident caused each event, and the patterns learned (Bob always uses the left drawer, etc.) are tied to those specific people in that specific home.\n\n**Why B is correct.** It names both drawbacks the deck stresses: it needs a large amount of labelled data on subject-specific sensor patterns, and the trained model is environment- and subject-specific, so it generalises poorly to a new home or new people.\n\n**Why the others are wrong.** A is doubly false: the method explicitly *uses* temporal features, and the trained model precisely does *not* transfer across homes. C describes *context-aware* (wearable-driven) association — its wearable and localisation limits, not the data-driven ones. D is the drawback of the *Combined Labels* multi-label method (the `M^N` label explosion), a different approach.\n\n**Takeaway.** Data-driven association is data-hungry and does not transfer across homes or residents.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260110-e5",
+    "examId": "AMI20260110",
+    "date": "2026-01-10",
+    "academicYear": "AA2526",
+    "exerciseNo": 5,
+    "type": "multiple-choice",
+    "topics": [
+      "multi-har"
+    ],
+    "prompt": "In the *implicit* data-association paradigm, how is the attribution of events to residents handled?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "An explicit classifier first attributes every event to a resident, then a per-resident single-user HAR model is run"
+      },
+      {
+        "label": "B",
+        "text": "A rule base over each resident's wearable context decides, event by event, who is context-consistent with it"
+      },
+      {
+        "label": "C",
+        "text": "A single multi-label model takes windows of mixed events and outputs each resident's activity at once"
+      },
+      {
+        "label": "D",
+        "text": "An ontology computes semantic similarity between consecutive events to group them by likely subject"
+      }
+    ],
+    "correctChoice": "C",
+    "solution": "**Concept.** Instead of solving \"who did what\" as a separate first stage, the *implicit* paradigm folds it into recognition. One end-to-end model ingests a window of mixed (multi-resident) events and emits one activity per resident at once — usually via *multi-label* classification — so the attribution is never made explicit; it is absorbed inside the network's shared representation.\n\n**Why C is correct.** It describes exactly this single-model, multi-label setup where association is done implicitly while predicting each resident's activity.\n\n**Why the others are wrong.** A is the *explicit* data-driven pipeline (attribute first, then per-resident HAR) — association is its own stage there. B is context-aware (wearable-driven) association via common-sense rules. D is knowledge-based subject separation using ontology similarity. Each is a separate, *explicit* strategy.\n\n**Takeaway.** Implicit = one multi-label model outputs per-resident activities, doing association internally.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260110-e6",
+    "examId": "AMI20260110",
+    "date": "2026-01-10",
+    "academicYear": "AA2526",
+    "exerciseNo": 6,
+    "type": "multiple-choice",
+    "topics": [
+      "multi-har"
+    ],
+    "prompt": "The *combined labels* method casts multi-resident recognition as single-label multiclass by making one label per combination of residents' activities. What is its main drawback?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "It trains one independent binary classifier per activity, so inter-resident dependencies are ignored"
+      },
+      {
+        "label": "B",
+        "text": "With $N$ residents and $M$ activities, the worst case needs $M^N$ composite labels, exploding the label set"
+      },
+      {
+        "label": "C",
+        "text": "It can only be realised with probabilistic graphical models, which do not scale past two residents"
+      },
+      {
+        "label": "D",
+        "text": "It needs a fully labelled single-resident phase before the combined labels can be mined from the data"
+      }
+    ],
+    "correctChoice": "B",
+    "solution": "**Concept.** Combined labels reduces multi-label to plain multiclass by inventing one composite label per *combination* of residents' activities (e.g. `A1A2` = R1 does A1 and R2 does A2). Any ordinary classifier can then be used — but the number of combinations grows multiplicatively.\n\n**Why B is correct.** With `M` activities and `N` residents, every resident independently picks one of `M` activities, so the worst-case label set is $M^N$ — exponential in residents, quickly unmanageable.\n\n**Why the others are wrong.** A is the drawback of *Binary Relevance* (independent per-class classifiers), not combined labels. C is false: combined labels is explicitly *very easy* to implement with any ordinary multiclass classifier — it is not tied to graphical models. D describes the *unsupervised subject-separation* setup (mining a single-resident phase), an unrelated method.\n\n**Takeaway.** Combined labels is trivial to build but explodes to $M^N$ labels as residents grow.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260110-e7",
+    "examId": "AMI20260110",
+    "date": "2026-01-10",
+    "academicYear": "AA2526",
+    "exerciseNo": 7,
+    "type": "multiple-choice",
+    "topics": [
+      "multi-har"
+    ],
+    "prompt": "In *Binary Relevance* for multi-label multi-resident HAR, what is the key limitation noted?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "It trains one independent binary classifier per activity, so dependencies between residents are ignored"
+      },
+      {
+        "label": "B",
+        "text": "It uses one shared-layer network with a softmax head per resident, so it captures their joint relationships well"
+      },
+      {
+        "label": "C",
+        "text": "It builds a single multiclass softmax over every activity combination, so the label space grows multiplicatively"
+      },
+      {
+        "label": "D",
+        "text": "It relies on an ontology and a Least Common Subsumer to score the semantic similarity between two events"
+      }
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** Binary Relevance turns one multi-label problem into many independent yes/no problems: train one binary classifier per activity, and output an activity whenever its classifier's confidence beats a threshold. Several activities can fire at once, which is what multi-label needs — but each classifier decides alone.\n\n**Why A is correct.** Because the per-class classifiers are independent, correlations between residents' activities (e.g. cooking together) are never modelled — that is the noted limitation.\n\n**Why the others are wrong.** B describes the *Multi-Output Deep Model* (shared layers + per-resident softmax), whose shared layers do the opposite — they *capture* joint relationships. C is the *Combined Labels* single softmax over combinations, not Binary Relevance. D (ontology + Least Common Subsumer) is the knowledge-based subject-separation approach.\n\n**Takeaway.** Binary Relevance = one independent classifier per activity, so inter-resident dependencies are ignored.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260110-e8",
+    "examId": "AMI20260110",
+    "date": "2026-01-10",
+    "academicYear": "AA2526",
+    "exerciseNo": 8,
+    "type": "multiple-choice",
+    "topics": [
+      "multi-har"
+    ],
+    "prompt": "*Context-aware* data association (e.g. wearable-driven) associates an event to user $u$ based on context-consistency. What is its central advantage?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Its accuracy is independent of micro-localisation quality, since the common-sense rules compensate for noise"
+      },
+      {
+        "label": "B",
+        "text": "It needs no wearable or positioning device, deriving the context purely from the environmental sensors"
+      },
+      {
+        "label": "C",
+        "text": "It adds more residents without loss of accuracy, because each rule check is independent of the others"
+      },
+      {
+        "label": "D",
+        "text": "It performs association from common-sense context rules, without requiring any training phase"
+      }
+    ],
+    "correctChoice": "D",
+    "solution": "**Concept.** Context-aware association replaces learning with *common-sense rules*. Each resident's wearable supplies context (location, posture, gesture); a rule base encodes spatio-temporal preconditions (e.g. opening the fridge requires being in the kitchen while standing). When an event fires, the system checks its *context-consistency* with each user and assigns it only to a consistent one.\n\n**Why D is correct.** Because the rules are hand-written common sense, association works *without any training phase* — its defining advantage.\n\n**Why the others are wrong.** A is false: accuracy is in fact *bounded* by the quality of the collected context (e.g. micro-localisation precision), not independent of it. B inverts a requirement — the method *relies on* per-resident wearables/positioning to obtain that context. C overstates it: constantly worn devices and scalability with more residents remain open challenges.\n\n**Takeaway.** Context-aware association needs no training, but its accuracy rides on context quality.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260110-e9",
+    "examId": "AMI20260110",
+    "date": "2026-01-10",
+    "academicYear": "AA2526",
+    "exerciseNo": 9,
+    "type": "multiple-choice",
+    "topics": [
+      "multi-har"
+    ],
+    "prompt": "How does *subject separation* differ from full *data association*?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Separation attaches a real-world identity to each event, whereas data association only groups them anonymously"
+      },
+      {
+        "label": "B",
+        "text": "Separation is the camera-based modality, while data association uses only unobtrusive environmental sensors"
+      },
+      {
+        "label": "C",
+        "text": "Separation only flags which events came from different subjects, without binding them to a specific identity"
+      },
+      {
+        "label": "D",
+        "text": "Separation and data association are the same task; the deck uses the two names interchangeably"
+      }
+    ],
+    "correctChoice": "C",
+    "solution": "**Concept.** Sometimes you only need *how many distinct activity threads* are happening, not who owns each. *Subject separation* is this weaker goal: cluster the event stream into groups likely produced by *different* subjects, without ever attaching a real identity — like grouping events by author without naming the authors.\n\n**Why C is correct.** It states exactly that: separation decides which events came from different subjects but does not bind them to a specific identity.\n\n**Why the others are wrong.** A reverses the relationship — it is full *data association* that yields per-resident identity, while separation stays anonymous. B is false: neither task is defined by cameras; both work over environmental sensors. D is false: the deck explicitly frames separation as the *weaker* form of data association, not a synonym.\n\n**Takeaway.** Subject separation splits events by distinct subject; data association also names the subject.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260110-e10",
+    "examId": "AMI20260110",
+    "date": "2026-01-10",
+    "academicYear": "AA2526",
+    "exerciseNo": 10,
+    "type": "multiple-choice",
+    "topics": [
+      "multi-har"
+    ],
+    "prompt": "In *unsupervised* subject separation, what assumption enables learning without labels, and what is then mined from the data?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Assume a knowledge ontology is given; mine the Least Common Subsumer to score two events' semantic similarity"
+      },
+      {
+        "label": "B",
+        "text": "Assume a phase with one resident at home; mine co-occurrence statistics to judge if two events share a subject"
+      },
+      {
+        "label": "C",
+        "text": "Assume each resident wears a positioning tag; mine the broadcast tag IDs to attribute every event directly"
+      },
+      {
+        "label": "D",
+        "text": "Assume a fully labelled seq2seq corpus is available; mine the per-subject decoder sequences from the labels"
+      }
+    ],
+    "correctChoice": "B",
+    "solution": "**Concept.** Without labels you need a source of \"clean\" signal. The trick: collect a phase when only *one* resident is home (detectable via PIR patterns or power consumption). Every event then provably comes from the same person, so co-occurrence statistics learned here describe single-subject behaviour.\n\n**Why B is correct.** That single-resident assumption lets the method mine statistics — e.g. how often sensor-event pairs fire consecutively or temporally close — and apply thresholds (close at least `K` times) to judge whether two later events share a subject, all without labels.\n\n**Why the others are wrong.** A describes the *knowledge-based* separation method (ontology + Least Common Subsumer), not the unsupervised statistical one. C (wearable tags → IDs) is the context-aware modality. D assumes a fully labelled corpus, which is the *supervised seq2seq* method and contradicts the unsupervised premise.\n\n**Takeaway.** Unsupervised separation bootstraps from single-resident phases to mine same-subject co-occurrence statistics.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260110-e11",
+    "examId": "AMI20260110",
+    "date": "2026-01-10",
+    "academicYear": "AA2526",
+    "exerciseNo": 11,
+    "type": "theory-essay",
+    "topics": [
+      "multi-har"
+    ],
+    "prompt": "Multi-inhabitant HAR breaks the assumptions of single-resident recognition.\n\n**(a)** Explain the *data association* problem, why it does not arise with a single resident, and illustrate it with the kitchen example (a chair pressure sensor and a fridge magnetic sensor firing while Alice relaxes and Bob cooks).\n\n**(b)** Contrast the *explicit data-driven* approach with the *implicit* (multi-label) approach to data association, and state the main drawbacks of each.",
+    "solution": "**(a)** Environmental sensor events (e.g. the stove turned on, the fridge door opened) are anonymous: they reveal that *something* happened but not *who* did it. With a single resident this is harmless, because any event can only have been triggered by that one person, so attribution is automatic. With two or more residents the same ON/OFF event becomes ambiguous. In the kitchen example, Alice is relaxing at the dining table while Bob is cooking; a pressure sensor on a chair fires (someone is sitting) and a magnetic sensor fires (the fridge was opened). The data-association problem is to correctly attribute the chair event to Alice (sitting) and the fridge event to Bob (cooking) — anonymous events alone cannot do this, which is why it is one of the hardest obstacles to real-world deployment.\n\n**(b)** The *explicit data-driven* approach trains a classifier whose job is to associate each sensor event with the resident who triggered it (e.g. Naive Bayes estimating $P(R_n)P(E_i\\mid R_n)$, or LSTMs over windows); once events are attributed, a standard single-resident HAR model can be applied per resident. Its drawbacks: it needs a large amount of labeled data on subject-specific sensor patterns, and the resulting model is tied to one environment and set of subjects, generalising poorly elsewhere. The *implicit* approach uses a single model that takes windows possibly reflecting several residents and directly outputs each resident's activity, usually via multi-label classification; association is performed implicitly inside the model (an end-to-end alternative). Its drawbacks: it requires a training set covering all combinations of residents' activities (impractical), generalises poorly across different homes/residents, and suffers scalability problems — adding residents or activities sharply complicates training, and some variants (e.g. probabilistic graphical models) become computationally prohibitive beyond two subjects.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260110-e12",
+    "examId": "AMI20260110",
+    "date": "2026-01-10",
+    "academicYear": "AA2526",
+    "exerciseNo": 12,
+    "type": "theory-essay",
+    "topics": [
+      "multi-har"
+    ],
+    "prompt": "Implicit multi-inhabitant HAR is commonly framed as multi-label classification.\n\n**(a)** Distinguish binary, multiclass and multi-label classification, and explain why the multi-inhabitant setting is naturally multi-label (one activity per resident) with non-independent labels.\n\n**(b)** Describe the *Combined Labels*, *Binary Relevance* and *Multi-Output Deep Model* approaches, giving one pro and one con of each, and state the general problems shared by multi-label approaches.",
+    "solution": "**(a)** In *binary* classification each input gets one of two classes; in *multiclass* each input gets exactly one label out of many; in *multi-label* more than one label may be attributed to the same input. The multi-inhabitant setting is naturally multi-label because each window of sensor events must yield one activity *per resident* — the number of output labels is fixed (one per resident). Crucially these labels are not independent: residents share the same environment and may cooperate or perform parallel activities, so what one resident does is correlated with what the others do, which a good model should exploit.\n\n**(b)** *Combined Labels* creates a single multiclass label for every combination of residents' activities (e.g. A1A2 means R1 does A1 and R2 does A2). Pro: very easy to implement with an ordinary multiclass classifier. Con: the label space explodes — worst case $M^N$ labels for `N` residents and `M` activities. *Binary Relevance* trains one binary classifier per activity class and outputs an activity when its classifier's confidence exceeds a threshold. Pro: simple, modular multi-label implementation. Con: the per-class classifiers are independent, so dependencies between residents' activities are ignored. *Multi-Output Deep Model* uses shared hidden layers feeding one softmax output head per resident. Pro: the shared layers capture spatio-temporal relationships between activities performed in parallel or jointly. Con: it still needs supervised training that covers the relevant combinations and is environment-specific. General problems of multi-label approaches: they require training data spanning all possible combinations of residents' activities (impractical), generalise poorly to different homes/residents, and scale badly — more residents or activities greatly complicate training, with some probabilistic graphical models becoming computationally prohibitive beyond two subjects.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260110-e13",
+    "examId": "AMI20260110",
+    "date": "2026-01-10",
+    "academicYear": "AA2526",
+    "exerciseNo": 13,
+    "type": "theory-essay",
+    "topics": [
+      "multi-har"
+    ],
+    "prompt": "Beyond learning-based association, multi-inhabitant HAR can use context and weaker forms of separation.\n\n**(a)** Describe *context-aware* (wearable-driven) data association: the pipeline, how context-consistency is checked (use the fridge/chair example with Bob standing in the kitchen and Alice sitting in the kitchen), its key advantage, and its main challenges.\n\n**(b)** Describe *subject separation* and its three flavours — supervised seq2seq, unsupervised, and knowledge-based (ontology with Least Common Subsumer / semantic + temporal similarity) — and state a remaining challenge for subject separation in general.",
+    "solution": "**(a)** Context-aware data association assumes each resident carries a wearable/mobile device that yields context: identity, location (via indoor positioning), posture, gestures, low-level physical activities. The pipeline aggregates wearable and positioning data with environmental sensor data, then a context-aware association module produces one stream per resident. Association uses a rule-based model encoding common-sense spatio-temporal relationships between sensor events and context (e.g. opening the fridge must be done by a resident in the kitchen while standing). When an event fires, its context-consistency with each user is computed and the event is assigned only to a context-consistent user. In the example, fridge-opened (E1) is consistent with Bob (standing, in the kitchen) but not Alice (sitting), while the kitchen-chair pressure event (E2) is consistent with Alice but not Bob — so E1 goes to Bob and E2 to Alice. Key advantage: data association without any training phase. Challenges: it is often impractical to assume residents constantly wear devices (especially elderly subjects — mitigated by miniaturised wearables, smart clothes/rings, BLE tags), and accuracy is bounded by the accuracy of the collected context (micro-localisation precision, detectable postures/gestures).\n\n**(b)** *Subject separation* is a weaker form of data association: it only decides which sensor events were likely triggered by *different* subjects, without binding them to a specific identity — enough when one needs the activities but not who performed them. (1) *Supervised seq2seq*: an encoder maps the event sequence into a latent space and a decoder separates it into per-subject sequences, using special tokens (SOS, EOS); drawback: detailed annotation is still required. (2) *Unsupervised*: assumes a phase with only one resident at home (detectable via PIR patterns or power analysis); from this single-resident data it mines statistics (e.g. how often event pairs occur consecutively or temporally close) and sets thresholds (e.g. close at least K times) to judge whether two events share a subject. (3) *Knowledge-based*: uses common-sense spatio-temporal knowledge via an ontology — semantic similarity between two sensor events is computed using the Least Common Subsumer (the most specific shared ancestor concept) together with mappings to location/object, combined with a temporal similarity (normalised by a maximum time range $T_{max}$); a threshold on the combined similarity decides whether consecutive events come from the same resident. A remaining general challenge: it is hard to separate residents performing *similar* activities with similar sensors (e.g. Alice setting the table while Bob cooks, both in the kitchen), and separation still scales poorly as the number of residents grows.",
+    "solutionSource": "authored"
+  }
+]

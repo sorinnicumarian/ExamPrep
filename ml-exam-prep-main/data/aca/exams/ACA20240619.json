@@ -1,0 +1,723 @@
+[
+  {
+    "id": "ACA20240619-e1",
+    "examId": "ACA20240619",
+    "date": "2024-06-19",
+    "academicYear": "AA2324",
+    "exerciseNo": 1,
+    "marks": 20,
+    "type": "applied-modeling",
+    "topics": [
+      "vliw"
+    ],
+    "prompt": "**VLIW (4-issue) list scheduling.** Schedule **one iteration** with list-based scheduling — no software pipelining, no unrolling, no index modification.\n\nUnits: **Integer ALU 1cc** (2cc to a following branch), **2 Memory Units (MEM1, MEM2; 2cc)**, **FPU (5cc)**, branch with **1 delay slot** (resolved in ID). *(The official answer sheet uses MEM = 2cc and FPU = 5cc — the latencies adopted here.)* Fill the schedule grid: put each instruction in its issue-cycle row under the **specific unit** column (two loads issued together → MEM1 then MEM2).",
+    "code": {
+      "language": "pseudocode",
+      "source": "BB0: ld   $1, 24($R1)\n     ld   $2, 8($R1)\n     ld   $3, 4($R1)\n     addd $2, $2, $3\n     addd $1, $1, $2\n     addi $R1, $R1, 4\n     sd   $1, 16($fp)\n     bnez $R1, BB0"
+    },
+    "fillTable": {
+      "caption": "List schedule grid — one instruction per (cycle, specific unit) cell; leave NOP slots blank — fill the whole grid (leave NOP slots empty)",
+      "columns": [
+        "Cycle",
+        "ALU 1cc",
+        "MEM1 2cc",
+        "MEM2 2cc",
+        "FPU 5cc"
+      ],
+      "rows": [
+        [
+          {
+            "given": "1"
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": [
+              "ld $1",
+              "ld $1, 24(R1)",
+              "ld $2",
+              "ld $2, 8(R1)"
+            ]
+          },
+          {
+            "answer": [
+              "ld $1",
+              "ld $1, 24(R1)",
+              "ld $2",
+              "ld $2, 8(R1)"
+            ]
+          },
+          {
+            "answer": ""
+          }
+        ],
+        [
+          {
+            "given": "2"
+          },
+          {
+            "answer": [
+              "addi",
+              "addi R1",
+              "addi R1, R1, 4"
+            ]
+          },
+          {
+            "answer": [
+              "ld $3",
+              "ld $3, 4(R1)"
+            ]
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          }
+        ],
+        [
+          {
+            "given": "3"
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          }
+        ],
+        [
+          {
+            "given": "4"
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": [
+              "addd $2",
+              "addd $2, $2, $3"
+            ]
+          }
+        ],
+        [
+          {
+            "given": "5"
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          }
+        ],
+        [
+          {
+            "given": "6"
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          }
+        ],
+        [
+          {
+            "given": "7"
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          }
+        ],
+        [
+          {
+            "given": "8"
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          }
+        ],
+        [
+          {
+            "given": "9"
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": [
+              "addd $1",
+              "addd $1, $1, $2"
+            ]
+          }
+        ],
+        [
+          {
+            "given": "10"
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          }
+        ],
+        [
+          {
+            "given": "11"
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          }
+        ],
+        [
+          {
+            "given": "12"
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          }
+        ],
+        [
+          {
+            "given": "13"
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          }
+        ],
+        [
+          {
+            "given": "14"
+          },
+          {
+            "answer": [
+              "bnez",
+              "bnez R1",
+              "bnez R1, BB0"
+            ]
+          },
+          {
+            "answer": [
+              "sd $1",
+              "sd $1, 16(fp)"
+            ]
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          }
+        ],
+        [
+          {
+            "given": "15"
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          }
+        ]
+      ]
+    },
+    "solution": "**Schedule.**\n\n| CC | ALU 1cc | MU 2cc | MU 2cc | FPU 5cc |\n|---|---|---|---|---|\n| 1 |  | ld $1 | ld $2 |  |\n| 2 | addi R1 | ld $3 |  |  |\n| 4 |  |  |  | addd $2,$2,$3 |\n| 9 |  |  |  | addd $1,$1,$2 |\n| 14 | bnez R1 | sd $1 |  |  |\n| 15 | (delay slot) |  |  |  |\n\n- `ld $1`/`ld $2` at C1 (both MUs), `ld $3` at C2; `addi` at C2 (the store uses `$fp`, not `$R1`, so the index update does not corrupt any address).\n- `addd $2,$2,$3` waits for `$3` (`ld $3`@2 → ready @4) → **C4**.\n- `addd $1,$1,$2` waits for `$2` (first addd@4, FPU 5cc → ready @9) → **C9**.\n- `sd $1` waits for `$1` (second addd@9 → ready @14) → **C14**; `bnez` issues in the same bundle, with its 1-cycle delay slot at C15.\n\n**P1.B — performance.** The **critical path** is the dependent chain `ld $2 → addd $2 → addd $1 → sd $1`, i.e. cycles 1 → 4 → 9 → 14. One loop iteration spans **~15 cycles** (the operations finish by C14 and the branch fills its delay slot at C15). **FP ops/cycle** = 2 FP adds / ≈15 ≈ **0.13** — the 5cc FPU latency on the dependent add chain dominates, leaving the units idle most cycles.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "ACA20240619-e2",
+    "examId": "ACA20240619",
+    "date": "2024-06-19",
+    "academicYear": "AA2324",
+    "exerciseNo": 2,
+    "marks": 15,
+    "type": "applied-modeling",
+    "topics": [
+      "tomasulo",
+      "ilp"
+    ],
+    "prompt": "**Tomasulo.** Architecture: 3 RS + **2 LDU (3cc)**, 2 RS + **2 FPU (5cc)**. Complete the execution table (cols ISSUE / START EXE / WB; WB = START + latency).",
+    "code": {
+      "language": "pseudocode",
+      "source": "I1 ld   $1, 28($fp)\nI2 ld   $2, 16($fp)\nI3 addd $1, $1, $2\nI4 ld   $2, 12($fp)\nI5 addd $2, $1, $2\nI6 addd $1, $1, 1\nI7 sd   $1, 0($2)"
+    },
+    "fillTable": {
+      "caption": "Tomasulo timing — 2 LDU (3cc), 2 FPU (5cc)",
+      "columns": [
+        "Instruction",
+        "ISSUE",
+        "START EXE",
+        "WB"
+      ],
+      "rows": [
+        [
+          {
+            "given": "I1 ld $1, 28(fp)"
+          },
+          {
+            "answer": "1"
+          },
+          {
+            "answer": "2"
+          },
+          {
+            "answer": "5"
+          }
+        ],
+        [
+          {
+            "given": "I2 ld $2, 16(fp)"
+          },
+          {
+            "answer": "2"
+          },
+          {
+            "answer": "3"
+          },
+          {
+            "answer": "6"
+          }
+        ],
+        [
+          {
+            "given": "I3 addd $1, $1, $2"
+          },
+          {
+            "answer": "3"
+          },
+          {
+            "answer": "7"
+          },
+          {
+            "answer": "12"
+          }
+        ],
+        [
+          {
+            "given": "I4 ld $2, 12(fp)"
+          },
+          {
+            "answer": "4"
+          },
+          {
+            "answer": "6"
+          },
+          {
+            "answer": "9"
+          }
+        ],
+        [
+          {
+            "given": "I5 addd $2, $1, $2"
+          },
+          {
+            "answer": "5"
+          },
+          {
+            "answer": "13"
+          },
+          {
+            "answer": "18"
+          }
+        ],
+        [
+          {
+            "given": "I6 addd $1, $1, 1"
+          },
+          {
+            "answer": "13"
+          },
+          {
+            "answer": "14"
+          },
+          {
+            "answer": "19"
+          }
+        ],
+        [
+          {
+            "given": "I7 sd $1, 0($2)"
+          },
+          {
+            "answer": "14"
+          },
+          {
+            "answer": "20"
+          },
+          {
+            "answer": "23"
+          }
+        ]
+      ]
+    },
+    "solution": "True dependences: `$1`: I1→I3; `$2`: I2→I3; `$1`: I3→I5; `$2`: I4→I5; `$1`: I6→I7; `$2`: I5→I7. Walk-through:\n- **I1/I2** loads: start 2/3, WB 5/6.\n- **I3** `addd` needs `$1`(5), `$2`(6) → start 7, WB 12 (FPU 5cc).\n- **I4** `ld` takes a free load unit → start 6, WB 9.\n- **I5** `addd` needs `$1`(I3 WB 12), `$2`(I4 WB 9) → start 13, WB 18.\n- **I6** waits for a free **FP reservation station** (I3 frees at WB 12) → **issue 13**, start 14, WB 19.\n- **I7** `sd` needs `$1`(I6 WB 19) and the address `$2`(I5 WB 18) → start 20, WB 23.\n\nNote how renaming lets I4 (`ld $2`) proceed even though `$2` is still 'live' for I3 — the WAR/WAW on `$2`/`$1` are removed; only the true RAW chain and the 2-RS FPU limit (which stalls I6's issue) constrain the schedule.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "ACA20240619-e3",
+    "examId": "ACA20240619",
+    "date": "2024-06-19",
+    "academicYear": "AA2324",
+    "exerciseNo": 3,
+    "marks": 15,
+    "type": "applied-modeling",
+    "topics": [
+      "multiproc"
+    ],
+    "prompt": "**MESI — write-back.** Three processors, each a **direct-mapped write-back** cache holding one block, 3-block memory; MESI, write-allocate, write-invalidate. Row 1 is given; fill in the rest. *(\"State(b)\" = the cache currently holds block b; each cache holds only one block, so a new block evicts the old — writing back only if Modified.)*",
+    "fillTable": {
+      "caption": "MESI write-back — states after each access",
+      "columns": [
+        "Time",
+        "After operation",
+        "Px",
+        "Py",
+        "Pz",
+        "Mem B0",
+        "Mem B1",
+        "Mem B2"
+      ],
+      "rows": [
+        [
+          {
+            "given": "1"
+          },
+          {
+            "given": "Px read block 0"
+          },
+          {
+            "given": "Exclusive (0)"
+          },
+          {
+            "given": "Invalid"
+          },
+          {
+            "given": "Modified (2)"
+          },
+          {
+            "given": "yes"
+          },
+          {
+            "given": "yes"
+          },
+          {
+            "given": "no"
+          }
+        ],
+        [
+          {
+            "given": "2"
+          },
+          {
+            "given": "Py write block 1"
+          },
+          {
+            "answer": [
+              "Exclusive (0)",
+              "E(0)"
+            ]
+          },
+          {
+            "answer": [
+              "Modified (1)",
+              "M(1)"
+            ]
+          },
+          {
+            "answer": [
+              "Modified (2)",
+              "M(2)"
+            ]
+          },
+          {
+            "answer": [
+              "yes",
+              "y"
+            ]
+          },
+          {
+            "answer": [
+              "no",
+              "n"
+            ]
+          },
+          {
+            "answer": [
+              "no",
+              "n"
+            ]
+          }
+        ],
+        [
+          {
+            "given": "3"
+          },
+          {
+            "given": "Px read block 1"
+          },
+          {
+            "answer": [
+              "Shared (1)",
+              "S(1)"
+            ]
+          },
+          {
+            "answer": [
+              "Shared (1)",
+              "S(1)"
+            ]
+          },
+          {
+            "answer": [
+              "Modified (2)",
+              "M(2)"
+            ]
+          },
+          {
+            "answer": [
+              "yes",
+              "y"
+            ]
+          },
+          {
+            "answer": [
+              "yes",
+              "y"
+            ]
+          },
+          {
+            "answer": [
+              "no",
+              "n"
+            ]
+          }
+        ],
+        [
+          {
+            "given": "4"
+          },
+          {
+            "given": "Pz read block 1"
+          },
+          {
+            "answer": [
+              "Shared (1)",
+              "S(1)"
+            ]
+          },
+          {
+            "answer": [
+              "Shared (1)",
+              "S(1)"
+            ]
+          },
+          {
+            "answer": [
+              "Shared (1)",
+              "S(1)"
+            ]
+          },
+          {
+            "answer": [
+              "yes",
+              "y"
+            ]
+          },
+          {
+            "answer": [
+              "yes",
+              "y"
+            ]
+          },
+          {
+            "answer": [
+              "yes",
+              "y"
+            ]
+          }
+        ],
+        [
+          {
+            "given": "5"
+          },
+          {
+            "given": "Pz write block 1"
+          },
+          {
+            "answer": [
+              "Invalid",
+              "I"
+            ]
+          },
+          {
+            "answer": [
+              "Invalid",
+              "I"
+            ]
+          },
+          {
+            "answer": [
+              "Modified (1)",
+              "M(1)"
+            ]
+          },
+          {
+            "answer": [
+              "yes",
+              "y"
+            ]
+          },
+          {
+            "answer": [
+              "no",
+              "n"
+            ]
+          },
+          {
+            "answer": [
+              "yes",
+              "y"
+            ]
+          }
+        ],
+        [
+          {
+            "given": "6"
+          },
+          {
+            "given": "Px read block 2"
+          },
+          {
+            "answer": [
+              "Exclusive (2)",
+              "E(2)"
+            ]
+          },
+          {
+            "answer": [
+              "Invalid",
+              "I"
+            ]
+          },
+          {
+            "answer": [
+              "Modified (1)",
+              "M(1)"
+            ]
+          },
+          {
+            "answer": [
+              "yes",
+              "y"
+            ]
+          },
+          {
+            "answer": [
+              "no",
+              "n"
+            ]
+          },
+          {
+            "answer": [
+              "yes",
+              "y"
+            ]
+          }
+        ]
+      ]
+    },
+    "solution": "- **(2) Py write B1:** Py allocates+writes B1 → M(1); nobody else had B1. Px keeps E(0), Pz keeps M(2). B1 now stale.\n- **(3) Px read B1:** Px evicts B0 (clean E, no write-back), loads B1; Py M(1) writes back → both S(1), B1 up to date.\n- **(4) Pz read B1:** Pz evicts its **Modified** B2 → **writes B2 back** (B2 now up to date), loads B1 → all three S(1).\n- **(5) Pz write B1:** upgrade to M(1), invalidate Px, Py → I. B1 stale; B2 stays up to date (no one holds it dirty now).\n- **(6) Px read B2:** Px (was Invalid) loads B2; nobody else has B2 → E(2). Pz still M(1) so B1 remains stale.\n\nThe instructive step is **(4)**: reading a new block forces Pz to write back its dirty B2 first, which is why memory B2 flips to *up to date* even though the access targets B1.",
+    "solutionSource": "exam"
+  }
+]

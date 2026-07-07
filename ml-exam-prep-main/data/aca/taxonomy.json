@@ -1,0 +1,13 @@
+[
+  { "key": "perf",        "name": "Performance, Cost & CPI",            "short": "Perf/CPI",   "color": "#ca8a04" },
+  { "key": "pipeline",     "name": "RISC-V Pipelining & Hazards",        "short": "Pipeline",   "color": "#2563eb" },
+  { "key": "cache",        "name": "Cache & Memory Hierarchy",           "short": "Cache",      "color": "#0d9488" },
+  { "key": "branch",       "name": "Branch Prediction (BHT)",            "short": "Branch",     "color": "#0891b2" },
+  { "key": "ilp",          "name": "Instruction-Level Parallelism",      "short": "ILP/Deps",   "color": "#65a30d" },
+  { "key": "vliw",         "name": "Static Scheduling & VLIW",           "short": "VLIW",       "color": "#9333ea" },
+  { "key": "scoreboard",   "name": "Dynamic Scheduling: Scoreboard",     "short": "Scoreboard", "color": "#db2777" },
+  { "key": "tomasulo",     "name": "Tomasulo, ROB & Speculation",        "short": "Tomasulo",   "color": "#dc2626" },
+  { "key": "renaming",     "name": "Register Renaming",                  "short": "Renaming",   "color": "#7c3aed" },
+  { "key": "superscalar",  "name": "Superscalar & Multithreading",       "short": "Superscalar","color": "#f59e0b" },
+  { "key": "multiproc",    "name": "Multiprocessors & Cache Coherence",  "short": "MESI/MP",    "color": "#0ea5e9" }
+]

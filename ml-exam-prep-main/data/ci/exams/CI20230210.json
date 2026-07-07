@@ -1,0 +1,390 @@
+[
+  {
+    "id": "CI20230210-e1",
+    "examId": "CI20230210",
+    "date": "2023-02-10",
+    "academicYear": "AA2223",
+    "exerciseNo": 1,
+    "marks": 2,
+    "type": "multiple-choice",
+    "topics": [
+      "storage-systems"
+    ],
+    "part": "second",
+    "prompt": "What is a Network Attached Storage (NAS)?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "a storage system directly attached to a server or workstation"
+      },
+      {
+        "label": "B",
+        "text": "a computer connected to a network that provides only file-based data storage services to other devices"
+      },
+      {
+        "label": "C",
+        "text": "a remote storage unit connected to a PC using a specific networking technology"
+      },
+      {
+        "label": "D",
+        "text": "a computer connected to a network that provides computation to other devices"
+      }
+    ],
+    "correctChoice": "B",
+    "solution": "From the DAS/NAS/SAN lecture, a **NAS** is a dedicated **file-level** storage device (essentially a specialized computer/appliance) attached to a TCP/IP network that serves files to clients over file-sharing protocols such as **NFS/SMB**. Option A describes **DAS** (Direct-Attached Storage); option C with a 'specific networking technology' (block-level over Fibre Channel / iSCSI) describes a **SAN**; option D describes a compute server, not storage. NAS is therefore B: file-based storage shared over the network.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230210-e2",
+    "examId": "CI20230210",
+    "date": "2023-02-10",
+    "academicYear": "AA2223",
+    "exerciseNo": 2,
+    "marks": 2,
+    "type": "multiple-choice",
+    "topics": [
+      "dependability"
+    ],
+    "part": "first",
+    "prompt": "Downtime is a period of time, or a percentage of a time span, when a system is unavailable or offline __________.",
+    "choices": [
+      {
+        "label": "A",
+        "text": "none of the other"
+      },
+      {
+        "label": "B",
+        "text": "because of routine maintenance"
+      },
+      {
+        "label": "C",
+        "text": "because of system crashes"
+      },
+      {
+        "label": "D",
+        "text": "regardless of the cause"
+      }
+    ],
+    "correctChoice": "D",
+    "solution": "In the Dependability lecture, **downtime** (which determines availability $A=\\text{uptime}/(\\text{uptime}+\\text{downtime})$) is any period during which the system is not delivering correct service / is unavailable, **regardless of the cause** — whether planned maintenance, crashes, power loss, etc. It is not limited to maintenance (B) or crashes (C) alone. Hence D is correct.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230210-e3",
+    "examId": "CI20230210",
+    "date": "2023-02-10",
+    "academicYear": "AA2223",
+    "exerciseNo": 3,
+    "marks": 2,
+    "type": "multiple-choice",
+    "topics": [
+      "networking"
+    ],
+    "part": "second",
+    "prompt": "In a three-layer network architecture of a data center, which is the layer that is typically associated with the TOR (Top-of-Rack) switch?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Access"
+      },
+      {
+        "label": "B",
+        "text": "Core"
+      },
+      {
+        "label": "C",
+        "text": "Aggregation"
+      },
+      {
+        "label": "D",
+        "text": "None of the others"
+      }
+    ],
+    "correctChoice": "A",
+    "solution": "In the classic three-tier datacenter network (access / aggregation / core), the **access** layer connects directly to the servers. The Top-of-Rack (TOR) switch sits at the top of each rack and aggregates the rack's server NICs, so it is an **access-layer** switch. Aggregation interconnects access switches; core is the high-speed backbone. Hence A.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230210-e4",
+    "examId": "CI20230210",
+    "date": "2023-02-10",
+    "academicYear": "AA2223",
+    "exerciseNo": 4,
+    "marks": 2,
+    "type": "multiple-choice",
+    "topics": [
+      "dependability"
+    ],
+    "part": "first",
+    "prompt": "Which definition is **not** encompassed by Dependability?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Reversibility: ability to reverse a broken service"
+      },
+      {
+        "label": "B",
+        "text": "Reliability: continuity of correct service"
+      },
+      {
+        "label": "C",
+        "text": "Maintainability: reparation to restore correct service"
+      },
+      {
+        "label": "D",
+        "text": "Availability: readiness for correct service"
+      }
+    ],
+    "correctChoice": "A",
+    "solution": "Dependability (Dependability lecture) is an umbrella concept comprising attributes such as **reliability** (continuity of correct service — B), **availability** (readiness for correct service — D), **maintainability** (ability to undergo repairs/restore correct service — C), plus safety, integrity, confidentiality. **'Reversibility'** is **not** one of the dependability attributes — it is a made-up/extra term. Hence A is the definition not encompassed by dependability.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230210-e5",
+    "examId": "CI20230210",
+    "date": "2023-02-10",
+    "academicYear": "AA2223",
+    "exerciseNo": 5,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": [
+      "servers"
+    ],
+    "part": "first",
+    "prompt": "Rack shelves may contain switches.",
+    "subStatements": [
+      {
+        "id": "CI20230210-e5-s1",
+        "statement": "Rack shelves may contain switches.",
+        "answer": true,
+        "motivation": "From the Servers / datacenter building lecture, a 19-inch rack is populated with rack-units that hold not only servers but also networking equipment — notably the **Top-of-Rack (TOR) switch** and other switches — as well as patch panels, PDUs, etc. So a rack's shelves/units may indeed contain switches. The statement is True."
+      }
+    ],
+    "solution": "See per-statement motivation. Racks host servers and networking gear including TOR switches — the statement is **True** (official answer-box A, where box A reads 'True').",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230210-e6",
+    "examId": "CI20230210",
+    "date": "2023-02-10",
+    "academicYear": "AA2223",
+    "exerciseNo": 6,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": [
+      "storage-devices"
+    ],
+    "part": "first",
+    "prompt": "In the context of SSDs, Blocks are the smallest unit that can be read/written.",
+    "subStatements": [
+      {
+        "id": "CI20230210-e6-s1",
+        "statement": "In the context of SSDs, Blocks are the smallest unit that can be read/written.",
+        "answer": false,
+        "motivation": "From the SSD/flash lecture, NAND flash is organized into **blocks** which are made of **pages**. The **page** is the smallest unit that can be **read or written (programmed)**, whereas the **block** is the smallest unit that can be **erased**. So blocks are the erase granularity, not the read/write granularity — the statement is False (it confuses block with page)."
+      }
+    ],
+    "solution": "See per-statement motivation. In SSDs the **page** is the read/write unit and the **block** is the erase unit — the statement is **False** (official answer-box B, where box B reads 'False').",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230210-e7",
+    "examId": "CI20230210",
+    "date": "2023-02-10",
+    "academicYear": "AA2223",
+    "exerciseNo": 7,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": [
+      "virtualization"
+    ],
+    "part": "second",
+    "prompt": "Paravirtualization is a particular type of kernel-level virtualization that does not rely on a host OS.",
+    "subStatements": [
+      {
+        "id": "CI20230210-e7-s1",
+        "statement": "Paravirtualization is a particular type of kernel-level virtualization that does not rely on a host OS.",
+        "answer": false,
+        "motivation": "From the Virtualization lecture, **paravirtualization** is a (hypervisor-based) virtualization technique in which the guest OS is modified to issue hypercalls to the VMM — it is not 'kernel-level virtualization'. 'Kernel-level virtualization that does not rely on a host OS' is a mischaracterization; the defining feature of paravirtualization is the modified guest interface, not the absence of a host OS, and the description conflates distinct categories. The statement is False."
+      }
+    ],
+    "solution": "See per-statement motivation. Paravirtualization is defined by a modified guest OS issuing hypercalls, not by being 'kernel-level virtualization without a host OS' — the statement is **False** (official answer-box A, where box A reads 'False').",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230210-e8",
+    "examId": "CI20230210",
+    "date": "2023-02-10",
+    "academicYear": "AA2223",
+    "exerciseNo": 8,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": [
+      "dependability"
+    ],
+    "part": "first",
+    "prompt": "The structure (or topology) of a reliability block diagram is always the same as the structure (or topology) of the modeled system.",
+    "subStatements": [
+      {
+        "id": "CI20230210-e8-s1",
+        "statement": "The structure (or topology) of a reliability block diagram is always the same as the structure (or topology) of the modeled system.",
+        "answer": false,
+        "motivation": "From the Dependability lecture, a **Reliability Block Diagram (RBD)** models the **logical/functional** dependency of correct operation on the components, **not** the physical/topological layout. The RBD topology can differ from the physical structure: e.g. components physically in parallel may be a **series** RBD if both are required for the function (and vice-versa). The classic example is a bridge/parallel-redundant layout whose RBD does not mirror the wiring. Hence the statement is False."
+      }
+    ],
+    "solution": "See per-statement motivation. The RBD captures the logical success path, which need not match the physical topology — the statement is **False** (official answer-box A, where box A reads 'False').",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230210-e9",
+    "examId": "CI20230210",
+    "date": "2023-02-10",
+    "academicYear": "AA2223",
+    "exerciseNo": 9,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": [
+      "virtualization"
+    ],
+    "part": "second",
+    "prompt": "A system virtual machine provides a complete system environment that can support an operating system (potentially with many user processes).",
+    "subStatements": [
+      {
+        "id": "CI20230210-e9-s1",
+        "statement": "A system virtual machine provides a complete system environment that can support an operating system (potentially with many user processes).",
+        "answer": true,
+        "motivation": "From the Virtualization lecture, a **system virtual machine** provides a complete, persistent **system environment** that virtualizes a full set of hardware resources, so it **can run an entire guest operating system** together with its many user processes. This is contrasted with a **process virtual machine**, which supports only a single process/application. The statement is the textbook definition of a system VM and is True."
+      }
+    ],
+    "solution": "See per-statement motivation. A system VM virtualizes full hardware and can host a complete OS with many processes — the statement is **True** (official answer-box B, where box B reads 'True').",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230210-e10",
+    "examId": "CI20230210",
+    "date": "2023-02-10",
+    "academicYear": "AA2223",
+    "exerciseNo": 10,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": [
+      "dependability"
+    ],
+    "part": "first",
+    "prompt": "A scientific computation uses a server composed of 2 CPUs and one TPU. Knowing that: the computation requires 12 days to complete; the computation requires both CPUs **and** the TPU within the server to be properly working; $MTTF_{CPU}=80\\,\\text{days}$ and $MTTF_{TPU}=40\\,\\text{days}$. How many instances of the computation should be executed to have a probability of $98\\%$ to have at least one instance producing the results? (Use at least 4 decimal digits; all other components are ideal.)",
+    "solution": "**Reliability of one server over the $t=12$ day run** (exponential, all required components in **series**):\n$$R_{CPU}(12)=e^{-12/80}=e^{-0.15}=0.8607,\\qquad R_{TPU}(12)=e^{-12/40}=e^{-0.30}=0.7408.$$\n$$R_{server}=R_{CPU}^2\\cdot R_{TPU}=0.8607^2\\times 0.7408=0.7408\\times 0.7408\\approx 0.5488.$$\n\n**Run $n$ independent instances**; the probability that at least one completes is $1-(1-R_{server})^n$. Require it $\\ge 0.98$:\n$$(1-0.5488)^n\\le 0.02 \\;\\Rightarrow\\; 0.4512^{\\,n}\\le 0.02$$\n$$n\\ge \\frac{\\ln 0.02}{\\ln 0.4512}=\\frac{-3.912}{-0.7958}=4.915.$$\n\nRound up: $\\boxed{n=5\\ \\text{instances}.}$",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230210-e11",
+    "examId": "CI20230210",
+    "date": "2023-02-10",
+    "academicYear": "AA2223",
+    "exerciseNo": 11,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": [
+      "dependability"
+    ],
+    "part": "first",
+    "prompt": "The PoliMi data center has two simultaneously active (redundant) cooling distribution systems. Knowing that the availability of the cooling system should be $99.99\\%$ and the MTTF of a single distribution system is 150 days, what is the maximum MTTR needed to reach the required availability value? (Use at least 4 decimal digits.)",
+    "solution": "Two redundant distribution systems form a **parallel** system; the cooling is unavailable only if **both** fail. Required system availability $A_{sys}=0.9999$:\n$$A_{sys}=1-(1-A)^2 \\;\\Rightarrow\\; (1-A)^2 = 1-0.9999 = 0.0001 \\;\\Rightarrow\\; 1-A = 0.01 \\;\\Rightarrow\\; A \\ge 0.99.$$\n\nEach single system must have availability $A=\\dfrac{MTTF}{MTTF+MTTR}\\ge 0.99$. Solve for the maximum $MTTR$ with $MTTF=150$ days:\n$$MTTR\\le MTTF\\cdot\\frac{1-A}{A}=150\\times\\frac{0.01}{0.99}=150\\times 0.010101.$$\n\n$$\\boxed{MTTR \\approx 1.515\\ \\text{days}.}$$",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230210-e12",
+    "examId": "CI20230210",
+    "date": "2023-02-10",
+    "academicYear": "AA2223",
+    "exerciseNo": 12,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": [
+      "storage-devices"
+    ],
+    "part": "first",
+    "prompt": "Consider an HDD with a data transfer rate of $20\\,\\text{MB/s}$, a rotation speed of $10000\\,\\text{RPM}$, a mean seek time of $6\\,\\text{ms}$, and a negligible controller overhead. What is the minimum locality required to achieve a mean I/O service time of $4.45\\,\\text{ms}$ to transfer a sector of $2\\,\\text{KB}$?",
+    "solution": "**Average rotational latency** (half a revolution at $10000$ RPM):\n$$T_{rot}=\\frac{1}{2}\\cdot\\frac{60}{10000}\\,\\text{s}=3\\,\\text{ms}.$$\n\n**Transfer time** for one $2\\,\\text{KB}$ sector at $20\\,\\text{MB/s}$:\n$$T_{transfer}=\\frac{2\\,\\text{KB}}{20\\,\\text{MB/s}}=\\frac{2/1024\\,\\text{MB}}{20\\,\\text{MB/s}}\\approx 0.0977\\,\\text{ms}.$$\n\n**I/O service-time model with locality** (the seek + rotation are paid only for the non-local fraction $(1-\\text{loc})$):\n$$T_{I/O}=T_{transfer}+(1-\\text{loc})\\,(T_{seek}+T_{rot}).$$\nImpose $T_{I/O}=4.45\\,\\text{ms}$ and solve for the locality:\n$$1-\\text{loc}=\\frac{4.45-0.0977}{6+3}=\\frac{4.3523}{9}=0.4836 \\;\\Rightarrow\\; \\text{loc}=0.5164.$$\n\n$$\\boxed{\\text{loc}\\approx 51.64\\%.}$$",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230210-e13",
+    "examId": "CI20230210",
+    "date": "2023-02-10",
+    "academicYear": "AA2223",
+    "exerciseNo": 13,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": [
+      "raid"
+    ],
+    "part": "second",
+    "prompt": "Consider a RAID 6 configuration with 10 disks. What is the minimum number of I/O operations requested to update one block of a data disk (considering the sum over the entire set of disks)?",
+    "solution": "RAID 6 keeps **two** independent parity blocks ($P$ and $Q$) per stripe. To update **one** data block using the read-modify-write method, the controller must:\n\n- **read** the old data block (1)\n- **read** the old parity $P$ (1)\n- **read** the old parity $Q$ (1)\n- **write** the new data block (1)\n- **write** the new parity $P$ (1)\n- **write** the new parity $Q$ (1)\n\nTotal $=3$ reads $+3$ writes $=\\boxed{6\\ \\text{I/O operations}}$ (independent of the number of disks, which is why the count is the same for 10 disks).",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230210-e14",
+    "examId": "CI20230210",
+    "date": "2023-02-10",
+    "academicYear": "AA2223",
+    "exerciseNo": 14,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": [
+      "raid"
+    ],
+    "part": "second",
+    "prompt": "Consider the following RAID 0+1 setup considering 6 disks, each one with an MTTF equal to 600 days and an MTTR equal to 5 days. Consider a single mirror case for the RAID 1 part. What is the MTTF of the storage infrastructure?",
+    "solution": "**RAID 0+1** with $m=6$ disks = a **mirror (RAID 1)** of two **striped (RAID 0)** groups of 3 disks each.\n\n**Step 1 — MTTF of one RAID 0 group** (3 disks in series): $$MTTF_{RAID0}=\\frac{MTTF_{disk}}{n}=\\frac{600}{3}=200\\,\\text{days}$$\n\n**Step 2 — mirror the two groups** (2-way mirror with repair $MTTR=5$ days): $$MTTF_{0+1}=\\frac{MTTF_{group}^2}{2\\cdot MTTR}=\\frac{200^2}{2\\cdot 5}=4000\\,\\text{days}$$\n\nEquivalently $MTTF_{0+1}=\\dfrac{2\\,MTTF_{disk}^2}{m^2\\,MTTR}=\\dfrac{2\\cdot 600^2}{36\\cdot 5}=4000$ days.\n\n**FINAL RESULT:** $MTTF\\approx\\mathbf{4000\\ days}\\ (\\approx 10.96\\ \\text{years})$.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230210-e15",
+    "examId": "CI20230210",
+    "date": "2023-02-10",
+    "academicYear": "AA2223",
+    "exerciseNo": 15,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": [
+      "performance"
+    ],
+    "part": "second",
+    "prompt": "Your system initially includes one CPU and one disk and serves 30 users characterised by 20s think time. The CPU demanding time is $D_{CPU}=100\\,\\text{ms}$ while the disk demanding time is $D_{DISK}=300\\,\\text{ms}$. How many disks do you need to install in your system so that the response-time lower bound is lower than $500\\,\\text{ms}$? (Hint: assume you can evenly split the disk demand among all the disks you are going to use.)",
+    "solution": "Closed interactive network, $N=30$ users, $Z=20\\,\\text{s}$. With $k$ disks the disk demand is split evenly, so each disk station has demand $D_{DISK}/k$; the total demand $\\sum D = D_{CPU}+D_{DISK}=0.1+0.3=0.4\\,\\text{s}$ is unchanged.\n\n**Response-time lower bound** for an interactive system:\n$$R(N)\\ge \\max\\Big(\\textstyle\\sum D,\\; N\\,D_{max}-Z\\Big).$$\n\nEven with **one** disk ($k=1$, $D_{max}=D_{DISK}=0.3\\,\\text{s}$):\n$$N\\,D_{max}-Z = 30\\times 0.3 - 20 = 9-20 = -11\\,\\text{s}\\;(<0),$$\nso the bound collapses to $R(N)\\ge \\sum D = 0.4\\,\\text{s}=400\\,\\text{ms}$, which is already $<500\\,\\text{ms}$.\n\nThe large think time keeps the system far from the saturation/bottleneck regime, so the lower bound is dominated by $\\sum D$ regardless of the number of disks.\n\n$$\\boxed{\\text{The single disk is already sufficient — no additional disks are needed (1 disk).}}$$",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230210-e16",
+    "examId": "CI20230210",
+    "date": "2023-02-10",
+    "academicYear": "AA2223",
+    "exerciseNo": 16,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": [
+      "performance"
+    ],
+    "part": "second",
+    "prompt": "Consider the same system and situation as in the previous question. Knowing that the system response time $R_{sys}=30\\,\\text{s}$, what is the system throughput $X$?",
+    "solution": "For a closed **interactive** system, the Response-Time Law gives\n$$R=\\frac{N}{X}-Z \\;\\Longleftrightarrow\\; X=\\frac{N}{R+Z}.$$\n\nWith $N=30$ users, $R_{sys}=30\\,\\text{s}$, $Z=20\\,\\text{s}$:\n$$X=\\frac{30}{30+20}=\\frac{30}{50}=\\boxed{0.6\\ \\text{job/s}.}$$",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230210-e17",
+    "examId": "CI20230210",
+    "date": "2023-02-10",
+    "academicYear": "AA2223",
+    "exerciseNo": 17,
+    "marks": 5,
+    "type": "theory-essay",
+    "topics": [
+      "storage-devices"
+    ],
+    "part": "first",
+    "prompt": "Describe the write-amplification problem in the context of SSDs.",
+    "solution": "**Write amplification** is the phenomenon in flash-based SSDs where the **amount of data physically written to the NAND flash is larger than the amount of data the host actually requested to write**. It is quantified by the **Write Amplification Factor (WAF)**:\n$$\\text{WAF}=\\frac{\\text{data written to flash}}{\\text{data written by the host}}\\ge 1.$$\n\n**Why it happens — the read/write/erase asymmetry of NAND flash:**\n- Flash is organized into **blocks** composed of **pages**. Reads and writes (programming) happen at **page** granularity, but **erasing happens only at the whole-block granularity**.\n- A page that already holds data **cannot be overwritten in place**: it must first be erased, but erasure works on the entire block. So updates are written **out-of-place** to a free page and the old page is just marked **invalid (stale)**.\n\n**The mechanism that amplifies writes:**\n- Over time blocks accumulate a mix of valid and invalid pages. To reclaim space, the **garbage collection** process must pick a victim block, **copy its still-valid pages elsewhere**, and then erase the whole block.\n- Those copy operations are **extra physical writes not requested by the host**, so a single host write can trigger several internal page writes — this is write amplification.\n- **Wear leveling** (spreading writes evenly so no block wears out prematurely) adds further internal data movement, also contributing to amplification.\n\n**Why it matters:**\n- **Endurance:** flash cells tolerate only a limited number of program/erase (P/E) cycles. Write amplification consumes those cycles faster, **shortening the SSD lifetime**.\n- **Performance:** extra internal writes and erase-before-write cycles add latency and reduce sustained write throughput.\n\n**Mitigations:** over-provisioning (keeping spare capacity to ease garbage collection), the TRIM command (letting the OS tell the SSD which pages are invalid so they need not be copied), efficient garbage-collection and wear-leveling algorithms, and write-combining/buffering. The goal is to keep the WAF as close to 1 as possible to preserve both endurance and performance.",
+    "solutionSource": "authored"
+  }
+]

@@ -1,0 +1,228 @@
+[
+  {
+    "id": "AMI20260104-e1",
+    "examId": "AMI20260104",
+    "date": "2026-01-04",
+    "academicYear": "AA2526",
+    "exerciseNo": 1,
+    "type": "multiple-choice",
+    "topics": ["timeseries"],
+    "prompt": "When applying CNNs to time series, the course recommends 1D convolutional layers rather than the 2D layers used for images. What is the main difference of a 1D CNN layer in this context?",
+    "choices": [
+      {"label": "A", "text": "The kernel is applied to a spectrogram, so it still slides in two dimensions"},
+      {"label": "B", "text": "Pooling layers are dropped, since downsampling along a single axis adds nothing"},
+      {"label": "C", "text": "The kernel slides only along one axis (time), instead of both height and width"},
+      {"label": "D", "text": "The kernel weights are shared with the recurrent layer that follows it"}
+    ],
+    "correctChoice": "C",
+    "solution": "**Concept.** A CNN slides a learnable kernel over the input to build feature maps. Images are 2D, so the kernel moves both horizontally and vertically. Time series are one-dimensional and sequential, so the course uses a **1D CNN**, whose kernel slides only along the time axis, capturing local temporal patterns.\n\n**Why C is correct.** The slides state the main difference from 2D layers is exactly that the kernel moves along a single axis (time) rather than across both height and width.\n\n**Why the others are wrong.** A: turning the series into a spectrogram and using a 2D kernel is the alternative the course contrasts against, not what defines a 1D CNN. B: pooling (max/average) still works and is still used in 1D layers. D: kernel weights are learned for the convolution itself; they are not tied to a following recurrent layer.\n\n**Takeaway.** A 1D CNN convolves only along time; the kernel weights are still learned.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260104-e2",
+    "examId": "AMI20260104",
+    "date": "2026-01-04",
+    "academicYear": "AA2526",
+    "exerciseNo": 2,
+    "type": "multiple-choice",
+    "topics": ["timeseries"],
+    "prompt": "According to the course, what is the principal limitation of CNNs when applied to time series?",
+    "choices": [
+      {"label": "A", "text": "The local kernel may miss temporal relations between distant samples"},
+      {"label": "B", "text": "The local kernel cannot learn any of the spatial features within its own receptive window"},
+      {"label": "C", "text": "They accept only a fixed input size, so each sample has to be processed entirely on its own"},
+      {"label": "D", "text": "They depend on ReLU, whose dying-neuron problem corrupts the learned feature maps"}
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** A convolutional kernel sees only a local patch, so a CNN excels at extracting strong *local/spatial* features from a window. But convolution does not model how distant samples depend on one another over time, so long-range temporal structure can be missed. This gap is precisely what motivates recurrent networks (RNNs/LSTMs).\n\n**Why A is correct.** The slides state CNNs capture strong spatial features but may fail to capture important temporal relationships between data samples that are far apart.\n\n**Why the others are wrong.** B: extracting spatial features within the window is what CNNs do well, not their weakness. C: a CNN does require a fixed input size, but it processes the whole window jointly, this is not the cited temporal limitation. D: ReLU's dying-neuron issue is a training detail, not the structural reason CNNs miss long-range temporal links.\n\n**Takeaway.** CNNs grab local patterns well but miss long-range temporal dependencies, hence RNNs.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260104-e3",
+    "examId": "AMI20260104",
+    "date": "2026-01-04",
+    "academicYear": "AA2526",
+    "exerciseNo": 3,
+    "type": "multiple-choice",
+    "topics": ["timeseries"],
+    "prompt": "The ReLU activation can suffer from the 'dying neuron' problem. Which statement describes this problem and the remedy the course mentions?",
+    "choices": [
+      {"label": "A", "text": "The neuron's output saturates near 1 and its gradient dies; a smaller learning rate is enough to revive it"},
+      {"label": "B", "text": "The pre-activation stays negative, so output and gradient are stuck at 0; Leaky ReLU adds a small slope"},
+      {"label": "C", "text": "The neuron's output grows without bound across the steps; dropout removes it before it can fully explode"},
+      {"label": "D", "text": "The neuron forgets old inputs over a long sequence; adding a long-term memory path restores the gradient"}
+    ],
+    "correctChoice": "B",
+    "solution": "**Concept.** ReLU outputs `0` for any negative input and is flat there, so its gradient is `0` on the negative side. If a neuron's pre-activation stays negative for *all* inputs, it outputs `0` forever, its gradient is `0`, and its weights never update, the neuron is effectively dead. **Leaky ReLU** fixes this by giving negatives a small non-zero slope, so a tiny gradient flows and the neuron can recover.\n\n**Why B is correct.** It states the cause (pre-activation stuck negative, so output and gradient are 0) and the remedy (Leaky ReLU giving negatives a small slope).\n\n**Why the others are wrong.** A: saturating near 1 describes the sigmoid, not ReLU, and the fix is the activation, not the learning rate. C: a dying neuron is stuck at zero, not exploding, and dropout is a regularizer. D: forgetting over long sequences and a long-term-memory path are LSTM ideas, unrelated to a dead ReLU.\n\n**Takeaway.** A ReLU neuron stuck at zero (zero gradient) is dead; Leaky ReLU revives it with a small negative slope.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260104-e4",
+    "examId": "AMI20260104",
+    "date": "2026-01-04",
+    "academicYear": "AA2526",
+    "exerciseNo": 4,
+    "type": "multiple-choice",
+    "topics": ["timeseries"],
+    "prompt": "RNNs can suffer from vanishing or exploding gradients. Roughly, the signal at the end of a sequence behaves like `input × w^(sequenceLength)`. With a feedback weight giving an effective factor `w^2 = 0.5` over a sequence of 50 samples, which problem arises?",
+    "choices": [
+      {"label": "A", "text": "Exploding gradient, since repeated multiplication over 50 steps grows the value toward a giant number"},
+      {"label": "B", "text": "A stable gradient, since a factor of `0.5` keeps the signal close to its starting value over the sequence"},
+      {"label": "C", "text": "Slow training from too few steps, since 50 samples is not enough to unroll the feedback loop"},
+      {"label": "D", "text": "Vanishing gradient, since a factor below 1 raised to the 50th power shrinks the signal toward 0"}
+    ],
+    "correctChoice": "D",
+    "solution": "**Concept.** An RNN applies its feedback weight once per step, so over a sequence the signal scales roughly like $w^{\\text{seqLen}}$. If the effective factor exceeds 1 the value blows up (exploding gradient); if it is below 1 it shrinks toward 0 (vanishing gradient). Here the factor is $0.5$ over 50 steps, so $0.5^{50}\\approx 0$.\n\n**Why D is correct.** $0.5^{50}$ is essentially 0, the vanishing-gradient regime: the gradient nearly disappears, so gradient descent converges extremely slowly.\n\n**Why the others are wrong.** A: exploding needs a factor above 1, e.g. $2^{50}$ becomes a giant number; here the factor is below 1. B: a factor of `0.5` shrinks the signal each step, it does not hold it near its start. C: the issue is the exponent on a sub-1 factor, not having too few steps; 50 steps is precisely what makes `0.5` decay to ~0.\n\n**Takeaway.** Effective factor below 1 over many steps → vanishing gradient; above 1 → exploding.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260104-e5",
+    "examId": "AMI20260104",
+    "date": "2026-01-04",
+    "academicYear": "AA2526",
+    "exerciseNo": 5,
+    "type": "multiple-choice",
+    "topics": ["timeseries"],
+    "prompt": "In an LSTM, why can the cell state (long-term memory) carry information across long sequences without exploding/vanishing-gradient problems?",
+    "choices": [
+      {"label": "A", "text": "Its carry path has no weights multiplying it each step, so the signal is not repeatedly scaled"},
+      {"label": "B", "text": "Its value is renormalized by a softmax each step, which keeps the signal bounded over time"},
+      {"label": "C", "text": "It is recomputed from the current input each step, so old gradients never accumulate"},
+      {"label": "D", "text": "It takes over the hidden (short-term) state's role, halving the number of repeated multiplications"}
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** An LSTM keeps two memory paths: the **cell state** (long-term memory) and the **hidden state** (short-term). The key trick is that the cell-state path carries information forward *without weights multiplying it at each step*, so the signal is not repeatedly scaled, the very thing that causes vanishing/exploding gradients in plain RNNs. Gates still let it be updated or cleared, but the carry path itself is weight-free.\n\n**Why A is correct.** It states exactly that: no weights on the long-term-memory carry path, so information flows without being repeatedly multiplied.\n\n**Why the others are wrong.** B: no softmax is applied to the cell state. C: the cell state is carried forward and selectively edited by gates, not rebuilt from the current input. D: the LSTM keeps both paths working together, the cell state does not take over the hidden state.\n\n**Takeaway.** The LSTM cell state survives long sequences because its carry path has no repeated weight multiplication.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260104-e6",
+    "examId": "AMI20260104",
+    "date": "2026-01-04",
+    "academicYear": "AA2526",
+    "exerciseNo": 6,
+    "type": "multiple-choice",
+    "topics": ["timeseries"],
+    "prompt": "In a seq2seq model adapted for time-series forecasting, how does the course say the setup differs from the original NLP translation use case?",
+    "choices": [
+      {"label": "A", "text": "Special `<SOS>`/`<EOS>` tokens are still required to bound the generation, exactly as in the NLP translation case"},
+      {"label": "B", "text": "The encoder and decoder are merged into one shared LSTM that both reads and writes the whole series"},
+      {"label": "C", "text": "A linear projection replaces the embedding, and the decoder starts from the last `n` samples"},
+      {"label": "D", "text": "Input and output sequences must match in length, since continuous values cannot be padded with a token"}
+    ],
+    "correctChoice": "C",
+    "solution": "**Concept.** In NLP, seq2seq maps discrete words, so it needs an embedding layer and special tokens like `<SOS>`/`<EOS>` to start and stop generation. Time series are already continuous numeric values, so no tokens are strictly required; a *linear projection layer* is instead used to map raw samples into a latent space. Because forecasting just continues the signal, there is no `<EOS>`, and the decoder is primed with the last `n` input samples rather than a `<SOS>` token.\n\n**Why C is correct.** It captures the key adaptations: a linear projection in place of token embedding, and starting the decoder from the last `n` samples instead of `<SOS>`.\n\n**Why the others are wrong.** A: explicit `<SOS>`/`<EOS>` tokens are the NLP case the slides contrast against; time series do not need them. B: seq2seq keeps the separate encoder/decoder structure, it is not collapsed to one shared LSTM. D: seq2seq explicitly allows different input and output lengths.\n\n**Takeaway.** For time-series seq2seq, swap tokens/embeddings for a linear projection and seed the decoder with the last input samples.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260104-e7",
+    "examId": "AMI20260104",
+    "date": "2026-01-04",
+    "academicYear": "AA2526",
+    "exerciseNo": 7,
+    "type": "multiple-choice",
+    "topics": ["timeseries"],
+    "prompt": "During seq2seq decoder training, what distinguishes **teacher forcing** from **free running**?",
+    "choices": [
+      {"label": "A", "text": "Free running feeds the ground-truth previous token (fast, overfit-prone); teacher forcing feeds the model's own output (slower)"},
+      {"label": "B", "text": "Teacher forcing feeds the ground-truth previous token (fast, overfit-prone); free running feeds the model's own output (slower)"},
+      {"label": "C", "text": "Teacher forcing feeds the context vector each step, while free running feeds the previous token"},
+      {"label": "D", "text": "Teacher forcing trains decoder-only, while free running keeps the full encoder/decoder pair"}
+    ],
+    "correctChoice": "B",
+    "solution": "**Concept.** A seq2seq decoder generates one token at a time, and each step needs a 'previous token' as input. **Teacher forcing** feeds the *ground-truth* previous token during training, which converges fast but, since the model never sees its own mistakes, risks overfitting and a train/inference mismatch. **Free running** feeds the model's *own* previous output, which is more realistic but slower to converge because early errors propagate forward.\n\n**Why B is correct.** It pairs each method with the right input source and trade-off: teacher forcing = ground truth, fast but overfitting-prone; free running = own output, realistic but slower.\n\n**Why the others are wrong.** A: it swaps the two names; ground truth belongs to teacher forcing, not free running. C: both methods feed a previous token, neither feeds only the context vector. D: the difference is the source of the previous token, not whether the encoder is kept.\n\n**Takeaway.** Teacher forcing feeds the ground-truth previous token (fast, overfit risk); free running feeds the model's own output (realistic, slower).",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260104-e8",
+    "examId": "AMI20260104",
+    "date": "2026-01-04",
+    "academicYear": "AA2526",
+    "exerciseNo": 8,
+    "type": "multiple-choice",
+    "topics": ["timeseries"],
+    "prompt": "What problem of plain seq2seq encoders does the attention mechanism address, and how?",
+    "choices": [
+      {"label": "A", "text": "The single context vector is too large to train; attention shrinks it down to one scalar per input sequence"},
+      {"label": "B", "text": "The encoder processes elements one at a time; attention swaps its LSTMs so the whole input is read in parallel"},
+      {"label": "C", "text": "The decoder cannot see future tokens; attention masks those positions so generation stays causal and ordered"},
+      {"label": "D", "text": "One context vector loses information on long sequences; attention adds one readable path per encoder step"}
+    ],
+    "correctChoice": "D",
+    "solution": "**Concept.** A plain seq2seq encoder squeezes the entire input into a single fixed-size *context vector*. That is fine for short sequences, but for long ones the bottleneck loses information, and even LSTMs forget early elements. **Attention** removes the single-vector bottleneck by adding one path per input element, so every decoder step can look directly at every encoder step's output (like skip connections) and focus on the relevant parts.\n\n**Why D is correct.** It names both the problem (one context vector loses information for long sequences) and the fix (a path per encoder step that each decoder step can read).\n\n**Why the others are wrong.** A: the bottleneck is that one vector loses information, not that it is too large; attention does not reduce the sequence to a scalar. B: reading the input in parallel by dropping LSTMs is the Transformer's later step, not what classic attention does. C: masking future tokens is decoder self-attention in Transformers, a different mechanism from the encoder bottleneck fix.\n\n**Takeaway.** Attention breaks the single-context-vector bottleneck so each decoder step can attend to all encoder outputs.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260104-e9",
+    "examId": "AMI20260104",
+    "date": "2026-01-04",
+    "academicYear": "AA2526",
+    "exerciseNo": 9,
+    "type": "multiple-choice",
+    "topics": ["timeseries"],
+    "prompt": "In self-attention, each sequence element is projected into Query (Q), Key (K), and Value (V) vectors. Which statement matches the course's description of their roles?",
+    "choices": [
+      {"label": "A", "text": "The `Q·K` dot product gives scores, a `softmax` makes weights, and those weight the `V` vectors"},
+      {"label": "B", "text": "The `Q·K` dot product gives scores, a `softmax` turns them into weights, and those weight the `K` vectors"},
+      {"label": "C", "text": "V is matched against K to produce the scores, and then a `softmax` over Q yields the output embedding"},
+      {"label": "D", "text": "Q, K, and V are one and the same learned projection reused three times, so no similarity is computed"}
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** Self-attention turns each element into three learned projections: **Query** (what this token is looking for), **Key** (what a token offers to be matched against), and **Value** (the actual content to pass on). The score between two tokens is the dot product `Q·K`; a `softmax` turns scores into weights summing to 1, and those weights combine the `V` vectors into the output embedding `Z`.\n\n**Why A is correct.** It states the pipeline exactly: `Q·K` dot product → `softmax` weights → weighted sum of `V` = output embedding.\n\n**Why the others are wrong.** B: the weights multiply `V`, the actual content, not `K`; `K` only helps compute the scores. C: it swaps the roles, `Q·K` (not V·K) makes the scores and `V` (not Q) is what gets weighted. D: Q, K, V are three distinct learned projections, and a similarity (the dot product) is computed.\n\n**Takeaway.** Score with `Q·K`, normalize with `softmax`, then weight `V` to get the output.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260104-e10",
+    "examId": "AMI20260104",
+    "date": "2026-01-04",
+    "academicYear": "AA2526",
+    "exerciseNo": 10,
+    "type": "multiple-choice",
+    "topics": ["timeseries"],
+    "prompt": "Since Transformers replace recurrence, how do they preserve the order of elements in a sequence?",
+    "choices": [
+      {"label": "A", "text": "A small LSTM is kept inside each encoder purely to stamp every single token with its own position index"},
+      {"label": "B", "text": "The masked self-attention layer enforces the order by letting each token attend only to earlier ones"},
+      {"label": "C", "text": "A periodic sine/cosine positional encoding is computed per position and summed with the embedding"},
+      {"label": "D", "text": "The multi-head attention scores are sorted, so the high-weight tokens are placed earliest in the output"}
+    ],
+    "correctChoice": "C",
+    "solution": "**Concept.** Self-attention treats the input as a set, it has no built-in notion of order, yet sequence position matters. **Positional encoding** restores order without recurrence: for each position and each dimension it computes a value using periodic sine/cosine functions, producing a vector the size of one element, which is summed onto the input embedding so each token carries 'where it is'.\n\n**Why C is correct.** It names the mechanism exactly: sine/cosine positional encodings computed per position and summed with the input embedding.\n\n**Why the others are wrong.** A: Transformers deliberately get rid of LSTMs, including for indexing. B: masked self-attention only hides future tokens in the decoder, it does not encode absolute position. D: attention scores weight values, they are not sorted to reorder the output.\n\n**Takeaway.** Transformers add sine/cosine positional encodings to the input so self-attention knows token order.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260104-e11",
+    "examId": "AMI20260104",
+    "date": "2026-01-04",
+    "academicYear": "AA2526",
+    "exerciseNo": 11,
+    "type": "theory-essay",
+    "topics": ["timeseries"],
+    "prompt": "RNNs are designed for sequential data but are hard to train on long sequences; LSTMs were introduced to mitigate this.\n\n**(a)** Explain the vanishing/exploding-gradient problem in RNNs: why it arises from the feedback-loop weight, the two regimes, and why each regime is harmful to training.\n\n**(b)** Describe how an LSTM mitigates the problem using its two memory paths (cell state and hidden state).",
+    "solution": "**(a)** An RNN has a feedback loop with a learnable weight that is applied repeatedly, once per element, so a long sequence requires a long unrolling. During backpropagation through this repeated multiplication the signal at the end of the sequence behaves approximately like `input × w^(sequenceLength)`, so it depends exponentially on the effective factor. Two regimes follow: if the factor exceeds 1 the gradient grows exponentially (exploding gradient, e.g. $2^{50}$ becomes a giant number), and if it is below 1 the gradient shrinks exponentially toward 0 (vanishing gradient, e.g. $0.5^{50}$ is nearly 0). Both are harmful: an exploding gradient causes too much oscillation so optimization may never settle in a local optimum, while a vanishing gradient makes gradient descent extremely slow so the model takes a very long time to converge.\n\n**(b)** The LSTM evolves the RNN by using two separate paths instead of a single feedback loop, so that distant elements can be handled: a long-term memory (cell state) and a short-term memory (hidden state). The cell state carries information across long periods and crucially has no weights on its path, so information can flow without being repeatedly multiplied and therefore without exploding/vanishing-gradient problems, although it can still be updated or cleared at each step. The hidden (short-term) state handles recent context. Splitting memory this way is the main difference from a plain RNN (at the cost of a more complex unit), and it lets gradients propagate over long sequences far more stably.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260104-e12",
+    "examId": "AMI20260104",
+    "date": "2026-01-04",
+    "academicYear": "AA2526",
+    "exerciseNo": 12,
+    "type": "theory-essay",
+    "topics": ["timeseries"],
+    "prompt": "A seq2seq model trained for time-series forecasting can be repurposed for several other AmI tasks.\n\n**(a)** Describe the seq2seq encoder/decoder architecture for time series: the role of the encoder and the context vector, and how the decoder generates the output (including where it starts and stops, in the time-series setting).\n\n**(b)** List and explain at least three additional tasks (besides forecasting) for which a trained seq2seq time-series model can be reused.",
+    "solution": "**(a)** A seq2seq model maps an input sequence to an output sequence of possibly different length using an encoder/decoder built from LSTMs. The encoder uses several LSTM layers to process the input one element at a time and compress it into a latent representation called the context vector. The decoder decodes the context vector into the output sequence one element at a time by unfolding the LSTM, each new element predicted from the previously predicted element together with the long-term memory. In the general/NLP setting the decoder starts from a start token (<SOS>/<GO>) and stops when the ground truth is <EOS>; for continuous-valued time-series forecasting the <EOS> token is not needed, and instead of <SOS> the decoder starts from the last n samples of the input series (e.g. 'predict the next 100 values'). A linear projection layer is often used to map raw sensor data into the latent space.\n\n**(b)** Besides forecasting, the slides describe: (1) **Imputation**, using the model to reconstruct missing portions of the series; (2) **Anomaly detection**, comparing forecasted values with the actual observed values, where a large discrepancy may signal an anomaly; (3) **Feature representation**, extracting the encoder alone to generate embeddings; and (4) **Classification**, taking the extracted encoder and attaching a classification head that can be fine-tuned.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260104-e13",
+    "examId": "AMI20260104",
+    "date": "2026-01-04",
+    "academicYear": "AA2526",
+    "exerciseNo": 13,
+    "type": "theory-essay",
+    "topics": ["timeseries"],
+    "prompt": "Transformers improve on seq2seq-with-attention models and are powerful for time series.\n\n**(a)** Explain self-attention using Query, Key and Value: what each represents, how the attention output is computed, and why the dot product is used instead of full cosine similarity.\n\n**(b)** Explain two further ingredients of Transformers: masked self-attention in the decoder, and positional encoding (why it is needed and how it is computed). Mention why these models are attractive for time series compared with LSTM-based seq2seq.",
+    "solution": "**(a)** In self-attention each element is transformed (by three learned weight matrices) into a Query (the token asking for information from others), a Key (the token's potential to respond to a query), and a Value (the actual information used to update the output, to be weighted by the attention score). For each element the attention score is the similarity between its Q and the K of every element, computed with the dot product; all scores are passed through a softmax so the weights sum to 1, and these weights multiply the V vectors to produce the output embedding Z. The dot product is used instead of full cosine similarity because the cosine denominator only rescales the result to [-1,1]; in practice the numerator (dot product) alone is sufficient for attention and is faster, improving efficiency. Self-attention for each element can be computed in parallel, and multi-head self-attention runs several such layers in parallel to obtain multiple representation subspaces.\n\n**(b)** **Masked self-attention** is used in the decoder: unlike the encoder, which attends to the whole input, the decoder cannot look into the future, so it computes self-attention only over previously generated tokens, masking future positions. **Positional encoding** is needed because, having removed recurrence (no LSTMs), the model would otherwise lose the order of the sequence; it is computed for each dimension from the token's position using periodic sine and cosine functions, producing a vector the same size as a sequence element, which is summed with the input embedding (or the linear-projection output for time series) to add positional context. Transformers are attractive for time series because they get rid of LSTMs, avoiding long-range-dependency loss and the slow element-by-element training of recurrent seq2seq, while processing the input efficiently in parallel.",
+    "solutionSource": "authored"
+  }
+]

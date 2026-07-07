@@ -1,0 +1,228 @@
+[
+  {
+    "id": "AMI20260113-e1",
+    "examId": "AMI20260113",
+    "date": "2026-01-13",
+    "academicYear": "AA2526",
+    "exerciseNo": 1,
+    "type": "multiple-choice",
+    "topics": ["federated"],
+    "prompt": "What is the defining characteristic of Federated Learning compared to a centralized collaborative approach?",
+    "choices": [
+      {"label": "A", "text": "Each device trains and runs inference only on its own local data, never contacting any central server at all"},
+      {"label": "B", "text": "Each client uploads its own labeled data so the central server can pool everything into one set and train one shared model"},
+      {"label": "C", "text": "Each client trains locally and sends only its model parameters, which the server aggregates into a global model"},
+      {"label": "D", "text": "The server trains one global model once on public data, freezes it, and clients merely download it to infer"}
+    ],
+    "correctChoice": "C",
+    "solution": "**Concept.** Federated Learning distributes training across many clients: each client trains a local model on its own labeled data and ships only the model *parameters* to a server, which aggregates them into a global model. Crucially, raw data never leaves the device, giving privacy-preserving collaborative learning. Think of phone keyboards improving collectively while your typed text stays on your phone.\n\n**Why C is correct.** It captures exactly this split: local training + parameter sharing + server aggregation, with data kept private.\n\n**Why the others are wrong.** A is *distributed on-site* learning (training stays local but there is no aggregation, so a client gets no benefit from peers); B is the *centralized* approach (raw data pooled on the server, raising privacy/scalability issues); D freezes a single model trained once, but FL repeatedly aggregates client updates over many communication rounds.\n\n**Takeaway.** FL shares model parameters, never raw data.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260113-e2",
+    "examId": "AMI20260113",
+    "date": "2026-01-13",
+    "academicYear": "AA2526",
+    "exerciseNo": 2,
+    "type": "multiple-choice",
+    "topics": ["federated"],
+    "prompt": "Which problems of the centralized collaborative approach motivate Federated Learning, according to the slides?",
+    "choices": [
+      {"label": "A", "text": "Privacy of raw sensor data (it can reveal habits/health) and scalability (transmission latency plus central compute)"},
+      {"label": "B", "text": "Limited labeled samples on each node and the inability of a purely local model to generalize across other users"},
+      {"label": "C", "text": "Subject-dependent models being inherently less accurate than subject-independent ones, forcing a hybrid scheme"},
+      {"label": "D", "text": "Shared weight updates still leaking sensitive properties of the training data through model inference attacks"}
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** Centralizing all clients' labeled data on one server creates two structural problems. *Privacy*: sensor data can reveal personal habits or health conditions once uploaded. *Scalability*: transmitting huge volumes causes communication latency, and training on the pooled set is computationally heavy. FL exists precisely to sidestep both by keeping data local.\n\n**Why A is correct.** It names exactly these two course-cited challenges, privacy and scalability, with their concrete sub-causes.\n\n**Why the others are wrong.** B lists the drawbacks of *distributed on-site* learning (few local samples, no generalization), not of centralization; C inverts the recap claim that subject-dependent models are the *most* accurate, and it is not a stated motivation for FL; D is a real concern, but it is the privacy *limitation of FL itself* (weights can still leak), not a problem of the centralized approach that motivates adopting FL.\n\n**Takeaway.** Centralization fails on privacy and scalability; FL targets both.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260113-e3",
+    "examId": "AMI20260113",
+    "date": "2026-01-13",
+    "academicYear": "AA2526",
+    "exerciseNo": 3,
+    "type": "multiple-choice",
+    "topics": ["federated"],
+    "prompt": "In standard (synchronous) Federated Learning, what does one 'communication round' consist of?",
+    "choices": [
+      {"label": "A", "text": "All of the clients exchange their local datasets peer-to-peer and each one then trains on the merged collection of data"},
+      {"label": "B", "text": "The server retrains the global model from the start on the union of every client's locally collected data"},
+      {"label": "C", "text": "A selected client downloads the model, personalizes it locally, and keeps it without sending anything back"},
+      {"label": "D", "text": "The server selects clients, sends the model, they train locally and return parameters, and it aggregates them"}
+    ],
+    "correctChoice": "D",
+    "solution": "**Concept.** A *communication round* is the repeating unit of synchronous FL. The server selects available clients, sends them the current global model; each client trains it locally and returns its parameters; the server aggregates these into an updated global model. Rounds repeat until convergence, so the model improves iteratively without ever moving raw data.\n\n**Why D is correct.** It lists all four steps in order: select, distribute, local-train-and-return, aggregate.\n\n**Why the others are wrong.** A exchanges raw datasets, violating FL's no-data-leaves-the-device principle; B has the server retrain on pooled data, but in FL the server never sees raw data; C is on-site personalization that omits the upload and aggregation steps that actually define a round.\n\n**Takeaway.** One round = select, distribute, local train, return params, aggregate.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260113-e4",
+    "examId": "AMI20260113",
+    "date": "2026-01-13",
+    "academicYear": "AA2526",
+    "exerciseNo": 4,
+    "type": "multiple-choice",
+    "topics": ["federated"],
+    "prompt": "How does FedAvg differ from the naive FedSGD, and why is it the standard FL approach?",
+    "choices": [
+      {"label": "A", "text": "FedAvg sends raw gradients after just a single local step, whereas FedSGD instead ships the full local datasets to the server"},
+      {"label": "B", "text": "FedAvg runs several local SGD steps and sends weights, raising local compute but cutting the communication rounds"},
+      {"label": "C", "text": "FedAvg drops the central server entirely, letting clients average their weights directly among themselves instead"},
+      {"label": "D", "text": "FedAvg keeps local computation low like FedSGD yet needs many more communication rounds to finally converge"}
+    ],
+    "correctChoice": "B",
+    "solution": "**Concept.** FedSGD and FedAvg differ in how much local work happens per round. In FedSGD each client computes one average gradient and the server applies a single SGD step. In FedAvg each client runs *several* local SGD steps and sends the resulting weights, which the server averages (weighted by sample count). More local work per round means far fewer rounds are needed to converge, and since communication is FL's bottleneck, this trade is worth it.\n\n**Why B is correct.** It states FedAvg's multi-step local training, weight sharing, higher local cost, and fewer rounds.\n\n**Why the others are wrong.** A describes single-step gradient sharing (that is FedSGD's flavor, and neither method ever sends datasets); C removes the server, but both methods keep a central aggregator; D reverses the actual trade-off, since FedAvg does *more* local computation to achieve *fewer* rounds.\n\n**Takeaway.** FedAvg trades local computation for far fewer communication rounds.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260113-e5",
+    "examId": "AMI20260113",
+    "date": "2026-01-13",
+    "academicYear": "AA2526",
+    "exerciseNo": 5,
+    "type": "multiple-choice",
+    "topics": ["federated"],
+    "prompt": "Why is client selection needed in Federated Learning, and what is a simple baseline strategy?",
+    "choices": [
+      {"label": "A", "text": "Because the server must inspect each device before trusting it; the baseline is manual selection by an operator"},
+      {"label": "B", "text": "Because only the clients holding the most labeled data are ever eligible; the baseline keeps repeatedly picking that same top client"},
+      {"label": "C", "text": "Because populations reach thousands of clients (some unavailable), so the baseline samples available devices at random"},
+      {"label": "D", "text": "Because the selected clients are the ones asked to upload raw data; the baseline is round-robin data collection"}
+    ],
+    "correctChoice": "C",
+    "solution": "**Concept.** FL is built for huge populations (e.g. thousands of clients), so involving everyone every round is not scalable, and many devices are simply unavailable. The server therefore asks who is available and picks a subset; the simplest baseline is *random sampling* of available devices, for instance phones charging at night when local training won't disrupt the user.\n\n**Why C is correct.** It gives both the reason (scalability with thousands of clients, some unavailable) and the baseline (random sampling of available devices).\n\n**Why the others are wrong.** A claims manual inspection, yet selection is automatic; B fixes on a single top client, but the baseline is random sampling (data-driven ranking is the separate *utility-based* alternative); D wants raw-data upload, which FL forbids.\n\n**Takeaway.** Not all clients each round; random sampling of available devices is the baseline.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260113-e6",
+    "examId": "AMI20260113",
+    "date": "2026-01-13",
+    "academicYear": "AA2526",
+    "exerciseNo": 6,
+    "type": "multiple-choice",
+    "topics": ["federated"],
+    "prompt": "In utility-based client selection, the slides distinguish statistical utility from system utility. Which pairing is correct?",
+    "choices": [
+      {"label": "A", "text": "Statistical utility = usefulness of a client's update (samples, local loss, local-vs-global gap); system = hardware overhead"},
+      {"label": "B", "text": "Statistical utility = the client's local dataset size; system utility = the transmission latency to reach the server"},
+      {"label": "C", "text": "Statistical utility = the device's current battery level; system utility = the accuracy of the trained local model"},
+      {"label": "D", "text": "Statistical utility = training and transmission time; system utility = the local-vs-global model parameter gap"}
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** Utility-based selection ranks clients before choosing them. *Statistical utility* measures how useful a client's update is to the global model: number of training samples, local cumulative loss, or the gap between local and global models. *System utility* measures hardware-driven cost: training and transmission time, which motivates a response-time threshold so slow `stragglers` don't prolong the round.\n\n**Why A is correct.** It pairs each term with its correct examples: usefulness-of-update vs hardware overhead.\n\n**Why the others are wrong.** B names a real *statistical* example (dataset size) but pairs it with latency, which is a *system* example, so it conflates the two; C invents criteria (battery, accuracy) that the slides never list as either utility; D swaps the pair outright — training/transmission time is *system* utility while the local-vs-global gap is *statistical* utility.\n\n**Takeaway.** Statistical utility = value of the update; system utility = device speed/overhead.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260113-e7",
+    "examId": "AMI20260113",
+    "date": "2026-01-13",
+    "academicYear": "AA2526",
+    "exerciseNo": 7,
+    "type": "multiple-choice",
+    "topics": ["federated"],
+    "prompt": "In asynchronous FL (e.g. FedAsync), how is the 'staleness' of a client update handled?",
+    "choices": [
+      {"label": "A", "text": "Every arriving update is mixed in with exactly the same fixed weight, regardless of which model version it had trained on"},
+      {"label": "B", "text": "Stale updates are dropped and the offending client is permanently excluded from all of the later rounds"},
+      {"label": "C", "text": "The server waits until every contacted client has returned its update before performing any aggregation step"},
+      {"label": "D", "text": "Staleness is the gap from now to the timestamp of the model trained on, and a larger gap lowers that update's weight"}
+    ],
+    "correctChoice": "D",
+    "solution": "**Concept.** Asynchronous FL aggregates each update as soon as it arrives rather than waiting for everyone. But a client may have trained on an *old* global model, so its update is partly outdated. The server tags each global model with a timestamp `tau`; when an update returns at time `t`, *staleness* is `t - tau`. Greater staleness means more error, so the mixing weight `alpha_t` shrinks for stale updates.\n\n**Why D is correct.** It defines staleness as the gap to the trained-on model's timestamp and correctly down-weights larger gaps.\n\n**Why the others are wrong.** A mixes every update with a constant weight, which ignores staleness entirely; B discards stale updates, but they still contribute, just with less weight; C waits for all clients, which is synchronous FL — the very thing async avoids.\n\n**Takeaway.** Staleness `t - tau` down-weights updates trained on outdated models.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260113-e8",
+    "examId": "AMI20260113",
+    "date": "2026-01-13",
+    "academicYear": "AA2526",
+    "exerciseNo": 8,
+    "type": "multiple-choice",
+    "topics": ["federated"],
+    "prompt": "The non-IID problem in FL refers to which situation, and which type of skewness matches its description?",
+    "choices": [
+      {"label": "A", "text": "Clients all hold the same data distribution; 'feature skew' means every device happens to carry identical sensors"},
+      {"label": "B", "text": "Data across clients are non-identically distributed; 'label distribution skew' means differing routines shift class frequencies"},
+      {"label": "C", "text": "Clients hold equal amounts of data; 'quantity skew' means every client ends up owning the same number of labels"},
+      {"label": "D", "text": "Data across clients are non-identically distributed; 'feature skew' means subjects differ in their amount of labeled data"}
+    ],
+    "correctChoice": "B",
+    "solution": "**Concept.** Because each client's data reflects one user (physique, age, habits), distributions differ across clients, i.e. data are *non-IID*, which breaks methods assuming uniformity. The course names three skews: *feature* skew (peculiar per-subject sensor patterns, e.g. young vs elderly walking), *label* skew (different routines change class frequencies, e.g. sporty vs sedentary), and *quantity* skew (clients differ in how much labeled data they have).\n\n**Why B is correct.** It defines non-IID and correctly maps label distribution skew to differing routines that shift class frequencies (sporty vs sedentary).\n\n**Why the others are wrong.** A and C describe identical/equal distributions, which is IID — the opposite of the problem; D gets the non-IID definition right but mislabels the skew, since differing *amounts* of labeled data is *quantity* skew, not *feature* skew (feature skew is about peculiar per-subject sensor patterns).\n\n**Takeaway.** Non-IID = per-user distributions differ; label skew means differing routines.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260113-e9",
+    "examId": "AMI20260113",
+    "date": "2026-01-13",
+    "academicYear": "AA2526",
+    "exerciseNo": 9,
+    "type": "multiple-choice",
+    "topics": ["federated"],
+    "prompt": "Several FL personalization methods exploit a transfer-learning intuition about neural network layers. Which statement reflects it?",
+    "choices": [
+      {"label": "A", "text": "Output-side layers stay shared across clients while the input-side feature extractor is kept private to each device"},
+      {"label": "B", "text": "Input-side layers learn general features; output-side layers are client-specific, so each client fine-tunes them locally"},
+      {"label": "C", "text": "Every layer is held to be equally client-specific, so each client must retrain its whole network locally with no shared parameters"},
+      {"label": "D", "text": "Only the bias terms generalize across clients, while all weight matrices are treated as personalized and fine-tuned"}
+    ],
+    "correctChoice": "B",
+    "solution": "**Concept.** A transfer-learning intuition guides FL personalization: layers near the *input* learn general features (feature extraction) useful across clients, while layers near the *output* (fully connected) encode client-specific behavior. So clients can share the general layers via the global model and locally fine-tune only the personalized output layers to fight non-IID.\n\n**Why B is correct.** It states this position-based split and the local fine-tuning of the personalized output layers.\n\n**Why the others are wrong.** A inverts which side is shared (it is the input side that generalizes and is shared); C claims every layer is client-specific, denying the reuse benefit of transfer learning; D splits by parameter type (bias vs weights), but the course distinction is by layer *position*.\n\n**Takeaway.** Input layers generalize and are shared; output layers personalize and are fine-tuned.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260113-e10",
+    "examId": "AMI20260113",
+    "date": "2026-01-13",
+    "academicYear": "AA2526",
+    "exerciseNo": 10,
+    "type": "multiple-choice",
+    "topics": ["federated"],
+    "prompt": "In Federated Clustering (e.g. FedCLAR) for sensor-based HAR, how is similarity between clients estimated and what is the output?",
+    "choices": [
+      {"label": "A", "text": "Cosine similarity over clients' personal-layer weights groups them into clusters, each with its own global model"},
+      {"label": "B", "text": "Raw sensor streams are uploaded so the server can correlate them directly, yielding one single global model for all"},
+      {"label": "C", "text": "Clients are grouped purely by their geographic location, and every group then shares the one same global model"},
+      {"label": "D", "text": "Similarity is the difference in clients' dataset sizes, and the output is a separate fine-tuned model per individual"}
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** Federated Clustering attacks non-IID by grouping similar clients so each group is more nearly IID. Since raw data is unavailable, similarity is inferred from model *weights*: similar weights imply similar training data, so the server computes cosine similarity over (typically the personal) layers and applies hierarchical clustering. Each cluster gets its own global model, plus a general model for non-clustered (singleton) clients.\n\n**Why A is correct.** It uses cosine similarity over personal-layer parameters and clusters clients into groups, each with its own global model (a general model also covers non-clustered clients).\n\n**Why the others are wrong.** B shares raw streams and yields one model, breaking both FL's privacy rule and the multi-model design; C clusters by geography (the slides infer similarity from weights, not location) with a single shared model; D mischaracterizes both the metric (it is cosine similarity over weights, not dataset-size difference) and the output (one model per cluster, not per individual).\n\n**Takeaway.** Cluster clients by weight-cosine similarity; one global model per homogeneous group.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260113-e11",
+    "examId": "AMI20260113",
+    "date": "2026-01-13",
+    "academicYear": "AA2526",
+    "exerciseNo": 11,
+    "type": "theory-essay",
+    "topics": ["federated"],
+    "prompt": "The course contrasts three ways to build a collaborative model from many users: centralized, distributed on-site, and federated learning.\n\n**(a)** Describe the centralized and the distributed on-site approaches, and state the main drawback of each.\n\n**(b)** Explain how Federated Learning combines their strengths, detailing what is exchanged between clients and server and why this addresses the centralized approach's privacy and scalability problems.",
+    "solution": "**(a)** In the *centralized* approach, every client transmits its labeled data to a central server, which pools all data into one large training set and trains a single collaborative model that can later be used by contributing or new clients. Its drawbacks are privacy (raw sensor data sent to the server can reveal personal habits or health conditions) and scalability (communication latency from transmitting large volumes of data, plus the heavy computational cost of training on a huge labeled set). In *distributed on-site learning*, training and inference happen only on locally collected data: the server distributes a pre-trained model and each device personalizes it locally. This mitigates the privacy problem because data never leaves the device, but its drawbacks are that nodes may have too few labeled samples, they get no benefit from peers' data, and the local models cannot generalize well.\n\n**(b)** Federated Learning keeps training distributed on the clients (preserving privacy, like on-site learning) while still building a shared global model that benefits from everyone's data (like the centralized approach). The key is *what is exchanged*: each selected client receives the current global model, trains it on its own labeled data, and sends back only the resulting local model parameters, never the raw data. The server aggregates these parameters (e.g. a weighted average in FedAvg) into an updated global model, repeating over communication rounds until convergence. This addresses privacy because sensitive sensor data stays on the device and only model weights are shared; it addresses scalability because transmitting compact parameters is far cheaper than transmitting all raw data, and the costly training is offloaded onto the many client devices rather than concentrated on the server. Clients also benefit from peers' knowledge through the aggregated global model, overcoming on-site learning's inability to generalize.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260113-e12",
+    "examId": "AMI20260113",
+    "date": "2026-01-13",
+    "academicYear": "AA2526",
+    "exerciseNo": 12,
+    "type": "theory-essay",
+    "topics": ["federated"],
+    "prompt": "Synchronous FL with FedAvg is the standard, but it has limitations when the global model must be updated frequently.\n\n**(a)** Explain the FedAvg aggregation procedure and why it converges in fewer communication rounds than FedSGD.\n\n**(b)** Describe the problems of synchronous FL that motivate asynchronous FL, and explain how an async method such as FedAsync uses staleness to weight updates.",
+    "solution": "**(a)** In FedAvg, each selected client performs several local SGD steps on its own data, producing updated local weights, and sends those *weights* to the server. The server performs a weighted aggregation of the weights (weighting by, e.g., the number of local samples), and the result becomes the new global model; this repeats each communication round. Compared to FedSGD - where each client computes only the average gradient for a single step and the server applies one SGD update - FedAvg does much more useful local work per round. Because each round already incorporates many local optimization steps, the global model needs significantly fewer communication rounds to converge, at the cost of more client computation. Reducing communication rounds is valuable since communication is the main bottleneck in FL, which is why FedAvg is the standard.\n\n**(b)** Synchronous FL selects a subset of clients and aggregates *only after every selected client has returned* its update. This is problematic when the model must be updated frequently and quickly: some devices may become unresponsive (failures, network problems), and devices differ in computational resources so their local-training times differ; slow 'straggler' devices prolong the round and delay aggregation. Asynchronous FL addresses this by aggregating updates as soon as they arrive instead of waiting for all clients. In FedAsync, the server schedules a global-model update at timestamp `tau`, sends the current model to a client, and the client later returns its locally trained model together with `tau`. The server immediately updates the global model, but it assesses *staleness* as the difference `t - tau`: a larger gap means the update was based on an older model and carries more error, so the mixing weight (`alpha_t`) is reduced for stale updates. This lets the system converge faster than waiting on stragglers while limiting the damage from outdated contributions.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260113-e13",
+    "examId": "AMI20260113",
+    "date": "2026-01-13",
+    "academicYear": "AA2526",
+    "exerciseNo": 13,
+    "type": "theory-essay",
+    "topics": ["federated"],
+    "prompt": "Statistical heterogeneity (non-IID data) is a central challenge in Federated Learning for sensor-based applications such as Human Activity Recognition.\n\n**(a)** Define the non-IID problem and describe the three types of skewness identified for sensor time-series data, with an example of each.\n\n**(b)** Compare two families of solutions: single-global-model personalization (e.g. fine-tuning personalized layers) versus Federated Clustering, explaining the trade-off each tries to manage.",
+    "solution": "**(a)** Data are *non-IID* when they are not identically and independently distributed across clients. In FL each local model typically reflects a single user (their physical characteristics, age, habits), so distributions differ from client to client, and pure local-optimization methods like FedAvg are not adequate. The slides distinguish three skews: (1) *Feature distribution skew* - each subject generates peculiar sensor patterns, e.g. the inertial walking signal of a young subject differs from that of an elderly subject; (2) *Label distribution skew* - subjects have different routines, e.g. a sporty subject spends much more time running than a sedentary one, so class frequencies differ; (3) *Quantity distribution skew* - subjects differ greatly in how much labeled data they have available.\n\n**(b)** *Single-global-model personalization* keeps one global model and adapts it per client. Using the transfer-learning intuition, the input-side layers (general feature extractors) are shared, while each client fine-tunes the output-side personalized layers on its own data; methods like ProtoHAR add class prototypes so that under-represented classes are handled better despite label/quantity skew. The trade-off here is delicate: one global model must both generalize to unseen clients and be personalizable enough for each individual, and finding that balance is hard. *Federated Clustering* (e.g. FedCLAR) instead groups similar clients - estimating similarity via cosine similarity over (personal) model weights, since raw data is unavailable, using hierarchical clustering - and trains one global model per cluster. Within a cluster the clients are more nearly IID, easing the personalization/generalization tension, while a general global model is retained for overall generalization and for non-clustered (singleton) clients. Thus single-model methods manage the trade-off through local fine-tuning of one shared model, whereas clustering manages it by partitioning clients so each model serves a more homogeneous group.",
+    "solutionSource": "authored"
+  }
+]

@@ -1,0 +1,334 @@
+[
+  {
+    "id": "CI20240710-e1",
+    "examId": "CI20240710",
+    "date": "2024-07-10",
+    "academicYear": "AA2324",
+    "exerciseNo": 1,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["servers"],
+    "part": "first",
+    "prompt": "Accelerators such as GPUs and TPUs are used in datacenters primarily to enhance general-purpose computing tasks.",
+    "subStatements": [
+      {
+        "id": "CI20240710-e1-s1",
+        "statement": "Accelerators such as GPUs and TPUs are used in datacenters primarily to enhance general-purpose computing tasks.",
+        "answer": false,
+        "motivation": "From the Server / HW-accelerators material, GPUs and TPUs are **domain-specific** accelerators built for massively parallel, data-parallel workloads (graphics, dense matrix/tensor math, deep-learning training and inference). General-purpose computation is the job of the CPU. Accelerators are used precisely because they speed up *specialized* parallel tasks, not general-purpose ones, so 'primarily to enhance general-purpose computing' is false."
+      }
+    ],
+    "solution": "See per-statement motivation. GPUs/TPUs accelerate specialized parallel/ML workloads, not general-purpose computing (that is the CPU's role) — the statement is **False**.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20240710-e2",
+    "examId": "CI20240710",
+    "date": "2024-07-10",
+    "academicYear": "AA2324",
+    "exerciseNo": 2,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["networking"],
+    "part": "second",
+    "prompt": "Leaf-spine topologies are commonly used in modern datacenters due to their efficiency and high-performance characteristics.",
+    "subStatements": [
+      {
+        "id": "CI20240710-e2-s1",
+        "statement": "Leaf-spine topologies are commonly used in modern datacenters due to their efficiency and high-performance characteristics.",
+        "answer": true,
+        "motivation": "The Datacenter Networking lecture presents **leaf-spine** (a two-tier folded-Clos fabric) as the modern standard topology. Every leaf connects to every spine, giving predictable, equal-cost multipath, full bisection bandwidth and low/uniform latency for the heavy east-west traffic of modern workloads. It is exactly adopted for its efficiency and high performance — the statement is true."
+      }
+    ],
+    "solution": "See per-statement motivation. Leaf-spine is the modern high-bandwidth, low-latency data-center fabric, widely adopted for efficiency/performance — the statement is **True**.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20240710-e3",
+    "examId": "CI20240710",
+    "date": "2024-07-10",
+    "academicYear": "AA2324",
+    "exerciseNo": 3,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["servers"],
+    "part": "first",
+    "prompt": "FPGAs (Field-Programmable Gate Arrays) provide the flexibility to reconfigure hardware for specific tasks in datacenters.",
+    "subStatements": [
+      {
+        "id": "CI20240710-e3-s1",
+        "statement": "FPGAs (Field-Programmable Gate Arrays) provide the flexibility to reconfigure hardware for specific tasks in datacenters.",
+        "answer": true,
+        "motivation": "From the HW-accelerators material, an **FPGA** is a reconfigurable device: its logic blocks and interconnect can be (re)programmed after manufacturing to implement a custom hardware datapath. This lets a data center tailor the hardware to a specific task (e.g. a custom low-latency pipeline, encryption, inference) and reprogram it for another later. Reconfigurability for specific tasks is the defining feature of FPGAs — the statement is true."
+      }
+    ],
+    "solution": "See per-statement motivation. FPGAs are reconfigurable hardware that can be reprogrammed for specific tasks — the statement is **True**.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20240710-e4",
+    "examId": "CI20240710",
+    "date": "2024-07-10",
+    "academicYear": "AA2324",
+    "exerciseNo": 4,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["virtualization"],
+    "part": "second",
+    "prompt": "Virtualization helps to improve hardware utilization by enabling the efficient sharing of hardware resources.",
+    "subStatements": [
+      {
+        "id": "CI20240710-e4-s1",
+        "statement": "Virtualization helps to improve hardware utilization by enabling the efficient sharing of hardware resources.",
+        "answer": true,
+        "motivation": "The Virtualization lecture identifies **consolidation** as a primary benefit: many isolated virtual machines run on one physical host, so otherwise idle CPU, memory and I/O capacity is shared among workloads. This raises hardware utilization (fewer underused servers) and is a key driver of virtualization in data centers and cloud — the statement is true."
+      }
+    ],
+    "solution": "See per-statement motivation. Virtualization consolidates workloads and shares resources, raising hardware utilization — the statement is **True**.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20240710-e5",
+    "examId": "CI20240710",
+    "date": "2024-07-10",
+    "academicYear": "AA2324",
+    "exerciseNo": 5,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["dc-intro"],
+    "part": "first",
+    "prompt": "Warehouse-scale computers are known for their high fault tolerance and redundancy features.",
+    "subStatements": [
+      {
+        "id": "CI20240710-e5-s1",
+        "statement": "Warehouse-scale computers are known for their high fault tolerance and redundancy features.",
+        "answer": true,
+        "motivation": "The Data Centers / WSC material describes a **warehouse-scale computer** as built from very large numbers of commodity servers where component failures are routine. WSCs are therefore engineered for fault tolerance — redundancy at the hardware level (power, network, replicated storage) and, crucially, in software (replication, distributed fault-tolerant services) — so the overall service stays up despite frequent individual failures. High fault tolerance/redundancy is indeed a hallmark — the statement is true."
+      }
+    ],
+    "solution": "See per-statement motivation. WSCs are designed for fault tolerance via hardware and software redundancy because failures are routine at scale — the statement is **True**.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20240710-e6",
+    "examId": "CI20240710",
+    "date": "2024-07-10",
+    "academicYear": "AA2324",
+    "exerciseNo": 6,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["storage-systems"],
+    "part": "second",
+    "prompt": "In-rack cooling involves placing cooling units between server racks.",
+    "subStatements": [
+      {
+        "id": "CI20240710-e6-s1",
+        "statement": "In-rack cooling involves placing cooling units between server racks.",
+        "answer": false,
+        "motivation": "The Building Infrastructures lecture distinguishes **in-rack** from **in-row** cooling. *In-rack* cooling adds an air-to-water heat exchanger **at the back of (inside) the rack itself**, cooling the hot exhaust right where it leaves the servers. Placing the cooling coils **between/adjacent to** the racks instead is **in-row** cooling. So the description 'between server racks' matches in-row, not in-rack — the statement is false."
+      }
+    ],
+    "solution": "See per-statement motivation. 'Between racks' describes in-row cooling; in-rack cooling sits at/inside the rack — the statement is **False**.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20240710-e7",
+    "examId": "CI20240710",
+    "date": "2024-07-10",
+    "academicYear": "AA2324",
+    "exerciseNo": 7,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["raid"],
+    "part": "second",
+    "prompt": "RAID 0 is best used for temporary data storage, such as caching, rather than long-term storage.",
+    "subStatements": [
+      {
+        "id": "CI20240710-e7-s1",
+        "statement": "RAID 0 is best used for temporary data storage, such as caching, rather than long-term storage.",
+        "answer": true,
+        "motivation": "From the RAID lecture, **RAID 0** is pure striping with **no redundancy**: it maximizes capacity and read/write performance but offers no fault tolerance, and its reliability is *worse* than a single disk (any one disk failure loses all data, MTTF divided by the number of disks). It is therefore appropriate for high-throughput, non-critical, reproducible/temporary data (scratch space, caches) and not for data that must survive — so it is best for temporary rather than long-term storage. The statement is true."
+      }
+    ],
+    "solution": "See per-statement motivation. RAID 0 has no redundancy (worse reliability than one disk), so it suits temporary/cache data, not durable long-term storage — the statement is **True**.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20240710-e8",
+    "examId": "CI20240710",
+    "date": "2024-07-10",
+    "academicYear": "AA2324",
+    "exerciseNo": 8,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["storage-systems"],
+    "part": "second",
+    "prompt": "Closed loop cooling systems are not suitable for high-density datacenters where heat dissipation is critical.",
+    "subStatements": [
+      {
+        "id": "CI20240710-e8-s1",
+        "statement": "Closed loop cooling systems are not suitable for high-density datacenters where heat dissipation is critical.",
+        "answer": false,
+        "motivation": "From the Building Infrastructures lecture, a **closed-loop** cooling system recirculates a controlled coolant (air or, especially, liquid in cold plates / loops) and rejects heat through a heat exchanger, giving stable, climate-independent and high heat-removal capacity. This is exactly what high-density racks (high-TDP GPUs/TPUs) need — closed-loop liquid cooling is the preferred solution there, whereas open-loop fresh-air cooling is limited by outside conditions. So closed-loop is *suitable* for high-density data centers; the statement is false."
+      }
+    ],
+    "solution": "See per-statement motivation. Closed-loop (especially liquid) cooling gives high, controlled heat removal and is well suited to high-density data centers — the statement is **False**.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20240710-e9",
+    "examId": "CI20240710",
+    "date": "2024-07-10",
+    "academicYear": "AA2324",
+    "exerciseNo": 9,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["virtualization", "cloud"],
+    "part": "second",
+    "prompt": "Hypervisors cannot be used to run virtual machines on cloud computing platforms.",
+    "subStatements": [
+      {
+        "id": "CI20240710-e9-s1",
+        "statement": "Hypervisors cannot be used to run virtual machines on cloud computing platforms.",
+        "answer": false,
+        "motivation": "The Virtualization lecture defines the **hypervisor (VMM)** as the layer that creates and runs virtual machines on physical hardware. Cloud IaaS is built directly on hypervisors (e.g. KVM, Xen, ESXi, Hyper-V): each tenant VM is scheduled and isolated by the provider's hypervisor. So hypervisors are precisely what run VMs on cloud platforms — the claim that they 'cannot' is false."
+      }
+    ],
+    "solution": "See per-statement motivation. Hypervisors are exactly the technology that runs VMs, including in cloud IaaS — the statement is **False**.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20240710-e10",
+    "examId": "CI20240710",
+    "date": "2024-07-10",
+    "academicYear": "AA2324",
+    "exerciseNo": 10,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["raid"],
+    "part": "second",
+    "prompt": "RAID 5 can suffer from a performance penalty during a rebuild (data recovery in faulty disk).",
+    "subStatements": [
+      {
+        "id": "CI20240710-e10-s1",
+        "statement": "RAID 5 can suffer from a performance penalty during a rebuild (data recovery in faulty disk).",
+        "answer": true,
+        "motivation": "From the RAID lecture, after a disk failure RAID 5 reconstructs the lost disk by reading the corresponding blocks from **all the surviving disks** and recomputing them from parity. This rebuild competes with normal I/O for the disks/controller, so the array runs in a **degraded** state with reduced performance (and higher latency) until the rebuild completes. Hence RAID 5 does suffer a performance penalty during rebuild — the statement is true."
+      }
+    ],
+    "solution": "See per-statement motivation. Rebuilding a failed disk in RAID 5 reads all surviving disks and recomputes parity, degrading performance until done — the statement is **True**.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20240710-e11",
+    "examId": "CI20240710",
+    "date": "2024-07-10",
+    "academicYear": "AA2324",
+    "exerciseNo": 11,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["storage-devices"],
+    "part": "first",
+    "prompt": "An HDD has: block size **4 KB**, average **seek time 3 ms**, **transfer time 0.5 ms** for a single block, and **negligible controller overhead**. The average **data locality is 75%**, and the average **I/O service time to transfer an 800 KB file is 400 ms**. What is the disk **rotation speed in RPM**?",
+    "solution": "**Method (HDD data-locality model from the lecture).** Per block the average service time is\n$$T_{block} = (1-DL)\\,(T_{seek}+T_{rot}) + T_{controller} + T_{transfer},$$\nwhere data locality $DL$ is the fraction of blocks found without seek/rotation, so seek+rotation affect only $(1-DL)$ of the accesses. The (average) rotational latency is **half a rotation**: $T_{rot} = \\tfrac12\\cdot\\dfrac{60\\,000}{RPM}$ ms.\n\n**Number of blocks** in the 800 KB file:\n$$n = \\frac{800\\,\\text{KB}}{4\\,\\text{KB}} = 200\\ \\text{blocks}$$\n\n**Per-block time** from the total:\n$$T_{block} = \\frac{400\\,\\text{ms}}{200} = 2\\,\\text{ms}$$\n\n**Solve for $T_{rot}$** ($DL=0.75$, $T_{seek}=3$, $T_{transfer}=0.5$, $T_{controller}=0$):\n$$2 = (1-0.75)(3 + T_{rot}) + 0 + 0.5$$\n$$1.5 = 0.25\\,(3 + T_{rot}) \\;\\Rightarrow\\; 6 = 3 + T_{rot} \\;\\Rightarrow\\; T_{rot} = 3\\,\\text{ms}$$\n\n**Convert the half-rotation latency to RPM:**\n$$T_{rot} = \\frac{1}{2}\\cdot\\frac{60\\,000}{RPM} = 3 \\;\\Rightarrow\\; RPM = \\frac{60\\,000}{2\\times 3}$$\n$$\\boxed{RPM = 10\\,000}$$",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20240710-e12",
+    "examId": "CI20240710",
+    "date": "2024-07-10",
+    "academicYear": "AA2324",
+    "exerciseNo": 12,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["raid"],
+    "part": "second",
+    "prompt": "Consider a **RAID 4** array of **8 disks**. What is the **minimum number of I/O operations** required to update **one block** of a single data disk (summed over the whole set of disks)?",
+    "solution": "**Method (small-write / read-modify-write in parity RAID).** To update a single data block, RAID 4 (like RAID 5) does not need to read the whole stripe. It uses the parity-by-subtraction trick: the new parity is\n$$P_{new} = P_{old} \\oplus D_{old} \\oplus D_{new}.$$\nSo the controller must:\n1. **Read** the old data block ($1$ read),\n2. **Read** the old parity block ($1$ read),\n3. **Write** the new data block ($1$ write),\n4. **Write** the new parity block ($1$ write).\n\n$$\\text{Total} = 2\\ \\text{reads} + 2\\ \\text{writes} = \\boxed{4\\ \\text{I/O operations}}$$\n\nThis is independent of the array width (8 disks here) because only the target data disk and the parity disk are touched.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20240710-e13",
+    "examId": "CI20240710",
+    "date": "2024-07-10",
+    "academicYear": "AA2324",
+    "exerciseNo": 13,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["dependability"],
+    "part": "first",
+    "prompt": "Three servers are offered for a scientific calculation. The choice depends on which server has the **highest probability of completing the calculation before failing**, once started.\n- Server A: completes in **400 h**, $MTTF = 1600$ h, $MTTR = 3$ h.\n- Server B: completes in **500 h**, $MTTF = 1750$ h, $MTTR = 4$ h.\n- Server C: completes in **600 h**, $MTTR = 5$ h.\n\nWhat is the **minimum $MTTF$ for Server C** so that it would be the one selected? Use at least 4 decimals in intermediate steps.",
+    "solution": "**Method.** The probability of finishing a calculation of duration $t$ before a failure is the reliability over that time, $R(t)=e^{-t/MTTF}$ (the calculation time, not MTTR, is what matters here). Server C is chosen if its $R$ is at least the best of A and B.\n\n**Reliability of A and B over their calculation times:**\n$$R_A = e^{-400/1600} = e^{-0.25} = 0.7788$$\n$$R_B = e^{-500/1750} = e^{-0.2857} = 0.7515$$\n\nThe target to beat is $\\max(R_A,R_B)=R_A=0.7788$.\n\n**Require $R_C \\ge R_A$** with $t_C=600$ h:\n$$e^{-600/MTTF_C} \\ge 0.7788$$\n$$-\\frac{600}{MTTF_C} \\ge \\ln(0.7788) = -0.25$$\n$$MTTF_C \\ge \\frac{600}{0.25}$$\n$$\\boxed{MTTF_C \\ge 2400\\ \\text{h}}$$",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20240710-e14",
+    "examId": "CI20240710",
+    "date": "2024-07-10",
+    "academicYear": "AA2324",
+    "exerciseNo": 14,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["networking"],
+    "part": "second",
+    "prompt": "Using a **two-tier leaf-spine** topology **without oversubscription**, with switches that all have **8 ports**, what is the **maximum number of servers** that can be connected?",
+    "solution": "**Method.** In a non-oversubscribed (full-bisection) leaf-spine fabric, each **leaf** switch splits its ports half **down** to servers and half **up** to spines, so downlink bandwidth equals uplink bandwidth.\n\nWith $p = 8$ ports per switch:\n- Each leaf uses $p/2 = 4$ ports **down** to servers and $p/2 = 4$ ports **up** to the spines.\n- Therefore there are $4$ spine switches (one uplink per leaf to each spine).\n- Each spine has $8$ ports, so it can connect $8$ leaves $\\Rightarrow$ the fabric has $8$ leaf switches.\n\n**Servers:**\n$$\\#\\text{servers} = (\\#\\text{leaves}) \\times \\frac{p}{2} = 8 \\times 4 = \\boxed{32}$$",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20240710-e15",
+    "examId": "CI20240710",
+    "date": "2024-07-10",
+    "academicYear": "AA2324",
+    "exerciseNo": 15,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["performance"],
+    "part": "second",
+    "prompt": "A system of two servers $S1$ and $S2$ working **in tandem** is modeled as an open queueing network. During **20 minutes** of monitoring: requests served at system level $C = 400$; requests served by $S1$ $C_{S1}=800$; requests served by $S2$ $C_{S2}=200$; busy time $B_{S1}=300\\,\\text{s}$; busy time $B_{S2}=900\\,\\text{s}$. Compute the **service demand** and **utilization** of each server ($D_{S1}, D_{S2}, U_{S1}, U_{S2}$).",
+    "solution": "**Method (operational laws).** Observation interval $T = 20\\,\\text{min} = 1200\\,\\text{s}$.\n- **Utilization Law:** $U_k = \\dfrac{B_k}{T}$.\n- **Service demand:** $D_k = \\dfrac{B_k}{C}$ (busy time per *system* completion). Equivalently $D_k = V_k S_k$ with visit ratio $V_k=C_k/C$.\n\n**Utilizations:**\n$$U_{S1} = \\frac{B_{S1}}{T} = \\frac{300}{1200} = \\boxed{0.25}$$\n$$U_{S2} = \\frac{B_{S2}}{T} = \\frac{900}{1200} = \\boxed{0.75}$$\n\n**Service demands** (per system request, $C=400$):\n$$D_{S1} = \\frac{B_{S1}}{C} = \\frac{300}{400} = \\boxed{0.75\\ \\text{s}}$$\n$$D_{S2} = \\frac{B_{S2}}{C} = \\frac{900}{400} = \\boxed{2.25\\ \\text{s}}$$",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20240710-e16",
+    "examId": "CI20240710",
+    "date": "2024-07-10",
+    "academicYear": "AA2324",
+    "exerciseNo": 16,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["performance"],
+    "part": "second",
+    "prompt": "For the tandem system of Question 15 ($D_{S1}=0.75\\,\\text{s}$, $D_{S2}=2.25\\,\\text{s}$), the incoming workload is expected to reach $\\lambda = 3\\,\\text{req/s}$. What is the **minimum number of instances** of each server type, $N_{S1}$ and $N_{S2}$, needed to keep each server's utilization **$\\le 60\\%$**? Assume added instances of a type split the visits evenly among them, and the per-server service time is unchanged.",
+    "solution": "**Method.** In an open model the per-server-type utilization is $U_k = \\lambda\\, D_k$ (Utilization Law with arrival rate $\\lambda$). Adding $N$ identical instances of a type splits its visits evenly, so each instance sees utilization $\\dfrac{\\lambda D_k}{N}$. Require $\\dfrac{\\lambda D_k}{N_k} \\le 0.6 \\Rightarrow N_k \\ge \\dfrac{\\lambda D_k}{0.6}$.\n\nWith $\\lambda = 3$ req/s:\n\n**Server S1:**\n$$N_{S1} \\ge \\frac{3 \\times 0.75}{0.6} = \\frac{2.25}{0.6} = 3.75 \\;\\Rightarrow\\; N_{S1} = \\lceil 3.75 \\rceil = \\boxed{4}$$\n\n**Server S2:**\n$$N_{S2} \\ge \\frac{3 \\times 2.25}{0.6} = \\frac{6.75}{0.6} = 11.25 \\;\\Rightarrow\\; N_{S2} = \\lceil 11.25 \\rceil = \\boxed{12}$$\n\n(With 4 copies of S1 each sees $U=2.25/4=0.5625\\le0.6$; with 12 copies of S2 each sees $U=6.75/12=0.5625\\le0.6$. Eleven S2 copies would give $0.6136>0.6$, so 12 is the minimum.)",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20240710-e17",
+    "examId": "CI20240710",
+    "date": "2024-07-10",
+    "academicYear": "AA2324",
+    "exerciseNo": 17,
+    "marks": 5,
+    "type": "theory-essay",
+    "topics": ["storage-devices"],
+    "part": "first",
+    "prompt": "\"SSD disks will replace HDDs in all the datacenters.\" Provide your opinion about this statement and comment with details and examples.",
+    "solution": "**Overall position: the statement is too absolute — SSDs are displacing HDDs for performance tiers, but HDDs remain the cost-effective choice for capacity/cold storage, so the two coexist in a tiered hierarchy rather than one fully replacing the other.**\n\n**Where SSDs win (and are replacing HDDs).** From the storage lectures, an SSD has **no mechanical parts**: no seek time, no rotational latency. This gives orders-of-magnitude lower latency, very high random IOPS, high throughput, lower power per I/O, and better shock resistance and density. For latency-sensitive and IOPS-heavy workloads — databases/OLTP, virtualization, caching tiers, boot/OS volumes, ML training data feeding GPUs/TPUs — SSDs (especially NVMe) are clearly superior, and there HDDs are indeed being phased out.\n\n**Where HDDs still win.** The decisive factor in a data center is **cost per GB and total capacity**: HDDs remain substantially cheaper per terabyte and ship at larger capacities for bulk data. For **cold / archival / capacity-tier** storage — backups, logs, media archives, big-data lakes, object storage where throughput-per-GB and \\$/GB dominate over latency — HDDs are still the economical choice. SSDs also have **limited write endurance** (finite program/erase cycles per cell, mitigated by wear leveling and over-provisioning), so write-heavy archival use can wear them out, and the highest-capacity SSDs carry a large price premium.\n\n**Examples / nuance.**\n- A typical data center uses **tiering**: hot data on NVMe/SSD, warm/cold data on HDD, with caching/auto-tiering moving data between them.\n- Hyperscalers keep enormous HDD fleets for object/cold storage precisely for \\$/GB, while putting metadata, indexes and hot blocks on flash.\n- Trends matter: as \\$/GB for flash keeps falling and QLC capacities rise, the SSD share grows over time, so the *direction* of the statement is right — but \"replace in **all** datacenters\" overstates it for the foreseeable future.\n\n**Conclusion.** I disagree with the absolute wording. SSDs are replacing HDDs in the **performance tier** and the gap is narrowing, but as long as HDDs offer a large \\$/GB advantage for capacity/cold storage they will remain in data centers alongside SSDs. The realistic outcome is a **tiered, hybrid** storage architecture, not wholesale replacement.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20240710-e18",
+    "examId": "CI20240710",
+    "date": "2024-07-10",
+    "academicYear": "AA2324",
+    "exerciseNo": 18,
+    "marks": 5,
+    "type": "theory-essay",
+    "topics": ["storage-systems", "dc-intro"],
+    "part": "second",
+    "prompt": "Rank and comment the most energy-consuming aspects (both IT and non-IT) in datacenters.",
+    "solution": "Data-center energy use is split between the **IT load** (the equipment doing useful work) and the **facility / non-IT overhead** (everything needed to power and cool it). The efficiency of this split is captured by the **PUE** (Power Usage Effectiveness) $= \\dfrac{\\text{Total facility power}}{\\text{IT equipment power}}$; an ideal PUE is 1.0, and well-run facilities reach ~1.1–1.2 while older ones were ~2.0.\n\n**Approximate ranking of the largest consumers:**\n\n1. **Servers / compute (IT) — the dominant share.** CPUs, and increasingly **GPUs/TPUs**, plus memory dominate the IT load; with deep-learning accelerators (hundreds of watts each) this is growing fast. This is the *useful* power and the denominator of PUE.\n2. **Cooling (non-IT) — the largest overhead.** Removing the heat produced by the IT load (CRAC/CRAH units, chillers, pumps, fans, cooling towers) is historically the biggest non-IT consumer, often comparable in magnitude to a large fraction of the IT load in inefficient facilities. Free-cooling, hot/cold-aisle containment and liquid cooling are used to cut it.\n3. **Power distribution & conversion losses (non-IT).** **UPS** systems, transformers, PDUs and AC/DC conversion all dissipate energy as heat; double-conversion UPS and multiple conversion stages add several percent of loss each.\n4. **Storage (IT).** Large HDD/SSD arrays consume significant power (spinning disks, controllers), though less per device than compute; at capacity scale it adds up.\n5. **Networking (IT).** Switches (TOR, aggregation, spine) and optics; a smaller but non-negligible and steadily rising share as fabrics get faster.\n6. **Lighting and miscellaneous facility loads (non-IT).** Lighting, security, office/monitoring — a small fraction.\n\n**Comments.**\n- **IT vs non-IT:** compute is the biggest single bucket, but the combined **non-IT overhead is dominated by cooling and power conversion**, which is exactly what PUE measures and what operators optimize first (e.g. raising inlet temperatures, free cooling in cool climates, efficient UPS).\n- Reducing the IT load itself (efficient servers, consolidation via virtualization, turning off idle machines, accelerator efficiency in FLOPS/W) lowers *both* the IT energy and, proportionally, the cooling and distribution energy needed to support it — so IT efficiency has a multiplied effect on total consumption.\n- The trend toward dense GPU/TPU clusters is shifting more of the budget into compute and pushing the adoption of **liquid cooling**, which improves cooling efficiency at high density.",
+    "solutionSource": "authored"
+  }
+]

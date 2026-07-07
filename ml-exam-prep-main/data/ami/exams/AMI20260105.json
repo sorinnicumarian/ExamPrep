@@ -1,0 +1,374 @@
+[
+  {
+    "id": "AMI20260105-e1",
+    "examId": "AMI20260105",
+    "date": "2026-01-05",
+    "academicYear": "AA2526",
+    "exerciseNo": 1,
+    "type": "multiple-choice",
+    "topics": [
+      "localization"
+    ],
+    "prompt": "Why is GPS generally unsuitable for indoor positioning systems?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "GPS needs a building map and a reference coordinate frame, which indoor sites rarely publish."
+      },
+      {
+        "label": "B",
+        "text": "GPS only updates positions at walking speed, which is too slow to track indoor movement."
+      },
+      {
+        "label": "C",
+        "text": "GPS relies on WiFi access points, which buildings do not always deploy throughout the interior of a site."
+      },
+      {
+        "label": "D",
+        "text": "The weak GPS signal is attenuated and scattered by roof, walls and objects, giving 5-10 m errors."
+      }
+    ],
+    "correctChoice": "D",
+    "solution": "**Concept.** GPS positions a receiver from satellite signals, but those signals are already weak when they reach the ground and depend on a clear sky view. Indoors, the building shell (roof, walls, furniture) attenuates and scatters them, so the receiver loses accuracy. This is why Indoor Positioning Systems were developed in the first place.\n\n**Why D is correct.** The slides state the GPS signal is weak indoors and is attenuated/scattered by indoor structures, giving an average error of roughly 5 to 10 meters, far too coarse for indoor needs (many tasks want sub-meter error).\n\n**Why the others are wrong.** A describes the IPS problem setup (map plus coordinate frame), not why GPS fails. B confuses slow indoor movement speed (a general indoor-vs-outdoor difference) with the GPS failure. C is false: GPS is satellite-based and does not need WiFi APs.\n\n**Takeaway.** GPS fails indoors because walls/roof attenuate and scatter its already weak signal.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260105-e2",
+    "examId": "AMI20260105",
+    "date": "2026-01-05",
+    "academicYear": "AA2526",
+    "exerciseNo": 2,
+    "type": "multiple-choice",
+    "topics": [
+      "localization"
+    ],
+    "prompt": "In the slides, indoor positioning is described as being most commonly framed as which kind of machine-learning problem?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "A regression problem, estimating the continuous (x, y) coordinates on the map."
+      },
+      {
+        "label": "B",
+        "text": "A classification problem, predicting which discrete room the entity occupies."
+      },
+      {
+        "label": "C",
+        "text": "A clustering problem, grouping positions whose RSSI vectors look similar."
+      },
+      {
+        "label": "D",
+        "text": "A reinforcement-learning problem, learning a policy that walks toward the target."
+      }
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** The job of an IPS is to output where an entity is on the building map at a given instant, i.e. continuous coordinates `(x, y)`. Predicting continuous numeric targets is the definition of regression, as opposed to predicting a discrete label (classification) or grouping unlabeled data (clustering).\n\n**Why A is correct.** The slides explicitly say IPS is usually framed as a regression problem, estimating the continuous `(x, y)` coordinates; ML fingerprinting models likewise treat position as a regression target.\n\n**Why the others are wrong.** B (classification) predicts a discrete room label, not the standard continuous goal. C (clustering) is unsupervised grouping, not the IPS formulation. D (reinforcement learning) belongs to appliance scheduling in smart energy, not localization.\n\n**Takeaway.** Estimating continuous `(x, y)` makes indoor localization a regression problem.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260105-e3",
+    "examId": "AMI20260105",
+    "date": "2026-01-05",
+    "academicYear": "AA2526",
+    "exerciseNo": 3,
+    "type": "multiple-choice",
+    "topics": [
+      "localization"
+    ],
+    "prompt": "According to the slides, what is the main advantage of Ultra WideBand (UWB) compared with WiFi and BLE for indoor localization?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "It is already built into nearly all personal devices, so no extra infrastructure is required."
+      },
+      {
+        "label": "B",
+        "text": "It resists interference and multipath, can penetrate obstacles, and reaches higher accuracy."
+      },
+      {
+        "label": "C",
+        "text": "It is cheaper and simpler to deploy than the WiFi or BLE alternatives in a building."
+      },
+      {
+        "label": "D",
+        "text": "Each tag computes its own absolute position, so no fixed anchors are required at all."
+      }
+    ],
+    "correctChoice": "B",
+    "solution": "**Concept.** UWB sends very short pulses spread over a large bandwidth at a low duty cycle. Spreading energy across a wide band makes the signal robust to interference and to multipath (echoes off walls), and the sharp pulses give precise timing, so UWB reaches the best accuracy among the radio technologies covered. The price is dedicated anchor hardware.\n\n**Why B is correct.** The slides list exactly these advantages over WiFi/BLE: less affected by interference and multipath, able to penetrate obstacles, and higher (sub-meter) accuracy.\n\n**Why the others are wrong.** A is the opposite of the slides: UWB is NOT yet standard in personal devices. C is false: a stated drawback is that UWB needs costly, complex infrastructure. D is false: UWB needs several fixed anchors at known positions communicating with the mobile tag.\n\n**Takeaway.** UWB trades costly infrastructure for the highest accuracy and strong multipath/interference resistance.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260105-e4",
+    "examId": "AMI20260105",
+    "date": "2026-01-05",
+    "academicYear": "AA2526",
+    "exerciseNo": 4,
+    "type": "multiple-choice",
+    "topics": [
+      "localization"
+    ],
+    "prompt": "RSSI values in the slides are expressed in decibels (dB) as negative numbers. What does an RSSI value closer to 0 indicate?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "A weaker received signal, since the receiver has moved farther from the antenna."
+      },
+      {
+        "label": "B",
+        "text": "An angle-of-arrival reading that has replaced the distance estimate for that antenna."
+      },
+      {
+        "label": "C",
+        "text": "A stronger received signal, since the receiver now sits closer to the antenna."
+      },
+      {
+        "label": "D",
+        "text": "A faulty reading, because a valid RSSI value can only ever be a positive number."
+      }
+    ],
+    "correctChoice": "C",
+    "solution": "**Concept.** RSSI is the received signal power, but expressed in decibels (dB) on a logarithmic scale. Received powers are tiny positive milliWatt values, and taking their log maps them to negative dB numbers. As you move away from the antenna, power drops, so the dB value becomes more negative; as you get closer, it climbs toward 0.\n\n**Why C is correct.** An RSSI closer to 0 means a larger power, i.e. a stronger signal, which usually means the receiver is nearer the antenna (the slide: \"the closer to 0 the strongest the signal\").\n\n**Why the others are wrong.** A reverses the scale: nearer 0 is stronger, not weaker. B refers to Angle of Arrival, which measures an angle, not signal strength. D is false: negative dB values are normal, not an error.\n\n**Takeaway.** On the negative dB scale, RSSI nearer 0 = stronger signal = closer receiver.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260105-e5",
+    "examId": "AMI20260105",
+    "date": "2026-01-05",
+    "academicYear": "AA2526",
+    "exerciseNo": 5,
+    "type": "multiple-choice",
+    "topics": [
+      "localization"
+    ],
+    "prompt": "How many independent RSSI/distance measurements does trilateration require to estimate a 2D position, and what is the technique called when more measurements are used?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Two values, each fixing a circle whose pair locates the subject; more is called triangulation."
+      },
+      {
+        "label": "B",
+        "text": "Four values, one per anchor; with fewer than four it falls back to dead reckoning here."
+      },
+      {
+        "label": "C",
+        "text": "One value placing the subject on a circle; with more values it is called fingerprinting."
+      },
+      {
+        "label": "D",
+        "text": "Three values, whose circles intersect at one point; more is called multilateration."
+      }
+    ],
+    "correctChoice": "D",
+    "solution": "**Concept.** Lateration turns each RSSI into an estimated distance to an antenna. One distance places you on a circle around that antenna; two circles intersect at two points; a third circle disambiguates to a single `(x, y)`. So three distances are needed in 2D. Using more than three measurements (which adds redundancy against noise) is called multilateration.\n\n**Why D is correct.** Trilateration needs three values, each defining a radius/circle whose intersection locates the subject; with more than three it becomes multilateration (the slide's exact terms).\n\n**Why the others are wrong.** A gives the wrong count and confuses lateration (distances) with triangulation (angles). B invents a four-anchor count, and dead reckoning is an inertial method, not lateration. C describes fingerprinting, a radio-map paradigm, not a lateration count.\n\n**Takeaway.** Three distances fix a 2D position (trilateration); more than three is multilateration.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260105-e6",
+    "examId": "AMI20260105",
+    "date": "2026-01-05",
+    "academicYear": "AA2526",
+    "exerciseNo": 6,
+    "type": "multiple-choice",
+    "topics": [
+      "localization"
+    ],
+    "prompt": "In RSSI fingerprinting, what exactly is collected and stored during the OFFLINE phase?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "A radio map: a set of <Position, Fingerprint> pairs measured at known positions."
+      },
+      {
+        "label": "B",
+        "text": "The unknown user's live RSSI readings, kept so they can be matched against the stored map later on."
+      },
+      {
+        "label": "C",
+        "text": "The angle of arrival from each anchor, recorded at every known position in the building site."
+      },
+      {
+        "label": "D",
+        "text": "A per-user inertial model of step length and heading, used to update positions over time."
+      }
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** Fingerprinting skips any distance model and instead memorizes how the radio environment looks at each spot. A `fingerprint` is the set of `<antenna ID, RSSI>` tuples measured at one position. The offline (training) phase walks the building collecting these at known coordinates; the online phase later matches a live reading against this stored map.\n\n**Why A is correct.** In the offline phase a person or robot moves through the environment, reports the true position, and records the fingerprint there; the stored result is the radio map, a set of `<Position, Fingerprint>` pairs.\n\n**Why the others are wrong.** B describes the online phase (matching the unknown user's reading), not what is stored offline. C refers to Angle of Arrival, a separate technique that fingerprinting does not record. D refers to dead reckoning, not fingerprinting.\n\n**Takeaway.** Offline fingerprinting builds a radio map of `<Position, Fingerprint>` pairs at known spots.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260105-e7",
+    "examId": "AMI20260105",
+    "date": "2026-01-05",
+    "academicYear": "AA2526",
+    "exerciseNo": 7,
+    "type": "multiple-choice",
+    "topics": [
+      "localization"
+    ],
+    "prompt": "Why are machine-learning models (e.g., k-Nearest Neighbor) often preferred over the naive nearest-fingerprint approach for fingerprinting?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Because they make the offline radio-map collection step entirely unnecessary before any inference."
+      },
+      {
+        "label": "B",
+        "text": "Because they turn the position estimate into an anchor clock-synchronization task instead of a lookup."
+      },
+      {
+        "label": "C",
+        "text": "Because a position's fingerprint shifts with noise, and ML tolerates that variability."
+      },
+      {
+        "label": "D",
+        "text": "Because they let a GPS receiver finally acquire its satellites from inside the building."
+      }
+    ],
+    "correctChoice": "C",
+    "solution": "**Concept.** The naive approach picks the single radio-map fingerprint with smallest Euclidean distance to the live reading. But the RSSI vector at one position is not stable: noise, environmental changes, and people moving around shift it. So the closest stored fingerprint may not correspond to the true location, and a brittle nearest-match fails.\n\n**Why C is correct.** Because fingerprints at a given position vary, ML models (kNN baseline, SVM, Random Forest, DNNs) generalize over that variability and are more robust than a single nearest-neighbor lookup, which is why the slides prefer them.\n\n**Why the others are wrong.** A is false: ML fingerprinting still needs the offline radio map to train. B is unrelated: clock synchronization belongs to ToA/TDoA, not fingerprinting. D is false: nothing here makes GPS work indoors.\n\n**Takeaway.** ML fingerprinting beats nearest-match because it tolerates the natural variability of RSSI fingerprints.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260105-e8",
+    "examId": "AMI20260105",
+    "date": "2026-01-05",
+    "academicYear": "AA2526",
+    "exerciseNo": 8,
+    "type": "multiple-choice",
+    "topics": [
+      "localization"
+    ],
+    "prompt": "What is the key difference between Channel State Information (CSI) and RSSI as features for indoor localization?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "CSI is a single scalar power value, while RSSI reports the phase and amplitude per subcarrier."
+      },
+      {
+        "label": "B",
+        "text": "CSI gives per-subcarrier amplitude and phase, more multipath-robust than scalar RSSI."
+      },
+      {
+        "label": "C",
+        "text": "CSI runs on any off-the-shelf receiver, whereas RSSI needs dedicated specialized radio hardware."
+      },
+      {
+        "label": "D",
+        "text": "CSI requires no transmitting access point, whereas RSSI always relies on one antenna."
+      }
+    ],
+    "correctChoice": "B",
+    "solution": "**Concept.** RSSI collapses a whole reception into one power number. WiFi instead sends data over many OFDM subcarriers (closely spaced frequencies), and Channel State Information (CSI) reports the amplitude and phase of each subcarrier. Because multipath affects each frequency differently, CSI exposes a rich per-frequency signature of the location that a single scalar cannot.\n\n**Why B is correct.** CSI captures phase and amplitude at multiple subcarrier frequencies, making it more robust to multipath than the single-value RSSI, exactly as the slides state.\n\n**Why the others are wrong.** A swaps them: RSSI is the scalar, CSI is per-subcarrier. C is the opposite of the slides: only a few off-the-shelf receivers can compute CSI. D is false: both need a transmitting antenna/AP.\n\n**Takeaway.** CSI = per-subcarrier amplitude+phase, richer and more multipath-robust than scalar RSSI.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260105-e9",
+    "examId": "AMI20260105",
+    "date": "2026-01-05",
+    "academicYear": "AA2526",
+    "exerciseNo": 9,
+    "type": "multiple-choice",
+    "topics": [
+      "localization"
+    ],
+    "prompt": "Time Difference of Arrival (TDoA) is presented as an improvement over Time of Arrival (ToA). What problem does TDoA specifically aim to remove?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The bias contributed by the clock of the mobile (receiver) device."
+      },
+      {
+        "label": "B",
+        "text": "The requirement that the positions of the anchors be known beforehand."
+      },
+      {
+        "label": "C",
+        "text": "The dependence of the wave speed on the material the signal crosses."
+      },
+      {
+        "label": "D",
+        "text": "The need for the anchors to stay synchronized with one another."
+      }
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** ToA multiplies a signal's absolute travel time by wave speed to get distance, but that needs the mobile's clock synchronized with the anchors, an unrealistic requirement, since any offset in the device clock biases every distance. TDoA instead uses the difference in arrival times between pairs of anchors. Subtracting two times cancels the common term, the mobile's clock offset, leaving usable hyperbolic constraints.\n\n**Why A is correct.** By working with time differences across antenna pairs, TDoA removes the bias from the mobile (receiver) device's clock.\n\n**Why the others are wrong.** B is false: like ToA, TDoA still needs known anchor positions for multilateration. C is false: wave speed still depends on the penetrated material. D is false: TDoA still requires the anchors to be synchronized with each other (its stated drawback).\n\n**Takeaway.** TDoA cancels the mobile's clock bias by using inter-anchor time differences.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260105-e10",
+    "examId": "AMI20260105",
+    "date": "2026-01-05",
+    "academicYear": "AA2526",
+    "exerciseNo": 10,
+    "type": "multiple-choice",
+    "topics": [
+      "localization"
+    ],
+    "prompt": "Why can dead reckoning (inertial-based localization) not be used alone over long periods?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Because it depends on an unobstructed Line of Sight to the anchors at all times."
+      },
+      {
+        "label": "B",
+        "text": "Because its inertial sensors function only outdoors, where GPS is there to seed them initially."
+      },
+      {
+        "label": "C",
+        "text": "Because it can output only absolute coordinates and never the relative displacements."
+      },
+      {
+        "label": "D",
+        "text": "Because its drift grows linearly with time, so even tiny initial errors build up over time."
+      }
+    ],
+    "correctChoice": "D",
+    "solution": "**Concept.** Dead reckoning uses inertial sensors (accelerometer + gyroscope) to estimate steps, stride length and heading, then adds those displacements onto a starting position obtained from another method (e.g., RSSI). Because each step estimate is noisy and errors are integrated, mistakes never cancel, they accumulate, so the position error (drift) grows steadily over time.\n\n**Why D is correct.** The slides state drift grows linearly with time, so even small initial errors accumulate significantly; hence dead reckoning is only safe for small displacements alongside another technique.\n\n**Why the others are wrong.** A is false: Line of Sight is a ToA/VLC concern, not inertial. B is false: inertial sensors work indoors but need an external reference to start. C is reversed: dead reckoning estimates displacements from a reference, not absolute coordinates on its own.\n\n**Takeaway.** Dead-reckoning drift grows linearly with time, so use it only for short displacements with another method.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260105-e11",
+    "examId": "AMI20260105",
+    "date": "2026-01-05",
+    "academicYear": "AA2526",
+    "exerciseNo": 11,
+    "type": "theory-essay",
+    "topics": [
+      "localization"
+    ],
+    "prompt": "RSSI-based indoor localization can follow two very different paradigms: distance/lateration approaches and fingerprinting.\n\n**(a)** Explain how a trilateration (lateration) approach estimates a position from RSSI, and describe why the slides argue that computing distance from RSSI is unreliable in indoor environments.\n\n**(b)** Describe the fingerprinting paradigm, clearly distinguishing its offline and online phases, and explain the rationale that makes fingerprinting work where naive distance estimation struggles.",
+    "solution": "**(a)** In a lateration approach, each RSSI value is first converted into an estimated distance from the corresponding antenna using a signal-propagation model (the RSSI at 1 meter, measuredPower, and an environmental factor N). Each distance defines a circle (radius) centred on the antenna; with three antennas, the intersection of the three circles identifies the (x, y) position. With more than three values this becomes multilateration. The slides argue this is unreliable because computing distance from RSSI is inaccurate independently of the technology: indoor signals suffer reflections off walls and furniture, attenuation from obstacles, interference, and dynamic conditions (people moving, doors opening). Accuracy further drops as distance increases, so the inferred radii are noisy and the intersection is imprecise.\n\n**(b)** Fingerprinting builds a radio map instead of relying on a propagation model. In the OFFLINE (training) phase, a person or robot moves through the environment, and at each known position (e.g., every meter) reports the true coordinates and collects a fingerprint, i.e. a set of <antenna ID, RSSI> tuples (optionally averaging several readings). The result is a radio map: a set of <Position, Fingerprint> pairs stored server-side. In the ONLINE phase, an unknown user collects current RSSI values; the system compares them against the radio map and infers the position from the closest matching fingerprint(s) (naive Euclidean distance, or more robustly kNN / ML regression). The rationale is that the combination of RSSI values from multiple antennas is characteristic of each location: it is unlikely that different positions produce identical signal vectors. Because the map captures the actual indoor signal patterns (including reflections and attenuation), it sidesteps the unreliable distance computation; ML models additionally tolerate the natural variability of fingerprints caused by noise and environmental changes.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260105-e12",
+    "examId": "AMI20260105",
+    "date": "2026-01-05",
+    "academicYear": "AA2526",
+    "exerciseNo": 12,
+    "type": "theory-essay",
+    "topics": [
+      "localization"
+    ],
+    "prompt": "Radio technologies for indoor positioning differ in cost, accuracy and infrastructure requirements.\n\n**(a)** Compare WiFi, BLE beacons and UWB as radio technologies for IPS, mentioning at least one advantage and one drawback of each as discussed in the slides.\n\n**(b)** Several IPS technologies are characterised along common dimensions. Pick three such characteristics (e.g., accuracy, coverage, update rate, latency) and explain what each means and why it matters when choosing an IPS for a given application.",
+    "solution": "**(a)** WiFi (802.11) is widely adopted and needs no ad-hoc infrastructure since many access points already exist; however, APs are deployed for communication rather than localization, so dedicated algorithms are needed and accuracy is limited. BLE beacons are small transmitters continuously broadcasting a UUID; they are more accurate than WiFi and consume less energy, but their deployment and maintenance is challenging (how many beacons, where, at what height, plus periodic battery replacement). UWB transmits short pulses over a large bandwidth with low duty cycle: it is less affected by interference and multipath, can penetrate obstacles, and is the most accurate (sub-meter, especially combined with Angle of Arrival); its drawbacks are costly and complex infrastructure and the fact that it is not yet a standard in personal devices.\n\n**(b)** Accuracy: the degree of conformance of the estimated position to the true value (often measured with RMSD if errors are normal, or average absolute deviation, which is more robust to outliers); it matters because many applications need errors below 1 meter. Coverage: the spatial extent where performance is guaranteed (local, scalable, or global); it matters when the area must grow or span an entire building, since only GPS gives global coverage. Update rate: the frequency at which positions are computed (periodic, on request, or on event); it matters for tasks like continuous indoor navigation that need frequent updates. System latency: the delay before the position is available (real-time, best-effort, or post-processing); it matters because navigation needs real-time response, whereas behavioural analysis may tolerate post-processing.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260105-e13",
+    "examId": "AMI20260105",
+    "date": "2026-01-05",
+    "academicYear": "AA2526",
+    "exerciseNo": 13,
+    "type": "theory-essay",
+    "topics": [
+      "localization"
+    ],
+    "prompt": "Beyond signal-strength methods, the course covers time/angle-based and non-radio approaches to indoor localization.\n\n**(a)** Explain the principles of Angle of Arrival (AoA), Time of Arrival (ToA/ToF) and Time Difference of Arrival (TDoA), and state a key requirement or drawback of each.\n\n**(b)** Describe two non-radio (alternative) IPS approaches from the slides (e.g., PIR sensors, computer vision, Visible Light Communication, dead reckoning), explaining how each estimates location and one limitation of each.",
+    "solution": "**(a)** Angle of Arrival (AoA): advanced anchors with directionally sensitive antennas measure the angle to the receiver; combining angles with distances via (multi)lateration achieves sub-meter accuracy, but it requires sophisticated and costly hardware. Time of Arrival / Time of Flight (ToA/ToF): measures the absolute travel time of the signal and multiplies it by wave speed to get distance; it requires precise clock synchronization between antennas and receiver and knowledge of anchor positions, and works well only in Line of Sight without obstacles (wave speed also depends on the penetrated material). Time Difference of Arrival (TDoA): an improvement over ToA that uses the difference in arrival times between pairs of antennas to remove the mobile device's clock bias, then applies multilateration using the known anchor positions; its drawback is that the anchors must be perfectly synchronized with each other.\n\n**(b)** Passive InfraRed (PIR): sensors detect human motion/proximity in an area without the user carrying a device, but they give only coarse-grained localization, need one sensor per area, and cannot track personalized locations with multiple people. Computer Vision: a mobile camera frames explicit or implicit markers to compute position (good for navigation, can be paired with dead reckoning), while a static camera passively localizes users (good for surveillance) but may be perceived as privacy-intrusive. Visible Light Communication (VLC): LEDs emit data and a light sensor on the receiver estimates position and direction of the emitters; its pro is the wide proliferation of LED lighting, but it requires Line of Sight. Dead reckoning: inertial sensors (accelerometer + gyroscope) estimate steps, stride length and heading to update a position obtained from an external reference, but drift grows linearly with time, so it cannot be used alone for long periods.",
+    "solutionSource": "authored"
+  }
+]

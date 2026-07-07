@@ -1,0 +1,370 @@
+[
+  {
+    "id": "CI20230615-e1",
+    "examId": "CI20230615",
+    "date": "2023-06-15",
+    "academicYear": "AA2223",
+    "exerciseNo": 1,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": [
+      "dc-intro"
+    ],
+    "part": "first",
+    "prompt": "Edge computing can improve the performance and reduce the latency of applications by reducing the distance data has to travel.",
+    "subStatements": [
+      {
+        "id": "CI20230615-e1-s1",
+        "statement": "Edge computing can improve the performance and reduce the latency of applications by reducing the distance data has to travel.",
+        "answer": true,
+        "motivation": "The cloud-edge continuum material defines edge computing as processing data close to where it is generated, instead of sending everything to a distant central cloud. Shortening the physical/network distance between data source and compute reduces round-trip time and network congestion, improving application performance and latency. This is exactly the rationale for the edge tier."
+      }
+    ],
+    "solution": "Answer key: **True** (box B). Edge computing shortens the data path to compute, cutting latency and network load — see the per-statement motivation.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230615-e2",
+    "examId": "CI20230615",
+    "date": "2023-06-15",
+    "academicYear": "AA2223",
+    "exerciseNo": 2,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": [
+      "dc-intro"
+    ],
+    "part": "first",
+    "prompt": "The Internet of Things (IoT) layer is part of the computing continuum.",
+    "subStatements": [
+      {
+        "id": "CI20230615-e2-s1",
+        "statement": "The Internet of Things (IoT) layer is part of the computing continuum.",
+        "answer": true,
+        "motivation": "The computing continuum spans from the cloud (core data centers) down through fog/edge nodes to the IoT/devices layer where data is produced. The IoT layer (sensors and end devices) is the lowest tier of this continuum, so it is indeed part of it."
+      }
+    ],
+    "solution": "Answer key: **True** (box B). The continuum runs cloud -> fog/edge -> IoT devices; the IoT layer is its bottom tier.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230615-e3",
+    "examId": "CI20230615",
+    "date": "2023-06-15",
+    "academicYear": "AA2223",
+    "exerciseNo": 3,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": [
+      "storage-systems"
+    ],
+    "part": "second",
+    "prompt": "NASs can provide high-speed, low-latency access to storage resources for applications that require fast access to data.",
+    "subStatements": [
+      {
+        "id": "CI20230615-e3-s1",
+        "statement": "NASs can provide high-speed, low-latency access to storage resources for applications that require fast access to data.",
+        "answer": false,
+        "motivation": "From the Storage Systems lecture, a **NAS (Network-Attached Storage)** serves files over a shared TCP/IP LAN using protocols such as NFS/SMB. Going through the general-purpose network and a file-level protocol adds overhead and latency, so NAS is convenient for shared file access but is **not** the high-speed, low-latency option. For fast, low-latency block access one uses DAS (local bus) or a SAN (dedicated block network). The statement is therefore false."
+      }
+    ],
+    "solution": "Answer key: **False** (box B). NAS is file-level access over a shared LAN — convenient but not the low-latency/high-speed choice (DAS/SAN are).",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230615-e4",
+    "examId": "CI20230615",
+    "date": "2023-06-15",
+    "academicYear": "AA2223",
+    "exerciseNo": 4,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": [
+      "storage-systems"
+    ],
+    "part": "second",
+    "prompt": "Cooling towers use cold water to remove heat and to function effectively.",
+    "subStatements": [
+      {
+        "id": "CI20230615-e4-s1",
+        "statement": "Cooling towers use cold water to remove heat and to function effectively.",
+        "answer": false,
+        "motivation": "The Building Infrastructures lecture describes a cooling tower as rejecting heat by **evaporative cooling**: warm water from the data-center loop is sprayed/trickled in the tower and a fraction evaporates, carrying heat away to the outside air. The tower works on **warm (hot) return water** — it is the device that cools that water down. Saying it 'uses cold water' inverts its operating principle, so the statement is false."
+      }
+    ],
+    "solution": "Answer key: **False** (box B). A cooling tower rejects heat from the *warm* return water via evaporation; it does not run on cold water.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230615-e5",
+    "examId": "CI20230615",
+    "date": "2023-06-15",
+    "academicYear": "AA2223",
+    "exerciseNo": 5,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": [
+      "dc-intro"
+    ],
+    "part": "first",
+    "prompt": "A PUE of 1.0 means that all of the power consumed by a data center is being used by the IT equipment.",
+    "subStatements": [
+      {
+        "id": "CI20230615-e5-s1",
+        "statement": "A PUE of 1.0 means that all of the power consumed by a data center is being used by the IT equipment.",
+        "answer": true,
+        "motivation": "PUE (Power Usage Effectiveness) is defined as total facility power divided by IT equipment power, $PUE = \\frac{P_{total}}{P_{IT}}$. $PUE = 1.0$ implies $P_{total} = P_{IT}$, i.e. the overhead (cooling, power distribution, lighting) is zero and 100% of the consumed power goes to the IT equipment. This is the ideal, unreachable lower bound, but the interpretation of the value is correct, so the statement is true."
+      }
+    ],
+    "solution": "Answer key: **True** (box A). $PUE = P_{total}/P_{IT}$; a value of 1.0 means $P_{total}=P_{IT}$, so all power is used by IT (ideal case).",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230615-e6",
+    "examId": "CI20230615",
+    "date": "2023-06-15",
+    "academicYear": "AA2223",
+    "exerciseNo": 6,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": [
+      "storage-systems"
+    ],
+    "part": "second",
+    "prompt": "DAS devices are typically shared by multiple servers.",
+    "subStatements": [
+      {
+        "id": "CI20230615-e6-s1",
+        "statement": "DAS devices are typically shared by multiple servers.",
+        "answer": false,
+        "motivation": "From the Storage Systems lecture, **DAS (Direct-Attached Storage)** is connected directly to a single host through a local bus (SATA/SAS/PCIe) with no intervening network. By definition it is dedicated to that one server and is **not** shared among multiple servers — sharing is the role of NAS (file) and SAN (block). The statement is false."
+      }
+    ],
+    "solution": "Answer key: **False** (box B). DAS is directly attached to one host and is not shared across servers; sharing is provided by NAS/SAN.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230615-e7",
+    "examId": "CI20230615",
+    "date": "2023-06-15",
+    "academicYear": "AA2223",
+    "exerciseNo": 7,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": [
+      "servers"
+    ],
+    "part": "first",
+    "prompt": "FPGAs are more power-efficient and offer higher performance compared to CPUs for certain types of workloads.",
+    "subStatements": [
+      {
+        "id": "CI20230615-e7-s1",
+        "statement": "FPGAs are more power-efficient and offer higher performance compared to CPUs for certain types of workloads.",
+        "answer": true,
+        "motivation": "Per the hardware-accelerators material, FPGAs are reconfigurable devices that implement a custom dataflow/circuit directly in hardware. For suitable workloads (e.g. streaming, fixed-function or low-latency tasks) they can deliver higher throughput per watt than a general-purpose CPU, which pays the overhead of instruction fetch/decode and a fixed datapath. The qualifier 'for certain types of workloads' makes the statement true."
+      }
+    ],
+    "solution": "Answer key: **True** (box A). For appropriate (custom-dataflow) workloads, FPGAs can beat CPUs in both performance and energy efficiency.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230615-e8",
+    "examId": "CI20230615",
+    "date": "2023-06-15",
+    "academicYear": "AA2223",
+    "exerciseNo": 8,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": [
+      "virtualization"
+    ],
+    "part": "second",
+    "prompt": "Full virtualization provides better performance than paravirtualization.",
+    "subStatements": [
+      {
+        "id": "CI20230615-e8-s1",
+        "statement": "Full virtualization provides better performance than paravirtualization.",
+        "answer": false,
+        "motivation": "The Virtualization lecture contrasts the two: in **full virtualization** the guest OS is unmodified and privileged/sensitive instructions must be trapped, emulated or binary-translated, which adds overhead. In **paravirtualization** the guest OS is modified to issue hypercalls directly to the hypervisor, avoiding much of that trap-and-emulate cost, so it is generally **faster**. Hence full virtualization is typically *not* better-performing than paravirtualization; the statement is false."
+      }
+    ],
+    "solution": "Answer key: **False** (box B). Paravirtualization (modified guest using hypercalls) usually outperforms full virtualization (trap-and-emulate / binary translation of an unmodified guest).",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230615-e9",
+    "examId": "CI20230615",
+    "date": "2023-06-15",
+    "academicYear": "AA2223",
+    "exerciseNo": 9,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": [
+      "storage-systems"
+    ],
+    "part": "second",
+    "prompt": "Closed loop cooling systems are not suitable for high-density datacenters where heat dissipation is critical.",
+    "subStatements": [
+      {
+        "id": "CI20230615-e9-s1",
+        "statement": "Closed loop cooling systems are not suitable for high-density datacenters where heat dissipation is critical.",
+        "answer": false,
+        "motivation": "The Building Infrastructures lecture presents the **closed-loop** topology as a controlled, recirculating coolant/air system (e.g. CRAC/CRAH with chillers, in-row or liquid loops) that is independent of outside conditions and can be engineered to remove very large heat loads precisely. It is exactly the approach used for **high-density** racks where heat dissipation is critical (open-loop/free-air cooling is the one that does not work in all climates). So claiming closed-loop is unsuitable there is false."
+      }
+    ],
+    "solution": "Answer key: **False** (box B). Closed-loop (recirculating, chiller/liquid-based) cooling is precisely what high-density data centers rely on for critical heat removal.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230615-e10",
+    "examId": "CI20230615",
+    "date": "2023-06-15",
+    "academicYear": "AA2223",
+    "exerciseNo": 10,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": [
+      "cloud"
+    ],
+    "part": "second",
+    "prompt": "Cloud architectures are designed to provide on-demand access to shared computing resources.",
+    "subStatements": [
+      {
+        "id": "CI20230615-e10-s1",
+        "statement": "Cloud architectures are designed to provide on-demand access to shared computing resources.",
+        "answer": true,
+        "motivation": "The Cloud Computing lecture adopts the NIST-style definition: cloud provides **on-demand self-service** access to a **shared pool** of configurable computing resources (compute, storage, network), with broad network access, rapid elasticity and measured (pay-per-use) service. On-demand access to shared resources is a defining essential characteristic, so the statement is true."
+      }
+    ],
+    "solution": "Answer key: **True** (box A). On-demand self-service over a shared, elastic resource pool is a core defining characteristic of cloud computing.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230615-e11",
+    "examId": "CI20230615",
+    "date": "2023-06-15",
+    "academicYear": "AA2223",
+    "exerciseNo": 11,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": [
+      "dependability"
+    ],
+    "part": "first",
+    "prompt": "The PoliMi data center has **two simultaneously active (redundant)** cooling distribution systems. Knowing that the availability of the cooling system should be **99.96%** and the MTTR of a single distribution system is **15 days**, what is the minimum **MTTF** needed to reach the required availability value? Use at least 4 decimal digits for all intermediate calculations.",
+    "solution": "**Method.** Two redundant active systems form a **parallel** block: the cooling works if at least one distribution system works, so the unavailability is the product of the two single-unit unavailabilities.\n\n**Step 1 - single-unit availability.** For two identical units in parallel:\n$$A_{sys} = 1-(1-a)^2 = 0.9996$$\n$$(1-a)^2 = 0.0004 \\;\\Rightarrow\\; 1-a = 0.02 \\;\\Rightarrow\\; a = 0.98$$\n\n**Step 2 - solve for MTTF.** A single unit has $a = \\dfrac{MTTF}{MTTF+MTTR}$ with $MTTR = 15$ days:\n$$0.98 = \\frac{MTTF}{MTTF+15}$$\n$$0.98\\,MTTF + 0.98\\times 15 = MTTF \\;\\Rightarrow\\; 0.02\\,MTTF = 14.7$$\n$$\\boxed{MTTF = 735\\ \\text{days}}$$\n\nThis matches the exam answer key (**735 days**).",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230615-e12",
+    "examId": "CI20230615",
+    "date": "2023-06-15",
+    "academicYear": "AA2223",
+    "exerciseNo": 12,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": [
+      "raid"
+    ],
+    "part": "second",
+    "prompt": "Consider a **RAID 4** configuration composed of an array with **10 disks**. What is the minimum number of I/O operations requested to **update one block of a single data disk** (considering the sum over the entire set of disks)?",
+    "solution": "**Method.** In RAID 4 (block-level striping with a **dedicated parity disk**) a small write triggers the classic **read-modify-write** of parity. To update one data block you do *not* need to read all the other data disks; using the incremental-parity formula\n$$P_{new} = P_{old} \\oplus D_{old} \\oplus D_{new}$$\nyou only touch the affected data block and the parity block.\n\n**Required operations:**\n1. **Read** the old data block ($D_{old}$).\n2. **Read** the old parity block ($P_{old}$).\n3. **Write** the new data block ($D_{new}$).\n4. **Write** the new parity block ($P_{new}$).\n\n$$\\boxed{4\\ \\text{I/O operations}}$$\n\nThe count is independent of the array size (the 10 disks are irrelevant), matching the exam answer key (**4 I/O ops**).",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230615-e13",
+    "examId": "CI20230615",
+    "date": "2023-06-15",
+    "academicYear": "AA2223",
+    "exerciseNo": 13,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": [
+      "performance"
+    ],
+    "part": "second",
+    "prompt": "A company evaluates the performance of its services. The system has two servers $Sv_1$ and $Sv_2$ and is modelled as an **open** queueing network. During **10-minute** monitoring the following measurements were obtained:\n- Requests served at system level: $C = 300$\n- Requests served by $Sv_1$: $C_{Sv1} = 600$\n- Requests served by $Sv_2$: $C_{Sv2} = 100$\n- Utilization $U_{Sv1} = 0.3333$\n- Utilization $U_{Sv2} = 0.250$\n\nWhat are the **busy times** $B_{Sv1}$ and $B_{Sv2}$?",
+    "solution": "**Method (Utilization Law).** The utilization of a resource is the fraction of the observation period $T$ during which it is busy: $U_k = \\dfrac{B_k}{T}$, so the busy time is $B_k = U_k \\cdot T$.\n\nObservation period: $T = 10\\ \\text{min} = 600\\ \\text{s}$.\n\n$$B_{Sv1} = U_{Sv1}\\cdot T = 0.3333 \\times 600 = \\boxed{200\\ \\text{s}}$$\n$$B_{Sv2} = U_{Sv2}\\cdot T = 0.250 \\times 600 = \\boxed{150\\ \\text{s}}$$\n\nMatches the exam answer key ($B_1 = 200$ s, $B_2 = 150$ s).",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230615-e14",
+    "examId": "CI20230615",
+    "date": "2023-06-15",
+    "academicYear": "AA2223",
+    "exerciseNo": 14,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": [
+      "performance"
+    ],
+    "part": "second",
+    "prompt": "For the system of Question 13 ($C = 300$, $B_{Sv1} = 200$ s, $B_{Sv2} = 150$ s over $T = 600$ s), what is the **service demand** for the two servers ($D_{Sv1}$ and $D_{Sv2}$)?",
+    "solution": "**Method (Service Demand Law).** The service demand of a resource is the total busy time of that resource per **completed system request**:\n$$D_k = \\frac{B_k}{C} = \\frac{U_k\\,T}{C}$$\nwhere $C = 300$ is the number of requests completed at the **system** level.\n\n$$D_{Sv1} = \\frac{B_{Sv1}}{C} = \\frac{200}{300} = 0.6\\overline{6} \\approx \\boxed{0.666\\ \\text{s}}$$\n$$D_{Sv2} = \\frac{B_{Sv2}}{C} = \\frac{150}{300} = \\boxed{0.5\\ \\text{s}}$$\n\nMatches the exam answer key ($D_1 = 0.666$ s, $D_2 = 0.5$ s).",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230615-e15",
+    "examId": "CI20230615",
+    "date": "2023-06-15",
+    "academicYear": "AA2223",
+    "exerciseNo": 15,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": [
+      "performance"
+    ],
+    "part": "second",
+    "prompt": "Consider now the **same** system as a **closed** model with think time $Z = 10$ s and the same demands ($D_{Sv1} = 0.666$ s, $D_{Sv2} = 0.5$ s). Using the **asymptotic bounds**, what are the system **throughput upper bound** and **response-time lower bound** for $N = 40$ users?",
+    "solution": "**Method (asymptotic bounds).** With $D = \\sum_k D_k$ and $D_{max} = \\max_k D_k$:\n$$X(N) \\le X_{max} = \\min\\!\\left(\\frac{1}{D_{max}},\\ \\frac{N}{D+Z}\\right),\\qquad R(N) \\ge R_{min} = \\max\\!\\big(D,\\ N\\,D_{max}-Z\\big)$$\n\n**Demands.** $D = 0.666 + 0.5 = 1.166$ s, $D_{max} = D_{Sv1} = 0.666$ s.\n\n**Throughput upper bound.**\n$$\\frac{1}{D_{max}} = \\frac{1}{0.666} \\approx 1.5\\ \\text{req/s},\\qquad \\frac{N}{D+Z} = \\frac{40}{1.166+10} = \\frac{40}{11.166} \\approx 3.58\\ \\text{req/s}$$\n$$X_{max} = \\min(1.5,\\ 3.58) = \\boxed{1.5\\ \\text{req/s}}$$\n\n**Response-time lower bound** (for $N = 40$ we are in the saturated region):\n$$N\\,D_{max} - Z = 40\\times 0.666 - 10 = 26.66 - 10 = 16.66\\ \\text{s}$$\n$$R_{min} = \\max(1.166,\\ 16.66) = \\boxed{16.66\\ \\text{s}}$$\n\nMatches the exam answer key ($X_{max} = 1.5$ req/s, $R_{min} = 16.66$ s).",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230615-e16",
+    "examId": "CI20230615",
+    "date": "2023-06-15",
+    "academicYear": "AA2223",
+    "exerciseNo": 16,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": [
+      "performance"
+    ],
+    "part": "second",
+    "prompt": "In the same system as Question 15 ($D_{Sv1} = 0.666$ s, $D_{Sv2} = 0.5$ s, $Z = 10$ s, $N = 40$), if you consider **two instances of $Sv_1$** (the $Sv_1$ workload is split evenly across the two copies), how do the **bounds** change?",
+    "solution": "**Method.** Duplicating $Sv_1$ and splitting its visits evenly halves its per-server demand: $D_{Sv1}' = 0.666/2 = 0.333$ s. The total per-job demand $D$ is unchanged ($2\\times 0.333 + 0.5 = 1.166$ s), but the bottleneck moves.\n\n**New $D_{max}$.** Demands are now $\\{0.333,\\ 0.333,\\ 0.5\\}$, so the new bottleneck is $Sv_2$ with $D_{max}' = 0.5$ s.\n\n**Throughput upper bound.**\n$$\\frac{1}{D_{max}'} = \\frac{1}{0.5} = 2\\ \\text{req/s},\\qquad \\frac{N}{D+Z} = \\frac{40}{1.166+10} \\approx 3.58\\ \\text{req/s}$$\n$$X_{max}' = \\min(2,\\ 3.58) = \\boxed{2\\ \\text{req/s}}$$\n\n**Response-time lower bound.**\n$$N\\,D_{max}' - Z = 40\\times 0.5 - 10 = 20 - 10 = 10\\ \\text{s}$$\n$$R_{min}' = \\max(1.166,\\ 10) = \\boxed{10\\ \\text{s}}$$\n\nSo duplicating $Sv_1$ raises the throughput bound from 1.5 to **2 req/s** and lowers the response-time bound from 16.66 to **10 s**. Matches the exam answer key ($X_{max} = 2$ req/s, $R_{min} = 10$ s).",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230615-e17",
+    "examId": "CI20230615",
+    "date": "2023-06-15",
+    "academicYear": "AA2223",
+    "exerciseNo": 17,
+    "marks": 5,
+    "type": "theory-essay",
+    "topics": [
+      "dependability"
+    ],
+    "part": "first",
+    "prompt": "Describe the concept of **fault, error, and failure** in the context of a computing system.",
+    "solution": "The Dependability lecture defines a **causal chain** fault -> error -> failure that describes how a defect propagates to a service problem.\n\n**Fault.** A fault is the **adjudged or hypothesized cause** of an error - the root defect. It can be a physical defect (e.g. a stuck bit, a worn-out disk cell, a broken wire), a design/software bug, or an external disturbance. Faults are classified along several axes (e.g. by phase of creation: development vs operational; by boundary: internal vs external; by persistence: **permanent vs transient/intermittent**). A fault may stay **dormant** (latent) until it is activated.\n\n**Error.** An error is the **deviation of the system's internal state** from the correct state, produced when a fault is **activated**. It is the manifestation of the fault inside the system (e.g. a wrong value stored in memory, an incorrect program variable). An error is still internal: it does not necessarily become visible. An error is **latent** until it is detected or propagates.\n\n**Failure.** A failure occurs when the error **propagates to the service interface** and causes the **delivered service to deviate from its specification** - i.e. the system no longer does what it should, as observed by the user/environment. Not every error leads to a failure: it may be masked, corrected, or never reach the output.\n\n**Causal chain and relevance.** The relationship is `fault --(activation)--> error --(propagation)--> failure`, and a failure of one component can in turn act as a fault for a larger system that uses it (failures propagate across the system hierarchy). Dependability techniques target each stage: **fault prevention/avoidance**, **fault tolerance** (detect and mask errors before they cause failures, e.g. redundancy/RAID/RBD), **fault removal** (testing/debugging) and **fault forecasting** (reliability/availability analysis). Understanding the distinction is what lets us reason about MTTF, redundancy and the reliability/availability of computing infrastructures.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20230615-e18",
+    "examId": "CI20230615",
+    "date": "2023-06-15",
+    "academicYear": "AA2223",
+    "exerciseNo": 18,
+    "marks": 5,
+    "type": "theory-essay",
+    "topics": [
+      "virtualization"
+    ],
+    "part": "second",
+    "prompt": "Discuss the main advantages of the **server consolidation** approach enabled by virtualization technology.",
+    "solution": "**Server consolidation** means running many workloads that previously occupied separate physical servers as multiple **virtual machines on a single physical host** (or far fewer hosts). The Virtualization lecture presents it as one of the primary motivations for virtualization. Its main advantages:\n\n**1. Higher resource utilization.** Stand-alone physical servers are typically very under-utilized (often 5-15% average CPU). Consolidating several VMs onto one host **packs complementary workloads together** and raises utilization toward useful levels, so the same work needs far less hardware.\n\n**2. Lower capital and operational cost (CAPEX/OPEX).** Fewer physical machines means lower hardware purchase cost, **less power and cooling**, less rack space and reduced maintenance/administration effort - a direct reduction in data-center TCO and a better PUE/energy footprint.\n\n**3. Isolation with sharing.** Each VM is **isolated** (its own OS, fault and security boundary) even though they share the same hardware, so co-locating workloads does not break the 'one application per server' isolation assumption. A crash or compromise in one VM does not affect the others.\n\n**4. Flexibility, elasticity and fast provisioning.** VMs are software: they can be **created, cloned and destroyed in minutes**, resized, and their resource allocation tuned on demand - enabling elasticity and rapid deployment without buying hardware.\n\n**5. Live migration and load balancing.** Because a VM is decoupled from the physical host, it can be **live-migrated** between hosts. This lets the operator rebalance load, evacuate a host for maintenance with no downtime, and dynamically re-consolidate VMs onto fewer hosts at low load (powering off idle servers to save energy).\n\n**6. Improved availability and easier management.** Snapshots, checkpointing and migration support **high availability and disaster recovery** (restart a VM elsewhere after a host failure), and a homogeneous virtualized fleet is easier to manage, patch and back up.\n\n**Trade-off (for completeness).** Consolidation introduces virtualization **overhead** and the risk of resource **contention / over-commitment** between co-located VMs, which must be managed - but for typical under-utilized workloads the consolidation benefits clearly dominate. This is the foundation on which cloud IaaS is built.",
+    "solutionSource": "authored"
+  }
+]

@@ -1,0 +1,308 @@
+[
+  {
+    "id": "CI20220902-e1",
+    "examId": "CI20220902",
+    "date": "2022-09-02",
+    "academicYear": "AA2223",
+    "exerciseNo": 1,
+    "marks": 2,
+    "type": "multiple-choice",
+    "topics": ["networking"],
+    "part": "second",
+    "prompt": "Which of the following is **not** a feature of a **fat tree** topology in a data center network architecture?",
+    "choices": [
+      { "label": "A", "text": "None of the others" },
+      { "label": "B", "text": "It has multiple connections to the core" },
+      { "label": "C", "text": "It has a recursive organization" },
+      { "label": "D", "text": "It has a three-tier model" }
+    ],
+    "correctChoice": "C",
+    "solution": "A **fat-tree** is a *hierarchical* topology built on the classic **three-tier** model (edge → aggregation → core, option D) with **multiple equal-cost paths up to the core** (option B) to provide full bisection bandwidth. It is **not** *recursively organised* — recursion is the hallmark of server-centric topologies like DCell/BCube. Therefore the feature that does **not** belong to a fat tree is **C** (recursive organization).",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20220902-e2",
+    "examId": "CI20220902",
+    "date": "2022-09-02",
+    "academicYear": "AA2223",
+    "exerciseNo": 2,
+    "marks": 2,
+    "type": "multiple-choice",
+    "topics": ["storage-devices"],
+    "part": "first",
+    "prompt": "In the context of SSDs, one of the following activities is **NOT** managed by the **Flash Translation Layer**:",
+    "choices": [
+      { "label": "A", "text": "Defragmentation" },
+      { "label": "B", "text": "Address Translation" },
+      { "label": "C", "text": "Garbage Collection" },
+      { "label": "D", "text": "Data Allocation" }
+    ],
+    "correctChoice": "A",
+    "solution": "The **Flash Translation Layer (FTL)** of an SSD hides the peculiarities of NAND flash from the host. Its responsibilities include **address translation** (mapping logical → physical pages, option B), **data allocation / placement** with **wear-leveling** (option D), and **garbage collection** (reclaiming invalid pages by erasing blocks, option C). **Defragmentation** is **not** an FTL task — it is a (host-side) HDD concept and is actually counter-productive on SSDs (which have no seek penalty and have limited write endurance). Hence the activity **not** managed by the FTL is **A** (Defragmentation).",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20220902-e3",
+    "examId": "CI20220902",
+    "date": "2022-09-02",
+    "academicYear": "AA2223",
+    "exerciseNo": 3,
+    "marks": 2,
+    "type": "multiple-choice",
+    "topics": ["virtualization"],
+    "part": "second",
+    "prompt": "A **System VM**:",
+    "choices": [
+      { "label": "A", "text": "Provides the interface to system ISA and user ISA" },
+      { "label": "B", "text": "Provides the interface to system ABI and the user ISA" },
+      { "label": "C", "text": "Provides the interface to system ABI and the user ABI" },
+      { "label": "D", "text": "Provides the interface to system calls and user ABI" }
+    ],
+    "correctChoice": "A",
+    "solution": "A **System Virtual Machine** virtualizes a complete machine and is implemented at the **ISA (Instruction Set Architecture)** level: it replicates the full hardware interface so that an entire guest OS can run on it. It therefore exposes both the **system-level ISA** (privileged instructions) and the **user-level ISA** (user instructions). A *Process VM*, by contrast, works at the **ABI** level (system calls + user instructions) to run a single application. Hence the System VM provides the interface to **system ISA and user ISA** — answer **A**.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20220902-e4",
+    "examId": "CI20220902",
+    "date": "2022-09-02",
+    "academicYear": "AA2223",
+    "exerciseNo": 4,
+    "marks": 2,
+    "type": "multiple-choice",
+    "topics": ["raid"],
+    "part": "second",
+    "prompt": "Consider an array of $N$ disks. Select the right order of the RAID levels in terms of **effective data storage in ascending order** (i.e. from the lower to the higher data storage availability).",
+    "choices": [
+      { "label": "A", "text": "RAID 1+0, RAID 6, RAID 5" },
+      { "label": "B", "text": "RAID 6, RAID 5, RAID 1+0" },
+      { "label": "C", "text": "None of the others" },
+      { "label": "D", "text": "RAID 1+0, RAID 5, RAID 6" }
+    ],
+    "correctChoice": "A",
+    "solution": "Effective (usable) data capacity per RAID level for $N$ disks:\n- **RAID 1+0** (mirroring + striping): only **half** the disks store unique data → usable $=N/2$ (lowest).\n- **RAID 6** (double distributed parity): usable $=N-2$ disks.\n- **RAID 5** (single distributed parity): usable $=N-1$ disks (highest of the three).\n\nFor a typical array ($N>4$): $\\dfrac{N}{2} < N-2 < N-1$, so ascending usable capacity is **RAID 1+0 → RAID 6 → RAID 5**, which is answer **A**.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20220902-e5",
+    "examId": "CI20220902",
+    "date": "2022-09-02",
+    "academicYear": "AA2223",
+    "exerciseNo": 5,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["dc-intro"],
+    "part": "first",
+    "prompt": "Warehouse-scale computers belong to a single organization, use a relatively homogeneous hardware and system software platform, and share a common systems management layer.",
+    "subStatements": [
+      {
+        "id": "CI20220902-e5-s1",
+        "statement": "Warehouse-scale computers belong to a single organization, use a relatively homogeneous hardware and system software platform, and share a common systems management layer.",
+        "answer": true,
+        "motivation": "True. These are exactly the defining traits of a **Warehouse-Scale Computer** as introduced in the course: it is owned/run by a **single organization**, built from **relatively homogeneous** hardware and a common system-software stack, and managed through a **common systems-management layer** — which is what lets thousands of servers be operated as one computer. (On the answer sheet the correct box was **B = True**.)"
+      }
+    ],
+    "solution": "See per-statement motivations.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20220902-e6",
+    "examId": "CI20220902",
+    "date": "2022-09-02",
+    "academicYear": "AA2223",
+    "exerciseNo": 6,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["dependability"],
+    "part": "first",
+    "prompt": "All faults occurring in a system cause a failure of the system.",
+    "subStatements": [
+      {
+        "id": "CI20220902-e6-s1",
+        "statement": "All faults occurring in a system cause a failure of the system.",
+        "answer": false,
+        "motivation": "False. In the **fault → error → failure** chain a fault only *potentially* leads to a failure. A fault may remain **dormant** (never activated) or be **masked/tolerated** by redundancy and fault-tolerance mechanisms, so it never propagates to an error nor to a service failure. Hence not every fault causes a failure. (On the answer sheet the correct box was **A = False**.)"
+      }
+    ],
+    "solution": "See per-statement motivations.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20220902-e7",
+    "examId": "CI20220902",
+    "date": "2022-09-02",
+    "academicYear": "AA2223",
+    "exerciseNo": 7,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["storage-devices"],
+    "part": "first",
+    "prompt": "In the context of SSDs, Pages are the smallest unit that can be erased.",
+    "subStatements": [
+      {
+        "id": "CI20220902-e7-s1",
+        "statement": "In the context of SSDs, Pages are the smallest unit that can be erased.",
+        "answer": false,
+        "motivation": "False. In NAND flash, the smallest unit that can be **read or written (programmed)** is a **page**, but the smallest unit that can be **erased** is a whole **block** (many pages). This asymmetry (write at page granularity, erase at block granularity) is precisely what forces garbage collection and wear-leveling. So pages are not the smallest erasable unit. (On the answer sheet the correct box was **B = False**.)"
+      }
+    ],
+    "solution": "See per-statement motivations.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20220902-e8",
+    "examId": "CI20220902",
+    "date": "2022-09-02",
+    "academicYear": "AA2223",
+    "exerciseNo": 8,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["servers"],
+    "part": "first",
+    "prompt": "Graphical Processing Units support data-parallel computation.",
+    "subStatements": [
+      {
+        "id": "CI20220902-e8-s1",
+        "statement": "Graphical Processing Units support data-parallel computation.",
+        "answer": true,
+        "motivation": "True. **GPUs** are massively parallel processors built from thousands of simple cores executing the **SIMD/SIMT** (data-parallel) model: the same operation is applied simultaneously to many data elements. This is exactly why they excel at graphics, matrix/tensor math and ML workloads. (On the answer sheet the correct box was **B = True**.)"
+      }
+    ],
+    "solution": "See per-statement motivations.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20220902-e9",
+    "examId": "CI20220902",
+    "date": "2022-09-02",
+    "academicYear": "AA2223",
+    "exerciseNo": 9,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["servers"],
+    "part": "first",
+    "prompt": "A deep neural-network cannot be trained on multiple Graphical Processing Units.",
+    "subStatements": [
+      {
+        "id": "CI20220902-e9-s1",
+        "statement": "A deep neural-network cannot be trained on multiple Graphical Processing Units.",
+        "answer": false,
+        "motivation": "False. Deep neural networks are routinely trained across **multiple GPUs** (and even multiple servers) using **data-parallel** and **model-parallel** strategies, with high-bandwidth interconnects such as NVLink linking the GPUs. Multi-GPU training is in fact the standard way to scale large DNNs. (On the answer sheet the correct box was **B = False**.)"
+      }
+    ],
+    "solution": "See per-statement motivations.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20220902-e10",
+    "examId": "CI20220902",
+    "date": "2022-09-02",
+    "academicYear": "AA2223",
+    "exerciseNo": 10,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["dependability"],
+    "part": "first",
+    "prompt": "You are in charge to design a computer system to do a long and extremely critical computation that takes **4 days** to run. The system is composed by **500 servers** and the computation is executed in parallel on all of them. **All the servers should be up and running**, otherwise the computation fails. Considering that we want to achieve a **reliability of 0.9 at $T=4$ days**, what should be the **MTTF** for a server to consider during the system procurement/acquisition phase?",
+    "solution": "Since the computation fails unless **every** server stays up for the whole run, from a reliability viewpoint the 500 servers are in **series**:\n$$R_{sys}(T)=\\big(R_{server}(T)\\big)^{500}\\ge 0.9$$\n\n**Required per-server reliability:**\n$$R_{server}(4)=0.9^{1/500}=e^{(\\ln 0.9)/500}=e^{-0.000210721}=0.999789301$$\n\n**Convert to MTTF** (exponential model $R=e^{-T/MTTF}$):\n$$MTTF=\\frac{-T}{\\ln R_{server}}=\\frac{-4}{\\ln(0.999789301)}=\\frac{-4}{-0.000210743}=18982.4\\,\\text{days}$$\n\nSo each server must have a reliability at least this high, i.e. an $MTTF$ **greater than** about $1.90\\times10^{4}$ days.\n\n**FINAL RESULT:** $MTTF > \\mathbf{18982\\ days}\\ (\\approx 52\\ \\text{years})$.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20220902-e11",
+    "examId": "CI20220902",
+    "date": "2022-09-02",
+    "academicYear": "AA2223",
+    "exerciseNo": 11,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["dependability"],
+    "part": "first",
+    "prompt": "The analysis of the failure behavior of a three-component system (A, B and C) reveals that the system is **down when both B and C are down, or A is down**. The three components have the following characteristics: $MTTF_A=80\\,\\text{days}$, $MTTR_A=1\\,\\text{day}$, $MTTF_B=12\\,\\text{days}$, $MTTR_B=12\\,\\text{hour}$, $MTTF_C=120\\,\\text{days}$, $MTTR_C=2\\,\\text{days}$. What is the **average availability** of the system?",
+    "solution": "**Reliability structure.** The system is down if \"(B AND C down) OR (A down)\"; equivalently it is **up** iff *A is up* **AND** *(B is up OR C is up)*. So **A is in series** with the **parallel block (B ∥ C)**.\n\n**Component availabilities** $A=\\dfrac{MTTF}{MTTF+MTTR}$ (with $MTTR_B=12\\,\\text{h}=0.5\\,\\text{day}$):\n$$A_A=\\frac{80}{80+1}=0.987654,\\quad A_B=\\frac{12}{12+0.5}=0.960000,\\quad A_C=\\frac{120}{120+2}=0.983607$$\n\n**Parallel block (B ∥ C):**\n$$A_{BC}=1-(1-A_B)(1-A_C)=1-(0.040000)(0.016393)=1-0.000656=0.999344$$\n\n**System (A in series with B∥C):**\n$$A_{sys}=A_A\\cdot A_{BC}=0.987654\\times0.999344=0.986806$$\n\n**FINAL RESULT:** $A_{sys}\\approx\\mathbf{0.9870\\ (98.70\\%)}$.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20220902-e12",
+    "examId": "CI20220902",
+    "date": "2022-09-02",
+    "academicYear": "AA2223",
+    "exerciseNo": 12,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["storage-devices"],
+    "part": "first",
+    "prompt": "Consider an HDD with **4 KB** block size, a rotation speed of **10000 RPM**, **0.5 ms** transfer time of 1 block, and a negligible controller overhead. Knowing that the average transfer time for a file of **800 KB** is **880 ms**, and the average **locality is 60%**, what is the **average seek time** of the disk?",
+    "solution": "The file has $\\dfrac{800\\,\\text{KB}}{4\\,\\text{KB}}=200$ blocks. Per block:\n$$T_{block}=(1-L)\\,(T_{seek}+T_{rot})+T_{transfer},\\qquad T_{file}=N_{blocks}\\cdot T_{block}.$$\n\n**Rotational latency** (half a revolution at 10000 RPM):\n$$T_{rot}=\\frac{1}{2}\\cdot\\frac{60}{10000}\\,\\text{s}=\\frac{1}{2}\\cdot 6\\,\\text{ms}=3\\,\\text{ms}$$\n\n**Solve for $T_{seek}$** with $T_{file}=880$ ms, $N_{blocks}=200$, $L=0.60$, $T_{transfer}=0.5$ ms:\n$$\\frac{880}{200}=4.4=(0.4)(T_{seek}+3)+0.5$$\n$$4.4-0.5=3.9=0.4\\,(T_{seek}+3)\\;\\Rightarrow\\;T_{seek}+3=9.75\\;\\Rightarrow\\;T_{seek}=6.75\\,\\text{ms}$$\n\n**FINAL RESULT:** average seek time $=\\mathbf{6.75\\ ms}$.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20220902-e13",
+    "examId": "CI20220902",
+    "date": "2022-09-02",
+    "academicYear": "AA2223",
+    "exerciseNo": 13,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["raid"],
+    "part": "second",
+    "prompt": "A **RAID 4** system uses **eight 2 TB disks** to store data and the required parity bits. Each disk has a Sequential Access Speed (throughput) of **50 MB/s** and a Random Access Speed (throughput) of **5 MB/s**. What is the expected throughput of the RAID 4 considering a **random read** pattern?",
+    "solution": "In **RAID 4** parity is concentrated on **one dedicated parity disk**; the other disks hold data. With 8 disks total there are $8-1=7$ **data disks**.\n\nFor a **read** workload the parity disk is **not** involved, so all data disks can serve reads **in parallel**. For a **random** read pattern each data disk delivers its **random** access throughput (5 MB/s), and these add up across the data disks:\n$$X_{random\\;read}=(N-1)\\times \\text{Random Access Speed}=7\\times 5\\,\\text{MB/s}=35\\,\\text{MB/s}$$\n\n**FINAL RESULT:** expected RAID 4 random-read throughput $=\\mathbf{35\\ MB/s}$.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20220902-e14",
+    "examId": "CI20220902",
+    "date": "2022-09-02",
+    "academicYear": "AA2223",
+    "exerciseNo": 14,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["performance"],
+    "part": "second",
+    "prompt": "A company wants to evaluate the performance of its services. The system comprises two servers S1 and S2, initially modeled as an **open queueing network**. During **60-minute** monitoring the following measurements were obtained: System Throughput $X_{Sys}=1.2\\,\\text{req/s}$; Busy time $B_{S1}=450\\,\\text{s}$; Throughput $X_{S1}=0.6\\,\\text{req/s}$; Busy time $B_{S2}=900\\,\\text{s}$; Throughput $X_{S2}=2.4\\,\\text{req/s}$. What is the **service demand** for S1 and S2 ($D_{S1}$ and $D_{S2}$)?",
+    "solution": "The **service demand** at a resource is the total service time it requires per *system* request. By the Service-Demand Law it equals the resource utilization divided by the system throughput, i.e. the busy time divided by the number of **system** completions:\n$$D_k=\\frac{U_k}{X_{Sys}}=\\frac{B_k/T}{X_{Sys}}=\\frac{B_k}{X_{Sys}\\cdot T}=\\frac{B_k}{C_{Sys}}$$\n\n**Total system completions** over $T=60\\,\\text{min}=3600\\,\\text{s}$:\n$$C_{Sys}=X_{Sys}\\cdot T=1.2\\times 3600=4320\\ \\text{requests}$$\n\n**Service demands:**\n$$D_{S1}=\\frac{B_{S1}}{C_{Sys}}=\\frac{450}{4320}=0.104\\,\\text{s},\\qquad D_{S2}=\\frac{B_{S2}}{C_{Sys}}=\\frac{900}{4320}=0.208\\,\\text{s}$$\n\n**FINAL RESULT:** $D_{S1}\\approx\\mathbf{0.104\\ s}$ and $D_{S2}\\approx\\mathbf{0.208\\ s}$.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20220902-e15",
+    "examId": "CI20220902",
+    "date": "2022-09-02",
+    "academicYear": "AA2223",
+    "exerciseNo": 15,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["performance"],
+    "part": "second",
+    "prompt": "Considering the system described in the previous question, what is the **number of visits** for S1 and S2 ($V_{S1}$ and $V_{S2}$)?",
+    "solution": "By the **Forced Flow Law**, the visit ratio of a resource is its throughput divided by the system throughput:\n$$V_k=\\frac{X_k}{X_{Sys}}$$\n\n**Substitute** $X_{Sys}=1.2\\,\\text{req/s}$:\n$$V_{S1}=\\frac{0.6}{1.2}=0.5,\\qquad V_{S2}=\\frac{2.4}{1.2}=2$$\n\n(Consistency check with the Service Demand Law $D_k=V_k\\cdot S_k$: $S_{S1}=D_{S1}/V_{S1}=0.104/0.5=0.208\\,\\text{s}$, $S_{S2}=0.208/2=0.104\\,\\text{s}$ — both plausible.)\n\n**FINAL RESULT:** $V_{S1}=\\mathbf{0.5}$ and $V_{S2}=\\mathbf{2}$.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20220902-e16",
+    "examId": "CI20220902",
+    "date": "2022-09-02",
+    "academicYear": "AA2223",
+    "exerciseNo": 16,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["performance"],
+    "part": "second",
+    "prompt": "Considering now the same system as a **closed model** with a think time $Z=6\\,\\text{s}$, and the same values for the demands $D_{S1}$ and $D_{S2}$ calculated for the open model. In the context of the **asymptotic bounds**, what is the value of $N^*$ after which the bound saturates (remains constant)?",
+    "solution": "In closed-model **asymptotic bounds**, the throughput bound switches from the *light-load* line to the *saturation* line at the **saturation point**:\n$$N^*=\\frac{D+Z}{D_{max}}$$\nwhere $D=\\sum_k D_k$ is the total service demand and $D_{max}=\\max_k D_k$ is the demand of the **bottleneck** resource.\n\n**Values** (from the previous questions): $D_{S1}=0.104\\,\\text{s}$, $D_{S2}=0.208\\,\\text{s}$, so\n$$D=D_{S1}+D_{S2}=0.3125\\,\\text{s},\\qquad D_{max}=D_{S2}=0.208\\overline{3}\\,\\text{s},\\qquad Z=6\\,\\text{s}$$\n\n$$N^*=\\frac{0.3125+6}{0.208\\overline{3}}=\\frac{6.3125}{0.208\\overline{3}}=30.3$$\n\n**FINAL RESULT:** $N^*\\approx\\mathbf{30.3}$ (beyond about 30 users the throughput bound saturates at $1/D_{max}$).",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20220902-e17",
+    "examId": "CI20220902",
+    "date": "2022-09-02",
+    "academicYear": "AA2223",
+    "exerciseNo": 17,
+    "marks": 5,
+    "type": "theory-essay",
+    "topics": ["cloud", "dc-intro"],
+    "part": "second",
+    "prompt": "Could you briefly explain the reason why in recent years we also saw a growing interest in the concept of **fog/edge computing**?",
+    "solution": "**Fog/edge computing** pushes part of the computation, storage and networking **away from the centralized cloud datacenter and closer to where data is produced and consumed** (sensors, devices, gateways, base stations). Interest in it has grown for several converging reasons:\n\n- **Latency.** Many modern applications (autonomous driving, industrial control, AR/VR, real-time analytics) need **very low, predictable response times**. Sending every request to a distant cloud adds round-trip delay; processing at the edge meets tight latency/real-time requirements.\n- **Explosion of IoT data / bandwidth.** The number of connected **IoT devices** has exploded, generating huge volumes of data. Sending all of it to the cloud would **saturate network bandwidth** and is costly; filtering/aggregating/processing data locally drastically reduces the traffic that must travel to the core.\n- **Scalability.** Offloading work to many distributed edge nodes relieves pressure on the centralized datacenter and lets the system scale with the number of devices.\n- **Privacy, security and data sovereignty.** Keeping **sensitive data local** (processed at the edge instead of shipped to a third-party cloud) helps satisfy privacy regulations and reduces exposure.\n- **Reliability / availability and intermittent connectivity.** Edge nodes can keep operating and provide service even when the **connection to the cloud is slow or temporarily unavailable**, improving robustness.\n- **Energy / cost.** Reducing long-haul data transfer and offloading from constrained end-devices can lower communication energy and operating cost.\n\nIn short, the **continuum** from cloud to edge emerged because the purely centralized cloud model could not satisfy the **latency, bandwidth, scalability, privacy and reliability** demands of the rapidly growing IoT / real-time workloads, so computation is increasingly placed near the data source while the cloud still handles heavy, non-latency-critical processing.",
+    "solutionSource": "authored"
+  }
+]

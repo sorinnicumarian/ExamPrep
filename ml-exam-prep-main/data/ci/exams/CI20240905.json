@@ -1,0 +1,334 @@
+[
+  {
+    "id": "CI20240905-e1",
+    "examId": "CI20240905",
+    "date": "2024-09-05",
+    "academicYear": "AA2324",
+    "exerciseNo": 1,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["dc-intro"],
+    "part": "first",
+    "prompt": "Warehouse-scale computers are primarily used in small businesses with limited computing needs.",
+    "subStatements": [
+      {
+        "id": "CI20240905-e1-s1",
+        "statement": "Warehouse-scale computers are primarily used in small businesses with limited computing needs.",
+        "answer": false,
+        "motivation": "The Data Center / WSC lecture defines a Warehouse-Scale Computer as a massive facility (thousands of servers, MW of power) built to run a few very large internet-scale services (search, mail, cloud). It is the opposite of a small-business deployment: WSCs target huge, homogeneous workloads at hyperscale. The statement is False."
+      }
+    ],
+    "solution": "See per-statement motivation. WSCs are hyperscale facilities for very large workloads, not small businesses — the statement is **False**.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20240905-e2",
+    "examId": "CI20240905",
+    "date": "2024-09-05",
+    "academicYear": "AA2324",
+    "exerciseNo": 2,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["servers"],
+    "part": "first",
+    "prompt": "Given their efficiency, accelerators like GPUs and TPUs have no impact on the cooling requirements of datacenters.",
+    "subStatements": [
+      {
+        "id": "CI20240905-e2-s1",
+        "statement": "Given their efficiency, accelerators like GPUs and TPUs have no impact on the cooling requirements of datacenters.",
+        "answer": false,
+        "motivation": "GPUs and TPUs have very high thermal design power (hundreds of W each) and are packed densely, which dramatically raises the per-rack heat load. As covered in the Servers / Building Infrastructures material, high-TDP accelerators are a primary driver of advanced cooling (often liquid cooling). They strongly increase cooling requirements, so the statement is False."
+      }
+    ],
+    "solution": "See per-statement motivation. High-TDP accelerators raise rack power density and cooling demand — the statement is **False**.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20240905-e3",
+    "examId": "CI20240905",
+    "date": "2024-09-05",
+    "academicYear": "AA2324",
+    "exerciseNo": 3,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["virtualization"],
+    "part": "second",
+    "prompt": "Hypervisors can only be used to run virtual machines with the same amount of memory as the physical machine on which they are hosted.",
+    "subStatements": [
+      {
+        "id": "CI20240905-e3-s1",
+        "statement": "Hypervisors can only be used to run virtual machines with the same amount of memory as the physical machine on which they are hosted.",
+        "answer": false,
+        "motivation": "The Virtualization lecture explains that the hypervisor virtualizes and partitions physical resources: each VM is allocated a configurable slice of memory, and through memory overcommit / ballooning the sum of VM memory can even exceed the host's physical RAM. VMs do not have to match the host's memory size — the statement is False."
+      }
+    ],
+    "solution": "See per-statement motivation. Hypervisors allocate configurable (and overcommittable) memory per VM, not a fixed host-equal amount — the statement is **False**.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20240905-e4",
+    "examId": "CI20240905",
+    "date": "2024-09-05",
+    "academicYear": "AA2324",
+    "exerciseNo": 4,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["networking"],
+    "part": "second",
+    "prompt": "Leaf-spine topologies are not suitable for highly virtualized environments with a large number of virtual machines.",
+    "subStatements": [
+      {
+        "id": "CI20240905-e4-s1",
+        "statement": "Leaf-spine topologies are not suitable for highly virtualized environments with a large number of virtual machines.",
+        "answer": false,
+        "motivation": "The Datacenter Networking lecture presents leaf-spine (a 2-tier Clos / fat-tree) as the modern topology that provides high, non-blocking bisection bandwidth and predictable low latency for any-to-any (east-west) traffic. Highly virtualized environments generate exactly this east-west VM-to-VM traffic, so leaf-spine is well suited to them. The statement is False."
+      }
+    ],
+    "solution": "See per-statement motivation. Leaf-spine gives high east-west bandwidth ideal for VM-heavy environments — the statement is **False**.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20240905-e5",
+    "examId": "CI20240905",
+    "date": "2024-09-05",
+    "academicYear": "AA2324",
+    "exerciseNo": 5,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["servers"],
+    "part": "first",
+    "prompt": "GPUs in datacenters are primarily used for accelerating graphics rendering and video processing tasks.",
+    "subStatements": [
+      {
+        "id": "CI20240905-e5-s1",
+        "statement": "GPUs in datacenters are primarily used for accelerating graphics rendering and video processing tasks.",
+        "answer": false,
+        "motivation": "Per the Servers / HW-accelerators material, although GPUs originated for graphics, in data centers they are used primarily as general-purpose parallel accelerators (GPGPU) for deep-learning training/inference and HPC — massive matrix/vector computation. Graphics rendering is a minor use compared to AI/HPC. The statement is False."
+      }
+    ],
+    "solution": "See per-statement motivation. Datacenter GPUs are mainly AI/HPC accelerators, not graphics engines — the statement is **False**.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20240905-e6",
+    "examId": "CI20240905",
+    "date": "2024-09-05",
+    "academicYear": "AA2324",
+    "exerciseNo": 6,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["raid"],
+    "part": "second",
+    "prompt": "RAID 10 provides better random write performance than RAID 6.",
+    "subStatements": [
+      {
+        "id": "CI20240905-e6-s1",
+        "statement": "RAID 10 provides better random write performance than RAID 6.",
+        "answer": true,
+        "motivation": "From the RAID lecture, RAID 10 (stripe of mirrors) writes each block to its mirror with no parity, so a small random write costs 2 physical writes. RAID 6 uses two independent parity blocks (P and Q), so each small random write incurs a heavy read-modify-write penalty (read old data + two parities, write new data + two parities ~6 I/Os). Hence RAID 10 clearly has better random-write performance. The statement is True."
+      }
+    ],
+    "solution": "See per-statement motivation. RAID 10 avoids the double-parity read-modify-write penalty of RAID 6, giving better random writes — the statement is **True**.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20240905-e7",
+    "examId": "CI20240905",
+    "date": "2024-09-05",
+    "academicYear": "AA2324",
+    "exerciseNo": 7,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["virtualization"],
+    "part": "second",
+    "prompt": "Virtualization can reduce costs by enabling the sharing of hardware resources between virtual machines.",
+    "subStatements": [
+      {
+        "id": "CI20240905-e7-s1",
+        "statement": "Virtualization can reduce costs by enabling the sharing of hardware resources between virtual machines.",
+        "answer": true,
+        "motivation": "The Virtualization lecture lists server consolidation as a key benefit: multiple VMs share one physical server's CPU, memory and I/O, raising utilization and cutting the number of physical machines, with savings on hardware, power, cooling and space. So virtualization does reduce costs through resource sharing — the statement is True."
+      }
+    ],
+    "solution": "See per-statement motivation. Consolidating many VMs onto shared hardware lowers cost — the statement is **True**.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20240905-e8",
+    "examId": "CI20240905",
+    "date": "2024-09-05",
+    "academicYear": "AA2324",
+    "exerciseNo": 8,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["raid"],
+    "part": "second",
+    "prompt": "RAID architectures are used to substitute regular backups.",
+    "subStatements": [
+      {
+        "id": "CI20240905-e8-s1",
+        "statement": "RAID architectures are used to substitute regular backups.",
+        "answer": false,
+        "motivation": "The RAID lecture stresses that RAID provides redundancy against disk hardware failure and improved performance, but it does NOT protect against logical data loss (accidental deletion, corruption, ransomware, controller errors) that is written across all disks. Backups protect against those, so RAID complements but does not replace regular backups. The statement is False."
+      }
+    ],
+    "solution": "See per-statement motivation. RAID guards against disk failure, not logical data loss; it does not replace backups — the statement is **False**.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20240905-e9",
+    "examId": "CI20240905",
+    "date": "2024-09-05",
+    "academicYear": "AA2324",
+    "exerciseNo": 9,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["storage-systems"],
+    "part": "second",
+    "prompt": "A UPS provides backup power to equipment during a power outage.",
+    "subStatements": [
+      {
+        "id": "CI20240905-e9-s1",
+        "statement": "A UPS provides backup power to equipment during a power outage.",
+        "answer": true,
+        "motivation": "The Building Infrastructures lecture describes the UPS (Uninterruptible Power Supply) as the battery/flywheel system that instantly supplies power when the utility fails, bridging the gap until the diesel generators start. Providing backup power during an outage is exactly its purpose — the statement is True."
+      }
+    ],
+    "solution": "See per-statement motivation. A UPS bridges power during an outage until generators take over — the statement is **True**.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20240905-e10",
+    "examId": "CI20240905",
+    "date": "2024-09-05",
+    "academicYear": "AA2324",
+    "exerciseNo": 10,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["storage-systems"],
+    "part": "second",
+    "prompt": "Cooling towers are not suitable for high-density datacenters.",
+    "subStatements": [
+      {
+        "id": "CI20240905-e10-s1",
+        "statement": "Cooling towers are not suitable for high-density datacenters.",
+        "answer": false,
+        "motivation": "The Building Infrastructures lecture covers water-based cooling with cooling towers (closed-loop with chillers / evaporative towers) as an efficient way to reject large heat loads. High-density data centers in fact rely on such water/tower-based cooling (and liquid cooling) precisely because air alone is insufficient. Cooling towers are therefore suitable — indeed common — for high-density facilities. The statement is False."
+      }
+    ],
+    "solution": "See per-statement motivation. Cooling towers (water-based heat rejection) are well suited to the high heat loads of dense data centers — the statement is **False**.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20240905-e11",
+    "examId": "CI20240905",
+    "date": "2024-09-05",
+    "academicYear": "AA2324",
+    "exerciseNo": 11,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["dependability"],
+    "part": "first",
+    "prompt": "A monitoring system for a rack is composed of **2 hardware sensors** ($M_{HW}$), **all necessary** to extract the per-blade usage information. Each sensor has $MTTF = 27$ days and $MTTR = 1$ day. The system is then updated to add a **purely software** system ($M_{SW}$) able to extract the **same** usage information, with availability $Av_{SW} = 96\\%$. Compute the availability of the whole blade-usage monitoring system $M_{HW} + M_{SW}$. Use at least 5 decimal digits.",
+    "solution": "**Method (steady-state availability + RBD).** A single repairable component has availability $A = \\dfrac{MTTF}{MTTF + MTTR}$. Components all needed combine in **series** (multiply); redundant alternatives combine in **parallel** ($1-\\prod(1-A_i)$).\n\n**Single HW sensor:**\n$$A_{sensor} = \\frac{27}{27+1} = \\frac{27}{28} = 0.96429$$\n\n**HW subsystem** — both sensors necessary, so series:\n$$A_{HW} = A_{sensor}^2 = 0.96429^2 = 0.92985$$\n\n**Whole system** — the SW system can extract the *same* information, so $M_{HW}$ and $M_{SW}$ are **redundant (parallel)**: the system works if HW **or** SW works:\n$$A_{sys} = 1 - (1-A_{HW})(1-A_{SW}) = 1 - (1-0.92985)(1-0.96)$$\n$$= 1 - (0.07015)(0.04) = 1 - 0.00281$$\n$$\\boxed{A_{sys} \\approx 0.99719\\ (\\approx 99.719\\%)}$$",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20240905-e12",
+    "examId": "CI20240905",
+    "date": "2024-09-05",
+    "academicYear": "AA2324",
+    "exerciseNo": 12,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["dependability"],
+    "part": "first",
+    "prompt": "A temperature sensor monitors a critical environment. The sensor has $MTTF = 4000$ hours. The company replaces it with a **redundant version consisting of two sensors** (each like the original). What is the overall **reliability of the monitoring system after 2000 hours**? Use at least 4 decimal digits.",
+    "solution": "**Method.** Exponential reliability $R(t) = e^{-t/MTTF}$. A redundant pair where **either** sensor suffices is a **parallel / 1-of-2** block: $R_{par} = 1 - (1-R)^2$.\n\n**Single sensor at $t = 2000$ h:**\n$$R(2000) = e^{-2000/4000} = e^{-0.5} = 0.6065$$\n\n**Two sensors in parallel (1-of-2):**\n$$R_{sys} = 1 - (1 - 0.6065)^2 = 1 - (0.3935)^2 = 1 - 0.1548$$\n$$\\boxed{R_{sys}(2000\\,\\text{h}) \\approx 0.8452\\ (\\approx 84.52\\%)}$$",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20240905-e13",
+    "examId": "CI20240905",
+    "date": "2024-09-05",
+    "academicYear": "AA2324",
+    "exerciseNo": 13,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["raid"],
+    "part": "second",
+    "prompt": "Consider a **RAID 1+0** setup of **6 disks**, each with $MTTF = 410$ days and $MTTR = 2$ days, using a **single mirror** (mirror depth 2) for the RAID 1 part. What is the **MTTF of the storage infrastructure**?",
+    "solution": "**Method (RAID 1+0 MTTF).** With $N$ total disks arranged as mirrored pairs (mirror depth 2, single mirror), the array fails (data loss) only when both disks of *some* mirror are down. Following the exercise-PDF derivation, the failure rate is $\\lambda_{R1+0} = \\dfrac{N}{MTTF}\\cdot\\dfrac{MTTR}{MTTF}$, giving\n$$MTTF_{R1+0} = \\frac{MTTF^2}{N \\cdot MTTR}$$\n\n**Substitute** $MTTF = 410$ days, $MTTR = 2$ days, $N = 6$:\n$$MTTF_{R1+0} = \\frac{410^2}{6 \\times 2} = \\frac{168100}{12}$$\n$$\\boxed{MTTF_{R1+0} \\approx 14008\\ \\text{days}}$$",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20240905-e14",
+    "examId": "CI20240905",
+    "date": "2024-09-05",
+    "academicYear": "AA2324",
+    "exerciseNo": 14,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["performance"],
+    "part": "second",
+    "prompt": "Capacity planning for an application cluster modeled as a **closed** system: $N = 30$ users, think time $Z = 10$ s. Compare two options:\n- **(1)** 10 servers, **each** with service demand $D_{10} = 10$ s (the load is balanced across the 10 identical servers).\n- **(2)** a single server **10× faster**, with service demand $D_1 = 0.1$ s.\n\nCompute the **lower bound on response time** for both scenarios.",
+    "solution": "**Method (closed-model asymptotic R lower bound).** $R(N) \\ge \\max\\!\\big(D,\\; N\\,D_{max} - Z\\big)$, where $D$ is the total service demand of a job and $D_{max}$ is the largest per-server demand (the bottleneck).\n\n**Scenario (1) — 10 servers, balanced.** A job needs $D = 10$ s of work, but the 10 identical servers process requests in parallel, so the per-server (bottleneck) demand is $D_{max} = D/10 = 10/10 = 1$ s.\n$$R_{low}^{(1)} = \\max(10,\\; 30 \\times 1 - 10) = \\max(10, 20) = \\boxed{20\\ \\text{s}}$$\n\n**Scenario (2) — single 10× faster server.** $D = D_{max} = 0.1$ s.\n$$R_{low}^{(2)} = \\max(0.1,\\; 30 \\times 0.1 - 10) = \\max(0.1,\\, -7) = \\boxed{0.1\\ \\text{s}}$$\n\nThe single fast server has a far lower response-time bound (0.1 s vs 20 s).",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20240905-e15",
+    "examId": "CI20240905",
+    "date": "2024-09-05",
+    "academicYear": "AA2324",
+    "exerciseNo": 15,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["performance"],
+    "part": "second",
+    "prompt": "For the system of Question 14 ($N = 30$, $Z = 10$ s; scenario 1: 10 servers with $D_{max} = 1$ s, $D = 10$ s; scenario 2: single server $D = D_{max} = 0.1$ s), compute the **upper bound on throughput** for both scenarios.",
+    "solution": "**Method (closed-model asymptotic X upper bound).** $X(N) \\le \\min\\!\\Big(\\dfrac{1}{D_{max}},\\; \\dfrac{N}{D+Z}\\Big)$.\n\n**Scenario (1):** $D_{max} = 1$ s, $D = 10$ s.\n$$X \\le \\min\\!\\Big(\\frac{1}{1},\\ \\frac{30}{10+10}\\Big) = \\min(1,\\ 1.5) = \\boxed{1\\ \\text{req/s}}$$\n\n**Scenario (2):** $D_{max} = 0.1$ s, $D = 0.1$ s.\n$$X \\le \\min\\!\\Big(\\frac{1}{0.1},\\ \\frac{30}{0.1+10}\\Big) = \\min(10,\\ 2.9703) = \\boxed{\\approx 2.97\\ \\text{req/s}}$$\n\nThe single fast server also wins on throughput bound (≈2.97 vs 1 req/s).",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20240905-e16",
+    "examId": "CI20240905",
+    "date": "2024-09-05",
+    "academicYear": "AA2324",
+    "exerciseNo": 16,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["performance"],
+    "part": "second",
+    "prompt": "For the system of Question 14, compute the number of users $N^*$ that determines whether the system should be analyzed with the **light-load** or the **heavy-load** optimistic bound, for both scenarios.",
+    "solution": "**Method.** The crossover population is $N^* = \\dfrac{D + Z}{D_{max}}$. For $N < N^*$ the light-load optimistic bound $\\big(X = N/(D+Z)\\big)$ applies; for $N > N^*$ the heavy-load bound $\\big(X = 1/D_{max}\\big)$ applies.\n\n**Scenario (1):** $D = 10$ s, $Z = 10$ s, $D_{max} = 1$ s.\n$$N^* = \\frac{10 + 10}{1} = \\boxed{20}$$\n\n**Scenario (2):** $D = 0.1$ s, $Z = 10$ s, $D_{max} = 0.1$ s.\n$$N^* = \\frac{0.1 + 10}{0.1} = \\boxed{101}$$",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20240905-e17",
+    "examId": "CI20240905",
+    "date": "2024-09-05",
+    "academicYear": "AA2324",
+    "exerciseNo": 17,
+    "marks": 5,
+    "type": "theory-essay",
+    "topics": ["storage-systems"],
+    "part": "second",
+    "prompt": "Describe the characteristics, advantages and disadvantages of **Direct Attached Storage (DAS)**, **Network Attached Storage (NAS)** and **Storage Area Networks (SAN)**.",
+    "solution": "The three architectures differ in *how* storage is attached to servers and *at which level* (block vs file) it is accessed.\n\n**DAS — Direct Attached Storage.**\n- *Characteristics:* storage (disks) connected **directly** to a single host through a local bus/interface (SATA, SAS, SCSI, PCIe/NVMe); accessed at **block level**; no network between host and disks.\n- *Advantages:* simplest and cheapest; lowest latency and high local throughput; no networking overhead.\n- *Disadvantages:* storage is **captive** to one server (no sharing); poor scalability; capacity can be stranded; management is per-server (islands of storage).\n\n**NAS — Network Attached Storage.**\n- *Characteristics:* a dedicated **file-server appliance** attached to the LAN; clients access it over the network at **file level** using protocols such as **NFS** or **SMB/CIFS**; has its own OS managing the file system.\n- *Advantages:* easy **file sharing** among many clients; centralized management, backup and access control; uses the existing Ethernet/IP LAN, so it is relatively cheap and simple to deploy.\n- *Disadvantages:* shares the general-purpose LAN, so performance depends on network load and protocol overhead; higher latency than block access; can become a bottleneck for very I/O-intensive or database workloads.\n\n**SAN — Storage Area Network.**\n- *Characteristics:* a **dedicated high-speed network** (Fibre Channel, FCoE, or iSCSI) connecting servers to shared storage arrays, providing **block-level** access; to the server a SAN volume appears as a local disk (LUN).\n- *Advantages:* high performance and low latency at block level; highly **scalable** and consolidated; supports shared storage for clustering, live migration, centralized snapshots/replication; decouples storage growth from servers.\n- *Disadvantages:* most **expensive and complex** (dedicated fabric, HBAs, switches, specialized skills); Fibre Channel infrastructure is costly to build and manage.\n\n**Summary:** DAS = block, directly attached, cheap but not shared; NAS = file-level sharing over the LAN, simple but network-bound; SAN = block-level over a dedicated fabric, the highest-performance and most scalable but the most costly and complex.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20240905-e18",
+    "examId": "CI20240905",
+    "date": "2024-09-05",
+    "academicYear": "AA2324",
+    "exerciseNo": 18,
+    "marks": 5,
+    "type": "theory-essay",
+    "topics": ["cloud"],
+    "part": "second",
+    "prompt": "Describe, comment and contextualize the **four main types of Clouds** (deployment models).",
+    "solution": "The Cloud Computing lecture distinguishes four **deployment models**, defined by *who owns/operates* the infrastructure and *who can use* it.\n\n**1. Public Cloud.**\n- Infrastructure owned and operated by a third-party provider (AWS, Azure, GCP) and offered to the general public over the Internet, with multi-tenancy and pay-per-use.\n- *Pros:* no capital expense, elastic on-demand scaling, no maintenance burden. *Cons:* less control, possible compliance/data-sovereignty concerns, shared (multi-tenant) resources.\n\n**2. Private Cloud.**\n- Cloud infrastructure dedicated to a **single organization**, on-premises or hosted, managed internally or by a third party.\n- *Pros:* maximum control, security, customization, easier regulatory compliance. *Cons:* high CapEx, the organization must size, run and maintain it; limited elasticity compared to public cloud.\n\n**3. Hybrid Cloud.**\n- A combination of private and public clouds, kept distinct but integrated so data/applications can move between them.\n- *Pros:* keep sensitive workloads private while **bursting** peak demand to the public cloud (cloud bursting); balances control and elasticity. *Cons:* integration and orchestration complexity, networking/security across two environments.\n\n**4. Community Cloud.**\n- Infrastructure **shared by several organizations** with common concerns (e.g. same regulatory, security or mission requirements), managed by them or a third party.\n- *Pros:* shared cost among the community while meeting common policy/compliance needs. *Cons:* governance must be agreed among members; less ubiquitous than public cloud.\n\n**Context:** these deployment models are orthogonal to the *service* models (IaaS/PaaS/SaaS). The choice is driven by trade-offs among cost, control, security/compliance and the need for elastic scaling: startups and bursty workloads favor public; regulated enterprises favor private; many real organizations end up hybrid; sectors with shared requirements (e.g. government, healthcare) use community clouds.",
+    "solutionSource": "authored"
+  }
+]

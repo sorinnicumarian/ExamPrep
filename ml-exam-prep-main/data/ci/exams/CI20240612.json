@@ -1,0 +1,374 @@
+[
+  {
+    "id": "CI20240612-e1",
+    "examId": "CI20240612",
+    "date": "2024-06-12",
+    "academicYear": "AA2324",
+    "exerciseNo": 1,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": [
+      "virtualization"
+    ],
+    "part": "second",
+    "prompt": "True/False: Virtualization can reduce costs by enabling the sharing of hardware resources between virtual machines.",
+    "subStatements": [
+      {
+        "id": "CI20240612-e1-s1",
+        "statement": "Virtualization can reduce costs by enabling the sharing of hardware resources between virtual machines.",
+        "answer": true,
+        "motivation": "**True.** One of the key properties of virtualization is **partitioning**: multiple OSes/VMs run on a single physical machine and the hardware resources (CPU, memory, I/O) are partitioned and shared among them (Virtualization lecture). This consolidation increases hardware utilization and reduces the number of physical servers needed, lowering capital and operating costs — exactly the property that enabled cloud computing."
+      }
+    ],
+    "solution": "See per-statement motivation.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20240612-e2",
+    "examId": "CI20240612",
+    "date": "2024-06-12",
+    "academicYear": "AA2324",
+    "exerciseNo": 2,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": [
+      "storage-systems",
+      "dc-intro"
+    ],
+    "part": "second",
+    "prompt": "True/False: In-row cooling systems allow for higher server densities and increased rack power densities in datacenters.",
+    "subStatements": [
+      {
+        "id": "CI20240612-e2-s1",
+        "statement": "In-row cooling systems allow for higher server densities and increased rack power densities in datacenters.",
+        "answer": true,
+        "motivation": "**True.** In-row cooling places cooling coils (air-to-water heat exchangers) immediately adjacent to the racks, drastically shortening the path between server exhaust and the cooling unit (Building Infrastructures lecture, In-rack/In-row cooling). By removing heat right where it is produced, in-row cooling can dissipate much more heat per rack than traditional room-level (CRAC) cooling, which is exactly what enables higher server densities and higher rack power densities."
+      }
+    ],
+    "solution": "See per-statement motivation.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20240612-e3",
+    "examId": "CI20240612",
+    "date": "2024-06-12",
+    "academicYear": "AA2324",
+    "exerciseNo": 3,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": [
+      "raid"
+    ],
+    "part": "second",
+    "prompt": "True/False: RAID 6 offers better random and sequential write performance than RAID 5.",
+    "subStatements": [
+      {
+        "id": "CI20240612-e3-s1",
+        "statement": "RAID 6 offers better random and sequential write performance than RAID 5.",
+        "answer": false,
+        "motivation": "**False.** RAID 6 maintains **two** independent parity blocks (P and Q) per stripe, whereas RAID 5 keeps a **single** parity block (RAID lecture). Each write in RAID 6 therefore requires computing and updating two parities instead of one, adding more read-modify-write overhead per write operation. Consequently RAID 6 has **worse** write performance than RAID 5 (it trades write performance for the ability to tolerate two simultaneous disk failures). So RAID 6 does NOT offer better write performance."
+      }
+    ],
+    "solution": "See per-statement motivation.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20240612-e4",
+    "examId": "CI20240612",
+    "date": "2024-06-12",
+    "academicYear": "AA2324",
+    "exerciseNo": 4,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": [
+      "dc-intro"
+    ],
+    "part": "first",
+    "prompt": "True/False: The computing continuum refers to the idea that computing devices exist on a spectrum, from small, low-power devices to large, high-performance machines.",
+    "subStatements": [
+      {
+        "id": "CI20240612-e4-s1",
+        "statement": "The computing continuum refers to the idea that computing devices exist on a spectrum, from small, low-power devices to large, high-performance machines.",
+        "answer": true,
+        "motivation": "**True.** The computing continuum (edge–fog–cloud continuum) describes how computing resources span a continuous spectrum: from tiny low-power edge/IoT devices, through intermediate fog nodes, up to large high-performance datacenter/cloud machines (Intro / Computing Infrastructures lecture). Workloads are placed along this continuum trading off latency, power, and compute capability."
+      }
+    ],
+    "solution": "See per-statement motivation.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20240612-e5",
+    "examId": "CI20240612",
+    "date": "2024-06-12",
+    "academicYear": "AA2324",
+    "exerciseNo": 5,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": [
+      "storage-systems",
+      "dc-intro"
+    ],
+    "part": "second",
+    "prompt": "True/False: In-row cooling involves placing cooling units between server racks.",
+    "subStatements": [
+      {
+        "id": "CI20240612-e5-s1",
+        "statement": "In-row cooling involves placing cooling units between server racks.",
+        "answer": true,
+        "motivation": "**True.** In-row cooling works like in-rack cooling except that the cooling coils are not inside the rack but **adjacent to the rack**, i.e., placed in the row between the server racks (Building Infrastructures lecture). The cooling units sit in-line with the racks so that hot exhaust air is captured and cooled close to its source."
+      }
+    ],
+    "solution": "See per-statement motivation.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20240612-e6",
+    "examId": "CI20240612",
+    "date": "2024-06-12",
+    "academicYear": "AA2324",
+    "exerciseNo": 6,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": [
+      "virtualization"
+    ],
+    "part": "second",
+    "prompt": "True/False: Full virtualization can run on a wider range of hardware than paravirtualization.",
+    "subStatements": [
+      {
+        "id": "CI20240612-e6-s1",
+        "statement": "Full virtualization can run on a wider range of hardware than paravirtualization.",
+        "answer": false,
+        "motivation": "**False.** Full virtualization provides a complete simulation of the underlying hardware and traps/emulates protected instructions; the lecture explicitly lists as a **con** that it is **\"not on every architecture (requires some hardware support)\"**. Paravirtualization instead modifies the guest OS so it cooperates with the VMM through hypercalls, which does not require special hardware virtualization extensions. Hence paravirtualization can run on a wider range of hardware, and the statement is false. (The trade-off: full virtualization runs an unmodified guest OS, paravirtualization requires a modified one.)"
+      }
+    ],
+    "solution": "See per-statement motivation.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20240612-e7",
+    "examId": "CI20240612",
+    "date": "2024-06-12",
+    "academicYear": "AA2324",
+    "exerciseNo": 7,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": [
+      "networking"
+    ],
+    "part": "second",
+    "prompt": "True/False: In current datacenters east-west traffic typically involves lower data volumes compared to north-south traffic.",
+    "subStatements": [
+      {
+        "id": "CI20240612-e7-s1",
+        "statement": "In current datacenters east-west traffic typically involves lower data volumes compared to north-south traffic.",
+        "answer": false,
+        "motivation": "**False.** In modern datacenters **east-west traffic** (server-to-server: storage replication, VM migration, NFV chains, MapReduce, microservices) is **usually larger** than north-south traffic (external client traffic). The Networking lecture cites Cisco's Global Cloud Index: in a datacenter East-West ≈ 76%, North-South ≈ 17%, inter-DC ≈ 7%; it also notes a 1-byte north-south transaction generates ~100 bytes of east-west traffic. So east-west volumes are higher, not lower."
+      }
+    ],
+    "solution": "See per-statement motivation.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20240612-e8",
+    "examId": "CI20240612",
+    "date": "2024-06-12",
+    "academicYear": "AA2324",
+    "exerciseNo": 8,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": [
+      "servers",
+      "xaas"
+    ],
+    "part": "first",
+    "prompt": "True/False: TPUs are more power-efficient and offer higher performance compared to GPUs in deep learning tasks.",
+    "subStatements": [
+      {
+        "id": "CI20240612-e8-s1",
+        "statement": "TPUs are more power-efficient and offer higher performance compared to GPUs in deep learning tasks.",
+        "answer": true,
+        "motivation": "**True.** TPUs (Tensor Processing Units) are domain-specific accelerators (ASICs) designed specifically for the dense matrix/tensor operations of deep-learning workloads, built around systolic-array matrix multipliers. Compared with general-purpose GPUs, this specialization yields higher throughput per watt and higher performance on deep-learning tasks (Server / ML-as-a-Service lectures). GPUs remain more flexible/general-purpose, but for the targeted DL workloads TPUs are more power-efficient and faster."
+      }
+    ],
+    "solution": "See per-statement motivation.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20240612-e9",
+    "examId": "CI20240612",
+    "date": "2024-06-12",
+    "academicYear": "AA2324",
+    "exerciseNo": 9,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": [
+      "storage-systems"
+    ],
+    "part": "second",
+    "prompt": "True/False: DAS devices connect directly to a network and are accessed over the network by clients.",
+    "subStatements": [
+      {
+        "id": "CI20240612-e9-s1",
+        "statement": "DAS devices connect directly to a network and are accessed over the network by clients.",
+        "answer": false,
+        "motivation": "**False.** DAS = **Direct Attached Storage**: the storage is attached **directly to a single server/host** (via SCSI, SATA, SAS, etc.), not to a network, and is accessed only through that host (Storage Systems lecture). The description in the statement — a device that connects to a network and is accessed over the network by clients — corresponds to **NAS** (Network Attached Storage), not DAS."
+      }
+    ],
+    "solution": "See per-statement motivation.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20240612-e10",
+    "examId": "CI20240612",
+    "date": "2024-06-12",
+    "academicYear": "AA2324",
+    "exerciseNo": 10,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": [
+      "dc-intro"
+    ],
+    "part": "second",
+    "prompt": "True/False: Controlling humidity levels in a datacenter is important for preventing equipment failures.",
+    "subStatements": [
+      {
+        "id": "CI20240612-e10-s1",
+        "statement": "Controlling humidity levels in a datacenter is important for preventing equipment failures.",
+        "answer": true,
+        "motivation": "**True.** Datacenter environmental control regulates both temperature and humidity (Building Infrastructures lecture). If humidity is too **low**, electrostatic discharge (ESD) can damage electronics; if too **high**, condensation and corrosion can occur on equipment. Keeping humidity within the recommended range therefore prevents equipment failures, alongside the cooling system that removes heat."
+      }
+    ],
+    "solution": "See per-statement motivation.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20240612-e11",
+    "examId": "CI20240612",
+    "date": "2024-06-12",
+    "academicYear": "AA2324",
+    "exerciseNo": 11,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": [
+      "dependability"
+    ],
+    "part": "first",
+    "prompt": "A system of 6 components is designed with the RBD shown below. The four component types A, B, C, D have different reliability characteristics. After 2 years: $R_B(2y)=0.8$, $R_C(2y)=0.6$, $R_D(2y)=0.9$. What should be the **MTTF of component A** so that the whole-system reliability after 2 years is $R_{sys}(2y)=0.82$? (Use at least 3 decimal digits per step.)\n\n**RBD topology:** A is in series with the rest. After A, two parallel paths reach the output: the upper path is **B–B** (two B components in series); the lower path is **(C $\\parallel$ C) followed by D** (the two C components in parallel, then in series with D). Formally:\n$$R_{sys} = R_A \\cdot \\big[\\,1-(1-R_{BB})\\,(1-R_{CCD})\\,\\big]$$\nwith $R_{BB}=R_B\\cdot R_B$ (series) and $R_{CCD}=\\big[1-(1-R_C)^2\\big]\\cdot R_D$.",
+    "solution": "**Step 1 — upper path (B in series with B):**\n$$R_{BB}=R_B^2=0.8^2=0.640$$\n\n**Step 2 — lower path (C parallel C, then series with D):**\n$$R_{C\\parallel C}=1-(1-R_C)^2=1-(1-0.6)^2=1-0.16=0.840$$\n$$R_{CCD}=R_{C\\parallel C}\\cdot R_D=0.840\\cdot 0.9=0.756$$\n\n**Step 3 — parallel combination of the two paths:**\n$$R_{par}=1-(1-R_{BB})(1-R_{CCD})=1-(1-0.640)(1-0.756)$$\n$$=1-(0.360)(0.244)=1-0.0878=0.9122$$\n\n**Step 4 — solve for $R_A$ (A in series with the parallel block):**\n$$R_{sys}=R_A\\cdot R_{par}\\;\\Rightarrow\\; R_A=\\frac{R_{sys}}{R_{par}}=\\frac{0.82}{0.9122}=0.89897$$\n\n**Step 5 — convert reliability into MTTF (exponential model $R(t)=e^{-t/MTTF}$):**\n$$R_A(2y)=e^{-2/MTTF_A}\\;\\Rightarrow\\; MTTF_A=\\frac{-2}{\\ln R_A}=\\frac{-2}{\\ln 0.89897}=\\frac{-2}{-0.10650}$$\n\n$$\\boxed{MTTF_A \\approx 18.777\\text{ years}}$$",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20240612-e12",
+    "examId": "CI20240612",
+    "date": "2024-06-12",
+    "academicYear": "AA2324",
+    "exerciseNo": 12,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": [
+      "raid"
+    ],
+    "part": "second",
+    "prompt": "We want to design a **RAID 0+1** storage architecture composed of an array of **8 disks**. Each disk has $MTTF = 450$ days. We require the storage-infrastructure MTTF to be **higher than 7 years**. What is the **maximum MTTR** we can tolerate to satisfy the requirement? Assume all disks identical and a single mirror case for the RAID 1 part.",
+    "solution": "**Formula (RAID 0+1, mirror of stripes), from the RAID exercise set:**\n$$MTTF_{RAID01}=\\frac{MTTF^2\\cdot 2}{n^2\\cdot MTTR}$$\nwhere $MTTF$ is the single-disk MTTF and $n$ is the total number of disks.\n\n**Data:** $MTTF=450$ d, $n=8$, target $MTTF_{RAID01} > 7\\text{ y}=7\\times 365 = 2555$ d.\n\n**Impose the requirement and solve for MTTR:**\n$$\\frac{MTTF^2\\cdot 2}{n^2\\cdot MTTR} > 2555\\;\\Rightarrow\\; MTTR < \\frac{MTTF^2\\cdot 2}{n^2\\cdot 2555}$$\n$$MTTR < \\frac{450^2\\cdot 2}{8^2\\cdot 2555}=\\frac{202500\\cdot 2}{64\\cdot 2555}=\\frac{405000}{163520}=2.4768\\text{ d}$$\n\n$$\\boxed{MTTR_{\\max}\\approx 2.477\\text{ days}}$$\n\n*Note:* the handwritten answer sheet reports $\\approx 2.677$ d, but recomputing with the lecture's RAID 0+1 MTTF formula gives **2.477 days**; the small difference is attributed to an arithmetic slip in the scan.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20240612-e13",
+    "examId": "CI20240612",
+    "date": "2024-06-12",
+    "academicYear": "AA2324",
+    "exerciseNo": 13,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": [
+      "storage-devices"
+    ],
+    "part": "first",
+    "prompt": "A disk queue contains requests for the following cylinders: **22, 40, 27, 82, 16**. The disk head starts at cylinder **20** and moves from inside (lower cylinder number) toward outside (higher cylinder number). Using the **C-SCAN (Circular SCAN)** scheduling algorithm, write the order in which the requests are served (use the cylinder numbers).",
+    "solution": "**C-SCAN behaviour:** the head moves in one direction only (here from inside/low toward outside/high), serving every request it meets along the way; when it reaches the end it jumps back to the opposite extreme (without serving on the return sweep) and continues in the same direction.\n\n**Starting at cylinder 20, moving toward higher cylinders**, serve in increasing order all requests $\\ge 20$:\n- 22, then 27, then 40, then 82.\n\nAfter reaching the outer end, the head wraps around to the innermost cylinder and continues upward, serving the remaining request below the start:\n- 16.\n\n**Order of served requests:**\n$$\\boxed{22 \\to 27 \\to 40 \\to 82 \\to 16}$$",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20240612-e14",
+    "examId": "CI20240612",
+    "date": "2024-06-12",
+    "academicYear": "AA2324",
+    "exerciseNo": 14,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": [
+      "performance"
+    ],
+    "part": "second",
+    "prompt": "Consider a closed system with three stations:\n- **CPU**: $V_{CPU}=3$ visits, average service time $S_{CPU}=10$ ms;\n- **Disk**: throughput $X_{DISK}=12$ I/O-operations per second, demand $D_{DISK}=350$ ms;\n- **Network**: demand $D_{NET}=4$ ms, throughput $X_{NET}=20$ packet/s.\n\nWith $N=25$ users, the system throughput is $X=1.85$ job/s and the response time is $R=0.8$ s. **Compute the CPU demand $D_{CPU}$ and the network number of visits $V_{NET}$.**",
+    "solution": "**CPU demand** — the demand is visits × service time:\n$$D_{CPU}=V_{CPU}\\cdot S_{CPU}=3\\times 0.010\\text{ s}=0.030\\text{ s}$$\n\n**Network number of visits** — by the **Forced Flow Law** $X_k=X\\cdot V_k$, so $V_k=X_k/X$:\n$$V_{NET}=\\frac{X_{NET}}{X}=\\frac{20}{1.85}=10.811$$\n\n$$\\boxed{D_{CPU}=0.03\\text{ s},\\quad V_{NET}\\approx 10.81}$$\n\n*(For reference, the same Forced Flow Law gives the disk visits $V_{DISK}=X_{DISK}/X=12/1.85=6.486$.)*",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20240612-e15",
+    "examId": "CI20240612",
+    "date": "2024-06-12",
+    "academicYear": "AA2324",
+    "exerciseNo": 15,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": [
+      "performance"
+    ],
+    "part": "second",
+    "prompt": "For the same closed system of Question 14 ($N=25$ users, $X=1.85$ job/s, $R=0.8$ s), compute the users' **think time $Z$**.",
+    "solution": "**Interactive Response Time Law:** $R=\\dfrac{N}{X}-Z\\;\\Rightarrow\\; Z=\\dfrac{N}{X}-R$.\n\n$$Z=\\frac{25}{1.85}-0.8=13.5135-0.8=12.7135\\text{ s}$$\n\n$$\\boxed{Z\\approx 12.7135\\text{ s}}$$",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20240612-e16",
+    "examId": "CI20240612",
+    "date": "2024-06-12",
+    "academicYear": "AA2324",
+    "exerciseNo": 16,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": [
+      "performance"
+    ],
+    "part": "second",
+    "prompt": "For the same system of Questions 14 and 15, the number of users grows to $N=50$. You upgrade the system by adding **three more disks** (4 disks total). The new disks are identical to the original, and the original disk accesses are now spread **uniformly** over the available disks. What is the **response-time lower bound**?",
+    "solution": "**Service demands of the stations** (from Q14, with $D_{NET}$ given directly as a demand of 4 ms):\n- $D_{CPU}=0.030$ s\n- $D_{DISK}=0.350$ s (total disk demand)\n- $D_{NET}=0.004$ s\n\n**Effect of adding disks:** the original disk demand (0.350 s) is now spread uniformly over **4 disks**, so the per-disk demand becomes\n$$D_{disk,each}=\\frac{0.350}{4}=0.0875\\text{ s}.$$\nThe **maximum** demand among all service centres (the bottleneck) is now\n$$D_{max}=\\max(0.030,\\;0.0875,\\;0.004)=0.0875\\text{ s}.$$\nThe **total** demand (which is unchanged by spreading, since the same work is just redistributed) is\n$$D_{sum}=D_{CPU}+D_{DISK}+D_{NET}=0.030+0.350+0.004=0.384\\text{ s}.$$\n\n**Asymptotic response-time bound (closed interactive model):**\n$$R \\ge \\max\\!\\big(D_{sum},\\; N\\cdot D_{max}-Z\\big)$$\nUsing $N=50$, $Z=12.7135$ s (from Q15):\n$$N\\cdot D_{max}-Z=50\\times 0.0875-12.7135=4.375-12.7135=-8.34\\text{ s}$$\nSince this is negative, the binding term is $D_{sum}$:\n$$R_{\\min}=\\max(0.384,\\,-8.34)=0.384\\text{ s}$$\n\n$$\\boxed{R_{\\min}\\approx 0.384\\text{ s}}$$\n\n*(With 4 disks the bottleneck moved away from the disks, so even with $N=50$ the system is still in the light-load regime and the response time is bounded below by the sum of the demands $D=0.384$ s.)*",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20240612-e17",
+    "examId": "CI20240612",
+    "date": "2024-06-12",
+    "academicYear": "AA2324",
+    "exerciseNo": 17,
+    "marks": 5,
+    "type": "theory-essay",
+    "topics": [
+      "virtualization"
+    ],
+    "part": "second",
+    "prompt": "Explain and compare **virtualization** and **containerization**, discussing their key differences. Highlight the advantages and disadvantages of each approach.",
+    "solution": "**Virtualization (Virtual Machines).** A hypervisor / Virtual Machine Monitor (VMM) provides *hardware-level virtualization*: it sits between the hardware and the guests and exposes a virtual machine — a complete simulated hardware environment — on which a **full guest OS** runs, together with its own kernel, libraries and applications.\n- **Hypervisor types:** *Type 1 (bare-metal/native)* runs directly on the hardware (e.g. KVM, Hyper-V, vSphere); *Type 2 (hosted)* runs on top of a host OS (e.g. VMware Workstation, VirtualBox).\n- **Implementation techniques:** *Full virtualization* (complete HW simulation, protected instructions trapped & emulated → unmodified guest OS, complete isolation, but performance overhead and needs HW support) vs *Paravirtualization* (guest OS modified to issue hypercalls → simpler VMM, higher performance, but the guest OS must be modified).\n- **Key VM properties:** partitioning, isolation, encapsulation (whole VM state is a file → easy snapshot/migration), hardware independence.\n\n**Containerization.** Containers provide virtualization at the **operating-system level**. A container engine (e.g. Docker) packages an application together with all of its dependencies (code, libraries, runtime, configuration) into a standardized, lightweight, portable unit. Crucially, **containers share the host OS kernel** — there is no per-container guest OS.\n\n**Key differences.**\n| Aspect | Virtual Machines | Containers |\n|---|---|---|\n| Virtualization level | Hardware level (via hypervisor) | OS level (shared kernel) |\n| Guest OS | Each VM has its own full OS/kernel | No guest OS; share host kernel |\n| Footprint | Heavy (GBs, full OS) | Lightweight (only app + deps) |\n| Boot/start time | Slow (minutes) | Fast (seconds) |\n| Isolation | Strong (hardware-level) | Weaker (process/namespace level) |\n| Portability | HW-independent VM image | Runs on any host with the engine |\n\n**Advantages / disadvantages.**\n- **VMs — pros:** strong isolation and security (hardware level), can run *different/arbitrary* OSes (even a different OS from the host), mature encapsulation/migration. **VMs — cons:** large resource consumption (each guest OS uses CPU/RAM/disk), slow boot (minutes, bad for real-time), performance degradation when many VMs share a host, hypervisor is less efficient than the bare host OS.\n- **Containers — pros:** lightweight and fast to start, high density (many per host), predictable/repeatable/immutable behaviour solving the \"it works on my machine\" problem, ideal for DevOps, microservices and CI/CD, easy and quick migration. **Containers — cons:** weaker isolation than VMs (kernel is shared, so a kernel-level fault/security issue can affect all containers), and containers must run on a host kernel compatible with the container image (they cannot run a fundamentally different OS kernel).\n\n**Summary.** VMs virtualize the *hardware* and run full guest OSes — heavier but strongly isolated and OS-agnostic; containers virtualize the *OS* by sharing the host kernel — lighter, faster and denser but with weaker isolation. They are often complementary (containers frequently run inside VMs in the cloud).",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20240612-e18",
+    "examId": "CI20240612",
+    "date": "2024-06-12",
+    "academicYear": "AA2324",
+    "exerciseNo": 18,
+    "marks": 5,
+    "type": "theory-essay",
+    "topics": [
+      "networking",
+      "servers"
+    ],
+    "part": "second",
+    "prompt": "Discuss the role of **networking in GPU-based systems** within data centers. How does networking impact the performance, scalability, and efficiency of these systems?",
+    "solution": "**Why networking is central to GPU-based systems.** Modern AI / deep-learning (LLM) training splits both the model and the data over thousands or tens of thousands of GPUs. Training proceeds in repeated cycles of a **compute phase** (each GPU works on its shard), a **compute-standby** wait, and a **synchronization phase** in which GPUs exchange gradients/parameters (e.g. all-reduce). As the Networking lecture states: *\"there is no AI without networking\"* — the interconnect is on the critical path of every training iteration.\n\n**Impact on performance.**\n- During the synchronization phase the GPUs must exchange very large amounts of data; the slowest communication step gates the whole iteration. If the network is slow or congested, expensive GPUs sit idle waiting (low utilization), so the network directly determines training throughput and time-to-train.\n- This is dominated by **east-west traffic** (server-to-server), which is the largest traffic component in datacenters. High bandwidth and low, predictable latency are essential; **bisection bandwidth** must be high enough that every GPU/server can talk to every other at full port rate without becoming a bottleneck ($l\\cdot L \\ge C\\cdot S/2$).\n- Traditional networking technologies are described as *inadequate* for AI in terms of both performance and power consumption, which has driven faster optics (e.g. 40G→800G transceivers, WDM, optical circuit switches).\n\n**Impact on scalability.**\n- Compute and storage scale easily by adding elements, but networking *has no straightforward horizontal scaling*: doubling the number of GPUs/servers requires doubling not just leaf bandwidth but also the **bisection bandwidth**.\n- Scalable topologies are needed: **Clos / leaf-spine (folded Clos)** fabrics provide non-blocking bisection bandwidth and scale by adding spine/leaf switches; the Clos rearrangeability condition ($k \\ge n$) guarantees a non-bottleneck bisection. Google's Jupiter evolution shows the trend: from 3-tier to leaf-spine, and then to **optical circuit switches (OCS)** that remove the spine layer and connect aggregation blocks in a direct, reconfigurable mesh, enabling expansion by simply plugging in new blocks and adapting the topology to traffic.\n\n**Impact on efficiency.**\n- A well-matched, high-bandwidth low-latency network keeps GPU utilization high — since GPUs are extremely expensive and power-hungry, minimizing their idle (sync-wait) time is the dominant efficiency concern.\n- Power consumption of the network itself matters at this scale; optics (and OCS, which steer light with MEMS mirrors and avoid per-packet electronic switching) improve energy efficiency.\n- Because datacenter/AI traffic patterns are largely **predictable** (e.g. Jupiter block-level traffic follows a gravity model), the network can be engineered with dynamic topology and traffic engineering rather than over-provisioned for a theoretical worst case, improving cost/efficiency.\n\n**Summary.** In GPU-based AI clusters the network is a first-class component: the synchronization phase makes communication the bottleneck of distributed training, so network **bandwidth, latency and bisection capacity** directly set performance; **scalability** requires Clos/leaf-spine (and increasingly optical/OCS) fabrics that scale bisection bandwidth with the cluster; and **efficiency** depends on keeping costly GPUs busy via fast, power-efficient interconnects and traffic-aware topology design.",
+    "solutionSource": "authored"
+  }
+]

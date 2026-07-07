@@ -1,0 +1,334 @@
+[
+  {
+    "id": "CI20250113-e1",
+    "examId": "CI20250113",
+    "date": "2025-01-13",
+    "academicYear": "AA2324",
+    "exerciseNo": 1,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["storage-systems"],
+    "part": "second",
+    "prompt": "SANs are primarily used for block-level access to data, while NAS devices provide file-level access.",
+    "subStatements": [
+      {
+        "id": "CI20250113-e1-s1",
+        "statement": "SANs are primarily used for block-level access to data, while NAS devices provide file-level access.",
+        "answer": true,
+        "motivation": "The Storage Systems lecture distinguishes the two precisely this way: a **SAN** (over a dedicated Fibre Channel / iSCSI fabric) exposes storage as raw **block** devices (LUNs that appear as local disks), whereas a **NAS** is a file-server appliance accessed over the LAN at **file** level via NFS/SMB. So the statement is True."
+      }
+    ],
+    "solution": "See per-statement motivation. SAN = block-level over a dedicated fabric; NAS = file-level over the LAN — the statement is **True**.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250113-e2",
+    "examId": "CI20250113",
+    "date": "2025-01-13",
+    "academicYear": "AA2324",
+    "exerciseNo": 2,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["raid"],
+    "part": "second",
+    "prompt": "RAID can be used with both hardware and software implementations.",
+    "subStatements": [
+      {
+        "id": "CI20250113-e2-s1",
+        "statement": "RAID can be used with both hardware and software implementations.",
+        "answer": true,
+        "motivation": "The RAID lecture notes RAID can be realized in **hardware** (a dedicated RAID controller/HBA with its own processor and cache) or in **software** (the OS / volume manager computes striping and parity on the host CPU, e.g. Linux mdadm, ZFS). Both implementations exist, so the statement is True."
+      }
+    ],
+    "solution": "See per-statement motivation. RAID exists as both hardware-controller and OS/software implementations — the statement is **True**.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250113-e3",
+    "examId": "CI20250113",
+    "date": "2025-01-13",
+    "academicYear": "AA2324",
+    "exerciseNo": 3,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["servers"],
+    "part": "first",
+    "prompt": "GPUs (Graphics Processing Units) are primarily used in datacenters for accelerating graphical applications and gaming.",
+    "subStatements": [
+      {
+        "id": "CI20250113-e3-s1",
+        "statement": "GPUs (Graphics Processing Units) are primarily used in datacenters for accelerating graphical applications and gaming.",
+        "answer": false,
+        "motivation": "Per the Servers / HW-accelerators material, in the data center GPUs are used primarily as **general-purpose massively-parallel accelerators (GPGPU)** for deep-learning training/inference and HPC, not for gaming or graphics rendering. The statement is False."
+      }
+    ],
+    "solution": "See per-statement motivation. Datacenter GPUs mainly accelerate AI/HPC compute, not graphics/gaming — the statement is **False**.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250113-e4",
+    "examId": "CI20250113",
+    "date": "2025-01-13",
+    "academicYear": "AA2324",
+    "exerciseNo": 4,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["cloud"],
+    "part": "second",
+    "prompt": "Cloud computing applications do not require any server to run.",
+    "subStatements": [
+      {
+        "id": "CI20250113-e4-s1",
+        "statement": "Cloud computing applications do not require any server to run.",
+        "answer": false,
+        "motivation": "The Cloud Computing lecture makes clear that the cloud abstracts servers away from the user (especially in serverless/PaaS), but the applications still ultimately run on **physical servers in the provider's data centers**. 'No server' is only an abstraction for the user; servers are always required to execute the workload. The statement is False."
+      }
+    ],
+    "solution": "See per-statement motivation. The cloud hides servers from the user but always runs on real servers in data centers — the statement is **False**.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250113-e5",
+    "examId": "CI20250113",
+    "date": "2025-01-13",
+    "academicYear": "AA2324",
+    "exerciseNo": 5,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["cloud"],
+    "part": "second",
+    "prompt": "Availability zones within a Compute Region can have a roundtrip time larger than few milliseconds.",
+    "subStatements": [
+      {
+        "id": "CI20250113-e5-s1",
+        "statement": "Availability zones within a Compute Region can have a roundtrip time larger than few milliseconds.",
+        "answer": false,
+        "motivation": "The Cloud / geographic-areas material defines **Availability Zones** within a single **Region** as physically separate but close data centers connected by low-latency, high-bandwidth links, with inter-AZ round-trip times on the order of (at most) a **few milliseconds** (single-digit ms). They are deliberately close enough for synchronous replication. A round-trip *larger than* a few milliseconds would contradict this design, so the statement is False."
+      }
+    ],
+    "solution": "See per-statement motivation. AZs in one Region are linked with single-digit-millisecond latency, not larger — the statement is **False**.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250113-e6",
+    "examId": "CI20250113",
+    "date": "2025-01-13",
+    "academicYear": "AA2324",
+    "exerciseNo": 6,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["dc-intro"],
+    "part": "first",
+    "prompt": "Edge computing is a distributed computing paradigm that brings computation and data storage closer to the location where it is needed.",
+    "subStatements": [
+      {
+        "id": "CI20250113-e6-s1",
+        "statement": "Edge computing is a distributed computing paradigm that brings computation and data storage closer to the location where it is needed.",
+        "answer": true,
+        "motivation": "This is the textbook definition of edge computing given in the edge / cloud-continuum material: a distributed paradigm that moves computation and storage toward the data source / point of use, reducing latency and the volume of data sent to the central cloud. The statement is True."
+      }
+    ],
+    "solution": "See per-statement motivation. This is exactly the definition of edge computing — the statement is **True**.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250113-e7",
+    "examId": "CI20250113",
+    "date": "2025-01-13",
+    "academicYear": "AA2324",
+    "exerciseNo": 7,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["dc-intro"],
+    "part": "first",
+    "prompt": "The power consumption of an average datacenter is in the order of a few GigaWatts.",
+    "subStatements": [
+      {
+        "id": "CI20250113-e7-s1",
+        "statement": "The power consumption of an average datacenter is in the order of a few GigaWatts.",
+        "answer": false,
+        "motivation": "The Data Center lecture quotes typical data-center power in the order of **megawatts (MW)** — a large warehouse-scale facility is tens of MW. A *few gigawatts* (thousands of MW) is off by ~3 orders of magnitude and would correspond to the output of several large power plants. The statement is False."
+      }
+    ],
+    "solution": "See per-statement motivation. Data-center power is on the order of MW (tens of MW for large WSC), not GW — the statement is **False**.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250113-e8",
+    "examId": "CI20250113",
+    "date": "2025-01-13",
+    "academicYear": "AA2324",
+    "exerciseNo": 8,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["networking"],
+    "part": "second",
+    "prompt": "Leaf-spine topologies are more suitable for small-scale datacenter deployments with limited server connections.",
+    "subStatements": [
+      {
+        "id": "CI20250113-e8-s1",
+        "statement": "Leaf-spine topologies are more suitable for small-scale datacenter deployments with limited server connections.",
+        "answer": false,
+        "motivation": "The Datacenter Networking lecture presents leaf-spine (a 2-tier Clos / fat-tree) as the architecture for **large-scale** data centers that need high, non-blocking bisection bandwidth and predictable east-west latency for many servers. It is designed for scale, not for small, limited deployments. The statement is False."
+      }
+    ],
+    "solution": "See per-statement motivation. Leaf-spine targets large-scale, high-bandwidth fabrics, not small limited deployments — the statement is **False**.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250113-e9",
+    "examId": "CI20250113",
+    "date": "2025-01-13",
+    "academicYear": "AA2324",
+    "exerciseNo": 9,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["dc-intro"],
+    "part": "first",
+    "prompt": "Warehouse-scale computers are typically composed of a large set of homogeneous servers.",
+    "subStatements": [
+      {
+        "id": "CI20250113-e9-s1",
+        "statement": "Warehouse-scale computers are typically composed of a large set of homogeneous servers.",
+        "answer": true,
+        "motivation": "The WSC lecture characterizes a warehouse-scale computer as thousands of **largely homogeneous** servers (a small number of standardized configurations) so that the facility can be managed, scheduled and made fault-tolerant as a single massive computer. So the statement is True."
+      }
+    ],
+    "solution": "See per-statement motivation. WSCs are built from a large set of mostly homogeneous servers — the statement is **True**.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250113-e10",
+    "examId": "CI20250113",
+    "date": "2025-01-13",
+    "academicYear": "AA2324",
+    "exerciseNo": 10,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["virtualization"],
+    "part": "second",
+    "prompt": "Virtualization can help simplify IT management by reducing the number of physical machines that need to be managed.",
+    "subStatements": [
+      {
+        "id": "CI20250113-e10-s1",
+        "statement": "Virtualization can help simplify IT management by reducing the number of physical machines that need to be managed.",
+        "answer": true,
+        "motivation": "The Virtualization lecture lists server **consolidation** as a primary benefit: many VMs run on fewer physical hosts, so there is less physical hardware to provision, power, cool and maintain, simplifying management. The statement is True."
+      }
+    ],
+    "solution": "See per-statement motivation. Consolidation reduces the physical-machine count and simplifies management — the statement is **True**.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250113-e11",
+    "examId": "CI20250113",
+    "date": "2025-01-13",
+    "academicYear": "AA2324",
+    "exerciseNo": 11,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["dependability"],
+    "part": "first",
+    "prompt": "A scientific computation in the PoliMi data center runs on a server with **2 CPUs and 4 GPUs**. Knowing that: the computation **takes 8 days**; it requires **at least one CPU and all GPUs** to be operational to complete successfully; $MTTF_{CPU} = 180$ days and $MTTF_{GPU} = 120$ days. **How many parallel instances** of the computation must be launched to guarantee a probability **higher than 98%** that at least one instance produces results successfully? (Use ≥4 decimals; all other components are ideal.)",
+    "solution": "**Method.** Exponential reliability $R(t)=e^{-t/MTTF}$ over the mission $t = 8$ days. 'At least one of 2 CPUs' is a **1-of-2 parallel** block; 'all 4 GPUs' is a **series** block; the server works if both blocks work (series of the two blocks). Running $k$ independent instances in parallel, the success probability is $1-(1-R_{server})^k$; find the smallest $k$ giving $>0.98$.\n\n**Component reliabilities at $t = 8$ d:**\n$$R_{CPU}=e^{-8/180}=e^{-0.0444}=0.9565,\\qquad R_{GPU}=e^{-8/120}=e^{-0.0667}=0.9355$$\n\n**CPU block (1-of-2):** $R_{2CPU}=1-(1-0.9565)^2 = 1-0.0435^2 = 0.9981$\n\n**GPU block (all 4 in series):** $R_{4GPU}=0.9355^4 = 0.7659$\n\n**Single server:** $R_{server}=0.9981\\times 0.7659 = 0.7645$\n\n**Number of parallel instances** — need $1-(1-0.7645)^k > 0.98$, i.e. $0.2355^k < 0.02$:\n- $k=2:\\ 1-0.2355^2 = 0.9445$ (not enough)\n- $k=3:\\ 1-0.2355^3 = 0.9869 > 0.98$ ✓\n\n$$\\boxed{k = 3\\ \\text{parallel instances}}$$",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250113-e12",
+    "examId": "CI20250113",
+    "date": "2025-01-13",
+    "academicYear": "AA2324",
+    "exerciseNo": 12,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["dependability"],
+    "part": "first",
+    "prompt": "For the server of Question 11 (2 CPUs with $MTTF_{CPU}=180$ d, 4 GPUs with $MTTF_{GPU}=120$ d; needs **≥1 CPU** and **all GPUs**), the time to recover/replace any component (CPU or GPU) is $MTTR = 24$ days. Compute the **total availability of the server**. (Use ≥5 decimals.)",
+    "solution": "**Method.** Steady-state availability $A = \\dfrac{MTTF}{MTTF+MTTR}$ per component, then combine with the same RBD as Question 11: CPUs in **1-of-2 parallel**, GPUs **all in series**, the two blocks in series.\n\n**Component availabilities:**\n$$A_{CPU}=\\frac{180}{180+24}=\\frac{180}{204}=0.88235,\\qquad A_{GPU}=\\frac{120}{120+24}=\\frac{120}{144}=0.83333$$\n\n**CPU block (1-of-2):** $A_{2CPU}=1-(1-0.88235)^2 = 1-0.11765^2 = 0.98616$\n\n**GPU block (all 4 in series):** $A_{4GPU}=0.83333^4 = 0.48225$\n\n**Server (series of the two blocks):**\n$$A_{server}=A_{2CPU}\\cdot A_{4GPU}=0.98616 \\times 0.48225$$\n$$\\boxed{A_{server} \\approx 0.47558\\ (\\approx 47.56\\%)}$$\n\n(The four GPUs all being required, each with a large 24-day MTTR relative to a 120-day MTTF, drag the availability down sharply.)",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250113-e13",
+    "examId": "CI20250113",
+    "date": "2025-01-13",
+    "academicYear": "AA2324",
+    "exerciseNo": 13,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["raid"],
+    "part": "second",
+    "prompt": "A company plans a **RAID 5** array of **8 disks** for critical data. The desired $MTTF_{RAID5}$ for the whole array is **16 years**. Each disk has $MTTF_{disk} = 500$ days. What **MTTR (in hours)** is required to meet the target $MTTF_{RAID5}$?",
+    "solution": "**Method (RAID 5 MTTF).** RAID 5 (single distributed parity) loses data when a **second** disk fails while the first is being rebuilt. With $N$ disks:\n$$MTTF_{RAID5} = \\frac{MTTF_{disk}^2}{N\\,(N-1)\\,MTTR}\\ \\Longrightarrow\\ MTTR = \\frac{MTTF_{disk}^2}{N\\,(N-1)\\,MTTF_{RAID5}}$$\n\n**Convert the target to days:** $MTTF_{RAID5} = 16\\ \\text{years} = 16 \\times 365 = 5840$ days.\n\n**Substitute** $MTTF_{disk}=500$ d, $N=8$ (so $N(N-1)=56$):\n$$MTTR = \\frac{500^2}{56 \\times 5840} = \\frac{250000}{327040} = 0.76443\\ \\text{days}$$\n\n**In hours:**\n$$MTTR = 0.76443 \\times 24 \\approx \\boxed{18.35\\ \\text{hours}}$$",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250113-e14",
+    "examId": "CI20250113",
+    "date": "2025-01-13",
+    "academicYear": "AA2324",
+    "exerciseNo": 14,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["performance"],
+    "part": "second",
+    "prompt": "A system has three stations: a **CPU** with $V_{CPU}=100$ visits and service time $S_{CPU}=10$ ms; a **disk** with throughput 12 IOPS and demand $D_{DISK}=150$ ms; a **GPU** with demand $D_{GPU}=40$ s and $V_{GPU}=10$ visits. The system throughput is $X=20$ jobs/min and, with $N=20$ end-users, the response time is $R=55$ s. **Compute the CPU demand $D_{CPU}$ and the GPU throughput $X_{GPU}$.**",
+    "solution": "**Method (operational laws).** Service demand $D_k = V_k\\,S_k$. Per-station throughput (forced-flow law) $X_k = X\\,V_k$.\n\n**CPU demand:**\n$$D_{CPU}=V_{CPU}\\cdot S_{CPU}=100 \\times 10\\ \\text{ms}=1000\\ \\text{ms}=\\boxed{1\\ \\text{s}}$$\n\n**GPU throughput** (with system throughput $X = 20\\ \\text{jobs/min}$):\n$$X_{GPU}=X\\cdot V_{GPU}=20 \\times 10 = \\boxed{200\\ \\text{visits/min}\\ (\\approx 3.33\\ \\text{visits/s})}$$",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250113-e15",
+    "examId": "CI20250113",
+    "date": "2025-01-13",
+    "academicYear": "AA2324",
+    "exerciseNo": 15,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["performance"],
+    "part": "second",
+    "prompt": "Considering the system of Question 14 ($X = 20$ jobs/min, $N = 20$ users, $R = 55$ s), what is the users' **think time $Z$**?",
+    "solution": "**Method (interactive response-time law / Little's law).** $N = X\\,(R + Z) \\Rightarrow Z = \\dfrac{N}{X} - R$.\n\n**Convert** $X = 20$ jobs/min $= \\dfrac{1}{3}$ job/s.\n$$Z = \\frac{N}{X} - R = \\frac{20}{1/3} - 55 = 60 - 55 = \\boxed{5\\ \\text{s}}$$",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250113-e16",
+    "examId": "CI20250113",
+    "date": "2025-01-13",
+    "academicYear": "AA2324",
+    "exerciseNo": 16,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["performance"],
+    "part": "second",
+    "prompt": "For the system of Question 14, the number of end-users is predicted to reach **$N = 40$**. Considering the **response-time lower bound**, which option is better?\n- **(A)** Add **one more GPU** (identical to the existing one, balancing the GPU processing evenly between the two).\n- **(B)** Replace the GPU with one **2.5× faster** than the original.\n\nProvide the estimated bounds in both scenarios.",
+    "solution": "**Method.** Closed-model R lower bound: $R_{low}(N) = \\max\\!\\big(D,\\; N\\,D_{max}-Z\\big)$, with $Z = 5$ s (Question 15). The GPU is the bottleneck ($D_{GPU}=40$ s, vs $D_{CPU}=1$ s, $D_{DISK}=0.15$ s), so we attack $D_{max}$.\n\n**Scenario (A) — add a second identical GPU, load balanced evenly.** Each GPU now carries half the GPU work, so the GPU (bottleneck) per-server demand becomes $40/2 = 20$ s; thus $D_{max}^{A}=20$ s.\n$$R_{low}^{A}=\\max\\big(D^A,\\; 40\\times 20 - 5\\big)=\\max(\\,\\approx41.15,\\ 795\\,)=\\boxed{795\\ \\text{s}}$$\n\n**Scenario (B) — replace the GPU with one 2.5× faster.** $D_{GPU}=40/2.5 = 16$ s, so $D_{max}^{B}=16$ s.\n$$R_{low}^{B}=\\max\\big(D^B,\\; 40\\times 16 - 5\\big)=\\max(\\,\\approx17.15,\\ 635\\,)=\\boxed{635\\ \\text{s}}$$\n\n**Conclusion:** Since $R_{low}^{B}=635\\,\\text{s} < R_{low}^{A}=795\\,\\text{s}$, **option B (the 2.5× faster GPU)** gives the lower response-time bound and is the better choice.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250113-e17",
+    "examId": "CI20250113",
+    "date": "2025-01-13",
+    "academicYear": "AA2324",
+    "exerciseNo": 17,
+    "marks": 5,
+    "type": "theory-essay",
+    "topics": ["virtualization"],
+    "part": "second",
+    "prompt": "What are the **advantages and disadvantages of using Type 1 hypervisors versus Type 2 hypervisors** in a virtualized environment?",
+    "solution": "The Virtualization lecture distinguishes two hypervisor architectures by **where the hypervisor sits**.\n\n**Type 1 — bare-metal / native hypervisor.**\n- Runs **directly on the physical hardware**; the VMs run on top of it. There is no underlying host OS. Examples: VMware ESXi, Xen, Microsoft Hyper-V, KVM (as a thin layer).\n- *Advantages:*\n  - **Better performance / lower overhead** — direct access to hardware, no host-OS layer in the path.\n  - **Stronger isolation and security** — small trusted computing base (thin hypervisor), smaller attack surface.\n  - **Higher reliability and scalability**; this is the choice for **production data centers and the cloud**.\n- *Disadvantages:*\n  - More complex to install/manage; requires dedicated, compatible hardware.\n  - Less convenient for desktop/ad-hoc use; the machine is dedicated to virtualization.\n\n**Type 2 — hosted hypervisor.**\n- Runs **as an application on top of a host operating system** (Windows/Linux/macOS); the host OS mediates hardware access. Examples: VMware Workstation/Player, VirtualBox, QEMU (hosted).\n- *Advantages:*\n  - **Easy to install and use** on an existing desktop/laptop; great for development, testing, training and running a few VMs alongside normal applications.\n  - Leverages the host OS drivers, so broad hardware support.\n- *Disadvantages:*\n  - **Higher overhead / lower performance** — every VM access passes through the host OS.\n  - **Weaker isolation / larger attack surface** — depends on the security of the full host OS; if the host OS fails or is compromised, all VMs are affected.\n  - Not suited to large-scale production.\n\n**Summary / context:** Type 1 trades convenience for performance, isolation and scalability and is used for **production servers, data centers and cloud IaaS**; Type 2 trades performance/isolation for ease of use and is used on **end-user/developer machines**. The fundamental trade-off is *thin direct-on-hardware layer (Type 1)* vs *running atop a general-purpose host OS (Type 2)*.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250113-e18",
+    "examId": "CI20250113",
+    "date": "2025-01-13",
+    "academicYear": "AA2324",
+    "exerciseNo": 18,
+    "marks": 5,
+    "type": "theory-essay",
+    "topics": ["servers", "dc-intro"],
+    "part": "first",
+    "prompt": "What are the **implications of hardware heterogeneity on software-stack development** in datacenters?",
+    "solution": "Modern data centers are increasingly **heterogeneous**: alongside general-purpose CPUs they host accelerators (GPUs, TPUs, FPGAs), different CPU generations/ISAs (x86, ARM), different memory/storage tiers (DRAM, NVMe SSD, HDD) and varied interconnects (PCIe, NVLink, RDMA). This heterogeneity has several implications for how the software stack must be built.\n\n**1. Portability and the programming model.** Code can no longer assume one architecture. The stack needs **hardware-abstraction layers and portable frameworks** (e.g. CUDA/ROCm/OpenCL, XLA for TPUs, ML frameworks like TensorFlow/PyTorch, HLS toolchains for FPGAs). Different devices require different programming models (SIMT for GPUs, dataflow for FPGAs), increasing development and maintenance effort.\n\n**2. Specialized libraries and compilers.** To exploit each accelerator, the stack relies on **device-specific libraries, drivers and compilers** that map computation onto the hardware (e.g. cuDNN, BLAS variants, vendor compilers). The software must detect the available hardware and dispatch to the right optimized kernel.\n\n**3. Resource management and scheduling.** Schedulers/orchestrators (e.g. Kubernetes, cluster managers) must become **heterogeneity-aware**: track and allocate not just CPU/RAM but GPUs/TPUs/FPGAs, respect locality (NUMA, NVLink groups), and place jobs on nodes that have the accelerators they need. This complicates bin-packing, fairness and utilization.\n\n**4. Performance tuning and fragmentation.** Optimal performance is hardware-specific, so teams must tune (and re-tune) kernels per device, and maintain multiple code paths. There is a risk of **stranded/under-utilized resources** when workloads don't match the installed accelerators.\n\n**5. Maintainability, testing and cost.** More device types mean more drivers/firmware to qualify, a larger testing matrix, and the need for **CI across architectures**. It raises operational complexity but is justified because matching workloads (especially ML) to specialized accelerators yields much better performance/Watt and cost-efficiency.\n\n**Context:** heterogeneity is driven by the end of easy CPU scaling and the rise of deep learning, which pushed data centers toward domain-specific accelerators. The software stack absorbs this complexity through abstraction layers, accelerator-aware schedulers and specialized compilers/libraries, so that applications can portably and efficiently use a diverse pool of hardware.",
+    "solutionSource": "authored"
+  }
+]

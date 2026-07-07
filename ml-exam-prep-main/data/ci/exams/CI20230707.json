@@ -1,0 +1,371 @@
+[
+  {
+    "id": "CI20230707-e1",
+    "examId": "CI20230707",
+    "date": "2023-07-07",
+    "academicYear": "AA2223",
+    "exerciseNo": 1,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": [
+      "storage-systems"
+    ],
+    "part": "second",
+    "prompt": "Hot/cold aisle containment reduces the efficiency of the cooling method for datacenters.",
+    "subStatements": [
+      {
+        "id": "CI20230707-e1-s1",
+        "statement": "Hot/cold aisle containment reduces the efficiency of the cooling method for datacenters.",
+        "answer": false,
+        "motivation": "The Building Infrastructures lecture describes hot-aisle/cold-aisle layout (and containment) as a technique that **separates** cold supply air from hot exhaust air, preventing them from mixing. By avoiding recirculation of hot air into the server intakes, containment lets the cooling system run at higher set-points and removes heat more effectively - it **increases** cooling efficiency, not reduces it. The statement is therefore false."
+      }
+    ],
+    "solution": "Answer key: **False** (box B). Hot/cold aisle containment stops hot and cold air mixing, improving cooling efficiency.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230707-e2",
+    "examId": "CI20230707",
+    "date": "2023-07-07",
+    "academicYear": "AA2223",
+    "exerciseNo": 2,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": [
+      "dc-intro"
+    ],
+    "part": "first",
+    "prompt": "Edge computing is not a suitable alternative to cloud computing for applications that require large-scale data processing.",
+    "subStatements": [
+      {
+        "id": "CI20230707-e2-s1",
+        "statement": "Edge computing is not a suitable alternative to cloud computing for applications that require large-scale data processing.",
+        "answer": true,
+        "motivation": "In the cloud-edge continuum, edge nodes are **resource-constrained** (limited CPU, memory, storage and power) and are meant for latency-sensitive, local pre-processing close to the data source. Large-scale / heavy data processing (big data analytics, large model training) needs the abundant, elastic resources of the central **cloud**. So the edge is a complement, not a substitute, for large-scale processing - making the statement true."
+      }
+    ],
+    "solution": "Answer key: **True** (box A). The edge is resource-limited and suited to local low-latency tasks; large-scale processing belongs in the cloud, so edge is not a suitable replacement for it.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230707-e3",
+    "examId": "CI20230707",
+    "date": "2023-07-07",
+    "academicYear": "AA2223",
+    "exerciseNo": 3,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": [
+      "raid"
+    ],
+    "part": "second",
+    "prompt": "RAID 0 provides the best read and write performance of any RAID level composed of the same amount of disks.",
+    "subStatements": [
+      {
+        "id": "CI20230707-e3-s1",
+        "statement": "RAID 0 provides the best read and write performance of any RAID level composed of the same amount of disks.",
+        "answer": true,
+        "motivation": "From the RAID lecture, **RAID 0** is pure **block-level striping** with **no redundancy**: every disk holds only useful data and there is no mirror write and no parity to compute. For a given number of disks it therefore delivers the maximum aggregate read and write throughput (no write penalty, no capacity sacrificed to redundancy). Any other level (1, 5, 6, 1+0, ...) spends some I/O or disks on redundancy and so cannot beat RAID 0 on raw performance. The statement is true (the trade-off is that RAID 0 has zero fault tolerance)."
+      }
+    ],
+    "solution": "Answer key: **True** (box A). RAID 0 (striping, no redundancy) gives the highest read/write performance for a given disk count, at the cost of no fault tolerance.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230707-e4",
+    "examId": "CI20230707",
+    "date": "2023-07-07",
+    "academicYear": "AA2223",
+    "exerciseNo": 4,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": [
+      "dc-intro"
+    ],
+    "part": "first",
+    "prompt": "Datacenters within the same Geographic Areas share the same power and network infrastructure.",
+    "subStatements": [
+      {
+        "id": "CI20230707-e4-s1",
+        "statement": "Datacenters within the same Geographic Areas share the same power and network infrastructure.",
+        "answer": false,
+        "motivation": "In the cloud region hierarchy a **Geographic Area / Region** is partitioned into multiple **Availability Zones (AZs)**, and the whole point of AZs is that they are **isolated failure domains**: each AZ has its **independent power, cooling and network** so that a failure in one does not affect the others. Data centers in the same area therefore do **not** share power and network infrastructure - that independence is what enables high availability. The statement is false."
+      }
+    ],
+    "solution": "Answer key: **False** (box B). A region is split into Availability Zones with independent power/cooling/network; they deliberately do not share that infrastructure.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230707-e5",
+    "examId": "CI20230707",
+    "date": "2023-07-07",
+    "academicYear": "AA2223",
+    "exerciseNo": 5,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": [
+      "networking"
+    ],
+    "part": "second",
+    "prompt": "TOR switches are typically used in small-scale datacenter deployments and are not suitable for larger networks.",
+    "subStatements": [
+      {
+        "id": "CI20230707-e5-s1",
+        "statement": "TOR switches are typically used in small-scale datacenter deployments and are not suitable for larger networks.",
+        "answer": false,
+        "motivation": "The Networking lecture describes the **Top-of-Rack (ToR)** switch as the standard access-layer building block of data-center networks: each rack of servers connects to its own ToR switch, which then uplinks to aggregation/spine switches. This is exactly the design used in **large-scale** data centers (three-tier and leaf-spine/fat-tree fabrics scale by adding racks each with a ToR). ToR is not a small-scale-only technology, so the statement is false."
+      }
+    ],
+    "solution": "Answer key: **False** (box A is False here). ToR switches are the access-layer block of large-scale DC fabrics (three-tier, leaf-spine), not a small-scale-only solution.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230707-e6",
+    "examId": "CI20230707",
+    "date": "2023-07-07",
+    "academicYear": "AA2223",
+    "exerciseNo": 6,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": [
+      "virtualization"
+    ],
+    "part": "second",
+    "prompt": "Virtualization can help reduce energy consumption by consolidating multiple physical machines into fewer physical ones.",
+    "subStatements": [
+      {
+        "id": "CI20230707-e6-s1",
+        "statement": "Virtualization can help reduce energy consumption by consolidating multiple physical machines into fewer physical ones.",
+        "answer": true,
+        "motivation": "This is the **server-consolidation** benefit from the Virtualization lecture: workloads from many under-utilized physical servers are run as VMs on **fewer** physical hosts. Fewer powered machines means less power drawn and less heat to cool, directly reducing energy consumption (and the data center's PUE/footprint). The statement is true."
+      }
+    ],
+    "solution": "Answer key: **True** (box B is True here). Consolidating many VMs onto fewer hosts cuts powered hardware and cooling load, reducing energy use.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230707-e7",
+    "examId": "CI20230707",
+    "date": "2023-07-07",
+    "academicYear": "AA2223",
+    "exerciseNo": 7,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": [
+      "networking"
+    ],
+    "part": "second",
+    "prompt": "POD, Virtual-Chassis, DCell and BCube models are all evolutions of the leaf-spine network architectures.",
+    "subStatements": [
+      {
+        "id": "CI20230707-e7-s1",
+        "statement": "POD, Virtual-Chassis, DCell and BCube models are all evolutions of the leaf-spine network architectures.",
+        "answer": false,
+        "motivation": "The Networking lecture distinguishes **switch-centric** topologies (three-tier, fat-tree / leaf-spine, where forwarding is done entirely by switches) from **server-centric** topologies such as **DCell** and **BCube**, in which the servers themselves participate in forwarding/routing. DCell and BCube are a different design philosophy, not evolutions of leaf-spine; likewise POD and Virtual-Chassis are distinct concepts (a POD is a modular building block, Virtual-Chassis is the logical stacking of switches). Lumping them all together as 'evolutions of leaf-spine' is incorrect, so the statement is false."
+      }
+    ],
+    "solution": "Answer key: **False** (box A is False here). DCell/BCube are server-centric topologies (servers forward traffic), not evolutions of switch-centric leaf-spine; POD and Virtual-Chassis are also separate concepts.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230707-e8",
+    "examId": "CI20230707",
+    "date": "2023-07-07",
+    "academicYear": "AA2223",
+    "exerciseNo": 8,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": [
+      "virtualization"
+    ],
+    "part": "second",
+    "prompt": "Type 2 hypervisors run on top of a guest operating system that provides indirect access to hardware resources.",
+    "subStatements": [
+      {
+        "id": "CI20230707-e8-s1",
+        "statement": "Type 2 hypervisors run on top of a guest operating system that provides indirect access to hardware resources.",
+        "answer": false,
+        "motivation": "The Virtualization lecture defines a **Type 2 (hosted) hypervisor** as running on top of a **host** operating system (e.g. VirtualBox/VMware Workstation on top of Windows/Linux); it reaches the hardware indirectly through that **host** OS. The statement says 'guest operating system', which is wrong - the guest OS is the one running *inside* the VM, above the hypervisor. Because it confuses host with guest, the statement is false. (A Type 1 / bare-metal hypervisor instead runs directly on the hardware.)"
+      }
+    ],
+    "solution": "Answer key: **False** (box A is False here). A Type 2 hypervisor runs on top of the *host* OS (indirect hardware access), not the *guest* OS - the statement swaps host and guest.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230707-e9",
+    "examId": "CI20230707",
+    "date": "2023-07-07",
+    "academicYear": "AA2223",
+    "exerciseNo": 9,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": [
+      "storage-systems"
+    ],
+    "part": "second",
+    "prompt": "In-row cooling systems allow for higher server densities and increased rack power densities in datacenters.",
+    "subStatements": [
+      {
+        "id": "CI20230707-e9-s1",
+        "statement": "In-row cooling systems allow for higher server densities and increased rack power densities in datacenters.",
+        "answer": true,
+        "motivation": "The Building Infrastructures lecture covers cooling placement: **in-row** cooling units are placed **between/within the racks**, very close to the heat source, instead of relying only on perimeter CRAC units and a raised floor. This short, targeted air path removes heat from high-power racks far more effectively, so it supports **higher server and rack power densities**. The statement is true."
+      }
+    ],
+    "solution": "Answer key: **True** (box B is True here). In-row units sit next to the racks and cool the heat source directly, enabling higher rack power/server densities.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230707-e10",
+    "examId": "CI20230707",
+    "date": "2023-07-07",
+    "academicYear": "AA2223",
+    "exerciseNo": 10,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": [
+      "storage-systems"
+    ],
+    "part": "second",
+    "prompt": "DAS (Direct Attached Storage) is a storage system directly attached to the datacenter network.",
+    "subStatements": [
+      {
+        "id": "CI20230707-e10-s1",
+        "statement": "DAS (Direct Attached Storage) is a storage system directly attached to the datacenter network.",
+        "answer": false,
+        "motivation": "By definition, **DAS (Direct-Attached Storage)** is attached directly to a **single host/server** via a local bus (SATA/SAS/PCIe), with **no network** in between. Storage attached to the network is instead **NAS** (file over LAN) or **SAN** (block over a dedicated network). Saying DAS is 'attached to the datacenter network' contradicts the definition, so the statement is false."
+      }
+    ],
+    "solution": "Answer key: **False** (box B). DAS is attached directly to a host via a local bus, not to the network; network-attached storage is NAS/SAN.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230707-e11",
+    "examId": "CI20230707",
+    "date": "2023-07-07",
+    "academicYear": "AA2223",
+    "exerciseNo": 11,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": [
+      "storage-devices"
+    ],
+    "part": "first",
+    "prompt": "A disk request queue refers to the following cylinders: **57, 32, 46, 83, 12**. The disk head starts at cylinder **54** and is moving from inside (lower cylinder number) toward outside (higher cylinder number). Using the **C-SCAN** (Circular SCAN) scheduling algorithm, give the order in which the requests are served (first to last), referring to each request by its cylinder number.",
+    "solution": "**Method (C-SCAN).** C-SCAN moves the head in **one direction only**, serving every request it passes until it reaches the **edge** of the disk; it then **jumps back to the opposite edge** (without serving anything on the return) and resumes scanning in the **same** direction.\n\nStart at **54**, direction = **toward the outside** (increasing cylinder).\n\n1. Going up, serve the requests above 54 in increasing order: $57 \\to 83$.\n2. Reach the outer edge, then **wrap around** to cylinder 0.\n3. Continue going up from 0, serving the remaining requests in increasing order: $12 \\to 32 \\to 46$.\n\n**Served order (first -> last):**\n$$57,\\; 83,\\; 12,\\; 32,\\; 46$$\n\nMatches the exam answer key ($57-83-12-32-46$).",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230707-e12",
+    "examId": "CI20230707",
+    "date": "2023-07-07",
+    "academicYear": "AA2223",
+    "exerciseNo": 12,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": [
+      "raid"
+    ],
+    "part": "second",
+    "prompt": "We design a **RAID 5** storage architecture with an array of **8 disks**. We cannot guarantee an average **MTTR lower than 6 hours**, and we want a **$MTTF_{RAID5}$ higher than 15 years**. What is the minimum **MTTF that we should consider for each disk** (all disks identical)?",
+    "solution": "**Method.** RAID 5 tolerates one disk failure; it fails only if a **second** disk fails during the repair (MTTR) of the first. The standard array-MTTF formula for $N$ identical disks is\n$$MTTF_{RAID5} = \\frac{MTTF_{disk}^2}{N\\,(N-1)\\,MTTR}$$\nSolving for the per-disk MTTF:\n$$MTTF_{disk} = \\sqrt{MTTF_{RAID5}\\cdot N\\,(N-1)\\,MTTR}$$\n\n**Values.** $N = 8$, $MTTR = 6$ h, $MTTF_{RAID5} = 15\\ \\text{years} = 15\\times 365\\times 24 = 131{,}400$ h.\n\n$$MTTF_{disk} = \\sqrt{131{,}400 \\times 8 \\times 7 \\times 6} = \\sqrt{131{,}400 \\times 336} = \\sqrt{44{,}150{,}400}$$\n$$MTTF_{disk} \\approx 6644.58\\ \\text{h} \\approx \\boxed{276.86\\ \\text{days}}$$\n\nMatches the exam answer key ($\\approx 276.8$ days).",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230707-e13",
+    "examId": "CI20230707",
+    "date": "2023-07-07",
+    "academicYear": "AA2223",
+    "exerciseNo": 13,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": [
+      "dependability"
+    ],
+    "part": "first",
+    "prompt": "A sensing system has an average **availability equal to 0.98**. It is a **single device** that is substituted when it fails. Knowing its **MTTR is 3 hours**, what is the **reliability of a newly deployed device after 4 days**?",
+    "solution": "**Method.** First recover the device MTTF from steady-state availability, then use the exponential reliability law $R(t)=e^{-t/MTTF}$.\n\n**Step 1 - MTTF from availability.**\n$$A = \\frac{MTTF}{MTTF+MTTR} \\;\\Rightarrow\\; MTTF = \\frac{A\\cdot MTTR}{1-A} = \\frac{0.98 \\times 3}{0.02} = \\frac{2.94}{0.02} = 147\\ \\text{h}$$\n\n**Step 2 - reliability after 4 days.** $t = 4\\ \\text{days} = 96\\ \\text{h}$:\n$$R(96\\,\\text{h}) = e^{-96/147} = e^{-0.6531} \\approx \\boxed{0.52}$$\n\nMatches the exam answer key ($\\approx 0.52$).",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230707-e14",
+    "examId": "CI20230707",
+    "date": "2023-07-07",
+    "academicYear": "AA2223",
+    "exerciseNo": 14,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": [
+      "performance"
+    ],
+    "part": "second",
+    "prompt": "Consider a queueing system with two stations:\n- station 1 response time: $R_1 = 5$ s\n- station 2 response time: $R_2 = 3$ s\n- station 1 throughput: $X_1 = 3$ transactions/s\n- station 2 throughput: $X_2 = 7$ transactions/s\n- system throughput: $X = 4$ transactions/s\n\nWhat is the **average response time of the system**?",
+    "solution": "**Method (General Response-Time Law).** The per-visit response times must be weighted by each station's **visit ratio** $V_k = X_k/X$ (how many times a job visits station $k$ per system completion):\n$$R = \\sum_k V_k\\,R_k = \\sum_k \\frac{X_k}{X}\\,R_k$$\n\n**Visit ratios.**\n$$V_1 = \\frac{X_1}{X} = \\frac{3}{4} = 0.75,\\qquad V_2 = \\frac{X_2}{X} = \\frac{7}{4} = 1.75$$\n\n**System response time.**\n$$R = V_1 R_1 + V_2 R_2 = 0.75\\times 5 + 1.75\\times 3 = 3.75 + 5.25 = \\boxed{9\\ \\text{s}}$$\n\nMatches the exam answer key (**9 s**).",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230707-e15",
+    "examId": "CI20230707",
+    "date": "2023-07-07",
+    "academicYear": "AA2223",
+    "exerciseNo": 15,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": [
+      "performance"
+    ],
+    "part": "second",
+    "prompt": "A data-science team trains deep-learning models on a server with **8 CPUs, one GPU, one SSD disk**. There are $N = 10$ users submitting training jobs with think time $Z = 1$ hour. Each job uses all available CPUs. Server demands: $D_{CPU_i} = 2$ min for each $i \\in \\{1..8\\}$, $D_{GPU} = 12$ min, $D_{Disk} = 3$ min. Using the **asymptotic bounds**, what are the system **throughput upper bound** and **response-time lower bound**?",
+    "solution": "**Method (asymptotic bounds).** With total demand $D = \\sum_k D_k$ and $D_{max} = \\max_k D_k$:\n$$X_{max} = \\min\\!\\left(\\frac{1}{D_{max}},\\ \\frac{N}{D+Z}\\right),\\qquad R_{min} = \\max\\!\\big(D,\\ N\\,D_{max}-Z\\big)$$\n\n**Demands** (8 CPUs at 2 min each are separate resources, so the per-resource max stays 2 min):\n$$D = 8\\times 2 + 12 + 3 = 16 + 12 + 3 = 31\\ \\text{min},\\qquad D_{max} = D_{GPU} = 12\\ \\text{min}$$\n$Z = 1\\ \\text{h} = 60$ min, $N = 10$.\n\n**Throughput upper bound.**\n$$\\frac{1}{D_{max}} = \\frac{1}{12} = 0.0833\\ \\text{jobs/min} = 5\\ \\text{jobs/h}$$\n$$\\frac{N}{D+Z} = \\frac{10}{31+60} = \\frac{10}{91} = 0.1099\\ \\text{jobs/min} = 6.59\\ \\text{jobs/h}$$\n$$X_{max} = \\min(5,\\ 6.59) = \\boxed{5\\ \\text{jobs/h}}\\quad(\\text{GPU-bound})$$\n\n**Response-time lower bound.**\n$$N\\,D_{max} - Z = 10\\times 12 - 60 = 120 - 60 = 60\\ \\text{min}$$\n$$R_{min} = \\max(31,\\ 60) = \\boxed{60\\ \\text{min}}$$\n\nMatches the exam answer key ($X_{max} = 5$/h, $R_{min} = 60$ min).",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230707-e16",
+    "examId": "CI20230707",
+    "date": "2023-07-07",
+    "academicYear": "AA2223",
+    "exerciseNo": 16,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": [
+      "performance"
+    ],
+    "part": "second",
+    "prompt": "If in the system of Question 15 you add **3 more GPUs (4 GPUs total)**, with the original GPU workload **split evenly** across all GPUs, what are the new system **throughput upper bound** and **response-time lower bound**?",
+    "solution": "**Method.** Splitting the GPU workload evenly across 4 GPUs divides the per-GPU demand by 4: $D_{GPU}' = 12/4 = 3$ min per GPU. The **total** per-job demand $D$ is unchanged ($4\\times 3 + 16 + 3 = 31$ min), but the bottleneck moves.\n\n**New $D_{max}$.** Per-resource demands are now CPU $= 2$, each GPU $= 3$, Disk $= 3$ min, so $D_{max}' = 3$ min (GPU/Disk tie). $Z = 60$ min, $N = 10$.\n\n**Throughput upper bound.**\n$$\\frac{1}{D_{max}'} = \\frac{1}{3} = 0.333\\ \\text{jobs/min} = 20\\ \\text{jobs/h}$$\n$$\\frac{N}{D+Z} = \\frac{10}{31+60} = \\frac{10}{91} = 0.1099\\ \\text{jobs/min} \\approx 6.6\\ \\text{jobs/h}$$\n$$X_{max}' = \\min(20,\\ 6.6) = \\boxed{6.6\\ \\text{jobs/h}}\\quad(\\text{now population/think-time limited, no longer GPU-bound})$$\n\n**Response-time lower bound.**\n$$N\\,D_{max}' - Z = 10\\times 3 - 60 = 30 - 60 = -30\\ \\text{min}\\ (<0)$$\n$$R_{min}' = \\max(31,\\ -30) = \\boxed{31\\ \\text{min}}$$\n\nSo adding GPUs removes the GPU bottleneck: throughput rises from 5 to ~6.6 jobs/h (now limited by $N/(D+Z)$) and the response-time bound drops from 60 to 31 min ($=D$). Matches the exam answer key ($X_{max} \\approx 6.6$/h, $R_{min} = 31$ min).",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "CI20230707-e17",
+    "examId": "CI20230707",
+    "date": "2023-07-07",
+    "academicYear": "AA2223",
+    "exerciseNo": 17,
+    "marks": 5,
+    "type": "theory-essay",
+    "topics": [
+      "virtualization"
+    ],
+    "part": "second",
+    "prompt": "Discuss the main differences between **para-virtualization** and **full-virtualization**.",
+    "solution": "Both are CPU/system virtualization techniques that let multiple guest OSes share one physical machine through a hypervisor (VMM), but they differ in **how the guest OS interacts with the hypervisor** and whether the guest must be modified.\n\n**Full virtualization.**\n- The guest OS runs **completely unmodified** - it believes it is running on real hardware.\n- The hypervisor must give the illusion of a complete machine. Privileged/sensitive instructions that cannot be safely run directly are handled by **trap-and-emulate** or **binary translation** (on architectures that are not classically virtualizable), and I/O is presented through **emulated virtual devices**.\n- **Pros:** maximum compatibility (any OS, no source changes); strong isolation.\n- **Cons:** the trapping/emulation/translation of privileged operations and emulated I/O add **runtime overhead**, so performance is generally lower.\n\n**Para-virtualization.**\n- The guest OS is **modified (ported)** to be aware that it is virtualized. Instead of executing sensitive instructions that must be trapped, it makes explicit **hypercalls** to the hypervisor to request privileged operations and uses lightweight **paravirtualized drivers** for I/O.\n- **Pros:** by cooperating with the hypervisor it avoids most trap-and-emulate overhead, giving **better/near-native performance** (especially for I/O).\n- **Cons:** requires **access to and modification of the guest OS source**, so it cannot run unmodified/closed OSes; it is more intrusive and less portable.\n\n**Summary of the key differences.**\n| Aspect | Full virtualization | Para-virtualization |\n|---|---|---|\n| Guest OS | Unmodified | Modified (aware of VMM) |\n| Privileged instr. | Trap-and-emulate / binary translation | Hypercalls to the hypervisor |\n| I/O | Emulated virtual devices | Paravirtualized (cooperative) drivers |\n| Performance | Lower (more overhead) | Higher (near-native) |\n| Compatibility | Any guest OS | Only guests that can be modified |\n\nIn short: **full virtualization trades performance for compatibility** (run any OS unchanged), while **para-virtualization trades compatibility for performance** (faster, but the guest must be modified to cooperate via hypercalls). Hardware-assisted virtualization (e.g. Intel VT-x/AMD-V) later reduced the full-virtualization overhead by letting sensitive instructions trap efficiently in hardware.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20230707-e18",
+    "examId": "CI20230707",
+    "date": "2023-07-07",
+    "academicYear": "AA2223",
+    "exerciseNo": 18,
+    "marks": 5,
+    "type": "theory-essay",
+    "topics": [
+      "storage-systems",
+      "dc-intro"
+    ],
+    "part": "second",
+    "prompt": "What are the adopted strategies for **efficient cooling of data-center infrastructures** targeting highly computationally demanding applications, such as **HPC and deep-learning workloads**?",
+    "solution": "HPC/deep-learning racks pack many high-TDP CPUs/GPUs/TPUs, giving **very high power and heat density** per rack. The Building Infrastructures lecture covers a layered set of strategies to remove that heat efficiently:\n\n**1. Airflow management (separate hot and cold air).** Use a **hot-aisle/cold-aisle** layout with **containment** (and a raised floor or overhead ducting) so cold supply air and hot exhaust never mix. This raises the achievable cooling set-point and avoids recirculation - the cheapest first-order efficiency win.\n\n**2. Bring cooling close to the heat (targeted air cooling).** For dense racks, perimeter CRAC/CRAH units alone are insufficient; **in-row** and **in-rack / rear-door heat exchangers** place the cooling next to or inside the racks, shortening the air path and supporting much higher rack power densities.\n\n**3. Liquid cooling.** Because air struggles at HPC/DL densities, move to liquid, which has far higher heat capacity:\n- **Direct-to-chip / cold plates** on the hottest components (GPUs/TPUs/CPUs), as used for high-end accelerators and Google TPUs.\n- **Immersion cooling** (submerging boards in a dielectric fluid) for the highest densities.\nLiquid loops capture heat right at the source and reject it efficiently.\n\n**4. Economization / free cooling where the climate allows.** Use **air-side or water-side economizers** (free cooling) and **cooling towers** (evaporative heat rejection) to avoid running power-hungry chillers when outside conditions permit - greatly lowering cooling energy. Open-loop fresh-air cooling works only in suitable (cool, dry) climates; closed-loop chiller/liquid systems are used where precise high-load removal is needed.\n\n**5. Operate at higher, optimized temperatures and control intelligently.** Running supply air/water warmer (within safe limits) widens the free-cooling window; smart control of fans/pumps and workload/thermal-aware placement matches cooling to the actual load.\n\n**Goal - minimize PUE.** All these strategies aim to reduce the **cooling overhead**, i.e. push **PUE** (total facility power / IT power) toward 1.0. For HPC/DL facilities the practical recipe is: aisle containment + targeted in-row cooling for moderate density, escalating to **direct liquid / immersion cooling** for the densest accelerator racks, combined with **free cooling / economizers and cooling towers** to cut chiller energy.",
+    "solutionSource": "authored"
+  }
+]

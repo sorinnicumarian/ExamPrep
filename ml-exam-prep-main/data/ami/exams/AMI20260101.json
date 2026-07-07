@@ -1,0 +1,228 @@
+[
+  {
+    "id": "AMI20260101-e1",
+    "examId": "AMI20260101",
+    "date": "2026-01-01",
+    "academicYear": "AA2526",
+    "exerciseNo": 1,
+    "type": "multiple-choice",
+    "topics": ["ami-intro"],
+    "prompt": "According to the course, Ambient Intelligence is best described as:",
+    "choices": [
+      {"label": "A", "text": "A multidisciplinary area making everyday environments intelligent and adaptive via hidden interfaces that adapt to user needs"},
+      {"label": "B", "text": "A set of physical smart objects with sensors and software that collect data and exchange it over a network to reach a goal"},
+      {"label": "C", "text": "A computing paradigm in which many small devices dissolve into the environment and are used without conscious effort"},
+      {"label": "D", "text": "A system that uses the user's current context to deliver relevant information and services for the task at hand"}
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** Ambient Intelligence (AmI) is a *multidisciplinary* area whose goal is to make everyday environments intelligent and adaptive. The course pictures it as a network of *hidden interfaces* that understand our behavior and adapt the environment to our needs — the environment is aware of the current context and ready to act. Think of a home that quietly adjusts lighting and heating as you move through your day, without you commanding it.\n\n**Why A is correct.** It states exactly this definition: multidisciplinary, intelligent/adaptive environments, hidden interfaces that understand behavior and adapt to needs.\n\n**Why the others are wrong.** B is the definition of the *Internet of Things*, the technology AmI is built on, not AmI itself. C describes *pervasive (ubiquitous) computing*, one of AmI's two roots, but only the 'invisibility' part. D is the definition of a *context-aware system* — a key property of AmI systems, but narrower than the whole multidisciplinary area.\n\n**Takeaway.** AmI = the broad, invisible, context-aware intelligence woven into the everyday environment, sitting above IoT, pervasive computing and context-awareness.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260101-e2",
+    "examId": "AMI20260101",
+    "date": "2026-01-01",
+    "academicYear": "AA2526",
+    "exerciseNo": 2,
+    "type": "multiple-choice",
+    "topics": ["ami-intro"],
+    "prompt": "Mark Weiser's vision (\"The most profound technologies are those that disappear... they weave themselves into the fabric of everyday life until they are indistinguishable from it\") expresses the core idea behind:",
+    "choices": [
+      {"label": "A", "text": "Artificial Intelligence, the other root of Ambient Intelligence alongside ubiquitous computing"},
+      {"label": "B", "text": "The Internet of Things, the network of smart objects on which Ambient Intelligence is built"},
+      {"label": "C", "text": "Context-awareness, the use of situational information to adapt a service to the user"},
+      {"label": "D", "text": "Pervasive (ubiquitous) computing, one of the two roots of Ambient Intelligence"}
+    ],
+    "correctChoice": "D",
+    "solution": "**Concept.** *Pervasive (ubiquitous) computing* is the idea that computing should dissolve into the environment — many small devices everywhere, used without conscious effort, instead of one PC you sit at. Mark Weiser captured this in 1988 ('The Computer for the 21st Century'): the best technologies *disappear* and become indistinguishable from everyday life. The course presents pervasive computing and Artificial Intelligence as the two roots of Ambient Intelligence.\n\n**Why D is correct.** The quote is the founding vision of pervasive/ubiquitous computing — invisibility through ubiquity — which the course names as one of AmI's two pillars.\n\n**Why the others are wrong.** A (Artificial Intelligence) is the *other* root, but the quote about technologies that 'disappear' is about ubiquity, not intelligence. B (IoT) is the device substrate AmI runs on, not the disappearing-technology vision. C (context-awareness) is a property AmI must have, but the quote describes invisibility, not situational adaptation.\n\n**Takeaway.** \"Technologies that disappear\" = Weiser = pervasive computing, a root of AmI.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260101-e3",
+    "examId": "AMI20260101",
+    "date": "2026-01-01",
+    "academicYear": "AA2526",
+    "exerciseNo": 3,
+    "type": "multiple-choice",
+    "topics": ["ami-intro"],
+    "prompt": "In the course, a Pervasive System is defined as a distributed system that, in addition to the standard distributed-system properties, is characterized by:",
+    "choices": [
+      {"label": "A", "text": "Including unconventional, possibly mobile nodes and being adaptive to the current context"},
+      {"label": "B", "text": "Appearing to its users as a single coherent system built from independent connected nodes"},
+      {"label": "C", "text": "Including unconventional mobile nodes while keeping device associations fixed and stable"},
+      {"label": "D", "text": "Collecting data from many smart objects and exchanging it over a network to reach a goal"}
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** A *distributed system* is a collection of connected, independent computing nodes that appears to users as one coherent system. A *pervasive system* is a distributed system plus two extra features the course stresses: (1) it includes *unconventional, possibly mobile nodes* — smartphones, smart appliances, smart meters, sensors — not just servers/PCs; and (2) it is *adaptive*, considering the current context and adjusting its behavior to optimize the system goal.\n\n**Why A is correct.** It names exactly those two distinguishing features: unconventional/mobile nodes and context-adaptiveness.\n\n**Why the others are wrong.** B states the *generic distributed-system* property (single coherent system), which the prompt says is already assumed — it is not the extra feature. C names the right first feature but replaces adaptiveness with 'fixed, stable associations', contradicting pervasive systems' high volatility. D is the definition of the *Internet of Things*, the substrate, not the pervasive-system property.\n\n**Takeaway.** Pervasive = distributed + unconventional/mobile nodes + context-adaptive.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260101-e4",
+    "examId": "AMI20260101",
+    "date": "2026-01-01",
+    "academicYear": "AA2526",
+    "exerciseNo": 4,
+    "type": "multiple-choice",
+    "topics": ["ami-intro"],
+    "prompt": "The slides describe pervasive systems as 'volatile'. Which of the following is NOT an example of the volatility they discuss?",
+    "choices": [
+      {"label": "A", "text": "Failures of devices and of the communication systems connecting them"},
+      {"label": "B", "text": "Changes in the characteristics of communication, such as available bandwidth"},
+      {"label": "C", "text": "Associations between software components staying fixed once the system has started"},
+      {"label": "D", "text": "Creation and destruction of associations between software components on the devices"}
+    ],
+    "correctChoice": "C",
+    "solution": "**Concept.** Pervasive systems are *volatile*: their structure and conditions change frequently and unpredictably. The course lists exactly three forms of this high volatility — (1) failures of devices and communication systems, (2) changes in communication characteristics such as bandwidth, and (3) creation and destruction of associations between software components residing on the devices. Designs must therefore tolerate things appearing, vanishing and re-connecting.\n\n**Why C is correct (as the odd one out).** This is a NOT question. Associations that stay *fixed* once the system starts is the *opposite* of volatility, so it is not an example of it — the course explicitly lists associations being created and destroyed.\n\n**Why the others are wrong (i.e., they ARE volatility).** A, B and D are precisely the three listed examples: device/communication failures, changes in bandwidth, and the dynamic creation/destruction of component associations.\n\n**Takeaway.** Volatility means nothing stays stable — the one 'stays fixed' option is the impostor.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260101-e5",
+    "examId": "AMI20260101",
+    "date": "2026-01-01",
+    "academicYear": "AA2526",
+    "exerciseNo": 5,
+    "type": "multiple-choice",
+    "topics": ["ami-intro"],
+    "prompt": "Among the AmI components (Sensing, Acting, Reasoning, HCI, Security & Privacy), which one is described as 'modeling and recognizing the user's behavior in the environment to connect sensing and acting'?",
+    "choices": [
+      {"label": "A", "text": "Sensing"},
+      {"label": "B", "text": "Acting"},
+      {"label": "C", "text": "Reasoning"},
+      {"label": "D", "text": "Human-Computer Interaction"}
+    ],
+    "correctChoice": "C",
+    "solution": "**Concept.** The course breaks AmI into five components. *Sensing* captures information about the environment and users. *Acting* physically affects the environment (lights, thermostat, robots). *Reasoning* models and recognizes the user's behavior to *connect sensing and acting* — it is the intelligent middle that decides what the sensed data means and what to do. *HCI* offers natural interaction (gestures, speech, emotions), and *Security & Privacy* protects sensitive data and devices.\n\n**Why C is correct.** Only Reasoning is defined as modeling/recognizing behavior to bridge Sensing and Acting — turning perception into appropriate action.\n\n**Why the others are wrong.** A (Sensing) only captures data. B (Acting) only executes effects on the environment. D (HCI) handles the interaction interface, not the sense-to-act bridge.\n\n**Takeaway.** Reasoning is the brain that links what is sensed to what is done.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260101-e6",
+    "examId": "AMI20260101",
+    "date": "2026-01-01",
+    "academicYear": "AA2526",
+    "exerciseNo": 6,
+    "type": "multiple-choice",
+    "topics": ["ami-intro"],
+    "prompt": "Anind Dey's (2001) widely adopted definition states that context is:",
+    "choices": [
+      {"label": "A", "text": "Any information used to characterize the situation of an entity relevant to the interaction"},
+      {"label": "B", "text": "The enumerated set of location, time, surrounding people, season and temperature around the user"},
+      {"label": "C", "text": "The set of circumstances or facts that happen to surround a particular event or current situation"},
+      {"label": "D", "text": "Information a system uses to provide relevant services, where relevancy depends on the user's task"}
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** *Context* is everything that helps a system understand a situation so it can adapt. Early definitions tried to *enumerate* it (location, time, people, temperature...), but the course rejects these as not general enough. Anind Dey's 2001 definition is preferred precisely for its generality: context is *any information that characterizes the situation of an entity* (a person, place or object) relevant to the user-application interaction — simplified as 'all the data useful to adapt a service'.\n\n**Why A is correct.** It is Dey's general definition, covering any situation-characterizing information about an entity.\n\n**Why the others are wrong.** B is an *enumeration* definition the course explicitly rejects as not general enough. C is the loose dictionary/vocabulary phrasing, not Dey's computer-science definition. D paraphrases the definition of a *context-aware system* (using context to give relevant services), not the definition of context itself.\n\n**Takeaway.** Context = ANY information characterizing an entity's situation — generality is the point.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260101-e7",
+    "examId": "AMI20260101",
+    "date": "2026-01-01",
+    "academicYear": "AA2526",
+    "exerciseNo": 7,
+    "type": "multiple-choice",
+    "topics": ["ami-intro"],
+    "prompt": "The quality of a context-aware system as perceived by the user is, according to the slides, directly related to the 'awareness mismatch'. The design goal is therefore to:",
+    "choices": [
+      {"label": "A", "text": "Adapt behavior so the awareness mismatch stays constant as the context changes"},
+      {"label": "B", "text": "Minimize the awareness mismatch between human perception and the perceived context"},
+      {"label": "C", "text": "Reduce the number of sensors so the system perceives less context than the human"},
+      {"label": "D", "text": "Increase the system's perceived context beyond what the human perceives of the situation"}
+    ],
+    "correctChoice": "B",
+    "solution": "**Concept.** The *awareness mismatch* is the gap between how a human perceives a situation and the context the system perceives. The course states that the quality of a context-aware system, as felt by the user, is directly tied to this mismatch: the bigger the gap, the more the system feels wrong or annoying. For example, if you feel cold but the system thinks the room is warm, the mismatch is large and the experience suffers.\n\n**Why B is correct.** Since quality improves as the gap shrinks, the design goal is to *minimize the awareness mismatch* between human perception and perceived context.\n\n**Why the others are wrong.** A freezes the gap, but the system should keep reducing it as context changes, not hold it steady. C deliberately widens the gap (less perceived context), which worsens quality. D also enlarges the mismatch by over-perceiving relative to the human — the goal is to match, not exceed, human perception.\n\n**Takeaway.** Better context-aware systems = smaller awareness mismatch.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260101-e8",
+    "examId": "AMI20260101",
+    "date": "2026-01-01",
+    "academicYear": "AA2526",
+    "exerciseNo": 8,
+    "type": "multiple-choice",
+    "topics": ["ami-intro"],
+    "prompt": "The course distinguishes low-level from high-level context. Which example correctly illustrates HIGH-level context?",
+    "choices": [
+      {"label": "A", "text": "A 'Hot&Humid' label derived when average temperature exceeds 30°C and humidity exceeds 80%"},
+      {"label": "B", "text": "A bandwidth estimate obtained by averaging signal samples over a time window"},
+      {"label": "C", "text": "Explicit user preferences read directly from the user's stored profile"},
+      {"label": "D", "text": "The activity 'cooking a meal' inferred from smart-home sensor data using AI models"}
+    ],
+    "correctChoice": "D",
+    "solution": "**Concept.** The course splits context by how it is obtained. *Low-level context* is acquired directly from sensors/sources, or via *simple processing/fusion* of raw data (e.g., averaging samples, or a rule like 'Hot&Humid if temp>30°C and humidity>80%'). *High-level context* is *derived by applying AI models* to infer something abstract — like the activity 'cooking a meal' or a user's mood. The dividing line is whether AI-based inference is required.\n\n**Why D is correct.** Inferring 'cooking a meal' from smart-home sensors using AI models is exactly high-level context.\n\n**Why the others are wrong.** A (a threshold rule) and B (a windowed average) are *simple processing/fusion* of raw data = low-level. C (explicit profile preferences) is directly acquired = low-level. None of them apply AI inference.\n\n**Takeaway.** Needs AI inference → high-level; raw or simply processed → low-level.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260101-e9",
+    "examId": "AMI20260101",
+    "date": "2026-01-01",
+    "academicYear": "AA2526",
+    "exerciseNo": 9,
+    "type": "multiple-choice",
+    "topics": ["ami-intro"],
+    "prompt": "In the smart-home automation example from the slides ('When motion detected in living room AND luminance is low, turn on the light'), what is the role of the motion detection?",
+    "choices": [
+      {"label": "A", "text": "It is the actuator whose state the rule changes, physically switching the living-room light on"},
+      {"label": "B", "text": "It is the event that, combined with the low-luminance condition, triggers the rule"},
+      {"label": "C", "text": "It is the condition that must hold before the automation rule is allowed to fire"},
+      {"label": "D", "text": "It is the effect the automation produces once the rule has been triggered"}
+    ],
+    "correctChoice": "B",
+    "solution": "**Concept.** In domotics, an *automation* is a rule that changes device states based on events. The course frames it as event + condition → effect. In the example, the *event* is 'motion detected in living room', the *condition* is 'luminance is low', and the *effect* is 'turn on the light' (the light being the actuator). The event is the sensed trigger that, together with the condition, fires the rule.\n\n**Why B is correct.** Motion detection is the *event* that, combined with the low-luminance condition, triggers the automation rule.\n\n**Why the others are wrong.** A confuses it with the *actuator* — the light, not the sensor, is the actuated device. C is the *condition* role, but 'luminance is low' is the condition here, not the motion. D is the *effect* role ('turn on the light'), which is the outcome, not the trigger.\n\n**Takeaway.** Automation = event + condition → effect; motion is the event, the light is the actuator.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260101-e10",
+    "examId": "AMI20260101",
+    "date": "2026-01-01",
+    "academicYear": "AA2526",
+    "exerciseNo": 10,
+    "type": "multiple-choice",
+    "topics": ["ami-intro"],
+    "prompt": "The slides list several challenges of applying AI to Ambient Intelligence. Why is PERSONALIZATION emphasized as crucial in AmI, unlike in domains such as computer vision?",
+    "choices": [
+      {"label": "A", "text": "Because activity classes are unbalanced, with some behaviors far rarer than others in the data"},
+      {"label": "B", "text": "Because models must be updated continually as user behavior patterns keep drifting over time"},
+      {"label": "C", "text": "Because sensor-data patterns vary across subjects, so generic pre-trained models often do not transfer"},
+      {"label": "D", "text": "Because labeled human-behavior data is scarce, as its annotation is costly and intrusive to collect"}
+    ],
+    "correctChoice": "C",
+    "solution": "**Concept.** *Personalization* means tailoring AI models to a specific user, home or building rather than relying on one generic model. The course stresses this because human-behavior sensor data is highly idiosyncratic: each subject and environment produces peculiar patterns and habits, so a model trained on others often *does not transfer well*. This contrasts with domains like computer vision, where large pre-trained models frequently work off-the-shelf.\n\n**Why C is correct.** It names the real reason: sensor-data patterns vary strongly across subjects/environments, so generic pre-trained models often fail to transfer, forcing per-target adaptation.\n\n**Why the others are wrong.** A, B and D are all genuine AmI challenges from the deck, but they explain *different* problems: A is the *unbalanced-data* challenge, B is the *continual-learning* challenge, and D is the *labeled-data scarcity* challenge. None of them is the reason personalization is uniquely needed — that reason is the cross-subject variability of sensor patterns.\n\n**Takeaway.** Human behavior is individual, so AmI models must be personalized, not generic.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260101-e11",
+    "examId": "AMI20260101",
+    "date": "2026-01-01",
+    "academicYear": "AA2526",
+    "exerciseNo": 11,
+    "type": "theory-essay",
+    "topics": ["ami-intro"],
+    "prompt": "Ambient Intelligence is presented as sitting at the intersection of Pervasive Computing and Artificial Intelligence, and as being built on distributed pervasive systems.\n\n**(a)** Explain what a distributed pervasive system is and the two main features that distinguish a pervasive system from a generic distributed system.\n\n**(b)** Explain why pervasive systems are called 'volatile', giving concrete examples, and why this volatility matters for AmI applications.",
+    "solution": "**(a)** A distributed system is a collection of connected, independent computing nodes that appears to its users as a single coherent system. A pervasive system is a distributed system with two distinguishing features. First, it includes *unconventional nodes*: possibly mobile objects endowed with computing and communication capabilities, such as smartphones, smart appliances, smart meters and sensors, rather than only conventional servers/PCs. Second, it is *adaptive*: the system continuously considers the current context and adapts its behavior to optimize the system goal. AmI is built on top of such systems because intelligent environments require many heterogeneous, distributed devices cooperating while reacting to context.\n\n**(b)** Pervasive systems are 'volatile' because their structure and conditions change frequently and unpredictably. Concrete examples from the course are: failures of devices and of the communication infrastructure; changes in communication characteristics such as available bandwidth; and the dynamic creation and destruction of associations between software components residing on the devices. This matters for AmI because the system must keep providing relevant, context-aware services despite nodes appearing/disappearing, connectivity fluctuating, and components re-associating. Designs must therefore be robust to partial failures, tolerate intermittent connectivity, and re-establish cooperation among components automatically, otherwise the 'invisible', always-available experience that AmI promises would break down.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260101-e12",
+    "examId": "AMI20260101",
+    "date": "2026-01-01",
+    "academicYear": "AA2526",
+    "exerciseNo": 12,
+    "type": "theory-essay",
+    "topics": ["ami-intro"],
+    "prompt": "Context-awareness is central to Ambient Intelligence.\n\n**(a)** Give the definition of a context-aware system and explain the notion of 'adaptiveness', including why it is especially important in pervasive computing.\n\n**(b)** Describe the difference between low-level and high-level context, giving an example of each, and explain how 'context history' can be exploited.",
+    "solution": "**(a)** A system is *context-aware* if it uses context to provide relevant information and/or services to the user, where relevancy depends on the user's current task. Closely related is *adaptiveness*: the property of a system to adapt to a given context in order to deliver a better service or experience; a context-aware system acquires context data and automatically adjusts its behavior. This is especially important in pervasive computing because conditions change constantly: the user's situation (location, time, activity), the environment (light, temperature, crowd), network connectivity, and energy/battery availability. A system that cannot adapt to these continuous changes would quickly become irrelevant or annoying, increasing the 'awareness mismatch' the system should minimize.\n\n**(b)** *Low-level context* is acquired directly from sensors/other sources, or obtained by simple processing or fusion of raw data, for example raw sensor readings, explicit user preferences, or a 'Hot&Humid' label derived when averaged temperature exceeds 30°C and humidity exceeds 80%. *High-level context* is derived by applying AI models, for example inferring the activity 'cooking a meal' from smart-home sensors, or inferring the user's mood by combining daily activities, galvanic skin response and face recognition. *Context history* keeps track of past context data and enables deriving new context (e.g., turning a sequence of positions into a trajectory) and predicting context (e.g., recognizing a recurrent trajectory at a given time to predict the user's destination), adding a temporal dimension that single snapshots cannot capture.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260101-e13",
+    "examId": "AMI20260101",
+    "date": "2026-01-01",
+    "academicYear": "AA2526",
+    "exerciseNo": 13,
+    "type": "theory-essay",
+    "topics": ["ami-intro"],
+    "prompt": "Applying AI methods to Ambient Intelligence raises several domain-specific challenges.\n\n**(a)** Describe the challenges of unbalanced data and labeled-data scarcity in AmI, explaining why they arise from the nature of human-behavior data.\n\n**(b)** Explain the challenges of continual learning and running on resource-constrained devices, and state why both are relevant in AmI deployments.",
+    "solution": "**(a)** Human behavior is rarely associated with balanced data: some activities are very rare (e.g., taking the stairs) while others are common (e.g., walking), so real AmI datasets are *unbalanced* unless collected in artificial, controlled settings. In parallel, AmI requires analyzing data from real users, but obtaining large *labeled* datasets is often prohibitive because annotation of human data is costly, time-consuming and intrusive (someone must observe or have subjects log what they do). Together these mean models must learn from skewed class distributions and few labels, which motivates techniques such as self-supervised learning to mitigate scarcity.\n\n**(b)** *Continual learning* is needed because AmI systems generate large amounts of sensor data and user behaviors/patterns drift over time, so a model trained only once at the beginning becomes inadequate; the system must update continuously without retraining from scratch, while contending with neural networks' tendency to catastrophically forget old information. *Resource-constrained execution* is relevant because it is often necessary to run deep models directly on devices such as smartphones or micro-controllers rather than in the cloud, in order to reduce latency, work offline, preserve privacy and cut costs; the challenge is to reduce model complexity so it fits limited memory/compute and consumes little energy. Both challenges stem directly from AmI's streaming, on-device, privacy-sensitive, ever-changing setting.",
+    "solutionSource": "authored"
+  }
+]

@@ -1,0 +1,334 @@
+[
+  {
+    "id": "CI20260113-e1",
+    "examId": "CI20260113",
+    "date": "2026-01-13",
+    "academicYear": "AA2526",
+    "exerciseNo": 1,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["storage-systems"],
+    "part": "second",
+    "prompt": "UPS systems in data centres provide temporary power during grid outages.",
+    "subStatements": [
+      {
+        "id": "CI20260113-e1-s1",
+        "statement": "UPS systems in data centres provide temporary power during grid outages.",
+        "answer": true,
+        "motivation": "An Uninterruptible Power Supply (UPS), typically battery- or flywheel-based, supplies power instantly when the utility grid fails, bridging the gap until either power is restored or the diesel/gas generators start and stabilize (which takes seconds). Its role is exactly to provide short-term, temporary power to keep the IT load and critical equipment running during an outage. The statement is true."
+      }
+    ],
+    "solution": "TRUE. The UPS provides immediate temporary power on a grid outage, bridging until power returns or the backup generators come online.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20260113-e2",
+    "examId": "CI20260113",
+    "date": "2026-01-13",
+    "academicYear": "AA2526",
+    "exerciseNo": 2,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["virtualization"],
+    "part": "second",
+    "prompt": "Hypervisors can only be used to run virtual machines with the same amount of memory as the physical machine on which they are hosted.",
+    "subStatements": [
+      {
+        "id": "CI20260113-e2-s1",
+        "statement": "Hypervisors can only be used to run virtual machines with the same amount of memory as the physical machine on which they are hosted.",
+        "answer": false,
+        "motivation": "A hypervisor virtualizes and partitions the host's memory: it can allocate to each VM an arbitrary amount of memory smaller than the host's, run many VMs on one host, and even *over-commit* memory (allocate more virtual memory in total than the physical RAM) using techniques such as paging/swapping, ballooning and page sharing. So VMs are not constrained to have exactly the host's memory size; the statement is false."
+      }
+    ],
+    "solution": "FALSE. The hypervisor partitions memory among VMs and can even over-commit it (ballooning, page sharing, swapping); VM memory need not equal the host's. ",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20260113-e3",
+    "examId": "CI20260113",
+    "date": "2026-01-13",
+    "academicYear": "AA2526",
+    "exerciseNo": 3,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["storage-systems"],
+    "part": "second",
+    "prompt": "Open loop (free) cooling refers to the use of cold outside air to either help produce chilled water or directly cool servers.",
+    "subStatements": [
+      {
+        "id": "CI20260113-e3-s1",
+        "statement": "Open loop (free) cooling refers to the use of cold outside air to either help produce chilled water or directly cool servers.",
+        "answer": true,
+        "motivation": "Free (open-loop) cooling exploits favourable outdoor conditions to avoid running the chillers continuously. Cold outside air (or water) is used either as an economizer to help chill the water loop, or, in air-side free cooling, the filtered cold outdoor air is pushed directly through the data hall to cool the servers. This reduces energy consumption and PUE, matching the statement."
+      }
+    ],
+    "solution": "TRUE. Free/open-loop cooling uses favourable outside air (or water) either as an economizer for the chilled-water loop or to cool servers directly, cutting chiller energy use.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20260113-e4",
+    "examId": "CI20260113",
+    "date": "2026-01-13",
+    "academicYear": "AA2526",
+    "exerciseNo": 4,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["storage-devices"],
+    "part": "first",
+    "prompt": "SSDs have a limited number of read cycles, which can cause them to wear out over time.",
+    "subStatements": [
+      {
+        "id": "CI20260113-e4-s1",
+        "statement": "SSDs have a limited number of read cycles, which can cause them to wear out over time.",
+        "answer": false,
+        "motivation": "SSD wear is caused by a limited number of program/erase (*write*) cycles per flash cell, not by reads. Reads do not consume the cell's endurance budget (aside from minor second-order effects such as read disturb, which the controller manages). The statement attributes wear-out to read cycles instead of write/erase cycles, so it is false."
+      }
+    ],
+    "solution": "FALSE. Flash endurance is limited by program/erase (write) cycles, not read cycles; SSDs wear out from writes, not reads.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20260113-e5",
+    "examId": "CI20260113",
+    "date": "2026-01-13",
+    "academicYear": "AA2526",
+    "exerciseNo": 5,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["virtualization"],
+    "part": "second",
+    "prompt": "Containers share the underlying operating system kernel with other containers.",
+    "subStatements": [
+      {
+        "id": "CI20260113-e5-s1",
+        "statement": "Containers share the underlying operating system kernel with other containers.",
+        "answer": true,
+        "motivation": "Containers implement OS-level virtualization: all containers on a host run on the *same* shared host OS kernel, isolated from each other only by kernel features such as namespaces and cgroups. They do not each bundle a full guest OS/kernel the way VMs do, which is exactly why containers are lighter-weight and start faster than VMs. The statement is true."
+      }
+    ],
+    "solution": "TRUE. Containers use OS-level virtualization and share the host's single kernel, isolated by namespaces/cgroups, unlike VMs which each run a full guest OS.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20260113-e6",
+    "examId": "CI20260113",
+    "date": "2026-01-13",
+    "academicYear": "AA2526",
+    "exerciseNo": 6,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["dc-intro"],
+    "part": "first",
+    "prompt": "Edge computing can be used to enable real-time decision-making and improve the responsiveness of applications.",
+    "subStatements": [
+      {
+        "id": "CI20260113-e6-s1",
+        "statement": "Edge computing can be used to enable real-time decision-making and improve the responsiveness of applications.",
+        "answer": true,
+        "motivation": "By processing data close to where it is generated (sensors/devices) instead of sending it to a distant cloud, edge computing eliminates the long network round trip, drastically reducing latency. This is precisely what enables real-time/near-real-time decisions and more responsive applications (e.g. industrial control, autonomous systems, AR). The statement is true."
+      }
+    ],
+    "solution": "TRUE. Local processing at the edge removes the round trip to the cloud, lowering latency and enabling real-time decisions and more responsive applications.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20260113-e7",
+    "examId": "CI20260113",
+    "date": "2026-01-13",
+    "academicYear": "AA2526",
+    "exerciseNo": 7,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["servers"],
+    "part": "first",
+    "prompt": "Blade servers can be more expensive and may introduce vendor lock-in due to proprietary enclosures.",
+    "subStatements": [
+      {
+        "id": "CI20260113-e7-s1",
+        "statement": "Blade servers can be more expensive and may introduce vendor lock-in due to proprietary enclosures.",
+        "answer": true,
+        "motivation": "Blade servers plug into a shared chassis/enclosure that supplies power, cooling, networking and management. These enclosures (and the compatible blades) are vendor-specific and proprietary, so once you buy a vendor's chassis you are tied to that vendor's blades and modules — i.e. vendor lock-in. The chassis and high integration also raise the upfront/per-unit cost compared with commodity rack servers. The statement is true."
+      }
+    ],
+    "solution": "TRUE. Blades depend on a proprietary shared enclosure, which raises cost and locks you into one vendor's chassis and compatible blades.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20260113-e8",
+    "examId": "CI20260113",
+    "date": "2026-01-13",
+    "academicYear": "AA2526",
+    "exerciseNo": 8,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["networking"],
+    "part": "second",
+    "prompt": "Leaf-spine topologies provide low-latency east-west communication between servers due to the direct connections among the leaf switches.",
+    "subStatements": [
+      {
+        "id": "CI20260113-e8-s1",
+        "statement": "Leaf-spine topologies provide low-latency east-west communication between servers due to the direct connections among the leaf switches.",
+        "answer": false,
+        "motivation": "In a leaf-spine (two-tier folded-Clos) fabric, leaf switches are NOT directly connected to each other: every leaf connects only to every spine, and the spines provide the interconnection. Server-to-server (east-west) traffic between different leaves always traverses a spine, giving a uniform, predictable low-latency path of a fixed small number of hops. The low latency is real, but the stated *reason* — direct connections among leaf switches — is wrong (leaves are interconnected through the spines, not directly), so the statement is false."
+      }
+    ],
+    "solution": "FALSE. Leaf switches are not directly connected; they connect through the spines. East-west traffic is low-latency because every leaf is one spine hop from every other leaf, not because of direct leaf-to-leaf links.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20260113-e9",
+    "examId": "CI20260113",
+    "date": "2026-01-13",
+    "academicYear": "AA2526",
+    "exerciseNo": 9,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["storage-systems"],
+    "part": "second",
+    "prompt": "A UPS is not necessary for network equipment in a datacenter.",
+    "subStatements": [
+      {
+        "id": "CI20260113-e9-s1",
+        "statement": "A UPS is not necessary for network equipment in a datacenter.",
+        "answer": false,
+        "motivation": "Network equipment (switches, routers, top-of-rack and aggregation/core gear) is part of the critical IT load: if it loses power the servers become unreachable and the service goes down even if the servers themselves stay up. Therefore network equipment must also be protected by the UPS (and generators) like the rest of the critical infrastructure. Claiming a UPS is not necessary for it is false."
+      }
+    ],
+    "solution": "FALSE. Networking gear is part of the critical load; without UPS protection a power blip makes servers unreachable. It must be on the UPS like the servers.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20260113-e10",
+    "examId": "CI20260113",
+    "date": "2026-01-13",
+    "academicYear": "AA2526",
+    "exerciseNo": 10,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["storage-devices"],
+    "part": "first",
+    "prompt": "SSDs are more energy-efficient than HDDs.",
+    "subStatements": [
+      {
+        "id": "CI20260113-e10-s1",
+        "statement": "SSDs are more energy-efficient than HDDs.",
+        "answer": true,
+        "motivation": "HDDs must continuously spin their platters and move the head actuator, consuming mechanical power even at idle. SSDs have no moving parts, draw very little power at idle, and complete operations far faster, so they consume less energy per I/O and generally have lower active and idle power. Hence SSDs are more energy-efficient than HDDs, and the statement is true."
+      }
+    ],
+    "solution": "TRUE. With no spinning platters or moving heads, SSDs draw less power (especially at idle) and finish I/O faster, so they are more energy-efficient than HDDs.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20260113-e11",
+    "examId": "CI20260113",
+    "date": "2026-01-13",
+    "academicYear": "AA2526",
+    "exerciseNo": 11,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["storage-devices"],
+    "part": "first",
+    "prompt": "Consider a hard disk drive (HDD) with the following characteristics: block size of $0.5\\,\\text{KB}$, block transfer time of $0.4\\,\\text{ms}$, rotation speed of $12000\\,\\text{RPM}$, negligible controller overhead, and an average seek time of $8\\,\\text{ms}$. Given that a file of $12\\,\\text{KB}$ must be transferred, and the total I/O time is $31\\,\\text{ms}$, determine the average access locality that was observed.",
+    "solution": "**Given:** block $=0.5\\,\\text{KB}$, $T_{transfer}=0.4\\,\\text{ms}$ per block, $12000\\,\\text{RPM}$, $T_{seek}=8\\,\\text{ms}$, controller overhead $\\approx 0$, file $=12\\,\\text{KB}$, $T_{io}=31\\,\\text{ms}$.\n\n**Rotational latency** (half a revolution):\n$$T_{rot}=\\frac{1}{2}\\cdot\\frac{60}{12000}\\,\\text{s}=\\frac{1}{2}\\cdot 5\\,\\text{ms}=2.5\\,\\text{ms}$$\n\n**Number of blocks:**\n$$n=\\frac{12\\,\\text{KB}}{0.5\\,\\text{KB}}=24$$\n\n**I/O time model** (locality $L$ = fraction of blocks reached without an extra seek+rotation; a fraction $(1-L)$ pays $T_{seek}+T_{rot}$):\n$$T_{io}=n\\,T_{transfer}+n\\,(1-L)\\,(T_{seek}+T_{rot})$$\n\nData transfer term: $24\\cdot 0.4=9.6\\,\\text{ms}$. Remaining: $31-9.6=21.4\\,\\text{ms}$.\n$$21.4 = 24\\,(1-L)\\,(8+2.5)=24\\,(1-L)\\cdot 10.5=252\\,(1-L)$$\n$$(1-L)=\\frac{21.4}{252}=0.08492 \\;\\Rightarrow\\; L=0.91508$$\n\n**FINAL RESULT:** average locality $L \\approx 91.51\\%$.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20260113-e12",
+    "examId": "CI20260113",
+    "date": "2026-01-13",
+    "academicYear": "AA2526",
+    "exerciseNo": 12,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["networking"],
+    "part": "second",
+    "prompt": "In a data center network based on a pure leaf-spine architecture without oversubscription, where each switch has $4$ ports, what is the maximum number of servers that can be interconnected? If we consider that the leaf switches are ideal ($A_{leaf}=1$), while the spine switches are each one with an availability equal to $0.82$ ($A_{spine}=0.82$), what is the availability of the network? Use at least 4 decimal digits for all the intermediate calculations; all the other components within the server can be considered as ideal.",
+    "solution": "**Maximum number of servers.** In a non-oversubscribed two-tier leaf-spine (folded-Clos) fabric with $k$-port switches, each leaf uses half of its ports downwards (to servers) and half upwards (to spines). With $k=4$: each leaf connects to $k/2=2$ servers and to $k/2=2$ spines. The number of spines is $k/2=2$, and the number of leaves a spine can attach is $k=4$. Hence:\n$$\\#servers=\\frac{k^2}{2}=\\frac{4^2}{2}=8\\ \\text{servers}$$\n\n**Network availability.** The leaves are ideal ($A_{leaf}=1$). A server-to-server path crosses one of the spine switches, and there are $2$ spines working in parallel (the path can use either spine), so the spine layer is a $1$-out-of-$2$ parallel system:\n$$A_{net}=1-(1-A_{spine})^2=1-(1-0.82)^2=1-(0.18)^2=1-0.0324=0.9676$$\n\n**FINAL RESULT:** maximum of $8$ servers; network availability $A_{net}=0.9676\\;(96.76\\%)$.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20260113-e13",
+    "examId": "CI20260113",
+    "date": "2026-01-13",
+    "academicYear": "AA2526",
+    "exerciseNo": 13,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["dependability"],
+    "part": "first",
+    "prompt": "A vendor sells rack power modules with an MTTF of $1300$ days and provides a $2$-year warranty. During the warranty period, any failed module is replaced free of charge, at an internal cost of $1.2\\,\\text{KEuro}$ each (including materials, logistics, and labor cost). The vendor plans to deliver a total of $400$ modules. The company's quality target is that no more than $10\\%$ of the modules should fail within the warranty period. (i) What is the expected total cost of warranty replacements in KEuro? (ii) Is the $10\\%$ quality constraint satisfied (YES/NO)?",
+    "solution": "**Assume exponentially distributed lifetimes**, so the reliability (probability a module survives time $t$) is $R(t)=e^{-t/MTTF}$.\n\n**Warranty period:** $t=2\\,\\text{years}=2\\cdot 365=730\\,\\text{days}$, with $MTTF=1300\\,\\text{days}$.\n\n**Probability a module fails within the warranty:**\n$$P_{fail}=1-R(730)=1-e^{-730/1300}=1-e^{-0.56154}=1-0.5703=0.4297$$\n\n**(i) Expected number of failures and cost** (over $400$ modules):\n$$E[\\#fail]=400\\cdot 0.4297=171.9\\ \\text{modules}$$\n$$\\text{Cost}=171.9\\cdot 1.2\\,\\text{KEuro}\\approx 206.2\\ \\text{KEuro}$$\n\n**(ii) Quality constraint:** the expected failure fraction is $42.97\\%$, which is far above the $10\\%$ target.\n\n**FINAL RESULT:** expected warranty replacement cost $\\approx 206.2\\ \\text{KEuro}$; the $10\\%$ constraint is **NOT** satisfied (NO).",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20260113-e14",
+    "examId": "CI20260113",
+    "date": "2026-01-13",
+    "academicYear": "AA2526",
+    "exerciseNo": 14,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["performance"],
+    "part": "second",
+    "prompt": "A chatbot platform is modeled as a closed system with two server layers: an **Inference Server (IS)** that runs the LLM to generate responses, and an **Authentication Server (AS)** that validates user sessions/tokens. From the logging system you extract: $S_{IS}=0.8$ s with $V_{IS}=30$ visits per conversation; $S_{AS}=0.05$ s with $V_{AS}=120$ visits per conversation. The system serves $N=10$ concurrent users, each with think time $Z=120$ s. What is the maximum response time according to the bound analysis?",
+    "solution": "**Service demands** $D_k=V_k\\cdot S_k$:\n$$D_{IS}=V_{IS}\\cdot S_{IS}=30\\cdot 0.8=24\\ \\text{s}$$\n$$D_{AS}=V_{AS}\\cdot S_{AS}=120\\cdot 0.05=6\\ \\text{s}$$\n$$D=\\sum_k D_k=24+6=30\\ \\text{s},\\qquad D_{max}=D_{IS}=24\\ \\text{s}$$\n\n**Closed-model response-time bounds:**\n$$\\max\\big(D,\\;N\\,D_{max}-Z\\big)\\le R(N)\\le N\\,D$$\n\nThe **maximum** (upper bound) on the response time is the pessimistic bound:\n$$R_{max}=N\\,D=10\\cdot 30=300\\ \\text{s}$$\n\n**FINAL RESULT:** $R_{max}=300\\ \\text{s}$.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20260113-e15",
+    "examId": "CI20260113",
+    "date": "2026-01-13",
+    "academicYear": "AA2526",
+    "exerciseNo": 15,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["performance"],
+    "part": "second",
+    "prompt": "For the chatbot system of the previous exercise, determine the maximum throughput and the minimum response time the system can achieve according to the bound analysis.",
+    "solution": "Recall from the previous exercise: $D_{IS}=24$ s, $D_{AS}=6$ s, so $D=30$ s, $D_{max}=24$ s, with $N=10$, $Z=120$ s.\n\n**Maximum throughput** (heavy-load upper bound):\n$$X_{max}=\\frac{1}{D_{max}}=\\frac{1}{24}\\approx 0.0416\\ \\text{conversations/s}$$\n\n**Minimum response time** (lower bound on $R$):\n$$R_{min}=\\max\\big(D,\\;N\\,D_{max}-Z\\big)=\\max\\big(30,\\;10\\cdot 24-120\\big)=\\max(30,\\;120)=120\\ \\text{s}$$\nHere the heavy-load term $N\\,D_{max}-Z=120$ s dominates over $D=30$ s.\n\n**FINAL RESULT:** $X_{max}\\approx 0.0416\\ \\text{conv/s}$ (i.e. $1/24$ s$^{-1}$) and $R_{min}=120\\ \\text{s}$.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20260113-e16",
+    "examId": "CI20260113",
+    "date": "2026-01-13",
+    "academicYear": "AA2526",
+    "exerciseNo": 16,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["performance"],
+    "part": "second",
+    "prompt": "Given the chatbot system described before, you now have the opportunity to improve its performance by adding exactly **one** additional server, but you may duplicate only one of the existing server layers (IS or AS). The new server is identical to the existing one of the same type (homogeneous), and incoming requests are evenly distributed between the two replicas of that server. Assume service times are unchanged, visit ratios are evenly split across the replicated servers, and $N$ and $Z$ stay the same. (a) Which server would you choose to duplicate (IS or AS) to improve the system bounds, and why? (b) What is the new minimum system response time (in seconds or minutes) after adding the server?",
+    "solution": "**(a) Which server to duplicate.** The system bounds are limited by the bottleneck, i.e. the resource with the largest service demand $D_{max}$. From before $D_{IS}=24$ s and $D_{AS}=6$ s, so the **Inference Server (IS)** is the bottleneck. Duplicating the AS would not help (it is not the bottleneck), so we **duplicate the IS**.\n\n**(b) New bounds after duplicating IS.** The IS visits are split evenly across the two identical replicas, so each IS replica now sees half the demand:\n$$D_{IS,1}=D_{IS,2}=\\frac{24}{2}=12\\ \\text{s},\\qquad D_{AS}=6\\ \\text{s}$$\nNew bottleneck demand and total demand (summed over all three stations):\n$$D_{max}=12\\ \\text{s},\\qquad D=D_{IS,1}+D_{IS,2}+D_{AS}=12+12+6=30\\ \\text{s}$$\n\n**New minimum response time** ($N=10$, $Z=120$ s):\n$$R_{min}=\\max\\big(D,\\;N\\,D_{max}-Z\\big)=\\max\\big(30,\\;10\\cdot 12-120\\big)=\\max(30,\\;0)=30\\ \\text{s}$$\n\n**FINAL RESULT:** duplicate the **IS** (the bottleneck); the new minimum response time is $R_{min}=30\\ \\text{s}$ (down from $120$ s).",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20260113-e17",
+    "examId": "CI20260113",
+    "date": "2026-01-13",
+    "academicYear": "AA2526",
+    "exerciseNo": 17,
+    "marks": 5,
+    "type": "theory-essay",
+    "topics": ["virtualization"],
+    "part": "second",
+    "prompt": "Compare para- and full virtualization in terms of architecture, operational principles, and performance implications. Describe the advantages and disadvantages of each approach and explain how the different layers of the virtualization stack interact in both models.",
+    "solution": "**Common setup.** In system virtualization a **hypervisor (VMM)** sits between the hardware and one or more guest operating systems, each running in its own VM. The challenge is that on a classic CPU some *sensitive* instructions are privileged and must be executed in the most-privileged ring, but the guest OS runs deprivileged; the hypervisor must intercept and correctly emulate those instructions. Para- and full virtualization differ in *how* this is handled.\n\n**Full virtualization.**\n- *Architecture / principle:* the guest OS runs **unmodified**, believing it owns real hardware. The hypervisor presents a complete virtual copy of the hardware and traps-and-emulates privileged/sensitive instructions. Classically this used **binary translation** to catch instructions that do not trap; modern CPUs add **hardware-assisted** support (e.g. extra execution modes / nested paging) so the hypervisor traps directly.\n- *Layers interaction:* guest application -> unmodified guest OS -> (privileged op traps) -> hypervisor emulates on real hardware. The guest is unaware it is virtualized.\n- *+ Advantages:* runs any unmodified OS (great portability and compatibility, including closed-source OSes); strong isolation.\n- *- Disadvantages:* trapping/emulating (or binary translation) of sensitive instructions and device I/O adds overhead, so without hardware assist performance can be lower.\n\n**Paravirtualization.**\n- *Architecture / principle:* the guest OS is **modified** so that, instead of issuing sensitive instructions that must be trapped, it makes explicit **hypercalls** to the hypervisor to request privileged operations. The guest is *aware* it is virtualized and cooperates with the hypervisor (also for memory management and I/O via paravirtualized/front-end drivers).\n- *Layers interaction:* guest application -> modified guest OS (uses hypercalls + paravirtual drivers) -> hypervisor -> hardware. The interface between guest OS and hypervisor is an explicit, well-defined API.\n- *+ Advantages:* lower virtualization overhead and better performance (no need to trap/translate; the guest avoids the expensive instructions and uses efficient paravirtual I/O), so it was historically attractive before hardware assist matured.\n- *- Disadvantages:* requires modifying the guest OS source, so it **cannot run unmodified/closed-source OSes**; it is more intrusive and less portable.\n\n**Performance summary.** Paravirtualization generally gives better raw performance by cooperation and avoiding traps, but at the cost of having to port the guest OS. Full virtualization maximizes compatibility (any unmodified OS) at the cost of emulation overhead; with modern hardware-assisted virtualization this overhead is greatly reduced, narrowing the gap. In practice many systems combine the two (hardware-assisted full virtualization for the CPU/memory plus paravirtualized drivers for I/O) to get both compatibility and efficiency.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20260113-e18",
+    "examId": "CI20260113",
+    "date": "2026-01-13",
+    "academicYear": "AA2526",
+    "exerciseNo": 18,
+    "marks": 5,
+    "type": "theory-essay",
+    "topics": ["dc-intro", "xaas"],
+    "part": "second",
+    "prompt": "Describe how the requirements of AI/ML applications (in terms of latency, network bandwidth, GPU synchronization, workload variability) directly influence the physical design of the data center (e.g., networking, physical layout, cooling, and power infrastructure).",
+    "solution": "AI/ML workloads (especially large-scale training) are very different from classic enterprise workloads, and their requirements drive concrete choices in the physical design of the data center:\n\n**1. Network bandwidth & GPU synchronization -> networking and layout.** Distributed training synchronizes gradients across many GPUs/nodes at every step (e.g. all-reduce), generating huge, bursty **east-west** traffic where the slowest link gates the whole job. This pushes the DC toward:\n- very high-bandwidth, low-oversubscription fabrics (leaf-spine / fat-tree, fast Ethernet/InfiniBand, RDMA), so any GPU can talk to any other at full speed;\n- **intra-server** high-speed GPU interconnects (e.g. NVLink) so GPUs in a node exchange data directly without going through the CPU/PCIe or the network;\n- placing tightly-coupled GPU nodes physically close (same rack/row, short cables) to minimize latency and keep the synchronization fast.\n\n**2. Latency -> topology and placement.** Both training synchronization and (for inference) user-facing response requirements demand low and predictable latency. The fabric is therefore designed for a small, uniform hop count between endpoints, and latency-sensitive inference may even be served from the **edge**/closer locations, while collective communication for training favours short, congestion-free paths.\n\n**3. Power infrastructure.** GPU/accelerator servers have a far higher **power density** than CPU servers (a single AI server can draw several kW; racks reach tens of kW). This forces:\n- much higher per-rack power delivery and beefier power distribution (PDUs, busways), plus adequate UPS and generator capacity sized for the high load;\n- attention to total facility power (large AI clusters consume MW), so PUE and energy efficiency become first-order design goals.\n\n**4. Cooling.** The high power density translates directly into high heat density that air cooling struggles to remove. AI data centers therefore adopt:\n- containment (hot/cold aisle) and high-airflow designs, and increasingly **liquid cooling** (direct-to-chip cold plates or immersion) for dense GPU racks;\n- cooling capacity and layout planned around the hottest GPU racks rather than an average rack.\n\n**5. Workload variability -> elasticity and scheduling.** ML demand is bursty: long heavy training jobs versus spiky inference traffic. The infrastructure is designed for **elasticity** (pooled accelerators, scheduling/queuing of jobs, the ability to scale inference out and back), and capacity is provisioned/over-provisioned and shared (multi-tenant, statistical multiplexing) so that peaks are absorbed without permanently paying for the worst case — which is exactly where cloud/XaaS provisioning and auto-scaling help.\n\n**In short:** AI/ML's need for huge synchronized bandwidth, low latency, very high power density and variable load reshapes every physical layer of the data center — denser high-bandwidth networks and GPU interconnects, compact latency-aware layouts, much higher power delivery, and advanced (often liquid) cooling, all combined with elastic provisioning.",
+    "solutionSource": "authored"
+  }
+]

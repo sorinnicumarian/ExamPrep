@@ -1,0 +1,228 @@
+[
+  {
+    "id": "AMI20260107-e1",
+    "examId": "AMI20260107",
+    "date": "2026-01-07",
+    "academicYear": "AA2526",
+    "exerciseNo": 1,
+    "type": "multiple-choice",
+    "topics": ["har-intro"],
+    "prompt": "In the activity taxonomy presented in the course, what is the key distinction between **physical activities** and **Activities of Daily Living (ADLs)**?",
+    "choices": [
+      {"label": "A", "text": "Physical activities are high-level routines (e.g., cooking) sensed by fixed smart-home devices, while ADLs are low-level body movements (e.g., walking) tracked by wearables."},
+      {"label": "B", "text": "Physical activities are inferred from indoor localization, while ADLs are inferred from inertial accelerometer signals worn directly on the body."},
+      {"label": "C", "text": "Physical activities are low-level body movements (e.g., walking) captured by wearables, while ADLs are high-level routines (e.g., cooking) monitored by environmental sensors."},
+      {"label": "D", "text": "Physical activities are the subset of ADLs that involve cardiovascular effort, so every physical activity also counts as an ADL in the taxonomy."}
+    ],
+    "correctChoice": "C",
+    "solution": "**Concept.** The course taxonomy splits activities by *granularity*. **Physical activities** are low-level body movements (running, walking, cycling, stairs) typically captured by mobile/wearable devices. **ADLs** are high-level everyday routines (eating, cooking, taking medicines, sleeping) usually monitored with environmental sensors, sometimes plus wearables. Think \"a single motion\" vs \"a whole task you do at home\".\n\n**Why C is correct.** It pairs each level with the right granularity and the right sensing modality exactly as the slides define them.\n\n**Why the others are wrong.** A swaps both definitions and modalities (it puts high-level on physical and low-level on ADLs); B inverts the sensing pairing (inertial/wearable goes with physical, localization/environmental with ADLs); D invents a subset relationship the taxonomy never states — the two are distinguished by granularity, not nested by effort.\n\n**Takeaway.** Physical = low-level motion (wearables); ADL = high-level routine (environmental sensors).",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260107-e2",
+    "examId": "AMI20260107",
+    "date": "2026-01-07",
+    "academicYear": "AA2526",
+    "exerciseNo": 2,
+    "type": "multiple-choice",
+    "topics": ["har-intro"],
+    "prompt": "In HAR, what is the difference between **inter-variability** and **intra-variability**?",
+    "choices": [
+      {"label": "A", "text": "Inter-variability is execution variability for a single subject across contexts, while intra-variability is variability across different subjects performing an activity."},
+      {"label": "B", "text": "Inter-variability is variability caused by different wearable device models, while intra-variability is variability caused by different sensor placements on the body."},
+      {"label": "C", "text": "Inter-variability is the difficulty of discriminating similar activities (e.g., walking vs stairs), while intra-variability is the difference between two distinct activities."},
+      {"label": "D", "text": "Inter-variability is variability across different subjects performing an activity, while intra-variability is execution variability for a single subject across contexts."}
+    ],
+    "correctChoice": "D",
+    "solution": "**Concept.** Humans perform the same activity in many ways, and the course splits this *data distribution heterogeneity* into two kinds. **Inter-variability** is variability *between* different subjects (an elderly person and a young person walk with different patterns). **Intra-variability** is variability *within* one subject across contexts (the same person walks differently indoors vs outdoors). The prefixes mirror the meaning: inter = among, intra = inside.\n\n**Why D is correct.** It maps inter to across-subjects and intra to single-subject execution differences, exactly as defined.\n\n**Why the others are wrong.** A swaps the two definitions; B describes *sensing* heterogeneity (device models and placement), a separate challenge from data-distribution heterogeneity; C confuses both terms with inter-class similarity (walking vs stairs), which is the activity-discrimination problem, not subject variability.\n\n**Takeaway.** Inter = differences across people; intra = differences within one person.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260107-e3",
+    "examId": "AMI20260107",
+    "date": "2026-01-07",
+    "academicYear": "AA2526",
+    "exerciseNo": 3,
+    "type": "multiple-choice",
+    "topics": ["har-intro"],
+    "prompt": "Why is the **\"OTHER\" activity class** considered a hard problem in real-world HAR deployments?",
+    "choices": [
+      {"label": "A", "text": "Because it spans a theoretically infinite set of arbitrary activities outside the target set, so it can become a dominating, ill-defined class."},
+      {"label": "B", "text": "Because it captures windows that straddle a boundary between two known activities, so each \"OTHER\" sample represents none of them cleanly."},
+      {"label": "C", "text": "Because it is consistently the rarest minority class, so its handful of samples are dominated by frequent activities and the classifier simply learns to ignore it."},
+      {"label": "D", "text": "Because it can be recognized only after the model has first been personalized with labeled data collected from the target user."}
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** HAR is a classification problem over a *chosen, finite* set of target activities. But a real user does countless things outside that set, so deployments need an \"OTHER\" class to catch \"none of the above\". The catch: \"OTHER\" is not one coherent activity, it is a theoretically infinite space of arbitrary behaviors with no consistent sensor pattern.\n\n**Why A is correct.** It captures both points: OTHER represents an unbounded space, and the risk is that it becomes a dominating, ill-defined class that swallows many true activities.\n\n**Why the others are wrong.** B describes the *transitions* challenge (windows spanning two known activities), which the slides call a slightly different problem; C inverts the issue — the slides warn OTHER tends to *dominate*, not be the minority; D ties it to personalization, a separate topic the slides never link to the OTHER class.\n\n**Takeaway.** \"OTHER\" is hard because it has infinite, patternless content yet must be modeled as one class.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260107-e4",
+    "examId": "AMI20260107",
+    "date": "2026-01-07",
+    "academicYear": "AA2526",
+    "exerciseNo": 4,
+    "type": "multiple-choice",
+    "topics": ["har-intro"],
+    "prompt": "Which statement best contrasts **personalized** and **generalized** HAR models, as presented in the course?",
+    "choices": [
+      {"label": "A", "text": "Personalized models are trained once on many subjects and deployed on unseen users, while generalized models are retrained from each target user's own data."},
+      {"label": "B", "text": "Personalized models are trained on the target user's own data (accurate but costly to label), while generalized models are trained once on many subjects (often less accurate)."},
+      {"label": "C", "text": "Personalized models reach high accuracy cheaply, while generalized models are accurate only after fine-tuning on the target user's own data."},
+      {"label": "D", "text": "Personalized models tolerate inter- and intra-variability poorly, while generalized models are by design immune to all sensing heterogeneity across users."}
+    ],
+    "correctChoice": "B",
+    "solution": "**Concept.** The course frames a trade-off in *who* the model is trained for. **Personalized** models learn from the target user's own labeled data: very accurate, but collecting labels per user is prohibitive. **Generalized** models are trained once on many subjects and deployed on unseen users: cheap to deploy, but often inaccurate because of inter-/intra-variability and sensing heterogeneity. A **hybrid** model bridges them: build a generalized base, then fine-tune on a little target-user data.\n\n**Why B is correct.** It states both definitions with the right pro/con: personalized = accurate but costly, generalized = train-once but often weak.\n\n**Why the others are wrong.** A reverses the two definitions; C describes the cost backwards (personalized is the *costly* one) and attributes hybrid fine-tuning to plain generalized models; D credits generalized models with immunity to the very heterogeneity that makes generalization in HAR hard.\n\n**Takeaway.** Personalized = accurate but costly; generalized = scalable but weaker; hybrid fine-tunes to get both.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260107-e5",
+    "examId": "AMI20260107",
+    "date": "2026-01-07",
+    "academicYear": "AA2526",
+    "exerciseNo": 5,
+    "type": "multiple-choice",
+    "topics": ["har-intro"],
+    "prompt": "A HAR dataset has far more samples of \"walking\" than of \"taking medicines\". Which mitigation strategies for **class imbalance** were explicitly mentioned in the course?",
+    "choices": [
+      {"label": "A", "text": "Fine-tuning a generalized model on a small portion of labeled data drawn from the target user."},
+      {"label": "B", "text": "Combining several sensing modalities into a multi-modal HAR setup to enrich the rare-class signal."},
+      {"label": "C", "text": "Data augmentation methods (e.g., SMOTE) and generating synthetic data (e.g., using GANs)."},
+      {"label": "D", "text": "Discarding most of the frequent \"walking\" samples until every activity class has an equal count."}
+    ],
+    "correctChoice": "C",
+    "solution": "**Concept.** HAR datasets are *class-imbalanced*: frequent activities like walking vastly outnumber rare ones like taking medicines, because activities differ in frequency, duration, and per-subject habits. A classifier trained on this tends to ignore the minority classes. The course's remedies add more (synthetic) minority examples: data augmentation methods such as `SMOTE`, and generating synthetic data with `GANs`.\n\n**Why C is correct.** It names exactly the two mitigation strategies the slides list for class imbalance — augmentation (SMOTE) and synthetic generation (GANs).\n\n**Why the others are wrong.** A is the hybrid-model personalization trick (for variability, not balance); B is multi-modal HAR, a way to combine sensor strengths, not a slide-listed imbalance remedy; D is undersampling the majority class, which the slides never mention and which throws away useful data.\n\n**Takeaway.** Fight class imbalance by *adding* minority data: augmentation (SMOTE) or synthesis (GANs).",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260107-e6",
+    "examId": "AMI20260107",
+    "date": "2026-01-07",
+    "academicYear": "AA2526",
+    "exerciseNo": 6,
+    "type": "multiple-choice",
+    "topics": ["har-intro"],
+    "prompt": "Which sensing modality for HAR is described as being able to operate by analyzing how human bodies perturb **WiFi signals (e.g., CSI)** in an indoor environment?",
+    "choices": [
+      {"label": "A", "text": "Wireless sensing"},
+      {"label": "B", "text": "Environmental-sensor HAR"},
+      {"label": "C", "text": "Inertial (wearable) sensing"},
+      {"label": "D", "text": "Camera-based HAR"}
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** **Wireless sensing** is a device-free modality: WiFi antennas emit radio waves, and a human body moving through the room perturbs them, altering the measured Channel State Information (`CSI`). These perturbation patterns can be decoded into activities without the user wearing anything. Its weakness is poor generalization: the patterns are tied to one room, so changing the environment degrades recognition.\n\n**Why A is correct.** It is the only modality defined by interpreting how bodies disturb WiFi signals (CSI).\n\n**Why the others are wrong.** B (environmental sensors) is also indoor and device-free, but it captures the subject's *interaction with IoT objects* and localization, not radio perturbation; C (inertial) captures motion directly via accelerometer/gyroscope on the body, not via radio waves; D (cameras) senses images and is accurate but privacy-intrusive, not based on WiFi.\n\n**Takeaway.** Wireless/WiFi-CSI sensing reads activities from how the body perturbs radio waves — device-free but environment-dependent.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260107-e7",
+    "examId": "AMI20260107",
+    "date": "2026-01-07",
+    "academicYear": "AA2526",
+    "exerciseNo": 7,
+    "type": "multiple-choice",
+    "topics": ["har-intro"],
+    "prompt": "In the **\"classic\" HAR pipeline**, what is the main difference compared with the **\"deep\" pipeline**?",
+    "choices": [
+      {"label": "A", "text": "The classic pipeline feeds the pre-processed raw segments straight into the model, while the deep pipeline first adds an explicit handcrafted feature-extraction step."},
+      {"label": "B", "text": "The classic pipeline applies data cleaning and segmentation, while the deep pipeline drops those stages and ingests sensor data unprocessed."},
+      {"label": "C", "text": "The classic pipeline emits a probability distribution over activities, while the deep pipeline emits only a single hard label with no scores."},
+      {"label": "D", "text": "The classic pipeline uses a handcrafted feature-extraction step before classification, whereas the deep pipeline lets the network learn features automatically."}
+    ],
+    "correctChoice": "D",
+    "solution": "**Concept.** Both HAR pipelines share the early stages — sensing, data cleaning, and segmentation — and differ only in *how features are obtained*. The **classic** pipeline adds an explicit handcrafted feature-extraction step (an engineer computes time/frequency statistics per axis) before a classifier. The **deep** pipeline skips hand-engineering: it feeds pre-processed raw segments straight to a neural network that *learns* features automatically during training.\n\n**Why D is correct.** It pinpoints the real difference: human-designed features (classic) vs network-learned features (deep), with cleaning and segmentation kept in both.\n\n**Why the others are wrong.** A swaps the two — it is the *deep* pipeline that feeds raw segments and the *classic* one that adds handcrafted features; B claims deep drops cleaning/segmentation, but those stay in both; C invents an output difference (both ultimately produce a probability distribution and select a label).\n\n**Takeaway.** Classic = handcrafted features then classify; deep = network learns features from raw segments.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260107-e8",
+    "examId": "AMI20260107",
+    "date": "2026-01-07",
+    "academicYear": "AA2526",
+    "exerciseNo": 8,
+    "type": "multiple-choice",
+    "topics": ["har-intro"],
+    "prompt": "What characterizes the **in-the-wild** data-collection setting compared with the **scripted** setting?",
+    "choices": [
+      {"label": "A", "text": "In-the-wild collection lets users act freely and self-annotate, giving realistic long-term data, but needs complex software and yields noisy labels."},
+      {"label": "B", "text": "In-the-wild collection has volunteers run a predetermined activity list under observation, so it is highly controlled but limited in realism and contexts."},
+      {"label": "C", "text": "In-the-wild collection produces few subjects and few contexts, while scripted collection captures varied long-term daily behavior."},
+      {"label": "D", "text": "In-the-wild collection yields clean, error-free labels precisely because users annotate their own activities in the moment as they perform them."}
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** The course contrasts two ways to collect labeled HAR data. In the **scripted** setting, volunteers perform a predetermined list of activities while being observed and annotated — highly controlled but limited in realism (few subjects, few contexts). In the **in-the-wild** setting, users live normally and *self-annotate*, yielding varied, realistic, long-term data, but needing complex software and producing noisy, error-prone labels (and it can feel intrusive).\n\n**Why A is correct.** It captures the in-the-wild essence: free daily-life activity, self-annotation, realistic long-term data, but noisy annotations and heavy infrastructure.\n\n**Why the others are wrong.** B describes the *scripted* setting (predetermined list, observed, controlled); C reverses the two — it is scripted that gives few subjects/contexts and in-the-wild that gives varied long-term data; D claims self-annotation produces clean labels, but the slides call those labels noisy and erroneous.\n\n**Takeaway.** Scripted = controlled but unrealistic; in-the-wild = realistic but noisy self-labels.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260107-e9",
+    "examId": "AMI20260107",
+    "date": "2026-01-07",
+    "academicYear": "AA2526",
+    "exerciseNo": 9,
+    "type": "multiple-choice",
+    "topics": ["har-intro"],
+    "prompt": "Why does the course describe **transitions** between activities as a distinct challenge, slightly different from the \"OTHER\" class problem?",
+    "choices": [
+      {"label": "A", "text": "Because a transition is an unforeseen activity outside the target set, so it is best handled by folding it into the \"OTHER\" class."},
+      {"label": "B", "text": "Because humans rarely switch instantly, so a window capturing a transition represents none of the involved activities cleanly, raising complexity."},
+      {"label": "C", "text": "Because a transition window mixes two known activities, the straightforward fix is simply to shrink the time window until it contains only one of them."},
+      {"label": "D", "text": "Because transitions carry a sharp, distinctive motion signature that makes them easier to recognize than steady-state activities."}
+    ],
+    "correctChoice": "B",
+    "solution": "**Concept.** People don't switch instantly between activities, so a fixed time window can land *across* a boundary — say half walking, half standing. That window cleanly represents *neither* activity, which confuses the classifier. The course calls this a slightly different problem from the \"OTHER\" class: OTHER is about unforeseen activities, whereas transitions are about windows straddling two known activities.\n\n**Why B is correct.** It states the mechanism: gradual switching means a transition window represents none of the involved activities, raising recognition complexity.\n\n**Why the others are wrong.** A conflates transitions with the OTHER class — the slides explicitly call them *slightly different* problems (OTHER = unforeseen activities, transitions = windows between two *known* ones); C proposes a fix the slides never claim solves the problem, and arbitrarily short windows lose context; D inverts the difficulty, claiming transitions are easy when the slides say they *increase* complexity.\n\n**Takeaway.** A window spanning an activity change matches no clean label, so transitions add recognition difficulty.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260107-e10",
+    "examId": "AMI20260107",
+    "date": "2026-01-07",
+    "academicYear": "AA2526",
+    "exerciseNo": 10,
+    "type": "multiple-choice",
+    "topics": ["har-intro"],
+    "prompt": "Which statement about **camera-based** and **audio-based** HAR matches the course's framing of their main limitation?",
+    "choices": [
+      {"label": "A", "text": "Both are signal-rich and accurate, but their main weakness is poor generalization when the room or environment changes."},
+      {"label": "B", "text": "Both are device-free and unobtrusive, so their main limitation is simply the upfront cost of installing the fixed recording hardware in the home."},
+      {"label": "C", "text": "Both are highly accurate in principle, but they are very privacy-intrusive, so they are acceptable only in limited domains."},
+      {"label": "D", "text": "Both capture rich activity signals, yet they can sense only low-level physical movements and never high-level ADLs."}
+    ],
+    "correctChoice": "C",
+    "solution": "**Concept.** Cameras and microphones are *signal-rich* HAR modalities: a camera frames an activity very accurately, and each activity tends to generate a distinctive audio pattern. Their shared problem is not accuracy but **privacy**: continuously recording video or audio of someone's daily life is highly intrusive, so both are acceptable only in limited domains (e.g., specific monitored rooms).\n\n**Why C is correct.** It captures the course's framing: high potential accuracy, but strong privacy intrusion limiting their use.\n\n**Why the others are wrong.** A pins poor-generalization-on-environment-change on cameras/audio, but the slides assign that weakness to *wireless* sensing; B calls them device-free and reduces the issue to installation cost, ignoring the privacy point; D invents a granularity limit the slides never state — cameras in particular can frame high-level ADLs.\n\n**Takeaway.** Cameras and audio are accurate but privacy-intrusive, so they fit only limited domains.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260107-e11",
+    "examId": "AMI20260107",
+    "date": "2026-01-07",
+    "academicYear": "AA2526",
+    "exerciseNo": 11,
+    "type": "theory-essay",
+    "topics": ["har-intro"],
+    "prompt": "Human Activity Recognition (HAR) is presented as a core source of context information for Ambient Intelligence systems, and the course frames it around a recognition pipeline.\n\n**(a)** Describe the \"classic\" HAR pipeline stage by stage, from sensing devices to the final output, and explain how the \"deep\" pipeline differs from it.\n\n**(b)** Explain what the output of a HAR model actually consists of (beyond a single label), and why HAR is fundamentally framed as a classification problem.",
+    "solution": "**(a)** The classic HAR pipeline starts from **sensing devices** that produce **raw data**. The data first goes through **data cleaning / pre-processing** (e.g., filtering noise), producing pre-processed data. In the classic pipeline this is followed by an explicit **feature-extraction** step that turns each segment into a feature representation, which is then fed to the **HAR model / classifier**. The \"deep\" pipeline keeps the same early stages — cleaning and segmentation are still needed — but instead of computing handcrafted features it feeds the pre-processed raw segments **directly to a deep neural network**, which learns meaningful features automatically during training and uses them for classification at inference. So the key difference is *who designs the features*: a human (classic) versus the network learning them automatically (deep).\n\n**(b)** The model does not only emit a single predicted label. Its underlying output is a **probability distribution over the set of possible activities**; the **most likely activity** is then selected as the classification output. HAR is fundamentally a **classification problem** because the system infers the most likely activity from sensor data among a predefined set of target classes. This framing also exposes a structural difficulty: it is impossible to foresee in advance every activity a user may perform, which is why real deployments must also model an \"OTHER\" class to capture activities outside the chosen set.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260107-e12",
+    "examId": "AMI20260107",
+    "date": "2026-01-07",
+    "academicYear": "AA2526",
+    "exerciseNo": 12,
+    "type": "theory-essay",
+    "topics": ["har-intro"],
+    "prompt": "The course lists several challenges that make HAR difficult in real-world settings, including heterogeneity of data and sensing, class imbalance, and the cost of labeled data.\n\n**(a)** Explain **data distribution heterogeneity** (distinguishing inter- and intra-variability) and **sensing heterogeneity**, and why together they make building a generalized model hard.\n\n**(b)** Explain why **labeled data scarcity** is a major HAR challenge, and contrast the **scripted** and **in-the-wild** approaches to acquiring a labeled training set, noting a key drawback of each.",
+    "solution": "**(a)** **Data distribution heterogeneity** arises because humans perform the same activity in many different ways. *Inter-variability* is variability among different subjects (e.g., an elderly person and a young person walk with different patterns), while *intra-variability* is execution variability for the same subject across contexts (e.g., walking indoors vs. outdoors). On top of this, **sensing heterogeneity** means different users may be monitored with different infrastructures: different mobile/wearable device models, different sensor placements, or different smart-home settings. Together these make it hard to build a single generalized model that works across all subjects and all sensor configurations, because the model sees inconsistent input distributions; this is a key reason generalized models often have lower recognition rates than personalized ones.\n\n**(b)** **Labeled data scarcity** is a major challenge because collecting labeled activity data requires volunteers actually performing activities, a complex acquisition and annotation infrastructure, and accurate annotators; consequently HAR datasets are much smaller than those in computer vision or NLP. In the **scripted** setting, volunteers perform a predetermined set of activities while being observed and annotated — this dominates public datasets, but its drawback is limited realism: few subjects, limited activity types and contexts, and activities that may not be representative. In the **in-the-wild** setting, users act freely in daily life and self-annotate, giving realistic, varied, long-term data, but the drawback is a complex software infrastructure and noisy, erroneous self-annotations (and it can be intrusive).",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260107-e13",
+    "examId": "AMI20260107",
+    "date": "2026-01-07",
+    "academicYear": "AA2526",
+    "exerciseNo": 13,
+    "type": "theory-essay",
+    "topics": ["har-intro"],
+    "prompt": "HAR can rely on several sensing modalities, each with strengths and trade-offs, and the same activity-recognition goal can be pursued in personalized or generalized ways.\n\n**(a)** Compare at least four sensing modalities for HAR (mobile/wearable, environmental, camera-based, audio-based, and wireless), giving a strength and a limitation for each.\n\n**(b)** Explain the trade-off between **personalized** and **generalized** HAR models, and describe how a **hybrid** model aims to combine their advantages.",
+    "solution": "**(a)** *Mobile/wearable sensing*: devices carry many sensors, with inertial sensors (e.g., accelerometer) most common because they directly reveal physical body movements; limitation: depends on device model and placement, and is best for low-level physical activities. *Environmental sensors*: IoT devices in smart-homes capture the subject's interaction with the environment and can include indoor localization, ideal for high-level ADLs; limitation: tied to a specific home setup and indoor only. *Camera-based*: very accurate, framing the activity directly (fixed environmental or egocentric cameras); limitation: highly privacy-intrusive, acceptable only in limited domains. *Audio-based*: activities produce specific audio patterns recordable by microphones; limitation: like cameras, continuous audio capture is very privacy-intrusive. *Wireless sensing*: uses perturbation of WiFi signals (e.g., CSI) by the body, requiring no worn device; limitation: poor generalization to unseen environments and degradation when the environment changes. These can be combined in **multi-modal HAR** to merge their strengths.\n\n**(b)** **Personalized** models are trained directly on the target user's data: very accurate, but collecting labeled data for each user is prohibitive. **Generalized** models are trained once on many subjects and deployed on unseen users: convenient (train once, deploy), but recognition is often inaccurate because of inter-/intra-variability and sensing heterogeneity. A **hybrid** model aims to get the best of both: acquire a training set from many users to build a generalized base, then **fine-tune** it with a small portion of labeled data from the target user, personalizing the model without the prohibitive cost of full per-user data collection.",
+    "solutionSource": "authored"
+  }
+]

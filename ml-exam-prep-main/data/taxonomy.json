@@ -1,0 +1,12 @@
+[
+  { "key": "linreg",      "name": "Linear Regression & Regularization", "short": "Lin. Reg.",   "color": "#2563eb" },
+  { "key": "modelsel",    "name": "Model Selection & Bias-Variance",     "short": "Bias-Var",    "color": "#7c3aed" },
+  { "key": "featsel",     "name": "Feature Selection & PCA",             "short": "Feat/PCA",    "color": "#0891b2" },
+  { "key": "kernelsvm",   "name": "Kernels & SVM",                       "short": "Kernel/SVM",  "color": "#059669" },
+  { "key": "ensemble",    "name": "Ensemble Methods",                    "short": "Ensemble",    "color": "#65a30d" },
+  { "key": "classif",     "name": "Classification (LogReg / Perceptron)","short": "Classif.",    "color": "#ca8a04" },
+  { "key": "learntheory", "name": "Learning Theory (VC / PAC)",          "short": "Learn. Th.",  "color": "#dc2626" },
+  { "key": "mab",         "name": "Multi-Armed Bandits",                 "short": "MAB",         "color": "#db2777" },
+  { "key": "rl",          "name": "Reinforcement Learning",              "short": "RL",          "color": "#9333ea" },
+  { "key": "modeleval",   "name": "Model Evaluation & Cross-Validation", "short": "Eval/CV",     "color": "#0d9488" }
+]

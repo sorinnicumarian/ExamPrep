@@ -1,0 +1,228 @@
+[
+  {
+    "id": "AMI20260116-e1",
+    "examId": "AMI20260116",
+    "date": "2026-01-16",
+    "academicYear": "AA2526",
+    "exerciseNo": 1,
+    "type": "multiple-choice",
+    "topics": ["gnn"],
+    "prompt": "In the course, a graph $G = (V, E)$ is defined as:",
+    "choices": [
+      {"label": "A", "text": "A fixed-size grid of nodes, each one wired to the cells adjacent to it on the grid"},
+      {"label": "B", "text": "An ordered sequence of nodes in which each node is linked only to the next one in line"},
+      {"label": "C", "text": "A matrix of node features $X\\in\\Re^{|V|\\times m}$ attached to one fixed layer of shared weights"},
+      {"label": "D", "text": "A collection of objects (the nodes $V$) and their pairwise interactions (the edges $E$)"}
+    ],
+    "correctChoice": "D",
+    "solution": "**Concept.** A graph models things and how they relate. Formally $G=(V,E)$: `V` is the set of nodes (objects) and `E` is the set of edges (pairwise interactions). For example, in a social network each person is a node and a friendship is an edge. This relational formalism is powerful because it applies across domains, biology, software, knowledge bases, and gives math foundations for learning over connected data.\n\n**Why D is correct.** It is the literal definition: a collection of objects (nodes $V$) and their pairwise interactions (edges $E$).\n\n**Why the others are wrong.** A is the fixed grid graph implicit in CNNs, only a special case, not the general definition. B is the line graph implicit in RNNs, again a restricted special case. C describes the node-feature matrix $X$ plus weights, which are attached to a graph but are not what defines it.\n\n**Takeaway.** A graph is nodes plus edges: $G=(V,E)$.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260116-e2",
+    "examId": "AMI20260116",
+    "date": "2026-01-16",
+    "academicYear": "AA2526",
+    "exerciseNo": 2,
+    "type": "multiple-choice",
+    "topics": ["gnn"],
+    "prompt": "For an undirected graph, what property does the adjacency matrix $A$ have, according to the course?",
+    "choices": [
+      {"label": "A", "text": "It is generally non-symmetric, since each edge $(u,v)$ runs in one direction only"},
+      {"label": "B", "text": "It has shape $|V| \\times m$, one row per node and one column per node feature"},
+      {"label": "C", "text": "It is symmetric, since $(u,v)\\in E$ implies $(v,u)\\in E$ and thus $A[u,v]=A[v,u]$"},
+      {"label": "D", "text": "It equals the identity matrix, with a 1 on the diagonal of every node and 0 elsewhere"}
+    ],
+    "correctChoice": "C",
+    "solution": "**Concept.** The adjacency matrix $A\\in\\Re^{|V|\\times|V|}$ records edges: $A[u,v]=1$ if $(u,v)\\in E$, else 0. In an undirected graph an edge has no direction, so $(u,v)\\in E$ implies $(v,u)\\in E$. That means $A[u,v]=A[v,u]$ for every pair, i.e., the matrix is mirror-symmetric across its diagonal. In a directed graph the two entries can differ, so symmetry need not hold.\n\n**Why C is correct.** Undirected edges are mutual, forcing $A[u,v]=A[v,u]$, so $A$ is symmetric.\n\n**Why the others are wrong.** A is the directed case (direction matters, so $A$ may be non-symmetric), not the undirected one asked about. B gives the shape of the node-feature matrix $X\\in\\Re^{|V|\\times m}$, whereas $A$ is $|V|\\times|V|$. D holds only for a graph with self-loops and no other edges, not in general.\n\n**Takeaway.** Undirected graph then symmetric adjacency matrix.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260116-e3",
+    "examId": "AMI20260116",
+    "date": "2026-01-16",
+    "academicYear": "AA2526",
+    "exerciseNo": 3,
+    "type": "multiple-choice",
+    "topics": ["gnn"],
+    "prompt": "The course warns that naively flattening the adjacency matrix and feeding it to an MLP does not work for graph learning. Why?",
+    "choices": [
+      {"label": "A", "text": "The matrix depends on an arbitrary node ordering, so the input is not permutation-invariant"},
+      {"label": "B", "text": "The matrix is far too sparse to fit in memory once it is flattened into one long vector"},
+      {"label": "C", "text": "An MLP can only fit linear functions, so it cannot capture the structure encoded in the edges"},
+      {"label": "D", "text": "The matrix carries only the edges, discarding the node features that live in $X\\in\\Re^{|V|\\times m}$"}
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** Numbering the nodes of a graph is arbitrary: relabel them and you get a different adjacency matrix for the exact same structure (these are isomorphic graphs). A flattened $A$ fed to an MLP makes the answer depend on that ordering, so two identical graphs can produce different outputs. The property we need is permutation invariance: the representation should not change when nodes are reordered. GNNs achieve this by treating neighbors as an unordered set.\n\n**Why A is correct.** It names the exact flaw: $A$ depends on an arbitrary node ordering, so the flattened input is not permutation-invariant.\n\n**Why the others are wrong.** B (too sparse to fit in memory) is not the stated reason; storage is not the issue. C is false, MLPs can represent non-linear functions. D confuses two matrices, node features do live separately in $X$, but that is not why the flattened $A$ fails, the ordering dependence is.\n\n**Takeaway.** Flattened adjacency is order-dependent, hence not permutation-invariant.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260116-e4",
+    "examId": "AMI20260116",
+    "date": "2026-01-16",
+    "academicYear": "AA2526",
+    "exerciseNo": 4,
+    "type": "multiple-choice",
+    "topics": ["gnn"],
+    "prompt": "Message passing, the core mechanism of GNNs, is built from which two functions?",
+    "choices": [
+      {"label": "A", "text": "ENCODE (compress a node into a latent code) and DECODE (reconstruct the node back)"},
+      {"label": "B", "text": "AGGREGATE (combine the neighbors' information) and UPDATE (refresh the target node)"},
+      {"label": "C", "text": "DISCRIMINATE (score a sample as real or fake) and GENERATE (synthesize a fake node)"},
+      {"label": "D", "text": "NORMALIZE (rescale messages by node degree) and POOL (collapse nodes into one vector)"}
+    ],
+    "correctChoice": "B",
+    "solution": "**Concept.** Message passing is how a GNN lets nodes learn from their neighborhood. Each round has two steps. `AGGREGATE` combines the current representations of a node's neighbors $N(u)$ into a single message; it operates on a set, so the result is permutation-invariant. `UPDATE` then merges that message with the node's own representation to produce its new embedding. Both are arbitrary differentiable functions, typically MLPs, so the whole scheme is trainable end-to-end.\n\n**Why B is correct.** It names exactly this pair: AGGREGATE (combine neighbor info) and UPDATE (refresh the target node).\n\n**Why the others are wrong.** A (ENCODE/DECODE) is the autoencoder pair. C (DISCRIMINATE/GENERATE) is the GAN pair. D names two real GNN ingredients, symmetric normalization and graph pooling, but those are not the two functions that define message passing.\n\n**Takeaway.** Message passing = AGGREGATE neighbors, then UPDATE the node.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260116-e5",
+    "examId": "AMI20260116",
+    "date": "2026-01-16",
+    "academicYear": "AA2526",
+    "exerciseNo": 5,
+    "type": "multiple-choice",
+    "topics": ["gnn"],
+    "prompt": "After $K$ iterations of message passing, what information does a node's embedding encode, and what is the analogy drawn in the course?",
+    "choices": [
+      {"label": "A", "text": "Information from the whole graph already after one iteration; analogous to a global attention pass"},
+      {"label": "B", "text": "Only the node's own initial features $x_u$, left unchanged; analogous to a fixed lookup-table read"},
+      {"label": "C", "text": "Information from neighbors up to $K$ hops away; analogous to how stacked CNN layers grow the field"},
+      {"label": "D", "text": "Only the weights on its incident edges, ignoring features; analogous to a shortest-path computation"}
+    ],
+    "correctChoice": "C",
+    "solution": "**Concept.** Message passing starts with $h^{(0)}_u = x_u$ (each node holds its own features). Each iteration pulls in information from direct (1-hop) neighbors, so reach grows by one hop per round: after 2 rounds a node sees 2-hop neighbors, and after $K$ rounds its embedding summarizes its entire $K$-hop neighborhood. This mirrors stacking convolutional layers in a CNN, whose receptive field also widens with depth, except a GNN aggregates over graph neighbors rather than a fixed spatial patch.\n\n**Why C is correct.** It states the $K$-hop reach and the CNN-layer analogy precisely.\n\n**Why the others are wrong.** A wrongly claims whole-graph reach after a single iteration, reach grows one hop at a time. B freezes the node at its input features and ignores neighborhood aggregation entirely. D drops node features and keeps only edge weights, which is not what an embedding encodes.\n\n**Takeaway.** $K$ message-passing rounds encode the $K$-hop neighborhood, like deepening CNN layers.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260116-e6",
+    "examId": "AMI20260116",
+    "date": "2026-01-16",
+    "academicYear": "AA2526",
+    "exerciseNo": 6,
+    "type": "multiple-choice",
+    "topics": ["gnn"],
+    "prompt": "According to the course, a Graph Convolutional Network (GCN) is essentially obtained by combining which two ingredients?",
+    "choices": [
+      {"label": "A", "text": "Learned attention weights on the edges and residual skip connections between the layers"},
+      {"label": "B", "text": "Janossy pooling over sampled neighbor permutations and dropout applied on the messages"},
+      {"label": "C", "text": "An adversarial discriminator loss and a KL-divergence regularization term on the embeddings"},
+      {"label": "D", "text": "Self-loops that fold in each node itself and symmetric (degree-based) normalization"}
+    ],
+    "correctChoice": "D",
+    "solution": "**Concept.** A GCN is a simplified, stabilized message-passing layer built from two ideas. `Self-loops` add each node to its own neighbor set, so its representation is included in the aggregation; this folds UPDATE into AGGREGATE, leaving only one aggregation weight to learn. `Symmetric normalization` divides the aggregation by node-degree factors (roughly $1/\\sqrt{d_u d_v}$) so a high-degree node does not swamp the sum, keeping magnitudes stable. Together they yield the graph analogue of a convolution.\n\n**Why D is correct.** GCN = self-loops plus symmetric normalization, exactly these two ingredients.\n\n**Why the others are wrong.** A (attention + skip connections) describes GAT-style architectures, not the GCN recipe. B names a real alternative aggregator (Janossy pooling) and a regularizer (dropout), but neither is part of the GCN definition. C (adversarial + KL losses) belongs to generative models.\n\n**Takeaway.** GCN = self-loops + symmetric normalization.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260116-e7",
+    "examId": "AMI20260116",
+    "date": "2026-01-16",
+    "academicYear": "AA2526",
+    "exerciseNo": 7,
+    "type": "multiple-choice",
+    "topics": ["gnn"],
+    "prompt": "Which machine-learning-on-graphs task is correctly matched to its description as given in the course?",
+    "choices": [
+      {"label": "A", "text": "Link prediction: inferring the missing edges given an incomplete edge set $E_{train}$"},
+      {"label": "B", "text": "Node classification: predicting one single label for the entire graph taken as a whole"},
+      {"label": "C", "text": "Graph classification: predicting a separate label for each individual node in the graph"},
+      {"label": "D", "text": "Graph clustering: a supervised task that requires a labeled edge for every pair of nodes"}
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** Graph ML tasks differ by what you predict. Node classification labels each node (e.g., is this user a bot). Link prediction infers missing edges from an incomplete edge set $E_{train}\\subset E$ (e.g., guessing unknown protein-protein interactions). Graph classification/regression assigns one label to a whole graph (e.g., is this program malicious). Graph clustering is the unsupervised version of graph classification. Matching each task to the right level (node vs edge vs whole graph) is the key.\n\n**Why A is correct.** Link prediction is exactly inferring missing edges given an incomplete edge set $E_{train}$.\n\n**Why the others are wrong.** B describes graph-level prediction but mislabels it node classification (node classification labels each node). C describes node classification but mislabels it graph classification (graph classification labels the whole graph). D wrongly calls graph clustering supervised, it is the unsupervised counterpart of graph classification.\n\n**Takeaway.** Link prediction = fill in the missing edges.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260116-e8",
+    "examId": "AMI20260116",
+    "date": "2026-01-16",
+    "academicYear": "AA2526",
+    "exerciseNo": 8,
+    "type": "multiple-choice",
+    "topics": ["gnn"],
+    "prompt": "To obtain a single graph-level embedding $z_G$ from the set of node embeddings, the course uses:",
+    "choices": [
+      {"label": "A", "text": "The flattened adjacency matrix $A$, read out row by row into one single long fixed-order vector"},
+      {"label": "B", "text": "Graph pooling: a permutation-invariant aggregation of node embeddings, optionally attention-weighted"},
+      {"label": "C", "text": "The embedding of one single node chosen at random from the graph, taken as a proxy for the whole"},
+      {"label": "D", "text": "A forward-diffusion step that adds Gaussian noise to every node before the result is read out"}
+    ],
+    "correctChoice": "B",
+    "solution": "**Concept.** Message passing gives you one embedding per node, but tasks like graph classification need a single vector $z_G$ for the whole graph. `Graph pooling` produces it by aggregating all node embeddings with a permutation-invariant operation (e.g., learning-over-sets sum/mean), so the result does not depend on node ordering. Optionally an attention mechanism learns a weight for each $z_u$ and takes a weighted sum, emphasizing the most informative nodes.\n\n**Why B is correct.** It names graph pooling as the permutation-invariant aggregation of node embeddings, optionally attention-weighted.\n\n**Why the others are wrong.** A (flattened adjacency) reintroduces the order-dependence GNNs exist to avoid, and ignores the learned embeddings. C (one random node) throws away almost all of the graph. D (a forward-diffusion step) is a generative-model concept, irrelevant to pooling.\n\n**Takeaway.** Collapse node embeddings into $z_G$ with permutation-invariant graph pooling.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260116-e9",
+    "examId": "AMI20260116",
+    "date": "2026-01-16",
+    "academicYear": "AA2526",
+    "exerciseNo": 9,
+    "type": "multiple-choice",
+    "topics": ["gnn"],
+    "prompt": "When building a graph from a multivariate time series, the course contrasts heuristic-based and learning-based edge construction. Which statement is correct?",
+    "choices": [
+      {"label": "A", "text": "Heuristic graphs learn every edge end-to-end with attention; learning-based graphs fix edges by spatial proximity rules"},
+      {"label": "B", "text": "Learning-based graphs are restricted to fixed rule-based edges and cannot exploit any attention mechanism at all"},
+      {"label": "C", "text": "Heuristic graphs fix edges by rules (proximity / similarity); learning-based graphs learn the edges via attention, at higher cost"},
+      {"label": "D", "text": "Both approaches start from the same fully connected graph and always converge to one single identical edge set"}
+    ],
+    "correctChoice": "C",
+    "solution": "**Concept.** To turn a multivariate time series into a graph (nodes = sensors, node features = a time window), you must decide which sensors to connect. Two strategies exist. Heuristic-based: fix edges with a rule, e.g., spatial proximity between sensors or pairwise similarity computed from training data. Learning-based: start fully connected (an edge between every pair) and learn which edges matter end-to-end, often weighting them via attention. Learning is costlier but can discover richer, non-obvious structure.\n\n**Why C is correct.** It pairs heuristic rules (proximity/similarity) with learning-based (start fully connected, learn edges via attention, higher cost).\n\n**Why the others are wrong.** A swaps the two definitions, attention-learned edges belong to the learning-based approach, fixed proximity to the heuristic one. B is false: learning-based construction typically does use attention. D is false: the heuristic approach does not start fully connected, and the two approaches generally yield different graphs.\n\n**Takeaway.** Heuristic = rule-based edges; learning-based = prune/weight a full graph via attention.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260116-e10",
+    "examId": "AMI20260116",
+    "date": "2026-01-16",
+    "academicYear": "AA2526",
+    "exerciseNo": 10,
+    "type": "multiple-choice",
+    "topics": ["gnn"],
+    "prompt": "In the smart-home HAR approach (GNN-XAR) for converting a window of sensor events into a graph, how are edges added between events?",
+    "choices": [
+      {"label": "A", "text": "Every event is connected to every other event in the window with an equal, fixed weight"},
+      {"label": "B", "text": "An edge connects two events only when they were triggered by sensors in the same room"},
+      {"label": "C", "text": "An edge weight is set to the cosine similarity of pre-trained text embeddings of the events"},
+      {"label": "D", "text": "An edge connects two event-nodes when they are temporally consecutive in the window"}
+    ],
+    "correctChoice": "D",
+    "solution": "**Concept.** GNN-XAR builds a graph from a window of smart-home sensor events. Each node is one sensor event, and the edges should capture how the events unfold over time. The heuristic used is temporal consecutiveness: connect two event-nodes with an edge if they occur one right after the other in the window. This encodes the temporal order of activity (e.g., 'motion in kitchen' then 'cabinet opened') so message passing can reason over the sequence of triggers.\n\n**Why D is correct.** It states the rule exactly: an edge links two events that are temporally consecutive in the window.\n\n**Why the others are wrong.** A (fully connected, equal weights) is the starting point of the separate learning-based construction, not this heuristic one. B (same-room only) is a plausible spatial rule but not the one GNN-XAR uses. C (cosine similarity of text embeddings) is not the rule for this temporal-consecutiveness graph.\n\n**Takeaway.** GNN-XAR edges connect temporally consecutive sensor events.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260116-e11",
+    "examId": "AMI20260116",
+    "date": "2026-01-16",
+    "academicYear": "AA2526",
+    "exerciseNo": 11,
+    "type": "theory-essay",
+    "topics": ["gnn"],
+    "prompt": "Message passing is the core mechanism of GNNs.\n\n**(a)** Describe the message-passing scheme: the roles of AGGREGATE and UPDATE, the initialization $h^{(0)}_u = x_u$, and why aggregation must operate on a set. Explain what information a node embedding encodes after $K$ iterations.\n\n**(b)** Explain how Graph Convolutional Networks (GCNs) specialize this scheme, including the role of self-loops and (symmetric) normalization, and one advantage and one drawback of the self-loop simplification.",
+    "solution": "**(a)** In message passing, each node $u$ has a representation $h^{(k)}_u$ at iteration $k$, initialized to its input features $h^{(0)}_u = x_u$. At each iteration the node uses AGGREGATE to combine the representations of its neighbors $N(u)$ into a single message, and UPDATE to combine that message with the node's own current representation, both being arbitrary differentiable functions (e.g., MLPs, with a non-linearity like ReLU). Aggregation must operate on a set because the neighbors have no inherent order; using a set-based, permutation-invariant aggregation is what makes the result independent of node ordering. As iterations progress a node receives information from increasingly distant nodes: after $K$ iterations its embedding encodes features of its $K$-hop neighborhood, analogous to stacking CNN layers but over graph neighbors instead of spatial patches.\n\n**(b)** GCNs specialize message passing by combining two ideas. First, self-loops are added to each node so that the node's own representation is included in the aggregation, which removes the separate UPDATE step (only the aggregation weight must be learned). Second, the aggregation uses symmetric normalization instead of a plain sum, which prevents instability when nodes have very different neighbor counts (a node with 100x more neighbors would otherwise dominate in magnitude). Advantage of the self-loop simplification: it simplifies message passing and often alleviates overfitting since fewer weights are learned. Drawback: it reduces expressivity, because with a single shared weight it is no longer possible to distinguish information coming from neighbors from information coming from the node itself.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260116-e12",
+    "examId": "AMI20260116",
+    "date": "2026-01-16",
+    "academicYear": "AA2526",
+    "exerciseNo": 12,
+    "type": "theory-essay",
+    "topics": ["gnn"],
+    "prompt": "The course defines three main families of machine-learning tasks on graphs and notes practical challenges.\n\n**(a)** Describe node classification, link prediction, and graph classification/regression, giving for each one example application from the course and stating, for node classification, the difference between the transductive/semi-supervised and inductive scenarios.\n\n**(b)** Explain the permutation-invariance challenge (graph isomorphism) that motivates GNNs, and how each of the three task types is solved once node and graph embeddings are available.",
+    "solution": "**(a)** Node classification predicts a label $y_u$ for each node given labels on a training subset $V_{train}\\subset V$; applications include identifying bots in social networks or classifying document topics from hyperlinks. In the semi-supervised/transductive scenario only a few nodes are labeled and message passing may leverage unlabeled nodes, but test (inductive) nodes must be ignored during training so they affect neither message passing nor training; in the inductive/supervised scenario there are many labeled nodes and the goal is to generalize across disconnected graphs. Link prediction infers missing edges given an incomplete edge set $E_{train}\\subset E$, e.g., predicting unknown protein-protein interactions. Graph classification/regression treats each whole graph as a data point with a label, e.g., classifying whether a program is malicious from a graph of its syntax and data flow; graph clustering is the unsupervised counterpart.\n\n**(b)** The challenge is that the adjacency matrix depends on an arbitrary node ordering: two isomorphic graphs (identical structure under a node permutation) have completely different adjacency matrices, so a naive flattened input is not permutation-invariant. GNNs address this by treating neighbors as an unordered set and learning permutation-independent node embeddings via message passing. Once embeddings exist: node classification applies a classifier to each node embedding (loss over labeled nodes); link prediction is framed as metric learning, predicting an edge when two node embeddings are similar (small distance) and minimizing/maximizing distances for connected/unconnected pairs; graph classification/regression/clustering first obtains a graph embedding $z_G$ via graph pooling and then applies standard DL methods, treating each $z_G$ as a data point.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260116-e13",
+    "examId": "AMI20260116",
+    "date": "2026-01-16",
+    "academicYear": "AA2526",
+    "exerciseNo": 13,
+    "type": "theory-essay",
+    "topics": ["gnn"],
+    "prompt": "The course argues GNNs bring specific benefits to Ambient Intelligence sensing scenarios.\n\n**(a)** Explain why GNNs are well-suited to AmI sensor data, including how CNNs and RNNs can be viewed as special cases of GNNs and what kinds of graphs typical GNNs handle that those cannot.\n\n**(b)** Describe two AmI applications of GNNs from the course (e.g., wearable-based HAR with body-sensing graphs, smart-home HAR, load disaggregation, indoor localization), explaining for each how the graph is constructed (nodes, node features, edges) and how a prediction is produced.",
+    "solution": "**(a)** GNNs are well-suited to AmI because sensor systems are naturally relational: graphs can encode connections between the variables of a multivariate time series and dependencies across devices in an IoT system, as well as across time. The course notes CNNs and RNNs can be seen as GNNs operating on restricted graphs: CNNs on fixed-size grid graphs and RNNs on line graphs. Typical GNNs instead handle complex graphs with no fixed form, a variable number of unordered nodes, and a variable number of neighbors per node, which lets them flexibly model interdependencies among devices and over time that grid/line structures cannot.\n\n**(b)** Two examples (any two acceptable): Wearable-based HAR with a body-sensing graph: each node is a device (with one or more sensors) at a body position, the node feature is a time window of sensor data from that position, and edges connect adjacent body parts to capture dependencies between nearby devices; spatio-temporal variants add layers per time instant (spatial edges at the same instant, temporal edges for the same node across instants). After message passing the node/graph embeddings feed a classifier for the activity. Load disaggregation (NILM): the aggregated smart-meter signal is clustered into operational modes, each cluster is a node, edges are weighted by the probability of transitioning between patterns; a GCN does message passing, graph pooling produces a single embedding of the aggregated signal, and a decoder maps it to per-appliance power consumption. Indoor localization: each node is an access point with the measured RSSI as feature, weighted edges connect spatially close APs (from the map or mined from the training set), and after message passing graph pooling yields a graph embedding from which the subject's position is predicted.",
+    "solutionSource": "authored"
+  }
+]

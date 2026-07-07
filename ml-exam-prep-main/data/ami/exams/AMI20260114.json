@@ -1,0 +1,228 @@
+[
+  {
+    "id": "AMI20260114-e1",
+    "examId": "AMI20260114",
+    "date": "2026-01-14",
+    "academicYear": "AA2526",
+    "exerciseNo": 1,
+    "type": "multiple-choice",
+    "topics": ["xai"],
+    "prompt": "According to the course, what is the central motivation for eXplainable AI (XAI) in Ambient Intelligence?",
+    "choices": [
+      {"label": "A", "text": "To push the raw classification accuracy of sensor models above what a black-box alone reaches"},
+      {"label": "B", "text": "To compress and accelerate models so they fit the limited compute budget of edge sensing devices"},
+      {"label": "C", "text": "To know not only what is predicted but also why, learning about the data and when a model may fail"},
+      {"label": "D", "text": "To automate decisions so fully that clinicians and city operators no longer review the output"}
+    ],
+    "correctChoice": "C",
+    "solution": "**Concept.** XAI exists because in high-stakes AmI domains (healthcare diagnosis, smart cities, energy) it is not enough to know *what* a model predicts; we need the *why*. Understanding the reasoning unveils insights about the problem and data and reveals when and why a model might fail, so users can trust or correct its decisions.\n\n**Why C is correct.** It names exactly this: knowing both the prediction and the reason behind it, to learn about the problem/data and anticipate failures.\n\n**Why the others are wrong.** A reframes XAI as an accuracy booster, but the course separates interpretability from raw performance and never claims explanations improve accuracy; B is about efficiency/compression (speed, memory), not explainability; D wants to remove the human, yet the course stresses HCI and *delivering* explanations to users, keeping them in the loop.\n\n**Takeaway.** XAI delivers the why, not just the what, so decisions are trustworthy.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260114-e2",
+    "examId": "AMI20260114",
+    "date": "2026-01-14",
+    "academicYear": "AA2526",
+    "exerciseNo": 2,
+    "type": "multiple-choice",
+    "topics": ["xai"],
+    "prompt": "What is the difference between global and local explainability?",
+    "choices": [
+      {"label": "A", "text": "Global explains why one specific instance got its prediction; local describes how the model behaves over all its features in general"},
+      {"label": "B", "text": "Global explanations are produced only by interpretable models, while local ones are produced only by model-agnostic methods"},
+      {"label": "C", "text": "Global explains the effect of a single chosen feature, while local explains the whole trained model in one go"},
+      {"label": "D", "text": "Global explains how the model predicts in general; local explains why one specific instance got its prediction"}
+    ],
+    "correctChoice": "D",
+    "solution": "**Concept.** *Global* explainability asks how the trained model behaves overall: which features matter in general and how they interact (often only a portion of the model can be explained). *Local* explainability asks why a single instance got its prediction, which may depend on only a few features. Local explanations dominate in practice because they tend to be more accurate than global ones.\n\n**Why D is correct.** It maps global to overall behavior and local to a specific instance's prediction.\n\n**Why the others are wrong.** A swaps the two scopes (it labels the per-instance case 'global'); B ties the scopes to method families, but both interpretable and agnostic methods can give global *or* local explanations (a tree gives both); C shrinks global to one feature and inflates local to the whole model, exactly reversing their meanings.\n\n**Takeaway.** Global = whole-model behavior; local = one instance's prediction.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260114-e3",
+    "examId": "AMI20260114",
+    "date": "2026-01-14",
+    "academicYear": "AA2526",
+    "exerciseNo": 3,
+    "type": "multiple-choice",
+    "topics": ["xai"],
+    "prompt": "Why are some classic ML algorithms considered 'interpretable models' (interpretable-by-design)?",
+    "choices": [
+      {"label": "A", "text": "Because once trained, their own parameters are the explanation, e.g. regression weights or tree paths"},
+      {"label": "B", "text": "Because a separate interpretable surrogate is fit to the trained model afterwards to recover its reasoning post-hoc"},
+      {"label": "C", "text": "Because they capture feature interactions better than deep networks, making their explanations strictly more faithful"},
+      {"label": "D", "text": "Because they treat the trained model as a black box and perturb its inputs to read off the important features"}
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** Interpretable (transparent) models are explainable *by design*: once trained, their own parameters are the explanation, no extra machinery needed. Linear-regression weights give global feature importance; a decision tree's root-to-leaf path gives a local explanation; rule induction yields readable IF-THEN rules.\n\n**Why A is correct.** It states that the trained model's own parameters directly deliver global or local explanations, with the textbook examples.\n\n**Why the others are wrong.** B describes fitting a separate post-hoc surrogate, the opposite category; C is false twice over, since the course says linear regression *cannot* capture feature interactions and that classic models are often too simple for complex tasks; D describes model-agnostic black-box perturbation (LIME), not interpretable-by-design models.\n\n**Takeaway.** Interpretable models explain themselves through their own trained parameters.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260114-e4",
+    "examId": "AMI20260114",
+    "date": "2026-01-14",
+    "academicYear": "AA2526",
+    "exerciseNo": 4,
+    "type": "multiple-choice",
+    "topics": ["xai"],
+    "prompt": "What defines a model-agnostic XAI approach, and what is its key advantage?",
+    "choices": [
+      {"label": "A", "text": "It reads the model's internal feature maps and gradients, gaining efficiency by working from inside the trained network"},
+      {"label": "B", "text": "It decouples the explanation from the model as a black box, so it works on any model and the interpretation is free to choose"},
+      {"label": "C", "text": "It is built into one specific architecture and can explain only that one model's internal learned representation"},
+      {"label": "D", "text": "It restricts itself to inherently interpretable models such as a linear regression defined over only a few features"}
+    ],
+    "correctChoice": "B",
+    "solution": "**Concept.** Model-agnostic XAI decouples the explanation from the model, treating it as a *black box* probed only through inputs and outputs. This buys two freedoms: model flexibility (works with random forests, deep nets, anything) and explanation flexibility (pick the interpretation method best suited to the goal). LIME is the canonical example.\n\n**Why B is correct.** It states the black-box decoupling plus both flexibility advantages.\n\n**Why the others are wrong.** A reads internal feature maps/gradients, which is the gradient-based, model-*specific* family (GradCAM), the opposite; C ties the method to one architecture, again model-specific; D restricts to small linear models, but agnostic methods exist precisely because interpretable linear models are too simple for complex domains.\n\n**Takeaway.** Model-agnostic = explain any black box via its inputs and outputs.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260114-e5",
+    "examId": "AMI20260114",
+    "date": "2026-01-14",
+    "academicYear": "AA2526",
+    "exerciseNo": 5,
+    "type": "multiple-choice",
+    "topics": ["xai"],
+    "prompt": "How does LIME (Local Interpretable Model-agnostic Explanations) produce an explanation for a single prediction?",
+    "choices": [
+      {"label": "A", "text": "It perturbs the sample, queries the black box, and fits an interpretable model weighted by similarity to the point"},
+      {"label": "B", "text": "It reads the black box's internal weights directly and reports the largest of them as the important features"},
+      {"label": "C", "text": "It searches the training set for the single prototype nearest to the sample and returns that case as the reason"},
+      {"label": "D", "text": "It fits one global decision tree over the whole dataset and reads off the root-to-leaf path that the sample follows"}
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** LIME explains one prediction by probing how the output changes as the input varies. It generates *perturbed* versions of the sample, queries the black box for predictions on them, and fits a simple interpretable model (e.g. linear regression) to those pairs. Each perturbation is weighted by similarity to the original point, so the surrogate is faithful in the local neighborhood (local fidelity).\n\n**Why A is correct.** It captures perturb, query, fit similarity-weighted interpretable surrogate.\n\n**Why the others are wrong.** B reads internal weights, contradicting LIME's black-box nature; C returns a nearest prototype, which is the prototype-based deep approach, not LIME; D builds a global tree over all data, but LIME is local and fits a similarity-weighted surrogate around one point.\n\n**Takeaway.** LIME = perturb the input, query the black box, fit a local weighted surrogate.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260114-e6",
+    "examId": "AMI20260114",
+    "date": "2026-01-14",
+    "academicYear": "AA2526",
+    "exerciseNo": 6,
+    "type": "multiple-choice",
+    "topics": ["xai"],
+    "prompt": "A counterfactual explanation is best described as:",
+    "choices": [
+      {"label": "A", "text": "The set of training instances most similar to the input, returned as the representative cases behind the prediction"},
+      {"label": "B", "text": "A heatmap over the last convolutional layer marking the input regions the model looked at for the class"},
+      {"label": "C", "text": "The smallest realistic change to the feature values that would change the prediction relevantly, e.g. flip the class"},
+      {"label": "D", "text": "The average feature importance computed over the entire dataset, summarizing how the model behaves overall, globally"}
+    ],
+    "correctChoice": "C",
+    "solution": "**Concept.** A counterfactual reasons 'if X had not occurred, Y would not have occurred'. It changes feature values in a *realistic* way and watches for a relevant change in the prediction (e.g. a flipped class). The explanation is the feature vector with the *smallest* change that flips the output, e.g. 'if he were 2.5 years older and asked for \\$210 less, the loan would be approved'.\n\n**Why C is correct.** It states exactly this: the minimal realistic feature change that meaningfully changes the prediction.\n\n**Why the others are wrong.** A returns similar training cases, which is prototype/case-based reasoning, not a what-if; B is a GradCAM heatmap; D is a global importance summary, not a per-instance change. Note one con: multiple, possibly contradictory counterfactuals can exist for one instance.\n\n**Takeaway.** A counterfactual is the smallest realistic feature change that flips the prediction.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260114-e7",
+    "examId": "AMI20260114",
+    "date": "2026-01-14",
+    "academicYear": "AA2526",
+    "exerciseNo": 7,
+    "type": "multiple-choice",
+    "topics": ["xai"],
+    "prompt": "GradCAM is a neural-network interpretation method. Which description matches the slides?",
+    "choices": [
+      {"label": "A", "text": "It perturbs the input from outside the model and fits a similarity-weighted linear surrogate to the black box's predictions"},
+      {"label": "B", "text": "It learns a set of prototypes in a latent space and classifies the input by its squared-distance proximity to them"},
+      {"label": "C", "text": "It induces a set of IF-THEN rules, each covering a portion of the dataset, whose combination explains the class"},
+      {"label": "D", "text": "It back-propagates the class gradient to the last convolutional layer and weights the feature maps to form a heatmap"}
+    ],
+    "correctChoice": "D",
+    "solution": "**Concept.** GradCAM explains CNN predictions by exploiting internal gradients. Forward-propagate the input, take the raw score for the class of interest (zero the others), back-propagate that class's gradient to the *last convolutional layer* before the dense layers, then weight each feature-map activation by its gradient. The result is a heatmap of the input regions most relevant to that class.\n\n**Why D is correct.** It states the gradient back-prop to the last conv layer and the gradient-weighted feature-map heatmap.\n\n**Why the others are wrong.** A perturbs from outside and fits a surrogate, which is LIME (model-agnostic); B learns latent prototypes and classifies by proximity (prototype-based deep explanation); C induces IF-THEN rules (rule induction, an interpretable model).\n\n**Takeaway.** GradCAM weights last-conv-layer feature maps by class gradients to make a relevance heatmap.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260114-e8",
+    "examId": "AMI20260114",
+    "date": "2026-01-14",
+    "academicYear": "AA2526",
+    "exerciseNo": 8,
+    "type": "multiple-choice",
+    "topics": ["xai"],
+    "prompt": "What is the main criticism of post-hoc explanation methods that motivates 'deep explanation' (interpretable-by-design deep models)?",
+    "choices": [
+      {"label": "A", "text": "The explanation comes from a separate, prior-laden process outside training, so it can shift with the chosen explainer"},
+      {"label": "B", "text": "They demand back-propagating gradients through the whole network, so they cost more than training the model itself does"},
+      {"label": "C", "text": "They apply only to convolutional networks and cannot be used to explain tabular models or time-series classifiers"},
+      {"label": "D", "text": "They require first collecting every client's raw sensor data on a central server before any explanation is produced"}
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** Post-hoc methods choose the architecture first and interpret the trained model afterward. The explanation comes from a *separate* modeling process carrying its own strong priors, not part of training. Consequently the explanation can change significantly with the chosen explainer and sometimes makes no sense to humans. This motivates *deep explanation*: building interpretability into the network so its true inner reasoning can be extracted.\n\n**Why A is correct.** It names exactly this: a separate, prior-laden process detached from training, yielding explainer-dependent, sometimes nonsensical explanations.\n\n**Why the others are wrong.** B cites compute cost, but the course actually notes gradient methods are *more* efficient than agnostic ones, and cost is not the stated critique; C limits post-hoc to CNNs, yet LIME and counterfactuals apply broadly; D invokes raw-data sharing, confusing XAI with federated learning.\n\n**Takeaway.** Post-hoc explanations are separate from training, so they vary with the explainer; deep explanation builds it in.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260114-e9",
+    "examId": "AMI20260114",
+    "date": "2026-01-14",
+    "academicYear": "AA2526",
+    "exerciseNo": 9,
+    "type": "multiple-choice",
+    "topics": ["xai"],
+    "prompt": "In the prototype-based deep-learning model presented (Li et al.), how does the network use prototypes, and how are they made human-viewable?",
+    "choices": [
+      {"label": "A", "text": "It stores raw training images verbatim as the fixed prototypes and shows those stored images directly as the explanation"},
+      {"label": "B", "text": "It learns m latent prototypes, classifies by squared-L2 distance to them, and decodes them to make them viewable"},
+      {"label": "C", "text": "It uses the prototypes only as a training-time regularizer that is dropped at inference, so they cannot be shown to users"},
+      {"label": "D", "text": "It classifies each input by the cosine similarity between the model weights that were learned on the different clients"}
+    ],
+    "correctChoice": "B",
+    "solution": "**Concept.** This prototype network reasons by case-based similarity. It has an autoencoder (giving a latent space), a prototype layer that *learns* m prototypes, and FC+softmax for classification. A latent input `z` is classified by its squared L2 distance to each prototype, $\\lVert z - p \\rVert^2$, and the k nearest prototypes form the explanation. Because prototypes live in latent space, the decoder reconstructs them into input/pixel space so humans can view them.\n\n**Why B is correct.** It states distance-based classification in latent space plus decoder reconstruction for visualization.\n\n**Why the others are wrong.** A stores raw images and never learns them, but this model *learns* the prototypes (and decodes them, rather than showing stored pixels); C drops prototypes at inference, yet they drive classification and are decoded for users; D classifies by client-weight cosine similarity, which is federated clustering, unrelated to this model.\n\n**Takeaway.** Classify by latent-space distance to learned prototypes; decode them to make them human-viewable.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260114-e10",
+    "examId": "AMI20260114",
+    "date": "2026-01-14",
+    "academicYear": "AA2526",
+    "exerciseNo": 10,
+    "type": "multiple-choice",
+    "topics": ["xai"],
+    "prompt": "Which statement about evaluating explanation effectiveness is correct according to the course?",
+    "choices": [
+      {"label": "A", "text": "An explanation that convinces end-users is for that reason effective, so user satisfaction suffices as the only measure"},
+      {"label": "B", "text": "Effectiveness reduces entirely to the underlying model's raw classification accuracy as measured on the held-out test set of instances"},
+      {"label": "C", "text": "Convincing explanations can still accompany mistakes (over-reliance); judge via satisfaction, mental model, trust, correctability"},
+      {"label": "D", "text": "Interpretable-by-design models produce their own explanations, so those explanations need no separate evaluation of their own at all"}
+    ],
+    "correctChoice": "C",
+    "solution": "**Concept.** A convincing explanation is not automatically a correct one: persuasive explanations can accompany model *mistakes*, causing *over-reliance*, where users trust the system simply because it explains itself. So effectiveness needs several measures: user satisfaction (clarity/utility, via questionnaires); mental model (how well users grasp decisions and the overall model); trust assessment (positive or negative, measured before/after use); and correctability (whether errors can be spotted and fixed).\n\n**Why C is correct.** It flags the over-reliance risk and lists the four course measures of effectiveness.\n\n**Why the others are wrong.** A equates convincing with effective, the exact misconception the course rejects; B reduces it to classification accuracy, confusing explanation quality with model performance; D claims interpretable models' explanations need no evaluation, but the course evaluates explanations regardless of how they are produced.\n\n**Takeaway.** Convincing isn't correct; evaluate via satisfaction, mental model, trust, and correctability to avoid over-reliance.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260114-e11",
+    "examId": "AMI20260114",
+    "date": "2026-01-14",
+    "academicYear": "AA2526",
+    "exerciseNo": 11,
+    "type": "theory-essay",
+    "topics": ["xai"],
+    "prompt": "The course organizes XAI along several dimensions and into three main categories of methods.\n\n**(a)** Explain the distinction between global and local explanations, and the distinction between interpretable-by-design models and post-hoc methods.\n\n**(b)** Name the three main categories of XAI approaches covered in the lecture and give a representative method for each, briefly stating how it explains.",
+    "solution": "**(a)** *Global vs local*: a global explanation describes how the trained model makes predictions in general - which features are important overall and how they interact - though it is often only feasible to explain part of a model. A local explanation answers why the model produced a specific prediction for a single instance, which may depend on only a few features; local explanations are the most widely adopted because they tend to be more accurate than global ones. *Interpretable-by-design vs post-hoc*: interpretable (transparent) models are inherently explainable - once trained, their own parameters deliver the explanation (e.g. regression weights, tree paths). Post-hoc methods instead choose the model architecture first and then, separately, try to interpret the already-trained model or its learned features; because this separate process carries strong priors, post-hoc explanations can change with the chosen explainer and may not always reflect the model's true computation.\n\n**(b)** The lecture covers three categories. (1) *Interpretable Models*: e.g. a decision tree, where global feature importance comes from variance reduction at each node and a local explanation is the root-to-leaf path of the instance; also linear regression (weights as global importance) and rule induction (IF-THEN rules). (2) *Model-Agnostic* approaches: e.g. LIME, which perturbs the input, queries the black box, and fits a similarity-weighted interpretable surrogate for local fidelity; counterfactual explanations also belong here. (3) *Deep Explanation* (neural-network interpretation / interpretable-by-design deep models): e.g. GradCAM, which back-propagates the class gradient to the last convolutional layer to build a relevance heatmap, or prototype-based networks that classify by latent-space distance to learned prototypes.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260114-e12",
+    "examId": "AMI20260114",
+    "date": "2026-01-14",
+    "academicYear": "AA2526",
+    "exerciseNo": 12,
+    "type": "theory-essay",
+    "topics": ["xai"],
+    "prompt": "LIME and GradCAM are two widely used post-hoc explanation methods, but they belong to different categories.\n\n**(a)** Describe how LIME generates a local explanation and explain why it is called 'model-agnostic'.\n\n**(b)** Describe the GradCAM pipeline for a CNN and explain why it is a model-specific (gradient-based) method, noting one general limitation of post-hoc approaches that both share.",
+    "solution": "**(a)** LIME explains an individual prediction by studying how the model's output changes as the input varies. Given the sample to explain, it generates a dataset of *perturbed* versions of that sample and records the black box's predictions on them; it then fits an inherently interpretable model (e.g. linear regression) on these (perturbation, prediction) pairs, weighting each perturbed sample by its similarity to the original point. The fitted surrogate identifies which parts of the input drive the classification and is required to approximate the prediction well in the local neighbourhood (local fidelity). It is *model-agnostic* because it only needs to query the model's inputs and outputs, treating it as a black box; it never inspects internal parameters, so it can be applied to any model (random forest, deep net, etc.).\n\n**(b)** GradCAM is designed for CNNs. The pipeline: forward-propagate the input image through the CNN; obtain the raw score for the class of interest (the activation of the final neuron before softmax) and set all other class activations to zero; back-propagate the gradient of that class to the last convolutional layer (the one before the fully connected layers); weight each feature-map 'pixel' by its corresponding gradient and combine the maps into a heatmap highlighting the input regions most relevant to the prediction. It is *model-specific* and gradient-based because it requires access to the network's internal convolutional feature maps and back-propagated gradients - it looks 'inside' the model rather than from the outside, which also makes it more computationally efficient than agnostic methods. The shared limitation of both as post-hoc methods is that the explanation arises from a process separate from training (with its own priors), so it may change depending on the explainer used and need not exactly mirror the model's true internal computation.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260114-e13",
+    "examId": "AMI20260114",
+    "date": "2026-01-14",
+    "academicYear": "AA2526",
+    "exerciseNo": 13,
+    "type": "theory-essay",
+    "topics": ["xai"],
+    "prompt": "Building trustworthy XAI in Ambient Intelligence and healthcare requires both good explanation methods and a way to judge whether explanations actually help.\n\n**(a)** Explain why the target user (non-expert end-user vs technician) matters when designing explanations, and why HCI/psychological factors are emphasized.\n\n**(b)** Describe how explanation effectiveness can be evaluated, naming concrete measures, and explain the over-reliance problem.",
+    "solution": "**(a)** The course stresses that XAI is not only about the ML model: explanations must be effectively *delivered* to their target users, so the audience shapes the design. Two categories are distinguished. *Non-expert end-users* take advantage of AI in daily life without ML knowledge - in AmI these are clinicians, smart-city operators, or monitored subjects - so explanations must be intuitive and actionable. *Technicians* (data scientists / ML experts) need explanations that help them monitor the model: whether the sensing setup needs refinement, whether more labeled data are required, or whether the model itself must be improved. Because the same prediction may need very different explanations for these audiences, and because how an explanation is perceived has strong human-computer-interaction and psychological dimensions, designing the delivery (not just the algorithm) is essential.\n\n**(b)** Intuitively one might assume an explanation that convinces end-users is effective, but the course warns this is insufficient: convincing explanations can accompany *mistakes* of the underlying model. This leads to *over-reliance* - the user trusts the system too much simply because it offers explanations, even when the prediction is wrong. Therefore several measures of effectiveness are used: *User satisfaction* (clarity/utility of the explanation, typically via questionnaires); *Mental model* (how well a user understands individual decisions and/or the overall model, assessed by asking users to describe the explanation process); *Trust assessment* (trust as a cognitive factor that can be positive or negative, usually measured with questionnaires before and after using the XAI system); and *Correctability* (whether the approach helps identify errors, enabling correction and continuous training, usually assessed with automatic methods). Together these guard against mistaking persuasiveness for genuine usefulness.",
+    "solutionSource": "authored"
+  }
+]

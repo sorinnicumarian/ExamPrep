@@ -1,0 +1,228 @@
+[
+  {
+    "id": "AMI20260112-e1",
+    "examId": "AMI20260112",
+    "date": "2026-01-12",
+    "academicYear": "AA2526",
+    "exerciseNo": 1,
+    "type": "multiple-choice",
+    "topics": ["transfer"],
+    "prompt": "In the course, transfer learning is motivated as \"extending what has been learned in one context to new contexts\". Which set of goals does it pursue?",
+    "choices": [
+      {"label": "A", "text": "Less learning time, fewer expert annotations, and handling more situations effectively"},
+      {"label": "B", "text": "More expert annotations on the target so the new task is learned faster and far more robustly"},
+      {"label": "C", "text": "Identical source and target distributions, so the reused source model needs no further adaptation at all"},
+      {"label": "D", "text": "A larger target dataset and a smaller source dataset, keeping the transferred knowledge as generic as possible"}
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** *Transfer learning* reuses knowledge gained on a source task to a new, related target task, typically moving from a large source dataset to a small target one. Its motivation (Byrnes' definition: extending what is learned in one context to new contexts) is efficiency: less learning time, fewer expert annotations, broader coverage, e.g., a HAR model trained on many users helps a new home with little labeling.\n\n**Why A is correct.** It lists exactly those three course goals: less time, fewer annotations, handling more situations effectively.\n\n**Why the others are wrong.** B inverts the goal, transfer *reduces* the annotations needed, it does not call for more. C describes a case where transfer is unnecessary: transfer exists precisely to bridge distribution *differences*, not to assume identical distributions. D has the dataset sizes backwards, the source is the large dataset and the target the small one, and generic-ness is not the stated objective.\n\n**Takeaway.** Transfer learning trades source knowledge for less time and fewer target labels.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260112-e2",
+    "examId": "AMI20260112",
+    "date": "2026-01-12",
+    "academicYear": "AA2526",
+    "exerciseNo": 2,
+    "type": "multiple-choice",
+    "topics": ["transfer"],
+    "prompt": "According to the course taxonomy, **instance-based** transfer learning works by:",
+    "choices": [
+      {"label": "A", "text": "Finding a low-dimensional latent feature space shared by both the source and the target domains"},
+      {"label": "B", "text": "Reusing the source parameters to initialize the target model, then continuing training to adapt them"},
+      {"label": "C", "text": "Reweighting source samples by their similarity to the target and reusing them to train the classifier"},
+      {"label": "D", "text": "Adding a regularizer to the objective so knowledge from the source model flows into the target model"}
+    ],
+    "correctChoice": "C",
+    "solution": "**Concept.** *Instance-based* transfer is a *data-based* strategy: it does not transform features or models, it reuses the source *samples* but reweights them to correct marginal-distribution differences. Source points that look most like target points get higher weights, so the target learner draws mainly on relevant source information, e.g., upweight source users whose gait resembles the target user.\n\n**Why C is correct.** It states exactly this: reweight source samples (favoring those most similar to the target) and reuse them to train the target classifier.\n\n**Why the others are wrong.** A (a common low-dimensional latent space) is feature-based transfer, not instance-based. B (reuse source parameters and fine-tune) is parameter control, a model-based strategy. D (a regularizer that transfers source-model knowledge) is model control.\n\n**Takeaway.** Instance-based transfer = reweight and reuse source samples, no feature/model change.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260112-e3",
+    "examId": "AMI20260112",
+    "date": "2026-01-12",
+    "academicYear": "AA2526",
+    "exerciseNo": 3,
+    "type": "multiple-choice",
+    "topics": ["transfer"],
+    "prompt": "The course splits transfer-learning approaches into **data-based** and **model-based**. Which pair correctly assigns the listed techniques?",
+    "choices": [
+      {"label": "A", "text": "Data-based: model control and parameter control; Model-based: instance-based and feature-based transfer"},
+      {"label": "B", "text": "Data-based: instance-based and feature-based; Model-based: model control and parameter control"},
+      {"label": "C", "text": "Data-based: instance reweighting and fine-tuning; Model-based: feature transformation and domain adaptation"},
+      {"label": "D", "text": "Data-based: feature-based and knowledge distillation; Model-based: parameter control and instance reweighting"}
+    ],
+    "correctChoice": "B",
+    "solution": "**Concept.** The course taxonomy has two top-level branches. *Data-based* transfer adjusts or transforms the data: instance-based (reweighting source samples) and feature-based (finding a common latent representation). *Model-based* transfer exploits the model: model control (adding regularizers so source-model knowledge flows in, e.g., distillation, domain adaptation) and parameter control (reusing parameters, e.g., fine-tuning).\n\n**Why B is correct.** It pairs each branch with its true sub-strategies: data-based = instance + feature; model-based = model control + parameter control.\n\n**Why the others are wrong.** A swaps the two branches entirely (model/parameter control are model-based; instance/feature are data-based). C misfiles fine-tuning (parameter control) and domain adaptation (model control) as data-based/model-based members. D mixes the boxes: knowledge distillation is model control, and instance reweighting is data-based, so both halves are mislabeled.\n\n**Takeaway.** Data-based transfers the data (instance/feature); model-based transfers the model (control/parameters).",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260112-e4",
+    "examId": "AMI20260112",
+    "date": "2026-01-12",
+    "academicYear": "AA2526",
+    "exerciseNo": 4,
+    "type": "multiple-choice",
+    "topics": ["transfer"],
+    "prompt": "Within feature-based transfer, what distinguishes the **symmetric** from the **asymmetric** variant?",
+    "choices": [
+      {"label": "A", "text": "Symmetric transforms only the source domain to match the target; asymmetric maps both domains into a shared latent space"},
+      {"label": "B", "text": "Symmetric reweights the source instances by similarity; asymmetric finds a latent feature space shared by both domains"},
+      {"label": "C", "text": "Symmetric minimizes a discrepancy loss between domains; asymmetric minimizes a classification loss on the labeled source"},
+      {"label": "D", "text": "Symmetric maps both domains into a common latent space; asymmetric transforms only the source to align with the target"}
+    ],
+    "correctChoice": "D",
+    "solution": "**Concept.** *Feature-based* transfer seeks a low-dimensional latent representation that is predictive yet reduces the gap between domains. It comes in two flavors defined by *which* domains get transformed. *Symmetric*: both domains are mapped into one shared latent space. *Asymmetric*: only the source is transformed, so similar source and target samples land close together.\n\n**Why D is correct.** It states exactly that split, symmetric = common space for both; asymmetric = transform only the source to align with the target.\n\n**Why the others are wrong.** A swaps the two definitions (it is symmetric, not asymmetric, that uses a shared space). B drags in instance reweighting, which is the *instance-based* strategy, not a feature-based variant. C describes the two losses of unsupervised domain adaptation, not the criterion that separates symmetric from asymmetric feature transforms.\n\n**Takeaway.** Symmetric maps both domains to a shared space; asymmetric only reshapes the source.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260112-e5",
+    "examId": "AMI20260112",
+    "date": "2026-01-12",
+    "academicYear": "AA2526",
+    "exerciseNo": 5,
+    "type": "multiple-choice",
+    "topics": ["transfer"],
+    "prompt": "Fine-tuning, the most common parameter-control approach, is best described as:",
+    "choices": [
+      {"label": "A", "text": "Initializing the target model with source-learned parameters, then continuing training to adapt them"},
+      {"label": "B", "text": "Reweighting source instances by their similarity to the target so the target learner uses only relevant samples"},
+      {"label": "C", "text": "Deriving labels directly from unlabeled source data via a pretext task to pre-train a reusable feature extractor"},
+      {"label": "D", "text": "Training a domain discriminator adversarially until it can no longer tell source samples from target ones"}
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** *Fine-tuning* is the most common *parameter-control* (model-based) approach. The parameters learned on the source data are reused to initialize the target model, and training continues on the target data so the weights adapt to the new domain. It is cheap and effective because the source weights already encode useful low-level structure.\n\n**Why A is correct.** It captures the mechanism precisely: initialize with source-learned parameters, then keep training on the target to adapt them.\n\n**Why the others are wrong.** B (reweight source instances by target similarity) is instance-based, a data-based strategy. C (derive labels from unlabeled data via a pretext task) is self-supervised learning. D (train a domain discriminator until it cannot separate domains) is the adversarial mechanism of unsupervised domain adaptation.\n\n**Takeaway.** Fine-tuning = start from source weights, then keep training on the target.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260112-e6",
+    "examId": "AMI20260112",
+    "date": "2026-01-12",
+    "academicYear": "AA2526",
+    "exerciseNo": 6,
+    "type": "multiple-choice",
+    "topics": ["transfer"],
+    "prompt": "In **unsupervised domain adaptation** (source labeled, target unlabeled), what role does the binary domain discriminator `D` play?",
+    "choices": [
+      {"label": "A", "text": "It is trained until it *cannot* tell source from target, pushing the extractor toward domain-invariant features"},
+      {"label": "B", "text": "It is trained until it *can* perfectly separate source from target, so the two domains stay well apart in feature space"},
+      {"label": "C", "text": "It assigns the activity class labels to the unlabeled target samples directly so the source classifier can be reused"},
+      {"label": "D", "text": "It selects which source instances to reweight before they are reused to train the target classifier"}
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** *Unsupervised domain adaptation* has a labeled source and an unlabeled target, and wants features that are *domain-invariant* yet *class-discriminative*. A binary discriminator `D` tries to tell whether a representation came from source or target. The feature extractor is trained adversarially against `D`: a Discrepancy Loss minimizes the source/target representation gap, while a Classification Loss on the labeled source keeps features class-discriminative.\n\n**Why A is correct.** Success means `D` *cannot* distinguish the domains, which is exactly when the features have become domain-invariant.\n\n**Why the others are wrong.** B inverts the objective (we want `D` to fail, not to separate the domains perfectly). C is wrong: `D` discriminates *domain*, not class, and it does not hand out activity labels. D confuses `D` with instance-based reweighting, which is a data-based strategy.\n\n**Takeaway.** In UDA, train features until the domain discriminator can no longer tell source from target.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260112-e7",
+    "examId": "AMI20260112",
+    "date": "2026-01-12",
+    "academicYear": "AA2526",
+    "exerciseNo": 7,
+    "type": "multiple-choice",
+    "topics": ["transfer"],
+    "prompt": "The course names two factors necessary for successful transfer learning, and warns about a failure mode. Which option states them correctly?",
+    "choices": [
+      {"label": "A", "text": "Necessary: identical sensing devices and identical users between domains; failure mode: negative transfer hurting the target"},
+      {"label": "B", "text": "Necessary: sufficient source-target similarity and enough target data; failure mode: negative transfer hurting the target"},
+      {"label": "C", "text": "Necessary: a very large labeled target set and a tiny source set; failure mode: catastrophic forgetting on the target"},
+      {"label": "D", "text": "Necessary: a domain discriminator paired with a generator; failure mode: mode collapse during adaptation"}
+    ],
+    "correctChoice": "B",
+    "solution": "**Concept.** Transfer only helps under two conditions: *sufficient similarity* between source and target domains, and a *sufficient amount of target data* to adapt. When source and target are too dissimilar, or target data is too scarce to correct the mismatch, reused knowledge misleads the model, this failure is *negative transfer*, where transferring actually *hurts* target performance.\n\n**Why B is correct.** It names both necessary factors (domain similarity, enough target data) and the correct failure mode (negative transfer hindering the target).\n\n**Why the others are wrong.** A names the right failure mode but invents identical-hardware/identical-user requirements, the course asks only for *sufficient* similarity, not identity. C has the dataset sizes backwards (a small target is the whole problem) and cites catastrophic forgetting, a continual-learning issue. D lists GAN components and mode collapse, mechanisms of adversarial adaptation, not the general necessary factors.\n\n**Takeaway.** Need domain similarity + enough target data, or you risk negative transfer.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260112-e8",
+    "examId": "AMI20260112",
+    "date": "2026-01-12",
+    "academicYear": "AA2526",
+    "exerciseNo": 8,
+    "type": "multiple-choice",
+    "topics": ["transfer"],
+    "prompt": "Why is transfer learning especially attractive for Human Activity Recognition in Ambient Intelligence?",
+    "choices": [
+      {"label": "A", "text": "Because existing HAR datasets already cover every device, user, and task, so one model fits any new deployment"},
+      {"label": "B", "text": "Because the distribution shift across users and devices is small enough to safely ignore when reusing a HAR model"},
+      {"label": "C", "text": "Because many labeled HAR datasets exist but in specific settings, so transfer reuses them to cut new-domain labeling"},
+      {"label": "D", "text": "Because self-derived labels remove the need to collect any labeled HAR data in either the source or the target"}
+    ],
+    "correctChoice": "C",
+    "solution": "**Concept.** In Ambient Intelligence many labeled HAR datasets already exist, but each was collected in a *specific* setting: particular sensing devices, a limited set of users, specific tasks. A new deployment differs on all these axes, yet collecting fresh labels is costly. Transfer learning lets us reuse those existing datasets to minimize new labeling.\n\n**Why C is correct.** It gives this exact rationale: abundant but setting-specific labeled datasets, reused via transfer to cut new-domain labeling.\n\n**Why the others are wrong.** A wrongly claims existing datasets already span every device and user, the whole problem is that each was collected in one specific setting. B denies the distribution shift across users, devices, and positions, which is precisely *why* transfer is needed. D describes self-supervised learning's self-derived labels and overstates it, transfer still needs some labels, just fewer.\n\n**Takeaway.** Transfer recycles existing setting-specific HAR datasets to slash labeling in new deployments.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260112-e9",
+    "examId": "AMI20260112",
+    "date": "2026-01-12",
+    "academicYear": "AA2526",
+    "exerciseNo": 9,
+    "type": "multiple-choice",
+    "topics": ["transfer"],
+    "prompt": "The course frames **self-supervised learning** as a special type of transfer learning. Which statement captures that framing and its pipeline?",
+    "choices": [
+      {"label": "A", "text": "Transfer from a fully labeled source whose labels are copied across to supervise the target task directly"},
+      {"label": "B", "text": "Transfer from an unlabeled source: self-derived labels train a pretext, then the extractor is fine-tuned downstream"},
+      {"label": "C", "text": "Transfer where the user hand-labels every sample for the pretext task before the downstream fine-tuning stage"},
+      {"label": "D", "text": "Transfer that keeps the pretext head after pre-training and discards the learned feature extractor entirely"}
+    ],
+    "correctChoice": "B",
+    "solution": "**Concept.** *Self-supervised learning* is transfer learning whose source has *only unlabeled* data. Labels are manufactured from the data itself to train a *pretext (upstream)* task (e.g., reconstruct, predict a rotation). Afterwards only the feature extractor is kept and fine-tuned on a small labeled dataset for the *downstream (target)* task, transferring the learned representation so few real labels are needed.\n\n**Why B is correct.** It states the framing and pipeline precisely: unlabeled source, self-derived labels, pretext training, then fine-tune the kept feature extractor downstream.\n\n**Why the others are wrong.** A assumes a fully labeled source, contradicting the unlabeled premise. C requires human labels for the pretext, which defeats the purpose of using self-derived labels. D is backwards, the *feature extractor* is kept and the pretext head is discarded, not the reverse.\n\n**Takeaway.** Self-supervised learning = invent labels for a pretext task, keep the feature extractor, fine-tune downstream.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260112-e10",
+    "examId": "AMI20260112",
+    "date": "2026-01-12",
+    "academicYear": "AA2526",
+    "exerciseNo": 10,
+    "type": "multiple-choice",
+    "topics": ["transfer"],
+    "prompt": "In **contrastive** self-supervised learning, what is the objective and what is the main practical challenge highlighted by the course?",
+    "choices": [
+      {"label": "A", "text": "Objective: reconstruct masked portions of the input from the surrounding context; challenge: representations stay too low-level"},
+      {"label": "B", "text": "Objective: predict future windows from past windows; challenge: training a reliable autoregressive predictor model"},
+      {"label": "C", "text": "Objective: classify which domain a sample came from; challenge: balancing the source and target set sizes"},
+      {"label": "D", "text": "Objective: pull same-point augmentations close, push different points apart; challenge: mining good hard negatives"}
+    ],
+    "correctChoice": "D",
+    "solution": "**Concept.** *Contrastive* self-supervised learning (e.g., SimCLR) learns by comparison. Two augmentations of the *same* point are a positive pair and should be close in latent space; representations of *different* points should be far apart, enforced by a distance-based loss with temperature `tau` (or a triplet loss with margin). The course flags that choosing *negative* samples is the central practical difficulty.\n\n**Why D is correct.** It states both the objective (pull same-point augmentations together, push different points apart) and the challenge (selecting good, ideally *hard*, negatives, samples close in input space that should be separated, which are expensive to mine).\n\n**Why the others are wrong.** A is masked-reconstruction, a *predictive* pretext, not contrastive. B (predicting future windows) is also a predictive pretext, not comparison-based. C describes the domain-classification objective of unsupervised domain adaptation, not self-supervised contrast.\n\n**Takeaway.** Contrastive learning attracts positives and repels negatives, and mining hard negatives is the hard part.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260112-e11",
+    "examId": "AMI20260112",
+    "date": "2026-01-12",
+    "academicYear": "AA2526",
+    "exerciseNo": 11,
+    "type": "theory-essay",
+    "topics": ["transfer"],
+    "prompt": "Transfer learning reuses knowledge from a source to a target to reduce labeling effort.\n\n**(a)** Using the course taxonomy, explain the difference between **data-based** and **model-based** transfer, and within each describe its two sub-strategies (instance-based vs feature-based; model control vs parameter control).\n\n**(b)** State the conditions the course identifies as necessary for successful transfer, define **negative transfer**, and explain how it can arise.",
+    "solution": "**(a)** **Data-based** transfer adjusts/transforms the *data samples* themselves. Its two sub-strategies are: **instance-based**, which reweights source-domain samples to correct marginal-distribution differences - giving higher weights to source samples most similar to the target - and reuses these reweighted instances directly to train the target classifier, so only relevant source information is used; and **feature-based**, which finds a (low-dimensional) latent feature representation with good predictive quality that reduces the difference between domains, either *symmetrically* (a common latent space for both domains) or *asymmetrically* (transforming only source samples so similar samples across domains become close). **Model-based** transfer instead exploits the *model*. Its two sub-strategies are: **model control**, which adds regularizers to the learner's objective so source-model knowledge is transferred into the target during training (e.g., knowledge distillation, domain adaptation); and **parameter control**, which reuses parameters learned on the source to facilitate target learning, the most common case being fine-tuning (initialize with source weights, keep training on target data).\n\n**(b)** The course identifies at least two necessary conditions: (1) *sufficient similarity between source and target domains* and (2) *a sufficient amount of target data*. When these are not met, transfer can backfire as **negative transfer**: reusing source knowledge actually *hinders* the model's performance on the target rather than helping it. It arises when source and target are too dissimilar (so the transferred representation or parameters encode misleading patterns) and/or when there is too little target data to correct that mismatch, so the model is dragged toward the wrong distribution instead of adapting to the target.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260112-e12",
+    "examId": "AMI20260112",
+    "date": "2026-01-12",
+    "academicYear": "AA2526",
+    "exerciseNo": 12,
+    "type": "theory-essay",
+    "topics": ["transfer"],
+    "prompt": "Labeled HAR datasets are collected in specific conditions, so models transfer poorly across deployments.\n\n**(a)** Describe the kinds of *transfer scenario* the course distinguishes in Ambient Intelligence (cross-subject, cross-environment, cross-position, cross-device, cross-domain), explaining the distribution shift behind each.\n\n**(b)** Explain **unsupervised domain adaptation** for the case of labeled source and unlabeled target: the role of the discriminator, the two losses involved, and how a GAN-based variant achieves cross-subject HAR.",
+    "solution": "**(a)** HAR transfer scenarios differ by *what* changes between source and target. **Cross-subject**: source and target are different users, whose activities produce different signatures (gait, pace, body shape), so the per-class data distribution shifts between people. **Cross-environment**: the same activities are recognized in a different home/space, where layout and ambient-sensor placement change the data. **Cross-position**: the wearable is worn on a different body location (e.g., wrist vs. pocket), changing the sensor signal for the same activity. **Cross-device**: a different device/sensor (different sampling rate, noise, modality) records the same phenomenon, shifting the feature distribution. **Cross-domain**: transfer across more broadly different settings/tasks combining several of the above shifts. In every case the underlying activity may be the same, but the input distribution differs, which is exactly the gap transfer learning must bridge.\n\n**(b)** In **unsupervised domain adaptation** we have labels only in the source domain and none in the target. The aim is to learn features that are *domain-invariant* yet *class-discriminative*. A binary **discriminator `D`** is trained to tell whether a sample's representation comes from the source or the target domain; the feature extractor is trained adversarially so that `D` can no longer distinguish them. Two losses drive this: a **Discrepancy (domain) Loss** that minimizes the gap between source and target latent representations, and a **Classification Loss** computed on the labeled source so the features stay discriminative of the activity classes. A **GAN-based variant** (shown for cross-subject HAR) trains a generator to convert labeled source data into data resembling the target domain while a discriminator tries to tell fake target data from real target data; once the discriminator can no longer distinguish them, the generated data are good target-like samples, so a classifier trained on the (label-bearing) generated data can be applied directly to the target subject.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260112-e13",
+    "examId": "AMI20260112",
+    "date": "2026-01-12",
+    "academicYear": "AA2526",
+    "exerciseNo": 13,
+    "type": "theory-essay",
+    "topics": ["transfer"],
+    "prompt": "Self-supervised learning lets us exploit the large amounts of *unlabeled* sensor data available in Ambient Intelligence.\n\n**(a)** Explain why self-supervised learning is presented as a special case of transfer learning, and describe its two-phase pipeline (pretext/upstream task, then downstream task), naming the AutoEncoder as the simplest example and its main limitation.\n\n**(b)** Contrast **predictive** and **contrastive** self-supervised approaches: give the core idea of each, one example pretext task per family relevant to sensor data, and the principal drawback of each.",
+    "solution": "**(a)** Self-supervised learning is a special case of transfer learning in which the source domain contains *only unlabeled* data: instead of transferring from a labeled source, labels are derived directly from the unlabeled data itself. The pipeline has two phases. In the **pretext (upstream) task**, a supervised model is trained on automatically generated labels so it learns a useful representation; only the **feature extractor** is then kept. In the **downstream (target) task**, that feature extractor is fine-tuned on a small labeled dataset in the target domain - reusing (transferring) the learned representation so few labels are needed. The simplest example is the **AutoEncoder**: the encoder maps input `x` to a latent code `z` and the decoder reconstructs `x` (the 'label' is the data point itself); afterwards the encoder is the feature extractor. Its main limitation is that it is the least effective self-supervised approach and is mostly useful for dimensionality reduction rather than rich representation learning.\n\n**(b)** **Predictive** approaches mask or alter part of the input and use the remaining context to predict the hidden part (very effective in NLP, e.g., the way GPT-style models are pre-trained). A sensor-data example is **masked reconstruction**, masking a fraction of samples in a frame and forcing the model to reconstruct them from temporal context (Contrastive Predictive Coding's pretext - predicting future windows - is a related predictive idea). Drawback: the feature extractor reasons at the raw-data level while downstream tasks are high-level, and the model learns a 'conservative' distribution that penalizes rare examples, so the representation may not generalize well. **Contrastive** approaches learn to distinguish similar from dissimilar pairs with a distance-based loss: two augmentations of the same point should be close in latent space, augmentations of different points should be far apart (e.g., SimCLR adapted to HAR via signal transformations, or a wavelet/scalogram positive pair). Drawback: choosing negative samples is hard and expensive - random negatives are weak, and the truly useful *hard* negatives (close in input space but should be separated) are difficult to mine from large unlabeled data.",
+    "solutionSource": "authored"
+  }
+]

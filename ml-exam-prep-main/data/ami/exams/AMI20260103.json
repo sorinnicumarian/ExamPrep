@@ -1,0 +1,228 @@
+[
+  {
+    "id": "AMI20260103-e1",
+    "examId": "AMI20260103",
+    "date": "2026-01-03",
+    "academicYear": "AA2526",
+    "exerciseNo": 1,
+    "type": "multiple-choice",
+    "topics": ["timeseries"],
+    "prompt": "In Ambient Intelligence scenarios, a home is instrumented with several sensors (a wearable accelerometer, a temperature sensor, and a door contact sensor) that are all recorded over time. According to the course definitions, how is this collection of signals best classified?",
+    "choices": [
+      {"label": "A", "text": "A multivariate time series, i.e. several variables observed together as a combination of univariate series"},
+      {"label": "B", "text": "Three independent univariate time series that cannot be treated together as a single analyzed object"},
+      {"label": "C", "text": "A univariate time series, because the three sensors all monitor the same physical home environment"},
+      {"label": "D", "text": "A frequency-domain signal, since heterogeneous sensors are compared by their constituent frequencies"}
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** A time series is a collection of observations made sequentially in time, each tied to its timestamp. When only one variable is tracked it is *univariate*; when several variables are tracked at once it is *multivariate*, which the course defines as a combination of univariate series. Multivariate is the most common case in Ambient Intelligence, where many heterogeneous sensors run together.\n\n**Why A is correct.** A wearable accelerometer, a temperature sensor, and a door contact each produce their own univariate series; recorded together over time they form one multivariate time series, which is exactly a combination of univariate series.\n\n**Why the others are wrong.** B: a multivariate series *is* the single object that bundles those univariate channels, so they are not analyzed as disconnected series. C: univariate means a single observed variable, not a single location or environment. D: nothing here applies a Fourier/wavelet transform, so this is not a frequency-domain representation.\n\n**Takeaway.** Many sensors over time = multivariate time series (a bundle of univariate ones).",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260103-e2",
+    "examId": "AMI20260103",
+    "date": "2026-01-03",
+    "academicYear": "AA2526",
+    "exerciseNo": 2,
+    "type": "multiple-choice",
+    "topics": ["timeseries"],
+    "prompt": "A physical process such as acceleration is continuous, but it must be sampled to be stored digitally. Which statement about the choice of sampling rate (in Hz) is correct according to the lecture?",
+    "choices": [
+      {"label": "A", "text": "A higher rate is the safer default, since it captures more detail and the extra energy and computation cost is negligible in AmI"},
+      {"label": "B", "text": "It is a utility/efficiency trade-off: high rates cost energy and computation, low rates risk information loss"},
+      {"label": "C", "text": "A lower rate is the safer default, as it saves energy and a good interpolation can recover any lost detail"},
+      {"label": "D", "text": "The rate mainly drives storage size, while energy cost is fixed by the number of sensors, not by the rate"}
+    ],
+    "correctChoice": "B",
+    "solution": "**Concept.** Discretization samples a continuous process at a rate in Hz (samples per second). The course frames the rate choice as a trade-off between *utility* and *efficiency*: high rates capture more detail but cost energy (sampling and transmitting) and heavier computation, while low rates are cheap but risk losing information. For example, sampling acceleration too slowly can miss a brief fall.\n\n**Why B is correct.** It names both sides of the trade-off exactly as the slides do: high rates burn energy and computation, low rates risk information loss, so the goal is a good utility/efficiency balance.\n\n**Why the others are wrong.** A: energy and computation are real costs in AmI and are not 'recovered' later, so higher is not a free safe default. C: a too-low rate loses information that interpolation cannot reliably reconstruct, so lower is not automatically safe. D: sampling *and transmitting* more samples raises energy consumption directly with the rate, it is not fixed by the sensor count.\n\n**Takeaway.** Pick the sampling rate by balancing information captured against energy and compute cost.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260103-e3",
+    "examId": "AMI20260103",
+    "date": "2026-01-03",
+    "academicYear": "AA2526",
+    "exerciseNo": 3,
+    "type": "multiple-choice",
+    "topics": ["timeseries"],
+    "prompt": "You need to detect a complex, non-linear, periodically repeating pattern in a sensor signal and to better isolate noise from the underlying signal. Which analysis approach does the course associate with this goal, and at what cost?",
+    "choices": [
+      {"label": "A", "text": "Time-domain analysis (Fourier/Wavelet transform); at the cost of needing advanced signal-processing interpretation"},
+      {"label": "B", "text": "Frequency-domain analysis (Fourier/Wavelet transform); at no real cost, since it is also the most intuitive view"},
+      {"label": "C", "text": "Time-domain analysis; it is the most intuitive view and excels at complex periodic and non-linear structure"},
+      {"label": "D", "text": "Frequency-domain analysis (Fourier/Wavelet transform); at the cost of complexity and advanced interpretation"}
+    ],
+    "correctChoice": "D",
+    "solution": "**Concept.** Time-domain analysis studies the signal directly against time; it is intuitive and good for linear trends and seasonalities, but struggles with complex non-linear patterns and with separating noise from signal. Frequency-domain analysis instead represents the series by its constituent frequencies via a Fourier or Wavelet transform, which exposes periodic structure and lets noisy frequencies be isolated.\n\n**Why D is correct.** The frequency domain reveals complex/periodic patterns and noise, but the slides state its cost: added complexity and the need for advanced signal-processing interpretation.\n\n**Why the others are wrong.** A: the Fourier/Wavelet transform belongs to the frequency domain, not the time domain, so the method label is wrong. B: the slides explicitly list drawbacks and call the time domain the intuitive one, so the frequency domain is neither cost-free nor the most intuitive. C: the intuitive time domain is exactly what struggles with non-linear and complex periodic patterns.\n\n**Takeaway.** Go to the frequency domain for complex periodic patterns and noise, but pay in complexity.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260103-e4",
+    "examId": "AMI20260103",
+    "date": "2026-01-03",
+    "academicYear": "AA2526",
+    "exerciseNo": 4,
+    "type": "multiple-choice",
+    "topics": ["timeseries"],
+    "prompt": "Two devices record a multivariate stream but at different sampling rates and with slightly misaligned timestamps. According to the preprocessing pipeline, which pair of strategies directly addresses this temporal-alignment problem?",
+    "choices": [
+      {"label": "A", "text": "Interpolation to fill gaps in each channel and median filtering to suppress isolated spikes"},
+      {"label": "B", "text": "Per-dimension min-max normalization followed by feature reduction of the channels"},
+      {"label": "C", "text": "Time synchronization of the devices and resampling to a common frequency"},
+      {"label": "D", "text": "Mean/forward-fill imputation followed by FFT-based denoising of each separate channel"}
+    ],
+    "correctChoice": "C",
+    "solution": "**Concept.** In a multivariate stream, channels can have different sampling rates or simply drift out of step (clock differences between devices). *Temporal alignment* fixes this with two strategies: **time synchronization**, aligning the devices on a common timestamp, and **resampling**, re-gridding each series onto the same sampling frequency so samples line up.\n\n**Why C is correct.** Time synchronization plus resampling are exactly the alignment strategies the slides list for mismatched rates and timestamps.\n\n**Why the others are wrong.** A: interpolation and median filtering target missing values and noise, not timing offsets. B: normalization and feature reduction address differing value ranges and dimensionality, not alignment. D: imputation and FFT denoising fill gaps and remove noise, but neither re-grids the channels onto a shared clock.\n\n**Takeaway.** To align mismatched channels in time, synchronize timestamps and resample to a shared frequency.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260103-e5",
+    "examId": "AMI20260103",
+    "date": "2026-01-03",
+    "academicYear": "AA2526",
+    "exerciseNo": 5,
+    "type": "multiple-choice",
+    "topics": ["timeseries"],
+    "prompt": "Why does the course state that conventional imputation techniques are not directly applicable to time-series data?",
+    "choices": [
+      {"label": "A", "text": "Because the sequence in which values arrive matters, so order-respecting interpolation is required"},
+      {"label": "B", "text": "Because conventional methods assume a fixed sampling rate, so resampling must be applied before any gap can be filled"},
+      {"label": "C", "text": "Because each missing value must be estimated only from the global mean of the series, ignoring its neighbors"},
+      {"label": "D", "text": "Because gaps behave like noise, so a smoothing filter should replace conventional imputation in time-series data"}
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** Imputation fills missing values. In time series the *order* of observations carries meaning, so you cannot treat samples as an unordered bag the way conventional imputation does. The course therefore relies on order-aware methods such as backward/forward fill and especially interpolation, which estimate a gap from its temporal neighbors (e.g. linear interpolation draws a straight line between the last and next known points).\n\n**Why A is correct.** It names the exact reason: the sequence in which values arrive matters, so interpolation respecting temporal order is required.\n\n**Why the others are wrong.** B: resampling addresses mismatched rates in temporal alignment, it is not the stated reason conventional imputation fails. C: the slides favor neighbor-aware interpolation precisely because ignoring neighbors loses the temporal structure, so a global-mean-only rule is wrong. D: a gap is missing data, not noise, smoothing is a separate denoising step and does not replace imputation.\n\n**Takeaway.** Time-series imputation must respect temporal order, so use interpolation/fill, not plain conventional methods.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260103-e6",
+    "examId": "AMI20260103",
+    "date": "2026-01-03",
+    "academicYear": "AA2526",
+    "exerciseNo": 6,
+    "type": "multiple-choice",
+    "topics": ["timeseries"],
+    "prompt": "Which description matches a **subsequence outlier** rather than a point outlier?",
+    "choices": [
+      {"label": "A", "text": "A single sample that is unusual when compared either to the whole series or to its neighboring points"},
+      {"label": "B", "text": "Several consecutive samples whose joint behavior is unusual, even if no individual value is itself a point outlier"},
+      {"label": "C", "text": "A single value that is unusual only against the whole series (a global point outlier), not against its neighbors"},
+      {"label": "D", "text": "A single value that is unusual only against its immediate neighbors (a local point outlier), not against the whole series"}
+    ],
+    "correctChoice": "B",
+    "solution": "**Concept.** The course distinguishes two outlier types. A **point outlier** is a single sample that behaves unusually, either *globally* (versus the whole series) or *locally* (versus its neighbors). A **subsequence outlier** is several consecutive samples whose *joint* behavior is unusual even though no single value need be a point outlier, e.g. a flat plateau where the signal should oscillate.\n\n**Why B is correct.** It states the defining feature of a subsequence outlier: consecutive samples anomalous together, not individually.\n\n**Why the others are wrong.** A, C, and D all describe a single anomalous sample, i.e. point outliers, A being the general definition, C the global variant, D the local variant. None capture the joint behavior of a run of samples.\n\n**Takeaway.** Point outlier = one odd sample; subsequence outlier = a run that is odd as a whole.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260103-e7",
+    "examId": "AMI20260103",
+    "date": "2026-01-03",
+    "academicYear": "AA2526",
+    "exerciseNo": 7,
+    "type": "multiple-choice",
+    "topics": ["timeseries"],
+    "prompt": "Consider the Exponential Moving Average $EMA_t = \\alpha\\,x_t + (1-\\alpha)\\,EMA_{t-1}$. What is the role of the parameter `α`?",
+    "choices": [
+      {"label": "A", "text": "It fixes the number `N` of past samples that are averaged with equal weight, as in a Simple Moving Average"},
+      {"label": "B", "text": "It sets the half-width `k` of the neighborhood over which the median is taken to reject spikes"},
+      {"label": "C", "text": "It weights the current measurement against the accumulated past, so old samples fade exponentially"},
+      {"label": "D", "text": "It is the cutoff frequency that an FFT low-pass filter uses to discard noisy high frequencies"}
+    ],
+    "correctChoice": "C",
+    "solution": "**Concept.** The Exponential Moving Average smooths a signal by blending the current sample with the previous average: $EMA_t = \\alpha\\,x_t + (1-\\alpha)\\,EMA_{t-1}$. The weight `α` (between 0 and 1) sets how much the newest measurement counts versus accumulated past. Large `α` reacts fast to new data; small `α` is sluggish but very smooth, and old samples fade exponentially.\n\n**Why C is correct.** The slides describe `α` exactly as deciding the importance of the current measurement relative to the past, which is why older samples decay exponentially.\n\n**Why the others are wrong.** A: the number of equally averaged past samples is the window `N` of the Simple Moving Average $SMA_t=(x_t+x_{t-1}+\\dots+x_{t-N})/N$, not `α`. B: the neighborhood half-width `k` is a parameter of the median filter, not the EMA. D: a low-pass cutoff frequency belongs to FFT denoising, not the EMA.\n\n**Takeaway.** In the EMA, `α` is the recency knob: higher `α` weights the present more.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260103-e8",
+    "examId": "AMI20260103",
+    "date": "2026-01-03",
+    "academicYear": "AA2526",
+    "exerciseNo": 8,
+    "type": "multiple-choice",
+    "topics": ["timeseries"],
+    "prompt": "When choosing the window size for a smoothing method, what does the course identify as the consequence of a window that is too large?",
+    "choices": [
+      {"label": "A", "text": "The window has little influence on noise removal, so most of the noise is left in the signal"},
+      {"label": "B", "text": "Each sample is weighted by recency, so recent values dominate and older ones fade away"},
+      {"label": "C", "text": "The effective sampling rate drops, so the signal must be resampled to a common frequency"},
+      {"label": "D", "text": "The signal is over-smoothed, blurring genuine structure with a risk of losing information"}
+    ],
+    "correctChoice": "D",
+    "solution": "**Concept.** Smoothing methods (moving average, median filter) average over a window of neighboring samples, and the window size sets a trade-off. Too small a window barely touches the noise; too large a window blurs real structure. Think of a moving average over many points: genuine peaks get flattened along with the noise.\n\n**Why D is correct.** The slides state that a window that is too large over-smooths the signal, with a risk of losing information.\n\n**Why the others are wrong.** A: little noise removal is the *too-small* window case, the opposite of a large window. B: recency weighting describes the EMA's `α`, not the effect of window size. C: smoothing changes neither the sampling rate nor requires resampling, that is temporal alignment.\n\n**Takeaway.** Large smoothing window = over-smoothed signal and lost information; small window = noise remains.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260103-e9",
+    "examId": "AMI20260103",
+    "date": "2026-01-03",
+    "academicYear": "AA2526",
+    "exerciseNo": 9,
+    "type": "multiple-choice",
+    "topics": ["timeseries"],
+    "prompt": "Fourier-based denoising of a time series follows which sequence of steps?",
+    "choices": [
+      {"label": "A", "text": "Transform to the frequency domain with the FFT, discard the noisy frequencies, then transform back"},
+      {"label": "B", "text": "Apply a low-pass filter directly in the time domain, then resample the signal to a higher frequency"},
+      {"label": "C", "text": "Replace each value by the median of its neighbors, then take a moving average over the smoothed result"},
+      {"label": "D", "text": "Transform to the frequency domain with the FFT, keep only the noisy frequencies, then forward-fill the gaps"}
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** Frequency-domain denoising treats noise as unwanted frequency components. The recipe is a round-trip: convert the series to the frequency domain with the FFT, discard the noisy frequencies (e.g. a low-pass filter keeps slow trends, a high-pass keeps fast changes), then inverse-transform back to the time domain to get a cleaned signal.\n\n**Why A is correct.** It states exactly that round-trip: FFT to the frequency domain, remove the noisy frequencies, transform back.\n\n**Why the others are wrong.** B: the low-pass/high-pass filtering happens *in* the frequency domain after the FFT, not directly on the time-domain signal, and resampling is alignment, not denoising. C: median-then-average is purely time-domain smoothing, with no FFT involved. D: the goal is to *remove* the noisy frequencies and inverse-transform, not keep them and forward-fill.\n\n**Takeaway.** FFT denoising = transform, cut noisy frequencies, inverse-transform back.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260103-e10",
+    "examId": "AMI20260103",
+    "date": "2026-01-03",
+    "academicYear": "AA2526",
+    "exerciseNo": 10,
+    "type": "multiple-choice",
+    "topics": ["timeseries"],
+    "prompt": "In a multivariate sensor time series, one dimension is measured in thousands and another in fractions of a unit. Why does the course recommend normalizing/scaling each dimension separately (e.g. into [0,1])?",
+    "choices": [
+      {"label": "A", "text": "Because rescaling each channel to [0,1] fills any missing values along the way, doubling as imputation"},
+      {"label": "B", "text": "Because separate per-dimension scaling lowers the feature count, reducing the burden on the model"},
+      {"label": "C", "text": "Because otherwise the dimension with the larger numeric range may dominate the final task"},
+      {"label": "D", "text": "Because scaling re-grids the slower channel onto the faster one's sampling frequency"}
+    ],
+    "correctChoice": "C",
+    "solution": "**Concept.** In a multivariate series, channels can live on wildly different numeric scales (one in thousands, another in fractions). Many models and distance measures are scale-sensitive, so the large-range channel would swamp the small one. Normalizing/scaling each dimension separately (e.g. into [0,1]) puts them on comparable footing so each contributes fairly.\n\n**Why C is correct.** The slides give exactly this motivation: without per-dimension scaling, dimensions with larger numeric ranges may dominate the final task.\n\n**Why the others are wrong.** A: filling missing values is imputation, a separate step, scaling only rescales existing values. B: cutting the feature count is feature reduction, scaling keeps every dimension and only changes its range. D: re-gridding a slower channel onto a common frequency is resampling in temporal alignment, not scaling.\n\n**Takeaway.** Scale each dimension separately so big-range channels do not dominate the analysis.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260103-e11",
+    "examId": "AMI20260103",
+    "date": "2026-01-03",
+    "academicYear": "AA2526",
+    "exerciseNo": 11,
+    "type": "theory-essay",
+    "topics": ["timeseries"],
+    "prompt": "Ambient Intelligence sensors continuously generate potentially infinite time series, so before analysis the raw stream must be cut into manageable pieces (segmentation).\n\n**(a)** Explain why segmentation is needed and describe **fixed-size window** segmentation, including the difference between time-based and event-based sliding windows and the role of the overlap factor.\n\n**(b)** Describe **dynamic segmentation**, contrast it with fixed-size windows, and explain why it is more challenging.",
+    "solution": "**(a)** Time series are potentially infinite and continuously generate data, and analyzing only one sample at a time is not representative of the underlying phenomenon, since spatiotemporal aspects are crucial and practical problems require reasoning over specific time intervals. Fixed-size windowing segments the stream into (possibly overlapping) windows and is the most common approach due to its simplicity. In a **time-based** sliding window each segment covers exactly `w` seconds of data and may overlap the previous segment by an overlap factor `o`. In an **event-based** sliding window, used when the observed phenomenon is discrete (e.g. smart-home binary sensors firing events), each segment covers the last `k` sensor events, again with an overlap factor `o`. The overlap factor controls how much consecutive windows share, trading redundancy/continuity against the number of segments produced.\n\n**(b)** Dynamic segmentation determines segment boundaries based on significant changes in the data distribution, with the goal that each segment captures an actual event of interest, rather than imposing a fixed `w` or `k`. Compared with fixed-size windows it is adaptive: boundaries follow the signal instead of the clock or a fixed event count. It is more challenging because it requires deciding which signal characteristics likely indicate a change, this detection can be computationally demanding, and sometimes the changes are subtle and hard to detect reliably.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260103-e12",
+    "examId": "AMI20260103",
+    "date": "2026-01-03",
+    "academicYear": "AA2526",
+    "exerciseNo": 12,
+    "type": "theory-essay",
+    "topics": ["timeseries"],
+    "prompt": "Smoothing filters are a low-overhead way to denoise sensor time series, but they modify the original data.\n\n**(a)** Define the **Simple Moving Average** and the **Exponential Moving Average**, giving their formulas and explaining how they differ in how they weight past samples.\n\n**(b)** Describe the **median filter** and explain the general risk of smoothing and how the window size affects the result.",
+    "solution": "**(a)** The Simple Moving Average replaces each value by the average of the last `N` data points: $SMA_t = (x_t + x_{t-1} + \\dots + x_{t-N})/N$. Every sample inside the window contributes equally. The Exponential Moving Average weights samples by recency: $EMA_t = \\alpha\\,x_t + (1-\\alpha)\\,EMA_{t-1}$, where `α` decides the importance of the current measurement relative to the past; because the previous EMA term itself contains older values, the influence of past samples decays exponentially. So the SMA gives uniform weights over a fixed window, whereas the EMA emphasizes recent samples and lets the influence of old ones fade smoothly.\n\n**(b)** The median filter replaces each point `x_t` by the median of its neighbors, $x_t = \\text{median}([x_{t-k}, \\dots, x_t, \\dots, x_{t+k}])$; being a median it is robust to individual spikes/outliers. The general risk of smoothing is that, by changing the original data points, it can negatively affect later analysis (it adds little overhead but distorts the signal). Window size governs this trade-off: a window too large over-smooths the signal and risks losing information, while a window too small has little influence and leaves much of the noise.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260103-e13",
+    "examId": "AMI20260103",
+    "date": "2026-01-03",
+    "academicYear": "AA2526",
+    "exerciseNo": 13,
+    "type": "theory-essay",
+    "topics": ["timeseries"],
+    "prompt": "After segmentation, each window must be turned into something a model can use, via feature extraction.\n\n**(a)** Contrast **handcrafted feature extraction** with **automatic feature extraction**, describing what each produces, which models consume the result, and the stated limitation of the handcrafted approach.\n\n**(b)** Explain the role of **feature reduction**, and explain why outlier detection (for data cleaning) is distinguished from anomaly detection in AmI.",
+    "solution": "**(a)** In handcrafted feature extraction, the data scientist derives a feature vector from each segment, describing statistical properties of the window (in the time domain and/or the frequency domain) that are useful for the target task; these vectors are then fed to classic machine-learning methods such as random forests, SVMs, MLPs, or K-Means. Its limitation is that manually designing features that effectively capture the important data properties is difficult, and automatic extraction has proved more effective. Automatic feature extraction instead leverages deep neural networks (e.g. convolutional and recurrent layers) to process preprocessed raw segments and learn features during training; the resulting vector is an embedding, a representation of the segment in a latent space.\n\n**(b)** Feature reduction is applied when the number of features is high: it lowers dimensionality (reducing the burden on the model) and can also help visualization. Outlier detection is about finding anomalous data points for data cleaning, i.e. removing/correcting bad samples, whereas anomaly detection aims to identify anomalous events that are themselves of interest (the actual phenomenon we want to catch). The slides note the difference is sometimes subtle and depends on the specific application, but the intent differs: clean the data versus detect a meaningful event.",
+    "solutionSource": "authored"
+  }
+]

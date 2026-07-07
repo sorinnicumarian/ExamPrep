@@ -1,0 +1,737 @@
+[
+  {
+    "id": "AMI20260602-e1",
+    "examId": "AMI20260602",
+    "date": "2026-06-02",
+    "academicYear": "AA2526",
+    "exerciseNo": 1,
+    "type": "multiple-choice",
+    "topics": [
+      "ami-intro"
+    ],
+    "prompt": "The course lists the main components of an Ambient Intelligence system. Which option lists components that are all explicitly named?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Sensing, Acting, Reasoning, Edge computing, Cloud aggregation"
+      },
+      {
+        "label": "B",
+        "text": "Sensing, Acting, Networking, Data storage, Human-Computer-Interaction"
+      },
+      {
+        "label": "C",
+        "text": "Sensing, Acting, Reasoning, Human-Computer-Interaction, Security and privacy"
+      },
+      {
+        "label": "D",
+        "text": "Perception, Actuation, Reasoning, Billing, Security and privacy"
+      }
+    ],
+    "correctChoice": "C",
+    "solution": "**Concept.** An Ambient Intelligence system is built from a small set of functional building blocks: it must perceive the environment (Sensing), affect it (Acting), decide what to do (Reasoning), interact naturally with people (Human-Computer-Interaction), and protect sensitive data (Security and privacy). Together these cover the full perceive-decide-act-interact loop plus the cross-cutting trust requirement.\n\n**Why C is correct.** It lists exactly these five course components.\n\n**Why the others are wrong.** A swaps HCI and Security & privacy for 'Edge computing' and 'Cloud aggregation', which are deployment tiers, not the named components. B replaces Reasoning and Security & privacy with 'Networking' and 'Data storage'. D quietly drops HCI and inserts 'Billing', which is never listed.\n\n**Takeaway.** AmI = Sensing, Acting, Reasoning, HCI, and Security & privacy.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260602-e2",
+    "examId": "AMI20260602",
+    "date": "2026-06-02",
+    "academicYear": "AA2526",
+    "exerciseNo": 2,
+    "type": "multiple-choice",
+    "topics": [
+      "iot-data"
+    ],
+    "prompt": "Why do IoT devices usually not communicate directly with the cloud, according to the course?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Because they use a local gateway that collects data from physically close devices and forwards it on"
+      },
+      {
+        "label": "B",
+        "text": "Because each device opens its own direct connection to the cloud, which makes a local gateway redundant"
+      },
+      {
+        "label": "C",
+        "text": "Because the cloud only accepts analog signals, so a dedicated converter must sit in between"
+      },
+      {
+        "label": "D",
+        "text": "Because edge nodes fully replace the cloud, so the sensor data never leaves the home network"
+      }
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** IoT devices are small, low-power, and often use short-range or low-bandwidth links, so talking directly to a distant cloud is costly and impractical. Instead they hand data to a nearby gateway that aggregates readings from physically close devices, can buffer/process locally, and then forwards everything to the cloud. The gateway is the local collection-and-relay hub.\n\n**Why A is correct.** It describes exactly this: a local gateway gathering data from nearby devices and forwarding it.\n\n**Why the others are wrong.** B asserts the opposite of the course's model, in which devices reach the gateway rather than each holding a direct cloud link. C reverses reality; the cloud handles digital data, and it is the sensor side that converts analog signals. D overstates edge computing: edge nodes do local processing but the gateway still forwards data onward to the cloud.\n\n**Takeaway.** IoT devices reach the cloud through a local aggregating gateway, not directly.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260602-e3",
+    "examId": "AMI20260602",
+    "date": "2026-06-02",
+    "academicYear": "AA2526",
+    "exerciseNo": 3,
+    "type": "multiple-choice",
+    "topics": [
+      "timeseries"
+    ],
+    "prompt": "What is the trade-off when choosing the sampling rate of a sensor for time-series acquisition?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "A higher rate raises energy and compute cost yet lowers the risk of information loss, so it is preferable whenever resources allow"
+      },
+      {
+        "label": "B",
+        "text": "High rates increase energy and compute cost while low rates risk information loss, so a utility/efficiency trade-off is needed"
+      },
+      {
+        "label": "C",
+        "text": "The rate should be set to exactly twice the signal's highest frequency, which then removes any energy-versus-information trade-off"
+      },
+      {
+        "label": "D",
+        "text": "Lowering the rate cuts energy but raises transmission bandwidth, so the saving helps only storage and never the radio link"
+      }
+    ],
+    "correctChoice": "B",
+    "solution": "**Concept.** Sampling rate sets how often a sensor reads. Sample fast and you capture fine detail but pay for it: more energy to sense and transmit, more compute and storage. Sample slow and you save resources but may miss short-lived events (information loss). So choosing a rate is a utility-versus-efficiency balance, often guided by what frequencies the signal actually contains.\n\n**Why B is correct.** It states both sides: high rates cost energy/compute, low rates risk information loss, hence a trade-off.\n\n**Why the others are wrong.** A states the costs and benefits correctly but draws the wrong conclusion: more is not simply 'preferable', the point is the balance. C cites the Nyquist criterion, which guides the minimum useful rate but does not abolish the energy/compute cost. D reverses the bandwidth relationship; a lower rate sends fewer samples, so it needs less, not more, bandwidth.\n\n**Takeaway.** Sampling rate trades detail (utility) against energy/compute (efficiency).",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260602-e4",
+    "examId": "AMI20260602",
+    "date": "2026-06-02",
+    "academicYear": "AA2526",
+    "exerciseNo": 4,
+    "type": "multiple-choice",
+    "topics": [
+      "localization"
+    ],
+    "prompt": "The course distinguishes active from passive indoor positioning. Which describes a passive method?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The monitored device computes its own position while moving, using the radios it carries on board"
+      },
+      {
+        "label": "B",
+        "text": "The device itself measures RSSI from three fixed beacons and runs trilateration to compute its own coordinates"
+      },
+      {
+        "label": "C",
+        "text": "The subject walks around collecting fingerprint samples at known points to build a reference RSSI map"
+      },
+      {
+        "label": "D",
+        "text": "A distributed system computes the position without cooperation from the monitored subject, e.g., using cameras"
+      }
+    ],
+    "correctChoice": "D",
+    "solution": "**Concept.** Indoor positioning is active or passive depending on who does the work. In active positioning the monitored device participates: it carries sensors/radios and computes (or helps compute) its own location. In passive positioning the infrastructure locates the subject without their device or cooperation, for example cameras or floor sensors tracking whoever walks by.\n\n**Why D is correct.** It describes a distributed system computing the position without explicit cooperation from the subject (e.g., cameras), the definition of passive.\n\n**Why the others are wrong.** A is the active method by definition: the carried device computes its own location. B is also active and, more specifically, RSSI trilateration, a technique, not the active/passive axis being asked. C describes fingerprinting data collection, which requires the subject's cooperation, the opposite of passive.\n\n**Takeaway.** Passive = the environment locates you; active = your device locates you.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260602-e5",
+    "examId": "AMI20260602",
+    "date": "2026-06-02",
+    "academicYear": "AA2526",
+    "exerciseNo": 5,
+    "type": "multiple-choice",
+    "topics": [
+      "energy"
+    ],
+    "prompt": "The course contrasts 'Virtual AI' and 'Physical AI' approaches in smart grids. Which is correct?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Virtual AI analyzes grid data to advise operators or consumers (e.g., recommenders); Physical AI autonomously controls grid operations"
+      },
+      {
+        "label": "B",
+        "text": "Virtual AI autonomously controls grid equipment such as breakers, while Physical AI merely produces recommendations for the human operators"
+      },
+      {
+        "label": "C",
+        "text": "Both are forms of stability assessment: Virtual AI handles transient stability and Physical AI handles the voltage stability case"
+      },
+      {
+        "label": "D",
+        "text": "Virtual AI is any cloud-hosted grid model, while Physical AI is any model that instead runs on-premise at the substation"
+      }
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** The course splits AI in smart grids by how directly it acts. Virtual AI stays advisory: it analyzes grid data and produces insights or recommendations that humans (operators, consumers) act on, like a recommender system. Physical AI is autonomous: it perceives, decides, and directly controls grid equipment to optimize operations without a human in the loop.\n\n**Why A is correct.** It matches Virtual AI to data analysis/recommendations and Physical AI to self-directed control.\n\n**Why the others are wrong.** B swaps the two roles (control vs. recommendation). C wrongly reduces both to stability assessment, which is a separate grid task and not how Virtual/Physical AI are defined. D recasts the distinction as a deployment location (cloud vs. substation), but the course's axis is autonomy of action, not where the model runs.\n\n**Takeaway.** Virtual AI advises humans; Physical AI controls the grid itself.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260602-e6",
+    "examId": "AMI20260602",
+    "date": "2026-06-02",
+    "academicYear": "AA2526",
+    "exerciseNo": 6,
+    "type": "multiple-choice",
+    "topics": [
+      "har-intro"
+    ],
+    "prompt": "How does the course distinguish 'physical activities' from 'Activities of Daily Living (ADLs)'?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Physical activities are high-level routines (e.g., cooking) read from environmental sensors; ADLs are low-level movements from wearables"
+      },
+      {
+        "label": "B",
+        "text": "Both are low-level body movements, differing only in whether an accelerometer or a gyroscope is used to capture them"
+      },
+      {
+        "label": "C",
+        "text": "Physical activities are low-level body movements (e.g., walking) from wearables; ADLs are high-level routines (e.g., cooking) from environmental sensors"
+      },
+      {
+        "label": "D",
+        "text": "Physical activities and ADLs both denote high-level everyday routines, distinguished from each other only by their typical duration"
+      }
+    ],
+    "correctChoice": "C",
+    "solution": "**Concept.** HAR works at two abstraction levels. Physical activities are low-level body movements, walking, running, sitting, best captured by wearable inertial sensors that track motion. Activities of Daily Living (ADLs) are high-level everyday routines, cooking, eating, taking medicine, that span time and objects and are typically inferred from environmental smart-home sensors (sometimes plus wearables).\n\n**Why C is correct.** It maps physical activities to low-level/wearable and ADLs to high-level/environmental.\n\n**Why the others are wrong.** A swaps the two: it calls physical activities high-level and ADLs low-level. B collapses both into low-level motion and reduces the distinction to a sensor choice. D makes both high-level, missing that physical activities are low-level body motion.\n\n**Takeaway.** Physical activities = low-level body motion (wearables); ADLs = high-level routines (environmental sensors).",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260602-e7",
+    "examId": "AMI20260602",
+    "date": "2026-06-02",
+    "academicYear": "AA2526",
+    "exerciseNo": 7,
+    "type": "multiple-choice",
+    "topics": [
+      "har-mobile"
+    ],
+    "prompt": "What limitations of existing commercial activity-recognition APIs (e.g., the ones in Android/iOS) does the course highlight?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "They cover a large fixed catalog of activities, but only when the phone is held in a specific orientation"
+      },
+      {
+        "label": "B",
+        "text": "They support only a limited set of activities, recognition is often inaccurate, and the model is not personalized"
+      },
+      {
+        "label": "C",
+        "text": "They recognize many activities accurately, but they expose only raw accelerometer values rather than labels"
+      },
+      {
+        "label": "D",
+        "text": "They are accurate and personalized to the user, but they cannot use the gyroscope, relying only on the accelerometer"
+      }
+    ],
+    "correctChoice": "B",
+    "solution": "**Concept.** Phones already ship activity-recognition APIs (e.g., Android/iOS), but they are generic, one-size-fits-all services. The course flags three weaknesses: they cover only a small fixed set of activities, their recognition is frequently inaccurate, and they are not adapted to the individual user, since people execute activities differently. This is why HAR remains an active research area despite the built-in APIs.\n\n**Why B is correct.** It lists exactly these three: limited activity set, often-inaccurate recognition, and no personalization.\n\n**Why the others are wrong.** A inverts the activity-set limitation (the set is small, not large) and invents an orientation constraint. C contradicts the limited-set/accuracy points and wrongly claims the API only returns raw signals. D claims accuracy and personalization, the very properties the course says these APIs lack, and adds a false sensor restriction.\n\n**Takeaway.** Built-in HAR APIs are limited, often inaccurate, and not personalized.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260602-e8",
+    "examId": "AMI20260602",
+    "date": "2026-06-02",
+    "academicYear": "AA2526",
+    "exerciseNo": 8,
+    "type": "multiple-choice",
+    "topics": [
+      "har-smarthome"
+    ],
+    "prompt": "How does a magnetic sensor on a door or drawer report its state in smart-home HAR?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "When the magnet is close to the sensor the state is OFF (closed); otherwise it is ON (open)"
+      },
+      {
+        "label": "B",
+        "text": "It detects motion near the door and reports presence, like a PIR sensor mounted on the frame"
+      },
+      {
+        "label": "C",
+        "text": "It reports a binary state only while weight is applied, like a pressure mat under the door"
+      },
+      {
+        "label": "D",
+        "text": "It streams 3-axis acceleration of the door panel so the angle of opening can be reconstructed"
+      }
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** A magnetic (reed) door/drawer sensor has two parts: a switch on the frame and a magnet on the moving panel. When the door is closed the magnet sits next to the switch and holds it in one state; when the door opens the magnet moves away and the switch flips. It reports just two values, a binary ON/OFF, not a measurement.\n\n**Why A is correct.** It states the binary behavior: magnet close = OFF (closed), magnet away = ON (open).\n\n**Why the others are wrong.** B describes a PIR motion sensor, which senses movement, not magnet proximity. C describes a pressure-mat sensor, which reacts to weight, not to a door's open/closed state. D describes an inertial 3-axis accelerometer streaming continuous acceleration, not a binary contact.\n\n**Takeaway.** A magnetic sensor is binary: closed (magnet near) = OFF, open (magnet away) = ON.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260602-e9",
+    "examId": "AMI20260602",
+    "date": "2026-06-02",
+    "academicYear": "AA2526",
+    "exerciseNo": 9,
+    "type": "multiple-choice",
+    "topics": [
+      "multi-har"
+    ],
+    "prompt": "The course presents a naive probabilistic approach (Naive Bayes) to data association in multi-inhabitant HAR. What does it estimate?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The probability that two residents perform the same activity in parallel, from the joint label distribution"
+      },
+      {
+        "label": "B",
+        "text": "The activity label of each sensor event directly, while treating the identity of the triggering resident as already known"
+      },
+      {
+        "label": "C",
+        "text": "The probability of the next sensor event given the current one, to predict where the resident moves"
+      },
+      {
+        "label": "D",
+        "text": "The probability that a sensor event was triggered by a particular resident, via `P(Resident)` and `P(Event | Resident)`"
+      }
+    ],
+    "correctChoice": "D",
+    "solution": "**Concept.** To attribute an anonymous sensor event to a resident, the naive approach uses Bayes' rule with a Naive Bayes simplification. For each candidate resident it scores `P(Resident) * P(Event | Resident)`: how likely that person is to trigger events at all, times how likely this particular event (encoded as a feature vector of spatial/temporal relations and time-of-day features) is for that person. The highest-scoring resident is assigned the event.\n\n**Why D is correct.** It states exactly this: estimating which resident triggered an event via `P(Resident)` and `P(Event | Resident)`.\n\n**Why the others are wrong.** A describes parallel-activity labeling (as in CASAS), not the per-event association the method performs. B skips the whole problem by assuming the resident is known, which is exactly what data association must find. C predicts the next event (a motion/forecasting task), not which resident caused the current one.\n\n**Takeaway.** Naive Bayes data association picks the resident maximizing `P(Resident) * P(Event | Resident)`.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260602-e10",
+    "examId": "AMI20260602",
+    "date": "2026-06-02",
+    "academicYear": "AA2526",
+    "exerciseNo": 10,
+    "type": "multiple-choice",
+    "topics": [
+      "incremental"
+    ],
+    "prompt": "The course distinguishes 'concept drift' from 'concept evolution' in evolving data streams. Which statement is correct?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Concept drift means new activities appear in the stream; concept evolution means a known activity gets performed differently over time"
+      },
+      {
+        "label": "B",
+        "text": "Concept drift is the model overwriting old classes when learning new ones; concept evolution is its slow, gradual loss of accuracy"
+      },
+      {
+        "label": "C",
+        "text": "Concept drift means the subject performs known activities with some differences; concept evolution means new patterns emerge"
+      },
+      {
+        "label": "D",
+        "text": "Concept drift is the deliberate dropping of stale patterns to save memory; concept evolution is full retraining from scratch"
+      }
+    ],
+    "correctChoice": "C",
+    "solution": "**Concept.** In evolving streams, two distinct things can change. Concept drift: the same known classes shift in how they appear, e.g., the target user performs familiar activities a bit differently than the training subjects. Concept evolution: genuinely new patterns appear, e.g., a brand-new activity or a new way of doing one, that the model has never seen. Drift = old classes change; evolution = new classes emerge.\n\n**Why C is correct.** It assigns 'known activities with differences' to drift and 'new patterns emerge' to evolution.\n\n**Why the others are wrong.** A swaps the two definitions (new activities is evolution, not drift). B describes catastrophic forgetting, a learning failure, not a property of the stream. D describes concept forgetting (dropping stale patterns) and retraining, neither of which is drift or evolution.\n\n**Takeaway.** Drift = known classes change; evolution = new classes appear.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260602-e11",
+    "examId": "AMI20260602",
+    "date": "2026-06-02",
+    "academicYear": "AA2526",
+    "exerciseNo": 11,
+    "type": "multiple-choice",
+    "topics": [
+      "transfer"
+    ],
+    "prompt": "In unsupervised domain adaptation as presented in the course, what is the role of the domain classifier `D`?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "It assigns activity labels to the unlabeled target samples, so they can be folded into the source training set"
+      },
+      {
+        "label": "B",
+        "text": "It is trained so it CANNOT tell source from target, pushing toward domain-invariant features while the source supplies class labels"
+      },
+      {
+        "label": "C",
+        "text": "It is optimized to separate source from target samples as sharply as possible, which the feature extractor is then trained to help it do"
+      },
+      {
+        "label": "D",
+        "text": "It measures the distance between source and target feature distributions but stays outside the adversarial game"
+      }
+    ],
+    "correctChoice": "B",
+    "solution": "**Concept.** Unsupervised domain adaptation has labeled source data and unlabeled target data, and wants features that work on both. It adds an adversarial domain classifier `D` that tries to tell source from target. The feature extractor is trained to defeat `D`, so that `D` cannot distinguish the domains, which forces domain-invariant features. Meanwhile a classification loss on the labeled source keeps those features discriminative for the actual task.\n\n**Why B is correct.** It states the goal: `D` should fail to separate domains (invariant features), with class discrimination from the labeled source.\n\n**Why the others are wrong.** A describes pseudo-labeling, a different transfer strategy, not the role of `D`. C gets the adversarial direction backwards: the feature extractor fights `D` rather than helping it separate domains. D recasts `D` as a passive distance metric, but in this setup `D` is the adversary in the min-max game.\n\n**Takeaway.** Domain adaptation trains features so the domain classifier can't tell source from target.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260602-e12",
+    "examId": "AMI20260602",
+    "date": "2026-06-02",
+    "academicYear": "AA2526",
+    "exerciseNo": 12,
+    "type": "multiple-choice",
+    "topics": [
+      "federated"
+    ],
+    "prompt": "The course contrasts subject-dependent, subject-independent, and hybrid models. Which is described as the most accurate but the hardest to obtain due to data acquisition?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Subject-dependent models are most accurate, motivating federated approaches since data acquisition is the bottleneck"
+      },
+      {
+        "label": "B",
+        "text": "Subject-independent models are the most accurate, because training across many subjects yields the best generalization"
+      },
+      {
+        "label": "C",
+        "text": "Hybrid models are the most accurate of the three, since they combine both strategies and also need the least data"
+      },
+      {
+        "label": "D",
+        "text": "Subject-dependent models are the most accurate and the cheapest, since they only need data from a single user"
+      }
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** HAR models differ by whose data trains them. Subject-dependent models are trained and tested on the same person, so they fit that individual's execution style and are the most accurate, but they need labeled data from that exact user, which is hard and costly to collect. Subject-independent models train on others and generalize, easier to deploy but less accurate. Hybrid sits in between. The data-acquisition bottleneck of subject-dependent models is what motivates collaborative/federated learning.\n\n**Why A is correct.** It names subject-dependent as most accurate yet hardest to obtain due to data acquisition.\n\n**Why the others are wrong.** B names the wrong model: subject-independent is the most challenging setting, not the most accurate. C wrongly crowns hybrid, which the course says is a bit less accurate than subject-dependent. D gets the accuracy right but the cost backwards: needing labeled data from that exact user is the bottleneck, not a saving.\n\n**Takeaway.** Subject-dependent = most accurate but data-hungry, motivating collaboration.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260602-e13",
+    "examId": "AMI20260602",
+    "date": "2026-06-02",
+    "academicYear": "AA2526",
+    "exerciseNo": 13,
+    "type": "multiple-choice",
+    "topics": [
+      "xai"
+    ],
+    "prompt": "The course identifies two main target audiences for explanations, which require different explanation styles. Which pairing is correct?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Consumers of global explanations and consumers of local explanations, a split made by the scope of the explanation"
+      },
+      {
+        "label": "B",
+        "text": "Users of model-agnostic methods (e.g., LIME) and users of model-specific methods, split by technique"
+      },
+      {
+        "label": "C",
+        "text": "Non-expert end-users (e.g., clinicians, monitored subjects) and technicians (data scientists/ML experts)"
+      },
+      {
+        "label": "D",
+        "text": "Regulators who audit the deployed system and the hardware vendors who supply its sensors"
+      }
+    ],
+    "correctChoice": "C",
+    "solution": "**Concept.** An explanation only works if it fits who is reading it. The course names two audiences. Non-expert end-users (clinicians, smart-city operators, monitored subjects) use the AI's output without ML knowledge, so they need intuitive, decision-oriented explanations. Technicians (data scientists, ML experts) need detailed, technical explanations to debug, retrain, or fix the sensing setup. Same prediction, very different explanation styles.\n\n**Why C is correct.** It names exactly these two groups: non-expert end-users and technicians.\n\n**Why the others are wrong.** A names the global-vs-local distinction, which is about the scope of an explanation, not its audience. B names model-agnostic vs model-specific methods, a classification of techniques (e.g., LIME), not of audiences. D pairs regulators with hardware vendors, neither of which is the non-expert end-user or the technician the course identifies.\n\n**Takeaway.** Two XAI audiences: non-expert end-users vs technical experts, each needing a different explanation.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260602-e14",
+    "examId": "AMI20260602",
+    "date": "2026-06-02",
+    "academicYear": "AA2526",
+    "exerciseNo": 14,
+    "type": "multiple-choice",
+    "topics": [
+      "genai"
+    ],
+    "prompt": "What problem do Conditional GANs (CGANs) solve compared to classic GANs, in the context of generating sensor data per activity class?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "They cure mode collapse, so the generator covers every class even without being told which one to produce"
+      },
+      {
+        "label": "B",
+        "text": "They regularize the latent space (much like a VAE's KL term), so the class can simply be read off from where each sample lands"
+      },
+      {
+        "label": "C",
+        "text": "They drop the discriminator and train the generator alone on per-class data, which simplifies the training loop"
+      },
+      {
+        "label": "D",
+        "text": "They condition generation on a class, so one model can produce samples for many classes instead of one GAN per class"
+      }
+    ],
+    "correctChoice": "D",
+    "solution": "**Concept.** A plain GAN learns to generate samples from the overall data distribution, but you cannot tell it which class to produce, so to cover many activity classes you would train a separate GAN per class. A Conditional GAN feeds the class label into both generator and discriminator, so generation is conditioned on the requested class. One CGAN can then synthesize data for any class on demand.\n\n**Why D is correct.** It states exactly this: CGANs condition on a class so a single model generates samples for multiple classes.\n\n**Why the others are wrong.** A names mode collapse, a real GAN failure, but conditioning is about controlling the class, not fixing collapse, and a plain GAN still cannot be told which class to produce. B borrows the VAE's latent-space regularization, which is a different model's mechanism. C is false: CGANs keep the discriminator and adversarial training.\n\n**Takeaway.** CGANs add a class label so one model generates per-class samples.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260602-e15",
+    "examId": "AMI20260602",
+    "date": "2026-06-02",
+    "academicYear": "AA2526",
+    "exerciseNo": 15,
+    "type": "multiple-choice",
+    "topics": [
+      "gnn"
+    ],
+    "prompt": "Why does the course motivate encoding multivariate time series as graphs for GNN processing?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Because the graph's adjacency matrix is fixed in advance, so no relationships ever have to be learned from the data"
+      },
+      {
+        "label": "B",
+        "text": "Because graphs can capture connections between the variables of a multivariate series and dependencies across time points"
+      },
+      {
+        "label": "C",
+        "text": "Because a graph flattens all of the channels into a single node, reducing the whole multivariate series to one fixed-size feature vector"
+      },
+      {
+        "label": "D",
+        "text": "Because message passing makes the series stationary, which removes the need to model any temporal dependencies"
+      }
+    ],
+    "correctChoice": "B",
+    "solution": "**Concept.** A multivariate time series has many channels that influence each other and many time steps that depend on the past. Encoding it as a graph lets nodes represent variables (or time points) and edges represent their relationships, so a GNN can model both inter-variable connections and temporal dependencies in one structure, something a flat vector representation struggles to express.\n\n**Why B is correct.** It names both benefits: capturing connections between variables and dependencies across time points.\n\n**Why the others are wrong.** A is false: the adjacency structure encodes the relationships and may itself be learned, not pre-fixed to avoid learning. C is the opposite of the point: graphs keep variables as separate nodes precisely so cross-variable structure is preserved, not flattened away. D misuses 'message passing', which propagates information along edges rather than making the series stationary, and temporal dependencies are exactly what we want to model.\n\n**Takeaway.** Graph encoding captures cross-variable and cross-time relationships for GNNs.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260602-e16",
+    "examId": "AMI20260602",
+    "date": "2026-06-02",
+    "academicYear": "AA2526",
+    "exerciseNo": 16,
+    "type": "multiple-choice",
+    "topics": [
+      "ami-intro"
+    ],
+    "prompt": "Domotics is defined in the course as:",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The deployment of industrial IoT sensors and actuators across a factory floor in order to drive process automation"
+      },
+      {
+        "label": "B",
+        "text": "The networking layer that connects home IoT devices to a local gateway and the cloud"
+      },
+      {
+        "label": "C",
+        "text": "The use of IoT devices (sensors and actuators) in the home environment to transform it into a smart-home"
+      },
+      {
+        "label": "D",
+        "text": "The branch of Ambient Intelligence concerned with localizing people inside buildings"
+      }
+    ],
+    "correctChoice": "C",
+    "solution": "**Concept.** Domotics (home automation) is the application of IoT to the home: deploying sensors (to perceive) and actuators (to act) so the house becomes a smart-home. This enables automations and services like remote monitoring, energy management, security, and anomaly detection. It is essentially Ambient Intelligence scoped to the domestic environment.\n\n**Why C is correct.** It defines domotics as using IoT sensors and actuators in the home to make it a smart-home.\n\n**Why the others are wrong.** A describes industrial automation, the wrong environment: domotics is specifically the home. B describes the IoT communication architecture (gateway and cloud), a component of such systems, not the definition of domotics. D is indoor localization, one possible AmI service, not domotics itself.\n\n**Takeaway.** Domotics = IoT (sensors + actuators) applied to the home to create a smart-home.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260602-e17",
+    "examId": "AMI20260602",
+    "date": "2026-06-02",
+    "academicYear": "AA2526",
+    "exerciseNo": 17,
+    "type": "multiple-choice",
+    "topics": [
+      "iot-data"
+    ],
+    "prompt": "What is a transducer, and how do sensors and actuators relate to it?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "A transducer converts one form of energy into another; both sensors and actuators are output transducers"
+      },
+      {
+        "label": "B",
+        "text": "A transducer is the analog-to-digital converter; sensors feed their signals into it, while actuators are unrelated to it"
+      },
+      {
+        "label": "C",
+        "text": "A transducer converts energy; here sensors are the output transducers and actuators are the input transducers"
+      },
+      {
+        "label": "D",
+        "text": "A transducer converts one form of energy to another; sensors are input transducers and actuators output transducers"
+      }
+    ],
+    "correctChoice": "D",
+    "solution": "**Concept.** A transducer is any device that converts one form of energy into another, e.g., light to voltage, or electrical current to motion. Sensors and actuators are just the two directions of this idea: a sensor is an input transducer (physical phenomenon to electrical signal), and an actuator is an output transducer (electrical signal to physical action).\n\n**Why D is correct.** It defines transducer as energy conversion and correctly labels sensors as input and actuators as output transducers.\n\n**Why the others are wrong.** A gets the definition right but calls both input and output transducers 'output', losing the sensor's input role. B narrows the transducer to an ADC and wrongly cuts actuators out entirely; an actuator is also a transducer. C swaps the two directions, labeling sensors as output and actuators as input.\n\n**Takeaway.** Transducer converts energy; sensor = input transducer, actuator = output transducer.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260602-e18",
+    "examId": "AMI20260602",
+    "date": "2026-06-02",
+    "academicYear": "AA2526",
+    "exerciseNo": 18,
+    "type": "multiple-choice",
+    "topics": [
+      "timeseries"
+    ],
+    "prompt": "The course contrasts time-domain and frequency-domain analysis. Which statement is correct?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Time-domain analysis is intuitive and good for trends/seasonalities but weak on non-linear patterns; the frequency domain (Fourier, Wavelet) reveals constituent frequencies at added cost"
+      },
+      {
+        "label": "B",
+        "text": "Frequency-domain analysis is the most intuitive of the two and is also the best choice for spotting linear trends and seasonal cycles"
+      },
+      {
+        "label": "C",
+        "text": "The time domain is the one that reveals constituent frequencies, while the frequency domain is where trends and seasonalities are read directly"
+      },
+      {
+        "label": "D",
+        "text": "Any time-domain feature has to be obtained by first applying a Fourier transform to the raw signal before that feature can even be computed"
+      }
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** You can study a signal as values over time (time domain) or as a mix of frequencies (frequency domain). Time-domain analysis is intuitive and good at spotting trends and seasonal cycles, but it struggles with complex non-linear structure and separating noise. Transforms like Fourier or Wavelet move to the frequency domain, exposing the constituent frequencies, but add complexity and are less directly interpretable.\n\n**Why A is correct.** It correctly assigns intuitiveness/trends to the time domain and frequency decomposition (with added complexity) to the frequency domain.\n\n**Why the others are wrong.** B calls the frequency domain the intuitive one for trends, which is the time domain's strength. C swaps the two roles outright. D is false: time-domain features are read directly from the signal and need no Fourier transform first.\n\n**Takeaway.** Time domain = intuitive trends; frequency domain = constituent frequencies at extra complexity.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260602-e19",
+    "examId": "AMI20260602",
+    "date": "2026-06-02",
+    "academicYear": "AA2526",
+    "exerciseNo": 19,
+    "type": "multiple-choice",
+    "topics": [
+      "incremental"
+    ],
+    "prompt": "Why does the course argue against simply re-training a model from scratch each time new labeled data arrives from the stream?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Because retraining on the combined data set inevitably lowers the new model's accuracy below the previous one's"
+      },
+      {
+        "label": "B",
+        "text": "Because retraining causes catastrophic forgetting of the original classes, which incremental updates are designed to avoid"
+      },
+      {
+        "label": "C",
+        "text": "Because privacy rules forbid keeping the original labeled training data once new stream data has arrived"
+      },
+      {
+        "label": "D",
+        "text": "Because it does not scale: it must store all labeled data (old + new) and pay for periodic re-training that adapts slowly"
+      }
+    ],
+    "correctChoice": "D",
+    "solution": "**Concept.** In a continuous stream new labeled data keeps arriving. One option is to retrain from scratch each time on everything seen so far, but that does not scale: you must keep storing all past data, each retraining is computationally expensive, and the periodic schedule reacts slowly to changes in the stream. Incremental learning instead updates the existing model with small mini-batches as data arrives.\n\n**Why D is correct.** It names all three problems: storing all data, costly periodic retraining, and slow adaptation.\n\n**Why the others are wrong.** A is false: retraining on all data does not inherently reduce accuracy, the real objection is cost and scalability. B names catastrophic forgetting, but that afflicts naive incremental updates, not full retraining (which sees all data and so does not forget). C invents a privacy mandate; the course's argument is scalability, not law.\n\n**Takeaway.** Retraining from scratch is unscalable; incremental updates adapt cheaply and fast.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260602-e20",
+    "examId": "AMI20260602",
+    "date": "2026-06-02",
+    "academicYear": "AA2526",
+    "exerciseNo": 20,
+    "type": "multiple-choice",
+    "topics": [
+      "localization"
+    ],
+    "prompt": "The course lists differences between indoor and outdoor localization. Which option states genuine indoor characteristics and a real constraint?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Indoor covers a larger area than outdoor, sees more weather impact, but has slower movement and public maps"
+      },
+      {
+        "label": "B",
+        "text": "Indoor has reduced coverage, less weather impact, available power/Internet and walking-speed movement, but planimetry is often private"
+      },
+      {
+        "label": "C",
+        "text": "Indoor is shielded from weather and walls alike, has scarce power/Internet, and relies on publicly mapped floor plans"
+      },
+      {
+        "label": "D",
+        "text": "Indoor has smaller coverage and slower movement, but its floor plans are public while signals pass through walls unattenuated"
+      }
+    ],
+    "correctChoice": "B",
+    "solution": "**Concept.** Indoor and outdoor localization differ on several axes. Indoors the coverage area is small (a building), weather barely matters, and infrastructure resources like electricity and Internet are readily available; people move slowly, at walking speed. But a real constraint is privacy: building floor plans (planimetry) are usually private, not public maps like streets.\n\n**Why B is correct.** It lists genuine indoor traits (reduced coverage, less weather, available resources, walking speed) plus the real privacy constraint on planimetry.\n\n**Why the others are wrong.** A reverses coverage (indoor is smaller) and weather impact (indoor sees less), and wrongly calls indoor maps public. C wrongly says power/Internet are scarce indoors and that floor plans are public. D gets coverage and speed right but claims public floor plans and unattenuated signals, both false (planimetry is private, walls attenuate signals).\n\n**Takeaway.** Indoor = small, slow, resource-rich, weather-light, but maps are private.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260602-e21",
+    "examId": "AMI20260602",
+    "date": "2026-06-02",
+    "academicYear": "AA2526",
+    "exerciseNo": 21,
+    "type": "multiple-choice",
+    "topics": [
+      "energy"
+    ],
+    "prompt": "Phasor Measurement Units (PMUs) are used in smart grids primarily to support which task?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Billing households, by metering the total energy each consumer draws over the billing period"
+      },
+      {
+        "label": "B",
+        "text": "Load forecasting, by predicting future demand from the magnitude of consumed power"
+      },
+      {
+        "label": "C",
+        "text": "Stability assessment, by measuring the magnitude and phase angle of voltage and current at different grid points"
+      },
+      {
+        "label": "D",
+        "text": "Fault localization, by tripping breakers as soon as a line's voltage magnitude exceeds a threshold"
+      }
+    ],
+    "correctChoice": "C",
+    "solution": "**Concept.** A Phasor Measurement Unit is a high-precision, time-synchronized grid sensor. It measures the magnitude and phase angle of voltage and current at its location, and many PMUs across the grid give a synchronized snapshot of the system's electrical state. That wide-area view is what stability assessment needs to spot trouble before instability develops.\n\n**Why C is correct.** It states PMUs measure voltage/current magnitude and phase angle to support stability assessment.\n\n**Why the others are wrong.** A describes a smart meter's billing role, which records energy totals, not synchronized phasors. B describes load forecasting, a separate demand-prediction task. D describes protective relaying (tripping breakers); a PMU measures and reports phasors but is not the protection device that acts on faults.\n\n**Takeaway.** PMUs measure voltage/current magnitude and phase for grid stability assessment.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260602-e22",
+    "examId": "AMI20260602",
+    "date": "2026-06-02",
+    "academicYear": "AA2526",
+    "exerciseNo": 22,
+    "type": "theory-essay",
+    "topics": [
+      "localization"
+    ],
+    "prompt": "Indoor Positioning Systems (IPS) are an important source of context for Ambient Intelligence, especially for Ambient Assisted Living.\n\n**(a)** Define the indoor localization problem formally (inputs and output), explain why it is usually framed as a regression problem, and explain why GPS is unsuitable indoors.\n\n**(b)** List and explain key differences between indoor and outdoor localization, and discuss how accuracy is commonly measured in an IPS.",
+    "solution": "**(a)** Given a map of the building (walking areas and obstacles) and a reference coordinate system, the goal of an IPS is to determine the coordinates `(x, y)` on the map where an entity (person, object, robot) is located at a given time instant. Because the output is a pair of continuous coordinates, it is usually framed as a regression problem rather than classification. GPS is unsuitable indoors because the GPS signal strength is low and indoor structures (roof, walls, objects) attenuate and scatter it, giving large average errors of roughly 5 to 10 meters, which is too coarse for room-level or in-home applications.\n\n**(b)** Key indoor-vs-outdoor differences: coverage area is reduced (a single building rather than open space); weather phenomena have far less impact; environmental resources such as electricity and Internet connectivity are available to support the infrastructure; movement is slower (typically walking speed); and buildings are usually private so their planimetry is not necessarily public. Accuracy is commonly quantified as the conformance of the estimated position to the true position; typical metrics are the Root Mean Squared Deviation (RMSD), appropriate when the error distribution is approximately normal, and the Average Absolute Position Deviation, which is more robust to outliers. IPS is especially valuable in AAL because tracking an elderly subject's location and indoor trajectories is crucial, though it is particularly challenging in multi-inhabitant settings.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260602-e23",
+    "examId": "AMI20260602",
+    "date": "2026-06-02",
+    "academicYear": "AA2526",
+    "exerciseNo": 23,
+    "type": "theory-essay",
+    "topics": [
+      "multi-har"
+    ],
+    "prompt": "Multi-inhabitant Human Activity Recognition is one of the major open challenges for deploying smart-home HAR in the real world.\n\n**(a)** Explain the 'data association' problem, why it does not arise in single-inhabitant settings, and why labeling multi-inhabitant data is so hard.\n\n**(b)** Describe the naive probabilistic (Naive Bayes) approach to data-driven data association, and explain how solving data association lets one reuse single-subject HAR models.",
+    "solution": "**(a)** Environmental sensor events (e.g., the stove turned on, the fridge opened) cannot identify which inhabitant triggered them. In a single-resident home this is irrelevant because only one person could have caused the event, but with two or more residents one must correctly associate each event with the person who triggered it; this is the data-association problem, and it is one of the main obstacles to real-world smart-home HAR. Labeling is especially hard because, for each individual sensor event, one would need to record which resident triggered it; acquiring such finely annotated datasets is often prohibitive, so the most realistic datasets only label which activities are running in parallel (as in CASAS) rather than per-event triggers (as the MARBLE dataset does).\n\n**(b)** The naive approach (Crandall and Cook) uses Naive Bayes to estimate the likelihood that event i was triggered by resident n as `P(Resident_n) * P(Event_i | Resident_n)`, where `P(Resident_n)` is the prior probability that resident n triggers events and `P(Event_i | Resident_n)` is the probability of observing that event for that resident; the event is encoded as a feature vector capturing spatial and temporal relationships with past events plus time features (time of day, day of week). Once each event is assigned to a resident, the event stream can be split per resident, and a classic single-subject HAR model can then be applied independently to each resident's stream. The drawback is that this simple method can be extended with more sophisticated approaches because spatial/temporal entanglement between residents makes association error-prone.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260602-e24",
+    "examId": "AMI20260602",
+    "date": "2026-06-02",
+    "academicYear": "AA2526",
+    "exerciseNo": 24,
+    "type": "theory-essay",
+    "topics": [
+      "gnn"
+    ],
+    "prompt": "Graph Neural Networks are introduced in the course as a way to process time series encoded as graphs.\n\n**(a)** Define a graph `G = (V, E)` and explain the difference between undirected, directed, and weighted graphs, and how the adjacency matrix `A` reflects whether a graph is directed.\n\n**(b)** Explain why GNNs are attractive for multivariate time series in Ambient Intelligence, and describe what a multi-relational (or heterogeneous) graph adds beyond a simple graph.",
+    "solution": "**(a)** A graph `G = (V, E)` consists of a set of nodes `V` and a set of edges `E`; an edge from node u to node v is written `(u, v)` in `E`. In an undirected graph, if `(u, v)` is in `E` then `(v, u)` is in `E` (edges have no direction); in a directed graph the edge `(u, v)` goes specifically from u to v and `(v, u)` need not exist. A weighted graph associates a weight with each edge, and both undirected and directed graphs may be weighted. The graph is represented by an adjacency matrix `A` of size `|V| x |V|`, where `A[u, v] = 1` if `(u, v)` is in `E` and 0 otherwise. If the graph is undirected, `A` is symmetric; if it is directed (edge direction matters), `A` may be non-symmetric.\n\n**(b)** GNNs are attractive for multivariate time series because the graph formalism leverages relationships between data points: a graph encoding can capture connections between the different variables of a multivariate series and dependencies between different points in time, which is hard to express in a flat representation, and it offers mathematical foundations to analyze complex systems. A multi-relational graph extends a simple graph so each edge also has a type tau, written `(u, tau, v)` in `E`, with one adjacency matrix per relation, giving an overall adjacency tensor of size `|V| x |R| x |V|` where `R` is the set of relations. A heterogeneous graph goes further by also typing the nodes, partitioning `V` into subsets `V1, V2, ..., Vk`; this lets a single graph model multiple kinds of entities and multiple kinds of relationships, which is useful for the rich, multi-sensor structure of AmI environments.",
+    "solutionSource": "authored"
+  }
+]

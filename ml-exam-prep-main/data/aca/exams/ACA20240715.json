@@ -1,0 +1,463 @@
+[
+  {
+    "id": "ACA20240715-e1",
+    "examId": "ACA20240715",
+    "date": "2024-07-15",
+    "academicYear": "AA2324",
+    "exerciseNo": 1,
+    "marks": 20,
+    "type": "applied-modeling",
+    "topics": [
+      "scoreboard",
+      "ilp"
+    ],
+    "prompt": "**Scoreboard.** The following code was executed on a CPU with a Scoreboard. The table below was *claimed* to be its execution.\n\n**A.** List all the possible conflicts in the code.\n\n**B.** Is there a \"configuration\" of the functional units that can respect the execution shown in the table? How many units? Of which kind? With which latency?\n\n**C.** If the previous table was not correct, write the right one and specify the number, the kind, and the latency of each unit.",
+    "code": {
+      "language": "pseudocode",
+      "source": "I1: lw     $1, 36($fp)\nI2: lw     $3, 8($fp)\nI3: lw     $4, 64($fp)\nI4: lw     $2, 20($fp)\nI5: sub    $3, $2, $3\nI6: multdd $f0, $1, $4\nI7: addd   $f1, $f1, $f0\nI8: sd     $f1, $3($fp)"
+    },
+    "fillTable": {
+      "caption": "Claimed Scoreboard execution (as given in the exam — read-only)",
+      "columns": [
+        "Instruction",
+        "ISSUE",
+        "READ OPERAND",
+        "EXE COMPLETE",
+        "WB"
+      ],
+      "rows": [
+        [
+          {
+            "given": "I1 lw $1, 36($fp)"
+          },
+          {
+            "given": "1"
+          },
+          {
+            "given": "2"
+          },
+          {
+            "given": "5"
+          },
+          {
+            "given": "6"
+          }
+        ],
+        [
+          {
+            "given": "I2 lw $3, 8($fp)"
+          },
+          {
+            "given": "2"
+          },
+          {
+            "given": "3"
+          },
+          {
+            "given": "6"
+          },
+          {
+            "given": "7"
+          }
+        ],
+        [
+          {
+            "given": "I3 lw $4, 64($fp)"
+          },
+          {
+            "given": "3"
+          },
+          {
+            "given": "4"
+          },
+          {
+            "given": "7"
+          },
+          {
+            "given": "8"
+          }
+        ],
+        [
+          {
+            "given": "I4 lw $2, 20($fp)"
+          },
+          {
+            "given": "4"
+          },
+          {
+            "given": "5"
+          },
+          {
+            "given": "8"
+          },
+          {
+            "given": "9"
+          }
+        ],
+        [
+          {
+            "given": "I5 sub $3, $2, $3"
+          },
+          {
+            "given": "5"
+          },
+          {
+            "given": "10"
+          },
+          {
+            "given": "11"
+          },
+          {
+            "given": "12"
+          }
+        ],
+        [
+          {
+            "given": "I6 multdd $f0, $1, $4"
+          },
+          {
+            "given": "6"
+          },
+          {
+            "given": "9"
+          },
+          {
+            "given": "19"
+          },
+          {
+            "given": "20"
+          }
+        ],
+        [
+          {
+            "given": "I7 addd $f1, $f1, $f0"
+          },
+          {
+            "given": "7"
+          },
+          {
+            "given": "21"
+          },
+          {
+            "given": "25"
+          },
+          {
+            "given": "26"
+          }
+        ],
+        [
+          {
+            "given": "I8 sd $f1, $3($fp)"
+          },
+          {
+            "given": "10"
+          },
+          {
+            "given": "27"
+          },
+          {
+            "given": "30"
+          },
+          {
+            "given": "31"
+          }
+        ]
+      ]
+    },
+    "solution": "**A. Conflicts.** RAW: `$2` I4→I5; `$3` I2→I5; `$1` I1→I6; `$4` I3→I6; `$f0` I6→I7; `$f1` I7→I8. **WAW: `$3` written by both I2 (`lw`) and I5 (`sub`).** The implied latencies are: load 3cc, ALU 1cc, multiply 10cc, FP add 4cc; WB = EXE COMPLETE + 1.\n\n**B. No.** The claimed table issues I5 at cycle 5, but I5 (`sub $3,…`) has a **WAW on `$3` with I2 (`lw $3`, WB 7)**. A scoreboard must stall I5's *issue* until the prior writer of `$3` has written back, i.e. until cycle 8. Issuing it at cycle 5 is therefore impossible, so everything from I5 onward in the claimed table is wrong.\n\n**C. Corrected table.** A possible (non-unique) configuration: **4 load units (LDU, 3cc), 1 ALU (1cc), 1 multiplier (MUL, 10cc), 1 FP adder (FPU, 4cc)**:\n\n| Instruction | ISSUE | READ OPERAND | EXE COMPLETE | WB |\n|---|---|---|---|---|\n| `I1 lw $1, 36($fp)` | 1 | 2 | 5 | 6 |\n| `I2 lw $3, 8($fp)` | 2 | 3 | 6 | 7 |\n| `I3 lw $4, 64($fp)` | 3 | 4 | 7 | 8 |\n| `I4 lw $2, 20($fp)` | 4 | 5 | 8 | 9 |\n| `I5 sub $3, $2, $3` | 8 | 10 | 11 | 12 |\n| `I6 multdd $f0, $1, $4` | 9 | 10 | 20 | 21 |\n| `I7 addd $f1, $f1, $f0` | 10 | 22 | 26 | 27 |\n| `I8 sd $f1, $3($fp)` | 11 | 28 | 31 | 32 |\n\n- I1–I4 loads pipeline through cycles 1–9 (4 load units → no structural stall).\n- **I5** issues at **8** (WAW on `$3` resolved after I2's WB 7), reads at 10 (needs `$2` from I4 WB 9), EC 11, WB 12.\n- **I6** `multdd` issues at 9, RO 10 (`$1`,`$4` ready), EC 20 (10cc), WB 21.\n- **I7** `addd` issues at 10, RO 22 (waits `$f0` from I6 WB 21), EC 26 (4cc), WB 27.\n- **I8** `sd` issues at 11, RO 28 (waits `$f1` from I7 WB 27), EC 31, WB 32.\n\n(The configuration is not unique — any machine that enforces the WAW stall on `$3` and these latencies works.)",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "ACA20240715-e2",
+    "examId": "ACA20240715",
+    "date": "2024-07-15",
+    "academicYear": "AA2324",
+    "exerciseNo": 2,
+    "marks": 15,
+    "type": "applied-modeling",
+    "topics": [
+      "vliw"
+    ],
+    "prompt": "**VLIW (4-issue) ASAP scheduling.** Schedule one iteration — no software pipelining, no unrolling, no index modification.\n\nUnits: **Integer ALU 1cc** (2cc to a following branch), **2 Memory Units (MEM1, MEM2; 2cc)**, **FPU (5cc for multiply, 2cc for other FP ops)**, branch with **1 delay slot** (resolved in ID). Fill the schedule grid: put each instruction in its issue-cycle row under the **specific unit** column (loads issued together → MEM1 then MEM2).",
+    "code": {
+      "language": "pseudocode",
+      "source": "CONV: lw     $1, 36($fp)\n      lw     $3, 8($fp)\n      lw     $4, 64($fp)\n      lw     $2, 20($fp)\n      sub    $3, $2, $3\n      multdd $f0, $1, $4\n      addd   $f1, $f1, $f0\n      sd     $f1, $3($fp)\n      bnez   $3, CONV"
+    },
+    "fillTable": {
+      "caption": "ASAP schedule grid — one instruction per (cycle, specific unit) cell; leave NOP slots blank — fill the whole grid (leave NOP slots empty)",
+      "columns": [
+        "Cycle",
+        "ALU 1cc",
+        "MEM1 2cc",
+        "MEM2 2cc",
+        "FPU 5/2cc"
+      ],
+      "rows": [
+        [
+          {
+            "given": "1"
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": [
+              "lw $1",
+              "lw $1, 36(fp)",
+              "lw $3",
+              "lw $3, 8(fp)"
+            ]
+          },
+          {
+            "answer": [
+              "lw $1",
+              "lw $1, 36(fp)",
+              "lw $3",
+              "lw $3, 8(fp)"
+            ]
+          },
+          {
+            "answer": ""
+          }
+        ],
+        [
+          {
+            "given": "2"
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": [
+              "lw $4",
+              "lw $4, 64(fp)",
+              "lw $2",
+              "lw $2, 20(fp)"
+            ]
+          },
+          {
+            "answer": [
+              "lw $4",
+              "lw $4, 64(fp)",
+              "lw $2",
+              "lw $2, 20(fp)"
+            ]
+          },
+          {
+            "answer": ""
+          }
+        ],
+        [
+          {
+            "given": "3"
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          }
+        ],
+        [
+          {
+            "given": "4"
+          },
+          {
+            "answer": [
+              "sub",
+              "sub $3",
+              "sub $3, $2, $3"
+            ]
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": [
+              "multdd",
+              "multdd $f0",
+              "multdd $f0, $1, $4"
+            ]
+          }
+        ],
+        [
+          {
+            "given": "5"
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          }
+        ],
+        [
+          {
+            "given": "6"
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          }
+        ],
+        [
+          {
+            "given": "7"
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          }
+        ],
+        [
+          {
+            "given": "8"
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          }
+        ],
+        [
+          {
+            "given": "9"
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": [
+              "addd",
+              "addd $f1",
+              "addd $f1, $f1, $f0"
+            ]
+          }
+        ],
+        [
+          {
+            "given": "10"
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          }
+        ],
+        [
+          {
+            "given": "11"
+          },
+          {
+            "answer": [
+              "bnez",
+              "bnez $3",
+              "bnez $3, CONV"
+            ]
+          },
+          {
+            "answer": [
+              "sd $f1",
+              "sd $f1, $3(fp)"
+            ]
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          }
+        ],
+        [
+          {
+            "given": "12"
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          },
+          {
+            "answer": ""
+          }
+        ]
+      ]
+    },
+    "solution": "**Schedule.**\n\n| CC | ALU 1cc | MU 2cc | MU 2cc | FPU (×5/+2) |\n|---|---|---|---|---|\n| 1 |  | `lw $1` | `lw $3` |  |\n| 2 |  | `lw $4` | `lw $2` |  |\n| 4 | `sub $3,$2,$3` |  |  | `multdd $f0,$1,$4` |\n| 9 |  |  |  | `addd $f1,$f1,$f0` |\n| 11 | `bnez $3` | `sd $f1` |  |  |\n| 12 | (delay slot) |  |  |  |\n\n- The four loads fill the two MUs in cycles 1–2.\n- `sub $3,$2,$3` needs `$2` (lw $2@2 → ready 4) → **C4**; `multdd` needs `$1`(ready 3) and `$4`(lw $4@2 → ready 4) → **C4**.\n- `addd $f1,$f1,$f0` needs `$f0` (multdd@4, 5cc → ready 9) → **C9**.\n- `sd $f1` needs `$f1` (addd@9, 2cc → ready 11) → **C11**; `bnez $3` issues in the same bundle (its operand `$3` from sub@4 is ready well before), with the delay slot at C12.\n\n**P2.B — performance.** Critical path = `multdd → addd → sd`: cycles 4 → 9 → 11 (store completes ~13) ≈ **11–13 cycles**. **FP ops/cycle** = 2 FP ops (one multiply + one add) / ≈11 cycles ≈ **0.18**.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "ACA20240715-e3",
+    "examId": "ACA20240715",
+    "date": "2024-07-15",
+    "academicYear": "AA2324",
+    "exerciseNo": 3,
+    "marks": 15,
+    "type": "theory-essay",
+    "topics": [
+      "branch"
+    ],
+    "prompt": "**Branch prediction.** Describe a 1-BHT and a 2-BHT able to execute the nested-loop code below (R2 = 100, R3 = 1000, R0 = 1). Is the misprediction count in line with the theoretical characteristics of the two predictors? Support your answer.",
+    "code": {
+      "language": "pseudocode",
+      "source": "OUTER: lw     $1, 64($fp)\n       lw     $4, 20($fp)\n       mult   $3, $3, $2\nINNER: lw     $1, 36($fp)\n       div    $3, $3, 10\n       multdd $f0, $1, $4\n       addd   $f1, $f1, $f0\n       sd     $f1, $3($fp)\n       bne    $3, $0, INNER    ; inner branch\n       div    $2, $2, 10\n       bne    $2, $0, OUTER    ; outer branch"
+    },
+    "solution": "**Loop trip counts.** The inner loop divides `$3` by 10 each pass starting from `$3 = $3·$2`; the outer loop divides `$2` by 10 each pass. So the **inner branch** runs a handful of times per outer entry (≈5 the first time) and the **outer branch** runs ~2 times, and the inner trip count shrinks on the second outer pass because `$3` is coupled to `$2`.\n\n**1-BHT vs 2-BHT.** With short, *re-entered* nested loops the two predictors behave near their theoretical extremes:\n- *1-BHT (best case here):* if both branches happen to be predicted *taken* (T_outer, T_inner) it can cost as little as **2 mispredictions** (one per loop, at each exit).\n- *2-BHT (worst case here):* with the counters in the *not-taken/weak* region it can need up to **6 mispredictions** (≈ 2 on the inner + 4 on the outer) because the loops are entered too few times for the 2-bit counter to 'warm up' into the taken state.\n\n**Conclusion — in line with theory.** Here the *worst-case 2-BHT* (6) is **no better** than the *best-case 1-BHT* (2). That is **not** a contradiction: the 2-bit predictor's advantage shows up only for loops executed *many* times (where one anomaly per exit is amortised over a long taken run). For two *short* nested loops the warm-up cost of the 2-bit counter can match or exceed the 1-bit cost — exactly what theory predicts. Over many real (long) nested loops, the 2-BHT is the better predictor.",
+    "solutionSource": "exam"
+  }
+]

@@ -1,0 +1,7 @@
+{
+  "id": "ci",
+  "title": "Computing Infrastructures",
+  "shortTitle": "CI",
+  "hasParts": true,
+  "partLabels": { "first": "First exam", "second": "Second exam" }
+}

@@ -1,0 +1,749 @@
+[
+  {
+    "id": "ACA20250120-e1",
+    "examId": "ACA20250120",
+    "date": "2025-01-20",
+    "academicYear": "AA2425",
+    "exerciseNo": 1,
+    "marks": 20,
+    "type": "applied-modeling",
+    "topics": [
+      "multiproc"
+    ],
+    "prompt": "**MESI cache coherence.** Three processors (Px, Py, Pz), each with a **direct-mapped, write-back** cache that holds **one** cache block, over a **three-block** memory. Protocol: MESI, write-back, write-allocate, write-invalidate of other caches. *(The header text says \"two-processor / two-block\" but the access pattern uses Px, Py, Pz and blocks 0–2, so it is a three-processor / three-block system.)*\n\nBecause each cache holds a single block, accessing a different block **evicts** the current one (writing it back first only if it was Modified). The number in parentheses is the block currently held. Fill in the state of each cache and whether memory is up to date after every operation. Row 1 is given.",
+    "fillTable": {
+      "caption": "MESI state after each access (fill the blanks, then Check)",
+      "columns": [
+        "Time",
+        "After operation",
+        "Px",
+        "Py",
+        "Pz",
+        "Mem B0",
+        "Mem B1",
+        "Mem B2"
+      ],
+      "rows": [
+        [
+          {
+            "given": "1"
+          },
+          {
+            "given": "Px read block 0"
+          },
+          {
+            "given": "Exclusive (0)"
+          },
+          {
+            "given": "Invalid"
+          },
+          {
+            "given": "Modified (2)"
+          },
+          {
+            "given": "yes"
+          },
+          {
+            "given": "yes"
+          },
+          {
+            "given": "no"
+          }
+        ],
+        [
+          {
+            "given": "2"
+          },
+          {
+            "given": "Py write block 2"
+          },
+          {
+            "answer": [
+              "Exclusive (0)",
+              "E(0)"
+            ]
+          },
+          {
+            "answer": [
+              "Modified (2)",
+              "M(2)"
+            ]
+          },
+          {
+            "answer": [
+              "Invalid",
+              "I"
+            ]
+          },
+          {
+            "answer": [
+              "yes",
+              "y"
+            ]
+          },
+          {
+            "answer": [
+              "yes",
+              "y"
+            ]
+          },
+          {
+            "answer": [
+              "no",
+              "n"
+            ]
+          }
+        ],
+        [
+          {
+            "given": "3"
+          },
+          {
+            "given": "Px read block 2"
+          },
+          {
+            "answer": [
+              "Shared (2)",
+              "S(2)"
+            ]
+          },
+          {
+            "answer": [
+              "Shared (2)",
+              "S(2)"
+            ]
+          },
+          {
+            "answer": [
+              "Invalid",
+              "I"
+            ]
+          },
+          {
+            "answer": [
+              "yes",
+              "y"
+            ]
+          },
+          {
+            "answer": [
+              "yes",
+              "y"
+            ]
+          },
+          {
+            "answer": [
+              "yes",
+              "y"
+            ]
+          }
+        ],
+        [
+          {
+            "given": "4"
+          },
+          {
+            "given": "Pz read block 0"
+          },
+          {
+            "answer": [
+              "Shared (2)",
+              "S(2)"
+            ]
+          },
+          {
+            "answer": [
+              "Shared (2)",
+              "S(2)"
+            ]
+          },
+          {
+            "answer": [
+              "Exclusive (0)",
+              "E(0)"
+            ]
+          },
+          {
+            "answer": [
+              "yes",
+              "y"
+            ]
+          },
+          {
+            "answer": [
+              "yes",
+              "y"
+            ]
+          },
+          {
+            "answer": [
+              "yes",
+              "y"
+            ]
+          }
+        ],
+        [
+          {
+            "given": "5"
+          },
+          {
+            "given": "Pz write block 2"
+          },
+          {
+            "answer": [
+              "Invalid",
+              "I"
+            ]
+          },
+          {
+            "answer": [
+              "Invalid",
+              "I"
+            ]
+          },
+          {
+            "answer": [
+              "Modified (2)",
+              "M(2)"
+            ]
+          },
+          {
+            "answer": [
+              "yes",
+              "y"
+            ]
+          },
+          {
+            "answer": [
+              "yes",
+              "y"
+            ]
+          },
+          {
+            "answer": [
+              "no",
+              "n"
+            ]
+          }
+        ],
+        [
+          {
+            "given": "6"
+          },
+          {
+            "given": "Px read block 2"
+          },
+          {
+            "answer": [
+              "Shared (2)",
+              "S(2)"
+            ]
+          },
+          {
+            "answer": [
+              "Invalid",
+              "I"
+            ]
+          },
+          {
+            "answer": [
+              "Shared (2)",
+              "S(2)"
+            ]
+          },
+          {
+            "answer": [
+              "yes",
+              "y"
+            ]
+          },
+          {
+            "answer": [
+              "yes",
+              "y"
+            ]
+          },
+          {
+            "answer": [
+              "yes",
+              "y"
+            ]
+          }
+        ],
+        [
+          {
+            "given": "7"
+          },
+          {
+            "given": "Py read block 2"
+          },
+          {
+            "answer": [
+              "Shared (2)",
+              "S(2)"
+            ]
+          },
+          {
+            "answer": [
+              "Shared (2)",
+              "S(2)"
+            ]
+          },
+          {
+            "answer": [
+              "Shared (2)",
+              "S(2)"
+            ]
+          },
+          {
+            "answer": [
+              "yes",
+              "y"
+            ]
+          },
+          {
+            "answer": [
+              "yes",
+              "y"
+            ]
+          },
+          {
+            "answer": [
+              "yes",
+              "y"
+            ]
+          }
+        ],
+        [
+          {
+            "given": "8"
+          },
+          {
+            "given": "Pz write block 2"
+          },
+          {
+            "answer": [
+              "Invalid",
+              "I"
+            ]
+          },
+          {
+            "answer": [
+              "Invalid",
+              "I"
+            ]
+          },
+          {
+            "answer": [
+              "Modified (2)",
+              "M(2)"
+            ]
+          },
+          {
+            "answer": [
+              "yes",
+              "y"
+            ]
+          },
+          {
+            "answer": [
+              "yes",
+              "y"
+            ]
+          },
+          {
+            "answer": [
+              "no",
+              "n"
+            ]
+          }
+        ],
+        [
+          {
+            "given": "9"
+          },
+          {
+            "given": "Px write block 1"
+          },
+          {
+            "answer": [
+              "Modified (1)",
+              "M(1)"
+            ]
+          },
+          {
+            "answer": [
+              "Invalid",
+              "I"
+            ]
+          },
+          {
+            "answer": [
+              "Modified (2)",
+              "M(2)"
+            ]
+          },
+          {
+            "answer": [
+              "yes",
+              "y"
+            ]
+          },
+          {
+            "answer": [
+              "no",
+              "n"
+            ]
+          },
+          {
+            "answer": [
+              "no",
+              "n"
+            ]
+          }
+        ],
+        [
+          {
+            "given": "10"
+          },
+          {
+            "given": "Py read block 1"
+          },
+          {
+            "answer": [
+              "Shared (1)",
+              "S(1)"
+            ]
+          },
+          {
+            "answer": [
+              "Shared (1)",
+              "S(1)"
+            ]
+          },
+          {
+            "answer": [
+              "Modified (2)",
+              "M(2)"
+            ]
+          },
+          {
+            "answer": [
+              "yes",
+              "y"
+            ]
+          },
+          {
+            "answer": [
+              "yes",
+              "y"
+            ]
+          },
+          {
+            "answer": [
+              "no",
+              "n"
+            ]
+          }
+        ]
+      ]
+    },
+    "solution": "Track that each cache holds a single block; memory for a block is **up to date unless some cache holds it Modified**.\n\n- **(2) Py write B2:** Pz had B2 Modified → Pz writes B2 back and is invalidated; Py allocates and writes → **M(2)**, others lose B2. Px keeps **E(0)**. B2 stale.\n- **(3) Px read B2:** Px evicts B0 (clean E, no write-back). Py holds B2 in M → supplies + writes back → both **S(2)**. B2 now up to date.\n- **(4) Pz read B0:** nobody else has B0 → from memory → Pz **E(0)**.\n- **(5) Pz write B2:** Pz evicts B0 (clean). Allocates B2 (Px/Py had S) and writes → **M(2)**; Px, Py → **I**. B2 stale.\n- **(6) Px read B2:** Pz M(2) writes back → both **S(2)**.\n- **(7) Py read B2:** clean shared copy → all three **S(2)**.\n- **(8) Pz write B2:** upgrade to **M(2)**, invalidate Px/Py. B2 stale.\n- **(9) Px write B1:** Px line was Invalid → allocate B1 (nobody has it, memory clean) and write → **M(1)**. B1 stale. Pz keeps M(2).\n- **(10) Py read B1:** Px M(1) writes back → both **S(1)**; B1 up to date. Pz still M(2) so B2 stays stale.\n\nKey ideas: write-allocate + write-invalidate make the writer end in **M** (memory stale) and everyone else **Invalid**; a later read of a Modified block forces a **write-back** and downgrades to **Shared** (memory becomes up to date)."
+  },
+  {
+    "id": "ACA20250120-e2",
+    "examId": "ACA20250120",
+    "date": "2025-01-20",
+    "academicYear": "AA2425",
+    "exerciseNo": 2,
+    "marks": 15,
+    "type": "theory-essay",
+    "topics": [
+      "branch"
+    ],
+    "prompt": "**Branch prediction.** Describe a **1-bit BHT** and a **2-bit BHT** running the nested-loop code below (initially R0 = 4, R1 = 1). Are the resulting mispredictions in line with the theoretical characteristics of the two predictors? Support your answer.",
+    "code": {
+      "language": "pseudocode",
+      "source": "LOOP:  LD    F1, 0(R0)\n       ADDD  F2, F1, F1\n       DIVD  F3, F2, F1\n       ADDI  R1, R1, 1000\nLOOP2: MULTD F12, F3, F2\n       SUBI  R1, R1, 2\n       BNEZ  R1, LOOP2     ; inner branch\n       SUBI  R0, R0, 4\n       BNEZ  R0, LOOP      ; outer branch"
+    },
+    "solution": "There are two backward branches: the **inner** `BNEZ R1, LOOP2` and the **outer** `BNEZ R0, LOOP`. The outer loop runs **4 times** (R0: 4→0 in steps of 4): the outer branch is **taken 3 times** and **not-taken once** (final exit). Each entry of the inner loop is a long run of *taken* iterations followed by a single *not-taken* exit.\n\n**1-bit BHT.** Each entry stores only the last outcome. For a loop branch this gives **2 mispredictions per loop episode**:\n- the **exit** iteration (predictor says *taken* from the previous iteration, branch is *not-taken*), and\n- the **first iteration of the next entry** (predictor now says *not-taken*, branch is *taken*).\n\nSo across the program the inner branch costs ~2 mispredictions every time the inner loop is re-entered, and the outer branch costs 2 as well (one at the only exit, one if it were re-entered).\n\n**2-bit BHT (saturating counter).** A single anomalous outcome only weakens the counter (e.g. *strongly-taken → weakly-taken*) without flipping the prediction, so a loop branch costs **only 1 misprediction per episode** — the exit. On re-entry it still predicts *taken* and is correct.\n\n**Conclusion — consistent with theory.** The 2-bit predictor halves the loop mispredictions (1 vs 2 per episode) precisely because it tolerates the single exit anomaly before changing its prediction. This is the textbook advantage of 2-bit over 1-bit predictors on regular (nested) loops, so the observed behaviour is in line with the theory. *(The literal code never decrements R1 to exactly 0 since 1001 is odd and it subtracts 2 — a typical exam idealization; the predictor reasoning is unaffected: treat the inner branch as a long taken run with one not-taken exit.)*",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "ACA20250120-e3",
+    "examId": "ACA20250120",
+    "date": "2025-01-20",
+    "academicYear": "AA2425",
+    "exerciseNo": 3,
+    "marks": 15,
+    "type": "applied-modeling",
+    "topics": [
+      "scoreboard",
+      "ilp"
+    ],
+    "prompt": "**Scoreboard.** Assume that the following code has been executed on a CPU with a **Scoreboard**. The execution table below (columns ISSUE / READ OPERAND / EXE COMPLETE / WB) is the one claimed for that run.\n\n**A.** List all the possible conflicts in the code.\n\n**B.** Is there a SCOREBOARD \"configuration\" that can respect the shown execution? Yes or No? Explain why.\n\n**C.** If the previous table was not correct, write the right architectural configuration and specify the number, kind and latency for each unit.",
+    "fillTable": {
+      "caption": "Claimed Scoreboard execution (given — analyze it)",
+      "columns": [
+        "Instruction",
+        "ISSUE",
+        "READ OPERAND",
+        "EXE COMPLETE",
+        "WB"
+      ],
+      "rows": [
+        [
+          {
+            "given": "I1 LD $F1, 0($R1)"
+          },
+          {
+            "given": "1"
+          },
+          {
+            "given": "2"
+          },
+          {
+            "given": "6"
+          },
+          {
+            "given": "7"
+          }
+        ],
+        [
+          {
+            "given": "I2 FADD $F2, $F2, $F3"
+          },
+          {
+            "given": "2"
+          },
+          {
+            "given": "3"
+          },
+          {
+            "given": "8"
+          },
+          {
+            "given": "9"
+          }
+        ],
+        [
+          {
+            "given": "I3 ADDI $R3, $R3, 8"
+          },
+          {
+            "given": "3"
+          },
+          {
+            "given": "4"
+          },
+          {
+            "given": "5"
+          },
+          {
+            "given": "6"
+          }
+        ],
+        [
+          {
+            "given": "I4 LD $F4, 0($R2)"
+          },
+          {
+            "given": "4"
+          },
+          {
+            "given": "5"
+          },
+          {
+            "given": "9"
+          },
+          {
+            "given": "10"
+          }
+        ],
+        [
+          {
+            "given": "I5 FADD $F5, $F4, $F2"
+          },
+          {
+            "given": "5"
+          },
+          {
+            "given": "11"
+          },
+          {
+            "given": "16"
+          },
+          {
+            "given": "17"
+          }
+        ],
+        [
+          {
+            "given": "I6 FMULT $F6, $F1, $F4"
+          },
+          {
+            "given": "6"
+          },
+          {
+            "given": "11"
+          },
+          {
+            "given": "21"
+          },
+          {
+            "given": "22"
+          }
+        ],
+        [
+          {
+            "given": "I7 ADDI $R5, $R5, 1"
+          },
+          {
+            "given": "7"
+          },
+          {
+            "given": "8"
+          },
+          {
+            "given": "9"
+          },
+          {
+            "given": "10"
+          }
+        ],
+        [
+          {
+            "given": "I8 LD $F6, 0($R4)"
+          },
+          {
+            "given": "8"
+          },
+          {
+            "given": "9"
+          },
+          {
+            "given": "13"
+          },
+          {
+            "given": "14"
+          }
+        ],
+        [
+          {
+            "given": "I9 SD $F6, 0($R5)"
+          },
+          {
+            "given": "11"
+          },
+          {
+            "given": "23"
+          },
+          {
+            "given": "27"
+          },
+          {
+            "given": "28"
+          }
+        ],
+        [
+          {
+            "given": "I10 SD $F5, 0($R6)"
+          },
+          {
+            "given": "15"
+          },
+          {
+            "given": "18"
+          },
+          {
+            "given": "22"
+          },
+          {
+            "given": "23"
+          }
+        ]
+      ]
+    },
+    "solution": "**A. Conflicts.**\n- *True / RAW:* `$F1`: I1→I6; `$F2`: I2→I5; `$F4`: I4→I5 and I4→I6; `$F5`: I5→I10; `$F6`: I8→I9 (the store reads `$F6`); `$R5`: I7→I9.\n- *Output / WAW:* **`$F6` is written by both I6 (`FMULT`) and I8 (`LD`).**\n- *Anti / WAR:* none that constrains this schedule.\n- Implied latencies (EXE COMPLETE − READ OPERAND): LD/SD = 4cc, ADDI = 1cc, FADD = 5cc, FMULT = 10cc; WB = EXE COMPLETE + 1.\n\n**B. No** — the shown table is impossible. A Scoreboard resolves a **WAW** by stalling the *issue* of an instruction whose destination is still pending from an earlier writer. Here I6 (`FMULT $F6`, WB = 22) and I8 (`LD $F6`) both write `$F6`, yet the table issues I8 at cycle 8 and writes it back at 14 — *before* I6. That violates the WAW issue rule and would leave the wrong final value in `$F6` (program order wants I8 to be the last writer). So I8 cannot issue until I6 has written back.\n\n**C. Corrected execution.** With an abundant configuration — **4 LDU (4cc), 2 FP adders (5cc), 1 multiplier (10cc), 2 integer ALU (1cc)** and enough write ports — the only stalls are the RAW dependences plus the `$F6` WAW that pushes I8 after I6 (WB 22):\n\n| Instruction | ISSUE | READ OPERAND | EXE COMPLETE | WB |\n|---|---|---|---|---|\n| `I1 LD $F1, 0($R1)` | 1 | 2 | 6 | 7 |\n| `I2 FADD $F2, $F2, $F3` | 2 | 3 | 8 | 9 |\n| `I3 ADDI $R3, $R3, 8` | 3 | 4 | 5 | 6 |\n| `I4 LD $F4, 0($R2)` | 4 | 5 | 9 | 10 |\n| `I5 FADD $F5, $F4, $F2` | 5 | 11 | 16 | 17 |\n| `I6 FMULT $F6, $F1, $F4` | 6 | 11 | 21 | 22 |\n| `I7 ADDI $R5, $R5, 1` | 7 | 8 | 9 | 10 |\n| `I8 LD $F6, 0($R4)` | 23 | 24 | 28 | 29 |\n| `I9 SD $F6, 0($R5)` | 24 | 30 | 34 | 35 |\n| `I10 SD $F5, 0($R6)` | 25 | 26 | 30 | 31 |\n\nThe essential requirement is that **I8 (`LD $F6`) waits for I6 (`FMULT $F6`) to write back** before issuing; the configuration is not unique.",
+    "solutionSource": "authored",
+    "code": {
+      "language": "pseudocode",
+      "source": "I1  LD    $F1, 0($R1)\nI2  FADD  $F2, $F2, $F3\nI3  ADDI  $R3, $R3, 8\nI4  LD    $F4, 0($R2)\nI5  FADD  $F5, $F4, $F2\nI6  FMULT $F6, $F1, $F4\nI7  ADDI  $R5, $R5, 1\nI8  LD    $F6, 0($R4)\nI9  SD    $F6, 0($R5)\nI10 SD    $F5, 0($R6)"
+    }
+  },
+  {
+    "id": "ACA20250120-e4",
+    "examId": "ACA20250120",
+    "date": "2025-01-20",
+    "academicYear": "AA2425",
+    "exerciseNo": 4,
+    "marks": 15,
+    "type": "theory-essay",
+    "topics": [
+      "branch"
+    ],
+    "prompt": "**Question 1.** What is a branch predictor and why/how can it improve the performance of a system?",
+    "solution": "A **branch predictor** is hardware that, at the front of the pipeline, *guesses the outcome (taken/not-taken) and the target* of a branch **before** the branch is actually resolved, so the processor can keep fetching and executing instructions speculatively along the predicted path.\n\n**Why it helps.** Branches create **control hazards**: the next instruction's address is unknown until the branch is resolved (in ID/EXE). Without prediction the pipeline must stall or flush, wasting cycles — the penalty grows with pipeline depth and issue width (a wide, deep, out-of-order machine loses many slots per misprediction). By predicting early, the processor avoids these bubbles whenever the guess is correct.\n\n**How.**\n- *Static* prediction: fixed policy (always-taken, always-not-taken, backward-taken/forward-not-taken, or compiler hints).\n- *Dynamic* prediction: history-based tables updated at run time — a **Branch History Table (BHT)** indexed by PC with 1-bit or 2-bit saturating counters, **correlating/two-level** predictors, and a **Branch Target Buffer (BTB)** to also supply the target address. A **2-bit** counter tolerates a single anomaly, giving far fewer mispredictions on loops than a 1-bit scheme.\n\nOn a correct prediction the branch costs ~0 extra cycles; on a misprediction the speculative work is squashed and the penalty is paid. Because real branch outcomes are highly regular, good predictors reach >90–95% accuracy, which is essential to sustain high IPC in pipelined and superscalar processors.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "ACA20250120-e5",
+    "examId": "ACA20250120",
+    "date": "2025-01-20",
+    "academicYear": "AA2425",
+    "exerciseNo": 5,
+    "marks": 20,
+    "type": "true-false-motivated",
+    "topics": [
+      "perf",
+      "tomasulo",
+      "superscalar",
+      "renaming"
+    ],
+    "prompt": "**Question 2.** State whether each statement is TRUE or FALSE and motivate.",
+    "subStatements": [
+      {
+        "id": "ACA20250120-e5-s1",
+        "statement": "The performance of an application is only limited by its code and the intrinsic parallelism.",
+        "answer": false,
+        "motivation": "FALSE. The code's intrinsic ILP is only an upper bound. Actual performance also depends on the microarchitecture (issue width, number/latency of functional units, branch prediction, register renaming), the memory hierarchy, and the clock frequency — and on Amdahl's law for the parallel/serial split. The same code runs at very different speeds on different machines."
+      },
+      {
+        "id": "ACA20250120-e5-s2",
+        "statement": "The Scoreboard and Tomasulo architectures can achieve different performance.",
+        "answer": true,
+        "motivation": "TRUE. Tomasulo adds **register renaming** (via reservation stations and the CDB), which removes WAR and WAW (name) dependences that still stall a Scoreboard at issue/write-back. Tomasulo also broadcasts results on the CDB so dependent instructions start sooner. Hence on the same code the two can produce different (usually better for Tomasulo) timings."
+      },
+      {
+        "id": "ACA20250120-e5-s3",
+        "statement": "In coarse-grained multithreading, the processor executes the instructions of a thread until a specific event happens.",
+        "answer": true,
+        "motivation": "TRUE. Coarse-grained (block) multithreading keeps running one thread and switches only when that thread hits a costly stall event, typically a long-latency miss (e.g. an L2/last-level cache miss). It contrasts with fine-grained MT, which switches every cycle, and SMT, which issues from multiple threads in the same cycle."
+      },
+      {
+        "id": "ACA20250120-e5-s4",
+        "statement": "Explicit register renaming requires additional hardware.",
+        "answer": true,
+        "motivation": "TRUE. Explicit renaming needs a **physical register file larger than the architectural one**, a **rename/mapping table** to translate architectural→physical registers, and a **free list** with allocation/reclaim logic (plus recovery state for mispredictions). All of this is extra hardware beyond the baseline pipeline."
+      }
+    ],
+    "solution": "1: FALSE — performance also depends on the hardware, memory and clock, not only the code/ILP. 2: TRUE — Tomasulo's renaming removes WAR/WAW that stall a Scoreboard. 3: TRUE — coarse-grained MT switches only on a costly stall event. 4: TRUE — renaming needs extra physical registers, a map table and a free list.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "ACA20250120-e6",
+    "examId": "ACA20250120",
+    "date": "2025-01-20",
+    "academicYear": "AA2425",
+    "exerciseNo": 6,
+    "marks": 15,
+    "type": "theory-essay",
+    "topics": [
+      "pipeline",
+      "ilp"
+    ],
+    "prompt": "**Question 3.** What are structural, data, and control hazards? When do they occur?",
+    "solution": "A **hazard** is a situation that prevents the next instruction from executing in its designated clock cycle, breaking the ideal one-instruction-per-cycle pipeline.\n\n**Structural hazards** — two instructions need the **same hardware resource** in the same cycle and it is not duplicated/pipelined (e.g. a single memory port used by IF and MEM simultaneously, or a non-pipelined functional unit, or too few register-file write ports / CDBs). They occur whenever resource demand exceeds the available units in a cycle.\n\n**Data hazards** — an instruction depends on the **result of a previous, not-yet-completed instruction**. Three kinds:\n- *RAW (true dependence):* an instruction reads a register before the producer has written it — the only *true* dependence, occurs on a genuine producer→consumer chain.\n- *WAR (anti-dependence):* an instruction writes a register that an earlier instruction still has to read — a *name* dependence, can appear only with out-of-order execution.\n- *WAW (output dependence):* two instructions write the same register and could complete out of order — also a *name* dependence. WAR/WAW are removed by register renaming.\n\n**Control hazards** — caused by **branches/jumps**: the address of the next instruction is unknown until the branch is resolved, so the pipeline does not know what to fetch. They occur on every branch and cost stall/flush cycles unless mitigated by branch prediction, delay slots, or early branch resolution.",
+    "solutionSource": "authored"
+  }
+]

@@ -1,0 +1,374 @@
+[
+  {
+    "id": "AMI20260106-e1",
+    "examId": "AMI20260106",
+    "date": "2026-01-06",
+    "academicYear": "AA2526",
+    "exerciseNo": 1,
+    "type": "multiple-choice",
+    "topics": [
+      "energy"
+    ],
+    "prompt": "What fundamentally distinguishes a smart grid from a traditional electricity grid, according to the slides?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "It centralizes generation in larger plants so one operator can deliver power more economically to every user in the smart city."
+      },
+      {
+        "label": "B",
+        "text": "It replaces electricity delivery with information flow, so the grid mainly transmits data rather than power to homes."
+      },
+      {
+        "label": "C",
+        "text": "It pushes power one way from generators to consumers while adding smart meters for more frequent billing reads."
+      },
+      {
+        "label": "D",
+        "text": "It uses ICT for real-time, two-way exchange of information integrating generators and consumers."
+      }
+    ],
+    "correctChoice": "D",
+    "solution": "**Concept.** A traditional grid pushes power one way from a central plant to passive consumers. A smart grid overlays information and communication technologies so data flows both ways: consumers (and distributed generators) report consumption/production in real time, and the grid responds. This two-way coupling is what makes it self-healing, adaptive, resilient and sustainable.\n\n**Why D is correct.** The slides define the smart grid by its use of ICT for real-time, two-way exchange of information that intelligently integrates all users, generators and consumers alike.\n\n**Why the others are wrong.** A points the wrong way: the slides say current centralized infrastructure is the limitation smart grids move beyond, not the goal. B overstates it: the grid still delivers sustainable, economic, secure electricity, ICT is overlaid on top, not a replacement. C describes the traditional one-way grid: adding meters for billing reads alone is not the two-way information exchange that defines a smart grid.\n\n**Takeaway.** What makes a grid \"smart\" is ICT-enabled real-time, two-way information exchange between generators and consumers.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260106-e2",
+    "examId": "AMI20260106",
+    "date": "2026-01-06",
+    "academicYear": "AA2526",
+    "exerciseNo": 2,
+    "type": "multiple-choice",
+    "topics": [
+      "energy"
+    ],
+    "prompt": "The slides distinguish short-, mid- and long-term load forecasting. For which purpose is short-term forecasting (minutes to hours) most appropriate?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Real-time control, energy-transfer scheduling and demand response, minutes to hours ahead."
+      },
+      {
+        "label": "B",
+        "text": "Optimizing load dispatch and maintenance scheduling, balancing demand and generation over weeks."
+      },
+      {
+        "label": "C",
+        "text": "Predicting overall power consumption to plan and schedule infrastructure expansions across years."
+      },
+      {
+        "label": "D",
+        "text": "Assessing whether grid components stay synchronized in frequency and phase after a perturbation."
+      }
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** Load forecasting predicts future demand, and the useful horizon scales with the decision: short-term (minutes to hours) drives immediate operational decisions, mid-term (hours to weeks) drives dispatch and maintenance, and long-term (years) drives infrastructure planning. Matching horizon to task is the key idea.\n\n**Why A is correct.** The slides map short-term forecasting precisely to real-time control, energy-transfer scheduling and demand response, the fast-reacting operational tasks (minutes to hours).\n\n**Why the others are wrong.** B is mid-term (hours to weeks): load dispatch and maintenance scheduling. C is long-term (years): predicting consumption for system planning and expansion. D describes transient stability assessment (synchronism after a perturbation), a separate grid task, not a forecasting horizon at all.\n\n**Takeaway.** Short-term load forecasting (minutes-hours) feeds real-time control and demand response.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260106-e3",
+    "examId": "AMI20260106",
+    "date": "2026-01-06",
+    "academicYear": "AA2526",
+    "exerciseNo": 3,
+    "type": "multiple-choice",
+    "topics": [
+      "energy"
+    ],
+    "prompt": "What is the relationship between a single home smart meter and Non-Intrusive Load Monitoring (NILM)?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The smart meter already reports each appliance's consumption directly, so NILM is only a backup used when the meter fails to respond."
+      },
+      {
+        "label": "B",
+        "text": "NILM equips every appliance with its own smart plug, and the smart meter just aggregates those per-plug readings into one curve."
+      },
+      {
+        "label": "C",
+        "text": "The smart meter gives whole-home consumption with one device but no per-appliance detail, which is why NILM is needed."
+      },
+      {
+        "label": "D",
+        "text": "The smart meter samples consumption far less frequently than a traditional meter, so NILM fills the gaps."
+      }
+    ],
+    "correctChoice": "C",
+    "solution": "**Concept.** A single smart meter measures the whole home's total consumption from one point, so it is non-intrusive (no per-appliance hardware). The cost is that it only sees the aggregate curve, not which appliance drew what. Recovering per-appliance loads from that single signal is the disaggregation problem, NILM.\n\n**Why C is correct.** The smart meter gives whole-home consumption with one device but cannot directly provide fine-grained per-appliance information, which is exactly what motivates NILM (disaggregation).\n\n**Why the others are wrong.** A is false: the single meter sees only the aggregate, it never reports per-appliance loads directly. B describes per-appliance smart plugs, that is Intrusive Load Monitoring (ILM), the opposite of using one meter for NILM. D inverts the slides: smart meters sample more frequently than traditional meters, and frequency is not what motivates disaggregation.\n\n**Takeaway.** A smart meter sees only the aggregate; NILM disaggregates it into per-appliance loads.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260106-e4",
+    "examId": "AMI20260106",
+    "date": "2026-01-06",
+    "academicYear": "AA2526",
+    "exerciseNo": 4,
+    "type": "multiple-choice",
+    "topics": [
+      "energy"
+    ],
+    "prompt": "Smart plugs are described in the slides as enabling which kind of load monitoring, and with what trade-off?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Non-Intrusive Load Monitoring (NILM): cheap whole-home readings, but only coarse aggregate detail."
+      },
+      {
+        "label": "B",
+        "text": "Intrusive Load Monitoring (ILM): very fine-grained per-appliance data, but more intrusive and costly."
+      },
+      {
+        "label": "C",
+        "text": "Differential-privacy monitoring: noisy per-appliance data, but homes stay indistinguishable as a group."
+      },
+      {
+        "label": "D",
+        "text": "Submetering for ground truth: fine-grained labels for training, but discarded once the model is learned."
+      }
+    ],
+    "correctChoice": "B",
+    "solution": "**Concept.** A smart plug sits between one appliance and its socket and measures that appliance's consumption directly, usually streaming it over WiFi to a home gateway. Because you install a separate sensor per appliance, this is Intrusive Load Monitoring (ILM): you get the cleanest, finest-grained data but at higher hardware cost and intrusiveness, the mirror image of a single smart meter.\n\n**Why B is correct.** Smart plugs give very fine-grained per-appliance data (ILM) directly, with the trade-off of being more intrusive and costly, exactly as the slides state.\n\n**Why the others are wrong.** A describes the single whole-home smart meter (NILM), not smart plugs. C borrows the differential-privacy idea (Laplacian noise, indistinguishable homes), a privacy method, not a load-monitoring mode. D describes using plug sensors temporarily for submetering ground truth, the slides keep them as permanent ILM sensors rather than discarding them.\n\n**Takeaway.** Smart plugs = ILM: fine-grained per-appliance data, paid for in cost and intrusiveness.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260106-e5",
+    "examId": "AMI20260106",
+    "date": "2026-01-06",
+    "academicYear": "AA2526",
+    "exerciseNo": 5,
+    "type": "multiple-choice",
+    "topics": [
+      "energy"
+    ],
+    "prompt": "In load forecasting for smart homes, what is the difference between the observation horizon and the forecast horizon?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The observation horizon is the future window to predict; the forecast horizon is the past historical data fed in as input."
+      },
+      {
+        "label": "B",
+        "text": "The observation horizon sets the sampling interval; the forecast horizon sets the granularity level of the prediction."
+      },
+      {
+        "label": "C",
+        "text": "The observation horizon is the past data fed in as input; the forecast horizon is the future window to predict."
+      },
+      {
+        "label": "D",
+        "text": "The observation horizon is the contextual data (weather, time); the forecast horizon is the consumption history fed in."
+      }
+    ],
+    "correctChoice": "C",
+    "solution": "**Concept.** A forecasting model reads a chunk of the past to predict a chunk of the future. The observation horizon is the past window fed in as input (how much history the model sees); the forecast horizon is the future window it must predict. For example, observe the last 24 hours of consumption to forecast the next 2 hours.\n\n**Why C is correct.** It states the definitions correctly: observation horizon = past historical input; forecast horizon = future window to predict (minutes to days ahead).\n\n**Why the others are wrong.** A reverses the two roles. B confuses horizons (time windows) with the sampling interval and the granularity level (appliance / category / whole-home), which are separate concepts. D miscasts contextual variables (weather, time) as the observation horizon, those are optional extra inputs, not the historical window itself.\n\n**Takeaway.** Observation horizon = past input window; forecast horizon = future window to predict.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260106-e6",
+    "examId": "AMI20260106",
+    "date": "2026-01-06",
+    "academicYear": "AA2526",
+    "exerciseNo": 6,
+    "type": "multiple-choice",
+    "topics": [
+      "energy"
+    ],
+    "prompt": "The slides classify home appliances for scheduling into non-deferrable, deferrable and controllable. Which example matches a CONTROLLABLE appliance?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "An air-conditioner, run at different power levels depending on temperature, with comfort impact."
+      },
+      {
+        "label": "B",
+        "text": "A washing machine, whose start can shift to off-peak hours but cannot be halted once it has begun running."
+      },
+      {
+        "label": "C",
+        "text": "A refrigerator, which must keep running continuously and so cannot be shifted or scheduled."
+      },
+      {
+        "label": "D",
+        "text": "A TV receiver, which draws roughly constant power whenever on and cannot be deferred."
+      }
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** For scheduling, appliances split into three classes. Non-deferrable ones must run as-is and cannot be shifted (fridge, TV). Deferrable ones can have their start time moved to off-peak hours but, once started, run to completion (washing machine). Controllable ones can run at adjustable power levels, so you modulate intensity rather than timing.\n\n**Why A is correct.** The air-conditioner is the slide's example of a controllable appliance: it operates at different power levels (which may depend on temperature), and changing the level affects comfort.\n\n**Why the others are wrong.** B (washing machine) is deferrable: its start can shift to off-peak but once on it cannot be halted. C (refrigerator) and D (TV) are non-deferrable, they cannot be shifted; their power is fixed, not modulated by level.\n\n**Takeaway.** Controllable = adjustable power level (e.g. air-conditioner); deferrable = shiftable start; non-deferrable = fixed.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260106-e7",
+    "examId": "AMI20260106",
+    "date": "2026-01-06",
+    "academicYear": "AA2526",
+    "exerciseNo": 7,
+    "type": "multiple-choice",
+    "topics": [
+      "energy"
+    ],
+    "prompt": "In the reinforcement-learning formulation for smart-home energy management, why is the exploration-exploitation balance especially problematic compared with other RL settings?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Because the reward must be hand-labeled by the resident at every step, so exploratory actions can never be scored automatically."
+      },
+      {
+        "label": "B",
+        "text": "Because the home state is fully observed, so exploration mostly drives the epsilon parameter to decay far too quickly."
+      },
+      {
+        "label": "C",
+        "text": "Because exploitation alone reaches the global optimum here, making any exploration an unnecessary risk to comfort."
+      },
+      {
+        "label": "D",
+        "text": "Because random exploration can degrade comfort, so the module is pre-trained offline and fine-tuned via transfer learning."
+      }
+    ],
+    "correctChoice": "D",
+    "solution": "**Concept.** An RL agent must explore (try random actions to discover good policies) and exploit (use what it has learned), typically balanced with epsilon-greedy. In a real home, exploration means physically switching appliances on/off or changing power, so a bad random action directly degrades the resident's comfort, which a simulated game environment never does.\n\n**Why D is correct.** Because random exploration can hurt comfort, the slides pre-train the action-decision module in a controlled environment and then fine-tune it in the target home via transfer learning, mitigating risky live exploration.\n\n**Why the others are wrong.** A is false: the reward is computed automatically from an action's impact on comfort and consumption, not hand-labeled each step. B misstates the difficulty: the issue is the comfort cost of exploring, not the rate at which `epsilon` decays. C is false: pure exploitation can stick in local optima, so exploration is still needed despite its risk.\n\n**Takeaway.** Live exploration in a home harms comfort, so pre-train offline and fine-tune with transfer learning.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260106-e8",
+    "examId": "AMI20260106",
+    "date": "2026-01-06",
+    "academicYear": "AA2526",
+    "exerciseNo": 8,
+    "type": "multiple-choice",
+    "topics": [
+      "energy"
+    ],
+    "prompt": "Load disaggregation (NILM) is formalised so that the aggregated load P(t) at time t equals the sum of appliance loads plus a noise term. What is the goal of disaggregation?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Observing each appliance load `Pi` and summing them to reconstruct the aggregated total `P(t)`."
+      },
+      {
+        "label": "B",
+        "text": "Observing only the aggregated `P(t)` and estimating each individual appliance load `Pi`."
+      },
+      {
+        "label": "C",
+        "text": "Observing the aggregate `P(t)` and forecasting its value over the next short-term horizon."
+      },
+      {
+        "label": "D",
+        "text": "Observing `P(t)` and isolating the noise term so the cleaned aggregate can be billed accurately."
+      }
+    ],
+    "correctChoice": "B",
+    "solution": "**Concept.** The smart meter records the aggregate $P(t) = \\sum_i P_i(t) + \\epsilon$, where each `Pi` is one appliance's load and the last term is noise. Summing the parts is trivial; the useful task is the inverse, recovering the unknown components from the observed total, which is why disaggregation is hard (many appliance combinations can sum to the same `P(t)`).\n\n**Why B is correct.** Disaggregation observes only the aggregate `P(t)` and estimates each individual appliance load `Pi`, exactly the inverse problem the model defines.\n\n**Why the others are wrong.** A reverses the direction: forward summing the parts is trivial, not the goal. C describes load forecasting (predicting future `P(t)`), a different task from splitting the present aggregate. D misreads the model: the aim is to recover per-appliance loads, not to isolate the noise term for billing.\n\n**Takeaway.** NILM disaggregation = infer each appliance's `Pi` from the single aggregate `P(t)`.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260106-e9",
+    "examId": "AMI20260106",
+    "date": "2026-01-06",
+    "academicYear": "AA2526",
+    "exerciseNo": 9,
+    "type": "multiple-choice",
+    "topics": [
+      "energy"
+    ],
+    "prompt": "The slides categorize appliance load signatures. Which appliance type is described as the MOST challenging to detect in NILM?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Multi-state appliances such as a washing machine, cycling through several known states."
+      },
+      {
+        "label": "B",
+        "text": "Permanent-consumer appliances such as a refrigerator, drawing roughly constant power."
+      },
+      {
+        "label": "C",
+        "text": "Continuously-variable (infinite-state) appliances such as a laptop or electric drill."
+      },
+      {
+        "label": "D",
+        "text": "On-Off (single-state) appliances such as a toaster, switching between just two levels."
+      }
+    ],
+    "correctChoice": "C",
+    "solution": "**Concept.** NILM recognizes appliances by their load signature, and detectability tracks how distinctive that signature is. On-Off appliances flip between two clear levels (easy); multi-state appliances cycle through a few known states forming a repeated pattern; permanent consumers draw a near-constant baseline. Continuously variable (infinite-state) appliances have no fixed levels, their power keeps drifting, so they blend into the aggregate.\n\n**Why C is correct.** Infinite-state appliances (laptop, electric drill) have ever-changing consumption with no stable signature, making them the hardest to disaggregate, as the slides state.\n\n**Why the others are wrong.** A (multi-state, washing machine) shows a recognizable repeated pattern across known states. B (permanent consumers, fridge/TV) draws roughly constant power, a steady baseline rather than the hardest case. D (On-Off, toaster) flips between two clear levels and is the easiest to detect.\n\n**Takeaway.** Continuously variable appliances are hardest for NILM because their power has no fixed, repeatable signature.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260106-e10",
+    "examId": "AMI20260106",
+    "date": "2026-01-06",
+    "academicYear": "AA2526",
+    "exerciseNo": 10,
+    "type": "multiple-choice",
+    "topics": [
+      "energy"
+    ],
+    "prompt": "Which privacy-preserving technique is described in the slides as introducing Laplacian noise so that a home's energy data is associated with a group of indistinguishable homes while remaining useful to the operator?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Differential privacy: adding calibrated noise so a home hides in an indistinguishable group."
+      },
+      {
+        "label": "B",
+        "text": "Encryption schemes: protecting confidentiality, even computing directly on the encrypted data."
+      },
+      {
+        "label": "C",
+        "text": "Trusted platforms: running the data analysis inside trusted hardware that outsiders cannot access."
+      },
+      {
+        "label": "D",
+        "text": "Transfer learning: a domain-adaptation loss reusing labeled data across similar homes."
+      }
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** Fine-grained energy data leaks habits, so the slides list three privacy countermeasures. Differential privacy perturbs the data with carefully calibrated noise (Laplacian in the example) so a single home blends into a group of indistinguishable homes; aggregate statistics stay accurate enough for the operator while individual instantaneous readings cannot be inferred. That noise-for-indistinguishability mechanism is its signature.\n\n**Why A is correct.** The Laplacian-noise technique that hides a home within an indistinguishable group while keeping data useful to the operator is exactly differential privacy.\n\n**Why the others are wrong.** B (encryption) protects confidentiality, e.g. computing on encrypted data, but adds no noise and does not blur homes into a group. C (trusted platforms) runs analysis inside trusted hardware so outsiders cannot access raw data, again no perturbation of the values. D (transfer learning) tackles labeled-data scarcity across domains, not privacy at all.\n\n**Takeaway.** Differential privacy adds calibrated (Laplacian) noise so a home is indistinguishable within a group yet data stays useful.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260106-e11",
+    "examId": "AMI20260106",
+    "date": "2026-01-06",
+    "academicYear": "AA2526",
+    "exerciseNo": 11,
+    "type": "theory-essay",
+    "topics": [
+      "energy"
+    ],
+    "prompt": "Monitoring energy consumption in a smart home can be done in two complementary ways, and the data they produce supports energy conservation.\n\n**(a)** Compare Non-Intrusive Load Monitoring (NILM, via smart meters) and Intrusive Load Monitoring (ILM, via smart plugs), including their hardware, granularity and cost/intrusiveness trade-offs.\n\n**(b)** Explain the two main energy-conservation strategies in smart homes (user-oriented and appliance-oriented), and describe how activity recognition / indoor localization can support them.",
+    "solution": "**(a)** Non-Intrusive Load Monitoring relies on a single smart meter that measures the whole home's energy consumption with bi-directional communication and frequent sampling. It is cheap and easy to deploy (one device for the whole home) and non-intrusive, but it cannot directly provide fine-grained per-appliance information, which is why load disaggregation algorithms are needed to recover individual appliance loads. Intrusive Load Monitoring uses smart plugs, each sensing the consumption of a specific plug/appliance and transmitting it (usually over WiFi) to a home IoT gateway. ILM yields very fine-grained per-appliance data directly, but it is more intrusive and costly because a sensor must be installed for each appliance. Thus the trade-off is granularity and accuracy (ILM) versus cost and simplicity (NILM).\n\n**(b)** The user-oriented strategy recognizes the residents' habits, choices and wasteful energy patterns; improving these behaviours reduces the energy load (e.g., via recommendations or visualizations). The appliance-oriented strategy monitors the consumption of appliances and automatically schedules them (or guides the resident) to reduce load, for instance shifting deferrable appliances to off-peak hours. Human Activity Recognition and Indoor Localization support both: they derive the residents' daily habits and locations, which can be matched against energy patterns to personalize recommendations and to feed energy-management algorithms with context (user profile, when appliances are turned on/off, time, weather). This enables either recommendations to the user or automatic interventions for energy saving.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260106-e12",
+    "examId": "AMI20260106",
+    "date": "2026-01-06",
+    "academicYear": "AA2526",
+    "exerciseNo": 12,
+    "type": "theory-essay",
+    "topics": [
+      "energy"
+    ],
+    "prompt": "Load disaggregation (NILM) is a central problem in smart-home energy management.\n\n**(a)** State the load-disaggregation problem formally (using the aggregated-load model) and describe the four categories of appliance load signatures, ordering them by detection difficulty.\n\n**(b)** Explain why deep learning has become the standard solution for NILM, and compare the single-appliance-model approach with the multi-output-model approach, giving advantages and drawbacks of each.",
+    "solution": "**(a)** In load disaggregation, the total aggregated load at time t is modeled as P(t) = (sum over i of Pi(t)) + noise, where Pi(t) is the load of the i-th appliance. Observing only P(t), the goal is to estimate each individual Pi; it is a supervised, multi-output regression problem evaluated, e.g., with Mean Average Error per appliance. The four signature categories are: Type 1, On-Off (single-state) appliances with only two states (e.g., table lamp, toaster), the easiest to detect; Type 2, Multi-State appliances with several states and known transitions (e.g., electric fan, washing machine) showing a repeated pattern; Type 3, Continuously Variable (infinite-state) appliances whose consumption keeps changing (e.g., laptop, electric drill), the most challenging; and Type 4, Permanent Consumer appliances drawing roughly constant power continuously (e.g., refrigerator, TV).\n\n**(b)** Deep learning is now standard because it learns features directly from raw aggregated data (removing the explicit event-detection step), captures complex load signatures and temporal dependencies between appliances, and is more robust to noise and more scalable. Single-appliance models train one network per appliance: each model has a simpler learning task focused on one output, but this incurs high computational cost (a new model per appliance), poor scalability, and no sharing of common patterns. Multi-output models use one network that estimates power for several appliances at once: this gives more efficient training and deployment and shared feature extraction across appliances, but optimization is harder (learning several tasks at once needs more complex models and more data), and adding a new appliance requires modifying the architecture (e.g., a new output head plus fine-tuning).",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260106-e13",
+    "examId": "AMI20260106",
+    "date": "2026-01-06",
+    "academicYear": "AA2526",
+    "exerciseNo": 13,
+    "type": "theory-essay",
+    "topics": [
+      "energy"
+    ],
+    "prompt": "Reinforcement learning is presented as a way to schedule smart-home appliances, and energy data raises privacy concerns.\n\n**(a)** Describe the reinforcement-learning formulation for smart-home energy management: identify the agent, environment, actions and reward, and explain how the user's comfort can be incorporated into the reward.\n\n**(b)** Explain why energy-consumption data is privacy-sensitive and describe the countermeasures discussed in the slides (encryption, differential privacy, trusted platforms).",
+    "solution": "**(a)** In the RL formulation, the agent is the energy-management system, which learns a policy mapping the current home state to an action. The environment provides observations such as energy consumption (e.g., appliance level), other sensor data, time, weather, user activities and the user's comfort level. The actions are energy-saving strategies: switching off low-priority appliances, changing power levels, or deferring appliance usage. The reward is computed automatically by analyzing an action's impact, giving positive values when the action improves comfort and consumption, negative values when it worsens them, and 0 when there is no impact; the agent aims to maximize long-term reward, balancing comfort and energy. The optimization criterion is to maximize comfort while minimizing consumption. Comfort can be incorporated via the average Waiting Time Rate (WTR) of appliance operations (users prefer short delays, so minimizing WTR raises comfort), via environmental conditions affected by appliances (indoor temperature, humidity, air quality), or via emotion/stress recognition tools. The exploration-exploitation balance (e.g., epsilon-greedy) is delicate here because random exploration can hurt comfort, so the module is often pre-trained in a controlled environment and fine-tuned at home.\n\n**(b)** Energy-consumption data is privacy-sensitive because fine-grained usage reveals customer habits and behaviours (which appliances are used and when). Companies could mine these behavioural patterns for their own advantage (targeted marketing, selling aggregate statistics), users have little control over how the data is used, and smart devices like meters can be attacked to manipulate costs or extract sensitive information. Countermeasures from the slides: Encryption schemes protect confidentiality, with techniques allowing computation directly on encrypted data; Differential privacy introduces noise (e.g., Laplacian noise) so a home's data is associated with a group of indistinguishable homes while remaining useful to the operator and preventing inference about specific homes; Trusted platforms run the data analysis inside trusted hardware so outsiders cannot access the raw data.",
+    "solutionSource": "authored"
+  }
+]

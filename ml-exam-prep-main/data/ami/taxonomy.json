@@ -1,0 +1,17 @@
+[
+  { "key": "ami-intro",     "name": "Ambient Intelligence & Context-Awareness", "short": "AmI Intro",   "color": "#2563eb" },
+  { "key": "iot-data",      "name": "IoT & Sensor Data Management",             "short": "IoT/Sensors", "color": "#0891b2" },
+  { "key": "timeseries",    "name": "Time Series Analysis",                     "short": "Time Series", "color": "#0d9488" },
+  { "key": "localization",  "name": "Indoor Localization",                      "short": "Localiz.",    "color": "#65a30d" },
+  { "key": "energy",        "name": "Smart Energy",                             "short": "Energy",      "color": "#ca8a04" },
+  { "key": "har-intro",     "name": "Human Activity Recognition: Foundations",  "short": "HAR Intro",   "color": "#db2777" },
+  { "key": "har-mobile",    "name": "HAR: Mobile & Wearable Sensors",           "short": "HAR Mobile",  "color": "#e11d48" },
+  { "key": "har-smarthome", "name": "HAR: Smart-Home / Ambient Sensors",        "short": "HAR Home",    "color": "#9333ea" },
+  { "key": "multi-har",     "name": "Multi-Inhabitant HAR",                     "short": "Multi-HAR",   "color": "#7c3aed" },
+  { "key": "incremental",   "name": "Incremental / Continual Learning",         "short": "Incremental", "color": "#0ea5e9" },
+  { "key": "transfer",      "name": "Transfer Learning",                        "short": "Transfer",    "color": "#f59e0b" },
+  { "key": "federated",     "name": "Federated Learning",                       "short": "Federated",   "color": "#dc2626" },
+  { "key": "xai",           "name": "Explainable AI (XAI)",                     "short": "XAI",         "color": "#16a34a" },
+  { "key": "genai",         "name": "Generative AI",                            "short": "GenAI",       "color": "#d946ef" },
+  { "key": "gnn",           "name": "Graph Neural Networks",                    "short": "GNNs",        "color": "#475569" }
+]

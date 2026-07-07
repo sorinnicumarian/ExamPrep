@@ -1,0 +1,334 @@
+[
+  {
+    "id": "CI20250612-e1",
+    "examId": "CI20250612",
+    "date": "2025-06-12",
+    "academicYear": "AA2425",
+    "exerciseNo": 1,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["cloud"],
+    "part": "second",
+    "prompt": "Cloud architectures can be deployed on-premises, in a public cloud, or in a hybrid environment.",
+    "subStatements": [
+      {
+        "id": "CI20250612-e1-s1",
+        "statement": "Cloud architectures can be deployed on-premises, in a public cloud, or in a hybrid environment.",
+        "answer": true,
+        "motivation": "The Cloud Computing lecture classifies deployment models as **public**, **private** (on-premises), **hybrid** (and **community**) clouds. A private cloud runs on-premises on dedicated infrastructure, a public cloud is offered by a provider over the Internet, and a hybrid cloud combines both. So all three deployment options are valid."
+      }
+    ],
+    "solution": "See per-statement motivation. The standard cloud deployment models (public / private / hybrid / community) explicitly include on-premises (private), public-cloud and hybrid options — the statement is **True**.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250612-e2",
+    "examId": "CI20250612",
+    "date": "2025-06-12",
+    "academicYear": "AA2425",
+    "exerciseNo": 2,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["servers"],
+    "part": "first",
+    "prompt": "TPUs require specialized software libraries and frameworks to fully utilize their capabilities.",
+    "subStatements": [
+      {
+        "id": "CI20250612-e2-s1",
+        "statement": "TPUs require specialized software libraries and frameworks to fully utilize their capabilities.",
+        "answer": true,
+        "motivation": "TPUs (Tensor Processing Units) are domain-specific accelerators designed for tensor/matrix operations in deep learning. As covered in the server/HW-accelerators material, they are not general-purpose: they are programmed through dedicated software stacks and ML frameworks (e.g. TensorFlow/JAX, XLA compiler) to map computation onto the systolic matrix units. Without such specialized libraries/frameworks they cannot be exploited effectively."
+      }
+    ],
+    "solution": "See per-statement motivation. TPUs are specialized accelerators that depend on dedicated frameworks/compilers to be used — the statement is **True**.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250612-e3",
+    "examId": "CI20250612",
+    "date": "2025-06-12",
+    "academicYear": "AA2425",
+    "exerciseNo": 3,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["virtualization"],
+    "part": "second",
+    "prompt": "Virtualization is only suitable for running non-critical applications and workloads.",
+    "subStatements": [
+      {
+        "id": "CI20250612-e3-s1",
+        "statement": "Virtualization is only suitable for running non-critical applications and workloads.",
+        "answer": false,
+        "motivation": "The Virtualization lecture presents virtualization as the foundation of modern data centers and cloud: it provides isolation, consolidation, live migration, snapshots and high availability. Mission-critical and production workloads (databases, enterprise services, entire cloud IaaS offerings) routinely run on virtual machines. Restricting it to 'non-critical' workloads is false."
+      }
+    ],
+    "solution": "See per-statement motivation. Virtualization is a core technology used for critical/production workloads as well — the statement is **False**.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250612-e4",
+    "examId": "CI20250612",
+    "date": "2025-06-12",
+    "academicYear": "AA2425",
+    "exerciseNo": 4,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["servers"],
+    "part": "first",
+    "prompt": "Blade servers universally reduce hardware expenses, ensuring they cost far less than rack servers in every scenario.",
+    "subStatements": [
+      {
+        "id": "CI20250612-e4-s1",
+        "statement": "Blade servers universally reduce hardware expenses, ensuring they cost far less than rack servers in every scenario.",
+        "answer": false,
+        "motivation": "From the Server lecture, blade servers improve **density**, shared power/cooling and cabling efficiency, but they require a proprietary chassis/enclosure and have a high up-front cost; they are not cheaper than rack servers in *every* scenario. The universal claim ('universally', 'far less', 'in every scenario') is false."
+      }
+    ],
+    "solution": "See per-statement motivation. Blades trade higher density/management for a higher chassis cost; the absolute universal cost claim is **False**.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250612-e5",
+    "examId": "CI20250612",
+    "date": "2025-06-12",
+    "academicYear": "AA2425",
+    "exerciseNo": 5,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["servers"],
+    "part": "first",
+    "prompt": "FPGAs are widely adopted for all large-scale HPC and AI workloads, replacing GPUs in most scenarios.",
+    "subStatements": [
+      {
+        "id": "CI20250612-e5-s1",
+        "statement": "FPGAs are widely adopted for all large-scale HPC and AI workloads, replacing GPUs in most scenarios.",
+        "answer": false,
+        "motivation": "Per the HW-accelerators material, FPGAs are reconfigurable devices useful for specific low-latency / custom-dataflow tasks, but GPUs (and TPUs) dominate large-scale HPC and deep-learning training/inference because of their high throughput and mature software ecosystems. FPGAs have not replaced GPUs in most scenarios; the universal claim is false."
+      }
+    ],
+    "solution": "See per-statement motivation. GPUs/TPUs remain dominant for large-scale HPC/AI; FPGAs have not replaced them — the statement is **False**.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250612-e6",
+    "examId": "CI20250612",
+    "date": "2025-06-12",
+    "academicYear": "AA2425",
+    "exerciseNo": 6,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["dc-intro"],
+    "part": "first",
+    "prompt": "Edge computing nodes often cache and compute on locally produced data to reduce latency and congestion.",
+    "subStatements": [
+      {
+        "id": "CI20250612-e6-s1",
+        "statement": "Edge computing nodes often cache and compute on locally produced data to reduce latency and congestion.",
+        "answer": true,
+        "motivation": "The edge/fog computing material defines the edge as processing data close to where it is generated. By caching and computing locally, edge nodes cut the round-trip to the central cloud, lowering latency and reducing the volume of data sent over the network (congestion). This is exactly the motivation for the cloud–edge continuum."
+      }
+    ],
+    "solution": "See per-statement motivation. Local caching/compute at the edge to reduce latency and network congestion is the defining purpose of edge computing — the statement is **True**.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250612-e7",
+    "examId": "CI20250612",
+    "date": "2025-06-12",
+    "academicYear": "AA2425",
+    "exerciseNo": 7,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["storage-systems"],
+    "part": "second",
+    "prompt": "Data centers require specialized fire suppression systems.",
+    "subStatements": [
+      {
+        "id": "CI20250612-e7-s1",
+        "statement": "Data centers require specialized fire suppression systems.",
+        "answer": true,
+        "motivation": "The Building Infrastructures lecture covers facility-level systems (cooling, power, failure recovery, safety). Because water-based sprinklers would destroy electronics, data centers use specialized fire-suppression (e.g. clean-agent/inert-gas systems such as FM-200 / Novec / Inergen) that extinguish fire without damaging IT equipment. So specialized fire-suppression systems are indeed required."
+      }
+    ],
+    "solution": "See per-statement motivation. Data centers use clean-agent/gas-based fire-suppression rather than ordinary water sprinklers — the statement is **True**.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250612-e8",
+    "examId": "CI20250612",
+    "date": "2025-06-12",
+    "academicYear": "AA2425",
+    "exerciseNo": 8,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["storage-systems"],
+    "part": "second",
+    "prompt": "DAS storage provides low throughput due to its reliance on a shared network.",
+    "subStatements": [
+      {
+        "id": "CI20250612-e8-s1",
+        "statement": "DAS storage provides low throughput due to its reliance on a shared network.",
+        "answer": false,
+        "motivation": "From the Storage Systems lecture, **DAS (Direct-Attached Storage)** is connected directly to a single host via a local bus (SATA/SAS/PCIe) and does **not** rely on a shared network at all — that is the distinguishing feature versus NAS (file over LAN) and SAN (block over dedicated network). DAS therefore offers high, low-latency local throughput; the statement's premise is wrong."
+      }
+    ],
+    "solution": "See per-statement motivation. DAS is directly attached (no shared network) and gives high local throughput — the statement is **False**.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250612-e9",
+    "examId": "CI20250612",
+    "date": "2025-06-12",
+    "academicYear": "AA2425",
+    "exerciseNo": 9,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["storage-systems"],
+    "part": "second",
+    "prompt": "Direct open-loop cooling is most suitable for hot, humid climates.",
+    "subStatements": [
+      {
+        "id": "CI20250612-e9-s1",
+        "statement": "Direct open-loop cooling is most suitable for hot, humid climates.",
+        "answer": false,
+        "motivation": "The Building Infrastructures lecture describes the open-loop topology as **fresh-air / free cooling** ('opening the windows'): it draws outside air to cool the servers directly. The critical comparison states fresh-air cooling 'can be very efficient but does not work in all climates'. It is suited to **cool, dry** climates; in hot, humid climates the outside air is too warm and moist to cool the equipment, so open-loop is the worst choice there. The statement is false."
+      }
+    ],
+    "solution": "See per-statement motivation. Open-loop (free/fresh-air) cooling is best in cool, dry climates, not hot humid ones — the statement is **False**.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250612-e10",
+    "examId": "CI20250612",
+    "date": "2025-06-12",
+    "academicYear": "AA2425",
+    "exerciseNo": 10,
+    "marks": 1,
+    "type": "true-false-motivated",
+    "topics": ["raid"],
+    "part": "second",
+    "prompt": "RAID 5 uses parity data to provide fault tolerance.",
+    "subStatements": [
+      {
+        "id": "CI20250612-e10-s1",
+        "statement": "RAID 5 uses parity data to provide fault tolerance.",
+        "answer": true,
+        "motivation": "From the RAID lecture, **RAID 5** uses block-level striping with a single block of **distributed parity** spread across all disks. The parity allows reconstruction of the data of any single failed disk, so RAID 5 tolerates exactly one disk failure. Hence it provides fault tolerance through parity — the statement is True."
+      }
+    ],
+    "solution": "See per-statement motivation. RAID 5 = striping with distributed parity, tolerating one disk failure — the statement is **True**.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250612-e11",
+    "examId": "CI20250612",
+    "date": "2025-06-12",
+    "academicYear": "AA2425",
+    "exerciseNo": 11,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["storage-devices"],
+    "part": "first",
+    "prompt": "Disk request queue (cylinders): **65, 23, 58, 48, 39**. The head starts at cylinder **53** and is moving from outside (higher cylinder number) to inside (lower cylinder number). No further requests arrive. Using the **SCAN** scheduling algorithm, give the order in which the requests are served (first to last), referring to each request by its cylinder number.",
+    "solution": "**Method (SCAN / elevator).** SCAN keeps moving in the current direction, serving every request it passes, until it reaches the **edge of the disk**; then it reverses and serves the remaining requests on the way back.\n\nStart at **53**, direction = **toward the inside** (decreasing cylinder).\n\n1. Going down, sort the requests below 53 in decreasing order: $48 \\to 39 \\to 23$.\n2. Continue to the inner edge (cylinder 0) and **reverse**.\n3. Now going up, serve the requests above 53 in increasing order: $58 \\to 65$.\n\n**Served order (first → last):**\n$$48,\\; 39,\\; 23,\\; 58,\\; 65$$",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250612-e12",
+    "examId": "CI20250612",
+    "date": "2025-06-12",
+    "academicYear": "AA2425",
+    "exerciseNo": 12,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["dependability"],
+    "part": "first",
+    "prompt": "A system of 6 components has the RBD: **A** in series with a central parallel block, in series with **D**. The central parallel block has three parallel branches: (i) **B–B** in series, (ii) a single **C**, (iii) a single **C**. Availabilities: $Av_A = Av_B = 0.8$, $Av_C = 0.7$, $Av_D = 0.9$. Compute the availability of the whole system (use at least 4 decimals).",
+    "solution": "**Method (RBD composition):** series blocks multiply, parallel blocks combine as $1-\\prod_i(1-A_i)$.\n\n**Series branch B–B:**\n$$A_{BB} = Av_B \\cdot Av_B = 0.8 \\times 0.8 = 0.64$$\n\n**Central parallel block** (branches $A_{BB}=0.64$, $C=0.7$, $C=0.7$):\n$$A_{mid} = 1 - (1-0.64)(1-0.7)(1-0.7) = 1 - (0.36)(0.30)(0.30)$$\n$$= 1 - 0.0324 = 0.9676$$\n\n**Whole system** (A — mid — D in series):\n$$A_{sys} = Av_A \\cdot A_{mid} \\cdot Av_D = 0.8 \\times 0.9676 \\times 0.9$$\n$$\\boxed{A_{sys} = 0.6967\\ (\\approx 69.67\\%)}$$",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250612-e13",
+    "examId": "CI20250612",
+    "date": "2025-06-12",
+    "academicYear": "AA2425",
+    "exerciseNo": 13,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["dependability"],
+    "part": "first",
+    "prompt": "A server has **2 CPUs** and **4 GPUs**, with $MTTF_{CPU}=380$ days and $MTTF_{GPU}=260$ days. The computation needs **both CPUs** and **one (any) of the GPUs** to work. All other components are ideal. Compute the reliability after half a year, $R(0.5\\,\\text{y})$ (at least 4 decimals in intermediate steps).",
+    "solution": "**Method.** Exponential reliability $R(t)=e^{-t/MTTF}$. The two CPUs are in **series** (both needed); the four GPUs form a **parallel / 1-of-4** block (any one suffices). The two blocks are in series.\n\n$t = 0.5\\ \\text{y} = 182.5\\ \\text{days}$.\n\n**Single-component reliabilities:**\n$$R_{CPU}=e^{-182.5/380}=e^{-0.4803}=0.6186$$\n$$R_{GPU}=e^{-182.5/260}=e^{-0.7019}=0.4956$$\n\n**Two CPUs in series (both required):**\n$$R_{2CPU}=R_{CPU}^2=0.6186^2=0.3827$$\n\n**Four GPUs, 1-of-4 (parallel):**\n$$R_{GPU\\,block}=1-(1-R_{GPU})^4=1-(0.5044)^4=1-0.0647=0.9353$$\n\n**System (series of the two blocks):**\n$$R_{sys}=R_{2CPU}\\cdot R_{GPU\\,block}=0.3827 \\times 0.9353$$\n$$\\boxed{R(0.5\\,\\text{y}) \\approx 0.3579\\ (\\approx 35.79\\%)}$$",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250612-e14",
+    "examId": "CI20250612",
+    "date": "2025-06-12",
+    "academicYear": "AA2425",
+    "exerciseNo": 14,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["performance"],
+    "part": "second",
+    "prompt": "A video-rendering system has three stations: GPU Server (GS), Model Cache Server (MCS), Frame Buffer Server (FBS).\n- $S_{GS}=20$ s, $V_{GS}=21$ visits\n- $S_{MCS}=40$ s, $V_{MCS}=12$ visits\n- $S_{FBS}=10$ s, $V_{FBS}=80$ visits\n\n$N=5$ users, think time $Z=600$ s. **Which station is the system bottleneck (GS, MCS or FBS)?**",
+    "solution": "**Method.** The bottleneck is the station with the largest **service demand** $D_k = V_k \\cdot S_k$ (it has the highest utilization and limits throughput).\n\n$$D_{GS}=V_{GS}\\,S_{GS}=21 \\times 20 = 420\\ \\text{s}$$\n$$D_{MCS}=V_{MCS}\\,S_{MCS}=12 \\times 40 = 480\\ \\text{s}$$\n$$D_{FBS}=V_{FBS}\\,S_{FBS}=80 \\times 10 = 800\\ \\text{s}$$\n\n$D_{max}=\\max\\{420,480,800\\}=800\\ \\text{s}$ at FBS.\n\n$$\\boxed{\\text{Bottleneck} = \\textbf{FBS}\\ (D_{max}=800\\ \\text{s})}$$",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250612-e15",
+    "examId": "CI20250612",
+    "date": "2025-06-12",
+    "academicYear": "AA2425",
+    "exerciseNo": 15,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["performance"],
+    "part": "second",
+    "prompt": "For the system of Question 14 ($D_{GS}=420$ s, $D_{MCS}=480$ s, $D_{FBS}=800$ s, $D=1700$ s, $Z=600$ s), compute: a) the **maximum system throughput** in jobs/min; b) the **minimum response time** in minutes.",
+    "solution": "**Method (asymptotic bounds).** $X_{max}=\\dfrac{1}{D_{max}}$ and $R_{min}=D=\\sum_k D_k$ (the optimistic bounds, reached when there is no queueing).\n\n**a) Maximum throughput.**\n$$X_{max}=\\frac{1}{D_{max}}=\\frac{1}{800\\ \\text{s}}=0.00125\\ \\text{jobs/s}$$\n$$X_{max}=0.00125 \\times 60 = \\boxed{0.075\\ \\text{jobs/min}}$$\n\n**b) Minimum response time.**\n$$R_{min}=D=D_{GS}+D_{MCS}+D_{FBS}=420+480+800=1700\\ \\text{s}$$\n$$R_{min}=\\frac{1700}{60}= \\boxed{28.33\\ \\text{min}}$$",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250612-e16",
+    "examId": "CI20250612",
+    "date": "2025-06-12",
+    "academicYear": "AA2425",
+    "exerciseNo": 16,
+    "marks": 2,
+    "type": "numerical-computation",
+    "topics": ["performance"],
+    "part": "second",
+    "prompt": "For the system of Question 14 you may add **exactly one** additional server, duplicating one of GS, MCS or FBS. The new server is identical (homogeneous) and the visits (workload) are split **evenly** between the two copies; all other metrics stay the same. a) Which server do you duplicate? b) What is the new **minimum response time** in minutes?",
+    "solution": "**Method.** Duplicating a station and splitting its visits halves that station's per-server service demand, which lowers $D_{max}$ and raises the throughput bound $X_{max}=1/D_{max}$. To improve performance you must duplicate the current **bottleneck**.\n\nCurrent demands: $D_{GS}=420$, $D_{MCS}=480$, $D_{FBS}=800$ s. The bottleneck is **FBS**.\n\n**a) Duplicate FBS.** Each FBS copy now sees $V_{FBS}/2 = 40$ visits:\n$$D_{FBS,\\text{each}} = 40 \\times 10 = 400\\ \\text{s per copy}$$\nNew demands: GS = 420, MCS = 480, FBS-copy = 400, FBS-copy = 400. The new bottleneck becomes **MCS** with $D_{max}'=480$ s, and $X_{max}'=1/480 \\times 60 = 0.125$ jobs/min (improved from 0.075).\n\n**b) New minimum response time.** $R_{min}=D=\\sum_k D_k$ counts the total service a job demands. Splitting the 80 FBS visits across two servers (40+40) does not change the total FBS work a job performs ($40\\times10+40\\times10=800$ s):\n$$R_{min}=420+480+400+400=1700\\ \\text{s}=\\boxed{28.33\\ \\text{min}}$$\n\nSo duplicating FBS does **not** reduce the optimistic minimum response time (it stays $D=1700$ s $=28.33$ min); its benefit is removing the FBS bottleneck and raising the maximum throughput from 0.075 to 0.125 jobs/min.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250612-e17",
+    "examId": "CI20250612",
+    "date": "2025-06-12",
+    "academicYear": "AA2425",
+    "exerciseNo": 17,
+    "marks": 5,
+    "type": "theory-essay",
+    "topics": ["dc-intro", "servers", "networking"],
+    "part": "first",
+    "prompt": "Deep learning is transforming data-center technology. From a technological standpoint, how would you design a data center purpose-built for deep-learning workloads?",
+    "solution": "A deep-learning (DL) data center is **accelerator-centric, bandwidth-rich and power/cooling-intensive**. Key design choices grounded in the course material:\n\n**1. Compute / accelerators.** DL training/inference is dominated by dense matrix/tensor math, so the building block is the **GPU/TPU**, not general-purpose CPUs. Servers pack many accelerators per node; CPUs act as hosts/orchestrators. Domain-specific accelerators (TPUs) and high-memory GPUs (HBM) maximize FLOPS/Watt.\n\n**2. Intra-node interconnect.** Multi-GPU training needs very high-bandwidth, low-latency GPU-to-GPU links. Use **NVLink / NVSwitch** (and high-speed PCIe) inside a node so the accelerators behave like one large device, avoiding the PCIe bottleneck.\n\n**3. Inter-node network.** Distributed training exchanges large gradient tensors (all-reduce), so the fabric must be **high-bandwidth, low-latency and non-blocking** — e.g. RDMA/InfiniBand or 100/400 GbE in a **fat-tree / Clos** topology with full bisection bandwidth, so any-to-any communication does not bottleneck collective operations.\n\n**4. Storage.** Training reads huge datasets repeatedly; provide a fast tiered storage hierarchy (NVMe SSD local scratch + high-throughput shared NAS/parallel file system) to keep the accelerators fed and avoid I/O starvation.\n\n**5. Power & density.** DL accelerators have very high TDP (hundreds of W each), giving very high **power density per rack**. Design for high per-rack power delivery, redundant power (UPS + generators), and accept a higher overall power draw — optimize **PUE** because energy is a dominant cost.\n\n**6. Cooling.** Because air cooling struggles at these densities, use **liquid cooling** (cold plates on the GPUs/TPUs, as used for Google TPUs and high-TDP GPUs), possibly in-row/in-rack heat exchangers, while air-cooling lower-power components. This isolates and removes heat from the hottest components efficiently.\n\n**7. Scale-out / WSC mindset.** Treat the facility as a **warehouse-scale computer**: homogeneous accelerator nodes, software for job scheduling and fault tolerance, and elasticity to share the cluster among training and inference jobs.\n\nIn short: GPUs/TPUs + NVLink intra-node + a fat-tree RDMA fabric inter-node + fast tiered storage + high-density power + liquid cooling, all engineered for the communication- and energy-intensive nature of deep learning.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "CI20250612-e18",
+    "examId": "CI20250612",
+    "date": "2025-06-12",
+    "academicYear": "AA2425",
+    "exerciseNo": 18,
+    "marks": 5,
+    "type": "theory-essay",
+    "topics": ["raid"],
+    "part": "second",
+    "prompt": "In a data-center storage context, focusing exclusively on **write performance**, under what circumstances would you choose **RAID 1+0** and under what circumstances **RAID 5**? Explain your reasoning.",
+    "solution": "The decision hinges on the **small-write penalty** of parity RAID versus the simple mirroring of RAID 1+0.\n\n**RAID 1+0 (stripe of mirrors).** A write must be written to **both disks of a mirror** (2 physical writes per logical write), but there is **no parity to recompute**. There is no read-modify-write cycle, so write latency is low and write throughput scales with the number of mirror pairs. It is the best choice for **write-intensive, latency-sensitive workloads with many small random writes** — e.g. transactional databases, OLTP, write-heavy logging/metadata, virtualization hosts. The cost is **50% capacity overhead** (half the raw capacity is used for mirrors).\n\n**RAID 5 (striping + distributed parity).** Each small (sub-stripe) write incurs the classic **read-modify-write penalty**: to update one data block the controller must (1) read the old data, (2) read the old parity, (3) write the new data, (4) write the new parity — roughly **4 I/O operations per single write**. This makes RAID 5 poor for small random writes. However, parity costs only **one disk of overhead** (capacity-efficient), and for **large sequential / full-stripe writes** parity can be computed once for the whole stripe, so the penalty is amortized and throughput is good.\n\n**Decision (write-focused):**\n- Choose **RAID 1+0** when writes dominate, are small and random, and **low write latency / high write IOPS** matter more than capacity — accepting the 50% space cost.\n- Choose **RAID 5** when writes are mostly **large/sequential (full-stripe)** or the workload is read-mostly, and **capacity efficiency / cost** is the priority, so the small-write penalty is rarely triggered.",
+    "solutionSource": "authored"
+  }
+]

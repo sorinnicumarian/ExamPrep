@@ -1,0 +1,737 @@
+[
+  {
+    "id": "AMI20260603-e1",
+    "examId": "AMI20260603",
+    "date": "2026-06-03",
+    "academicYear": "AA2526",
+    "exerciseNo": 1,
+    "type": "multiple-choice",
+    "topics": [
+      "ami-intro"
+    ],
+    "prompt": "According to the course, why do traditional software applications struggle compared to context-aware Ambient Intelligence systems?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "They sense the surrounding context automatically but lack the actuators needed to respond to it appropriately"
+      },
+      {
+        "label": "B",
+        "text": "They process every single request remotely in the cloud, so the added latency makes interaction feel sluggish"
+      },
+      {
+        "label": "C",
+        "text": "They cannot grasp a request's context, so the user must spell out every parameter on limited interfaces"
+      },
+      {
+        "label": "D",
+        "text": "They adapt to the user's current situation but cannot connect the many heterogeneous devices around them"
+      }
+    ],
+    "correctChoice": "C",
+    "solution": "**Concept.** Context is the implicit situation around a request: who, where, when, doing what. Traditional software has no sense of it, so the user must spell out every parameter by hand, which is painful on devices with tiny or no interfaces. Ambient Intelligence instead senses context automatically and adapts, so much of the request is inferred rather than typed.\n\n**Why C is correct.** It pinpoints the gap: traditional apps cannot understand context, forcing the user to make all parameters explicit despite limited interfaces.\n\n**Why the others are wrong.** A credits traditional apps with automatic context sensing, which is exactly the capability they lack. B blames cloud latency, a deployment detail, not the context gap. D says they adapt to the user's situation, which is the AmI behavior, not the traditional one.\n\n**Takeaway.** Traditional apps lack context, so users must specify everything; AmI infers context for them.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260603-e2",
+    "examId": "AMI20260603",
+    "date": "2026-06-03",
+    "academicYear": "AA2526",
+    "exerciseNo": 2,
+    "type": "multiple-choice",
+    "topics": [
+      "iot-data"
+    ],
+    "prompt": "What distinguishes an analog sensor from a digital sensor in the course?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Analog sensors output a ready digital signal directly; digital sensors output a continuous voltage that an external ADC must then convert"
+      },
+      {
+        "label": "B",
+        "text": "Analog sensors must connect to the gateway over a wireless link; digital sensors must instead be physically wired to it"
+      },
+      {
+        "label": "C",
+        "text": "Analog sensors are inherently more accurate in every case; digital sensors trade away that accuracy for a lower unit cost"
+      },
+      {
+        "label": "D",
+        "text": "Analog sensors return a voltage an ADC must digitalize; digital sensors output a digital signal directly"
+      }
+    ],
+    "correctChoice": "D",
+    "solution": "**Concept.** The split is about the output format. An analog sensor produces a continuous voltage that is the analog representation of the measured quantity; to be processed it must pass through an ADC to become digital. A digital sensor already outputs a digital signal, either because it only reports discrete states (e.g., ON/OFF) or because it has an ADC built in.\n\n**Why D is correct.** It correctly says analog sensors give a voltage needing an ADC, while digital sensors output a digital signal (two-state or via built-in ADC).\n\n**Why the others are wrong.** A swaps the two outputs. B invents a wired-versus-wireless distinction that has nothing to do with the analog/digital split. C makes up an accuracy-versus-cost trade-off; the defining difference is the signal format, not precision.\n\n**Takeaway.** Analog sensor = continuous voltage needing an ADC; digital sensor = ready digital output.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260603-e3",
+    "examId": "AMI20260603",
+    "date": "2026-06-03",
+    "academicYear": "AA2526",
+    "exerciseNo": 3,
+    "type": "multiple-choice",
+    "topics": [
+      "timeseries"
+    ],
+    "prompt": "The course warns not to confuse 'outlier detection' with 'anomaly detection' in time series. What is the distinction?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Outlier detection cleans away anomalous points; anomaly detection targets anomalous events of interest"
+      },
+      {
+        "label": "B",
+        "text": "Outlier detection flags the events of interest to act on; anomaly detection removes noisy points before analysis"
+      },
+      {
+        "label": "C",
+        "text": "Outlier detection handles only single points; anomaly detection handles only whole anomalous subsequences"
+      },
+      {
+        "label": "D",
+        "text": "Outlier detection is always unsupervised; anomaly detection is always supervised with pre-labeled faults"
+      }
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** Both find unusual points, but the intent differs. Outlier detection treats oddities as noise or errors to be cleaned away before analysis. Anomaly detection treats oddities as the signal of interest, the rare events you actually want to catch (a fault, a fall, an intrusion). The same unusual reading might be 'junk to remove' in one task and 'the thing we're hunting' in another, so the distinction is subtle and application-dependent.\n\n**Why A is correct.** It maps outlier detection to data cleaning and anomaly detection to events of interest, the distinction the course draws (subtle and application-dependent).\n\n**Why the others are wrong.** B swaps the two roles. C invents a point-versus-subsequence rule; both tasks can target either granularity. D claims a supervised-versus-unsupervised split, which is not the distinction the course draws.\n\n**Takeaway.** Outliers = noise to clean; anomalies = events of interest to catch.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260603-e4",
+    "examId": "AMI20260603",
+    "date": "2026-06-03",
+    "academicYear": "AA2526",
+    "exerciseNo": 4,
+    "type": "multiple-choice",
+    "topics": [
+      "localization"
+    ],
+    "prompt": "The course says accuracy of an IPS can be measured with RMSD or Average Absolute Position Deviation. When is the Average Absolute Position Deviation preferred?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "When the error distribution is roughly normal, so squaring each error before averaging is appropriate"
+      },
+      {
+        "label": "B",
+        "text": "When a few large errors should not dominate the score, i.e., robustness to outliers matters"
+      },
+      {
+        "label": "C",
+        "text": "When you want to penalize large errors much more heavily than small ones in the score"
+      },
+      {
+        "label": "D",
+        "text": "When the positioning is computed by fingerprinting rather than by RSSI trilateration"
+      }
+    ],
+    "correctChoice": "B",
+    "solution": "**Concept.** Both metrics summarize positioning error, but they weight large errors differently. RMSD squares each error before averaging, so a few big mistakes dominate, fine when errors are roughly normal. Average Absolute Position Deviation averages the raw distances, so a single huge error does not blow it up, making it more robust to outliers.\n\n**Why B is correct.** When you want robustness to outliers, the average absolute deviation is preferred precisely because it does not square (over-penalize) large errors.\n\n**Why the others are wrong.** A (roughly normal errors) is the case that favors RMSD. C (penalize large errors more) is exactly what RMSD's squaring does, the opposite goal. D ties the metric choice to fingerprinting vs trilateration, but the metric is independent of which positioning technique produced the estimate.\n\n**Takeaway.** Use average absolute deviation for outlier robustness; RMSD when errors are normal.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260603-e5",
+    "examId": "AMI20260603",
+    "date": "2026-06-03",
+    "academicYear": "AA2526",
+    "exerciseNo": 5,
+    "type": "multiple-choice",
+    "topics": [
+      "energy"
+    ],
+    "prompt": "Which statement best characterizes a smart grid compared to a traditional grid, according to the course?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "It keeps the traditional one-way flow but adds smart meters that report consumption to the utility once a month"
+      },
+      {
+        "label": "B",
+        "text": "It forecasts each home's load so that power can flow from central plants to passive consumers more efficiently"
+      },
+      {
+        "label": "C",
+        "text": "It integrates all users (generators and consumers) via two-way exchange and is self-healing and resilient"
+      },
+      {
+        "label": "D",
+        "text": "It disaggregates household appliance usage centrally so the utility can itemize and bill each separate device"
+      }
+    ],
+    "correctChoice": "C",
+    "solution": "**Concept.** A traditional grid is one-way: power flows from a few central plants to passive consumers, with little feedback. A smart grid adds information and communication technology so it intelligently coordinates all participants, including consumers who now also generate (solar, batteries). With two-way information exchange it becomes self-healing, adaptive, resilient, and sustainable.\n\n**Why C is correct.** It captures the essentials: integrating generators and consumers, two-way exchange, and the self-healing/resilient (and adaptive) properties.\n\n**Why the others are wrong.** A keeps the one-way flow and treats consumers as passive, which is the traditional grid plus a meter, not a smart grid. B still describes one-way delivery to passive consumers, missing the two-way, all-user integration. D names load disaggregation (NILM), a real technique used on the grid, but that is one analytics task, not what defines a smart grid.\n\n**Takeaway.** Smart grid = two-way, all-user-integrated, self-healing and adaptive, unlike the one-way traditional grid.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260603-e6",
+    "examId": "AMI20260603",
+    "date": "2026-06-03",
+    "academicYear": "AA2526",
+    "exerciseNo": 6,
+    "type": "multiple-choice",
+    "topics": [
+      "har-intro"
+    ],
+    "prompt": "Which of the following is an application of Human Activity Recognition explicitly discussed in the course?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Forecasting a home's future electricity load in order to schedule its appliances at off-peak hours"
+      },
+      {
+        "label": "B",
+        "text": "Healthcare monitoring of fragile subjects to catch early symptoms of pathologies like cognitive decline"
+      },
+      {
+        "label": "C",
+        "text": "Estimating a device's indoor position from the RSSI fingerprints it collects across the rooms"
+      },
+      {
+        "label": "D",
+        "text": "Compressing the raw sensor streams so that the gateway can forward them on to the cloud cheaply"
+      }
+    ],
+    "correctChoice": "B",
+    "solution": "**Concept.** HAR infers what a person is doing from sensor data, which is valuable wherever knowing someone's activity matters. A flagship application is healthcare/ambient assisted living: continuously and remotely monitoring fragile subjects (e.g., the elderly) to support daily living and catch early signs of conditions like cognitive decline. Other course examples include well-being, sports, industrial safety, surveillance, and domotics.\n\n**Why B is correct.** Healthcare monitoring of fragile subjects to detect early pathology symptoms is a core HAR application discussed in the course.\n\n**Why the others are wrong.** A (load forecasting) is a smart-energy task, not activity recognition. C (RSSI fingerprinting) is indoor localization. D (compressing streams at the gateway) is a data-management role. Each is a real AmI topic, but none is an application of HAR.\n\n**Takeaway.** HAR's headline use is healthcare monitoring of fragile people, not other AmI tasks like localization or energy forecasting.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260603-e7",
+    "examId": "AMI20260603",
+    "date": "2026-06-03",
+    "academicYear": "AA2526",
+    "exerciseNo": 7,
+    "type": "multiple-choice",
+    "topics": [
+      "har-mobile"
+    ],
+    "prompt": "What does a gyroscope measure on a mobile/wearable device, and what does it help reveal for HAR?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Angular speed on three axes, revealing changes in direction and orientation"
+      },
+      {
+        "label": "B",
+        "text": "Linear acceleration on three axes, revealing the direction of gravity"
+      },
+      {
+        "label": "C",
+        "text": "The ambient magnetic field on three axes, revealing the device's compass heading"
+      },
+      {
+        "label": "D",
+        "text": "The barometric pressure, revealing changes in the device's altitude"
+      }
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** Inertial sensors each measure a different aspect of motion. The gyroscope measures angular speed (rotation rate) about three axes, so it captures how fast and in which direction the device is turning. For HAR this reveals changes in orientation and direction, complementing the accelerometer's linear motion.\n\n**Why A is correct.** It states the gyroscope measures 3-axis angular speed and reveals changes in direction/orientation.\n\n**Why the others are wrong.** B (linear acceleration, gravity) describes the accelerometer. C (magnetic field, heading) describes the magnetometer. D (barometric pressure, altitude) describes a barometer, not the gyroscope.\n\n**Takeaway.** Gyroscope = angular speed on three axes, revealing rotation and direction change.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260603-e8",
+    "examId": "AMI20260603",
+    "date": "2026-06-03",
+    "academicYear": "AA2526",
+    "exerciseNo": 8,
+    "type": "multiple-choice",
+    "topics": [
+      "har-smarthome"
+    ],
+    "prompt": "How can a smart plug be used as a binary sensor for smart-home HAR, even though it can measure detailed power usage?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "By reporting the exact wattage each second and letting the classifier learn the raw consumption curve"
+      },
+      {
+        "label": "B",
+        "text": "By disaggregating the home's aggregate load to attribute power to the individual appliance"
+      },
+      {
+        "label": "C",
+        "text": "By thresholding the measured power so a reading above a small cutoff counts as ON, below as OFF"
+      },
+      {
+        "label": "D",
+        "text": "By timestamping the moments the appliance is plugged in and unplugged from the socket"
+      }
+    ],
+    "correctChoice": "C",
+    "solution": "**Concept.** A smart plug measures the continuous power an appliance draws. For HAR you often do not need the exact wattage, only whether the appliance is in use. By applying a threshold, e.g., power above a small cutoff means ON, below means OFF, you collapse the continuous reading into a simple binary state, turning the smart plug into a binary activity sensor.\n\n**Why C is correct.** Thresholding the measured power to decide ON vs OFF is exactly how a smart plug becomes a binary sensor.\n\n**Why the others are wrong.** A uses the full continuous wattage curve, the opposite of reducing it to a binary state. B describes load disaggregation (NILM), a different technique on the aggregate signal, not on one plug. D records plug/unplug events, but the plug stays connected; the binary state comes from the power level, not connection events.\n\n**Takeaway.** Threshold a smart plug's power reading to get a binary ON/OFF appliance state.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260603-e9",
+    "examId": "AMI20260603",
+    "date": "2026-06-03",
+    "academicYear": "AA2526",
+    "exerciseNo": 9,
+    "type": "multiple-choice",
+    "topics": [
+      "multi-har"
+    ],
+    "prompt": "Which sensing modality does the course say would be great for multi-subject HAR but is typically avoided, and why?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Wearable accelerometers, because residents cannot be relied on to keep wearing their devices"
+      },
+      {
+        "label": "B",
+        "text": "Magnetic door/contact sensors, because they cannot be associated with a specific inhabitant"
+      },
+      {
+        "label": "C",
+        "text": "Smart plugs, because several people may use the same appliance at once"
+      },
+      {
+        "label": "D",
+        "text": "Camera-based solutions, because they may be perceived as too privacy-intrusive"
+      }
+    ],
+    "correctChoice": "D",
+    "solution": "**Concept.** Cameras can see multiple people at once and even tell them apart, which would neatly solve multi-inhabitant recognition and the data-association problem. But continuous video of people inside their home is felt as deeply privacy-invasive, especially for vulnerable residents. So despite their power, cameras are usually avoided and the course relies on less intrusive environmental sensors.\n\n**Why D is correct.** It names camera-based solutions as great for multi-subject HAR but typically avoided for being too privacy-intrusive.\n\n**Why the others are wrong.** A, B, and C each name a real limitation of those sensors for multi-inhabitant settings (wearable compliance, data association, shared appliances), but the question asks for the modality that would be great yet is avoided for being intrusive, which is the camera, not these.\n\n**Takeaway.** Cameras would excel at multi-subject HAR but are avoided as too privacy-intrusive.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260603-e10",
+    "examId": "AMI20260603",
+    "date": "2026-06-03",
+    "academicYear": "AA2526",
+    "exerciseNo": 10,
+    "type": "multiple-choice",
+    "topics": [
+      "incremental"
+    ],
+    "prompt": "In incremental (online) learning, how is the model kept up to date with an evolving data stream?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "By storing the whole history and retraining the model from scratch on the full dataset each period"
+      },
+      {
+        "label": "B",
+        "text": "By periodically updating the existing classifier on new mini-batches, with no retraining from scratch"
+      },
+      {
+        "label": "C",
+        "text": "By keeping the first-trained model frozen and routing new patterns to a separate rule-based filter"
+      },
+      {
+        "label": "D",
+        "text": "By transferring the model over to a fresh new source domain whenever the data distribution starts to shift"
+      }
+    ],
+    "correctChoice": "B",
+    "solution": "**Concept.** Incremental (online) learning keeps a single model that learns continuously. As new labeled data arrives from the stream, it updates the existing classifier with small mini-batches rather than starting over. This lets the model absorb new patterns, classes, and domains cheaply and stay current without ever storing or reprocessing the whole history.\n\n**Why B is correct.** It describes exactly this: periodic mini-batch updates of the classifier without retraining from scratch.\n\n**Why the others are wrong.** A (store everything and retrain from scratch) is the non-scalable approach incremental learning is designed to avoid. C freezes the model and bolts on a rule-based filter, so the model itself never adapts. D invokes transfer learning to a new source domain, a different paradigm that does not describe continuous on-stream updating.\n\n**Takeaway.** Incremental learning updates the model on new mini-batches, never retraining from scratch.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260603-e11",
+    "examId": "AMI20260603",
+    "date": "2026-06-03",
+    "academicYear": "AA2526",
+    "exerciseNo": 11,
+    "type": "multiple-choice",
+    "topics": [
+      "transfer"
+    ],
+    "prompt": "Within data-based transfer learning, what distinguishes instance-based from feature-based transfer?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Instance-based finds a shared latent feature space; feature-based reweights the source samples by similarity"
+      },
+      {
+        "label": "B",
+        "text": "Instance-based reuses learned source parameters (fine-tuning); feature-based adds regularizers to the loss"
+      },
+      {
+        "label": "C",
+        "text": "Instance-based selects which source labels to keep; feature-based selects which source features to drop"
+      },
+      {
+        "label": "D",
+        "text": "Instance-based reweights source samples by target similarity; feature-based finds common latent features"
+      }
+    ],
+    "correctChoice": "D",
+    "solution": "**Concept.** Data-based transfer learning adapts the data, and has two flavors. Instance-based: keep the source samples but reweight them, giving more weight to those most similar to the target, to correct distribution mismatch. Feature-based: transform both domains into a shared low-dimensional latent feature space where they look alike, while preserving the data's structure.\n\n**Why D is correct.** It correctly pairs instance-based with reweighting source samples and feature-based with finding a common latent feature space.\n\n**Why the others are wrong.** A swaps the two roles. B (reusing parameters via fine-tuning, adding regularizers) describes model-based strategies (parameter control and model control), not data-based ones. C reframes both as feature/label selection, which is neither the reweighting of instance-based nor the latent-space transformation of feature-based.\n\n**Takeaway.** Instance-based reweights source samples; feature-based finds a shared latent feature space.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260603-e12",
+    "examId": "AMI20260603",
+    "date": "2026-06-03",
+    "academicYear": "AA2526",
+    "exerciseNo": 12,
+    "type": "multiple-choice",
+    "topics": [
+      "federated"
+    ],
+    "prompt": "What is a key drawback of pure 'distributed on-site learning' (each device trains only on its local data) that federated learning addresses?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Each node has few labels, gains nothing from peers, and its local model cannot generalize"
+      },
+      {
+        "label": "B",
+        "text": "Raw data must leave each device for the central server, so user privacy is exposed during training"
+      },
+      {
+        "label": "C",
+        "text": "The server must broadcast every client's gradients out to all of the other clients each round"
+      },
+      {
+        "label": "D",
+        "text": "The single shared global model overfits the most active devices and ignores the quieter ones"
+      }
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** In pure distributed on-site learning each device trains only on its own data and never collaborates. That protects privacy, but it isolates each node: a device with few labeled samples learns a weak model, gains nothing from what other devices learned, and its model overfits its narrow local data so it does not generalize. Federated learning fixes this by sharing model parameters so devices benefit from each other while keeping data local.\n\n**Why A is correct.** It names the on-site drawbacks: limited local labels, no benefit from peers, and poor generalization.\n\n**Why B is wrong.** Exposing raw data to the server is the flaw of centralized training, not on-site learning (which keeps data local). **Why C is wrong.** On-site learning shares nothing, so there is no gradient broadcast; that describes a communication cost of federated/distributed training. **Why D is wrong.** A single shared global model is the federated outcome, whereas pure on-site learning has no shared model at all.\n\n**Takeaway.** On-site learning isolates each device; federated learning shares parameters to recover collaboration.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260603-e13",
+    "examId": "AMI20260603",
+    "date": "2026-06-03",
+    "academicYear": "AA2526",
+    "exerciseNo": 13,
+    "type": "multiple-choice",
+    "topics": [
+      "xai"
+    ],
+    "prompt": "The course discusses an accuracy-versus-interpretability trade-off and three categories of XAI methods. Which lists those three categories?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Global, Local, and Counterfactual explanation scopes"
+      },
+      {
+        "label": "B",
+        "text": "Interpretable Models, Model-Agnostic, and Gradient-based saliency"
+      },
+      {
+        "label": "C",
+        "text": "Interpretable Models, Model-Agnostic, and Deep Explanation"
+      },
+      {
+        "label": "D",
+        "text": "LIME, Grad-CAM, and Knowledge Distillation methods"
+      }
+    ],
+    "correctChoice": "C",
+    "solution": "**Concept.** XAI methods are grouped by how they produce explanations. Interpretable Models are inherently transparent algorithms (e.g., decision trees) whose learned parameters are themselves the explanation. Model-Agnostic methods sit outside any model and probe its inputs/outputs, so they work with any black box. Deep Explanation methods open up deep networks specifically. These three are the course's categories, related to the accuracy-versus-interpretability trade-off.\n\n**Why C is correct.** It lists exactly these three: Interpretable Models, Model-Agnostic, and Deep Explanation.\n\n**Why the others are wrong.** A lists explanation scopes/forms (global, local, counterfactual), not the method categories. B replaces the third category with one specific technique (gradient-based saliency is part of Deep Explanation, not a sibling category). D names three concrete methods (LIME and Grad-CAM are examples within categories; knowledge distillation is a transfer-learning technique), not the categories themselves.\n\n**Takeaway.** XAI categories: Interpretable Models, Model-Agnostic, Deep Explanation.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260603-e14",
+    "examId": "AMI20260603",
+    "date": "2026-06-03",
+    "academicYear": "AA2526",
+    "exerciseNo": 14,
+    "type": "multiple-choice",
+    "topics": [
+      "genai"
+    ],
+    "prompt": "In the GAN loss described in the course, the discriminator output `D(x)` is the probability that `x` is fake. When does the discriminator incur a high loss?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "When it labels a real instance as fake, or is fooled into calling a generated instance real"
+      },
+      {
+        "label": "B",
+        "text": "When it correctly assigns a high `D(x)` to a generated instance it judges to be fake"
+      },
+      {
+        "label": "C",
+        "text": "When the generator's samples become indistinguishable, since both networks share the same loss"
+      },
+      {
+        "label": "D",
+        "text": "When it outputs a `D(x)` near 0.5, expressing maximal uncertainty about each and every input"
+      }
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** In a GAN the discriminator is a binary classifier judging real vs fake, here `D(x)` is its estimated probability that `x` is fake. Its loss penalizes mistakes in either direction: calling a genuine sample fake, or being fooled into calling a generated sample real. Correct verdicts give low loss; wrong verdicts give high loss.\n\n**Why A is correct.** It lists exactly the two error cases that raise the loss: a real instance labeled fake, or a fake instance labeled real.\n\n**Why the others are wrong.** B describes a correct verdict (rightly judging a generated sample as fake), which gives low loss, not high. C says the two networks share one loss, but the discriminator and generator have opposing objectives. D treats uncertainty (`D(x)` near 0.5) as the high-loss case, but the loss tracks whether the verdict is right or wrong, not how uncertain it is.\n\n**Takeaway.** Discriminator loss is high when it misjudges real as fake or fake as real.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260603-e15",
+    "examId": "AMI20260603",
+    "date": "2026-06-03",
+    "academicYear": "AA2526",
+    "exerciseNo": 15,
+    "type": "multiple-choice",
+    "topics": [
+      "gnn"
+    ],
+    "prompt": "What does a multi-relational graph add compared to a simple graph, as defined in the course?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "It attaches a feature vector to every single node, turning the lone adjacency matrix into a feature matrix"
+      },
+      {
+        "label": "B",
+        "text": "Each edge carries a type `tau` as `(u, tau, v)`, with one adjacency matrix per relation, stacked into a tensor"
+      },
+      {
+        "label": "C",
+        "text": "It weights each edge by a scalar, so the binary adjacency matrix becomes a weighted adjacency matrix"
+      },
+      {
+        "label": "D",
+        "text": "It adds a discrete time index to each node, so the same node reappears once at every time step"
+      }
+    ],
+    "correctChoice": "B",
+    "solution": "**Concept.** A simple graph has one kind of edge. A multi-relational graph lets edges carry a type `tau`, so an edge is written `(u, tau, v)`, e.g., 'is-near' versus 'follows-in-time' between sensors. Each relation type gets its own adjacency matrix, and stacking them gives an adjacency tensor of size `|V| x |R| x |V|`, where `R` is the set of relation types.\n\n**Why B is correct.** It states the typed edge `(u, tau, v)`, one adjacency matrix per relation, stacked into the adjacency tensor (of size `|V| x |R| x |V|`).\n\n**Why the others are wrong.** A describes node features (an attributed graph), not multiple relation types. C describes a weighted graph (scalar edge weights), which is a single relation with weights, not several typed relations. D describes a temporal/spatial-temporal graph that unrolls nodes over time, a different extension from typed relations.\n\n**Takeaway.** Multi-relational = typed edges `(u, tau, v)`, one matrix per relation, an adjacency tensor.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260603-e16",
+    "examId": "AMI20260603",
+    "date": "2026-06-03",
+    "academicYear": "AA2526",
+    "exerciseNo": 16,
+    "type": "multiple-choice",
+    "topics": [
+      "ami-intro"
+    ],
+    "prompt": "A distributed system is defined in the course as a collection of connected independent computing nodes that appears to its users as a single coherent system. What additional features make it a 'pervasive' system?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Its nodes are identical general-purpose servers in a data center, kept synchronized for fault tolerance"
+      },
+      {
+        "label": "B",
+        "text": "It guarantees every node sees the same global clock, so that all of the events can be totally ordered"
+      },
+      {
+        "label": "C",
+        "text": "It hides individual node failures from its users, so the system always appears to be fully available"
+      },
+      {
+        "label": "D",
+        "text": "It includes unconventional, possibly mobile, nodes and adapts to the current context to meet its goal"
+      }
+    ],
+    "correctChoice": "D",
+    "solution": "**Concept.** A distributed system is many independent nodes that look like one coherent system. A pervasive system is a special case: it weaves computing into the environment using unconventional, often mobile nodes (smartphones, smart appliances, sensors), and it is context-adaptive, sensing the current situation and adjusting behavior to best meet the system goal.\n\n**Why D is correct.** It adds exactly the two distinguishing features: unconventional/mobile computing nodes and context-driven adaptivity.\n\n**Why the others are wrong.** A describes uniform data-center servers, the opposite of the unconventional/mobile nodes that make a system pervasive. B (a shared global clock for total ordering) and C (hiding failures for availability) are general distributed-systems concerns, not the features that distinguish a pervasive system.\n\n**Takeaway.** Pervasive = distributed + unconventional/mobile nodes + context-adaptive behavior.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260603-e17",
+    "examId": "AMI20260603",
+    "date": "2026-06-03",
+    "academicYear": "AA2526",
+    "exerciseNo": 17,
+    "type": "multiple-choice",
+    "topics": [
+      "iot-data"
+    ],
+    "prompt": "What is the role of an IoT gateway in the IoT architecture described in the course?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "To convert each device's digital control signal into physical actuator motion in the environment"
+      },
+      {
+        "label": "B",
+        "text": "To run the heavy data analytics and model training that the cloud would otherwise have to perform"
+      },
+      {
+        "label": "C",
+        "text": "To collect data from physically close devices, with an optional embedded DB, then relay it to the cloud"
+      },
+      {
+        "label": "D",
+        "text": "To digitize the raw voltage coming from each analog sensor before any device transmits it onward"
+      }
+    ],
+    "correctChoice": "C",
+    "solution": "**Concept.** The gateway is the aggregation hub between local IoT devices and the wider network. It collects data from physically close devices, can bridge to other networks, may host an embedded database and do some local processing, and then forwards data onward to processing units (cloud or server). It exists because small devices cannot efficiently reach the cloud on their own.\n\n**Why C is correct.** It describes exactly this collect-locally-then-forward role, including the optional embedded DB.\n\n**Why the others are wrong.** A (turning control signals into actuator motion) is an actuator's job, not the gateway's. B overstates it: the gateway may do light local processing, but the heavy analytics/training is what the cloud/server handles. D (digitizing analog voltage) is the ADC's role inside a sensor, performed before the gateway ever sees the data.\n\n**Takeaway.** The gateway aggregates nearby devices' data and relays it toward the cloud.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260603-e18",
+    "examId": "AMI20260603",
+    "date": "2026-06-03",
+    "academicYear": "AA2526",
+    "exerciseNo": 18,
+    "type": "multiple-choice",
+    "topics": [
+      "timeseries"
+    ],
+    "prompt": "Which of the following is the correct definition of a multivariate time series in the course?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Several variables observed over a shared time axis, a combination of univariate series, common in AmI"
+      },
+      {
+        "label": "B",
+        "text": "A single variable observed over time, by far the simplest and most common series found in AmI"
+      },
+      {
+        "label": "C",
+        "text": "One variable sampled at irregular, non-uniform time intervals instead of at a fixed steady rate"
+      },
+      {
+        "label": "D",
+        "text": "A series whose samples are independent of their time order, so that they may be shuffled freely"
+      }
+    ],
+    "correctChoice": "A",
+    "solution": "**Concept.** A univariate time series tracks one variable over time. A multivariate time series tracks several variables over the same time axis, effectively many univariate series stacked together, e.g., temperature, humidity, and motion all logged each second. This is the normal situation in Ambient Intelligence, where many sensors monitor many processes at once.\n\n**Why A is correct.** It defines a multivariate series as multiple variables over time (a combination of univariate series) and notes it is the most common AmI case.\n\n**Why the others are wrong.** B describes a univariate series (one variable), the opposite of multivariate. C describes an irregularly sampled series, a sampling property unrelated to how many variables there are. D denies the time ordering that defines any time series.\n\n**Takeaway.** Multivariate time series = several variables tracked over a shared time axis.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260603-e19",
+    "examId": "AMI20260603",
+    "date": "2026-06-03",
+    "academicYear": "AA2526",
+    "exerciseNo": 19,
+    "type": "multiple-choice",
+    "topics": [
+      "transfer"
+    ],
+    "prompt": "The course states necessary factors for successful transfer learning. Which is one of them?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "The source and target must use entirely different feature spaces to avoid any leakage between them"
+      },
+      {
+        "label": "B",
+        "text": "The target domain must hold strictly more labeled training data than the source domain does"
+      },
+      {
+        "label": "C",
+        "text": "The source and target distributions must be identical, with no domain shift between them"
+      },
+      {
+        "label": "D",
+        "text": "There must be sufficient similarity, a real connection, between source and target domains/tasks"
+      }
+    ],
+    "correctChoice": "D",
+    "solution": "**Concept.** Transfer learning reuses knowledge from a data-rich source to help a data-scarce target. This only works if the two are related: the source and target domains or tasks must share enough structure for the learned knowledge to carry over. Transferring between totally unrelated problems gives no benefit (and can even hurt, negative transfer).\n\n**Why D is correct.** Sufficient similarity, a real connection, between source and target is a stated necessary condition for successful transfer.\n\n**Why the others are wrong.** A demands entirely different feature spaces, which removes the shared structure transfer relies on. B requires more labels in the target, but the target is precisely the data-scarce side. C demands identical distributions with no domain shift, which would make transfer (and domain adaptation) unnecessary; the requirement is similarity, not identity.\n\n**Takeaway.** Transfer learning needs a genuine similarity between source and target.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260603-e20",
+    "examId": "AMI20260603",
+    "date": "2026-06-03",
+    "academicYear": "AA2526",
+    "exerciseNo": 20,
+    "type": "multiple-choice",
+    "topics": [
+      "har-mobile"
+    ],
+    "prompt": "Where are mobile/wearable devices most commonly placed in the typical HAR setting described in the course?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "Mounted on the door frames and windows the resident passes through"
+      },
+      {
+        "label": "B",
+        "text": "Smartphone in the pocket and smartwatch on the wrist"
+      },
+      {
+        "label": "C",
+        "text": "Clipped to each appliance to record its power draw as the person uses it"
+      },
+      {
+        "label": "D",
+        "text": "Fixed at known anchor points on the walls to act as RSSI beacons"
+      }
+    ],
+    "correctChoice": "B",
+    "solution": "**Concept.** For mobile/wearable HAR, where you put the device shapes what motion it captures. Exact placement depends on the technology, but the course's typical, most realistic setting uses devices people already carry: a smartphone in the pocket and a smartwatch on the wrist. This balances signal quality with everyday wearability.\n\n**Why B is correct.** Smartphone in pocket plus smartwatch on wrist is the standard placement the course describes.\n\n**Why the others are wrong.** A (on doors/windows) is the placement for magnetic contact sensors, a fixed environmental modality. C (clipped to appliances) describes smart plugs/power meters, not worn devices. D (wall anchor points as RSSI beacons) is an indoor-localization setup, not a wearable for HAR.\n\n**Takeaway.** Typical wearable HAR setup: phone in the pocket, watch on the wrist.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260603-e21",
+    "examId": "AMI20260603",
+    "date": "2026-06-03",
+    "academicYear": "AA2526",
+    "exerciseNo": 21,
+    "type": "multiple-choice",
+    "topics": [
+      "energy"
+    ],
+    "prompt": "The course lists fault types in smart grids. Which describes a 'communication fault'?",
+    "choices": [
+      {
+        "label": "A",
+        "text": "A physical device or component (e.g., a transformer or line) that stops functioning properly"
+      },
+      {
+        "label": "B",
+        "text": "A software- or hardware-level fault occurring inside a component of the control system"
+      },
+      {
+        "label": "C",
+        "text": "Faults in communication devices or channels, e.g., a broken link or failure to connect when critical"
+      },
+      {
+        "label": "D",
+        "text": "A sudden load increase that drives the grid's voltage toward an outright collapse"
+      }
+    ],
+    "correctChoice": "C",
+    "solution": "**Concept.** A smart grid runs on two layers: the power layer (lines, transformers) and the communication layer (links carrying measurements and control). Faults are categorized by which layer breaks. A communication fault is a failure in the communication devices or channels themselves, e.g., a broken physical link or an inability to establish a connection during a critical moment, which blinds operators even if the power equipment is fine.\n\n**Why C is correct.** It describes faults in communication devices/channels, including link faults and failure to communicate in a critical period.\n\n**Why the others are wrong.** A (a malfunctioning physical component) is a physical devices/components fault. B (a fault inside a control-system component) is the software/hardware-level fault category. D (load surge toward voltage collapse) is a voltage-stability issue, not a communication fault.\n\n**Takeaway.** Communication fault = the data links/channels fail, not the power components.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260603-e22",
+    "examId": "AMI20260603",
+    "date": "2026-06-03",
+    "academicYear": "AA2526",
+    "exerciseNo": 22,
+    "type": "theory-essay",
+    "topics": [
+      "incremental"
+    ],
+    "prompt": "Static models are insufficient for the continuously evolving sensor data streams typical of Ambient Intelligence, motivating incremental and continual learning.\n\n**(a)** Explain the limitations of static models and define the four types of changes in data streams discussed in the course (concept drift, concept evolution, concept forgetting, outliers/anomalies).\n\n**(b)** Explain why re-training from scratch is not a viable solution, what incremental learning does instead, and the central problem (catastrophic forgetting) that continual learning must address.",
+    "solution": "**(a)** Static models are trained once on a predetermined set of classes and cannot evolve to handle new classes or new sensor patterns, yet real data streams continuously change and a deployed model typically also needs personalization to the specific subject. The course identifies four kinds of stream changes: (1) Concept drift, where the target subject performs known activities with some differences (e.g., a young vs an elderly subject); (2) Concept evolution, where new patterns emerge, such as entirely new activities or new ways of performing an existing one; (3) Concept forgetting, where it is beneficial to deliberately forget patterns that are no longer representative of the target user, improving both accuracy and efficiency; and (4) Outliers/anomalies, where new data may contain sporadic samples far from learned patterns, so it is crucial to distinguish harmless outliers from meaningful anomalies.\n\n**(b)** Re-training from scratch as new labeled data arrives is not scalable in large real-world scenarios: it requires continuously storing all labeled data (the original training set plus all new data) and periodically running a computationally costly training, and it cannot adapt quickly to changes in the stream. Incremental (online) learning instead periodically updates the existing classifier with new mini-batches of data, so the model continuously extends its knowledge (new patterns, classes, domains) without full retraining. The central difficulty is catastrophic forgetting: neural networks tend to overwrite the weights encoding old concepts when learning new ones, so naively training on new data degrades performance on previously learned activities; continual learning techniques aim to incorporate new knowledge while preserving old knowledge.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260603-e23",
+    "examId": "AMI20260603",
+    "date": "2026-06-03",
+    "academicYear": "AA2526",
+    "exerciseNo": 23,
+    "type": "theory-essay",
+    "topics": [
+      "transfer"
+    ],
+    "prompt": "Transfer learning aims to reuse knowledge learned in one context to help a new, data-scarce context, which is common in sensor-based Ambient Intelligence.\n\n**(a)** Define transfer learning, state its goals, and explain the high-level distinction between data-based and model-based strategies, naming the sub-strategies of each.\n\n**(b)** Describe unsupervised domain adaptation as presented in the course: what setting it targets, the role of the domain classifier and the discrepancy loss, and the role of the classification loss.",
+    "solution": "**(a)** Transfer learning is the ability of extending what has been learned in one context to new contexts. Its goals are to spend less time learning new tasks, require less information/annotation from human experts, and handle more situations effectively; it makes sense only when there is a connection (sufficient similarity) between source and target tasks. Data-based transfer adjusts/transforms the data: instance-based transfer reweights source samples (giving higher weights to source samples most similar to the target) to correct distribution differences, while feature-based transfer finds a low-dimensional latent feature representation reducing differences between domains (symmetric, finding a shared space for both, or asymmetric, transforming only the source). Model-based transfer leverages the model instead: model control adds regularizers to the objective so source knowledge is transferred (e.g., knowledge distillation, domain adaptation), and parameter control reuses learned source parameters to help the target (e.g., fine-tuning, the most common approach).\n\n**(b)** Unsupervised domain adaptation targets the setting where the source domain has labeled data but the target domain has no labels. The aim is to learn features that are both domain-invariant and class-discriminative. A binary domain classifier D tries to classify whether a sample comes from the source or the target domain; it is trained adversarially so that it cannot distinguish the two, which forces the feature extractor to produce domain-invariant representations, and the discrepancy between source and target latent representations is minimized via a discrepancy loss. At the same time, class-discriminative features are learned on the labeled source domain through a classification loss, so the model remains accurate at the actual task while generalizing across domains.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AMI20260603-e24",
+    "examId": "AMI20260603",
+    "date": "2026-06-03",
+    "academicYear": "AA2526",
+    "exerciseNo": 24,
+    "type": "theory-essay",
+    "topics": [
+      "xai"
+    ],
+    "prompt": "Explainable AI (XAI) is important in Ambient Intelligence because model outputs drive high-stakes decisions in healthcare, smart cities, and energy.\n\n**(a)** Explain why XAI matters in AmI, the role of Human-Computer Interaction in delivering explanations, and the two main target audiences and how their explanations differ.\n\n**(b)** Explain the difference between global and local explainability, state which is most widely adopted and why, and name the three main categories of XAI methods discussed in the course.",
+    "solution": "**(a)** In many AmI domains it is not enough to know what a model predicts; one also needs to know why, because the output supports high-stakes decisions (clinicians in healthcare diagnosis, smart-city management, smart-home energy choices, data scientists improving the model or sensing setup). Knowing the why helps understand the problem and the data and the reasons a model might fail. XAI is not only about the model: Human-Computer Interaction plays a major role because explanations must be effectively delivered to the target users, and there is a strong psychological dimension to how explanations are presented. There are two main target audiences: non-expert end-users, who use AI in daily life without ML knowledge (e.g., clinicians, smart-city operators, monitored subjects), and technicians, i.e., data scientists/ML experts who need to decide whether the sensing setup needs refinement, whether more labeled data is needed, or whether the model must be improved. Based on the target, explanations differ a lot in form and content.\n\n**(b)** Global explainability addresses how the trained model makes predictions in general, which features are important overall, and how they interact; it is usually prohibitive to explain the whole model, though a portion (e.g., specific weights) can sometimes be explained. Local explainability addresses why the model made a particular prediction for a specific instance, where the prediction may depend on only a few features; it is the most widely adopted because it is more accurate than attempting global explanations. There is also an accuracy-versus-interpretability trade-off. The course discusses three main categories of XAI methods: Interpretable Models (classic ML algorithms whose trained parameters directly yield explanations), Model-Agnostic methods, and Deep Explanation methods.",
+    "solutionSource": "authored"
+  }
+]
