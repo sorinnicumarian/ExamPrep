@@ -11,6 +11,16 @@ function fmt(secs: number): string {
   return `${m}:${String(s % 60).padStart(2, '0')}`
 }
 
+// Rotating per-year theme: subtle left border + tinted background + matching heading dot.
+const YEAR_THEMES = [
+  { border: 'border-l-sky-400', bg: 'hover:bg-sky-50', dot: 'bg-sky-400', label: 'text-sky-600' },
+  { border: 'border-l-violet-400', bg: 'hover:bg-violet-50', dot: 'bg-violet-400', label: 'text-violet-600' },
+  { border: 'border-l-emerald-400', bg: 'hover:bg-emerald-50', dot: 'bg-emerald-400', label: 'text-emerald-600' },
+  { border: 'border-l-amber-400', bg: 'hover:bg-amber-50', dot: 'bg-amber-400', label: 'text-amber-600' },
+  { border: 'border-l-rose-400', bg: 'hover:bg-rose-50', dot: 'bg-rose-400', label: 'text-rose-600' },
+  { border: 'border-l-teal-400', bg: 'hover:bg-teal-50', dot: 'bg-teal-400', label: 'text-teal-600' },
+]
+
 function ExamList() {
   const { stats } = useData()
   if (!stats) return null
@@ -22,29 +32,35 @@ function ExamList() {
       <p className="text-sm text-slate-500">
         Pick a past exam, set a timer, and work through every exercise before revealing the solutions.
       </p>
-      {years.map((year) => (
-        <div key={year} className="space-y-3">
-          <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-400">{year}</h2>
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-            {exams
-              .filter((e) => e.academicYear === year)
-              .map((e) => (
-                <Link
-                  key={e.examId}
-                  to={`/exams/${e.examId}`}
-                  className="rounded-xl border border-slate-200 bg-white p-4 transition hover:border-slate-400 hover:shadow-sm"
-                >
-                  <div className="text-lg font-bold text-slate-900">{e.date}</div>
-                  <div className="text-sm text-slate-500">{e.academicYear}</div>
-                  <div className="mt-2 flex items-center gap-2 text-xs text-slate-400">
-                    <span>{e.questionCount} exercises</span>
-                    <span className="rounded bg-slate-100 px-1.5 py-0.5 font-medium uppercase">{e.format}</span>
-                  </div>
-                </Link>
-              ))}
+      {years.map((year, i) => {
+        const theme = YEAR_THEMES[i % YEAR_THEMES.length]
+        return (
+          <div key={year} className="space-y-3">
+            <h2 className={`flex items-center gap-2 text-sm font-semibold uppercase tracking-wide ${theme.label}`}>
+              <span className={`h-2 w-2 rounded-full ${theme.dot}`} />
+              {year}
+            </h2>
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {exams
+                .filter((e) => e.academicYear === year)
+                .map((e) => (
+                  <Link
+                    key={e.examId}
+                    to={`/exams/${e.examId}`}
+                    className={`rounded-xl border border-l-4 border-slate-200 bg-white p-4 transition hover:border-slate-300 hover:shadow-sm ${theme.border} ${theme.bg}`}
+                  >
+                    <div className="text-lg font-bold text-slate-900">{e.date}</div>
+                    <div className="text-sm text-slate-500">{e.academicYear}</div>
+                    <div className="mt-2 flex items-center gap-2 text-xs text-slate-400">
+                      <span>{e.questionCount} exercises</span>
+                      <span className="rounded bg-slate-100 px-1.5 py-0.5 font-medium uppercase">{e.format}</span>
+                    </div>
+                  </Link>
+                ))}
+            </div>
           </div>
-        </div>
-      ))}
+        )
+      })}
     </div>
   )
 }
