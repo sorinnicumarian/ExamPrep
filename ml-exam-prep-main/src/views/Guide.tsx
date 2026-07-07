@@ -4,7 +4,9 @@ import { MathText } from '../components/MathText'
 
 export function Guide() {
   const { guide, course } = useData()
-  const [open, setOpen] = useState<Record<string, boolean>>({})
+  const [open, setOpen] = useState<Record<string, boolean>>(() =>
+    Object.fromEntries(guide.map((g) => [g.id, true])),
+  )
   const [tag, setTag] = useState<string>('All')
   const [query, setQuery] = useState('')
 
