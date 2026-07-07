@@ -13,6 +13,7 @@ import { GradeBar } from './GradeBar'
 import { ExamLinks } from './ExamLinks'
 import { ContextBox } from './ContextBox'
 import { InteractiveTable } from './InteractiveTable'
+import { formatExamDate } from '../lib/items'
 
 interface Props {
   question: Question
@@ -78,7 +79,7 @@ export function QuestionCard({ question: q, mode = 'study', onGradeItem, showMet
             {QTYPE_LABELS[q.type]}
           </span>
           <Link to={`/q/${q.id}`} className="font-medium text-slate-500 hover:text-slate-800">
-            {q.examId.slice(2, 6)}-{q.examId.slice(6, 8)}-{q.examId.slice(8, 10)} · Ex {q.exerciseNo}
+            {formatExamDate(q.examId)} · Ex {q.exerciseNo}
           </Link>
           {q.marks != null && <span className="text-xs text-slate-400">{q.marks} marks</span>}
           <ExamLinks examId={q.examId} />

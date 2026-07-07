@@ -18,3 +18,11 @@ export function itemsForQuestion(q: Question): StudyItem[] {
 export function allItems(questions: Question[]): StudyItem[] {
   return questions.flatMap(itemsForQuestion)
 }
+
+// examId = <letters prefix><YYYYMMDD>, e.g. "SMBUD20260130" -> "2026-01-30". Prefix length
+// varies by course (ML/CI = 2 letters, ACA/AMI = 3, SMBUD = 5), so strip it dynamically
+// instead of assuming a fixed offset.
+export function formatExamDate(examId: string): string {
+  const digits = examId.replace(/^[A-Za-z]+/, '')
+  return `${digits.slice(0, 4)}-${digits.slice(4, 6)}-${digits.slice(6, 8)}`
+}

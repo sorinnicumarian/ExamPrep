@@ -11,6 +11,7 @@ import { ExamLinks } from '../components/ExamLinks'
 import { ContextBox } from '../components/ContextBox'
 import { isMastered, summarize, type Grade } from '../lib/mastery'
 import { shuffle, useCramSession } from '../lib/session'
+import { formatExamDate } from '../lib/items'
 import type { Question, SubStatement } from '../types'
 
 type Card = { itemId: string; q: Question; sub?: SubStatement }
@@ -149,7 +150,7 @@ export function Quiz() {
 
         <div className="flex flex-wrap items-center gap-2 text-xs text-slate-400">
           <span>
-            {card.q.examId.slice(2, 6)}-{card.q.examId.slice(6, 8)}-{card.q.examId.slice(8, 10)} · Ex {card.q.exerciseNo}
+            {formatExamDate(card.q.examId)} · Ex {card.q.exerciseNo}
           </span>
           <ExamLinks examId={card.q.examId} />
         </div>
