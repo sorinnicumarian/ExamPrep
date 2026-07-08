@@ -128,6 +128,7 @@ export function Practice() {
           mode="study"
           keyboard
           onGradeItem={(_id, grade) => session.grade(grade)}
+          progress={progress}
         />
       </div>
     </div>

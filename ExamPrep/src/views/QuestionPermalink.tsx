@@ -6,7 +6,7 @@ import { QuestionCard } from '../components/QuestionCard'
 export function QuestionPermalink() {
   const { id } = useParams()
   const { questions } = useData()
-  const { record } = useProgress()
+  const { progress, record } = useProgress()
   const q = questions.find((x) => x.id === id)
 
   if (!q)
@@ -24,7 +24,7 @@ export function QuestionPermalink() {
       <Link to="/browse" className="text-sm text-slate-500 hover:text-slate-800">
         ← Browse
       </Link>
-      <QuestionCard question={q} mode="study" onGradeItem={record} />
+      <QuestionCard question={q} mode="study" onGradeItem={record} progress={progress} />
     </div>
   )
 }

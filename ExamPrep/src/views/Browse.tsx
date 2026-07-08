@@ -7,7 +7,7 @@ import { QuestionCard } from '../components/QuestionCard'
 
 export function Browse() {
   const { questions } = useData()
-  const { record } = useProgress()
+  const { progress, record } = useProgress()
   const [filters, setFilters] = useState(emptyFilters)
 
   const fuse = useMemo(() => buildIndex(questions), [questions])
@@ -28,7 +28,7 @@ export function Browse() {
       <Filters filters={filters} setFilters={setFilters} />
       <div className="space-y-4">
         {results.map((q) => (
-          <QuestionCard key={q.id} question={q} mode="study" onGradeItem={record} />
+          <QuestionCard key={q.id} question={q} mode="study" onGradeItem={record} progress={progress} />
         ))}
         {results.length === 0 && (
           <p className="py-12 text-center text-slate-400">No exercises match these filters.</p>

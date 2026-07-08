@@ -2,9 +2,8 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import type { Question } from '../types'
 import { QTYPE_LABELS } from '../types'
-import { isMastered, type Grade } from '../lib/mastery'
+import { isMastered, type Grade, type MasteryMap } from '../lib/mastery'
 import { useData } from '../lib/data'
-import { useProgress } from '../lib/progress'
 import { MathText } from './MathText'
 import { CodeBlock } from './CodeBlock'
 import { TopicBadge } from './TopicBadge'
@@ -23,6 +22,10 @@ interface Props {
   onGradeItem?: (itemId: string, grade: Grade) => void
   showMeta?: boolean
   keyboard?: boolean
+  // Pass the caller's own `progress` (from its own useProgress() call) rather than reading it
+  // independently in here -- useLocalStorage state isn't shared across hook instances in the same
+  // tab, so a separate read here wouldn't update live when the caller's onGradeItem fires.
+  progress?: MasteryMap
 }
 
 const TYPE_COLOR: Record<string, string> = {
@@ -55,9 +58,15 @@ function SolutionBox({ q }: { q: Question }) {
   )
 }
 
-export function QuestionCard({ question: q, mode = 'study', onGradeItem, showMeta = true, keyboard }: Props) {
+export function QuestionCard({
+  question: q,
+  mode = 'study',
+  onGradeItem,
+  showMeta = true,
+  keyboard,
+  progress = {},
+}: Props) {
   const { topicMap } = useData()
-  const { progress } = useProgress()
   const [revealed, setRevealed] = useState(mode === 'reveal')
   const [graded, setGraded] = useState(false)
   const [mcAnswered, setMcAnswered] = useState(mode === 'reveal')
