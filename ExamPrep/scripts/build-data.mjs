@@ -53,6 +53,15 @@ const COURSE_DEFS = {
     coursePath: join(ROOT, 'data', 'smbud', 'course.json'),
     fallback: { id: 'smbud', title: 'Systems and Methods for Big and Unstructured Data', shortTitle: 'SMBUD', hasParts: false },
   },
+  as: {
+    examsDir: join(ROOT, 'data', 'as', 'exams'),
+    taxonomyPath: join(ROOT, 'data', 'as', 'taxonomy.json'),
+    coursePath: join(ROOT, 'data', 'as', 'course.json'),
+    fallback: {
+      id: 'as', title: 'Applied Statistics', shortTitle: 'AS', hasParts: true,
+      partLabels: { first: 'Part A (multiple choice)', second: 'Part B (Python exercises)' },
+    },
+  },
 }
 
 const QTYPES = [

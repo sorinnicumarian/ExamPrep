@@ -1,0 +1,464 @@
+[
+  {
+    "id": "AS20260611-e1.1",
+    "examId": "AS20260611",
+    "date": "2026-06-11",
+    "academicYear": "AA2526",
+    "exerciseNo": 1,
+    "type": "true-false-motivated",
+    "topics": ["knn"],
+    "part": "first",
+    "prompt": "Two KNN classifiers are fitted to the same 2-class dataset. The left model has a very irregular decision boundary and training accuracy 1.00; the right model has a much smoother boundary and training accuracy 0.85. *(Statements reconstructed from the official solution explanations — the original form is not available.)*",
+    "subStatements": [
+      { "id": "AS20260611-e1.1-s1", "statement": "Moving from the irregular-boundary model to the smooth-boundary model corresponds to increasing k.", "answer": true, "motivation": "From left to right the boundary becomes smoother, which is exactly what happens as k increases: predictions average over more neighbours, so the boundary follows local noise less." }
+    ],
+    "solution": "True — larger k averages over more neighbours, producing a smoother, less flexible decision boundary.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AS20260611-e1.2",
+    "examId": "AS20260611",
+    "date": "2026-06-11",
+    "academicYear": "AA2526",
+    "exerciseNo": 1,
+    "type": "true-false-motivated",
+    "topics": ["knn"],
+    "part": "first",
+    "prompt": "Two KNN classifiers on the same dataset: one with a very irregular boundary and training accuracy 1.00 that follows small islands of points, one with a smooth boundary and training accuracy 0.85.",
+    "subStatements": [
+      { "id": "AS20260611-e1.2-s1", "statement": "The very irregular boundary that follows local fluctuations and small islands of points suggests the model is overfitting / fitting noise.", "answer": true, "motivation": "Perfect training accuracy plus a boundary that chases individual points and small islands is the classic signature of an over-flexible model fitting noise rather than signal." }
+    ],
+    "solution": "True — a boundary chasing individual points with training accuracy 1.00 indicates noise fitting.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AS20260611-e1.3",
+    "examId": "AS20260611",
+    "date": "2026-06-11",
+    "academicYear": "AA2526",
+    "exerciseNo": 1,
+    "type": "true-false-motivated",
+    "topics": ["knn"],
+    "part": "first",
+    "prompt": "Bias–variance behaviour of KNN as a function of k.",
+    "subStatements": [
+      { "id": "AS20260611-e1.3-s1", "statement": "Increasing k makes a KNN classifier more flexible, so variance usually increases and bias decreases.", "answer": false, "motivation": "Reversed. A larger k makes the classifier LESS flexible: variance usually decreases and bias may increase. Small k = flexible = high variance/low bias." }
+    ],
+    "solution": "False — larger k means less flexibility: lower variance, potentially higher bias.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AS20260611-e1.4",
+    "examId": "AS20260611",
+    "date": "2026-06-11",
+    "academicYear": "AA2526",
+    "exerciseNo": 1,
+    "type": "true-false-motivated",
+    "topics": ["knn"],
+    "part": "first",
+    "prompt": "Effect of k on test performance in KNN.",
+    "subStatements": [
+      { "id": "AS20260611-e1.4-s1", "statement": "Because a smoother boundary can improve test accuracy, a larger k always reduces bias.", "answer": false, "motivation": "A smoother boundary can improve test accuracy in a specific dataset, but that does not mean larger k reduces bias — larger k tends to INCREASE bias. Beware of 'always' claims." }
+    ],
+    "solution": "False — larger k tends to increase bias; a test-accuracy improvement does not change that.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AS20260611-e2.1",
+    "examId": "AS20260611",
+    "date": "2026-06-11",
+    "academicYear": "AA2526",
+    "exerciseNo": 2,
+    "type": "true-false-motivated",
+    "topics": ["modelsel"],
+    "part": "first",
+    "prompt": "A student performs recursive feature elimination (RFE) once on the full training set, then runs cross-validation on that training set to select a model using the reduced feature set, and finally evaluates on an untouched external test set.",
+    "subStatements": [
+      { "id": "AS20260611-e2.1-s1", "statement": "The cross-validation estimates used to choose the model are optimistic, because the validation folds indirectly influenced the selected feature set.", "answer": true, "motivation": "RFE was done once BEFORE the CV folds were formed, so data that later serve as validation folds already influenced feature selection. Selection must be repeated inside each CV training fold to get honest CV estimates." }
+    ],
+    "solution": "True — pre-CV feature selection leaks validation-fold information into the feature set, making CV estimates optimistic.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AS20260611-e2.2",
+    "examId": "AS20260611",
+    "date": "2026-06-11",
+    "academicYear": "AA2526",
+    "exerciseNo": 2,
+    "type": "true-false-motivated",
+    "topics": ["modelsel"],
+    "part": "first",
+    "prompt": "Same setup: RFE once on the training set before CV, model chosen by CV, final evaluation on an untouched external test set.",
+    "subStatements": [
+      { "id": "AS20260611-e2.2-s1", "statement": "The final evaluation on the external test set is still acceptable, since the test set was never touched during selection.", "answer": true, "motivation": "The external test set remained untouched during both feature selection and model selection, so the FINAL test evaluation is still valid — only the intermediate CV numbers are optimistic." }
+    ],
+    "solution": "True — the untouched test set still yields a valid final performance estimate.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AS20260611-e2.3",
+    "examId": "AS20260611",
+    "date": "2026-06-11",
+    "academicYear": "AA2526",
+    "exerciseNo": 2,
+    "type": "true-false-motivated",
+    "topics": ["modelsel"],
+    "part": "first",
+    "prompt": "General claims about combining feature selection with cross-validation.",
+    "subStatements": [
+      { "id": "AS20260611-e2.3-s1", "statement": "Doing feature selection only on training data is sufficient to make the reported CV performance unbiased for model selection.", "answer": false, "motivation": "'Only on training data' is not sufficient when the CV performance is used for model selection: feature selection must be repeated INSIDE each CV training fold (part of the resampling pipeline), otherwise validation folds leak into the selection." },
+      { "id": "AS20260611-e2.3-s2", "statement": "Feature selection performed once before cross-validation makes the CV estimates conservative (pessimistic).", "answer": false, "motivation": "Pre-CV feature selection is usually OPTIMISTIC, not conservative — the features were chosen with knowledge of data that later act as validation folds." }
+    ],
+    "solution": "Both false — selection must live inside the CV folds; doing it beforehand biases CV estimates upward (optimistic), not downward.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AS20260611-e3.1",
+    "examId": "AS20260611",
+    "date": "2026-06-11",
+    "academicYear": "AA2526",
+    "exerciseNo": 3,
+    "type": "true-false-motivated",
+    "topics": ["classmetrics"],
+    "part": "first",
+    "prompt": "Two classifiers are evaluated on the same test set. Model A has higher accuracy and precision. Model B has much higher recall and F1 but lower precision. Both have the same AUC.",
+    "subStatements": [
+      { "id": "AS20260611-e3.1-s1", "statement": "Model B is likely using a more liberal positive classification rule: it labels more observations as positive, capturing more true positives but also more false positives.", "answer": true, "motivation": "Much higher recall with lower precision is the signature of a lower/looser positive threshold — more positives predicted overall, so more TPs and more FPs." }
+    ],
+    "solution": "True — high recall + low precision indicates a more liberal positive-classification rule.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AS20260611-e3.2",
+    "examId": "AS20260611",
+    "date": "2026-06-11",
+    "academicYear": "AA2526",
+    "exerciseNo": 3,
+    "type": "true-false-motivated",
+    "topics": ["classmetrics"],
+    "part": "first",
+    "prompt": "Model A: higher accuracy and precision. Model B: much higher recall and F1. Same AUC.",
+    "subStatements": [
+      { "id": "AS20260611-e3.2-s1", "statement": "Because Model A has higher accuracy, it is preferable for every application.", "answer": false, "motivation": "Higher accuracy alone does not make a model preferable everywhere — the relative cost of false positives vs false negatives matters (e.g. screening prefers recall)." },
+      { "id": "AS20260611-e3.2-s2", "statement": "Since both models have the same AUC, there is no evidence that Model A ranks positive cases better than Model B.", "answer": true, "motivation": "AUC measures ranking quality; identical AUC = no evidence of better ranking. The accuracy/precision differences come from the thresholds, not the ranking." }
+    ],
+    "solution": "Accuracy alone never decides model choice; equal AUC means equal ranking evidence — differences are threshold effects.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AS20260611-e4.1",
+    "examId": "AS20260611",
+    "date": "2026-06-11",
+    "academicYear": "AA2526",
+    "exerciseNo": 4,
+    "type": "true-false-motivated",
+    "topics": ["linreg"],
+    "part": "first",
+    "prompt": "An OLS regression of exam_score is fitted. Output: study_hours coefficient 2.8 (significant); attendance coefficient 1.9, p = 0.018; sleep_hours coefficient negative, p = 0.55; R² = 0.72.",
+    "subStatements": [
+      { "id": "AS20260611-e4.1-s1", "statement": "One additional study hour is associated with a 2.8-point higher expected exam score, holding the other predictors constant.", "answer": true, "motivation": "That is exactly the partial-effect reading of an OLS coefficient: +2.8 in the response per unit of study_hours with other predictors held fixed." },
+      { "id": "AS20260611-e4.1-s2", "statement": "Attendance has a positive association with exam score that is statistically significant at the 5% level.", "answer": true, "motivation": "Coefficient 1.9 > 0 with p = 0.018 < 0.05 — positive and significant at 5%." }
+    ],
+    "solution": "Both true — standard coefficient interpretation (partial effect) and a significant positive attendance effect (p = 0.018 < 0.05).",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AS20260611-e4.2",
+    "examId": "AS20260611",
+    "date": "2026-06-11",
+    "academicYear": "AA2526",
+    "exerciseNo": 4,
+    "type": "true-false-motivated",
+    "topics": ["linreg"],
+    "part": "first",
+    "prompt": "Same OLS output: sleep_hours coefficient negative with p = 0.55; R² = 0.72.",
+    "subStatements": [
+      { "id": "AS20260611-e4.2-s1", "statement": "Sleep hours have a statistically significant negative effect on exam score.", "answer": false, "motivation": "The coefficient is negative, but p = 0.55 — nowhere near significance. Sign without significance is not evidence of an effect." },
+      { "id": "AS20260611-e4.2-s2", "statement": "R² = 0.72 means the model explains 72% of the variability in study_hours.", "answer": false, "motivation": "R² refers to variability in the DEPENDENT variable (exam_score), not in a predictor." },
+      { "id": "AS20260611-e4.2-s3", "statement": "The intercept always has a meaningful substantive interpretation.", "answer": false, "motivation": "The intercept is only meaningful when zero values of all predictors are meaningful, which is rarely the case." }
+    ],
+    "solution": "All false — non-significant coefficient (p=0.55), R² is about the response, and intercepts are rarely substantively meaningful.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AS20260611-e5.1",
+    "examId": "AS20260611",
+    "date": "2026-06-11",
+    "academicYear": "AA2526",
+    "exerciseNo": 5,
+    "type": "true-false-motivated",
+    "topics": ["graphs"],
+    "part": "first",
+    "prompt": "A network is shown in which nodes G, H, I form a small block with dense internal connections and only a few links to the rest of the graph; node E is central and connects several parts of the network. *(Reconstructed — the original figure is not available.)*",
+    "subStatements": [
+      { "id": "AS20260611-e5.1-s1", "statement": "G, H and I form a plausible community, because they are densely connected internally relative to their few external links.", "answer": true, "motivation": "Dense internal connectivity + sparse external connectivity is the defining property of a community, though the final result depends on the algorithm and resolution." },
+      { "id": "AS20260611-e5.1-s2", "statement": "A central node like E, connecting several parts of the network, is forced by community-detection algorithms to become a single-node community.", "answer": false, "motivation": "Central connector nodes are typically absorbed into one of the communities they touch; nothing forces them into singleton communities." }
+    ],
+    "solution": "G-H-I: plausible community (dense inside, sparse outside). Central hubs are not forced into singleton communities.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AS20260611-e5.2",
+    "examId": "AS20260611",
+    "date": "2026-06-11",
+    "academicYear": "AA2526",
+    "exerciseNo": 5,
+    "type": "true-false-motivated",
+    "topics": ["graphs"],
+    "part": "first",
+    "prompt": "General claims about community structure in networks.",
+    "subStatements": [
+      { "id": "AS20260611-e5.2-s1", "statement": "In a graph with a visible densely-connected block, saying there is 'no evident community structure' is a correct conclusion.", "answer": false, "motivation": "A visible dense block relative to sparse surroundings IS evidence of community structure — 'no evident structure' is too strong." },
+      { "id": "AS20260611-e5.2-s2", "statement": "Communities in a network necessarily correspond to individual triangles.", "answer": false, "motivation": "Triangles indicate local cohesion, but communities are groups with dense internal / sparse external connectivity — they are not required to be triangles." }
+    ],
+    "solution": "Both false — dense blocks are evidence of structure; communities need not be triangles.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AS20260611-e6.1",
+    "examId": "AS20260611",
+    "date": "2026-06-11",
+    "academicYear": "AA2526",
+    "exerciseNo": 6,
+    "type": "true-false-motivated",
+    "topics": ["ensembles"],
+    "part": "first",
+    "prompt": "Why do Random Forests randomly select a subset of candidate predictors at each split?",
+    "subStatements": [
+      { "id": "AS20260611-e6.1-s1", "statement": "Randomly selecting candidate predictors at each split makes the trees less correlated with each other, and averaging less-correlated trees reduces the ensemble variance more effectively.", "answer": true, "motivation": "This is the core statistical reason: decorrelation. Without it, strong predictors dominate every tree, the trees are similar, and averaging similar trees reduces variance much less." }
+    ],
+    "solution": "True — decorrelating trees is the point: variance of an average shrinks more when the averaged trees are less correlated.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AS20260611-e6.2",
+    "examId": "AS20260611",
+    "date": "2026-06-11",
+    "academicYear": "AA2526",
+    "exerciseNo": 6,
+    "type": "true-false-motivated",
+    "topics": ["ensembles"],
+    "part": "first",
+    "prompt": "More claims about the random feature selection in Random Forests.",
+    "subStatements": [
+      { "id": "AS20260611-e6.2-s1", "statement": "The main reason for random feature selection at splits is the computational savings.", "answer": false, "motivation": "Computational savings are a secondary side-effect; the main statistical reason is tree decorrelation for stronger variance reduction." },
+      { "id": "AS20260611-e6.2-s2", "statement": "Because they use random feature selection, Random Forests do not use bootstrapped samples.", "answer": false, "motivation": "Standard Random Forests still train each tree on a bootstrap sample; feature subsampling is applied IN ADDITION, and is unrelated to abandoning the bootstrap." },
+      { "id": "AS20260611-e6.2-s3", "statement": "Random feature selection exists to make each tree grow deeper.", "answer": false, "motivation": "Tree depth is controlled by separate hyperparameters (max_depth, min_samples_leaf); feature subsampling does not exist to increase depth." }
+    ],
+    "solution": "All false — decorrelation is the purpose; bootstrap is still used; depth is controlled by other hyperparameters.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AS20260611-e7.1",
+    "examId": "AS20260611",
+    "date": "2026-06-11",
+    "academicYear": "AA2526",
+    "exerciseNo": 7,
+    "type": "true-false-motivated",
+    "topics": ["clustering"],
+    "part": "first",
+    "prompt": "A silhouette plot of a 5-cluster solution shows: cluster 0 with mostly large positive silhouette values; cluster 4 containing observations with negative values; cluster 2 with values mostly lower than clusters 0 and 3; positive average silhouette overall. *(Reconstructed — original figure unavailable.)*",
+    "subStatements": [
+      { "id": "AS20260611-e7.1-s1", "statement": "Cluster 0's observations are well matched to their cluster and relatively far from the other clusters.", "answer": true, "motivation": "Mostly large positive silhouette values mean small within-cluster distances relative to the distance to the nearest other cluster — well-assigned points." },
+      { "id": "AS20260611-e7.1-s2", "statement": "The negative silhouette values in cluster 4 suggest some of its points may fit another cluster better.", "answer": true, "motivation": "A negative silhouette means the point is on average closer to a neighbouring cluster than to its own — a sign of possible misassignment." }
+    ],
+    "solution": "Both true — high positive silhouettes = well matched; negative silhouettes = possibly misassigned points.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AS20260611-e7.2",
+    "examId": "AS20260611",
+    "date": "2026-06-11",
+    "academicYear": "AA2526",
+    "exerciseNo": 7,
+    "type": "true-false-motivated",
+    "topics": ["clustering"],
+    "part": "first",
+    "prompt": "Same silhouette plot (cluster 2 lower than clusters 0 and 3; overall average silhouette positive).",
+    "subStatements": [
+      { "id": "AS20260611-e7.2-s1", "statement": "Cluster 2 is the most compact and well-separated cluster of the solution.", "answer": false, "motivation": "Cluster 2's silhouette values are mostly LOWER than those of clusters 0 or 3 — it is not the best-separated cluster." },
+      { "id": "AS20260611-e7.2-s2", "statement": "Since the average silhouette is positive, every cluster in the solution is well defined.", "answer": false, "motivation": "A positive AVERAGE does not guarantee every cluster is good: individual clusters or observations can still be problematic (e.g. cluster 4's negative values)." }
+    ],
+    "solution": "Both false — the average silhouette hides per-cluster problems; cluster 2 is weaker than 0 and 3.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AS20260611-e8.1",
+    "examId": "AS20260611",
+    "date": "2026-06-11",
+    "academicYear": "AA2526",
+    "exerciseNo": 8,
+    "type": "true-false-motivated",
+    "topics": ["modelsel"],
+    "part": "first",
+    "prompt": "A dataset has many predictors relative to the number of observations (high-dimensional setting, possibly p > n).",
+    "subStatements": [
+      { "id": "AS20260611-e8.1-s1", "statement": "With many predictors relative to observations, the data become sparse and distances between points become less discriminative.", "answer": true, "motivation": "Curse of dimensionality: in high dimensions all pairwise distances concentrate, hurting distance-based methods like KNN and clustering." },
+      { "id": "AS20260611-e8.1-s2", "statement": "If p exceeds n, the design matrix is rank-deficient, so the predictors are linearly dependent in the sample even if the underlying variables are not conceptually redundant.", "answer": true, "motivation": "With p > n the n×p design matrix has rank at most n < p — exact linear dependence in-sample is a mathematical certainty, breaking unregularized OLS." },
+      { "id": "AS20260611-e8.1-s3", "statement": "These issues affect both distance-based methods and unregularized regression.", "answer": true, "motivation": "Distance concentration hurts KNN/clustering; rank deficiency and variance explosion hurt unregularized regression — both method families are affected." }
+    ],
+    "solution": "All true — sparsity/distance concentration, guaranteed rank deficiency when p>n, and both method families affected.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AS20260611-e8.2",
+    "examId": "AS20260611",
+    "date": "2026-06-11",
+    "academicYear": "AA2526",
+    "exerciseNo": 8,
+    "type": "true-false-motivated",
+    "topics": ["modelsel"],
+    "part": "first",
+    "prompt": "Claims about adding more predictors to a model.",
+    "subStatements": [
+      { "id": "AS20260611-e8.2-s1", "statement": "More dimensions always improve generalization, since the model has more information available.", "answer": false, "motivation": "Extra predictors can add noise, increase variance, and destabilize model selection unless there is enough signal and regularization — more features frequently HURT generalization." }
+    ],
+    "solution": "False — added dimensions often add noise and variance; generalization can get worse.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AS20260611-e9.1",
+    "examId": "AS20260611",
+    "date": "2026-06-11",
+    "academicYear": "AA2526",
+    "exerciseNo": 9,
+    "type": "true-false-motivated",
+    "topics": ["clustering"],
+    "part": "first",
+    "prompt": "Scatterplot (a) shows two clearly separated groups of points. Two within-cluster-sum-of-squares (WSS) curves are shown: graph (c) decreases gradually and smoothly with k; graph (d) drops sharply until k = 2 and then levels off. *(Reconstructed — original figures unavailable.)*",
+    "subStatements": [
+      { "id": "AS20260611-e9.1-s1", "statement": "Scatterplot (a) corresponds to WSS graph (d).", "answer": true, "motivation": "Two clearly separated groups make WSS drop sharply until k = 2 and then flatten — exactly graph (d)'s elbow shape." },
+      { "id": "AS20260611-e9.1-s2", "statement": "A WSS curve like graph (c), decreasing gradually without a clear elbow, is consistent with data that do not have a strong clustering structure.", "answer": true, "motivation": "No elbow = no k at which adding a cluster stops paying off = weak or absent cluster structure." }
+    ],
+    "solution": "Both true — separated groups produce a sharp elbow at the true k; smooth decrease signals weak structure.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AS20260611-e9.2",
+    "examId": "AS20260611",
+    "date": "2026-06-11",
+    "academicYear": "AA2526",
+    "exerciseNo": 9,
+    "type": "true-false-motivated",
+    "topics": ["clustering"],
+    "part": "first",
+    "prompt": "Same setting: WSS graph (c) decreases gradually and smoothly with k, with no clear elbow.",
+    "subStatements": [
+      { "id": "AS20260611-e9.2-s1", "statement": "Graph (c) clearly supports the choice k = 2.", "answer": false, "motivation": "A smoothly decreasing curve keeps improving at every k — it singles out no particular k, so it cannot 'clearly support' k = 2." }
+    ],
+    "solution": "False — without an elbow the curve supports no specific k.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AS20260611-e10.1",
+    "examId": "AS20260611",
+    "date": "2026-06-11",
+    "academicYear": "AA2526",
+    "exerciseNo": 10,
+    "type": "true-false-motivated",
+    "topics": ["modelsel"],
+    "part": "first",
+    "prompt": "A plot shows two error curves against model flexibility: a red curve that first decreases and then increases, and a grey curve that decreases monotonically. At flexibility = 2 (very rigid) both curves are high. *(Reconstructed — original figure unavailable.)*",
+    "subStatements": [
+      { "id": "AS20260611-e10.1-s1", "statement": "The red curve is the test error, and its increase at high flexibility indicates overfitting.", "answer": true, "motivation": "Test error is U-shaped in flexibility: it falls while flexibility captures signal, then rises when the model starts fitting noise (overfitting)." },
+      { "id": "AS20260611-e10.1-s2", "statement": "At flexibility = 2, where both training and test errors are high, the model is too rigid and underfits.", "answer": true, "motivation": "High training AND test error together indicate the model cannot represent the data-generating pattern — underfitting." }
+    ],
+    "solution": "Both true — U-shaped curve is test error (right side = overfitting); both-high region = underfitting.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AS20260611-e10.2",
+    "examId": "AS20260611",
+    "date": "2026-06-11",
+    "academicYear": "AA2526",
+    "exerciseNo": 10,
+    "type": "true-false-motivated",
+    "topics": ["modelsel"],
+    "part": "first",
+    "prompt": "Same train/test error-vs-flexibility plot.",
+    "subStatements": [
+      { "id": "AS20260611-e10.2-s1", "statement": "The red (U-shaped) curve could be the training error.", "answer": false, "motivation": "Training error typically DECREASES monotonically as flexibility increases (the grey curve's behaviour); it does not turn upward." },
+      { "id": "AS20260611-e10.2-s2", "statement": "The best model is the one that minimizes bias.", "answer": false, "motivation": "The best model minimizes expected prediction error by BALANCING bias and variance — minimizing bias alone leads to overfitting." }
+    ],
+    "solution": "Both false — training error decreases monotonically; optimality is a bias–variance balance, not bias minimization.",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "AS20260611-e11",
+    "examId": "AS20260611",
+    "date": "2026-06-11",
+    "academicYear": "AA2526",
+    "exerciseNo": 11,
+    "type": "applied-modeling",
+    "topics": ["clustering"],
+    "part": "second",
+    "prompt": "**Part B, Exercise 1 (workplace_productivity.csv) — Q1: Construct and interpret workplace profiles.** Each row is one team-week; the response is productivity_score. Cluster the teams using ONLY the environment variables: noise_level_db, light_exposure_lux, temperature_c, crowding_index, meeting_hours, remote_work_pct, green_space_score, break_area_score. Do NOT use productivity_score or the regression-only variables (team_seniority, project_complexity, deadline_pressure, team_size, manager_support_score, training_hours).\n\nYour answer must include: whether you standardize (with justification); the clustering method and number of clusters; one numerical or visual criterion supporting the choice; a label and interpretation for each cluster based on the original variables.",
+    "solution": "**Standardize** — the clustering variables live on wildly different scales (lux in the hundreds, remote_work_pct a percentage, crowding_index in 0–1); unstandardized Euclidean distances would be dominated by the large-scale variables.\n\n**Method:** k-means on the standardized variables (quantitative data, Euclidean distances meaningful, centroids give natural profile summaries). Hierarchical clustering with Ward linkage is an explicitly acceptable alternative.\n\n**Choice of k:** silhouette table gave k=2: 0.525, k=3: 0.439, k=4: 0.304, k=5: 0.240. Silhouette prefers k=2, but the official solution chooses **k=3**, supported by the WSS/elbow plot (meaningful drop up to k=3, flat after) and by substantive interpretability — k=3 separates a remote-flexible profile from the quiet supportive offices. Key lesson: you may override the numerically best index if you argue it.\n\n**Labels from cluster means on the original variables:**\n- **Quiet supportive offices** — low noise (≈48 dB) and crowding (0.35), high light (≈725 lux), high green-space (77) and break-area (82) scores, moderate meetings.\n- **Crowded meeting-heavy offices** — high noise (≈67 dB), high crowding (0.79), ~18 meeting-hours, low light, weak green/break scores.\n- **Remote-flexible teams** — remote_work_pct ≈ 73%, few meetings, intermediate environment; distinguished by work organization, not by comfort.\n\nAlways show a PCA scatter of the clusters and the cluster-means table.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "AS20260611-e12",
+    "examId": "AS20260611",
+    "date": "2026-06-11",
+    "academicYear": "AA2526",
+    "exerciseNo": 12,
+    "type": "applied-modeling",
+    "topics": ["linreg", "diagnostics"],
+    "part": "second",
+    "prompt": "**Part B, Exercise 1 — Q2: Fit the initial regression model and diagnose it.** Using the workplace-profile cluster labels from the previous question, fit the initial linear model:\n\nproductivity_score ~ cluster_label + team_seniority + project_complexity + deadline_pressure + team_size + manager_support_score + training_hours\n\nYour answer must include: the fitted model; residual diagnostic plots and/or formal checks with comments; a decision on whether the model should be modified before interpretation; the proposed modification if needed.",
+    "solution": "Fit OLS on the raw productivity_score scale (statsmodels, C(cluster_label)). Official diagnostic summary: adj-R² = 0.839, AIC = 1300.7, **Breusch–Pagan p = 0.002** (heteroscedasticity!), Shapiro p = 0.118 (normality OK).\n\nThe residual-vs-fitted plot shows residual spread clearly changing with fitted values, and BP is significant → the raw-scale model should NOT be interpreted as final.\n\n**Proposed modification: model log(productivity_score)** — the response is positive and the diagnostic pattern (spread growing with level) is consistent with multiplicative variability. Do not interpret coefficients at this stage; the purpose of the initial fit is assumption checking.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "AS20260611-e13",
+    "examId": "AS20260611",
+    "date": "2026-06-11",
+    "academicYear": "AA2526",
+    "exerciseNo": 13,
+    "type": "applied-modeling",
+    "topics": ["diagnostics", "linreg", "featsel"],
+    "part": "second",
+    "prompt": "**Part B, Exercise 1 — Q3: Refit the final model and interpret it.** Based on the diagnostics of the previous question, fit the model you consider most appropriate.\n\nYour answer must include: the final fitted model; justification for keeping or transforming the response; comparison of diagnostics before/after; interpretation of at least three coefficients; at least one partial-effect interpretation holding other predictors fixed; a proposed feature-selection strategy for this problem, WITHOUT applying it.",
+    "solution": "Refit the same linear predictor with **log(productivity_score)**. Comparison: adj-R² 0.839→0.869, AIC 1300.7→−243.9, BP p 0.002→0.070, Shapiro p 0.118→0.924 — residual spread stabilized, so interpret the log model.\n\n**Coefficient interpretations (log scale → approx % effects):**\n- quiet_supportive vs crowded reference: +0.224 → ≈ **+25.2% expected productivity**, holding seniority, complexity, deadline pressure, team size, manager support and training fixed (this sentence is the required partial-effect item).\n- remote_flexible vs crowded: +0.160 → ≈ +17.4%.\n- manager_support_score: +0.062 per point → ≈ +6.4%.\n- deadline_pressure: −0.049 per point → ≈ −4.8%.\n- training_hours: +0.034 per hour → ≈ +3.5%.\n\n**Feature-selection strategy (describe only):** start from substantively motivated variables; inspect correlations and VIF; avoid dropping variables on p-values alone; compare candidate models by adjusted-R², AIC/BIC or cross-validated error; check whether the cluster variable still adds interpretable information after adjustment. Caveats worth stating: cluster labels are ESTIMATED, so clustering-step uncertainty is not propagated into the regression.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "AS20260611-e14",
+    "examId": "AS20260611",
+    "date": "2026-06-11",
+    "academicYear": "AA2526",
+    "exerciseNo": 14,
+    "type": "applied-modeling",
+    "topics": ["trees", "classmetrics"],
+    "part": "second",
+    "prompt": "**Part B, Exercise 2 (material_quality.csv) — Q1: Fit and interpret a single classification tree.** The response high_quality indicates whether a production sample passed the quality threshold. Use train_test_split(X, y, test_size=0.30, random_state=123, stratify=y) and DecisionTreeClassifier(max_depth=3, min_samples_leaf=10, random_state=123).\n\nYour answer must include: the class balance and why stratification is useful; the fitted tree (plot or clear description); a comment on the first split, the rules, and one or more terminal nodes; training and test performance with at least two metrics; a comment on the interpretability–performance trade-off.",
+    "solution": "**Class balance:** high_quality rate ≈ 0.364 overall (0.364 train / 0.365 test after stratification). Not 50/50, so stratification keeps the class proportion equal across splits and avoids an unrepresentative test set.\n\n**Tree:** first split on additive_A_pct at ≈ 5.21 — interpret it as a purity-improving partition rule, NOT a causal claim. Describe ≥1 terminal node as the subgroup defined by the path conditions plus its predicted class and class composition — this is the interpretability payoff of a single tree.\n\n**Performance (official):** train accuracy 0.711 / balanced 0.683 / AUC 0.755; test accuracy 0.579 / balanced 0.562 / AUC 0.619.\n\n**Trade-off:** explicit rules make the shallow tree easy to explain, but max_depth=3 + min_samples_leaf=10 force a restricted model; the train–test gap and modest test AUC show real but limited signal. A deeper tree might fit better but would be less stable and less interpretable.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "AS20260611-e15",
+    "examId": "AS20260611",
+    "date": "2026-06-11",
+    "academicYear": "AA2526",
+    "exerciseNo": 15,
+    "type": "applied-modeling",
+    "topics": ["ensembles", "modelsel"],
+    "part": "second",
+    "prompt": "**Part B, Exercise 2 — Q2: Tune a random forest using cross-validation.** Using the same train/test split as the previous question, fit a random forest and use cross-validation ON THE TRAINING SET to choose hyperparameters, considering parameters that control overfitting of each single tree.\n\nYour answer must include: which hyperparameters you tune and why; how they affect overfitting; the CV strategy; the selected values; a test-set comparison with the single tree; a comment on generalization vs interpretability.",
+    "solution": "**Tuned (official solution):** max_depth, min_samples_leaf, max_features via 5-fold stratified CV on the training set (scoring: ROC AUC); n_estimators kept fixed at a large value — it stabilizes the average rather than regularizing individual trees.\n\n**Why these:** max_depth limits tree depth; min_samples_leaf blocks leaves based on tiny subgroups; max_features controls per-split predictor sampling and hence tree diversity/decorrelation.\n\n**Selected:** {max_depth: 3, max_features: 'sqrt', min_samples_leaf: 5}, mean CV AUC ≈ 0.718.\n\n**Test comparison:** single tree AUC 0.619 / accuracy 0.579 → tuned RF AUC 0.765 / accuracy 0.682. The forest generalizes better but loses the single tree's explicit rule-based interpretability. Two rubric-critical statements: CV must touch ONLY the training set (otherwise the test estimate is dishonest), and the comparison must be made on the test set only after tuning is finished.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "AS20260611-e16",
+    "examId": "AS20260611",
+    "date": "2026-06-11",
+    "academicYear": "AA2526",
+    "exerciseNo": 16,
+    "type": "applied-modeling",
+    "topics": ["ensembles"],
+    "part": "second",
+    "prompt": "**Part B, Exercise 2 — Q3: Interpret variable importance and discuss correlated predictors.** For the tuned random forest of the previous question, produce a variable-importance plot. In this dataset temperature_c and energy_consumption_kwh are strongly correlated (higher processing temperatures require more energy). Discuss how this affects interpretation.\n\nYour answer must include: which importance measure you use; the most important predictors; a comment on the correlated pair.",
+    "solution": "**State the measure.** Impurity-based importance is acceptable if its limitations are mentioned (biased toward continuous / many-split-point variables); permutation importance is also acceptable, ideally with the correlation caveat.\n\n**Official top predictors:** impurity-based — additive_A_pct (0.149), impurity_pct (0.148), temperature_c (0.123); permutation (Δ test AUC) — impurity_pct (0.074), temperature_c (0.049), cooling_rate (0.038).\n\n**Correlated pair (r = 0.92):** overlapping information means the forest may split importance between temperature_c and energy_consumption_kwh, give high importance to only one, or produce rankings that change if one is removed. A LOW importance for energy_consumption_kwh does not mean energy is irrelevant — it may simply be redundant given temperature. Also say: importance is not causal evidence — it describes how the fitted model uses variables, not what an intervention would do.",
+    "solutionSource": "exam"
+  }
+]

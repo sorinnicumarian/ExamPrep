@@ -10,6 +10,7 @@ A study app for Politecnico di Milano exams. **One app, several courses**, switc
 | **Advanced Computer Architectures** | `data/aca/exams/` | 7 exams · 27 questions · study guide included |
 | **Ambient Intelligence & Domotics** | `data/ami/exams/` | 19 exams · 280 questions (mostly multiple-choice) · study guide included |
 | **Systems and Methods for Big and Unstructured Data (SMBUD)** | `data/smbud/exams/` | 14 exams · 311 questions · study guide included |
+| **Applied Statistics** (A.A. 2025/26) | `data/as/exams/` | 2 exams · 45 questions · T/F (Part A, reconstructed from official solutions) + open Part B exercises · tagged **Part A vs Part B** · study guide included |
 
 Live (open — no login): **https://sorinnicumarian.github.io/ExamPrep/**
 
@@ -18,7 +19,7 @@ Live (open — no login): **https://sorinnicumarian.github.io/ExamPrep/**
 - **Dashboard** — per-course concept stats: most-asked topics, question-type mix, topics over time, your coverage.
 - **Guide** — theory reference per course, one collapsible section per topic (expanded by default), written for the
   specific exam rather than as a generic textbook summary.
-- **Browse & search** — filter by topic / year / exam / type (and **exam part** for CI); full-text search. Every
+- **Browse & search** — filter by topic / year / exam / type (and **exam part** for CI and AS); full-text search. Every
   matching question is listed at once — no session, just a reference lookup. Cards are tinted by mastery status
   (green = mastered, amber = attempted but not yet mastered) so already-worked questions stand out at a glance —
   same treatment in Practice, Exam Sim, and permalinked questions (shared via `QuestionCard`).

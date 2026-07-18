@@ -1,0 +1,7 @@
+{
+  "id": "as",
+  "title": "Applied Statistics",
+  "shortTitle": "AS",
+  "hasParts": true,
+  "partLabels": { "first": "Part A (multiple choice)", "second": "Part B (Python exercises)" }
+}

@@ -1,0 +1,56 @@
+[
+  {
+    "id": "format",
+    "title": "Exam format, rules & the 60% gate",
+    "tag": "Meta",
+    "body": "The course was redesigned in A.A. 2025/26 (Dott. Michela Carlotta Massi) — everything before June 2026 is the old R-based course (variograms, GLS, geostatistics) and is **not** in the syllabus. The new exam:\n\n- **Part A** — multiple choice (June 2026: 10 questions, several 'select all that apply'). The form is open only for the **first 30 minutes**, then closes automatically.\n- **Gate** — Part B is graded **only if Part A ≥ 60%**.\n- **Part B** — 2–3 open exercises in Python, full **2h30**. Either one dataset with 3–4 questions or two shorter datasets with 1–2 questions each.\n- **Open book**: own notes, books, own code, online documentation, Google Colab. Forbidden: any AI tool, second devices, communication.\n- **Submission**: per exercise `studentID_solutionN.pdf` + `studentID_codeN.pdf`. **Only the written solution is graded** — results left only in the code PDF do not count. Every number cited must be visible in a table or figure.\n- Grading philosophy (stated in the official materials): more than one solution is acceptable if statistically coherent and well justified. The reasoning is the graded artifact.\n- Optional group project adds up to +6 points if the written exam is passed (grades ≥16 can reach 18 with project points)."
+  },
+  {
+    "id": "parta",
+    "title": "Part A: question anatomy & trap catalog",
+    "tag": "Strategy",
+    "body": "Every June 2026 Part A question was a conceptual 'spot the wrong reasoning' item — no computation. The recurring distractor patterns:\n\n- **Reversed bias–variance directions** (e.g. 'larger k in KNN increases variance' — false, it decreases it).\n- **'Always / never / guarantees' claims** — almost always false (e.g. 'more dimensions always improve generalization', 'larger k always reduces bias').\n- **Leakage-blind procedures** — feature selection done once before CV makes CV estimates optimistic; selection must be repeated inside each fold. An untouched external test set stays valid.\n- **Metric absolutism** — higher accuracy alone doesn't make a model better; equal AUC = equal ranking evidence; precision/recall differences are threshold effects tied to error costs.\n- **Plot-reading**: silhouette plots (negative values = possible misassignment; positive average ≠ all clusters good), WSS/elbow curves (sharp elbow = structure, smooth decrease = weak structure), train/test error vs flexibility (U-shaped = test; monotone decreasing = train), KNN boundaries vs k, dendrograms.\n- **R² reading** — it's about the response variable's variability, not a predictor's; intercepts are rarely substantively meaningful.\n- **RF logic** — per-split feature subsampling exists to decorrelate trees (variance reduction of the average), not for speed, not to replace the bootstrap, not to grow deeper trees.\n\nTiming: ~3 min/question. Answer in the form as you go — it closes at minute 30."
+  },
+  {
+    "id": "recipe-clustering",
+    "title": "Recipe: clustering exercises",
+    "tag": "Part B",
+    "body": "1. **Standardize** and justify it by quoting the actual variable scales (lux in hundreds vs a 0–1 index, etc.). In distance-based methods, big-scale variables dominate otherwise.\n2. Method: k-means as the main tool (quantitative data, centroid summaries); Ward hierarchical as the stated acceptable alternative (similar compactness objective + dendrogram).\n3. Choose k with a **silhouette table + WSS/elbow plot**. You may override the numerically best index for interpretability if you argue it — the June solution picked k=3 over silhouette-best k=2. Always **inspect cluster sizes**: a top silhouette from a 149-vs-1 split is a trap.\n4. Report: PCA scatter of the clusters, cluster-means table on the **original** variables, one label + one-sentence story per cluster (not 'cluster 0 has larger means').\n5. Never cluster on the response or on downstream regression covariates when told to exclude them.\n6. Limitations to have ready: scaling sensitivity, outlier sensitivity (average linkage isolating singletons), ambiguous k, labels are estimated not observed."
+  },
+  {
+    "id": "recipe-linreg",
+    "title": "Recipe: linear regression + diagnostics",
+    "tag": "Part B",
+    "body": "1. Fit with statsmodels (`C(...)` for categoricals). Don't interpret the initial fit — its job is assumption checking.\n2. Diagnostics: residual-vs-fitted (heteroscedasticity/nonlinearity), Q-Q (normality), **Breusch–Pagan** and Shapiro tests, leverage vs studentized residuals.\n3. Unusual observations vocabulary (graded): **outlier** = unusual response; **high-leverage** = unusual in predictor space; **influential** = changes the fit. High leverage + large residual → remove and refit; leverage alone is *not* a deletion criterion.\n4. Heteroscedastic positive response → **log(y)**, then compare adj-R², AIC, BP p before/after (June: adj-R² 0.839→0.869, AIC 1300→−244, BP p 0.002→0.07).\n5. Interpretation sentences: per-unit change **holding the other predictors fixed** (write this clause explicitly at least once — it's a named rubric item). Log response: coefficient β ≈ (e^β − 1) ≈ β·100% change. Categorical: difference vs the reference level.\n6. If asked to *propose* feature selection without applying: substantive variables first, correlations/VIF, never drop on p-values alone, compare via adj-R²/AIC/BIC/CV error."
+  },
+  {
+    "id": "recipe-trees",
+    "title": "Recipe: trees & random forests",
+    "tag": "Part B",
+    "body": "1. **Stratified** train/test split with the given `random_state` — state the class balance and why stratification helps (keeps class proportions representative).\n2. Single tree: use the exact given settings; `plot_tree`; verbalize the **first split** as a purity-improving rule (not causal) and at least one terminal node as a path-defined subgroup with predicted class + composition.\n3. Metrics: at least two (accuracy + balanced accuracy / F1 / ROC AUC), on train **and** test; comment on the gap.\n4. RF tuning: CV **on the training set only** (5-fold stratified); tune `max_depth`, `min_samples_leaf`, `max_features` (each controls single-tree overfitting / tree diversity); keep `n_estimators` fixed-large (it stabilizes, doesn't regularize). Compare with the single tree on the test set only after tuning.\n5. Importance: name the measure; impurity importance is biased toward many-split-point variables; permutation importance is deflated by correlated partners. **Correlated predictors** share importance / produce unstable rankings — low importance ≠ irrelevance. Importance is not causal evidence.\n6. Trade-off sentence: forest generalizes better, single tree keeps explicit rules."
+  },
+  {
+    "id": "recipe-lasso",
+    "title": "Recipe: penalized regression (Ridge/Lasso)",
+    "tag": "Part B",
+    "body": "1. `Pipeline` + `ColumnTransformer`: standardize numeric (penalties are scale-dependent), one-hot categoricals — **inside** the pipeline so preprocessing fits only on training folds.\n2. Ridge (L2) shrinks all coefficients; **Lasso (L1) zeroes some = embedded feature selection**.\n3. Tune alpha with GridSearchCV over `np.logspace(-2, 2, 15)`; explain the data flow: inner folds choose alpha, external test set touched once at the end.\n4. **Nested CV** evaluates the whole tuning procedure (selected alphas varying across outer folds is informative — the best penalty is data-dependent); the deployable model is refit on all data afterwards.\n5. Interpretation: standardized coefficients = effect per 1 SD, holding other fitted predictors fixed; zero coefficient ≠ irrelevant (correlated partner may carry the information).\n6. Post-selection OLS on Lasso-selected variables: fine for reading a final table, but **classical p-values are optimistic after selection** — always state this limitation. Separate three claims: prediction, selection, significance."
+  },
+  {
+    "id": "recipe-logistic",
+    "title": "Recipe: logistic regression (top July candidate)",
+    "tag": "Part B",
+    "body": "Untested in June Part B but fully drilled in Lecture 05 + Lab VI — the most likely new exercise.\n\n1. Fit (statsmodels `Logit` or sklearn); report **odds ratios** e^β with a sentence: 'one unit of X multiplies the odds of the outcome by e^β, holding the others fixed'.\n2. Confusion matrix at threshold 0.5 **and** at a justified alternative threshold; tie the choice to the context's error costs.\n3. Accuracy, precision, recall/sensitivity, specificity, F1, **AUROC** — know what moves when the threshold moves.\n4. Imbalance handling: stratified split, `class_weight`, or threshold moving.\n5. Multiclass: baseline class matters for coefficient reading; changing it changes coefficients, not fit.\n6. Diagnostics exist here too: residuals, influence/leverage (Lab VI covers them)."
+  },
+  {
+    "id": "predictions",
+    "title": "Predicted July topics (weighted)",
+    "tag": "Strategy",
+    "body": "June Part B used clustering→regression and tree→RF. The official example set additionally drilled PCA+clustering, regression outliers/categoricals, and a full Ridge/Lasso exercise. Practiced-but-not-yet-examined = most likely next:\n\n- **Very high**: logistic regression + metrics/threshold; penalized regression (Ridge/Lasso with CV) — June even planted 'propose feature selection without applying it'.\n- **High**: PCA (loadings, scree, standardization) feeding clustering or regression.\n- **Medium**: clustering variant (DBSCAN/GMM comparison); KNN or gradient boosting replacing RF in a tree exercise.\n- **Part A only**: neural networks / MLP (early stopping, weight decay, dropout), graph theory, t-SNE/UMAP, GMM/DBSCAN concepts — no Part-B-style exercise exists anywhere in the materials for these.\n\nPart A samples roughly one question per lecture — cover everything at concept level."
+  },
+  {
+    "id": "examday",
+    "title": "Exam-day mechanics & practice plan",
+    "tag": "Strategy",
+    "body": "**Before the exam**\n\n- Build one Colab notebook with the five recipes as runnable, adapted snippets (own code is allowed).\n- Prepare a solution-document template per exercise (Q1/Q2/Q3 headings, table + figure placeholders) — the written PDF is the graded artifact and formatting it costs real time.\n\n**Practice order** (all files are in the AS folder): 1) re-sit June Part B timed against `workplace_productivity.csv` + `material_quality.csv`, self-grade with the solution PDFs — every 'your answer must include' bullet is a rubric row; 2) Lasso example (`Heart_ejection_fraction.csv`); 3) PCA/clustering + museum regression examples (`Student_profiles.csv`, `museum_experience.csv`); 4) logistic drill on the heart-failure lab dataset; 5) redo the June Part A questions and read every 'why the other options are wrong' column.\n\n**During**: 30' Part A → ~55' per Part B exercise → 10' export/upload buffer. Use given random_state values verbatim. Paste every cited number into the solution document as a visible table/figure."
+  }
+]

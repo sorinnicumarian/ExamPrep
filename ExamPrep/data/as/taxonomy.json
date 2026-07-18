@@ -1,0 +1,15 @@
+[
+  { "key": "pca",          "name": "PCA & Dimensionality Reduction (t-SNE, UMAP)", "short": "PCA",        "color": "#9333ea" },
+  { "key": "clustering",   "name": "Clustering & Validation (k-means, hierarchical, DBSCAN, GMM)", "short": "Clustering", "color": "#2563eb" },
+  { "key": "linreg",       "name": "Linear Models: Estimation & Interpretation",   "short": "Lin. Reg.",  "color": "#0d9488" },
+  { "key": "diagnostics",  "name": "Regression Diagnostics & Transformations",     "short": "Diagnostics","color": "#0891b2" },
+  { "key": "logistic",     "name": "Logistic Regression & Odds Ratios",            "short": "Logistic",   "color": "#db2777" },
+  { "key": "classmetrics", "name": "Classification Metrics & Imbalance",           "short": "Metrics",    "color": "#dc2626" },
+  { "key": "knn",          "name": "K-Nearest Neighbours",                         "short": "KNN",        "color": "#ca8a04" },
+  { "key": "modelsel",     "name": "Bias–Variance, CV & Model Selection",          "short": "CV/BiasVar", "color": "#65a30d" },
+  { "key": "featsel",      "name": "Feature Selection & Penalized Regression",     "short": "Feat. Sel.", "color": "#7c3aed" },
+  { "key": "trees",        "name": "Decision Trees",                               "short": "Trees",      "color": "#f59e0b" },
+  { "key": "ensembles",    "name": "Random Forests, Bagging & Boosting",           "short": "Ensembles",  "color": "#ea580c" },
+  { "key": "graphs",       "name": "Networks & Graph Theory",                      "short": "Graphs",     "color": "#0ea5e9" },
+  { "key": "nn",           "name": "Neural Networks / MLP",                        "short": "NN",         "color": "#64748b" }
+]
