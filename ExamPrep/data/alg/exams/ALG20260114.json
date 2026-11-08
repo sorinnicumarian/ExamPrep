@@ -1,0 +1,80 @@
+[
+  {
+    "id": "ALG20260114-e1",
+    "examId": "ALG20260114",
+    "date": "2026-01-14",
+    "academicYear": "AA2526",
+    "exerciseNo": 1,
+    "type": "applied-modeling",
+    "topics": [
+      "resolution"
+    ],
+    "part": "first",
+    "prompt": "**[Final exam, Jan 2026 — exercise 1]** Let $E$ be a binary relation symbol, $f$ and $g$ unary function symbols and\n\n$$\\Phi = \\{\\forall y\\exists x.E(fx,y),\\ \\forall z\\exists y.E(gy,z),\\ \\forall xy(Exy \\to E(gx,gy)),\\ \\forall xyz(Exy \\land Eyz \\to Exz)\\}.$$\n\nUse **first ground resolution and then resolution with unification** to prove that $\\Phi \\vdash \\forall z\\exists x.E(gfx,z)$.\n\n(Note: $Exy$ means $E(x,y)$ and $E(gfx,z)$ means $E(g(f(x)),z)$.)",
+    "solution": "**Idea.** If $E$ is equality, the claim says \"the composition of surjective functions is surjective\"; the last two formulas of $\\Phi$ are exactly the properties of equality needed to generalize this to an arbitrary $E$. Given $(fx,y),(gy,z) \\in E$, the third formula gives $(gfx,gy) \\in E$ and transitivity gives $(gfx,z) \\in E$.\n\n**① Ground resolution** (show $\\Phi \\cup \\{\\lnot\\varphi\\}$ has a closed expansion; $p,q,r$ are parameters):\n\n| Step | Formula | Reason |\n|---|---|---|\n| 1 | $\\{\\forall y\\exists x.E(fx,y)\\}$ | assumption |\n| 2 | $\\{\\forall z\\exists y.E(gy,z)\\}$ | assumption |\n| 3 | $\\{\\forall xy(Exy \\to E(gx,gy))\\}$ | assumption |\n| 4 | $\\{\\forall xyz(Exy \\land Eyz \\to Exz)\\}$ | assumption |\n| 5 | $\\{\\lnot\\forall z\\exists x.E(gfx,z)\\}$ | assumption |\n| 6 | $\\{\\lnot\\exists x.E(gfx,p)\\}$ | 5, δ-expansion |\n| 7 | $\\{\\exists y.E(gy,p)\\}$ | 2, γ-expansion |\n| 8 | $\\{E(gq,p)\\}$ | 7, δ-expansion |\n| 9 | $\\{\\exists x.E(fx,q)\\}$ | 1, γ-expansion |\n| 10 | $\\{E(fr,q)\\}$ | 9, δ-expansion |\n| 11 | $\\{E(fr,q) \\to E(gfr,gq)\\}$ | 3, γ-expansion ×2 |\n| 12 | $\\{\\lnot E(fr,q),\\ E(gfr,gq)\\}$ | 11, β-expansion |\n| 13 | $\\{E(gfr,gq)\\}$ | 10, 12, resolution |\n| 14 | $\\{E(gfr,gq) \\land E(gq,p) \\to E(gfr,p)\\}$ | 4, γ-expansion ×3 |\n| 15 | $\\{\\lnot E(gfr,gq),\\ \\lnot E(gq,p),\\ E(gfr,p)\\}$ | 14, β-expansion ×2 |\n| 16 | $\\{\\lnot E(gq,p),\\ E(gfr,p)\\}$ | 13, 15, resolution |\n| 17 | $\\{E(gfr,p)\\}$ | 8, 16, resolution |\n| 18 | $\\{\\lnot E(gfr,p)\\}$ | 6, γ-expansion |\n| 19 | $\\varnothing$ | 17, 18, resolution |\n\nSo $\\Phi \\cup \\{\\lnot\\varphi\\}$ has a closed expansion, hence $\\Phi \\vdash \\varphi$.\n\n**② Resolution with unification.** Prenex form → Skolemization → clausal form (Skolem functions $h,k$, Skolem constant $p$):\n\n| Formula | Skolemization | Clausal form |\n|---|---|---|\n| $\\forall y\\exists x.E(fx,y)$ | $\\forall y.E(fhy,y)$ | $\\{E(fhy,y)\\}$ |\n| $\\forall z\\exists y.E(gy,z)$ | $\\forall z.E(gkz,z)$ | $\\{E(gkz,z)\\}$ |\n| $\\forall xy(Exy \\to E(gx,gy))$ | (same) | $\\{\\lnot Exy,\\ E(gx,gy)\\}$ |\n| $\\forall xyz(Exy \\land Eyz \\to Exz)$ | (same) | $\\{\\lnot Exy,\\ \\lnot Eyz,\\ Exz\\}$ |\n| $\\lnot\\forall z\\exists x.E(gfx,z)$ — prenex $\\exists z\\forall x.\\lnot E(gfx,z)$ | $\\forall x.\\lnot E(gfx,p)$ | $\\{\\lnot E(gfx,p)\\}$ |\n\nDerivation of the empty clause:\n1. $\\{E(fhy,y)\\}$ and $\\{\\lnot Exy, E(gx,gy)\\}$ give $\\{E(gfhy,gy)\\}$.\n2. With $\\{\\lnot Exy,\\lnot Eyz,Exz\\}$: $\\{\\lnot E(gy,z),\\ E(gfhy,z)\\}$.\n3. With $\\{E(gkz,z)\\}$ (unify $y := kz$): $\\{E(gfhkz,z)\\}$.\n4. With $\\{\\lnot E(gfx,p)\\}$ (unify $x := hkp$, $z := p$): $\\varnothing$.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "ALG20260114-e2",
+    "examId": "ALG20260114",
+    "date": "2026-01-14",
+    "academicYear": "AA2526",
+    "exerciseNo": 2,
+    "type": "applied-modeling",
+    "topics": [
+      "tableaux"
+    ],
+    "part": "first",
+    "prompt": "**[Final exam, Jan 2026 — exercise 2]** Prove the same claim of exercise 1 using a **tableau**, i.e. with $E$ a binary relation symbol and $f,g$ unary function symbols,\n\n$$\\forall y\\exists x.E(fx,y),\\ \\forall z\\exists y.E(gy,z),\\ \\forall xy(Exy \\to E(gx,gy)),\\ \\forall xyz(Exy \\land Eyz \\to Exz) \\vdash \\forall z\\exists x.E(gfx,z).$$",
+    "solution": "Build a closed tableau for $\\Phi \\cup \\{\\lnot\\varphi\\}$ ($p,q,r$ parameters).\n\n**Trunk (one branch):**\n1. $\\forall y\\exists x.E(fx,y)$, $\\forall z\\exists y.E(gy,z)$, $\\forall xy(Exy \\to E(gx,gy))$, $\\forall xyz(Exy \\land Eyz \\to Exz)$, $\\lnot\\forall z\\exists x.E(gfx,z)$\n2. $\\lnot\\exists x.E(gfx,p)$ (δ on the negated goal)\n3. $\\exists y.E(gy,p)$ (γ), then $E(gq,p)$ (δ)\n4. $\\exists x.E(fx,q)$ (γ), then $E(fr,q)$ (δ)\n5. $E(fr,q) \\to E(gfr,gq)$ (γ ×2 on the third premise)\n\n**Branching:**\n- β on step 5: left $\\lnot E(fr,q)$ — **closed** (against $E(fr,q)$). Right $E(gfr,gq)$.\n- On the right: $E(gfr,gq) \\land E(gq,p) \\to E(gfr,p)$ (γ ×3 on transitivity), β-split:\n  - $\\lnot(E(gfr,gq) \\land E(gq,p))$, which splits again into $\\lnot E(gfr,gq)$ — **closed** — and $\\lnot E(gq,p)$ — **closed** (against $E(gq,p)$);\n  - $E(gfr,p)$, and γ on step 2 gives $\\lnot E(gfr,p)$ — **closed**.\n\nEvery branch is closed, so $\\Phi \\cup \\{\\lnot\\varphi\\}$ has a closed tableau and $\\Phi \\vdash \\varphi$. (Same idea as the resolution proof: compose the two \"surjectivity\" witnesses, push $E$ through $g$, then use transitivity.)",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "ALG20260114-e3",
+    "examId": "ALG20260114",
+    "date": "2026-01-14",
+    "academicYear": "AA2526",
+    "exerciseNo": 3,
+    "type": "numerical-computation",
+    "topics": [
+      "relations",
+      "equivalence",
+      "orders"
+    ],
+    "part": "first",
+    "prompt": "**[Final exam, Jan 2026 — exercise 3]** Let $A = \\{1,\\dots,5\\}$ and let $f : A \\to A$ be the function consisting of the pairs\n\n$$f = \\{(1,2),(2,1),(3,1),(4,5),(5,1)\\}.$$\n\nFind:\n1. the canonical epi-mono factorization of $f$;\n2. the equivalence relation generated by $f$;\n3. the order induced by $f$.",
+    "solution": "**① Epi-mono factorization.** Incidence matrices of $f$ and of its kernel pair $ff^{\\mathrm{op}}$:\n\n$$M(f)=\\begin{pmatrix}0&1&0&0&0\\\\1&0&0&0&0\\\\1&0&0&0&0\\\\0&0&0&0&1\\\\1&0&0&0&0\\end{pmatrix},\\qquad M(ff^{\\mathrm{op}})=M(f)M(f)^{T}=\\begin{pmatrix}1&0&0&0&0\\\\0&1&1&0&1\\\\0&1&1&0&1\\\\0&0&0&1&0\\\\0&1&1&0&1\\end{pmatrix}.$$\n\nSo $A/\\ker f = \\{[1],[2],[4]\\}$ with $[1]=\\{1\\}$, $[2]=\\{2,3,5\\}=[3]=[5]$, $[4]=\\{4\\}$. The canonical factorization is $f = pm$ with $p$ the projection and $m$ the induced injection:\n\n$$M(p)=\\begin{pmatrix}1&0&0\\\\0&1&0\\\\0&1&0\\\\0&0&1\\\\0&1&0\\end{pmatrix},\\qquad M(m)=M(p^{\\mathrm{op}}f)=M(p)^{T}M(f)=\\begin{pmatrix}0&1&0&0&0\\\\1&0&0&0&0\\\\0&0&0&0&1\\end{pmatrix}.$$\n\n**② Generated equivalence.** The graph of $f$ ($1\\leftrightarrow 2$, $3\\to1$, $5\\to1$, $4\\to5$) has a **single connected component**, so the equivalence $E$ generated by $f$ is the **total relation** on $A$ ($M(E)$ = all ones).\n\n**③ Induced order.** Reflexive-transitive closure $R := f^{rt}$ and $F = R \\cap R^{\\mathrm{op}}$:\n\n$$M(R)=\\begin{pmatrix}1&1&0&0&0\\\\1&1&0&0&0\\\\1&1&1&0&0\\\\1&1&0&1&1\\\\1&1&0&0&1\\end{pmatrix},\\qquad M(F)=M(R)\\wedge M(R)^{T}=\\begin{pmatrix}1&1&0&0&0\\\\1&1&0&0&0\\\\0&0&1&0&0\\\\0&0&0&1&0\\\\0&0&0&0&1\\end{pmatrix}.$$\n\n$R$ is **not antisymmetric** ($1 \\to 2 \\to 1$), so there is no order containing $f$; the induced order lives on the quotient $A/F = \\{[1],[3],[4],[5]\\}$ with $[1]=\\{1,2\\}$ and singletons otherwise. With $q : A \\to A/F$ the projection, the induced order is $S = q^{\\mathrm{op}}Rq$:\n\n$$M(q)=\\begin{pmatrix}1&0&0&0\\\\1&0&0&0\\\\0&1&0&0\\\\0&0&1&0\\\\0&0&0&1\\end{pmatrix},\\qquad M(S)=\\begin{pmatrix}1&0&0&0\\\\1&1&0&0\\\\1&0&1&1\\\\1&0&0&1\\end{pmatrix}$$\n\n(rows/columns ordered $[1],[3],[4],[5]$). **Hasse diagram:** $[1]$ on top; below it $[3]$ and $[5]$; below $[5]$ is $[4]$ — i.e. the chains $[3] \\to [1]$ and $[4] \\to [5] \\to [1]$.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "ALG20260114-e4",
+    "examId": "ALG20260114",
+    "date": "2026-01-14",
+    "academicYear": "AA2526",
+    "exerciseNo": 4,
+    "type": "theory-essay",
+    "topics": [
+      "resolution"
+    ],
+    "part": "second",
+    "prompt": "**[Final exam, Jan 2026 — theory 1]** State and prove **soundness of resolution** for propositional logic.",
+    "solution": "**Theorem (soundness).** The resolution calculus is sound: $F \\vdash \\varphi \\Rightarrow F \\models \\varphi$.\n\n**Proof.** First show every inference rule is sound: if a valuation $a$ satisfies the premises of a rule, it satisfies the conclusion. Each clause $\\varphi_i$ is a generalized clause (disjunction of its members).\n\n- **Falsehood.** If $\\bot \\in \\varphi_i$ then $\\varphi_i \\equiv \\bot \\lor \\chi$ with $\\chi$ not containing $\\bot$. By the substitution lemma $\\varphi_i[\\varnothing/\\bot] \\equiv \\chi \\equiv \\bot \\lor \\chi \\equiv \\varphi_i$, so $a \\models \\varphi_i \\Rightarrow a \\models \\varphi_i[\\varnothing/\\bot]$. Same for $\\lnot\\top$ since $\\lnot\\top \\equiv \\bot$.\n- **Double negation.** If $\\lnot\\lnot\\psi \\in \\varphi_i$, $\\varphi_i \\equiv \\lnot\\lnot\\psi \\lor \\chi$, and $\\varphi_i[\\psi/\\lnot\\lnot\\psi] \\equiv \\psi \\lor \\chi \\equiv \\varphi_i$.\n- **α-expansion.** If $\\alpha \\in \\varphi_i$, $\\varphi_i \\equiv \\alpha \\lor \\chi$ and $\\varphi_i[\\alpha_1/\\alpha] \\land \\varphi_i[\\alpha_2/\\alpha] \\equiv (\\alpha_1 \\lor \\chi) \\land (\\alpha_2 \\lor \\chi) \\equiv (\\alpha_1 \\land \\alpha_2) \\lor \\chi \\equiv \\varphi_i$; so $a \\models \\varphi_i \\Rightarrow a \\models \\varphi_i[\\alpha_j/\\alpha]$ for $j = 1,2$.\n- **β-expansion.** If $\\beta \\in \\varphi_i$, $\\varphi_i \\equiv \\beta \\lor \\psi$ and $\\varphi_i[\\beta_1,\\beta_2/\\beta] \\equiv (\\beta_1 \\lor \\beta_2) \\lor \\psi \\equiv \\varphi_i$.\n- **Resolution.** Let $\\psi \\in \\varphi_i$, $\\lnot\\psi \\in \\varphi_j$, $a \\models \\varphi_i,\\varphi_j$. Write $\\varphi_i \\equiv \\psi \\lor \\psi_i$, $\\varphi_j \\equiv \\lnot\\psi \\lor \\psi_j$ (with $\\psi \\notin \\psi_i$, $\\lnot\\psi \\notin \\psi_j$), so the resolvent is $\\psi_i \\lor \\psi_j$. If $a \\models \\psi$ then $a \\not\\models \\lnot\\psi$, hence $a \\models \\psi_j$; if $a \\not\\models \\psi$ then $a \\models \\psi_i$. Either way $a \\models$ resolvent.\n- **Cut.** Sound because $a \\models \\psi \\lor \\lnot\\psi$ for every $a$.\n\nHence if $a \\models F$, $a$ satisfies every expansion of $F$. A closed expansion contains the empty clause, which no valuation satisfies, so a set with a closed expansion is **unsatisfiable**. Finally, $F \\vdash \\varphi$ means $F \\cup \\{\\lnot\\varphi\\}$ has a closed expansion, so it is unsatisfiable, i.e. $F \\models \\varphi$. $\\square$",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "ALG20260114-e5",
+    "examId": "ALG20260114",
+    "date": "2026-01-14",
+    "academicYear": "AA2526",
+    "exerciseNo": 5,
+    "type": "theory-essay",
+    "topics": [
+      "consistency",
+      "resolution"
+    ],
+    "part": "second",
+    "prompt": "**[Final exam, Jan 2026 — theory 2]** State and prove the **consistency lemma for resolution** in first order logic.",
+    "solution": "**Lemma.** The class $C$ of finite sets $S \\subseteq L_P$ of sentences (with parameters) which have **no closed resolution expansion** is a consistency poset.\n\n**Proof.** Check each condition of the definition; in each case assume the condition fails and build a closed expansion of $S$ (contradiction with $S \\in C$). Notation: $S \\mapsto \\bot$ means \"$S$ has a closed expansion\".\n\n- **Falsehood.** If $\\bot \\in S$ then $S$ has a closed expansion — contradiction. So $\\bot \\notin S$; likewise $\\lnot\\top \\notin S$.\n- **Atomic.** If $\\varphi, \\lnot\\varphi \\in S$ with $\\varphi$ atomic, resolution derives $\\varnothing$ — contradiction. So $\\varphi \\in S \\Rightarrow \\lnot\\varphi \\notin S$.\n- **Double negation.** Let $\\lnot\\lnot\\varphi \\in S$; claim $S \\cup \\{\\varphi\\} \\in C$. Otherwise $S \\cup \\{\\varphi\\} \\mapsto \\bot$, and $S \\mapsto \\lnot\\lnot\\varphi \\mapsto \\varphi$ (¬¬-expansion) composed with it gives $S \\mapsto \\bot$.\n- **α-formulas.** Let $\\alpha \\in S$; if $S \\cup \\{\\alpha_1,\\alpha_2\\} \\mapsto \\bot$, then $S \\mapsto \\alpha_1,\\alpha_2$ (α-expansion) composed gives $S \\mapsto \\bot$.\n- **β-formulas.** Let $\\beta \\in S$; claim $S \\cup \\{\\beta_i\\} \\in C$ for some $i$. If not, $S \\cup \\{\\beta_1\\} \\mapsto \\bot$ and $S \\cup \\{\\beta_2\\} \\mapsto \\bot$. Then $S \\mapsto \\{\\beta_1,\\beta_2\\}$ (β-expansion); using the first derivation with the variant $S \\cup \\{\\beta_1,\\beta_2\\} \\mapsto \\bot \\ast \\beta_2$ (i.e. the clause $\\{\\beta_2\\}$), and composing with the second, $S \\mapsto \\bot$. Note: the two derivations must not share parameters introduced by δ-expansions.\n- **γ-formulas.** Let $\\gamma \\in S$ and $t$ a closed term; claim $S \\cup \\{\\gamma(t)\\} \\in C$. Otherwise $S \\mapsto \\gamma \\mapsto \\{\\gamma(t)\\}$ (γ-expansion) composed with $S \\cup \\{\\gamma(t)\\} \\mapsto \\bot$ gives $S \\mapsto \\bot$.\n- **δ-formulas.** Let $\\delta \\in S$; claim $S \\cup \\{\\delta(p)\\} \\in C$ for some parameter $p$ not occurring in $S \\cup \\{\\delta\\}$. If not, $S \\cup \\{\\delta(p)\\} \\mapsto \\bot$ for **every** fresh $p$; take one, $S \\mapsto \\delta \\mapsto \\{\\delta(p)\\}$ (δ-expansion, legal since $p$ is fresh) and compose: $S \\mapsto \\bot$.\n\nAll conditions hold, so $C$ is a consistency poset. $\\square$ (This is the key step for **completeness** of FOL resolution: every set in a consistency poset is satisfiable in a Herbrand structure.)",
+    "solutionSource": "exam"
+  }
+]

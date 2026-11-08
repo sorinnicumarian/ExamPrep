@@ -11,6 +11,7 @@ A study app for Politecnico di Milano exams. **One app, several courses**, switc
 | **Ambient Intelligence & Domotics** | `data/ami/exams/` | 19 exams · 280 questions (mostly multiple-choice) · study guide included |
 | **Systems and Methods for Big and Unstructured Data (SMBUD)** | `data/smbud/exams/` | 14 exams · 311 questions · study guide included |
 | **Applied Statistics** (A.A. 2025/26) | `data/as/exams/` | 2 exams · 45 questions · T/F (Part A, reconstructed from official solutions) + open Part B exercises · tagged **Part A vs Part B** · study guide included |
+| **Algebra & Mathematical Logic** (080931) | `data/alg/exams/` | 11 exams · 40 questions (2015–2026) · resolution/tableaux/semantics/relations/rings exercises + state-and-prove theory · tagged **Exercises vs Theory** · study guide included |
 
 Live (open — no login): **https://sorinnicumarian.github.io/ExamPrep/**
 
@@ -19,7 +20,7 @@ Live (open — no login): **https://sorinnicumarian.github.io/ExamPrep/**
 - **Dashboard** — per-course concept stats: most-asked topics, question-type mix, topics over time, your coverage.
 - **Guide** — theory reference per course, one collapsible section per topic (expanded by default), written for the
   specific exam rather than as a generic textbook summary.
-- **Browse & search** — filter by topic / year / exam / type (and **exam part** for CI and AS); full-text search. Every
+- **Browse & search** — filter by topic / year / exam / type (and **exam part** for CI, AS and ALG); full-text search. Every
   matching question is listed at once — no session, just a reference lookup. Cards are tinted by mastery status
   (green = mastered, amber = attempted but not yet mastered) so already-worked questions stand out at a glance —
   same treatment in Practice, Exam Sim, and permalinked questions (shared via `QuestionCard`).
@@ -57,6 +58,10 @@ topic touched by the original bundled exercise.
 - SMBUD answers are a mix: `solutionSource: "exam"` where an official/expected solution was printed in the source
   material, `"authored"` where none existed (blank exam paper) and a model answer was written instead — badged
   the same way as ML's authored answers.
+- ALG: the 2025/26 midterm, prefinal and Jan 2026 final and the Sept 2023 exam are transcribed from the official
+  solutions (`"exam"`). The July 2023, Jan 2022 and five 2015 papers were questions only, so every answer there is an
+  authored model answer (`"authored"`, prompt says so), grounded in the course lecture notes. Midterm/prefinal
+  dates come from the solution notebooks' timestamps.
 - One SMBUD "exam" (`SMBUD20261220`, dated after the real sittings so it sorts last) is actually a 110-question
   AI-generated practice drill (100 True/False + 10 open, covering every SMBUD topic), not a real past exam —
   every question in it is `solutionSource: "authored"` and its prompts say so explicitly. Same pattern AmI already

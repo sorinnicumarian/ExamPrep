@@ -1,0 +1,49 @@
+[
+  {
+    "id": "ALG20251125-e1",
+    "examId": "ALG20251125",
+    "date": "2025-11-25",
+    "academicYear": "AA2526",
+    "exerciseNo": 1,
+    "type": "theory-essay",
+    "topics": [
+      "resolution",
+      "consistency"
+    ],
+    "part": "second",
+    "prompt": "**[Midterm, Nov 2025 — theory]** State and prove **one and only one** of the following theorems.\n1. Soundness of resolution.\n2. Compactness.",
+    "solution": "**Option 1 — Soundness of resolution** ($F \\vdash \\varphi \\Rightarrow F \\models \\varphi$). Prove each rule sound (if $a$ satisfies the premises it satisfies the conclusion) using the substitution lemma on generalized clauses:\n- falsehood: $\\varphi_i[\\varnothing/\\bot] \\equiv \\chi \\equiv \\bot \\lor \\chi$ (same for $\\lnot\\top$);\n- double negation: $\\varphi_i[\\psi/\\lnot\\lnot\\psi] \\equiv \\psi \\lor \\chi \\equiv \\varphi_i$;\n- α: $\\varphi_i[\\alpha_1/\\alpha] \\land \\varphi_i[\\alpha_2/\\alpha] \\equiv (\\alpha_1 \\land \\alpha_2) \\lor \\chi \\equiv \\varphi_i$;\n- β: $\\varphi_i[\\beta_1,\\beta_2/\\beta] \\equiv (\\beta_1 \\lor \\beta_2) \\lor \\psi \\equiv \\varphi_i$;\n- resolution: with $\\varphi_i \\equiv \\psi \\lor \\psi_i$, $\\varphi_j \\equiv \\lnot\\psi \\lor \\psi_j$: if $a \\models \\psi$ then $a \\models \\psi_j$, else $a \\models \\psi_i$, so $a \\models \\psi_i \\lor \\psi_j$;\n- cut: $a \\models \\psi \\lor \\lnot\\psi$ always.\n\nSo a satisfying valuation satisfies every expansion; a closed expansion contains $\\varnothing$, which is unsatisfiable; $F \\vdash \\varphi$ means $F \\cup \\{\\lnot\\varphi\\}$ has a closed expansion, hence is unsatisfiable, i.e. $F \\models \\varphi$. $\\square$\n\n**Option 2 — Theorem (Compactness).** $F \\subseteq L$ is satisfiable iff every finite subset of $F$ is.\n\n*Proof.* Necessity: a valuation satisfying $F$ satisfies every subset. Sufficiency: let $C \\subseteq \\mathcal{P}L$ be the class of sets $S$ **all of whose finite subsets are satisfiable**; show $C$ is a consistency poset.\n1. If $S \\in C$ and $x \\in S$: $\\{x,\\lnot x\\}$ is finite and unsatisfiable, so it is not $\\subseteq S$; hence $\\lnot x \\notin S$.\n2. $\\{\\bot\\}$ and $\\{\\lnot\\top\\}$ are finite unsatisfiable, so $\\bot, \\lnot\\top \\notin S$.\n3. $\\lnot\\lnot\\varphi \\in S \\in C$: a finite $T \\subseteq S \\cup \\{\\varphi\\}$ lies in $U \\cup \\{\\varphi\\}$ for some finite $U \\subseteq S$ containing $\\lnot\\lnot\\varphi$; $U$ is satisfied by some $v$, and $v(\\varphi) = v(\\lnot\\lnot\\varphi) = 1$, so $v \\models T$. Thus $S \\cup \\{\\varphi\\} \\in C$.\n4. $\\alpha \\in S \\in C$: a finite $T \\subseteq S \\cup \\{\\alpha_1,\\alpha_2\\}$ lies in $U \\cup \\{\\alpha_1,\\alpha_2\\}$, $U \\ni \\alpha$ finite; $v \\models U$ gives $v \\models \\alpha$, hence $v \\models \\alpha_1,\\alpha_2$, so $v \\models T$.\n5. $\\beta \\in S \\in C$: if neither $S \\cup \\{\\beta_1\\}$ nor $S \\cup \\{\\beta_2\\}$ is in $C$, there are finite $T_i \\subseteq S$ with $T_i \\cup \\{\\beta_i\\}$ unsatisfiable (WLOG $\\beta \\in T_i$). $T := T_1 \\cup T_2$ is a finite subset of $S$, so some $v \\models T$; then $v \\models \\beta$, so $v \\models \\beta_i$ for some $i$, and $v \\models T_i \\cup \\{\\beta_i\\}$ — contradiction.\n\nEvery element of a consistency poset is satisfiable; since all finite subsets of $F$ are satisfiable, $F \\in C$, so $F$ is satisfiable. $\\square$",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "ALG20251125-e2",
+    "examId": "ALG20251125",
+    "date": "2025-11-25",
+    "academicYear": "AA2526",
+    "exerciseNo": 2,
+    "type": "numerical-computation",
+    "topics": [
+      "orders"
+    ],
+    "part": "first",
+    "prompt": "**[Midterm, Nov 2025 — exercise 2]** On the set $S = \\{1,2,\\dots,7\\}$ consider the relation\n\n$$R = \\{(1,2),(1,3),(1,4),(2,5),(3,6),(4,7),(5,7),(6,5),(7,6)\\}.$$\n\nDetermine, if it exists, a **smallest order relation containing $R$**. If not, determine the **order induced by $R$**. Either way, determine the resulting **Hasse diagram**. Provide complete explanations.",
+    "solution": "Compute the reflexive-transitive closure $T := R^{rt}$ (from the graph: $1$ reaches everything; $5 \\to 7 \\to 6 \\to 5$ is a cycle):\n\n$$M = M(T) = \\begin{pmatrix}1&1&1&1&1&1&1\\\\0&1&0&0&1&1&1\\\\0&0&1&0&1&1&1\\\\0&0&0&1&1&1&1\\\\0&0&0&0&1&1&1\\\\0&0&0&0&1&1&1\\\\0&0&0&0&1&1&1\\end{pmatrix}.$$\n\n$T$ is **not antisymmetric** ($M \\wedge M^{T} \\not\\le I$: e.g. $(5,6),(6,5) \\in T$), so $R$ is **not contained in any order relation** (any order containing $R$ contains $T$).\n\n**Induced order.** $E := T \\cap T^{\\mathrm{op}}$ is an equivalence; $S/E = \\{[1],\\dots,[5]\\}$ with all classes singletons except $[5] = \\{5,6,7\\}$. With $p : S \\to S/E$ the projection, the induced order is $O = p^{\\mathrm{op}}Tp$:\n\n$$M_E=\\begin{pmatrix}1&0&0&0&0&0&0\\\\0&1&0&0&0&0&0\\\\0&0&1&0&0&0&0\\\\0&0&0&1&0&0&0\\\\0&0&0&0&1&1&1\\\\0&0&0&0&1&1&1\\\\0&0&0&0&1&1&1\\end{pmatrix},\\quad M_p=\\begin{pmatrix}1&0&0&0&0\\\\0&1&0&0&0\\\\0&0&1&0&0\\\\0&0&0&1&0\\\\0&0&0&0&1\\\\0&0&0&0&1\\\\0&0&0&0&1\\end{pmatrix},\\quad M_O=\\begin{pmatrix}1&1&1&1&1\\\\0&1&0&0&1\\\\0&0&1&0&1\\\\0&0&0&1&1\\\\0&0&0&0&1\\end{pmatrix}.$$\n\n**Hasse diagram:** a \"diamond\" with three middle elements — $[1]$ at the bottom, $[2],[3],[4]$ in the middle (pairwise incomparable), $[5]$ on top.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "ALG20251125-e3",
+    "examId": "ALG20251125",
+    "date": "2025-11-25",
+    "academicYear": "AA2526",
+    "exerciseNo": 3,
+    "type": "applied-modeling",
+    "topics": [
+      "resolution",
+      "tableaux"
+    ],
+    "part": "first",
+    "prompt": "**[Midterm, Nov 2025 — exercise 3]** Prove that\n\n$$x \\to y \\lor z,\\ y \\leftrightarrow z \\vdash x \\to y \\land z$$\n\nusing the **resolution calculus** and using the **tableaux calculus**.",
+    "solution": "In both cases show $\\Gamma = \\{x \\to y \\lor z,\\ y \\leftrightarrow z,\\ \\lnot(x \\to y \\land z)\\}$ has a closed expansion.\n\n**Resolution.**\n\n| # | Clause | Rule |\n|---|---|---|\n| 1 | $\\{x \\to y \\lor z\\}$ | assumption |\n| 2 | $\\{y \\leftrightarrow z\\}$ | assumption |\n| 3 | $\\{\\lnot(x \\to y \\land z)\\}$ | assumption |\n| 4 | $\\{\\lnot x,\\ y \\lor z\\}$ | 1, β-expansion |\n| 5 | $\\{\\lnot x, y, z\\}$ | 4, β-expansion |\n| 6 | $\\{y \\to z\\}$ | 2, α-expansion |\n| 7 | $\\{z \\to y\\}$ | 2, α-expansion |\n| 8 | $\\{\\lnot y, z\\}$ | 6, β-expansion |\n| 9 | $\\{y, \\lnot z\\}$ | 7, β-expansion |\n| 10 | $\\{x\\}$ | 3, α-expansion |\n| 11 | $\\{\\lnot(y \\land z)\\}$ | 3, α-expansion |\n| 12 | $\\{\\lnot y, \\lnot z\\}$ | 11, β-expansion |\n| 13 | $\\{y, z\\}$ | 5, 10, resolution |\n| 14 | $\\{z\\}$ | 8, 13, resolution |\n| 15 | $\\{\\lnot z\\}$ | 9, 12, resolution |\n| 16 | $\\varnothing$ | 14, 15, resolution |\n\n**Tableau.** Trunk: $x \\to y \\lor z$; $y \\leftrightarrow z$; $\\lnot(x \\to y \\land z)$; $x$; $\\lnot(y \\land z)$ (α). Split on the first formula: $\\lnot x$ — **closed** — or $y \\lor z$. Under $y \\lor z$ split on $\\lnot(y \\land z)$:\n- $\\lnot y$: split $y \\lor z$ → $y$ **closed**; $z$, then from $y \\leftrightarrow z$ take $z \\to y$: $\\lnot z$ **closed**, $y$ **closed**.\n- $\\lnot z$: split $y \\lor z$ → $z$ **closed**; $y$, then $y \\to z$: $\\lnot y$ **closed**, $z$ **closed**.\n\nAll branches close.",
+    "solutionSource": "exam"
+  }
+]

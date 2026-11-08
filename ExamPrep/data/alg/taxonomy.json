@@ -1,0 +1,13 @@
+[
+  { "key": "relations",   "name": "Sets, Functions & Relation Calculus (matrices, images, epi-mono)", "short": "Relations",   "color": "#2563eb" },
+  { "key": "equivalence", "name": "Equivalence Relations, Closures & Quotients",                       "short": "Equivalence", "color": "#0891b2" },
+  { "key": "orders",      "name": "Order Relations, Induced Orders & Hasse Diagrams",                  "short": "Orders",      "color": "#0d9488" },
+  { "key": "consistency", "name": "Consistency Posets, Hintikka Sets & Compactness",                   "short": "Consistency", "color": "#7c3aed" },
+  { "key": "resolution",  "name": "Resolution (propositional, ground, unification)",                   "short": "Resolution",  "color": "#db2777" },
+  { "key": "tableaux",    "name": "Tableaux & Semantic Trees",                                         "short": "Tableaux",    "color": "#dc2626" },
+  { "key": "folsem",      "name": "FOL Semantics: Structures, Substitution, Models & Countermodels",   "short": "FOL Sem.",    "color": "#ea580c" },
+  { "key": "formalize",   "name": "Formalizing Statements in FOL (& SPASS)",                           "short": "Formalize",   "color": "#ca8a04" },
+  { "key": "groups",      "name": "Groups, Subgroups, Normal Subgroups & Morphisms",                   "short": "Groups",      "color": "#65a30d" },
+  { "key": "rings",       "name": "Rings, Ideals, Quotients & Isomorphism Theorems",                   "short": "Rings",       "color": "#16a34a" },
+  { "key": "congruences", "name": "Algebraic Theories, T-models & Congruences",                        "short": "Congruences", "color": "#64748b" }
+]

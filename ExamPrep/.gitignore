@@ -21,6 +21,7 @@ public/aca/
 public/ami/
 public/smbud/
 public/as/
+public/alg/
 
 .env
 .env.local

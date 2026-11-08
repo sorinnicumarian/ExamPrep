@@ -1,0 +1,7 @@
+{
+  "id": "alg",
+  "title": "Algebra & Mathematical Logic",
+  "shortTitle": "ALG",
+  "hasParts": true,
+  "partLabels": { "first": "Exercises", "second": "Theory (state & prove)" }
+}

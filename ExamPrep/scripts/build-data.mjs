@@ -62,6 +62,15 @@ const COURSE_DEFS = {
       partLabels: { first: 'Part A (multiple choice)', second: 'Part B (Python exercises)' },
     },
   },
+  alg: {
+    examsDir: join(ROOT, 'data', 'alg', 'exams'),
+    taxonomyPath: join(ROOT, 'data', 'alg', 'taxonomy.json'),
+    coursePath: join(ROOT, 'data', 'alg', 'course.json'),
+    fallback: {
+      id: 'alg', title: 'Algebra & Mathematical Logic', shortTitle: 'ALG', hasParts: true,
+      partLabels: { first: 'Exercises', second: 'Theory (state & prove)' },
+    },
+  },
 }
 
 const QTYPES = [

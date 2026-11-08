@@ -1,0 +1,49 @@
+[
+  {
+    "id": "ALG20230908-e1",
+    "examId": "ALG20230908",
+    "date": "2023-09-08",
+    "academicYear": "AA2223",
+    "exerciseNo": 1,
+    "type": "applied-modeling",
+    "topics": [
+      "resolution"
+    ],
+    "part": "first",
+    "prompt": "**[Sept 2023 — exercise 1]** Prove using resolution that every binary relation $R$ on a set which is **serial, symmetric and transitive is reflexive**, i.e. that\n\n$$\\forall x\\exists y.Rxy,\\ \\forall xy(Rxy \\to Ryx),\\ \\forall xyz(Rxy \\land Ryz \\to Rxz) \\vdash \\forall x(Rxx).$$",
+    "solution": "Show $S = \\{\\forall x\\exists y(Rxy),\\ \\forall xy(Rxy \\to Ryx),\\ \\forall xyz(Rxy \\land Ryz \\to Rxz),\\ \\lnot\\forall x(Rxx)\\}$ has a closed expansion.\n\n**Semantic clue:** for any $p$, seriality gives $q$ with $Rpq$; symmetry gives $Rqp$; transitivity on $p \\to q \\to p$ gives $Rpp$.\n\n**Ground resolution (Herbrand style).**\n\n| Step | Formula | Reason |\n|---|---|---|\n| 1 | $\\{\\forall x\\exists y(Rxy)\\}$ | assumption |\n| 2 | $\\{\\forall xy(Rxy \\to Ryx)\\}$ | assumption |\n| 3 | $\\{\\forall xyz(Rxy \\land Ryz \\to Rxz)\\}$ | assumption |\n| 4 | $\\{\\lnot\\forall x(Rxx)\\}$ | assumption |\n| 5 | $\\{\\lnot Rpp\\}$ | 4, δ-expansion |\n| 6 | $\\{\\exists y(Rpy)\\}$ | 1, γ-expansion |\n| 7 | $\\{Rpq\\}$ | 6, δ-expansion |\n| 8 | $\\{\\forall y(Rpy \\to Ryp)\\}$ | 2, γ-expansion |\n| 9 | $\\{Rpq \\to Rqp\\}$ | 8, γ-expansion |\n| 10 | $\\{\\lnot Rpq, Rqp\\}$ | 9, β-expansion |\n| 11 | $\\{Rqp\\}$ | 7, 10, resolution |\n| 12–14 | $\\{Rpq \\land Rqp \\to Rpp\\}$ | 3, γ-expansion ×3 |\n| 15 | $\\{\\lnot(Rpq \\land Rqp), Rpp\\}$ | 14, β-expansion |\n| 16 | $\\{\\lnot Rpq, \\lnot Rqp, Rpp\\}$ | 15, β-expansion |\n| 17 | $\\{\\lnot Rqp, Rpp\\}$ | 7, 16, resolution |\n| 18 | $\\{Rpp\\}$ | 11, 17, resolution |\n| 19 | $\\varnothing$ | 5, 18, resolution |\n\n*(Extra, not in the official sheet — with unification.)* Clauses: $\\{R(x,fx)\\}$ (Skolem $f$), $\\{\\lnot Rxy, Ryx\\}$, $\\{\\lnot Rxy,\\lnot Ryz,Rxz\\}$, $\\{\\lnot Rpp\\}$. Then: $\\{R(x,fx)\\}$ + symmetry → $\\{R(fx,x)\\}$; $\\{\\lnot Rpp\\}$ + transitivity ($x:=p$, $z:=p$) → $\\{\\lnot Rpy, \\lnot Ryp\\}$; + $\\{R(x,fx)\\}$ ($y := fp$) → $\\{\\lnot R(fp,p)\\}$; + $\\{R(fx,x)\\}$ → $\\varnothing$.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "ALG20230908-e2",
+    "examId": "ALG20230908",
+    "date": "2023-09-08",
+    "academicYear": "AA2223",
+    "exerciseNo": 2,
+    "type": "applied-modeling",
+    "topics": [
+      "tableaux",
+      "folsem"
+    ],
+    "part": "first",
+    "prompt": "**[Sept 2023 — exercise 2]** Assume $R$, $S$ and $T$ are unary function symbols *(sic — they are used as unary predicate symbols)*. Use a **semantic tree** to prove that\n\n$$\\forall x(Rx \\to Sx),\\ \\exists x(Sx \\to Tx) \\not\\models \\forall x(Rx \\to Tx).$$",
+    "solution": "$F \\models \\varphi$ iff $F \\cup \\{\\lnot\\varphi\\}$ is unsatisfiable, so $F \\not\\models \\varphi$ when $F \\cup \\{\\lnot\\varphi\\}$ is **satisfiable**. Prove satisfiability of $S = \\{\\forall x(Rx \\to Sx),\\ \\exists x(Sx \\to Tx),\\ \\lnot\\forall x(Rx \\to Tx)\\}$ with a semantic tree:\n1. $\\forall x(Rx \\to Sx),\\ \\exists x(Sx \\to Tx),\\ \\lnot\\forall x(Rx \\to Tx)$\n2. δ on the negated goal (new constant $a$): $\\forall x(Rx \\to Sx),\\ \\exists x(Sx \\to Tx),\\ Ra,\\ \\lnot Ta$\n3. instantiate the universal at $a$: $\\dots, Ra \\to Sa, \\dots$; split — the $\\lnot Ra$ branch is closed (vs $Ra$); keep $Sa$.\n4. δ on $\\exists x(Sx \\to Tx)$ with a **new** constant $b$: $\\forall x(Rx \\to Sx),\\ Sa,\\ Sb \\to Tb,\\ Ra,\\ \\lnot Ta$\n5. instantiate the universal at $b$: $Rb \\to Sb$; take the branch $Sb$.\n6. split $Sb \\to Tb$, take $Tb$: leaf $\\{Sb, Sa, Tb, Ra, \\lnot Ta\\}$ — **open** (no complementary pair).\n\nThe open leaf is satisfiable, hence so is $S$. It also gives a countermodel: $M = \\{a,b\\}$, $[\\![R]\\!] = \\{a\\}$, $[\\![S]\\!] = \\{a,b\\}$, $[\\![T]\\!] = \\{b\\}$ satisfies both premises (the existential is witnessed by $b$) but not the conclusion ($Ra$ holds, $Ta$ fails).",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "ALG20230908-e3",
+    "examId": "ALG20230908",
+    "date": "2023-09-08",
+    "academicYear": "AA2223",
+    "exerciseNo": 3,
+    "type": "applied-modeling",
+    "topics": [
+      "rings",
+      "congruences"
+    ],
+    "part": "first",
+    "prompt": "**[Sept 2023 — exercise 3]**\n1. Prove that the set $R \\subseteq \\mathrm{Mat}_2(\\mathbf{Q})$ of matrices of type $A = \\begin{pmatrix} a & b \\\\ 0 & d\\end{pmatrix}$ is a (non-commutative) subring of $\\mathrm{Mat}_2(\\mathbf{Q})$ and that $\\mathfrak{a} := \\{A \\in R : d = 0\\}$ is an ideal of $R$. Then prove that $S = \\{A \\in R : b = 0\\}$ is a commutative subring of $R$ and that $\\mathfrak{b} := \\mathfrak{a} \\cap S$ is an ideal in $S$. Prove that there is an **injective** morphism of rings $S/\\mathfrak{b} \\to R/\\mathfrak{a}$.\n2. More generally, assume $T$ is an algebraic theory, $R$ is a $T$-model and $S$ a $T$-submodel of $R$. Prove that if $U \\subseteq R^2$ is a congruence on $R$, then $V := U \\cap S^2$ is a congruence on $S$. Prove that there is an injective $T$-morphism $S/V \\to R/U$.",
+    "solution": "**①** $R$ (upper-triangular) is a subring: contains $0, I$, closed under $-$ and product $\\begin{pmatrix}a&b\\\\0&d\\end{pmatrix}\\begin{pmatrix}a'&b'\\\\0&d'\\end{pmatrix} = \\begin{pmatrix}aa'&ab'+bd'\\\\0&dd'\\end{pmatrix}$; not commutative (e.g. $E_{11}E_{12} = E_{12}$ but $E_{12}E_{11} = 0$). $S$ (diagonal matrices) is a commutative subring.\n\n$\\mathfrak{a}$ is an ideal because it is a **kernel**: $h : R \\to \\mathbf{Q}$, $h(A) = d$ is a ring morphism —\n\n$$h(A-A') = d-d' = h(A)-h(A'),\\quad h(AA') = dd' = h(A)h(A'),\\quad h(I) = 1,$$\n\nand $\\mathfrak{a} = \\ker h$. The restriction $h|_S : S \\to \\mathbf{Q}$ is still a ring morphism (the identities hold for all of $R$, in particular on $S$), and $\\ker(h|_S) = \\mathfrak{a} \\cap S = \\mathfrak{b}$, so $\\mathfrak{b}$ is an ideal of $S$.\n\nNow take the inclusion $i : S \\to R$ and projections $p : R \\to R/\\mathfrak{a}$, $q : S \\to S/\\mathfrak{b}$. For $A = \\mathrm{diag}(a,d) \\in S$: $p(i(A)) = 0 \\Leftrightarrow d = 0 \\Leftrightarrow A \\in \\mathfrak{b}$. So $\\mathfrak{b} = \\ker(ip)$, and by the **first isomorphism theorem** $ip$ factors uniquely as $ip = qj$ with $j : S/\\mathfrak{b} \\to R/\\mathfrak{a}$ **injective**.\n\n**②** Since $U$ is a congruence, the projection $p : R \\to R/U$ is a $T$-morphism, and so is its restriction $p|_S = ip : S \\to R/U$ ($i$ the inclusion, a $T$-morphism since $S$ is a submodel). Its kernel pair is\n\n$$(x,y) \\in K(ip) \\Leftrightarrow p(x) = p(y) \\Leftrightarrow (x,y) \\in K(p) = U \\Leftrightarrow (x,y) \\in U \\cap S^2 = V,$$\n\nso $V$ is a kernel pair of a $T$-morphism, hence a **congruence** on $S$. With $q : S \\to S/V$ the projection, the first isomorphism theorem gives $ip = qj$ with $j : S/V \\to R/U$ an injective $T$-morphism. (Part ① is the special case $T$ = rings, where congruences correspond to ideals.)",
+    "solutionSource": "exam"
+  }
+]

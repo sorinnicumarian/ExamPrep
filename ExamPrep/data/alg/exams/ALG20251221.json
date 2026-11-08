@@ -1,0 +1,48 @@
+[
+  {
+    "id": "ALG20251221-e1",
+    "examId": "ALG20251221",
+    "date": "2025-12-21",
+    "academicYear": "AA2526",
+    "exerciseNo": 1,
+    "type": "theory-essay",
+    "topics": [
+      "consistency",
+      "folsem"
+    ],
+    "part": "second",
+    "prompt": "**[Prefinal, Dec 2025 — theory]** State and prove **one and only one** of the following theorems.\n1. Hintikka's lemma for FOL.\n2. Evaluation is compatible with substitution in FOL.",
+    "solution": "**Option 1 — Lemma (Hintikka).** Assume $L$ is a first order language with a non-empty set of closed terms. If $H$ is a Hintikka set for $L$, then $H$ is satisfiable in a **Herbrand structure**.\n\n*Proof.* Let $M$ be the set of closed terms (functions interpreted syntactically). For a relation symbol $R$ of arity $n$ set $(t_1,\\dots,t_n) \\in [\\![R]\\!] \\Leftrightarrow R(t_1,\\dots,t_n) \\in H$ (this includes equality). Let $P = \\{\\varphi \\in L : \\varphi \\in H \\Rightarrow M \\models \\varphi\\}$; prove $P = L$ by structural induction for uniform notation.\n- **Atomic and negated atomic.** If $R(t_1,\\dots,t_n) \\in H$, the $t_i$ are closed, so $(t_1,\\dots,t_n) \\in [\\![R]\\!]$ and $M \\models R(t_1,\\dots,t_n)$. If $\\lnot R(t_1,\\dots,t_n) \\in H$, then $R(t_1,\\dots,t_n) \\notin H$ (Hintikka condition 1), so $(t_1,\\dots,t_n) \\notin [\\![R]\\!]$, so $M \\not\\models R(\\dots)$, so $M \\models \\lnot R(\\dots)$.\n- **Double negation, α, β:** as in the propositional case.\n- **γ.** If $\\gamma(t) \\in P$ for every closed $t$: $\\gamma \\in H \\Rightarrow \\forall t\\,(\\gamma(t) \\in H) \\Rightarrow \\forall t\\,(M \\models \\gamma(t)) \\Rightarrow M \\models \\gamma$ (Hintikka condition 6, induction hypothesis, Herbrand corollary: every element of $M$ is a closed term).\n- **δ.** If $\\delta(t) \\in P$ for every $t$: $\\delta \\in H \\Rightarrow \\exists t\\,(\\delta(t) \\in H) \\Rightarrow \\exists t\\,(M \\models \\delta(t)) \\Rightarrow M \\models \\delta$ (condition 7, induction, Herbrand corollary). $\\square$\n\n**Option 2 — Proposition (substitution).** Let $M$ be an $L$-structure and $a \\in M^X$ an assignment.\n1. If $s,t$ are terms, $[\\![s[t/x]]\\!](a) = [\\![s]\\!](a[t/x])$.\n2. If $\\varphi$ is a formula, $[\\![\\varphi[t/x]]\\!](a) = [\\![\\varphi]\\!](a[t/x])$,\n\nwhere $a[t/x]$ is the assignment sending $x$ to $[\\![t]\\!](a)$.\n\n*Proof.* ① Induction on $s$. If $s = x$: $[\\![x[t/x]]\\!](a) = [\\![t]\\!](a) = [\\![x]\\!](a[t/x])$. If $s = y \\neq x$: both sides are $a(y)$. If $s = f(r_1,\\dots,r_n)$ and the claim holds for each $r_i$: $[\\![f(r)[t/x]]\\!](a) = [\\![f]\\!]([\\![r[t/x]]\\!](a)) = [\\![f]\\!]([\\![r]\\!](a[t/x])) = [\\![f(r)]\\!](a[t/x])$.\n② Equality: $[\\![(r=s)[t/x]]\\!](a) = E([\\![r[t/x]]\\!](a),[\\![s[t/x]]\\!](a)) = E([\\![r]\\!](a[t/x]),[\\![s]\\!](a[t/x])) = [\\![r=s]\\!](a[t/x])$. Relations $R(s_1,\\dots,s_n)$: same computation with $[\\![R]\\!]$ using ①. Connectives $c(\\psi_1,\\dots,\\psi_n)$: $[\\![c(\\psi)[t/x]]\\!](a) = [\\![c]\\!]([\\![\\psi[t/x]]\\!](a)) = [\\![c]\\!]([\\![\\psi]\\!](a[t/x])) = [\\![c(\\psi)]\\!](a[t/x])$. (The official solution omits the quantifier cases.) $\\square$",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "ALG20251221-e2",
+    "examId": "ALG20251221",
+    "date": "2025-12-21",
+    "academicYear": "AA2526",
+    "exerciseNo": 2,
+    "type": "applied-modeling",
+    "topics": [
+      "resolution"
+    ],
+    "part": "first",
+    "prompt": "**[Prefinal, Dec 2025 — exercise 2]** A relation $R : A \\rightharpoonup A$ is **circular** if when $x$ is in relation with $y$ and $y$ with $z$, then $z$ is in relation to $x$. Use resolution to prove that a reflexive and circular relation is symmetric, i.e. that\n\n$$\\forall x(Rxx),\\ \\forall xyz(Rxy \\land Ryz \\to Rzx) \\vdash \\forall xy(Rxy \\to Ryx)$$\n\n**first using ground resolution, then using resolution with unification.**",
+    "solution": "Show that $F = \\{\\forall x(Rxx),\\ \\forall xyz(Rxy \\land Ryz \\to Rzx),\\ \\lnot\\forall xy(Rxy \\to Ryx)\\}$ has a closed expansion.\n\n**① Ground resolution.**\n\n| Step | Formula | Reason |\n|---|---|---|\n| 1 | $\\{\\forall x(Rxx)\\}$ | assumption |\n| 2 | $\\{\\forall xyz(Rxy \\land Ryz \\to Rzx)\\}$ | assumption |\n| 3 | $\\{\\lnot\\forall xy(Rxy \\to Ryx)\\}$ | assumption |\n| 4 | $\\{\\lnot\\forall y(Rpy \\to Ryp)\\}$ | 3, δ-expansion |\n| 5 | $\\{\\lnot(Rpq \\to Rqp)\\}$ | 4, δ-expansion |\n| 6 | $\\{Rpq\\}$ | 5, α-expansion |\n| 7 | $\\{\\lnot Rqp\\}$ | 5, α-expansion |\n| 8 | $\\{Rqq\\}$ | 1, γ-expansion |\n| 9–11 | $\\{Rpq \\land Rqq \\to Rqp\\}$ | 2, γ-expansion ×3 ($x:=p,y:=q,z:=q$) |\n| 12 | $\\{\\lnot(Rpq \\land Rqq),\\ Rqp\\}$ | 11, β-expansion |\n| 13 | $\\{\\lnot Rpq,\\ \\lnot Rqq,\\ Rqp\\}$ | 12, β-expansion |\n| 14 | $\\{\\lnot Rqq,\\ Rqp\\}$ | 6, 13, resolution |\n| 15 | $\\{Rqp\\}$ | 8, 14, resolution |\n| 16 | $\\varnothing$ | 7, 15, resolution |\n\n**② Unification.** Prenex/Skolem/clausal forms: $\\forall x(Rxx) \\mapsto \\{\\{Rxx\\}\\}$; $\\forall xyz(Rxy \\land Ryz \\to Rzx) \\mapsto \\{\\{\\lnot Rxy, \\lnot Ryz, Rzx\\}\\}$; $\\lnot\\forall xy(Rxy \\to Ryx)$ → prenex $\\exists xy.\\lnot(Rxy \\to Ryx)$ → Skolem $\\lnot(Rpq \\to Rqp)$ → $\\{\\{Rpq\\},\\{\\lnot Rqp\\}\\}$. So\n\n$$C(F) = \\{\\{Rxx\\},\\ \\{\\lnot Rxy,\\lnot Ryz,Rzx\\},\\ \\{Rpq\\},\\ \\{\\lnot Rqp\\}\\}.$$\n\n1. $\\{\\lnot Rqp\\}$ with $\\{\\lnot Rxy,\\lnot Ryz,Rzx\\}$ ($z:=q$, $x:=p$): $\\{\\lnot Rpy,\\ \\lnot Ryq\\}$.\n2. With $\\{Rxx\\}$ ($y:=q$): $\\{\\lnot Rpq\\}$.\n3. With $\\{Rpq\\}$: $\\varnothing$.\n\nAll clauses are Horn, so SLD resolution (start from the negated goal) works directly.",
+    "solutionSource": "exam"
+  },
+  {
+    "id": "ALG20251221-e3",
+    "examId": "ALG20251221",
+    "date": "2025-12-21",
+    "academicYear": "AA2526",
+    "exerciseNo": 3,
+    "type": "applied-modeling",
+    "topics": [
+      "tableaux"
+    ],
+    "part": "first",
+    "prompt": "**[Prefinal, Dec 2025 — exercise 3]** Prove the same claim of exercise 2 — a reflexive and circular relation is symmetric,\n\n$$\\forall x(Rxx),\\ \\forall xyz(Rxy \\land Ryz \\to Rzx) \\vdash \\forall xy(Rxy \\to Ryx)$$\n\n— **first using a tableau and then using a semantic tree.**",
+    "solution": "**Tableau** for $F = \\{\\forall x(Rxx),\\ \\forall xyz(Rxy \\land Ryz \\to Rzx),\\ \\lnot\\forall xy(Rxy \\to Ryx)\\}$:\n- Trunk: the three formulas; $\\lnot\\forall y(Rpy \\to Ryp)$ (δ); $\\lnot(Rpq \\to Rqp)$ (δ); $Rpq$, $\\lnot Rqp$ (α); then γ on the circularity axiom: $\\forall yz(Rpy \\land Ryz \\to Rzp)$, $\\forall z(Rpq \\land Rqz \\to Rzp)$, $Rpq \\land Rqq \\to Rqp$.\n- β-split: right $Rqp$ — **closed** (vs $\\lnot Rqp$). Left $\\lnot(Rpq \\land Rqq)$ splits into $\\lnot Rpq$ — **closed** (vs $Rpq$) — and $\\lnot Rqq$, below which γ on $\\forall x(Rxx)$ gives $Rqq$ — **closed**.\n\nEvery branch is closed, so $F$ has a closed expansion.\n\n**Semantic tree** (prove $F$ unsatisfiable; abbreviate $\\gamma_1 := \\forall x(Rxx)$, $\\gamma_2 := \\forall xyz(Rxy \\land Ryz \\to Rzx)$). Each node is a set of formulas; we expand one highlighted formula per step:\n1. $\\gamma_1, \\gamma_2, \\lnot\\forall xy(Rxy \\to Ryx)$\n2. $\\gamma_1, \\gamma_2, \\lnot\\forall y(Rpy \\to Ryp)$\n3. $\\gamma_1, \\gamma_2, \\lnot(Rpq \\to Rqp)$\n4. $\\gamma_1, \\gamma_2, Rpq, \\lnot Rqp$\n5. (instantiate $\\gamma_2$) $\\gamma_1, \\gamma_2, Rpq \\land Rqq \\to Rqp, Rpq, \\lnot Rqp$\n6. Split on the implication:\n   - $\\gamma_1,\\gamma_2, Rpq, Rqp, \\lnot Rqp$ — unsatisfiable;\n   - $\\gamma_1,\\gamma_2, \\lnot(Rpq \\land Rqq), Rpq, \\lnot Rqp$, which splits into $\\lnot Rpq, Rpq, \\dots$ — unsatisfiable — and $\\gamma_1,\\gamma_2,\\lnot Rqq, Rpq, \\lnot Rqp$; instantiating $\\gamma_1$ gives $Rqq, \\lnot Rqq, \\dots$ — unsatisfiable.\n\nEvery leaf is unsatisfiable, hence so is $F$.",
+    "solutionSource": "exam"
+  }
+]

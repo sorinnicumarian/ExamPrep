@@ -1,0 +1,33 @@
+[
+  {
+    "id": "ALG20230710-e1",
+    "examId": "ALG20230710",
+    "date": "2023-07-10",
+    "academicYear": "AA2223",
+    "exerciseNo": 1,
+    "type": "theory-essay",
+    "topics": [
+      "consistency"
+    ],
+    "part": "second",
+    "prompt": "**[Logic exam / theory, July 2023 — Q1]** In propositional logic, prove that if $C$ is a consistency class, **every maximal element $S \\in C$ is a Hintikka set**.",
+    "solution": "*No official solution — model answer following the lecture notes (Prop. 2.111).*\n\n**Definitions.** A *consistency poset* $C \\subseteq \\mathcal{P}L$ (ordered by inclusion) satisfies, for every $S \\in C$: (1) $x \\in S$ a variable $\\Rightarrow \\lnot x \\notin S$; (2) $\\bot,\\lnot\\top \\notin S$; (3) $\\lnot\\lnot\\varphi \\in S \\Rightarrow S \\cup \\{\\varphi\\} \\in C$; (4) $\\alpha \\in S \\Rightarrow S \\cup \\{\\alpha_1,\\alpha_2\\} \\in C$; (5) $\\beta \\in S \\Rightarrow S \\cup \\{\\beta_1\\} \\in C$ or $S \\cup \\{\\beta_2\\} \\in C$.\nA *Hintikka set* $H$ satisfies (1), (2) and: (3') $\\lnot\\lnot\\varphi \\in H \\Rightarrow \\varphi \\in H$; (4') $\\alpha \\in H \\Rightarrow \\alpha_1,\\alpha_2 \\in H$; (5') $\\beta \\in H \\Rightarrow \\beta_1 \\in H$ or $\\beta_2 \\in H$.\n$S$ is *maximal* in $C$ if $S \\subseteq T \\in C \\Rightarrow S = T$.\n\n**Proof.** Let $S$ be maximal in $C$.\n- (1), (2): hold for $S$ directly because $S \\in C$ and $C$ is a consistency poset.\n- (3'): if $\\lnot\\lnot\\varphi \\in S$ then $S \\cup \\{\\varphi\\} \\in C$; since $S \\subseteq S \\cup \\{\\varphi\\}$ and $S$ is maximal, $S = S \\cup \\{\\varphi\\}$, so $\\varphi \\in S$.\n- (4'): if $\\alpha \\in S$ then $S \\cup \\{\\alpha_1,\\alpha_2\\} \\in C$; by maximality $S = S \\cup \\{\\alpha_1,\\alpha_2\\}$, so $\\alpha_1,\\alpha_2 \\in S$.\n- (5'): if $\\beta \\in S$ then $S \\cup \\{\\beta_i\\} \\in C$ for at least one $i$; by maximality $S = S \\cup \\{\\beta_i\\}$, so $\\beta_i \\in S$.\n\nHence $S$ is a Hintikka set. $\\square$\n\n**Why it matters:** Hintikka sets are satisfiable (Hintikka's lemma), so any element of $C$ contained in a maximal element is satisfiable. (Not every consistency poset has maximal elements above every $S$ — the notes take a detour through finitary/subset-closed posets and Zorn's lemma.)",
+    "solutionSource": "authored"
+  },
+  {
+    "id": "ALG20230710-e2",
+    "examId": "ALG20230710",
+    "date": "2023-07-10",
+    "academicYear": "AA2223",
+    "exerciseNo": 2,
+    "type": "theory-essay",
+    "topics": [
+      "orders",
+      "resolution"
+    ],
+    "part": "second",
+    "prompt": "**[Logic exam / theory, July 2023 — Q2]** Do **one and only one** of the following.\n1. Provide a brief overview of order relations.\n2. Prove regularity of the resolution inference.",
+    "solution": "*No official solution — model answer following the lecture notes.*\n\n**Option 1 — Order relations (overview).**\n- A relation $R : A \\rightharpoonup A$ is a **partial order** if reflexive ($I \\subseteq R$), transitive ($R^2 \\subseteq R$) and antisymmetric ($R \\cap R^{\\mathrm{op}} \\subseteq I$). In matrix terms: $I \\le M$, $M^2 \\le M$ (boolean product), $M \\wedge M^{T} \\le I$. If $R$ is an order so is $R^{\\mathrm{op}}$.\n- **Total order:** additionally $R \\cup R^{\\mathrm{op}} = A^2$ (any two elements are comparable). **Well order:** total, and every non-empty subset has a minimum (supports induction).\n- **Special elements** of $B \\subseteq A$: upper/lower bounds, maximum/minimum (unique if they exist), supremum/infimum (least upper / greatest lower bound); **maximal/minimal** elements (nothing strictly above/below — not necessarily unique). **Zorn's lemma:** every inductive poset (every chain has an upper bound) has a maximal element.\n- **Generated order:** with $T := R^{rt}$ the reflexive-transitive closure, if $T$ is antisymmetric it is the smallest order containing $R$; otherwise **no** order contains $R$.\n- **Induced order:** $E := T \\cap T^{\\mathrm{op}}$ is an equivalence; with $p : A \\to A/E$ the projection, $p^{\\mathrm{op}}Tp$ is a partial order on $A/E$ (collapse the cycles of $R$).\n- **Morphisms** of ordered sets: monotone functions $x \\le y \\Rightarrow f(x) \\le f(y)$. Finite orders are drawn by **Hasse diagrams** (only covering pairs, no reflexive loops or transitive edges).\n- Examples: $\\subseteq$ on $\\mathcal{P}X$ (a Boolean lattice), divisibility on $\\mathbf{N}$, $\\le$ on $\\mathbf{N}$ (well order). Lattices = posets with binary sup/inf ($\\lor,\\land$).\n\n**Option 2 — Proposition: the resolution inference is regular.**\nAn inference relation is *regular* if $F \\vdash \\alpha \\Rightarrow F \\vdash \\alpha_1, \\alpha_2$; $F,\\beta_1 \\vdash \\bot$ and $F,\\beta_2 \\vdash \\bot \\Rightarrow F,\\beta \\vdash \\bot$; and $F \\vdash \\top$. Equivalently (using cut and weakening): $\\alpha \\vdash \\alpha_i$ ($i=1,2$), $\\beta, \\lnot\\beta_1, \\lnot\\beta_2 \\vdash \\bot$, and $\\vdash \\top$.\n\n*Proof.* Recall $F \\vdash \\varphi$ in resolution means $F \\cup \\{\\lnot\\varphi\\}$ has a closed expansion.\n- $\\alpha \\vdash \\alpha_i$: 1. $\\{\\alpha\\}$ (assumption); 2. $\\{\\lnot\\alpha_i\\}$ (assumption); 3. $\\{\\alpha_i\\}$ (1, α-expansion); 4. $\\varnothing$ (2, 3, resolution).\n- $\\beta,\\lnot\\beta_1,\\lnot\\beta_2 \\vdash \\bot$: 1. $\\{\\beta\\}$; 2. $\\{\\lnot\\beta_1\\}$; 3. $\\{\\lnot\\beta_2\\}$; 4. $\\{\\beta_1,\\beta_2\\}$ (1, β-expansion); 5. $\\{\\beta_2\\}$ (4, 2, resolution); 6. $\\varnothing$ (5, 3, resolution).\n- $\\vdash \\top$: $\\{\\lnot\\top\\}$ has a closed expansion by the falsehood rule.\n\nSo resolution is regular. **Consequence:** for a regular inference the class of consistent sets $\\{F : F \\nvdash \\bot\\}$ is a consistency poset, so consistent sets are satisfiable and the inference is **complete** — hence resolution is complete. $\\square$",
+    "solutionSource": "authored"
+  }
+]
